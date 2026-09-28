@@ -203,6 +203,14 @@ RESOLVED 2026-09-29 — evidence/X3-speaker.md §7 — O24 closed: frame-off feC
   the rebuild dropped the `revealed` flag and rendered `#000` (S9 tolerant
   2.0145 % > 2.000 %). Fix task `tasks/X4-timeout-reveal-colour.md`; F2 re-runs
   after the fix.
+- 2026-09-29 — X4 timeout reveal colour (`src/ui/board.ts`/`src/main.ts`): the
+  lifecycle's `ListedWordView.revealed` flag now reaches the board view and
+  revealed (timeout) slots render the reference's `#ff6600` (16737792,
+  `tamamla()` L568–570); player-found slots keep black. Focused e2e
+  `tests/e2e/timeout/reveal-colour.spec.ts` (fake-clock expiry through the real
+  timer path; pre-fix run fails on the revealed colour) + F2's S9 re-runs:
+  tolerant 2.0145 % → 0.901 % (raw 7.730 %), pass. Evidence:
+  `evidence/X4-reveal-colour.md`.
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:
