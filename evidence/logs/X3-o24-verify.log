@@ -1,0 +1,13 @@
+capture on:  {"file":"app-speaker-on.png","sha256":"eecd63e0ced5eba5fa5d77b83b870b809bc4095db3c952ae667926677f8fac37","state":"on","wavesDisplay":"inline","storedVolume":null,"gameState":"playing","lastAudioEvent":"roundStart"}
+capture off: {"file":"app-speaker-off.png","sha256":"d8341f932b0d9046f6d988b945684fb182e81cbab1d12982c33c39740bccb2f2","state":"off","wavesDisplay":"none","storedVolume":"0","gameState":"playing","lastAudioEvent":"roundStart"}
+bitmap:      sha256=74710a87bbc5f61b3ab60d24d1c5b2892b3561b67b13bcb48ca2a559441cfa6e (A1 images/86.png source)
+diff: mismatchedPixels=17930 totalPixels=220000 mismatchRatio=0.0815 pass=false -> /home/dev/kelimator-2012/evidence/X3-o24/diff-app-on-vs-ref-before/report.json
+region app-on-vs-ref-before: box=45x44 mismatched=466/1980 raw=0.23535353535353534 tolerant=0.08181818181818182 bbox={"x":0,"y":10,"width":42,"height":32}
+diff: mismatchedPixels=18008 totalPixels=220000 mismatchRatio=0.08185454545454546 pass=false -> /home/dev/kelimator-2012/evidence/X3-o24/diff-app-on-vs-ref-on/report.json
+region app-on-vs-ref-on: box=45x44 mismatched=466/1980 raw=0.23535353535353534 tolerant=0.08181818181818182 bbox={"x":0,"y":10,"width":42,"height":32}
+diff: mismatchedPixels=17733 totalPixels=220000 mismatchRatio=0.08060454545454546 pass=false -> /home/dev/kelimator-2012/evidence/X3-o24/diff-app-off-vs-ref-off/report.json
+region app-off-vs-ref-off: box=45x44 mismatched=291/1980 raw=0.14696969696969697 tolerant=0.01818181818181818 bbox={"x":0,"y":11,"width":31,"height":30}
+bitmap match 1:1   app={"ox":10,"oy":11,"ok":237,"total":609,"ratio":0.3891625615763547,"worst":273.9379491782765} ref={"ox":11,"oy":11,"ok":586,"total":609,"ratio":0.9622331691297209,"worst":381.79968569918964}
+bitmap match phase app={"ox":11,"oy":12,"dx":0.5,"dy":0.5,"ok":551,"total":825,"ratio":0.6678787878787878} ref={"ox":11,"oy":11,"dx":0,"dy":0,"ok":723,"total":825,"ratio":0.8763636363636363}
+cxform app={"paletteSize":6,"changed":447,"iconChanged":359,"opaqueChanged":18,"mappedWithin1":17,"mappedWithin2":18,"samplesOver2":[]} ref={"paletteSize":6,"changed":331,"iconChanged":259,"opaqueChanged":241,"mappedWithin1":240,"mappedWithin2":240,"samplesOver2":[{"x":31,"y":13,"on":[0,0,0],"off":[249,229,177],"predicted":[148,148,148],"deviation":101}]}
+pixelated diag: raw=0.21262626262626264 tolerant=0.05555555555555555

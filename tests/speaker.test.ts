@@ -11,6 +11,12 @@
 //   scale (0 = muted / `vol` false, 100 = full / `vol = 1`; docs/04 §3,
 //   evidence/D4-audio.md §4).
 //
+// The icon timing is HUD-level, not audio-level: a click only toggles `vol` +
+// `stopAllSounds` + persistence; the sprite-88 "on"/"off" frame follows the
+// persisted volume at boot/render (C3 probe: a plain reference click changes
+// 0 px — evidence/C3-speaker-capture.md §1). That timing is asserted by
+// tests/e2e/speaker/speaker.spec.ts; this file covers the audio semantics.
+//
 // Silent witness runs (EXECUTION.md §8): every manager under test receives an
 // injected fake element factory and an in-memory storage; no real
 // HTMLAudioElement is constructed and nothing is played audibly.

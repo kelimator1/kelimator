@@ -1,14 +1,18 @@
-// tests/e2e/speaker/speaker.spec.ts — X3 speaker-toggle e2e (owner defect 3).
+// tests/e2e/speaker/speaker.spec.ts — X3 speaker-toggle e2e (owner defect 3, O24).
 //
 // Run with: npm run e2e -- speaker
 //
 // Drives the real app: clicks the board's `btn_speaker` element (`spk_btn`,
 // DefineButton2_90) and asserts the reference semantics decoded from the
-// decompiled ActionScript (evidence/X3-speaker.md §1):
+// decompiled ActionScript (evidence/X3-speaker.md §1) and the C3 speaker
+// capture (evidence/C3-speaker-capture.md):
 // - `if(_root.vol)` → `_root.vol = 0` + `stopAllSounds()`; else `vol = 1`;
 //   the value is persisted (rebuild: `kelimator.volume`, 0/100).
 // - The sprite-88 frames "on"/"off" are mirrored on the element
-//   (`data-speaker` + the waves character 85 / frame-"off" CXFORM icon).
+//   (`data-speaker` + the waves character 85 / frame-"off" CXFORM icon) and are
+//   applied from the persisted volume at boot/render — never on the click:
+//   sprite 88 evaluates `_root.vol` on frame entry only and the C3 probe
+//   measured a plain reference click as 0 px changed.
 // - `window.__game.lastAudioEvent` is a state hook: the requested event is
 //   recorded even while muted (docs/04 §6).
 //
@@ -69,7 +73,7 @@ async function readSpeaker(page: Page): Promise<SpeakerRead> {
 }
 
 test.describe('X3 speaker toggle', () => {
-  test('click mutes (persisted 0, off visual) and unmutes (persisted 100, on visual)', async ({
+  test('click toggles the audio state + persistence; the icon follows the persisted volume at render', async ({
     page,
   }) => {
     const pageErrors: Error[] = [];
@@ -89,39 +93,45 @@ test.describe('X3 speaker toggle', () => {
     await expect.poll(async () => (await readSpeaker(page)).lastAudioEvent).toBe('roundStart');
     const onShot = await speaker.screenshot();
 
-    // Click → `if(_root.vol)` branch: vol = 0 + stopAllSounds, persisted.
+    // Click → `if(_root.vol)` branch: vol = 0 + stopAllSounds, persisted. The
+    // reference does NOT repaint on a plain click (C3 probe: 0 px), so neither
+    // may the rebuild (evidence/C3-speaker-capture.md §1).
     await speaker.click();
-    await expect(speaker).toHaveAttribute('data-speaker', 'off');
-    const muted = await readSpeaker(page);
-    expect(muted.storedVolume).toBe('0');
-    expect(muted.wavesDisplay).toBe('none');
+    await expect.poll(async () => (await readSpeaker(page)).storedVolume).toBe('0');
+    await expect(speaker).toHaveAttribute('data-speaker', 'on');
+    expect((await speaker.screenshot()).equals(onShot)).toBe(true);
 
-    // The rendered state changes (waves removed + frame-"off" CXFORM icon).
+    // A render (SPACE → scramble) applies the persisted volume to the icon;
+    // the muted request is still recorded (`lastAudioEvent` hook, docs/04 §6).
+    await page.keyboard.press('Space');
+    await expect.poll(async () => (await readSpeaker(page)).lastAudioEvent).toBe('scramble');
+    expect((await readSpeaker(page)).storedVolume).toBe('0');
+    await expect(speaker).toHaveAttribute('data-speaker', 'off');
+    expect((await readSpeaker(page)).wavesDisplay).toBe('none');
     const offShot = await speaker.screenshot();
     expect(offShot.equals(onShot)).toBe(false);
 
-    // While muted, the manager gates playback but still records the requested
-    // event (docs/04 §6: a state hook, never evidence of audibility). BACKSPACE
-    // on an empty entry always reports a delete (evidence/A2-edges.md §2(c)).
-    await page.keyboard.press('Backspace');
-    await expect.poll(async () => (await readSpeaker(page)).lastAudioEvent).toBe('delete');
-    expect((await readSpeaker(page)).storedVolume).toBe('0');
-
-    // Click again → `else` branch: vol = 1 (full volume), persisted; SPACE
-    // reports `scramble` (a different event name proves the unmuted wiring).
+    // Click again → `else` branch: vol = 1 (full volume), persisted; the icon
+    // keeps the last frame until a render applies it.
     await speaker.click();
+    await expect.poll(async () => (await readSpeaker(page)).storedVolume).toBe('100');
+    await expect(speaker).toHaveAttribute('data-speaker', 'off');
+    expect((await speaker.screenshot()).equals(offShot)).toBe(true);
+
+    // Render again → the on frame is restored pixel-exactly (C3: restored ON
+    // == initial ON, 0 px).
+    await page.keyboard.press('Backspace'); // delete event; entry is empty
+    await expect.poll(async () => (await readSpeaker(page)).lastAudioEvent).toBe('delete');
     await expect(speaker).toHaveAttribute('data-speaker', 'on');
-    const unmuted = await readSpeaker(page);
-    expect(unmuted.storedVolume).toBe('100');
-    expect(unmuted.wavesDisplay).not.toBe('none');
-    await page.keyboard.press('Space');
-    await expect.poll(async () => (await readSpeaker(page)).lastAudioEvent).toBe('scramble');
-    expect((await readSpeaker(page)).storedVolume).toBe('100');
+    expect((await readSpeaker(page)).wavesDisplay).not.toBe('none');
+    expect((await speaker.screenshot()).equals(onShot)).toBe(true);
 
     expect(pageErrors).toEqual([]);
   });
 
-  test('muted state persists across a reload and boots with the off visual', async ({ page }) => {
+  test('the icon reflects the persisted volume at (re)load; a click alone does not repaint', async ({
+    page,
+  }) => {
     const pageErrors: Error[] = [];
     page.on('pageerror', (error) => pageErrors.push(error));
 
@@ -129,8 +139,8 @@ test.describe('X3 speaker toggle', () => {
     const speaker = page.locator(SPEAKER_SELECTOR);
     await expect(speaker).toHaveAttribute('data-speaker', 'on');
     await speaker.click();
-    await expect(speaker).toHaveAttribute('data-speaker', 'off');
     await expect.poll(async () => (await readSpeaker(page)).storedVolume).toBe('0');
+    await expect(speaker).toHaveAttribute('data-speaker', 'on'); // no click repaint
 
     // Boot restore (frame_2 L1-L9): the persisted 0 is read back, shown as the
     // "off" frame, and a muted round start still records `roundStart`.
@@ -139,10 +149,10 @@ test.describe('X3 speaker toggle', () => {
     await expect.poll(async () => (await readSpeaker(page)).lastAudioEvent).toBe('roundStart');
     expect((await readSpeaker(page)).storedVolume).toBe('0');
 
-    // Unmute → 100 persists across another reload.
+    // Unmute → 100 persists; still no click repaint, the next boot shows "on".
     await speaker.click();
-    await expect(speaker).toHaveAttribute('data-speaker', 'on');
     await expect.poll(async () => (await readSpeaker(page)).storedVolume).toBe('100');
+    await expect(speaker).toHaveAttribute('data-speaker', 'off');
     await page.reload();
     await expect(speaker).toHaveAttribute('data-speaker', 'on');
     expect((await readSpeaker(page)).storedVolume).toBe('100');
@@ -150,7 +160,7 @@ test.describe('X3 speaker toggle', () => {
     expect(pageErrors).toEqual([]);
   });
 
-  test('clamps a corrupt stored volume into 0–100 on boot', async ({ page }) => {
+  test('clamps a corrupt stored volume into 0–100 at boot', async ({ page }) => {
     await page.goto('/');
     const speaker = page.locator(SPEAKER_SELECTOR);
 
@@ -170,5 +180,8 @@ test.describe('X3 speaker toggle', () => {
 
     await speaker.click();
     await expect.poll(async () => (await readSpeaker(page)).storedVolume).toBe('100');
+    await expect(speaker).toHaveAttribute('data-speaker', 'off'); // click alone does not repaint
+    await page.reload();
+    await expect(speaker).toHaveAttribute('data-speaker', 'on');
   });
 });

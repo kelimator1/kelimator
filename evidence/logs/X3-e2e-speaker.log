@@ -5,8 +5,8 @@
 
 Running 3 tests using 1 worker
 
-  ✓  1 [app] › tests/e2e/speaker/speaker.spec.ts:72:3 › X3 speaker toggle › click mutes (persisted 0, off visual) and unmutes (persisted 100, on visual) (1.0s)
-  ✓  2 [app] › tests/e2e/speaker/speaker.spec.ts:124:3 › X3 speaker toggle › muted state persists across a reload and boots with the off visual (919ms)
-  ✓  3 [app] › tests/e2e/speaker/speaker.spec.ts:153:3 › X3 speaker toggle › clamps a corrupt stored volume into 0–100 on boot (1.1s)
+  ✓  1 [app] › tests/e2e/speaker/speaker.spec.ts:76:3 › X3 speaker toggle › click toggles the audio state + persistence; the icon follows the persisted volume at render (1.2s)
+  ✓  2 [app] › tests/e2e/speaker/speaker.spec.ts:132:3 › X3 speaker toggle › the icon reflects the persisted volume at (re)load; a click alone does not repaint (895ms)
+  ✓  3 [app] › tests/e2e/speaker/speaker.spec.ts:163:3 › X3 speaker toggle › clamps a corrupt stored volume into 0–100 at boot (837ms)
 
-  3 passed (3.6s)
+  3 passed (3.4s)

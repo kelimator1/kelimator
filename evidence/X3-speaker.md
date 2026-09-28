@@ -1,28 +1,41 @@
-# X3 — Speaker Toggle (owner defect 3)
+# X3 — Speaker Toggle (owner defect 3) + O24 follow-up
 
-Task: X3 — Speaker Toggle (owner defect 3)
+Task: X3 — Speaker Toggle (owner defect 3); O24 follow-up (reference pixel verification + swap timing)
 Started: 2026-09-28T20:25:52Z (first X3 artifact write, `src/audio/audio.ts`; local 23:25:52 +03)
-Ended: 2026-09-28T20:34:00Z
+O24 continuation: 2026-09-28T20:56Z → 2026-09-28T21:05Z (C3 speaker captures committed and read; app
+captures, whole-stage + region diffs, attribution, timing change, tests; artifact timestamps in `evidence/X3-o24/`)
+Ended: 2026-09-28T21:07:31Z (evidence finalization; last verification log 21:05:03Z)
 Host+OS: dev-host.home / hidden (macOS, arm64 / arm64 host) · Node v22.14.0 · Python 3.14.6
 Commands executed (exact; full output in `evidence/logs/X3-*.log`):
 - `npm test -- speaker` → `evidence/logs/X3-test-speaker.log`
 - `npm run e2e -- speaker` → `evidence/logs/X3-e2e-speaker.log`
+- `npm run e2e -- visual` → `evidence/logs/X3-e2e-visual.log`
+- `npm run e2e -- playthrough:basic` → `evidence/logs/X3-e2e-playthrough-basic.log`
 - `npm test` → `evidence/logs/X3-test-full.log`
 - `npm run lint` → `evidence/logs/X3-lint.log`
 - `npm run build` → `evidence/logs/X3-build.log`
-- `npm run e2e -- visual` → `evidence/logs/X3-e2e-visual.log`
-- `npm run e2e -- playthrough:basic` → `evidence/logs/X3-e2e-playthrough-basic.log`
+- `node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 5273 --strictPort` (background) +
+  `node tests/e2e/speaker/capture-states.mjs http://127.0.0.1:5273/` → O24 captures, whole-stage diffs,
+  region diffs, attribution → `evidence/X3-o24/**`, `evidence/logs/X3-o24-verify.log`
+- `node --input-type=module -e '<E2 S2 actual × X3 app ON × C3 ref ON, speaker-box crop>'` →
+  `evidence/logs/X3-o24-s2-cross-check.log`
 Exit codes: 0 for every command above.
 Output summary: reference semantics fully extracted (decompiled `DefineButton2_90` +
 `DefineSprite_88` + boot/volume-gate scripts); speaker toggle implemented end-to-end
 (`src/audio/audio.ts` `isMuted()`/`toggleMute()`, `src/ui/hud.ts` delegated listener +
-sprite-88 "on"/"off" visual state on E2's rendered `btn_speaker` element); 9 unit tests
-(`tests/speaker.test.ts`) and 3 e2e tests (`tests/e2e/speaker/speaker.spec.ts`) added.
+sprite-88 "on"/"off" visual state on E2's rendered `btn_speaker` element, applied at
+boot/render from the persisted volume only); 9 unit tests (`tests/speaker.test.ts`) and
+3 e2e tests (`tests/e2e/speaker/speaker.spec.ts`) added; O24 verified against the C3
+reference captures at dsf 1 (`evidence/X3-o24/`, §7).
 Artifact SHA-256 hashes:
 - `src/audio/audio.ts` `c3176d9e0158af0236b86a8282ad79f248eee72dcc853bc70fedd4a90613b2d5`
-- `src/ui/hud.ts` `90e76a6c2aaa5bcfec69b3b98dead7c2ae0f957c9dce0716a5356b164d3e3e82`
-- `tests/speaker.test.ts` `00d3e9659777ed7f0debd23449e462fb173fc6729a4188afbeb8c331f85c5797`
-- `tests/e2e/speaker/speaker.spec.ts` `c5d8c083c41b2a88ebf3658d3e0c5675ee9b352f8caf7b074266a84caf7e8c91`
+- `src/ui/hud.ts` `b39934fbfcc04bcdc2b1a32909a98fccd513652262831a3d6bf35d805733f52d`
+- `tests/speaker.test.ts` `96a110e74e685766f411bfeb9ff173d453e271a3fe4b1d0153154e97e02b58ae`
+- `tests/e2e/speaker/speaker.spec.ts` `1dc8ef598f6842dda601f4e9e3cd470a68e52ec2f937d69cad3d35c2e869c6d8`
+- `tests/e2e/speaker/capture-states.mjs` `58e945390884740f1ad2c7ba855542ba953313180657d9664eaa0f8029be7102`
+- `evidence/X3-o24/app-speaker-on.png` `eecd63e0ced5eba5fa5d77b83b870b809bc4095db3c952ae667926677f8fac37`
+- `evidence/X3-o24/app-speaker-off.png` `d8341f932b0d9046f6d988b945684fb182e81cbab1d12982c33c39740bccb2f2`
+- `evidence/X3-o24/analysis.json` `3dd03f2d6552acf59a21a88c626830f692782ef00caac9df7254000ea9fecac4`
 Result: PASS
 
 ---
@@ -162,19 +175,17 @@ Frame shapes (raw tag dump, `artifacts/decompiled/tags.xml` sprite 88):
 | visual on/off | sprite 88 frames `on`/`off` (L45936-L45954) | `data-speaker="on"/"off"`, waves character 85, frame-off CXFORM filter |
 
 Exact semantics are **fully evidenced** for toggle, persistence, gating and both frame
-visuals. No labels were invented. The only interpretive step is the SWF CXFORM →
-`feComponentTransfer` conversion (`mult/256`, `add/255`), recorded as the OPEN-item
-proposal in §7.
+visuals. No labels were invented. The SWF CXFORM → `feComponentTransfer` conversion
+(`mult/256`, `add/255`) is the only interpretive step and is verified in §7 (O24).
 
-Note (recorded, not changed): the reference sprite evaluates `_root.vol` on frame
-`on`/`off` entry (`frame_1`/`frame_2` scripts end in `stop()`), so its icon repaints when
-the button's state re-instantiates the sprite; the rebuild has a single rendered element,
-so the HUD re-applies the same two frames immediately on toggle and after every E2
-re-render. Observable state (`on` ⇔ `vol = 1`, `off` ⇔ `vol = 0`) is identical.
+Timing note (reconciled in §7.3): the reference sprite evaluates `_root.vol` when its
+frames are entered (`frame_1`/`frame_2` scripts end in `stop()`), and the C3 probe measured
+a plain click as 0 px changed. The rebuild therefore toggles the audio state + persistence
+on click and applies the frame **at boot/render** from the persisted volume — never on the
+click itself. Observable state (`on` ⇔ `vol = 1`, `off` ⇔ `vol = 0`) is identical.
 
-C3 scenario mode (read-only `--scenario`, muted) was **not run**: the semantics above are
-fully evidenced from the decompiled ActionScript, and the harness appends its request log
-to `evidence/logs/C3-server.log`, which is outside X3's owned paths (EXECUTION.md §1/§6).
+C3's committed scenario run (`evidence/C3-speaker-capture.md`) provides the reference
+ON/OFF frames (`tests/fixtures/reference/speaker/`); the app-side comparison is §7.
 
 ## 2. Implementation
 
@@ -200,8 +211,9 @@ to `evidence/logs/C3-server.log`, which is outside X3's owned paths (EXECUTION.m
   case-insensitively because the HTML parser lowercases `ffdec:characterId` →
   `ffdec:characterid`) and sets an SVG `feComponentTransfer` filter (slope 108/256,
   intercept 148/255, sRGB) on the icon `use` (character 87).
-- `syncSpeakerVisual` runs at mount, after every `update()` (i.e. after each E2 re-render)
-  and on toggle; `destroy()` removes the listener.
+- `syncSpeakerVisual` runs at mount and after every `update()` (boot/render) and reads the
+  persisted volume; the click handler does **not** call it — the reference sprite does not
+  repaint on a plain click (C3 probe: 0 px, §7.3). `destroy()` removes the listener.
 
 ## 3. Tests
 
@@ -220,12 +232,15 @@ to `evidence/logs/C3-server.log`, which is outside X3's owned paths (EXECUTION.m
 
 ### 3.2 E2E — `tests/e2e/speaker/speaker.spec.ts` (3 tests, Chromium `--mute-audio`)
 
-- click mutes: `data-speaker="off"`, waves `display:none`, `kelimator.volume='0'`, icon
-  region screenshot differs from the on state, BACKSPACE still records `delete` while
-  muted; second click unmutes (`'100'`, waves visible, SPACE records `scramble`).
-- reload persistence: muted boot shows `off` and still records `roundStart`; unmute
-  persists `'100'` across another reload.
-- clamp: stored `999` boots `on` (→100), stored `-5` boots `off` (→0), toggle to 100.
+- click semantics: toggles the audio state + persistence only — `kelimator.volume`
+  `'0'`/`'100'`, `lastAudioEvent` still records while muted (`delete`/`scramble`), and the
+  icon is asserted **not** to repaint (speaker screenshots are byte-equal before/after the
+  click — the C3 probe analogue).
+- icon at boot/render: a render (SPACE/BACKSPACE) applies the persisted volume
+  (`data-speaker="off"`, waves `display:none`; the restored ON screenshot is byte-equal to
+  the initial ON); a reload boots the persisted frame (muted boot shows `off` and still
+  records `roundStart`); unmute persists `'100'` across another reload.
+- clamp: stored `999` boots `on` (→100), stored `-5` boots `off` (→0).
 
 ## 4. Verification (exact commands, results)
 
@@ -233,11 +248,13 @@ to `evidence/logs/C3-server.log`, which is outside X3's owned paths (EXECUTION.m
 |---|---|---|
 | `npm test -- speaker` | 1 file, **9 passed**, exit 0 | `evidence/logs/X3-test-speaker.log` |
 | `npm run e2e -- speaker` | **3 passed**, exit 0 | `evidence/logs/X3-e2e-speaker.log` |
+| `npm run e2e -- visual` | **17 passed** (S1–S7/S10 dsf1+dsf2, V7), exit 0 | `evidence/logs/X3-e2e-visual.log` |
+| `npm run e2e -- playthrough:basic` | **1 passed**, exit 0 | `evidence/logs/X3-e2e-playthrough-basic.log` |
 | `npm test` | 13 files, **227 passed**, exit 0 | `evidence/logs/X3-test-full.log` |
 | `npm run lint` | exit 0, no findings | `evidence/logs/X3-lint.log` |
 | `npm run build` | `tsc --noEmit` + vite build green, exit 0 | `evidence/logs/X3-build.log` |
-| `npm run e2e -- visual` | **17 passed** (S1–S7/S10 dsf1+dsf2, V7), exit 0 | `evidence/logs/X3-e2e-visual.log` |
-| `npm run e2e -- playthrough:basic` | **1 passed**, exit 0 | `evidence/logs/X3-e2e-playthrough-basic.log` |
+| `node tests/e2e/speaker/capture-states.mjs` (vite dev :5273, muted) | O24 captures, 3 whole-stage diffs, 3 region diffs, attribution, exit 0 | `evidence/logs/X3-o24-verify.log` |
+| E2 S2 actual × app ON × C3 ref ON (speaker box) | 0 px / 466 px / 466 px, exit 0 | `evidence/logs/X3-o24-s2-cross-check.log` |
 
 No regression: the visual suite ratio reports and the FİNALİZM playthrough are unchanged
 (exit 0); E2's V7 layout cross-consistency passes.
@@ -256,30 +273,115 @@ No regression: the visual suite ratio reports and the FİNALİZM playthrough are
 
 - `src/main.ts`, `src/ui/board.ts`, `src/data/layout.json`, `docs/**` were **not** touched
   (X3 owned paths only); the listener is self-wired from `hud.ts` to `audio.ts`.
+- O24 reproducibility: `node tests/e2e/speaker/capture-states.mjs <vite-url>` regenerates the
+  app captures, the whole-stage and region diffs and the attribution analysis under
+  `evidence/X3-o24/` (manual run, not part of `npm run e2e`; Chromium is muted).
 - Task input naming note (recorded, not a defect): the frame-label visual lives in
   `DefineSprite` **88** (frames `on`/`off`); **shape 87** is the bitmap-86 fill; the
   button is `DefineButton2` **90** (`spk_btn`).
 - No git commands were run; `../kelimator-nostalji/` was not modified.
 
-## 7. docs/08-open-items.md proposal (single-writer: orchestrator applies)
+## 7. O24 — reference ON/OFF pixel verification (follow-up)
 
-Resolution line for owner defect wave item (3) — exact text:
+C3's committed speaker captures (`evidence/C3-speaker-capture.md`;
+`tests/fixtures/reference/speaker/speaker-{before,on,off}.png`, 550×400, dsf 1, muted)
+were used to pixel-verify the rebuild. App captures were taken at stage 550×400, dsf 1,
+`--mute-audio`, from a dev server (`tests/e2e/speaker/capture-states.mjs`, outputs under
+`evidence/X3-o24/`):
+
+- ON: boot with no stored volume (`kelimator.volume` absent → default 100) →
+  `data-speaker="on"`, waves visible; sha `eecd63e0…`.
+- OFF: boot with persisted `kelimator.volume = 0` (the reference's own path) →
+  `data-speaker="off"`, waves `display:none`; sha `d8341f93…`.
+
+### 7.1 Diffs (F1 tool `verify/diff/diff.mjs`; region = box x505–549 y356–399, 45×44 = 1980 px, the C3 measurement box)
+
+| Pair | Whole stage (220,000 px) raw / tolerant | Region (1,980 px) raw / tolerant |
+|---|---|---|
+| app ON ↔ ref `speaker-before` | 17,930 (8.150 %) / 6,968 (3.167 %) | 466 (23.535 %) / 162 (8.182 %) |
+| app ON ↔ ref `speaker-on` | 18,008 (8.185 %) / 6,950 (3.159 %) | 466 (23.535 %) / 162 (8.182 %) |
+| app OFF ↔ ref `speaker-off` | 17,733 (8.060 %) / 6,852 (3.115 %) | 291 (14.697 %) / 36 (1.818 %) |
+
+Whole-stage ratios are context only: the reference captures show the fixture round while
+the app boots its own round 1 (different deck letters, timer digits, revealed state), which
+dominates the difference. Whole-stage reports `evidence/X3-o24/diff-*/report.json`; region
+reports + cropped app/ref PNGs + heatmaps `evidence/X3-o24/region-*`.
+
+### 7.2 Where the region residual comes from (attribution)
+
+- **The frame-off mapping is exact.** Of the changed icon pixels whose ON colour is an
+  opaque bitmap-86 palette colour, the app maps **18/18 within 2/255 (17 within 1/255)** of
+  `round(c·108/256 + 148)`, no outliers; the reference maps 240/241 within 1/255 and its
+  single outlier (box-local 31,13) is a removed wave stroke, not icon ink
+  (`evidence/X3-o24/analysis.json`). No slope/intercept change was made — there is nothing
+  for the mapping to absorb.
+- **The residual is spatial, not colour.** The rebuild renders bitmap 86 through the inline
+  SVG pattern at a ~0.5-px phase with bilinear resampling: best 1:1 match 237/609
+  (**38.9 %**) vs the reference's 586/609 (**96.2 %**); best phase fit (dx, dy) = (0.5, 0.5)
+  at (11, 12) with 551/825 (**66.8 %**) vs the reference's (0, 0) at (11, 11) with 723/825
+  (**87.6 %**). The bitmap itself is byte-identical (sha `74710a87…` = A1 `images/86.png`);
+  the app and reference simply rasterize it at different sub-pixel phases.
+- **Pre-existing E2/E1 rendering gap, unchanged by X3.** E2's frozen
+  `evidence/visual/E2/S2/dsf1/actual.png` equals the X3 app ON capture **0 px** in the
+  speaker box, and both differ from the C3 reference by the same 466 px
+  (`evidence/logs/X3-o24-s2-cross-check.log`).
+- **Sampling-mode diagnostic** (runtime only, no code change): applying
+  `image-rendering: pixelated` to the speaker image/svg moves the ON region from
+  23.535 % raw / 8.182 % tolerant to **21.263 % / 5.556 %** — the phase remains, so the gap
+  is not one sampling-mode switch away (`evidence/X3-o24/diag-app-speaker-on-pixelated.png`).
+
+Conclusion: the OFF frame's colour mapping matches the reference baseline; the remaining
+region difference is the speaker icon's rasterization phase produced by E2's inline-SVG
+pattern placement, outside X3's owned files. Pixels cannot be made to match 1:1 from the
+filter mapping, so a documented note plus a separate E2-side item are proposed (§8) instead
+of an un-evidenced filter tweak.
+
+### 7.3 Swap timing (reconciled with the C3 probe)
+
+C3 measured a plain in-session click as **0 px** changed in the speaker box (probe
+`p0-before-away` → `p2-away-after-off` / `p3-away-after-on`; only a pointer resting on the
+button differs, 403 px, and that is the over-state, not the off frame —
+`evidence/C3-speaker-capture.md` §1). This matches the sprite scripts: `frame_1`/`frame_2`
+evaluate `_root.vol` on frame entry, then `stop()`, so the reference reaches OFF through
+its own persistence path (click → reload → boot), which is exactly how the C3 OFF capture
+was produced.
+
+The rebuild was adjusted accordingly (`src/ui/hud.ts`): the click handler calls
+`toggleMute()` only (the `vol` toggle + `stopAllSounds()` + persistence); `syncSpeakerVisual`
+runs at mount and in every `update()` (boot/render) and reads the persisted volume. Tests
+updated: the e2e now asserts click → storage/persistence + **no** icon repaint (screenshot
+equality), a render applies the persisted frame, and boot/reload applies it from storage
+(§3.2); `tests/speaker.test.ts` records that the icon timing is HUD-level (audio semantics
+unchanged, 9/9).
+
+## 8. docs/08-open-items.md proposal (single-writer: orchestrator applies)
+
+Resolution line for owner defect wave item (3) — exact text (updated for O24):
 
 ```
-RESOLVED 2026-09-28 — evidence/X3-speaker.md — speaker `spk_btn` (DefineButton2_90) implemented: `on(release)` toggles `_root.vol` (0 = mute + stopAllSounds, 1 = full), persisted as `kelimator.volume` (D4 manager, default 100, clamp 0–100); E2's `btn_speaker` element gets the delegated listener plus the sprite-88 frames "on"/"off" (waves removed + frame-off CXFORM icon); 9 unit + 3 e2e tests, visual/playthrough suites unchanged.
+RESOLVED 2026-09-28 — evidence/X3-speaker.md — speaker `spk_btn` (DefineButton2_90) implemented: `on(release)` toggles `_root.vol` (0 = mute + stopAllSounds, 1 = full), persisted as `kelimator.volume` (D4 manager, default 100, clamp 0–100); E2's `btn_speaker` element gets the delegated listener; the sprite-88 frames "on"/"off" are applied from the persisted volume at boot/render only (C3 probe: a plain click does not repaint, 0 px). 9 unit + 3 e2e tests; visual/playthrough suites unchanged.
 ```
 
-OPEN-item proposal (pixel fidelity of the off frame; C3 scenario verification is
-orchestrator-owned because the harness appends to `evidence/logs/C3-server.log`):
+O24 closure — exact text proposal:
 
 ```
-OPEN — X3 off-frame pixel fidelity: the sprite-88 frame "off" CXFORM (tags.xml: multTerm 108, addTerm 148) is mapped to an SVG feComponentTransfer (slope 108/256, intercept 148/255) in `src/ui/hud.ts`. Verify against a reference capture (C3 `--scenario`: click `btn_speaker` at stage (530.8, 381.8), capture before/after, muted) that the rendered off-state pixels match; if they differ, adjust the filter only (no semantics change).
+RESOLVED 2026-09-29 — evidence/X3-speaker.md §7 — O24 closed: frame-off filter pixel-verified against tests/fixtures/reference/speaker/speaker-off.png at dsf 1 (region x505–549 y356–399: ON raw 23.5 %/tolerant 8.2 %, OFF raw 14.7 %/tolerant 1.8 %; whole stage ≈8.1 % raw, fixture-vs-boot-round context). The feComponentTransfer mapping (slope 108/256, intercept 148/255) equals the reference CXFORM on all measured opaque icon pixels (app 18/18 within 2/255, reference 240/241 within 1/255, its outlier a removed wave pixel) — no mapping change. The residual is spatial (app icon resampled at a 0.5-px phase; E2 S2 baseline == app ON 0 px, both 466 px from the reference), documented as a separate E2-side item. Timing reconciled: click toggles vol + persistence only; the icon applies at boot/render from the persisted volume.
 ```
 
-## 8. Result
+New OPEN-item proposal (E2-owned rasterization phase; exact text):
+
+```
+OPEN — speaker icon rasterization phase (E2): the rebuild renders bitmap 86 through the inline SVG pattern at a 0.5-px phase with bilinear resampling, so the speaker box differs from the C3 reference (region ON raw 23.5 %/tolerant 8.2 %, OFF 14.7 %/1.8 %; bitmap match 38.9 % at 1:1 vs the reference's 96.2 %; best phase fit (0.5,0.5) 66.8 % vs 87.6 %). X3's frame-off filter adds no outliers (18/18 opaque pixels within 2/255); a runtime `image-rendering: pixelated` diagnostic only moves ON to 21.3 %/5.6 %. Fix would be integer-phase/sampling alignment in src/ui/board.ts (E2-owned). Evidence: evidence/X3-speaker.md §7, evidence/X3-o24/analysis.json, evidence/logs/X3-o24-s2-cross-check.log.
+```
+
+## 9. Result
 
 **PASS** — reference semantics fully evidenced; toggle, persistence
 (`kelimator.volume`, default 100, clamp 0–100), audio gating and the on/off visual state
-implemented end-to-end in the owned files; 9 unit + 3 e2e tests pass; full `npm test`,
-`npm run lint`, `npm run build`, `npm run e2e -- visual` and `playthrough:basic` stay
-green; one OPEN-item proposal recorded (off-frame pixel verification, §7).
+implemented end-to-end in the owned files, with the icon applied at boot/render from the
+persisted volume (C3 probe: no repaint on click); 9 unit + 3 e2e tests pass; full
+`npm test`, `npm run lint`, `npm run build`, `npm run e2e -- visual` and
+`playthrough:basic` stay green. O24 pixel verification: the OFF-frame filter mapping
+matches the reference CXFORM (18/18 within 2/255; reference 240/241), region OFF raw
+14.7 %/tolerant 1.8 %, with the residual attributed to the pre-existing E2 icon
+rasterization phase (documented note + E2-side OPEN proposal in §8).

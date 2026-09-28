@@ -1,0 +1,66 @@
+{
+  "box": {
+    "x": 505,
+    "y": 356,
+    "width": 45,
+    "height": 44
+  },
+  "region": {
+    "schemaVersion": 2,
+    "tool": "verify/diff/diff.mjs",
+    "width": 45,
+    "height": 44,
+    "totalPixels": 1980,
+    "mismatchThreshold": 30,
+    "passRatio": 0.02,
+    "tolerantRadius": 2,
+    "mismatchedPixels": 466,
+    "mismatchRatio": 0.23535353535353534,
+    "maxDistance": 330.82170424565555,
+    "meanDistance": 25.348794925029114,
+    "mismatchBBox": {
+      "x": 0,
+      "y": 10,
+      "width": 42,
+      "height": 32
+    },
+    "tolerantMismatchedPixels": 162,
+    "tolerantMismatchRatio": 0.08181818181818182,
+    "tolerantMismatchBBox": {
+      "x": 1,
+      "y": 12,
+      "width": 41,
+      "height": 29
+    },
+    "pass": false
+  },
+  "wholeStage": {
+    "schemaVersion": 2,
+    "tool": "verify/diff/diff.mjs",
+    "width": 550,
+    "height": 400,
+    "totalPixels": 220000,
+    "mismatchThreshold": 30,
+    "passRatio": 0.02,
+    "tolerantRadius": 2,
+    "mismatchedPixels": 17930,
+    "mismatchRatio": 0.0815,
+    "maxDistance": 413.96014300896167,
+    "meanDistance": 11.859320474544376,
+    "mismatchBBox": {
+      "x": 0,
+      "y": 0,
+      "width": 547,
+      "height": 400
+    },
+    "tolerantMismatchedPixels": 6968,
+    "tolerantMismatchRatio": 0.031672727272727276,
+    "tolerantMismatchBBox": {
+      "x": 0,
+      "y": 6,
+      "width": 547,
+      "height": 394
+    },
+    "pass": false
+  }
+}

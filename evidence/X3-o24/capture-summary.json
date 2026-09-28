@@ -1,0 +1,41 @@
+{
+  "tool": "tests/e2e/speaker/capture-states.mjs",
+  "url": "http://127.0.0.1:5273/",
+  "viewport": {
+    "width": 550,
+    "height": 400
+  },
+  "deviceScaleFactor": 1,
+  "speakerBox": {
+    "x": 505,
+    "y": 356,
+    "width": 45,
+    "height": 44
+  },
+  "bitmap": {
+    "source": "src/assets/svg/s90_btn_speaker.svg (embedded)",
+    "sha256": "74710a87bbc5f61b3ab60d24d1c5b2892b3561b67b13bcb48ca2a559441cfa6e"
+  },
+  "on": {
+    "file": "app-speaker-on.png",
+    "sha256": "eecd63e0ced5eba5fa5d77b83b870b809bc4095db3c952ae667926677f8fac37",
+    "state": "on",
+    "wavesDisplay": "inline",
+    "storedVolume": null,
+    "gameState": "playing",
+    "lastAudioEvent": "roundStart"
+  },
+  "off": {
+    "file": "app-speaker-off.png",
+    "sha256": "d8341f932b0d9046f6d988b945684fb182e81cbab1d12982c33c39740bccb2f2",
+    "state": "off",
+    "wavesDisplay": "none",
+    "storedVolume": "0",
+    "gameState": "playing",
+    "lastAudioEvent": "roundStart"
+  },
+  "pixelatedDiagnostic": {
+    "file": "diag-app-speaker-on-pixelated.png",
+    "sha256": "523e5c751f2e2512f9d1156fdb70fe507eb35dce4a171b3d158dd84001a44b45"
+  }
+}

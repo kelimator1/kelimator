@@ -1,0 +1,316 @@
+{
+  "pairs": [
+    {
+      "pair": "app-on-vs-ref-before",
+      "app": "app-speaker-on.png",
+      "reference": "speaker-before.png",
+      "wholeStage": {
+        "schemaVersion": 2,
+        "tool": "verify/diff/diff.mjs",
+        "width": 550,
+        "height": 400,
+        "totalPixels": 220000,
+        "mismatchThreshold": 30,
+        "passRatio": 0.02,
+        "tolerantRadius": 2,
+        "mismatchedPixels": 17930,
+        "mismatchRatio": 0.0815,
+        "maxDistance": 413.96014300896167,
+        "meanDistance": 11.859320474544376,
+        "mismatchBBox": {
+          "x": 0,
+          "y": 0,
+          "width": 547,
+          "height": 400
+        },
+        "tolerantMismatchedPixels": 6968,
+        "tolerantMismatchRatio": 0.031672727272727276,
+        "tolerantMismatchBBox": {
+          "x": 0,
+          "y": 6,
+          "width": 547,
+          "height": 394
+        },
+        "pass": false
+      },
+      "region": {
+        "schemaVersion": 2,
+        "tool": "verify/diff/diff.mjs",
+        "width": 45,
+        "height": 44,
+        "totalPixels": 1980,
+        "mismatchThreshold": 30,
+        "passRatio": 0.02,
+        "tolerantRadius": 2,
+        "mismatchedPixels": 466,
+        "mismatchRatio": 0.23535353535353534,
+        "maxDistance": 330.82170424565555,
+        "meanDistance": 25.348794925029114,
+        "mismatchBBox": {
+          "x": 0,
+          "y": 10,
+          "width": 42,
+          "height": 32
+        },
+        "tolerantMismatchedPixels": 162,
+        "tolerantMismatchRatio": 0.08181818181818182,
+        "tolerantMismatchBBox": {
+          "x": 1,
+          "y": 12,
+          "width": 41,
+          "height": 29
+        },
+        "pass": false
+      }
+    },
+    {
+      "pair": "app-on-vs-ref-on",
+      "app": "app-speaker-on.png",
+      "reference": "speaker-on.png",
+      "wholeStage": {
+        "schemaVersion": 2,
+        "tool": "verify/diff/diff.mjs",
+        "width": 550,
+        "height": 400,
+        "totalPixels": 220000,
+        "mismatchThreshold": 30,
+        "passRatio": 0.02,
+        "tolerantRadius": 2,
+        "mismatchedPixels": 18008,
+        "mismatchRatio": 0.08185454545454546,
+        "maxDistance": 413.96014300896167,
+        "meanDistance": 11.969739981533934,
+        "mismatchBBox": {
+          "x": 0,
+          "y": 0,
+          "width": 547,
+          "height": 400
+        },
+        "tolerantMismatchedPixels": 6950,
+        "tolerantMismatchRatio": 0.03159090909090909,
+        "tolerantMismatchBBox": {
+          "x": 0,
+          "y": 6,
+          "width": 547,
+          "height": 394
+        },
+        "pass": false
+      },
+      "region": {
+        "schemaVersion": 2,
+        "tool": "verify/diff/diff.mjs",
+        "width": 45,
+        "height": 44,
+        "totalPixels": 1980,
+        "mismatchThreshold": 30,
+        "passRatio": 0.02,
+        "tolerantRadius": 2,
+        "mismatchedPixels": 466,
+        "mismatchRatio": 0.23535353535353534,
+        "maxDistance": 330.82170424565555,
+        "meanDistance": 25.348794925029114,
+        "mismatchBBox": {
+          "x": 0,
+          "y": 10,
+          "width": 42,
+          "height": 32
+        },
+        "tolerantMismatchedPixels": 162,
+        "tolerantMismatchRatio": 0.08181818181818182,
+        "tolerantMismatchBBox": {
+          "x": 1,
+          "y": 12,
+          "width": 41,
+          "height": 29
+        },
+        "pass": false
+      }
+    },
+    {
+      "pair": "app-off-vs-ref-off",
+      "app": "app-speaker-off.png",
+      "reference": "speaker-off.png",
+      "wholeStage": {
+        "schemaVersion": 2,
+        "tool": "verify/diff/diff.mjs",
+        "width": 550,
+        "height": 400,
+        "totalPixels": 220000,
+        "mismatchThreshold": 30,
+        "passRatio": 0.02,
+        "tolerantRadius": 2,
+        "mismatchedPixels": 17733,
+        "mismatchRatio": 0.08060454545454546,
+        "maxDistance": 413.96014300896167,
+        "meanDistance": 11.70902712819228,
+        "mismatchBBox": {
+          "x": 0,
+          "y": 0,
+          "width": 542,
+          "height": 400
+        },
+        "tolerantMismatchedPixels": 6852,
+        "tolerantMismatchRatio": 0.031145454545454546,
+        "tolerantMismatchBBox": {
+          "x": 0,
+          "y": 6,
+          "width": 541,
+          "height": 394
+        },
+        "pass": false
+      },
+      "region": {
+        "schemaVersion": 2,
+        "tool": "verify/diff/diff.mjs",
+        "width": 45,
+        "height": 44,
+        "totalPixels": 1980,
+        "mismatchThreshold": 30,
+        "passRatio": 0.02,
+        "tolerantRadius": 2,
+        "mismatchedPixels": 291,
+        "mismatchRatio": 0.14696969696969697,
+        "maxDistance": 191.7576595601855,
+        "meanDistance": 9.682657272827273,
+        "mismatchBBox": {
+          "x": 0,
+          "y": 11,
+          "width": 31,
+          "height": 30
+        },
+        "tolerantMismatchedPixels": 36,
+        "tolerantMismatchRatio": 0.01818181818181818,
+        "tolerantMismatchBBox": {
+          "x": 1,
+          "y": 17,
+          "width": 27,
+          "height": 20
+        },
+        "pass": true
+      }
+    }
+  ],
+  "analysis": {
+    "bitmap": {
+      "width": 21,
+      "height": 29,
+      "sha256": "74710a87bbc5f61b3ab60d24d1c5b2892b3561b67b13bcb48ca2a559441cfa6e"
+    },
+    "backdrop": [
+      249,
+      229,
+      177
+    ],
+    "integerBitmapMatch": {
+      "appOn": {
+        "ox": 10,
+        "oy": 11,
+        "ok": 237,
+        "total": 609,
+        "ratio": 0.3891625615763547,
+        "worst": 273.9379491782765
+      },
+      "refOn": {
+        "ox": 11,
+        "oy": 11,
+        "ok": 586,
+        "total": 609,
+        "ratio": 0.9622331691297209,
+        "worst": 381.79968569918964
+      }
+    },
+    "phaseBitmapMatch": {
+      "appOn": {
+        "ox": 11,
+        "oy": 12,
+        "dx": 0.5,
+        "dy": 0.5,
+        "ok": 551,
+        "total": 825,
+        "ratio": 0.6678787878787878
+      },
+      "refOn": {
+        "ox": 11,
+        "oy": 11,
+        "dx": 0,
+        "dy": 0,
+        "ok": 723,
+        "total": 825,
+        "ratio": 0.8763636363636363
+      }
+    },
+    "cxformMapping": {
+      "app": {
+        "paletteSize": 6,
+        "changed": 447,
+        "iconChanged": 359,
+        "opaqueChanged": 18,
+        "mappedWithin1": 17,
+        "mappedWithin2": 18,
+        "samplesOver2": []
+      },
+      "reference": {
+        "paletteSize": 6,
+        "changed": 331,
+        "iconChanged": 259,
+        "opaqueChanged": 241,
+        "mappedWithin1": 240,
+        "mappedWithin2": 240,
+        "samplesOver2": [
+          {
+            "x": 31,
+            "y": 13,
+            "on": [
+              0,
+              0,
+              0
+            ],
+            "off": [
+              249,
+              229,
+              177
+            ],
+            "predicted": [
+              148,
+              148,
+              148
+            ],
+            "deviation": 101
+          }
+        ]
+      }
+    },
+    "pixelatedDiagnostic": {
+      "region": {
+        "schemaVersion": 2,
+        "tool": "verify/diff/diff.mjs",
+        "width": 45,
+        "height": 44,
+        "totalPixels": 1980,
+        "mismatchThreshold": 30,
+        "passRatio": 0.02,
+        "tolerantRadius": 2,
+        "mismatchedPixels": 421,
+        "mismatchRatio": 0.21262626262626264,
+        "maxDistance": 307.08630708646064,
+        "meanDistance": 23.360276231723873,
+        "mismatchBBox": {
+          "x": 0,
+          "y": 10,
+          "width": 42,
+          "height": 32
+        },
+        "tolerantMismatchedPixels": 110,
+        "tolerantMismatchRatio": 0.05555555555555555,
+        "tolerantMismatchBBox": {
+          "x": 1,
+          "y": 11,
+          "width": 41,
+          "height": 30
+        },
+        "pass": false
+      },
+      "note": "image-rendering: pixelated applied at runtime only; no code change"
+    }
+  }
+}

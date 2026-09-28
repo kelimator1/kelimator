@@ -5,9 +5,9 @@
 
 [1m[30m[46m RUN [49m[39m[22m [36mv5.0.2 [39m[90m/home/dev/kelimator-2012[39m
 
- [32m✓[39m tests/assets.test.mjs [2m([22m[2m9 tests[22m[2m)[22m[32m 18[2mms[22m[39m
- [32m✓[39m tests/audio.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 11[2mms[22m[39m
- [32m✓[39m tests/normalize-wordlist.test.mjs [2m([22m[2m19 tests[22m[2m)[22m[32m 109[2mms[22m[39m
+ [32m✓[39m tests/assets.test.mjs [2m([22m[2m9 tests[22m[2m)[22m[32m 21[2mms[22m[39m
+ [32m✓[39m tests/timer.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+ [32m✓[39m tests/normalize-wordlist.test.mjs [2m([22m[2m19 tests[22m[2m)[22m[32m 102[2mms[22m[39m
 [90mstdout[2m | tests/rounds-fixtures.test.mjs
 [22m[39m[B3] viroloji source: tests/fixtures/rounds/viroloji.xml sha256=594e6a5377fbe8edef05f93850ac9eea4fc50c25fd5e6e9facf33186d4cd8621
 
@@ -20,6 +20,7 @@
 [90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2mfixture: finalizm (archived xml.php, ISO-8859-9)[2m > [22m[2mxml.php and xml64.php are byte-identical (the two archived FİNALİZM copies)
 [22m[39m[B3] xml.php = xml64.php sha256=854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed
 
+ [32m✓[39m tests/audio.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 10[2mms[22m[39m
 [90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2mfixture: finalizm (archived xml.php, ISO-8859-9)[2m > [22m[2menumeration check: every archived subword present in the archived dictionary is producible from FİNALİZM
 [22m[39m[B3] archived dictionary: /home/dev/kelimator-nostalji/kayitlar/sozluk_29749_kelime.xml sha256=558269a0fa7de05e90e96d62f583dcbb1c4a95510a0e7fe360629ffa40f47f00 raw=29749 uniqueRaw=27856 normalized=27814 droppedByPipeline=11 blocklisted=32
 [B3] finalizm enumeration: fixtureWords=90 inDictionary=83 producible=83 exceptions=0
@@ -37,7 +38,6 @@
 [90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2mfixture: viroloji (Wayback xml.php capture 2007-05-14)[2m > [22m[2mpasses all structural checks (3–8 letters, multiset ⊂ main, main present, no duplicates)
 [22m[39m[B3] viroloji structural: main=VİROLOJİ counts(3..7)=4/1/0/0/0
 
- [32m✓[39m tests/timer.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 11[2mms[22m[39m
 [90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2memitted bank (src/data/rounds.json; V2 invariants)[2m > [22m[2mevery round: total words ≥ configured T, and id = roundId(main)
 [22m[39m[B3] bank: rounds=7393 T=30 perLength(3..8)=149345/178376/122758/37801/14571/7393
 
@@ -77,22 +77,22 @@
 [B3]   sislemek <- SİSLEMEK, ŞİŞLEMEK
 [B3]   sislenme <- SİSLENME, ŞİŞLENME
 
- [32m✓[39m tests/rounds-fixtures.test.mjs [2m([22m[2m20 tests[22m[2m)[22m[32m 124[2mms[22m[39m
- [32m✓[39m verify/diff/diff.test.mjs [2m([22m[2m19 tests[22m[2m)[22m[33m 562[2mms[22m[39m
- [32m✓[39m tests/constants.test.mjs [2m([22m[2m3 tests[22m[2m)[22m[32m 3[2mms[22m[39m
- [32m✓[39m tests/stage.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 5[2mms[22m[39m
- [32m✓[39m tests/speaker.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 6[2mms[22m[39m
- [32m✓[39m tests/scoring.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 7[2mms[22m[39m
- [32m✓[39m tests/input.test.ts [2m([22m[2m29 tests[22m[2m)[22m[32m 10[2mms[22m[39m
- [32m✓[39m tests/lifecycle.test.ts [2m([22m[2m23 tests[22m[2m)[22m[32m 45[2mms[22m[39m
- [32m✓[39m tests/round.test.ts [2m([22m[2m34 tests[22m[2m)[22m[32m 61[2mms[22m[39m
+ [32m✓[39m tests/rounds-fixtures.test.mjs [2m([22m[2m20 tests[22m[2m)[22m[32m 114[2mms[22m[39m
+ [32m✓[39m tests/speaker.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m verify/diff/diff.test.mjs [2m([22m[2m19 tests[22m[2m)[22m[33m 563[2mms[22m[39m
+ [32m✓[39m tests/stage.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+ [32m✓[39m tests/constants.test.mjs [2m([22m[2m3 tests[22m[2m)[22m[32m 2[2mms[22m[39m
+ [32m✓[39m tests/input.test.ts [2m([22m[2m29 tests[22m[2m)[22m[32m 26[2mms[22m[39m
+ [32m✓[39m tests/scoring.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m tests/round.test.ts [2m([22m[2m34 tests[22m[2m)[22m[32m 66[2mms[22m[39m
+ [32m✓[39m tests/lifecycle.test.ts [2m([22m[2m23 tests[22m[2m)[22m[32m 48[2mms[22m[39m
 
 [2m Test Files [22m [1m[32m13 passed[39m[22m[90m (13)[39m
 [2m      Tests [22m [1m[32m227 passed[39m[22m[90m (227)[39m
-[2m   Start at [22m 23:31:24
-[2m   Duration [22m 2.73s[2m (import 47%, transform 44%, tests 9%)[22m
+[2m   Start at [22m 00:04:55
+[2m   Duration [22m 3.04s[2m (transform 46%, import 46%, tests 7%)[22m
 
-[2m  Transform [22m [33mtransforming modules took 4.90s[39m[2m · 44% of tracked time, re-done on every run[22m
+[2m  Transform [22m [33mtransforming modules took 6.23s[39m[2m · 46% of tracked time, re-done on every run[22m
 [2m            [22m [2mpersist transforms across runs with [22m[33mfsModuleCache: true[39m
 [2m            [22m [2mlearn more: https://vitest.dev/guide/improving-performance#caching-between-reruns[22m
 
