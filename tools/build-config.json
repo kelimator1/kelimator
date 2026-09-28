@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "thresholdT": 30,
+  "thresholdEvidence": "evidence/B3-threshold.md",
+  "selectionRule": "largest T of {10,15,20,25,30} whose bank size (rounds with total words 3-7 + main >= T) is >= 500 (docs/06 §3 step 3)",
+  "wordlist": "tools/wordlist.txt",
+  "wordlistSha256": "ac9987ce0d07688ce5db913f5cb112efe0e035f227d908431350c2d96fde8758",
+  "output": "src/data/rounds.json"
+}

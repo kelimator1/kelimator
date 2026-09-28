@@ -1,0 +1,32 @@
++zsh:3> node '--input-type=module' -
++zsh:10> python3 -
++zsh:36> diff /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-xcheck/js-totals2.txt /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-xcheck/py-totals2.txt
++zsh:37> echo DIFF-EXIT:0
+DIFF-EXIT:0
++zsh:38> wc -l /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-xcheck/js-totals2.txt /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-xcheck/py-totals2.txt
+    9107 /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-xcheck/js-totals2.txt
+    9107 /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-xcheck/py-totals2.txt
+   18214 total
++zsh:39> T=10
++zsh:39> wc -l
++zsh:39> awk '-F\t' -v 't=10' '$2>=t' /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-xcheck/py-totals2.txt
+    8935
++zsh:39> T=15
++zsh:39> awk '-F\t' -v 't=15' '$2>=t' /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-xcheck/py-totals2.txt
++zsh:39> wc -l
+    8638
++zsh:39> T=20
++zsh:39> awk '-F\t' -v 't=20' '$2>=t' /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-xcheck/py-totals2.txt
++zsh:39> wc -l
+    8269
++zsh:39> T=25
++zsh:39> awk '-F\t' -v 't=25' '$2>=t' /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-xcheck/py-totals2.txt
++zsh:39> wc -l
+    7834
++zsh:39> T=30
++zsh:39> awk '-F\t' -v 't=30' '$2>=t' /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-xcheck/py-totals2.txt
++zsh:39> wc -l
+    7393
++zsh:40> shasum -a 256 /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-xcheck/js-totals2.txt /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-xcheck/py-totals2.txt
+fcf9d570b0236722a8a76fd86fe5e1a723f4d4b2c1ee81ce3e0d8ff9ffd54f5e  /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-xcheck/js-totals2.txt
+fcf9d570b0236722a8a76fd86fe5e1a723f4d4b2c1ee81ce3e0d8ff9ffd54f5e  /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-xcheck/py-totals2.txt

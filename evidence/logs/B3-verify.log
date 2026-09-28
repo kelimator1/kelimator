@@ -1,0 +1,38 @@
++zsh:3> shasum -a 256 tools/wordlist.txt tools/build-rounds.mjs tools/build-config.json src/data/rounds.json tests/rounds-fixtures.test.mjs
+ac9987ce0d07688ce5db913f5cb112efe0e035f227d908431350c2d96fde8758  tools/wordlist.txt
+a10c1eeed3d6c0bab9b192f6f30e3fe3377807e6a320f3c75703ca704a5660d5  tools/build-rounds.mjs
+48e48715d1012d95f8394f8ad20221a5ef3e5ba97a4a2c1e16199146a8095a7b  tools/build-config.json
+7e4e149b3862b3f5ab77f755e8a8ae4215c2c8568a8ad30ee2311384b14b9a96  src/data/rounds.json
+8fe7703e71fc036bacc56a48c6a8434b712320fbc0ae296378b35e923c01a60b  tests/rounds-fixtures.test.mjs
++zsh:4> npx ajv-cli validate -s data/rounds.schema.json -d src/data/rounds.json
+src/data/rounds.json valid
++zsh:5> echo AJV_EXIT:0
+AJV_EXIT:0
++zsh:6> node tools/build-rounds.mjs --check
+[B3] wordlist: tools/wordlist.txt (62809 words, sha256=ac9987ce0d07688ce5db913f5cb112efe0e035f227d908431350c2d96fde8758)
+[B3] batch: candidates(length 8)=9107 subwords(3..7)=22772
+[B3] config: tools/build-config.json thresholdT=30 evidence=evidence/B3-threshold.md
+[B3] check: src/data/rounds.json rounds=7393 T=30 perLength={"3":149345,"4":178376,"5":122758,"6":37801,"7":14571,"8":7393} min=30 max=268 mean=69.02
+[B3] check: all invariants hold (V2: main/letters lengths; sorted; ids; T)
++zsh:7> echo CHECK_EXIT:0
+CHECK_EXIT:0
++zsh:8> python3 -
+V2 rounds: 7393
+V2 main length min/max: 8 8 violations: 0
+V2 letters length min/max: 8 8 violations: 0
+T compliance violations: 0
+V2 words per length: {'3': 149345, '4': 178376, '5': 122758, '6': 37801, '7': 14571, '8': 7393}
++zsh:23> echo PY_V2_EXIT:0
+PY_V2_EXIT:0
++zsh:24> python3 -
+stable format (2-space indent, LF, trailing newline, no escapes): True
+ends with newline: True contains CR: False contains tab: False
++zsh:32> echo PY_FORMAT_EXIT:0
+PY_FORMAT_EXIT:0
++zsh:33> tail -c 24 src/data/rounds.json
++zsh:33> xxd
+00000000: 2020 5d0a 2020 2020 2020 7d0a 2020 2020    ].      }.    
+00000010: 7d0a 2020 5d0a 7d0a                      }.  ].}.
++zsh:34> npx eslint tools/build-rounds.mjs tests/rounds-fixtures.test.mjs
++zsh:35> echo ESLINT_EXIT:0
+ESLINT_EXIT:0

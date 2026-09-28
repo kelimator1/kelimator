@@ -1,0 +1,25 @@
++zsh:3> node tools/build-rounds.mjs --out /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-v8/run-a.json
++zsh:4> echo RUN_A_EXIT:0
+RUN_A_EXIT:0
++zsh:5> node tools/build-rounds.mjs --out /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-v8/run-b.json
++zsh:6> echo RUN_B_EXIT:0
+RUN_B_EXIT:0
++zsh:7> shasum -a 256 /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-v8/run-a.json /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-v8/run-b.json src/data/rounds.json
+7e4e149b3862b3f5ab77f755e8a8ae4215c2c8568a8ad30ee2311384b14b9a96  /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-v8/run-a.json
+7e4e149b3862b3f5ab77f755e8a8ae4215c2c8568a8ad30ee2311384b14b9a96  /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-v8/run-b.json
+7e4e149b3862b3f5ab77f755e8a8ae4215c2c8568a8ad30ee2311384b14b9a96  src/data/rounds.json
++zsh:8> cmp /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-v8/run-a.json /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-v8/run-b.json
++zsh:9> echo CMP_A_B_EXIT:0
+CMP_A_B_EXIT:0
++zsh:10> cmp src/data/rounds.json /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//b3-v8/run-a.json
++zsh:11> echo CMP_COMMITTED_A_EXIT:0
+CMP_COMMITTED_A_EXIT:0
++zsh:12> python3 -
+first round main: ABACILIK id: abacilik total: 53
+last round main: ŞİŞİRTME id: sisirtme total: 53
+FİNALİZM id: finalizm letters: FİNALİZM
+FİNALİZM words 3..8 counts: {'3': 28, '4': 41, '5': 17, '6': 4, '7': 0, '8': 1}
+FİNALİZM 3: AFİ,ALİ,ANİ,FAL,FAN,FAZ,FİL,FİN,LAF,LAM,LAN,LAZ,LİF,LİM,MAL,MAİ,MİL,NAL,NAM,NAZ,NİM,ZAM,ZAN,ZİL,İFA,İLA,İMA,İNİ
+FİNALİZM 8: ['FİNALİZM']
+keys of words object: ['3', '4', '5', '6', '7', '8']
+round keys: ['id', 'main', 'letters', 'words']

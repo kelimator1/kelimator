@@ -1,0 +1,39 @@
++zsh:3> find . -path ./node_modules -prune -o -iname '*viroloji*' -print
+./evidence/logs/B3-viroloji-search.log
++zsh:4> find ../kelimator-nostalji -iname '*viroloji*' -print
++zsh:5> ls tests/fixtures/
+reference
++zsh:6> grep -rn 'viroloji\|VİROLOJİ' docs/ tasks/ tools/wordlist.txt
+docs/06-dictionary-and-rounds.md:131:| `viroloji.xml` | Wayback: `xml.php` capture 2007-05-14 (URL in `../kelimator-nostalji/README.md`) | Same structural checks |
+tasks/B3-round-generation.md:29:   - Structural checks for `finalizm`, `viroloji`, `leavings` fixtures.
+tools/wordlist.txt:51903:VİROLOJİ
+tools/wordlist.txt:51904:VİROLOJİK
++zsh:7> grep -rn '2007-05-14\|20070514' ../kelimator-nostalji/README.md docs/ tasks/
+docs/06-dictionary-and-rounds.md:131:| `viroloji.xml` | Wayback: `xml.php` capture 2007-05-14 (URL in `../kelimator-nostalji/README.md`) | Same structural checks |
++zsh:8> grep -n xml.php ../kelimator-nostalji/README.md
+52:ama kelime listesi isteği (`xml.php`) yalnızca **http://** üzerinden açıldığında
+58:`xml.php` (Türkçe), `xml_eng.php` (İngilizce) dosyasından çeker. Orijinal
+62:- `xml.php` → 15.08.2007 arşivi (ana kelime: **FİNALİZM**)
+86:GET /xml.php?719029                 200
+102:| `xml.php`, `xml64.php`, `xml_eng.php` | Arşivlenmiş tur/kelime listeleri |
+123:- Tur örneği (FİNALİZM): https://web.archive.org/web/20070815162108id_/http://games.lg.web.tr/kelimator/xml.php
++zsh:9> grep -rl ROLOJ artifacts verify src tests data tools docs tasks
+tools/wordlist.txt
++zsh:10> f=../kelimator-nostalji/calistir/kelimator_banner_468x60.swf
++zsh:10> grep -ci VIROLOJ
++zsh:10> strings -a ../kelimator-nostalji/calistir/kelimator_banner_468x60.swf
+0
++zsh:10> f=../kelimator-nostalji/calistir/kelimator_en_2005.swf
++zsh:10> strings -a ../kelimator-nostalji/calistir/kelimator_en_2005.swf
++zsh:10> grep -ci VIROLOJ
+0
++zsh:10> f=../kelimator-nostalji/calistir/kelimator_tr_2007.swf
++zsh:10> strings -a ../kelimator-nostalji/calistir/kelimator_tr_2007.swf
++zsh:10> grep -ci VIROLOJ
+0
++zsh:10> f=../kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf
++zsh:10> strings -a ../kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf
++zsh:10> grep -ci VIROLOJ
+0
++zsh:11> echo 'search complete'
+search complete

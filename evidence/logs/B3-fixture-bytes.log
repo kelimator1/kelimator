@@ -1,0 +1,37 @@
+# B3 fixture byte-wise analysis and wire-form decision
+# date: 2026-09-28T18:22:59Z
+
+$ file ../kelimator-nostalji/calistir/xml.php ../kelimator-nostalji/calistir/xml_eng.php ../kelimator-nostalji/calistir/xml64.php ../kelimator-nostalji/kayitlar/sozluk_29749_kelime.xml
+../kelimator-nostalji/calistir/xml.php:                 ISO-8859 text
+../kelimator-nostalji/calistir/xml_eng.php:             ASCII text
+../kelimator-nostalji/calistir/xml64.php:               ISO-8859 text
+../kelimator-nostalji/kayitlar/sozluk_29749_kelime.xml: XML 1.0 document text, ISO-8859 text
+
+$ shasum -a 256 <archived fixtures + dictionary>
+854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed  ../kelimator-nostalji/calistir/xml.php
+ba36b137fde8a4363e4435c0c48fc257fcbb1ac684e244b2062abc6140be7da8  ../kelimator-nostalji/calistir/xml_eng.php
+854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed  ../kelimator-nostalji/calistir/xml64.php
+558269a0fa7de05e90e96d62f583dcbb1c4a95510a0e7fe360629ffa40f47f00  ../kelimator-nostalji/kayitlar/sozluk_29749_kelime.xml
+
+$ xxd ../kelimator-nostalji/calistir/xml.php | head -8   (F�NAL�ZM = FİNALİZM, 0xDD = İ in ISO-8859-9)
+00000000: 3c6b 656c 696d 656c 6572 3e0a 2020 2020  <kelimeler>.    
+00000010: 2020 2020 3c6b 656c 696d 6520 6861 7266      <kelime harf
+00000020: 3d22 3822 3e0a 2020 2020 2020 2020 2020  ="8">.          
+00000030: 2020 2020 2020 3c74 7874 3e46 dd4e 414c        <txt>F.NAL
+00000040: dd5a 4d3c 2f74 7874 3e0a 2020 2020 2020  .ZM</txt>.      
+00000050: 2020 3c2f 6b65 6c69 6d65 3e0a 2020 2020    </kelime>.    
+00000060: 2020 2020 3c6b 656c 696d 6520 6861 7266      <kelime harf
+00000070: 3d22 3322 3e0a 2020 2020 2020 2020 2020  ="3">.          
+
+$ head -2 ../kelimator-nostalji/kayitlar/sozluk_29749_kelime.xml   (XML declaration: encoding iso-8859-9)
+<?xml version="1.0" encoding="iso-8859-9"?>
+<body>
+
+xml.php: main='FİNALİZM' counts(3..7)={3: 28, 4: 41, 5: 17, 6: 4, 7: 0} total=91 codePointSorted={3: False, 4: False, 5: False, 6: True, 7: True} harf9999=yes
+xml64.php: main='FİNALİZM' counts(3..7)={3: 28, 4: 41, 5: 17, 6: 4, 7: 0} total=91 codePointSorted={3: False, 4: False, 5: False, 6: True, 7: True} harf9999=yes
+xml_eng.php: main='LEAVINGS' counts(3..7)={3: 19, 4: 41, 5: 24, 6: 8, 7: 0} total=93 codePointSorted={3: True, 4: True, 5: True, 6: True, 7: True} harf9999=no
+C3 wire-fixture meta wordCounts: {'8': 1, '3': 28, '4': 41, '5': 17, '6': 4, '7': 0}
+B3 plain-fixture wordCounts  : {'3': 28, '4': 41, '5': 17, '6': 4, '7': 0, '8': 1}
+cross-check equal: True
+B3 decision: no re-encoding; the archived plain ISO-8859-9 fixtures are parsed as-is;
+the 2012 Base64(UTF-8) wire form is owned by C3 (verify/reference/fixtures/xml64.base64.php).

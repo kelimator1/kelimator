@@ -1,0 +1,13 @@
+[B3] wordlist: tools/wordlist.txt (62809 words, sha256=ac9987ce0d07688ce5db913f5cb112efe0e035f227d908431350c2d96fde8758)
+[B3] batch: candidates(length 8)=9107 subwords(3..7)=22772
+# B3 threshold measurement — docs/06 §3 step 3
+# wordlist: tools/wordlist.txt sha256=ac9987ce0d07688ce5db913f5cb112efe0e035f227d908431350c2d96fde8758
+# bank(T) = candidates whose total words (3-7 + main) is >= T
+T	bank_rounds
+10	8935
+15	8638
+20	8269
+25	7834
+30	7393
+selected	30 (largest T with bank >= 500)
+node tools/build-rounds.mjs --measure  0.37s user 0.02s system 100% cpu 0.392 total

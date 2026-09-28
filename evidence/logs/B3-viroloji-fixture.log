@@ -1,0 +1,56 @@
+# B3 follow-up — viroloji fixture provisioned by the orchestrator: byte-wise format record
+# date: 2026-09-28T18:29:41Z
+
+$ file tests/fixtures/rounds/viroloji.xml; wc -c; shasum -a 256
+tests/fixtures/rounds/viroloji.xml: ISO-8859 text
+     559 tests/fixtures/rounds/viroloji.xml
+594e6a5377fbe8edef05f93850ac9eea4fc50c25fd5e6e9facf33186d4cd8621  tests/fixtures/rounds/viroloji.xml
+
+$ xxd tests/fixtures/rounds/viroloji.xml | head -8   (0xDD = İ in ISO-8859-9: VİROLOJİ = 56 DD 52 4F 4C 4F 4A DD)
+00000000: 3c6b 656c 696d 656c 6572 3e0a 2020 2020  <kelimeler>.    
+00000010: 2020 2020 3c6b 656c 696d 6520 6861 7266      <kelime harf
+00000020: 3d22 3822 3e0a 2020 2020 2020 2020 2020  ="8">.          
+00000030: 2020 2020 2020 3c74 7874 3e56 dd52 4f4c        <txt>V.ROL
+00000040: 4f4a dd3c 2f74 7874 3e0a 2020 2020 2020  OJ.</txt>.      
+00000050: 2020 3c2f 6b65 6c69 6d65 3e0a 2020 2020    </kelime>.    
+00000060: 2020 2020 3c6b 656c 696d 6520 6861 7266      <kelime harf
+00000070: 3d22 3322 3e0a 2020 2020 2020 2020 2020  ="3">.          
+
+decoded (ISO-8859-9) content and per-harf comma-separated word lists:
+<kelimeler>
+        <kelime harf="8">
+                <txt>VİROLOJİ</txt>
+        </kelime>
+        <kelime harf="3">
+                <txt>LOR,LİR,ROL,İRİ</txt>
+        </kelime>
+        <kelime harf="4">
+                <txt>VOLİ</txt>
+        </kelime>
+        <kelime harf="5">
+                <txt></txt>
+        </kelime>
+        <kelime harf="6">
+                <txt></txt>
+        </kelime>
+        <kelime harf="7">
+                <txt></txt>
+        </kelime>
+
+<kelime harf="9999">
+<txt>5eaa5927c04aeaeec8409860bbb21460</txt>
+</kelime>
+</kelimeler>
+harf=8 words=1: VİROLOJİ
+harf=3 words=4: LOR,LİR,ROL,İRİ
+harf=4 words=1: VOLİ
+harf=5 words=0: (empty)
+harf=6 words=0: (empty)
+harf=7 words=0: (empty)
+harf=9999 words=1: 5eaa5927c04aeaeec8409860bbb21460
+
+discovered format (same as the archived xml.php/xml64.php/xml_eng.php fixtures):
+- root <kelimeler>; per-length <kelime harf="N"> with one <txt> value;
+- <txt> stores comma-separated words (empty <txt> for an empty list);
+- harf=8 is the main word (single word); harf=9999 is the raw checksum entry;
+- encoding ISO-8859-9 (0xDD = İ), no XML declaration, LF line endings; no Base64.

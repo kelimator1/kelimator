@@ -1,0 +1,93 @@
+[B3] wordlist: tools/wordlist.txt (62809 words, sha256=ac9987ce0d07688ce5db913f5cb112efe0e035f227d908431350c2d96fde8758)
+[B3] batch: candidates(length 8)=9107 subwords(3..7)=22772
+[B3] config: tools/build-config.json thresholdT=30 evidence=evidence/B3-threshold.md
+[B3] rounds: 7393 (total words per round >= 30)
+[B3] words length 3: total=149345 distinct=757
+[B3] words length 4: total=178376 distinct=2053
+[B3] words length 5: total=122758 distinct=5195
+[B3] words length 6: total=37801 distinct=4581
+[B3] words length 7: total=14571 distinct=3912
+[B3] words length 8: total=7393 distinct=7393
+[B3] words per round: min=30 max=268 mean=69.02
+[B3] id collisions over all candidates: 45
+[B3]   id collision: asabilme <- ASABİLME, AŞABİLME
+[B3]   id collision: asilanis <- ASILANIŞ, AŞILANIŞ
+[B3]   id collision: asilanma <- ASILANMA, AŞILANMA
+[B3]   id collision: asiverme <- ASIVERME, AŞIVERME
+[B3]   id collision: astirmak <- ASTIRMAK, AŞTIRMAK
+[B3]   id collision: bahsedis <- BAHSEDİŞ, BAHŞEDİŞ
+[B3]   id collision: bahsetme <- BAHSETME, BAHŞETME
+[B3]   id collision: beslemek <- BESLEMEK, BEŞLEMEK
+[B3]   id collision: bicirgan <- BICIRGAN, BIÇIRGAN
+[B3]   id collision: burgusuz <- BURGUSUZ, BÜRGÜSÜZ
+[B3]   id collision: estirmek <- ESTİRMEK, EŞTİRMEK
+[B3]   id collision: fislamak <- FISLAMAK, FIŞLAMAK
+[B3]   id collision: hafizali <- HAFIZALI, HAFIZALİ
+[B3]   id collision: kasinmak <- KASINMAK, KAŞINMAK
+[B3]   id collision: kopuksuz <- KOPUKSUZ, KÖPÜKSÜZ
+[B3]   id collision: kusursuz <- KUSURSUZ, KÜSURSUZ
+[B3]   id collision: kinlilik <- KINLILIK, KİNLİLİK
+[B3]   id collision: munakasa <- MÜNAKASA, MÜNAKAŞA
+[B3]   id collision: mutevazi <- MÜTEVAZI, MÜTEVAZİ
+[B3]   id collision: nakislik <- NAKISLIK, NAKIŞLIK
+[B3]   id collision: sadiklik <- SADIKLIK, SADİKLİK
+[B3]   id collision: suratsiz <- SURATSIZ, SÜRATSİZ
+[B3]   id collision: sinirsiz <- SINIRSIZ, SİNİRSİZ
+[B3]   id collision: taharrus <- TAHARRÜS, TAHARRÜŞ
+[B3]   id collision: taslamak <- TASLAMAK, TAŞLAMAK
+[B3]   id collision: taslatma <- TASLATMA, TAŞLATMA
+[B3]   id collision: tutturus <- TUTTURUŞ, TÜTTÜRÜŞ
+[B3]   id collision: yaslanis <- YASLANIŞ, YAŞLANIŞ
+[B3]   id collision: yaslanma <- YASLANMA, YAŞLANMA
+[B3]   id collision: yaslilik <- YASLILIK, YAŞLILIK
+[B3]   id collision: olgunluk <- OLGUNLUK, ÖLGÜNLÜK
+[B3]   id collision: olmusluk <- OLMUŞLUK, ÖLMÜŞLÜK
+[B3]   id collision: oluverme <- OLUVERME, ÖLÜVERME
+[B3]   id collision: islenmek <- İSLENMEK, İŞLENMEK
+[B3]   id collision: issizlik <- ISSIZLIK, İŞSİZLİK
+[B3]   id collision: saklamak <- SAKLAMAK, ŞAKLAMAK
+[B3]   id collision: saklatma <- SAKLATMA, ŞAKLATMA
+[B3]   id collision: saklayis <- SAKLAYIŞ, ŞAKLAYIŞ
+[B3]   id collision: samanlik <- SAMANLIK, ŞAMANLIK
+[B3]   id collision: saplamak <- SAPLAMAK, ŞAPLAMAK
+[B3]   id collision: saplatma <- SAPLATMA, ŞAPLATMA
+[B3]   id collision: siklasma <- SIKLAŞMA, ŞIKLAŞMA
+[B3]   id collision: sirlamak <- SIRLAMAK, ŞIRLAMAK
+[B3]   id collision: sislemek <- SİSLEMEK, ŞİŞLEMEK
+[B3]   id collision: sislenme <- SİSLENME, ŞİŞLENME
+[B3] id collisions within the bank: 33
+[B3]   bank id collision: asabilme <- ASABİLME, AŞABİLME
+[B3]   bank id collision: asilanma <- ASILANMA, AŞILANMA
+[B3]   bank id collision: asiverme <- ASIVERME, AŞIVERME
+[B3]   bank id collision: astirmak <- ASTIRMAK, AŞTIRMAK
+[B3]   bank id collision: bahsedis <- BAHSEDİŞ, BAHŞEDİŞ
+[B3]   bank id collision: bahsetme <- BAHSETME, BAHŞETME
+[B3]   bank id collision: beslemek <- BESLEMEK, BEŞLEMEK
+[B3]   bank id collision: estirmek <- ESTİRMEK, EŞTİRMEK
+[B3]   bank id collision: fislamak <- FISLAMAK, FIŞLAMAK
+[B3]   bank id collision: hafizali <- HAFIZALI, HAFIZALİ
+[B3]   bank id collision: kasinmak <- KASINMAK, KAŞINMAK
+[B3]   bank id collision: munakasa <- MÜNAKASA, MÜNAKAŞA
+[B3]   bank id collision: mutevazi <- MÜTEVAZI, MÜTEVAZİ
+[B3]   bank id collision: nakislik <- NAKISLIK, NAKIŞLIK
+[B3]   bank id collision: sadiklik <- SADIKLIK, SADİKLİK
+[B3]   bank id collision: suratsiz <- SURATSIZ, SÜRATSİZ
+[B3]   bank id collision: taharrus <- TAHARRÜS, TAHARRÜŞ
+[B3]   bank id collision: taslamak <- TASLAMAK, TAŞLAMAK
+[B3]   bank id collision: taslatma <- TASLATMA, TAŞLATMA
+[B3]   bank id collision: yaslanis <- YASLANIŞ, YAŞLANIŞ
+[B3]   bank id collision: yaslanma <- YASLANMA, YAŞLANMA
+[B3]   bank id collision: yaslilik <- YASLILIK, YAŞLILIK
+[B3]   bank id collision: islenmek <- İSLENMEK, İŞLENMEK
+[B3]   bank id collision: saklamak <- SAKLAMAK, ŞAKLAMAK
+[B3]   bank id collision: saklatma <- SAKLATMA, ŞAKLATMA
+[B3]   bank id collision: saklayis <- SAKLAYIŞ, ŞAKLAYIŞ
+[B3]   bank id collision: samanlik <- SAMANLIK, ŞAMANLIK
+[B3]   bank id collision: saplamak <- SAPLAMAK, ŞAPLAMAK
+[B3]   bank id collision: saplatma <- SAPLATMA, ŞAPLATMA
+[B3]   bank id collision: siklasma <- SIKLAŞMA, ŞIKLAŞMA
+[B3]   bank id collision: sirlamak <- SIRLAMAK, ŞIRLAMAK
+[B3]   bank id collision: sislemek <- SİSLEMEK, ŞİŞLEMEK
+[B3]   bank id collision: sislenme <- SİSLENME, ŞİŞLENME
+[B3] output: src/data/rounds.json (12257523 bytes, sha256=7e4e149b3862b3f5ab77f755e8a8ae4215c2c8568a8ad30ee2311384b14b9a96)
+node tools/build-rounds.mjs  0.83s user 0.04s system 103% cpu 0.839 total
