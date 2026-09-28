@@ -167,3 +167,6 @@ RESOLVED 2026-09-28 — evidence/B3-viroloji-blocker.md + tests/fixtures/rounds/
   `evidence/A2-edges.md` §2(g), `evidence/D2-input.md` §6.4.
 - 2026-09-28 — `window.__game.selectRound(main)` test hook (`docs/04` §6) for
   E2E round selection (F2/FİNALİZM); test-only, no production UI.
+- 2026-09-28 — C3: reference harness scenario mode (`--scenario`) added for
+  E3/F2 scripted captures; schema documented in `verify/reference/README.md`.
+  Evidence: `evidence/C3-harness.md`, `evidence/logs/C3-scenario.log`.

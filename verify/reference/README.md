@@ -57,6 +57,52 @@ Outputs: `--dsf 1` (default) writes `tests/fixtures/reference/` directly;
 `S*.png`, `run1/`, `run2/`, `stability/`, `stability-report.json`,
 `interaction-log.json`).
 
+## Scenario mode (E3/F2 scripted captures)
+
+```bash
+node verify/reference/capture.mjs --scenario verify/reference/scenarios/smoke.json \
+  --out tests/fixtures/reference/scenario-smoke [--dsf 1|2] [--runs N] [--port P]
+```
+
+Drives the reference with an ordered step script (same server, fixture and
+muted Chromium as the matrix; no network beyond localhost). Scenario schema:
+
+```json
+{
+  "name": "smoke",
+  "steps": [
+    { "action": "waitForState", "condition": "board", "timeoutMs": 60000 },
+    { "action": "waitStable", "timeoutMs": 15000 },
+    { "action": "key", "key": "SPACE" },
+    { "action": "capture", "name": "after-space" },
+    { "action": "waitMs", "ms": 300 },
+    { "action": "capture", "name": "settled" }
+  ]
+}
+```
+
+| Step | Fields | Semantics |
+|---|---|---|
+| `waitStable` | `timeoutMs?` | 3 identical consecutive stage frames (the matrix's stable-frame machinery); result records `stable/samples/streak/elapsedMs` — a timeout is recorded, not hidden |
+| `key` | `key` | Turkish letter (`A–Z`, `Ç Ğ İ I Ö Ş Ü`) or `SPACE`/`ENTER`/`BACKSPACE`; mapped to the SWF's physical key codes (`frame_131` `codes`→`harf`, Turkish-Q positions). Unmapped keys are reported in `missingKeys` and fail the step |
+| `click` | `target` | `tile:<0..7>` (the SWF tile row: `_X = 60 + t*60`, `_Y = 330`) · `button:<name>` with names `karistir`, `ekle`, `sil`, `yeni-oyun`, `gonder`, `form-name`, `form-email` (measured CSS-pixel centers) · `coord:<x>,<y>` escape hatch in CSS pixels |
+| `waitMs` | `ms` | explicit caller-specified delay. Documented semantics: the harness never uses fixed delays for state transitions; scenario authors may use it for animation-phase offsets (E3) |
+| `capture` | `name` | writes `<out>/<name>.png` at the selected `--dsf` (550×400 at dsf 1, 1100×800 at dsf 2); records path, SHA-256 and dimensions |
+| `waitForState` | `condition`, `timeoutMs?` | named state waits: `content` (first game frame), `board` (`xml64.php -> 200` server evidence + stable frame + gauge check), `xml64` (next round request), `round-end` (`tamamla()`/`bittimi()` signal), `hiscore-form` (all-found end screen), `entry-cleared`, `bonus-ball` (bright bonus ball) |
+
+`waitForText` is deliberately **not** provided: the harness has no OCR, so a
+text wait would be a guess; use `waitForState` (the reference's own states) or
+add a condition. Unknown actions/targets fail fast; failed steps set
+`report.ok = false` and the harness exits 1.
+
+Outputs: `<out>/<capture>.png`, `<out>/interaction-log.json` (console, server
+evidence, harness manifest incl. `launchArgs`/`deviceScaleFactor`) and
+`<out>/scenario-report.json` (per-step result, timing, screenshot
+path/hash/dimensions). With `--runs N > 1` each run goes to `<out>/run<i>/`,
+run 1 is copied to the canonical level and `<out>/scenario-repeat.json` lists
+the per-run capture hashes. `scenarios/smoke.json` is the smoke script that
+`check.mjs` runs as `Vscenario` (port `8798` or `C3_SMOKE_PORT`).
+
 ## Serving model (EXECUTION.md §6)
 
 ```

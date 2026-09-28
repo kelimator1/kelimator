@@ -1,0 +1,12 @@
+{
+  "name": "smoke",
+  "description": "Scenario-mode smoke test (check.mjs Vscenario): board wait -> stable frame -> one key (SPACE) -> capture -> waitMs(300) -> capture. Exercises waitForState/key/capture/waitMs at the harness's default deviceScaleFactor 1.",
+  "steps": [
+    { "action": "waitForState", "condition": "board", "timeoutMs": 60000 },
+    { "action": "waitStable", "timeoutMs": 15000 },
+    { "action": "key", "key": "SPACE" },
+    { "action": "capture", "name": "after-space" },
+    { "action": "waitMs", "ms": 300 },
+    { "action": "capture", "name": "settled" }
+  ]
+}

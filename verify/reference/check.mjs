@@ -180,6 +180,56 @@ matrixPresenceCheck('V2dsf2', DSF2, { width: 1100, height: 800 });
 v5Check('V5dsf2', DSF2);
 muteCheck('Vmute', DSF2);
 
+// --- scenario smoke (E3/F2 scenario mode) ----------------------------------
+// Runs `capture.mjs --scenario scenarios/smoke.json` (board wait -> stable ->
+// one key -> capture -> waitMs -> capture) and validates the outputs.
+const SMOKE_SCENARIO = path.join(HERE, 'scenarios', 'smoke.json');
+const SMOKE_OUT = path.join(OUT, 'scenario-smoke');
+function scenarioSmokeCheck() {
+  const port = process.env.C3_SMOKE_PORT || '8798';
+  fs.rmSync(SMOKE_OUT, { recursive: true, force: true });
+  const res = spawnSync(
+    process.execPath,
+    [path.join(HERE, 'capture.mjs'), '--scenario', SMOKE_SCENARIO, '--out', SMOKE_OUT, '--port', port],
+    { encoding: 'utf8', timeout: 240000 },
+  );
+  const problems = [];
+  if (res.status !== 0) {
+    const tail = `${(res.stdout ?? '').trim().split('\n').slice(-2).join(' | ')} ${(res.stderr ?? '').trim().split('\n').slice(-2).join(' | ')}`.trim();
+    problems.push(`harness exit ${res.status}${res.error ? ` (${res.error.message})` : ''}: ${tail}`);
+  }
+  let report = null;
+  let logOk = false;
+  try {
+    report = JSON.parse(fs.readFileSync(path.join(SMOKE_OUT, 'scenario-report.json'), 'utf8'));
+  } catch (err) {
+    problems.push(`scenario-report.json: ${err.message}`);
+  }
+  try {
+    JSON.parse(fs.readFileSync(path.join(SMOKE_OUT, 'interaction-log.json'), 'utf8'));
+    logOk = true;
+  } catch (err) {
+    problems.push(`interaction-log.json: ${err.message}`);
+  }
+  const captures = report?.captures ?? [];
+  if (captures.length < 2) problems.push(`expected >=2 captures, found ${captures.length}`);
+  for (const c of captures) {
+    const p = path.join(SMOKE_OUT, `${c.name}.png`);
+    if (!fs.existsSync(p)) { problems.push(`missing capture ${c.name}.png`); continue; }
+    const img = decodePng(fs.readFileSync(p));
+    if (img.width !== c.width || img.height !== c.height) problems.push(`${c.name}: file ${img.width}x${img.height} != report ${c.width}x${c.height}`);
+  }
+  if (report && Array.isArray(report.missingKeys) && report.missingKeys.length > 0) problems.push(`missing key mappings: ${report.missingKeys.join(',')}`);
+  if (report && report.ok !== true) problems.push('scenario report ok=false');
+  return { problems, captures: captures.length, logOk, dims: captures[0] ? `${captures[0].width}x${captures[0].height}` : 'n/a' };
+}
+const smoke = scenarioSmokeCheck();
+check(
+  'Vscenario',
+  smoke.problems.length === 0,
+  `smoke scenario: ${smoke.captures} captures (${smoke.dims}), JSONs parse: ${smoke.logOk}${smoke.problems.length ? `; PROBLEMS: ${smoke.problems.join('; ')}` : ''}`,
+);
+
 // --- V6 --------------------------------------------------------------------
 const lines = fs.readFileSync(SERVER_LOG, 'utf8').split('\n');
 const starts = [];

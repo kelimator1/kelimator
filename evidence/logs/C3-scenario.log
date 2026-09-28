@@ -1,0 +1,33 @@
+# C3 scenario-mode log (E3/F2 scripted captures)
+# 1) smoke scenario at deviceScaleFactor 1, --runs default 2 -> run1/run2 + canonical copies + scenario-repeat.json
+# 2) single-pass smoke scenario at deviceScaleFactor 2 (--runs 1) -> 1100x800 captures
+# All runs exit 0; Chromium launched with --mute-audio; server on port 8798.
+# check.mjs runs the same smoke as `Vscenario` (port 8798 or C3_SMOKE_PORT) on every invocation.
+#
+# $ node verify/reference/capture.mjs --scenario verify/reference/scenarios/smoke.json --out tests/fixtures/reference/scenario-smoke --port 8798
+[C3 scenario] step 0 waitForState: ok (7544 ms)
+[C3 scenario] step 1 waitStable: ok (455 ms)
+[C3 scenario] step 2 key: ok (300 ms)
+[C3 scenario] step 3 capture: ok (45 ms)
+[C3 scenario] step 4 waitMs: ok (301 ms)
+[C3 scenario] step 5 capture: ok (55 ms)
+[C3 scenario] smoke run 1: OK (2 captures, 6 steps)
+[C3 scenario] step 0 waitForState: ok (7525 ms)
+[C3 scenario] step 1 waitStable: ok (1143 ms)
+[C3 scenario] step 2 key: ok (243 ms)
+[C3 scenario] step 3 capture: ok (47 ms)
+[C3 scenario] step 4 waitMs: ok (301 ms)
+[C3 scenario] step 5 capture: ok (72 ms)
+[C3 scenario] smoke run 2: OK (2 captures, 6 steps)
+scenario exit=0
+
+=== dsf 2 scenario run (single pass) 2026-09-28T19:10:58Z ===
+$ node verify/reference/capture.mjs --scenario verify/reference/scenarios/smoke.json --out tests/fixtures/reference/scenario-smoke-dsf2 --dsf 2 --runs 1 --port 8798
+[C3 scenario] step 0 waitForState: ok (8311 ms)
+[C3 scenario] step 1 waitStable: ok (3692 ms)
+[C3 scenario] step 2 key: ok (363 ms)
+[C3 scenario] step 3 capture: ok (303 ms)
+[C3 scenario] step 4 waitMs: ok (301 ms)
+[C3 scenario] step 5 capture: ok (263 ms)
+[C3 scenario] smoke run 1: OK (2 captures, 6 steps)
+dsf2 scenario exit=0

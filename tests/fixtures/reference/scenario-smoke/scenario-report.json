@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "task": "C3",
+  "scenario": "smoke",
+  "run": 1,
+  "startedAt": "2026-09-28T19:15:07.302Z",
+  "endedAt": "2026-09-28T19:15:17.367Z",
+  "ok": true,
+  "steps": [
+    {
+      "index": 0,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 903,
+      "result": {
+        "condition": "board",
+        "matched": true,
+        "xml64": {
+          "matched": true,
+          "line": "2026-09-28T19:15:14Z 127.0.0.1 \"GET /xml64.php?577147 HTTP/1.1\" -> 200 -",
+          "waitedMs": 6791,
+          "cursor": 26985
+        },
+        "stable": {
+          "stable": true,
+          "samples": 3,
+          "streak": 3,
+          "elapsedMs": 658,
+          "sha256": "7eefe4a76a023e770a60447e775090755eda023eb033fb7bab405c07cb1a73cf",
+          "maskedBox": null
+        },
+        "gaugeFraction": 0.6782608695652174,
+        "boardSignal": true
+      },
+      "durationMs": 7569
+    },
+    {
+      "index": 1,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 8472,
+      "result": {
+        "stable": true,
+        "samples": 5,
+        "streak": 3,
+        "elapsedMs": 915,
+        "sha256": "943b604b1a46f86a7de8263f3d8ae3ec98521a2d5e82d390d184d911166dddf0",
+        "maskedBox": null
+      },
+      "durationMs": 915
+    },
+    {
+      "index": 2,
+      "action": "key",
+      "ok": true,
+      "atMs": 9387,
+      "result": {
+        "key": "SPACE",
+        "physical": "Space"
+      },
+      "durationMs": 284
+    },
+    {
+      "index": 3,
+      "action": "capture",
+      "ok": true,
+      "atMs": 9671,
+      "result": {
+        "name": "after-space",
+        "file": "tests/fixtures/reference/scenario-smoke/run1/after-space.png",
+        "sha256": "ca6b669e9de6b49922660da536535fca8bf3e06a4cff6617bcc74323957ca4ae",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 51
+    },
+    {
+      "index": 4,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 9722,
+      "result": {
+        "requestedMs": 300
+      },
+      "durationMs": 300
+    },
+    {
+      "index": 5,
+      "action": "capture",
+      "ok": true,
+      "atMs": 10022,
+      "result": {
+        "name": "settled",
+        "file": "tests/fixtures/reference/scenario-smoke/run1/settled.png",
+        "sha256": "f0e076328da7383163ad6579a3863c9c5d85f56aace3c4182dbccde9d9d2bc32",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 43
+    }
+  ],
+  "captures": [
+    {
+      "name": "after-space",
+      "file": "tests/fixtures/reference/scenario-smoke/run1/after-space.png",
+      "sha256": "ca6b669e9de6b49922660da536535fca8bf3e06a4cff6617bcc74323957ca4ae",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "settled",
+      "file": "tests/fixtures/reference/scenario-smoke/run1/settled.png",
+      "sha256": "f0e076328da7383163ad6579a3863c9c5d85f56aace3c4182dbccde9d9d2bc32",
+      "width": 550,
+      "height": 400
+    }
+  ],
+  "missingKeys": [],
+  "harness": {
+    "url": "http://127.0.0.1:8798/",
+    "viewport": {
+      "width": 550,
+      "height": 400
+    },
+    "deviceScaleFactor": 1,
+    "canvasDevicePixels": {
+      "width": 550,
+      "height": 400
+    },
+    "outputRoot": "tests/fixtures/reference/scenario-smoke/run1",
+    "launchArgs": [
+      "--mute-audio"
+    ],
+    "ruffle": {
+      "release": "v0.6.0",
+      "asset": "ruffle-0.6.0-web-selfhosted.zip",
+      "zipSha256": "e8acfacc37443303872379d0e215999af846854d1dd3fa8fac0a765445b43dbf",
+      "ruffleJsSha256": "a686a305345b06542dddedada71869104916a61e393f174687571528ac4225f5"
+    },
+    "swf": {
+      "file": "/home/dev/kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf",
+      "sha256": "236ed9359719d061c4c9426c8533b126bffcb3466f7b5f818601b50bd7afbf39",
+      "md5": "af059ff9d75cefbc244f03814b47be9c"
+    },
+    "fixture": {
+      "input": {
+        "file": "/home/dev/kelimator-nostalji/calistir/xml64.php",
+        "sha256": "854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed"
+      },
+      "served": {
+        "file": "/home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php",
+        "sha256": "80506d3ef3b58a4d8fdb5779debd4819271d57a5635276963a5d01eab91cd8bf"
+      },
+      "script": {
+        "file": "/home/dev/kelimator-2012/verify/reference/make-fixture.mjs",
+        "sha256": "e4f5198a1ddd94eceeb20639a41855a2bb385e75782e169a5768205272007788"
+      }
+    },
+    "playwright": "1.63.0",
+    "node": "v22.14.0",
+    "port": 8798,
+    "canvasBox": {
+      "x": 0,
+      "y": 0,
+      "width": 550,
+      "height": 400
+    }
+  }
+}

@@ -51,3 +51,27 @@ $ shasum -a 256 dsf1 spot checks (must be unchanged)
 e10f08054b6d0881388a3261160c20e6bc81b4b1f92e4b98063ded5e5f12a768  tests/fixtures/reference/stability-report.json
 396153fe4dc935d41a3a8bd709986a2b1238726f3c32e239bf3ef4681117ac26  tests/fixtures/reference/S1-boot.png
 20596e199148f26275c06b1eb3b4ad3f0649b7555e8dd281f000eed4e7fd47b7  tests/fixtures/reference/S9-timeout.png
+
+=== C3 final verification (scenario mode) 2026-09-28T19:14:28Z ===
+$ node verify/reference/make-fixture.mjs --check
+OK fixture=80506d3ef3b58a4d8fdb5779debd4819271d57a5635276963a5d01eab91cd8bf input=854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed
+make-fixture --check exit=0
+
+$ node verify/reference/check.mjs   # recorded run: evidence/logs/C3-check-output.log (hash below)
+ALL CHECKS PASS (V1 V1fixture V2 V5 V2dsf2 V5dsf2 Vmute Vscenario V6); exit 0
+
+$ shasum -a 256 harness files (as recorded in evidence/C3-harness.md)
+3c3efa86d4c3da06f6b2ea6e147f64fb7d53efafe3838cdb2b5c36d017c0fcb8  verify/reference/capture.mjs
+0a12510d2d587701e172c8b5854d9ec68e42956278f615e9c0f6ffde529b701b  verify/reference/check.mjs
+716b7cef36ef8f36ff670806a1cfa162e876b501c711da8edda7a798e2892bc2  verify/reference/README.md
+01ca29509a475d9cd1ae54354473a86b675e601e160f4dd875d430aa834badcd  verify/reference/scenarios/smoke.json
+$ shasum -a 256 inputs (must be unchanged)
+854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed  ../kelimator-nostalji/calistir/xml64.php
+854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed  ../kelimator-nostalji/calistir/xml64.php
+236ed9359719d061c4c9426c8533b126bffcb3466f7b5f818601b50bd7afbf39  ../kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf
+80506d3ef3b58a4d8fdb5779debd4819271d57a5635276963a5d01eab91cd8bf  verify/reference/fixtures/xml64.base64.php
+$ shasum -a 256 matrix spot checks (dsf1/dsf2 unchanged)
+e10f08054b6d0881388a3261160c20e6bc81b4b1f92e4b98063ded5e5f12a768  tests/fixtures/reference/stability-report.json
+04fc21b1c9512f8846b553daa7829abc22211fdd04b8bfc323910f8afc378609  tests/fixtures/reference/dsf2/stability-report.json
+396153fe4dc935d41a3a8bd709986a2b1238726f3c32e239bf3ef4681117ac26  tests/fixtures/reference/S1-boot.png
+ac5e86aaac0216021766db2d2e2ada70f08e70e7f86bb4f43c7ad8a43757b1f6  tests/fixtures/reference/dsf2/S1-boot.png

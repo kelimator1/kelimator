@@ -21,23 +21,30 @@ Commands executed (exact; in order, from this task's shell history):
 11. `node verify/reference/capture.mjs --runs 2 > evidence/logs/C3-harness-run.log 2>&1` (final matrix on the reconstructed fixture)
 12. `node verify/reference/check.mjs > evidence/logs/C3-check-output.log 2>&1` (V1/V1fixture/V2/V5/V6/dsf2/mute checks; exit 0)
 13. `node verify/reference/capture.mjs --runs 2 --dsf 2 > evidence/logs/C3-harness-run-dsf2.log 2>&1` (deviceScaleFactor 2 matrix, 1100×800; same fixture and interaction sequence)
-14. `curl -sS "http://web.archive.org/cdx/search/cdx?url=games.lg.web.tr/kelimator/xml64.php&output=json&limit=40"` → `evidence/logs/C3-fixture-archive-probe.log`
+14. `node verify/reference/capture.mjs --scenario verify/reference/scenarios/smoke.json --out tests/fixtures/reference/scenario-smoke --port 8798 > evidence/logs/C3-scenario.log 2>&1` (scenario mode; `--runs` default 2 → run1/run2 + canonical copies)
+15. `node verify/reference/capture.mjs --scenario verify/reference/scenarios/smoke.json --out tests/fixtures/reference/scenario-smoke-dsf2 --dsf 2 --runs 1 --port 8798 >> evidence/logs/C3-scenario.log 2>&1` (dsf 2 scenario pass)
+16. `curl -sS "http://web.archive.org/cdx/search/cdx?url=games.lg.web.tr/kelimator/xml64.php&output=json&limit=40"` → `evidence/logs/C3-fixture-archive-probe.log`
 
-Exit codes: 0 for every command above (final matrix run 0; `check.mjs` exit 0,
-ALL CHECKS PASS).
+Exit codes: 0 for every command above (final matrix runs 0; `check.mjs` exit 0,
+ALL CHECKS PASS incl. the scenario smoke).
 
 Output summary:
 - `verify/reference/` — harness: `index.html`, `server.py`, `swf-codec.mjs`,
   `make-fixture.mjs`, `fixtures/xml64.base64.php` + `fixtures/fixture-meta.json`,
-  `capture.mjs`, `check.mjs`, `README.md`, `ruffle/` (pinned zip + build).
+  `capture.mjs` (probe + matrix + scenario modes), `scenarios/smoke.json`,
+  `check.mjs`, `README.md`, `ruffle/` (pinned zip + build).
 - `tests/fixtures/reference/` — dsf 1: 10 canonical states, `run1/` + `run2/`
   (10 PNGs + `interaction-log.json` each), `stability/<state>/` (10 F1 reports +
   heatmaps), `stability-report.json`, canonical `interaction-log.json`.
 - `tests/fixtures/reference/dsf2/` — deviceScaleFactor 2 matrix (identical
   layout, 1100×800 PNGs), same two-run + stability discipline.
-- `evidence/logs/C3-server.log` — request log with per-run markers (dsf in the
-  marker): round 1/2/3 `xml64.php -> 200` for all four matrix runs, and the end
-  screen's `hiscore.php` POST (local 501, not stubbed).
+- `tests/fixtures/reference/scenario-smoke/` (+ `scenario-smoke-dsf2/`) —
+  scenario-mode smoke outputs (`scenario-report.json`, `interaction-log.json`,
+  captures; `scenario-repeat.json` for the default two runs).
+- `evidence/logs/C3-server.log` — request log with per-run markers (dsf and
+  scenario in the markers): round 1/2/3 `xml64.php -> 200` for all four matrix
+  runs, the scenario smoke request, and the end screen's `hiscore.php` POST
+  (local 501, not stubbed).
 
 Artifact SHA-256 hashes (key):
 - Ruffle asset `e8acfacc37443303872379d0e215999af846854d1dd3fa8fac0a765445b43dbf`; `ruffle.js` `a686a305345b06542dddedada71869104916a61e393f174687571528ac4225f5`; wasm `72a20ef1…` `adabc1696a2f1f95715ede6be0ac00a73364895c8e599039e60fef3b2f52efa4`, `826bb093…` `e4ba64aa1dc9f7f2368602dd0fc2c51046f3e35baba8116d6cf3ae930a63aa02`
@@ -47,17 +54,20 @@ Artifact SHA-256 hashes (key):
 - served fixture `verify/reference/fixtures/xml64.base64.php` `80506d3ef3b58a4d8fdb5779debd4819271d57a5635276963a5d01eab91cd8bf`
 - `fixtures/fixture-meta.json` `67b6e8254e9e7b7e3a5e5008b4b4f0e6a941188564e8f9638e4e6aba64760a33`
 - `swf-codec.mjs` `5b895ce4b22ab1d22877df49e3993f5c5ae03778571a9888196c9ba41a6ce51c`
-- `capture.mjs` `d8b99031e11c7eb754b64b060ae270e72a518898d1f8925caeb0f61f392bf686` (dsf 1 outputs were captured with revision `803bf710…`, which they remain byte-identical to; the current revision adds `--dsf`, the explicit mute and the faster input loops + timeout-aware S8 used by the dsf 2 runs)
-- `check.mjs` `74d1116521f17f8383992aeba2bf310328340981ea19026f9e0b362b86f78129`
-- `server.py` `d119845b042ca1e37460828610fb55623755681a16be092ac4272debe062d32e`; `index.html` `68daaf34e36c72945a13e4ac60a11d06ef77214b97d1e566bb427478a8b40155`; `README.md` `8a68d31753a2d557265ea4f8e0586f9f383f5ad999b87bedd7e55c8fa421bc84`
+- `capture.mjs` `3c3efa86d4c3da06f6b2ea6e147f64fb7d53efafe3838cdb2b5c36d017c0fcb8` (adds the scenario mode on top of the dsf support; the matrix outputs were captured with earlier revisions and are unchanged)
+- `check.mjs` `0a12510d2d587701e172c8b5854d9ec68e42956278f615e9c0f6ffde529b701b`
+- `scenarios/smoke.json` `01ca29509a475d9cd1ae54354473a86b675e601e160f4dd875d430aa834badcd`
+- `server.py` `d119845b042ca1e37460828610fb55623755681a16be092ac4272debe062d32e`; `index.html` `68daaf34e36c72945a13e4ac60a11d06ef77214b97d1e566bb427478a8b40155`; `README.md` `716b7cef36ef8f36ff670806a1cfa162e876b501c711da8edda7a798e2892bc2`
 - dsf 1: `tests/fixtures/reference/stability-report.json` `e10f08054b6d0881388a3261160c20e6bc81b4b1f92e4b98063ded5e5f12a768`; `run1/interaction-log.json` `c4d2f45c640e2befb35e47542a4cf2a19897cbc206d058d2285919b96a62e5d9`; `run2/interaction-log.json` `389cfcc2766bcc2c8e9488ae42ebb21102bba6fc29bd9fb2075931f181dc678c`; S1 `396153fe…` = S9 `20596e19…` (byte-identical pairs)
 - dsf 2: `tests/fixtures/reference/dsf2/stability-report.json` `04fc21b1c9512f8846b553daa7829abc22211fdd04b8bfc323910f8afc378609`; `run1/interaction-log.json` `a6a2a78d84af18f2338a3f9ec87727dce86f6de59aca6706749cf51e8d54c68d`; `run2/interaction-log.json` `bee2e39cedfe7e482de39430491c7b69a24c755c7f3205f3bc5c09b714f40a67`; canonical `dsf2/interaction-log.json` `fd1b4eab28d547c9e999e0cbabaa66e3bdb12bc524971aa52230ed3cf4fc1caa`; S1 `ac5e86aaac0216021766db2d2e2ada70f08e70e7f86bb4f43c7ad8a43757b1f6` = S9 `1cf3a7753b7906fee23471505289bfd50485fef3e630c37fbd47b19d05955f8f` (byte-identical pairs)
-- `evidence/logs/C3-server.log` `0c88bc661aad9967fc4ad6cdd717cafe3ff4670a8d02d290e5e4aaf4a03f1d5f`; `evidence/logs/C3-harness-run-dsf2.log` `04276d554bda0cf9ace1dc4d81ea4d5da5acfce44f00a3af6b6901989f49cf23`
+- scenario smoke: `scenario-report.json` `76a539fe9d584c7b1ab9d5eb3af29986888bac7ec4969b252a26bb978ecd5640`; `interaction-log.json` `bb525d0be1360160618d8510fb6fc10c87c08b3eaef9ede085f0ea1430915f55`; `scenario-repeat.json` `2e6113b637ef8412bd3eb8e563b6539cac204a1a04c3f401c2002e2c316d3609`; `after-space.png` `930ed35e34e22be18eea7e2cead22700c3f0aaaa1e1c9f820238edb4250b20b0` (550×400); dsf 2 smoke `scenario-smoke-dsf2/after-space.png` `dbd03cd840abac8302b4db2111d51cc06c06b0a602636631189cc10a7b710c95` (1100×800). These smoke hashes are as of the recorded check run; `check.mjs` regenerates the smoke outputs on every invocation (fresh shuffle), so they change per run.
+- `evidence/logs/C3-server.log` `0c88bc661aad9967fc4ad6cdd717cafe3ff4670a8d02d290e5e4aaf4a03f1d5f`; `evidence/logs/C3-harness-run-dsf2.log` `04276d554bda0cf9ace1dc4d81ea4d5da5acfce44f00a3af6b6901989f49cf23`; `evidence/logs/C3-scenario.log` `579d82da04222fc93af85a7f79ca8475d97a36c9a3d7b1083ef3b270dfe6015f`; `evidence/logs/C3-check-output.log` `90f0491245a321e11af529fbd796fe6363814629385b19c8c936afb1a993402d`
 
 Result: PASS — all Verify checks pass (V1, V1fixture, V6, V2, V5 self-check, plus
-the dsf 2 set V2dsf2/V5dsf2 and the explicit-mute check Vmute), the S5–S8 target
-states are reachable on the reconstructed fixture, the matrix is captured at
-deviceScaleFactor 1 and 2, and O20 is closed
+the dsf 2 set V2dsf2/V5dsf2, the explicit-mute check Vmute and the scenario
+smoke Vscenario), the S5–S8 target states are reachable on the reconstructed
+fixture, the matrix is captured at deviceScaleFactor 1 and 2, the reusable
+scenario mode (`--scenario`) is available to E3/F2, and O20 is closed
 (`evidence/C3-stability.md`). No reference file was altered.
 
 ---
@@ -74,8 +84,9 @@ deviceScaleFactor 1 and 2, and O20 is closed
 | `verify/reference/make-fixture.mjs` | fixture reconstruction (amendment 2026-09-28, §2) |
 | `verify/reference/fixtures/xml64.base64.php` | served fixture |
 | `verify/reference/fixtures/fixture-meta.json` | input/script/output hashes + per-entry transform record |
-| `verify/reference/capture.mjs` | Playwright driver: probes + S1–S10 matrix (two runs) + stability compare |
-| `verify/reference/check.mjs` | reproducible V1/V1fixture/V2/V2dsf2/V5/V5dsf2/Vmute/V6 report (exit 0) |
+| `verify/reference/capture.mjs` | Playwright driver: probes + S1–S10 matrix (two runs) + stability compare + scenario mode |
+| `verify/reference/scenarios/smoke.json` | smoke scenario used by `check.mjs` (`Vscenario`) |
+| `verify/reference/check.mjs` | reproducible V1/V1fixture/V2/V2dsf2/V5/V5dsf2/Vmute/Vscenario/V6 report (exit 0) |
 | `verify/reference/README.md` | harness documentation |
 
 Ports used: **8797** for every harness run (server-log markers show `port=8797`);
@@ -250,6 +261,44 @@ countdown digits (right panel) and the end-screen fireworks (S8; panel region).
 `check.mjs` validates the set (`V2dsf2`: 30/30 screenshots at 1100×800, 14/14
 JSON; `V5dsf2`: S2 within-run streak 3, cross-run 0.354 %).
 
+### Scenario mode (E3/F2 scripted captures)
+
+`node verify/reference/capture.mjs --scenario <scenario.json> --out <dir>
+[--dsf 1|2] [--runs N] [--port P]` drives the reference with an ordered step
+script through the same server, reconstructed fixture and muted Chromium.
+Existing modes (`--probe`, matrix default) are unchanged. Schema (documented in
+`verify/reference/README.md`): `{ name, steps: [ {action, ...} ] }` with
+`waitStable`, `key` (Turkish letters + `SPACE`/`ENTER`/`BACKSPACE` via the
+`frame_131` physical mapping; unmapped keys reported in `missingKeys`), `click`
+(`tile:<0..7>`, `button:<karistir|ekle|sil|yeni-oyun|gonder|form-name|form-email>`,
+`coord:<x>,<y>`), `waitMs` (caller-specified, documented), `capture`
+(`<out>/<name>.png` at the selected dsf) and `waitForState`
+(`content|board|xml64|round-end|hiscore-form|entry-cleared|bonus-ball`).
+`waitForText` is deliberately not provided (no OCR — text waits would be
+guesses); `waitForState` is the equivalent. Outputs: per-step
+`scenario-report.json` (result, timing, screenshot path/hash/dimensions) and
+`interaction-log.json`; `--runs N > 1` writes `<out>/run<i>/` plus canonical
+copies and `scenario-repeat.json` (per-run capture hashes).
+
+Smoke output (run by `check.mjs` as `Vscenario`; `scenarios/smoke.json` =
+board wait → stable → one key `SPACE` → capture → `waitMs(300)` → capture;
+port 8798; log `evidence/logs/C3-scenario.log`):
+
+```
+[C3 scenario] step 0 waitForState: ok (7544 ms)   [board: xml64.php?872193 -> 200, stable streak 3, gauge 0.6783]
+[C3 scenario] step 1 waitStable: ok (455 ms)
+[C3 scenario] step 2 key: ok (300 ms)             [SPACE -> Space]
+[C3 scenario] step 3 capture: ok (45 ms)          [after-space.png 550x400]
+[C3 scenario] step 4 waitMs: ok (301 ms)
+[C3 scenario] step 5 capture: ok (55 ms)          [settled.png 550x400]
+[C3 scenario] smoke run 1: OK (2 captures, 6 steps)
+```
+
+A single-pass dsf 2 scenario run (`--dsf 2 --runs 1`) produced the same steps
+with 1100×800 captures (exit 0; recorded in the same log). `Vscenario`
+asserts the smoke outputs exist at the right dimensions and the JSONs parse;
+`check.mjs` stays green (all 9 checks, exit 0).
+
 ## 7. Observed reference flow (reconstructed fixture)
 
 1. **Ad path** — Ruffle blocks `*.mochiads.com`; the build reaches the round
@@ -296,6 +345,7 @@ consolidated final run incl. `make-fixture.mjs --check` and the input hash:
 | V5 self-check | dsf 1 S2: within-run stable streak = 3 (both runs), cross-run ratio 0.00781 ≤ 0.02, bbox = the shuffled tile-letter band only | **PASS** |
 | V5dsf2 | dsf 2 S2: within-run stable streak = 3 (both runs), cross-run ratio 0.00354 ≤ 0.02 | **PASS** |
 | Vmute | `capture.mjs` launches Chromium with `args: ['--mute-audio']`; recorded in both dsf 2 run manifests (`harness.launchArgs`) → no audio emitted | **PASS** |
+| Vscenario | scenario smoke (`scenarios/smoke.json`: board wait → stable → `SPACE` → capture → `waitMs(300)` → capture) runs green; 2 captures at 550×400 (canonical), `scenario-report.json` + `interaction-log.json` parse, no missing keys | **PASS** |
 | — | input integrity: SWF md5 `af059ff9d75cefbc244f03814b47be9c` = T01 expected; archived fixture hash unchanged (read-only package untouched); dsf 1 outputs unchanged (hashes verified) | **PASS** |
 
 S5–S8 reachability: valid word accepted (S5), non-list rejected (S6), bonus path
@@ -314,12 +364,20 @@ The O20 line supersedes the pre-amendment wording (the fixture was
 reconstructed on 2026-09-28, O21); all numbers come from the two final matrix
 runs on the served fixture.
 
+Amendment proposal (Amendments section, exact text):
+
+```
+2026-09-28 — C3: reference harness scenario mode (--scenario) added for E3/F2 scripted captures; schema documented in verify/reference/README.md.
+```
+
 ## 10. Result
 
-**PASS** — Verify passes (V1, V1fixture, V6, V2, V2dsf2, V5, V5dsf2, Vmute;
-`check.mjs` exit 0); the S1–S10 captures and interaction/stability logs are
-committed under `tests/fixtures/reference/` (dsf 1) and
-`tests/fixtures/reference/dsf2/` (1100×800); O20 is closed with the stability
+**PASS** — Verify passes (V1, V1fixture, V6, V2, V2dsf2, V5, V5dsf2, Vmute,
+Vscenario; `check.mjs` exit 0); the S1–S10 captures and interaction/stability
+logs are committed under `tests/fixtures/reference/` (dsf 1) and
+`tests/fixtures/reference/dsf2/` (1100×800); the reusable scenario mode
+(`--scenario`) drives E3/F2 scripted captures with the smoke outputs under
+`tests/fixtures/reference/scenario-smoke*/`; O20 is closed with the stability
 record in `evidence/C3-stability.md`; the fixture reconstruction and its
 resolution are recorded in `evidence/C3-fixture-format.md`; the reference SWF
 and the read-only package are byte-identical to their inputs; every harness run

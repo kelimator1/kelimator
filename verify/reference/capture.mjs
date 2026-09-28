@@ -74,6 +74,9 @@ const URL = `http://127.0.0.1:${PORT}/`;
 const RUN_ROOT = DSF === 1 ? OUT_ROOT : path.join(OUT_ROOT, `dsf${DSF}`);
 // Silent witness runs (EXECUTION.md §8): explicit browser-level mute.
 const LAUNCH_ARGS = ['--mute-audio'];
+// Scenario mode (E3/F2 scripted captures): --scenario <json> --out <dir>.
+const SCENARIO = opt('--scenario', null);
+const SCENARIO_OUT = opt('--out', null);
 
 // --- Measured geometry (probe run 2026-09-28, probe.json) ------------------
 // Tile row: SWF `frame_131` places `button`/`bosbuton` duplicates at
@@ -383,6 +386,24 @@ const HISCORE_FORM = {
   email: { x: 316, y: 288 },
   send: { x: 268, y: 370 },
 };
+
+// Named click targets for scenario steps (`button:<name>`, CSS-pixel centers).
+// Tile targets are `tile:<index>` (0..7 -> TILE_XS, TILE_Y). Measured centers:
+// the three action buttons from the board's orange button bar (x 158-359,
+// y 369-385).
+const CLICK_TARGETS = {
+  'yeni-oyun': YBUTTON,
+  karistir: { x: 189, y: 377 },
+  ekle: { x: 266, y: 377 },
+  sil: { x: 334, y: 377 },
+  gonder: HISCORE_FORM.send,
+  'form-name': HISCORE_FORM.name,
+  'form-email': HISCORE_FORM.email,
+};
+
+// Scenario `key` names for the non-letter keys (letters use TR_KEY, the
+// physical Turkish-Q positions the SWF maps in frame_131).
+const SCENARIO_NAMED_KEYS = { SPACE: 'Space', ENTER: 'Enter', BACKSPACE: 'Backspace' };
 
 async function probePixel(page, point) {
   const img = decodePng(await page.screenshot({ clip: { x: point.x, y: point.y, width: 1, height: 1 } }));
@@ -718,6 +739,253 @@ function diffBuffers(a, b) {
   };
 }
 
+// --- scenario mode (E3/F2 scripted captures) -------------------------------
+// `node capture.mjs --scenario <scenario.json> --out <dir> [--dsf 1|2] [--runs N] [--port P]`
+// Schema: `{ name, steps: [ { action, ... } ] }` — documented in README.md.
+// Steps: waitStable | key | click | waitMs | capture | waitForState.
+// Outputs: `<out>/<capture>.png`, `<out>/interaction-log.json`,
+// `<out>/scenario-report.json` (compact per-step report; with `--runs N > 1`
+// each run lands in `<out>/run<i>/` plus canonical copies and a repeat summary).
+
+function scenarioKeyToPhysical(key, missing) {
+  const upper = String(key).toUpperCase();
+  if (SCENARIO_NAMED_KEYS[upper]) return SCENARIO_NAMED_KEYS[upper];
+  const ch = String(key);
+  const physical = TR_KEY[ch.toUpperCase()] ?? TR_KEY[ch];
+  if (!physical) { missing.add(ch); return null; }
+  return physical;
+}
+
+function resolveClickTarget(target) {
+  const t = String(target ?? '');
+  if (t.startsWith('tile:')) {
+    const index = Number(t.slice('tile:'.length));
+    if (!Number.isInteger(index) || index < 0 || index >= TILE_XS.length) return null;
+    return { kind: 'tile', index, x: TILE_XS[index], y: TILE_Y };
+  }
+  if (t.startsWith('button:')) {
+    const name = t.slice('button:'.length);
+    const point = CLICK_TARGETS[name];
+    return point ? { kind: 'button', name, x: point.x, y: point.y } : null;
+  }
+  if (t.startsWith('coord:')) {
+    const [x, y] = t.slice('coord:'.length).split(',').map((v) => Number(v.trim()));
+    if (!Number.isFinite(x) || !Number.isFinite(y)) return null;
+    return { kind: 'coord', x, y };
+  }
+  return null;
+}
+
+function scenarioCaptureName(name) {
+  const slug = String(name ?? '');
+  if (!/^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(slug)) throw new Error(`invalid capture name ${JSON.stringify(name)} (allowed: letters, digits, . _ -)`);
+  return slug;
+}
+
+/** Named state waits for scenario steps (`waitForState`; see README.md). */
+async function scenarioWaitForState(page, step) {
+  const timeoutMs = Number.isFinite(step.timeoutMs) ? step.timeoutMs : 60000;
+  switch (step.condition) {
+    case 'content': {
+      const r = await waitForContent(page, timeoutMs);
+      return { condition: 'content', matched: r.content, waitedMs: r.waitedMs, contentFraction: r.fraction };
+    }
+    case 'board': {
+      const offset = fs.statSync(SERVER_LOG).size;
+      const ev = await waitForLogMatch(offset, /xml64\.php[^\n]*-> 200/, { timeoutMs });
+      if (!ev.matched) return { condition: 'board', matched: false, xml64: ev };
+      const stable = await waitStable(page, { timeoutMs: Math.min(timeoutMs, 45000) });
+      const gauge = await timerRedFraction(page);
+      return { condition: 'board', matched: true, xml64: ev, stable, gaugeFraction: gauge.fraction, boardSignal: gauge.fraction >= BOARD_RED_MIN };
+    }
+    case 'xml64': {
+      const offset = fs.statSync(SERVER_LOG).size;
+      const ev = await waitForLogMatch(offset, /xml64\.php[^\n]*-> 200/, { timeoutMs });
+      return { condition: 'xml64', matched: ev.matched, waitedMs: ev.waitedMs, line: ev.line };
+    }
+    case 'round-end': {
+      const r = await waitForRoundEnd(page, { timeoutMs });
+      return { condition: 'round-end', matched: r.ended, waitedMs: r.waitedMs, gaugeFraction: r.gaugeFraction };
+    }
+    case 'hiscore-form': {
+      const r = await waitForHiscoreForm(page, timeoutMs);
+      return { condition: 'hiscore-form', matched: r.found, waitedMs: r.waitedMs, panel: r.panel, sky: r.sky };
+    }
+    case 'entry-cleared': {
+      const st = await waitEntryCleared(page, timeoutMs);
+      return { condition: 'entry-cleared', matched: st.ballPixels < BALL_MIN_PIXELS, ballPixels: st.ballPixels };
+    }
+    case 'bonus-ball': {
+      const started = Date.now();
+      let best = 0;
+      while (Date.now() - started < timeoutMs) {
+        const st = await entryRowState(page);
+        best = Math.max(best, st.brightPixels);
+        if (st.brightPixels >= BALL_MIN_PIXELS) {
+          return { condition: 'bonus-ball', matched: true, waitedMs: Date.now() - started, brightPixels: st.brightPixels };
+        }
+        await sleep(80);
+      }
+      return { condition: 'bonus-ball', matched: false, waitedMs: Date.now() - started, maxBrightPixels: best };
+    }
+    default:
+      return { condition: step.condition, matched: false, reason: `unknown condition ${JSON.stringify(step.condition)}` };
+  }
+}
+
+async function runScenarioSteps(page, log, outDir, scenario, report) {
+  const missing = new Set();
+  let noticeHandled = false;
+  const ensureNotice = async () => {
+    if (noticeHandled) return;
+    noticeHandled = true;
+    log.hardwareAcceleration = await dismissHardwareAccelerationNotice(page, log);
+  };
+  for (const [index, step] of scenario.steps.entries()) {
+    const started = Date.now();
+    const entry = { index, action: step.action, ok: false, atMs: Date.now() - log.t0 };
+    try {
+      switch (step.action) {
+        case 'waitStable': {
+          const stable = await waitStable(page, { timeoutMs: Number.isFinite(step.timeoutMs) ? step.timeoutMs : 30000 });
+          entry.result = stable;
+          entry.ok = true;
+          break;
+        }
+        case 'key': {
+          await ensureNotice();
+          const physical = scenarioKeyToPhysical(step.key, missing);
+          if (!physical) { entry.reason = `no physical key mapping for ${JSON.stringify(step.key)}`; break; }
+          await page.keyboard.press(physical);
+          entry.result = { key: step.key, physical };
+          entry.ok = true;
+          break;
+        }
+        case 'click': {
+          await ensureNotice();
+          const target = resolveClickTarget(step.target);
+          if (!target) { entry.reason = `unknown click target ${JSON.stringify(step.target)}`; break; }
+          await page.mouse.click(target.x, target.y);
+          entry.result = { target: step.target, point: { x: target.x, y: target.y }, kind: target.kind };
+          entry.ok = true;
+          break;
+        }
+        case 'waitMs': {
+          if (!Number.isFinite(step.ms) || step.ms < 0) { entry.reason = 'ms must be a non-negative number'; break; }
+          await sleep(step.ms);
+          entry.result = { requestedMs: step.ms };
+          entry.ok = true;
+          break;
+        }
+        case 'capture': {
+          const name = scenarioCaptureName(step.name);
+          const file = path.join(outDir, `${name}.png`);
+          const buf = await stageShot(page, file);
+          const img = decodePng(buf);
+          entry.result = { name, file: path.relative(REPO, file), sha256: hash(buf), width: img.width, height: img.height };
+          report.captures.push(entry.result);
+          entry.ok = true;
+          break;
+        }
+        case 'waitForState': {
+          const result = await scenarioWaitForState(page, step);
+          entry.result = result;
+          entry.ok = result.matched === true;
+          if (result.reason) entry.reason = result.reason;
+          break;
+        }
+        default:
+          throw new Error(`unknown action ${JSON.stringify(step.action)}`);
+      }
+    } catch (err) {
+      entry.reason = err.message;
+    }
+    entry.durationMs = Date.now() - started;
+    report.steps.push(entry);
+    if (!entry.ok) report.ok = false;
+    console.log(`[C3 scenario] step ${index} ${step.action}: ${entry.ok ? 'ok' : `FAILED (${entry.reason ?? 'state not reached'})`} (${entry.durationMs} ms)`);
+  }
+  report.missingKeys = [...missing];
+  return report;
+}
+
+async function runScenario(browser, scenarioPath, outDir) {
+  const scenario = JSON.parse(fs.readFileSync(scenarioPath, 'utf8'));
+  if (!scenario || typeof scenario.name !== 'string' || !Array.isArray(scenario.steps)) {
+    throw new Error('scenario must be { name: string, steps: [...] }');
+  }
+  const runCount = Math.max(1, RUNS);
+  const canonical = path.resolve(REPO, outDir);
+  const runDirs = [];
+  const runReports = [];
+  let allOk = true;
+  for (let n = 1; n <= runCount; n += 1) {
+    const runDir = runCount > 1 ? path.join(canonical, `run${n}`) : canonical;
+    fs.mkdirSync(runDir, { recursive: true });
+    runDirs.push(runDir);
+    fs.appendFileSync(SERVER_LOG, `==== C3 harness scenario ${scenario.name} run ${n} start ${new Date().toISOString()} dsf=${DSF} ====\n`);
+    const log = {
+      schemaVersion: 1,
+      task: 'C3',
+      mode: 'scenario',
+      scenario: { file: path.relative(REPO, scenarioPath), name: scenario.name, steps: scenario.steps.length },
+      run: n,
+      startedAt: new Date().toISOString(),
+      t0: Date.now(),
+      harness: manifest(),
+      serverEvidence: {},
+      flowNotes: [],
+      states: [],
+      actions: [],
+      console: [],
+    };
+    log.harness.outputRoot = path.relative(REPO, runDir);
+    const report = { schemaVersion: 1, task: 'C3', scenario: scenario.name, run: n, startedAt: log.startedAt, endedAt: null, ok: true, steps: [], captures: [], missingKeys: [] };
+    const context = await browser.newContext({ viewport: { width: STAGE.width, height: STAGE.height }, deviceScaleFactor: DSF });
+    const page = await context.newPage();
+    attachConsole(page, log.console, log.t0);
+    try {
+      await page.goto(URL, { waitUntil: 'load', timeout: 60000 });
+      await page.waitForSelector('#stage canvas', { timeout: 30000 });
+      log.harness.canvasBox = await page.locator('#stage canvas').boundingBox();
+      await runScenarioSteps(page, log, runDir, scenario, report);
+    } finally {
+      log.endedAt = new Date().toISOString();
+      report.endedAt = log.endedAt;
+      report.harness = log.harness;
+      writeJson(path.join(runDir, 'interaction-log.json'), log);
+      writeJson(path.join(runDir, 'scenario-report.json'), report);
+      await context.close();
+    }
+    runReports.push({ run: n, dir: path.relative(REPO, runDir), report });
+    if (!report.ok) allOk = false;
+    console.log(`[C3 scenario] ${scenario.name} run ${n}: ${report.ok ? 'OK' : 'FAILED'} (${report.captures.length} captures, ${report.steps.length} steps)`);
+  }
+  if (runCount > 1) {
+    const first = runDirs[0];
+    for (const f of fs.readdirSync(first)) {
+      if (f.endsWith('.png') || f === 'interaction-log.json' || f === 'scenario-report.json') {
+        fs.copyFileSync(path.join(first, f), path.join(canonical, f));
+      }
+    }
+    const summary = {
+      schemaVersion: 1,
+      task: 'C3',
+      scenario: scenario.name,
+      runs: runCount,
+      allOk,
+      repeats: runReports.map(({ run, dir, report }) => ({
+        run,
+        dir,
+        ok: report.ok,
+        captures: report.captures.map((c) => ({ name: c.name, sha256: c.sha256, width: c.width, height: c.height })),
+      })),
+    };
+    writeJson(path.join(canonical, 'scenario-repeat.json'), summary);
+  }
+  return allOk;
+}
+
 // --- matrix mode -----------------------------------------------------------
 const STATE_IDS = ['S1-boot', 'S2-idle-board', 'S3-scrambled', 'S4-partial-entry', 'S5-valid-word', 'S6-invalid-word', 'S7-bonus-word', 'S8-all-found', 'S9-timeout', 'S10-next-round'];
 
@@ -989,6 +1257,11 @@ async function main() {
   const server = await startServer();
   const browser = await chromium.launch({ headless: true, args: LAUNCH_ARGS });
   try {
+    if (SCENARIO) {
+      if (!SCENARIO_OUT) throw new Error('--scenario requires --out <dir>');
+      const ok = await runScenario(browser, SCENARIO, SCENARIO_OUT);
+      return ok ? 0 : 1;
+    }
     if (PROBE) {
       await probe(browser);
       return 0;

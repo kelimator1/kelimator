@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "task": "C3",
+  "scenario": "smoke",
+  "runs": 2,
+  "allOk": true,
+  "repeats": [
+    {
+      "run": 1,
+      "dir": "tests/fixtures/reference/scenario-smoke/run1",
+      "ok": true,
+      "captures": [
+        {
+          "name": "after-space",
+          "sha256": "ca6b669e9de6b49922660da536535fca8bf3e06a4cff6617bcc74323957ca4ae",
+          "width": 550,
+          "height": 400
+        },
+        {
+          "name": "settled",
+          "sha256": "f0e076328da7383163ad6579a3863c9c5d85f56aace3c4182dbccde9d9d2bc32",
+          "width": 550,
+          "height": 400
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "dir": "tests/fixtures/reference/scenario-smoke/run2",
+      "ok": true,
+      "captures": [
+        {
+          "name": "after-space",
+          "sha256": "d7950ed54ba0b6900f255e9c74d98dde27b37b0b4896752c8cea6fc72d656f84",
+          "width": 550,
+          "height": 400
+        },
+        {
+          "name": "settled",
+          "sha256": "de0f54e84664ea64359af1169fb13f6c6f2f56e886075dd4f9c7fde72296b39a",
+          "width": 550,
+          "height": 400
+        }
+      ]
+    }
+  ]
+}
