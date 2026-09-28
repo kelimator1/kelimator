@@ -145,6 +145,16 @@ export interface AudioManager {
   play(eventName: string): boolean;
   /** Persist + apply a volume (clamped to 0–100); returns the stored value. */
   setVolume(volume: number): number;
+  /** True when muted (volume 0; the reference `vol` boolean, false). */
+  isMuted(): boolean;
+  /**
+   * Toggle the reference speaker state
+   * (`DefineButton2_90/BUTTONCONDACTION on(release).as` L1-L13): sound on →
+   * volume 0 + `stopAllSounds()`; muted → full volume. Persists through
+   * {@link setVolume}; never starts playback on unmute.
+   * @returns 0 after muting, {@link DEFAULT_VOLUME} after unmuting.
+   */
+  toggleMute(): number;
   /** Stop every pooled element; mirrors the reference's `stopAllSounds()`. */
   stopAll(): void;
   /** Stop playback and release the pool. */
@@ -300,6 +310,18 @@ class PooledAudioManager implements AudioManager {
     return this.currentVolume;
   }
 
+  isMuted(): boolean {
+    return this.currentVolume === MIN_VOLUME;
+  }
+
+  toggleMute(): number {
+    // Reference order (`DefineButton2_90/BUTTONCONDACTION on(release).as`
+    // L1-L13): the truthy branch sets vol = 0 and calls stopAllSounds() —
+    // setVolume(0) stops the pool; the else branch only sets vol = 1 (full
+    // volume) — nothing is played or resumed on unmute.
+    return this.isMuted() ? this.setVolume(DEFAULT_VOLUME) : this.setVolume(MIN_VOLUME);
+  }
+
   stopAll(): void {
     for (const element of this.pool) element.pause();
   }
@@ -359,4 +381,18 @@ export function getVolume(): number {
 /** Persist + apply volume on the app-wide manager; returns the clamped value. */
 export function setVolume(volume: number): number {
   return getAudioManager().setVolume(volume);
+}
+
+/** Whether the app-wide manager is muted (volume 0; reference `spk_btn`). */
+export function isMuted(): boolean {
+  return getAudioManager().isMuted();
+}
+
+/**
+ * Toggle the app-wide speaker state (reference `spk_btn` / `DefineButton2_90`
+ * `on(release)`): sound on → mute (volume 0 + stopAllSounds), muted → full
+ * volume; both persist under {@link VOLUME_STORAGE_KEY}. Returns the new volume.
+ */
+export function toggleMute(): number {
+  return getAudioManager().toggleMute();
 }

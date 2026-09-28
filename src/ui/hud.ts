@@ -12,6 +12,9 @@
 //   E2's board, the transparent overlays here provide stable clicks/testids
 //   (board re-renders cannot drop a click) at the catalog rectangles from
 //   src/data/layout.json;
+// - the speaker control (`btn_speaker` = `spk_btn`): a delegated listener plus
+//   the reference sprite-88 frames "on"/"off" state on E2's board element
+//   (DefineButton2_90 `on(release)` toggles `_root.vol` and persists it);
 // - in-place timer updates (see `updateTimer`) so the countdown ticks without
 //   re-rendering the board.
 //
@@ -21,6 +24,7 @@
 // in the completion sequences (see evidence/D5-lifecycle.md deviation note: the
 // reference's results-screen return path lived in the excluded score form).
 
+import { isMuted, toggleMute } from '../audio/audio';
 import layoutJson from '../data/layout.json';
 import type { LifecycleSnapshot, ListedWordView } from '../game/lifecycle';
 import type { WordLength } from '../game/round';
@@ -87,6 +91,37 @@ const CONTROL_RECTS = {
   newRound: layoutElement('btn_ybuton'),
 } as const;
 
+// ---------------------------------------------------------------------------
+// Speaker control (reference `spk_btn` / DefineButton2_90, sprite 88)
+// ---------------------------------------------------------------------------
+
+/**
+ * Layout id of the speaker element E2 renders
+ * (src/data/layout.json: SWF depth 33 instance `spk_btn`, button 90).
+ */
+const SPEAKER_ELEMENT_ID = 'btn_speaker';
+
+/**
+ * Sprite 88 character ids (artifacts/decompiled/tags.xml `DefineSpriteTag`
+ * spriteId="88"): 85 = the on-frame sound waves, 87 = the bitmap-86 speaker
+ * icon shown in both frames.
+ */
+const SPEAKER_WAVES_CHARACTER_ID = '85';
+const SPEAKER_ICON_CHARACTER_ID = '87';
+
+/**
+ * Frame "off" color transform (tags.xml sprite 88 frame 2: red/green/blue
+ * multTerm 108, addTerm 148, alphaMultTerm 256): the waves are removed
+ * (`RemoveObject2 depth="1"`) and the icon is drawn pale. SWF CXFORM terms are
+ * 8-bit fixed point (mult/256) with the add term on the 0–255 scale
+ * (add/255 in an SVG feComponentTransfer, sRGB).
+ */
+const SPEAKER_OFF_MULTIPLIER = 108 / 256;
+const SPEAKER_OFF_INTERCEPT = 148 / 255;
+const SPEAKER_OFF_FILTER_ID = 'speaker-off-filter';
+const SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
+const SPEAKER_CLASS = 'game-speaker';
+
 const WORD_LENGTHS: readonly WordLength[] = [3, 4, 5, 6, 7, 8];
 
 const STYLE_ID = 'game-hud-styles';
@@ -118,6 +153,7 @@ function installStyleSheet(doc: Document): void {
   z-index: 20000;
 }
 .game-control[hidden] { display: none; }
+.game-speaker { cursor: pointer; }
 `;
   let style = doc.getElementById(STYLE_ID) as HTMLStyleElement | null;
   if (style === null) {
@@ -162,6 +198,79 @@ function listedWordListItem(view: ListedWordView): HTMLLIElement {
   return item;
 }
 
+// ---------------------------------------------------------------------------
+// Speaker control (reference semantics + visual state)
+// ---------------------------------------------------------------------------
+
+/** The board's speaker element, if the board has rendered one. */
+function speakerElement(board: HTMLElement | undefined): HTMLElement | null {
+  if (board === undefined) return null;
+  const node = board.querySelector(`[data-element="${SPEAKER_ELEMENT_ID}"]`);
+  return node instanceof HTMLElement ? node : null;
+}
+
+/**
+ * FFDec namespaces the character id (`ffdec:characterId`). The inline SVG is
+ * injected with `innerHTML` (src/ui/board.ts), where the HTML parser stores
+ * foreign attributes lowercased (`ffdec:characterid`), so the lookup is
+ * case-insensitive.
+ */
+function characterIdOf(use: SVGUseElement): string | null {
+  for (const attribute of Array.from(use.attributes)) {
+    if (attribute.name.toLowerCase() === 'ffdec:characterid') return attribute.value;
+  }
+  return null;
+}
+
+/**
+ * Install (once per render) the frame-"off" CXFORM as an SVG filter inside the
+ * inline speaker SVG and return its `url(#id)` reference.
+ */
+function ensureSpeakerOffFilter(svg: SVGSVGElement): string {
+  if (svg.querySelector(`#${SPEAKER_OFF_FILTER_ID}`) === null) {
+    const filter = document.createElementNS(SVG_NAMESPACE, 'filter');
+    filter.id = SPEAKER_OFF_FILTER_ID;
+    filter.setAttribute('color-interpolation-filters', 'sRGB');
+    const transfer = document.createElementNS(SVG_NAMESPACE, 'feComponentTransfer');
+    for (const channel of ['R', 'G', 'B'] as const) {
+      const func = document.createElementNS(SVG_NAMESPACE, `feFunc${channel}`);
+      func.setAttribute('type', 'linear');
+      func.setAttribute('slope', String(SPEAKER_OFF_MULTIPLIER));
+      func.setAttribute('intercept', String(SPEAKER_OFF_INTERCEPT));
+      transfer.appendChild(func);
+    }
+    filter.appendChild(transfer);
+    svg.appendChild(filter);
+  }
+  return `url(#${SPEAKER_OFF_FILTER_ID})`;
+}
+
+/**
+ * Mirror the reference speaker state on the rendered board element: frame "on"
+ * (waves + untransformed icon) while sound is on; frame "off" (waves removed,
+ * pale icon) while muted (volume 0). E2 re-creates the element on every
+ * `board.apply`, so this runs at mount, after every `update` and on toggle.
+ * evidence: DefineSprite_88/frame_1/DoAction.as L1-L5, frame_2 L1-L5;
+ * tags.xml spriteId="88" frame labels "on"/"off" and CXFORM.
+ */
+function syncSpeakerVisual(board: HTMLElement | undefined): void {
+  const node = speakerElement(board);
+  if (node === null) return;
+  const muted = isMuted();
+  node.dataset.speaker = muted ? 'off' : 'on';
+  node.classList.add(SPEAKER_CLASS);
+  const svg = node.querySelector('svg');
+  const filter = muted && svg instanceof SVGSVGElement ? ensureSpeakerOffFilter(svg) : '';
+  for (const use of Array.from(node.querySelectorAll<SVGUseElement>('use'))) {
+    const character = characterIdOf(use);
+    if (character === SPEAKER_WAVES_CHARACTER_ID) {
+      use.style.display = muted ? 'none' : '';
+    } else if (character === SPEAKER_ICON_CHARACTER_ID) {
+      use.style.filter = filter;
+    }
+  }
+}
+
 /** Mount the HUD mirror and control overlays into the stage root. */
 export function mountHud(root: HTMLElement, options: HudOptions = {}): HudHandle {
   installStyleSheet(document);
@@ -203,6 +312,20 @@ export function mountHud(root: HTMLElement, options: HudOptions = {}): HudHandle
   controls.append(submit, scramble, deleteControl, newRound);
   root.appendChild(controls);
 
+  // Speaker control (`spk_btn`): the rendered element belongs to E2's board,
+  // so the listener is delegated from the board root — `board.apply` clears
+  // the board's children on every render, and the handler must survive that.
+  const onSpeakerClick = (event: Event): void => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    const node = target.closest(`[data-element="${SPEAKER_ELEMENT_ID}"]`);
+    if (node === null || options.board === undefined || !options.board.contains(node)) return;
+    toggleMute();
+    syncSpeakerVisual(options.board);
+  };
+  options.board?.addEventListener('click', onSpeakerClick);
+  syncSpeakerVisual(options.board);
+
   return {
     element,
     controls,
@@ -217,6 +340,8 @@ export function mountHud(root: HTMLElement, options: HudOptions = {}): HudHandle
       for (const word of snapshot.listedFound) {
         foundList.appendChild(listedWordListItem(word));
       }
+      // E2 re-created the board form; re-apply the speaker state.
+      syncSpeakerVisual(options.board);
     },
     setControls(visible: HudControlsVisibility): void {
       const entries: readonly (readonly [HTMLButtonElement, boolean])[] = [
@@ -263,6 +388,7 @@ export function mountHud(root: HTMLElement, options: HudOptions = {}): HudHandle
     destroy(): void {
       element.remove();
       controls.remove();
+      options.board?.removeEventListener('click', onSpeakerClick);
     },
   };
 }
