@@ -10,6 +10,15 @@
 - `../kelimator-nostalji/calistir/xml64.php` (fixture round)
 - `docs/07-verification.md` §3
 
+> Amendment 2026-09-28 (orchestrator): the 2012 client Base64-decodes every
+> round value; the archived `calistir/xml64.php` is plain ISO-8859-9 and
+> produces a broken board (A2 cross-check: `evidence/A2-kelimatorid.md`,
+> `evidence/logs/A2-ruffle-*.log` — 6/8 tiles fail; with a Base64(UTF-8)
+> fixture all 8 tiles load). The fixture served to the 2012 SWF must therefore
+> be a Base64(UTF-8)-encoded variant of the archived round data (transformation
+> script + input/output SHA-256 recorded; `../kelimator-nostalji/` remains
+> unmodified). Recorded in `docs/08-open-items.md` (Amendments).
+
 ## Steps
 1. Download the pinned Ruffle web self-hosted release
    (`ruffle-0.6.0-web-selfhosted.zip` from the official Ruffle releases).

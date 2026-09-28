@@ -12,6 +12,14 @@
 > evidence and the orchestrator applies them after verification. Recorded in
 > `docs/08-open-items.md` (Amendments).
 
+> Amendment 2026-09-28b (orchestrator): `data/sound-map.json` `sounds[].file`
+> values follow the `docs/03` §1 naming convention
+> (`sfx_<soundId>_<slug>.mp3`; slugs are the SWF's evidenced clip identifiers).
+> The A1 export path (`artifacts/decompiled/sounds/<id>.mp3`) is recorded in
+> evidence, not in the file value. Rationale: D4/E1 copy and the runtime loads
+> by these names (`docs/03` §1, task D4 step 3). Recorded in
+> `docs/08-open-items.md` (Amendments).
+
 ## Inputs
 - `artifacts/decompiled/as/**` (A1)
 - `artifacts/decompiled/header.txt`, `tags.txt`
