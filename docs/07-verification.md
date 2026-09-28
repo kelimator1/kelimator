@@ -25,6 +25,11 @@ recorded as evidence. No subjective sign-off without a recorded artifact.
 | T14 | Runtime offline | V2 | Playwright offline mode | zero non-local requests; app functional |
 | T15 | Full matrix | — | `tools/verify-all.sh` | exit 0 |
 
+> Amendment 2026-09-28 (orchestrator): T05's command is `npm test -- audio` —
+> D4 implements the V7 check in `tests/audio.test.ts` (Vitest filter "audio");
+> the pass criterion is unchanged (code event names ≡ map keys, map entries
+> carry evidence). Recorded in `docs/08-open-items.md` (Amendments).
+
 ### Scoring oracle (T08; derived from `docs/02` §3)
 
 | Input | Expected |

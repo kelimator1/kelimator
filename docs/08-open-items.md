@@ -84,3 +84,6 @@ RESOLVED 2026-09-28 — evidence/A2-mochi.md — MochiAds lives entirely in the 
   audio behavior is asserted via state, never audibility. Applied to
   `playwright.config.ts` (orchestrator; verified by the C2 smoke suite —
   `evidence/logs/orchestrator-silent-runs.log`).
+- 2026-09-28 — T05 command reconciled (`docs/07` §1): the sound-map V7 check
+  runs as `npm test -- audio` (D4's `tests/audio.test.ts`); semantics
+  unchanged. Evidence: `evidence/D4-audio.md`.
