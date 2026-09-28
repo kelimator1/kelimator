@@ -33,6 +33,16 @@
 ## Unknowns
 - None assigned. Produces evidence for O17 (entry-type inspection).
 
+> Amendment 2026-09-28 (owner directive): B1 scope reduced — the exhaustive TDK
+> API enumeration was discontinued early (at ~1,150/1,644 pages; the orchestrator
+> terminated the `enumerate.py regex-pages` process) and the task is finalized
+> from the already-cached site datasets: the app bundle
+> (`artifacts/tdk/raw/probe_app.js`, 81,723 unique headwords) plus the sitemap,
+> per the audit `artifacts/tdk/bundle_coverage.json`. `abartmasız` and
+> `karzıhasen` are excluded by owner decision, silently (neither can appear in
+> gameplay: both are 10 letters). Evidence: `evidence/B1-acquisition.md`;
+> matching entry in `docs/08-open-items.md` (Amendments).
+
 ## Verify
 - V2: `artifacts/tdk/headwords.txt` exists; line count > 10,000 (if lower,
   record finding and BLOCKER — do not force).

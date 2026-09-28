@@ -1,0 +1,4 @@
+# Orchestrator — B1 enumeration halt (owner directive 2026-09-28)
+2026-09-28T17:39:17Z
+PID 88762: python -u enumerate.py regex-pages (cwd artifacts/tdk)
+Action: SIGTERM, then SIGKILL if needed; no further network enumeration permitted.

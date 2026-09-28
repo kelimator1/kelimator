@@ -124,3 +124,9 @@ RESOLVED 2026-09-28 — evidence/C3-fixture-format.md — harness fixture = Base
   `evidence/visual/**` copies stay frozen from each owning task's recording
   run. `C2_RECORD=1` / `E2_RECORD=1` re-record (`tests/e2e/smoke.spec.ts`,
   `tests/e2e/visual.spec.ts`).
+- 2026-09-28 — B1 scope reduced (owner directive): API enumeration discontinued
+  early (~1,150/1,644 pages); final headwords from the cached app bundle +
+  sitemap per `artifacts/tdk/bundle_coverage.json`; `abartmasız` and
+  `karzıhasen` excluded silently. Evidence: `evidence/B1-acquisition.md`,
+  `evidence/logs/orchestrator-B1-halt.log`; task note in
+  `tasks/B1-tdk-acquisition.md`.
