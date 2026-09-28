@@ -1,0 +1,488 @@
+tools/verify-all.sh — T15 final matrix (F3/G5)
+started: 2026-09-28T21:33:58Z
+log: test-results/verify-all/F3-verify-all.log
+
+===== [verify-all] STEP: lint =====
+$ npm run lint
+
+> kelimator-2012@0.0.0 lint
+> eslint .
+
+===== [verify-all] lint: PASS (exit 0) =====
+
+===== [verify-all] STEP: unit/integration (npm test) =====
+$ npm test
+
+> kelimator-2012@0.0.0 test
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.2 [39m[90m/home/dev/kelimator-2012[39m
+
+ [32m✓[39m tests/assets.test.mjs [2m([22m[2m9 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+ [32m✓[39m tests/audio.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+[90mstdout[2m | tests/rounds-fixtures.test.mjs
+[22m[39m[B3] viroloji source: tests/fixtures/rounds/viroloji.xml sha256=594e6a5377fbe8edef05f93850ac9eea4fc50c25fd5e6e9facf33186d4cd8621
+
+ [32m✓[39m tests/normalize-wordlist.test.mjs [2m([22m[2m19 tests[22m[2m)[22m[32m 93[2mms[22m[39m
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2mfixture: finalizm (archived xml.php, ISO-8859-9)[2m > [22m[2mis available and decodes byte-wise to FİNALİZM (plain text, not Base64)
+[22m[39m[B3] finalizm source: ../kelimator-nostalji/calistir/xml.php sha256=854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2mfixture: finalizm (archived xml.php, ISO-8859-9)[2m > [22m[2mpasses all structural checks (3–8 letters, multiset ⊂ main, main present, no duplicates)
+[22m[39m[B3] finalizm structural: main=FİNALİZM counts(3..7)=28/41/17/4/0 total=91 sorted=false checksum=19c4701ab499f750987eebe0bff07f9c
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2mfixture: finalizm (archived xml.php, ISO-8859-9)[2m > [22m[2mxml.php and xml64.php are byte-identical (the two archived FİNALİZM copies)
+[22m[39m[B3] xml.php = xml64.php sha256=854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2mfixture: finalizm (archived xml.php, ISO-8859-9)[2m > [22m[2menumeration check: every archived subword present in the archived dictionary is producible from FİNALİZM
+[22m[39m[B3] archived dictionary: /home/dev/kelimator-nostalji/kayitlar/sozluk_29749_kelime.xml sha256=558269a0fa7de05e90e96d62f583dcbb1c4a95510a0e7fe360629ffa40f47f00 raw=29749 uniqueRaw=27856 normalized=27814 droppedByPipeline=11 blocklisted=32
+[B3] finalizm enumeration: fixtureWords=90 inDictionary=83 producible=83 exceptions=0
+[B3] finalizm dictionary gaps (archived words absent from the archived dictionary): 7 -> ALİ, FAN, LAN, LİM, AMİN, İZAN, ZİFİN
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2mfixture: finalizm (archived xml.php, ISO-8859-9)[2m > [22m[2mthe bank round for FİNALİZM contains every archived subword present in tools/wordlist.txt
+[22m[39m[B3] finalizm bank round: generated=90 archivedWordsInCurrentWordlist=89 missing=0 addedSince2007=1 -> ZİLİ
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2mfixture: leavings (archived xml_eng.php; English, no dictionary cross-check)[2m > [22m[2mis available and decodes to LEAVINGS
+[22m[39m[B3] leavings source: ../kelimator-nostalji/calistir/xml_eng.php sha256=ba36b137fde8a4363e4435c0c48fc257fcbb1ac684e244b2062abc6140be7da8
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2mfixture: leavings (archived xml_eng.php; English, no dictionary cross-check)[2m > [22m[2mpasses all structural checks (3–8 letters, multiset ⊂ main, main present, no duplicates)
+[22m[39m[B3] leavings structural: main=LEAVINGS counts(3..7)=19/41/24/8/0 total=93 sorted=true
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2mfixture: viroloji (Wayback xml.php capture 2007-05-14)[2m > [22m[2mpasses all structural checks (3–8 letters, multiset ⊂ main, main present, no duplicates)
+[22m[39m[B3] viroloji structural: main=VİROLOJİ counts(3..7)=4/1/0/0/0
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2memitted bank (src/data/rounds.json; V2 invariants)[2m > [22m[2mevery round: total words ≥ configured T, and id = roundId(main)
+[22m[39m[B3] bank: rounds=7393 T=30 perLength(3..8)=149345/178376/122758/37801/14571/7393
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2memitted bank (src/data/rounds.json; V2 invariants)[2m > [22m[2mrecords (does not resolve) id collisions of the docs/06 §4 rule
+[22m[39m[B3] id collisions within the bank under the docs/06 §4 rule (spec defines no disambiguation; recorded in evidence/B3-bank.md): 33
+[B3]   asabilme <- ASABİLME, AŞABİLME
+[B3]   asilanma <- ASILANMA, AŞILANMA
+[B3]   asiverme <- ASIVERME, AŞIVERME
+[B3]   astirmak <- ASTIRMAK, AŞTIRMAK
+[B3]   bahsedis <- BAHSEDİŞ, BAHŞEDİŞ
+[B3]   bahsetme <- BAHSETME, BAHŞETME
+[B3]   beslemek <- BESLEMEK, BEŞLEMEK
+[B3]   estirmek <- ESTİRMEK, EŞTİRMEK
+[B3]   fislamak <- FISLAMAK, FIŞLAMAK
+[B3]   hafizali <- HAFIZALI, HAFIZALİ
+[B3]   kasinmak <- KASINMAK, KAŞINMAK
+[B3]   munakasa <- MÜNAKASA, MÜNAKAŞA
+[B3]   mutevazi <- MÜTEVAZI, MÜTEVAZİ
+[B3]   nakislik <- NAKISLIK, NAKIŞLIK
+[B3]   sadiklik <- SADIKLIK, SADİKLİK
+[B3]   suratsiz <- SURATSIZ, SÜRATSİZ
+[B3]   taharrus <- TAHARRÜS, TAHARRÜŞ
+[B3]   taslamak <- TASLAMAK, TAŞLAMAK
+[B3]   taslatma <- TASLATMA, TAŞLATMA
+[B3]   yaslanis <- YASLANIŞ, YAŞLANIŞ
+[B3]   yaslanma <- YASLANMA, YAŞLANMA
+[B3]   yaslilik <- YASLILIK, YAŞLILIK
+[B3]   islenmek <- İSLENMEK, İŞLENMEK
+[B3]   saklamak <- SAKLAMAK, ŞAKLAMAK
+[B3]   saklatma <- SAKLATMA, ŞAKLATMA
+[B3]   saklayis <- SAKLAYIŞ, ŞAKLAYIŞ
+[B3]   samanlik <- SAMANLIK, ŞAMANLIK
+[B3]   saplamak <- SAPLAMAK, ŞAPLAMAK
+[B3]   saplatma <- SAPLATMA, ŞAPLATMA
+[B3]   siklasma <- SIKLAŞMA, ŞIKLAŞMA
+[B3]   sirlamak <- SIRLAMAK, ŞIRLAMAK
+[B3]   sislemek <- SİSLEMEK, ŞİŞLEMEK
+[B3]   sislenme <- SİSLENME, ŞİŞLENME
+
+ [32m✓[39m tests/rounds-fixtures.test.mjs [2m([22m[2m20 tests[22m[2m)[22m[32m 121[2mms[22m[39m
+ [32m✓[39m tests/timer.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m verify/diff/diff.test.mjs [2m([22m[2m19 tests[22m[2m)[22m[33m 618[2mms[22m[39m
+ [32m✓[39m tests/stage.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m tests/speaker.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m tests/constants.test.mjs [2m([22m[2m3 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/scoring.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m tests/input.test.ts [2m([22m[2m29 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m tests/lifecycle.test.ts [2m([22m[2m23 tests[22m[2m)[22m[32m 46[2mms[22m[39m
+ [32m✓[39m tests/round.test.ts [2m([22m[2m34 tests[22m[2m)[22m[32m 55[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m13 passed[39m[22m[90m (13)[39m
+[2m      Tests [22m [1m[32m227 passed[39m[22m[90m (227)[39m
+[2m   Start at [22m 00:34:00
+[2m   Duration [22m 2.56s[2m (transform 52%, import 39%, tests 9%)[22m
+
+[2m  Transform [22m [33mtransforming modules took 6.00s[39m[2m · 52% of tracked time, re-done on every run[22m
+[2m            [22m [2mpersist transforms across runs with [22m[33mfsModuleCache: true[39m
+[2m            [22m [2mlearn more: https://vitest.dev/guide/improving-performance#caching-between-reruns[22m
+
+===== [verify-all] unit/integration (npm test): PASS (exit 0) =====
+
+===== [verify-all] STEP: schema validations (T06) =====
+$ step_schemas
+--- T06: data/rounds.schema.json vs src/data/rounds.json
+src/data/rounds.json valid
+--- T06: data/constants.schema.json vs data/constants.json
+data/constants.json valid
+--- T06: data/sound-map.schema.json vs data/sound-map.json
+data/sound-map.json valid
+--- T06: data/layout.schema.json vs data/layout.json
+data/layout.json valid
+T06 PASS: all 4 schema/data pairs valid
+===== [verify-all] schema validations (T06): PASS (exit 0) =====
+
+===== [verify-all] STEP: fixtures (T07) =====
+$ npm test -- fixtures
+
+> kelimator-2012@0.0.0 test
+> vitest run fixtures
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.2 [39m[90m/home/dev/kelimator-2012[39m
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs
+[22m[39m[B3] viroloji source: tests/fixtures/rounds/viroloji.xml sha256=594e6a5377fbe8edef05f93850ac9eea4fc50c25fd5e6e9facf33186d4cd8621
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2mfixture: finalizm (archived xml.php, ISO-8859-9)[2m > [22m[2mis available and decodes byte-wise to FİNALİZM (plain text, not Base64)
+[22m[39m[B3] finalizm source: ../kelimator-nostalji/calistir/xml.php sha256=854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2mfixture: finalizm (archived xml.php, ISO-8859-9)[2m > [22m[2mpasses all structural checks (3–8 letters, multiset ⊂ main, main present, no duplicates)
+[22m[39m[B3] finalizm structural: main=FİNALİZM counts(3..7)=28/41/17/4/0 total=91 sorted=false checksum=19c4701ab499f750987eebe0bff07f9c
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2mfixture: finalizm (archived xml.php, ISO-8859-9)[2m > [22m[2mxml.php and xml64.php are byte-identical (the two archived FİNALİZM copies)
+[22m[39m[B3] xml.php = xml64.php sha256=854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2mfixture: finalizm (archived xml.php, ISO-8859-9)[2m > [22m[2menumeration check: every archived subword present in the archived dictionary is producible from FİNALİZM
+[22m[39m[B3] archived dictionary: /home/dev/kelimator-nostalji/kayitlar/sozluk_29749_kelime.xml sha256=558269a0fa7de05e90e96d62f583dcbb1c4a95510a0e7fe360629ffa40f47f00 raw=29749 uniqueRaw=27856 normalized=27814 droppedByPipeline=11 blocklisted=32
+[B3] finalizm enumeration: fixtureWords=90 inDictionary=83 producible=83 exceptions=0
+[B3] finalizm dictionary gaps (archived words absent from the archived dictionary): 7 -> ALİ, FAN, LAN, LİM, AMİN, İZAN, ZİFİN
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2mfixture: finalizm (archived xml.php, ISO-8859-9)[2m > [22m[2mthe bank round for FİNALİZM contains every archived subword present in tools/wordlist.txt
+[22m[39m[B3] finalizm bank round: generated=90 archivedWordsInCurrentWordlist=89 missing=0 addedSince2007=1 -> ZİLİ
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2mfixture: leavings (archived xml_eng.php; English, no dictionary cross-check)[2m > [22m[2mis available and decodes to LEAVINGS
+[22m[39m[B3] leavings source: ../kelimator-nostalji/calistir/xml_eng.php sha256=ba36b137fde8a4363e4435c0c48fc257fcbb1ac684e244b2062abc6140be7da8
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2mfixture: leavings (archived xml_eng.php; English, no dictionary cross-check)[2m > [22m[2mpasses all structural checks (3–8 letters, multiset ⊂ main, main present, no duplicates)
+[22m[39m[B3] leavings structural: main=LEAVINGS counts(3..7)=19/41/24/8/0 total=93 sorted=true
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2mfixture: viroloji (Wayback xml.php capture 2007-05-14)[2m > [22m[2mpasses all structural checks (3–8 letters, multiset ⊂ main, main present, no duplicates)
+[22m[39m[B3] viroloji structural: main=VİROLOJİ counts(3..7)=4/1/0/0/0
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2memitted bank (src/data/rounds.json; V2 invariants)[2m > [22m[2mevery round: total words ≥ configured T, and id = roundId(main)
+[22m[39m[B3] bank: rounds=7393 T=30 perLength(3..8)=149345/178376/122758/37801/14571/7393
+
+[90mstdout[2m | tests/rounds-fixtures.test.mjs[2m > [22m[2memitted bank (src/data/rounds.json; V2 invariants)[2m > [22m[2mrecords (does not resolve) id collisions of the docs/06 §4 rule
+[22m[39m[B3] id collisions within the bank under the docs/06 §4 rule (spec defines no disambiguation; recorded in evidence/B3-bank.md): 33
+[B3]   asabilme <- ASABİLME, AŞABİLME
+[B3]   asilanma <- ASILANMA, AŞILANMA
+[B3]   asiverme <- ASIVERME, AŞIVERME
+[B3]   astirmak <- ASTIRMAK, AŞTIRMAK
+[B3]   bahsedis <- BAHSEDİŞ, BAHŞEDİŞ
+[B3]   bahsetme <- BAHSETME, BAHŞETME
+[B3]   beslemek <- BESLEMEK, BEŞLEMEK
+[B3]   estirmek <- ESTİRMEK, EŞTİRMEK
+[B3]   fislamak <- FISLAMAK, FIŞLAMAK
+[B3]   hafizali <- HAFIZALI, HAFIZALİ
+[B3]   kasinmak <- KASINMAK, KAŞINMAK
+[B3]   munakasa <- MÜNAKASA, MÜNAKAŞA
+[B3]   mutevazi <- MÜTEVAZI, MÜTEVAZİ
+[B3]   nakislik <- NAKISLIK, NAKIŞLIK
+[B3]   sadiklik <- SADIKLIK, SADİKLİK
+[B3]   suratsiz <- SURATSIZ, SÜRATSİZ
+[B3]   taharrus <- TAHARRÜS, TAHARRÜŞ
+[B3]   taslamak <- TASLAMAK, TAŞLAMAK
+[B3]   taslatma <- TASLATMA, TAŞLATMA
+[B3]   yaslanis <- YASLANIŞ, YAŞLANIŞ
+[B3]   yaslanma <- YASLANMA, YAŞLANMA
+[B3]   yaslilik <- YASLILIK, YAŞLILIK
+[B3]   islenmek <- İSLENMEK, İŞLENMEK
+[B3]   saklamak <- SAKLAMAK, ŞAKLAMAK
+[B3]   saklatma <- SAKLATMA, ŞAKLATMA
+[B3]   saklayis <- SAKLAYIŞ, ŞAKLAYIŞ
+[B3]   samanlik <- SAMANLIK, ŞAMANLIK
+[B3]   saplamak <- SAPLAMAK, ŞAPLAMAK
+[B3]   saplatma <- SAPLATMA, ŞAPLATMA
+[B3]   siklasma <- SIKLAŞMA, ŞIKLAŞMA
+[B3]   sirlamak <- SIRLAMAK, ŞIRLAMAK
+[B3]   sislemek <- SİSLEMEK, ŞİŞLEMEK
+[B3]   sislenme <- SİSLENME, ŞİŞLENME
+
+ [32m✓[39m tests/rounds-fixtures.test.mjs [2m([22m[2m20 tests[22m[2m)[22m[32m 84[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m20 passed[39m[22m[90m (20)[39m
+[2m   Start at [22m 00:34:04
+[2m   Duration [22m 258ms[2m (tests 42%, import 42%, transform 15%, worker 1%)[22m
+
+===== [verify-all] fixtures (T07): PASS (exit 0) =====
+
+===== [verify-all] STEP: idempotency (T10) =====
+$ step_idempotency
+--- T10: node tools/build-rounds.mjs (run 1)
+[B3] wordlist: tools/wordlist.txt (62809 words, sha256=ac9987ce0d07688ce5db913f5cb112efe0e035f227d908431350c2d96fde8758)
+[B3] batch: candidates(length 8)=9107 subwords(3..7)=22772
+[B3] config: tools/build-config.json thresholdT=30 evidence=evidence/B3-threshold.md
+[B3] rounds: 7393 (total words per round >= 30)
+[B3] words length 3: total=149345 distinct=757
+[B3] words length 4: total=178376 distinct=2053
+[B3] words length 5: total=122758 distinct=5195
+[B3] words length 6: total=37801 distinct=4581
+[B3] words length 7: total=14571 distinct=3912
+[B3] words length 8: total=7393 distinct=7393
+[B3] words per round: min=30 max=268 mean=69.02
+[B3] id collisions over all candidates: 45
+[B3]   id collision: asabilme <- ASABİLME, AŞABİLME
+[B3]   id collision: asilanis <- ASILANIŞ, AŞILANIŞ
+[B3]   id collision: asilanma <- ASILANMA, AŞILANMA
+[B3]   id collision: asiverme <- ASIVERME, AŞIVERME
+[B3]   id collision: astirmak <- ASTIRMAK, AŞTIRMAK
+[B3]   id collision: bahsedis <- BAHSEDİŞ, BAHŞEDİŞ
+[B3]   id collision: bahsetme <- BAHSETME, BAHŞETME
+[B3]   id collision: beslemek <- BESLEMEK, BEŞLEMEK
+[B3]   id collision: bicirgan <- BICIRGAN, BIÇIRGAN
+[B3]   id collision: burgusuz <- BURGUSUZ, BÜRGÜSÜZ
+[B3]   id collision: estirmek <- ESTİRMEK, EŞTİRMEK
+[B3]   id collision: fislamak <- FISLAMAK, FIŞLAMAK
+[B3]   id collision: hafizali <- HAFIZALI, HAFIZALİ
+[B3]   id collision: kasinmak <- KASINMAK, KAŞINMAK
+[B3]   id collision: kopuksuz <- KOPUKSUZ, KÖPÜKSÜZ
+[B3]   id collision: kusursuz <- KUSURSUZ, KÜSURSUZ
+[B3]   id collision: kinlilik <- KINLILIK, KİNLİLİK
+[B3]   id collision: munakasa <- MÜNAKASA, MÜNAKAŞA
+[B3]   id collision: mutevazi <- MÜTEVAZI, MÜTEVAZİ
+[B3]   id collision: nakislik <- NAKISLIK, NAKIŞLIK
+[B3]   id collision: sadiklik <- SADIKLIK, SADİKLİK
+[B3]   id collision: suratsiz <- SURATSIZ, SÜRATSİZ
+[B3]   id collision: sinirsiz <- SINIRSIZ, SİNİRSİZ
+[B3]   id collision: taharrus <- TAHARRÜS, TAHARRÜŞ
+[B3]   id collision: taslamak <- TASLAMAK, TAŞLAMAK
+[B3]   id collision: taslatma <- TASLATMA, TAŞLATMA
+[B3]   id collision: tutturus <- TUTTURUŞ, TÜTTÜRÜŞ
+[B3]   id collision: yaslanis <- YASLANIŞ, YAŞLANIŞ
+[B3]   id collision: yaslanma <- YASLANMA, YAŞLANMA
+[B3]   id collision: yaslilik <- YASLILIK, YAŞLILIK
+[B3]   id collision: olgunluk <- OLGUNLUK, ÖLGÜNLÜK
+[B3]   id collision: olmusluk <- OLMUŞLUK, ÖLMÜŞLÜK
+[B3]   id collision: oluverme <- OLUVERME, ÖLÜVERME
+[B3]   id collision: islenmek <- İSLENMEK, İŞLENMEK
+[B3]   id collision: issizlik <- ISSIZLIK, İŞSİZLİK
+[B3]   id collision: saklamak <- SAKLAMAK, ŞAKLAMAK
+[B3]   id collision: saklatma <- SAKLATMA, ŞAKLATMA
+[B3]   id collision: saklayis <- SAKLAYIŞ, ŞAKLAYIŞ
+[B3]   id collision: samanlik <- SAMANLIK, ŞAMANLIK
+[B3]   id collision: saplamak <- SAPLAMAK, ŞAPLAMAK
+[B3]   id collision: saplatma <- SAPLATMA, ŞAPLATMA
+[B3]   id collision: siklasma <- SIKLAŞMA, ŞIKLAŞMA
+[B3]   id collision: sirlamak <- SIRLAMAK, ŞIRLAMAK
+[B3]   id collision: sislemek <- SİSLEMEK, ŞİŞLEMEK
+[B3]   id collision: sislenme <- SİSLENME, ŞİŞLENME
+[B3] id collisions within the bank: 33
+[B3]   bank id collision: asabilme <- ASABİLME, AŞABİLME
+[B3]   bank id collision: asilanma <- ASILANMA, AŞILANMA
+[B3]   bank id collision: asiverme <- ASIVERME, AŞIVERME
+[B3]   bank id collision: astirmak <- ASTIRMAK, AŞTIRMAK
+[B3]   bank id collision: bahsedis <- BAHSEDİŞ, BAHŞEDİŞ
+[B3]   bank id collision: bahsetme <- BAHSETME, BAHŞETME
+[B3]   bank id collision: beslemek <- BESLEMEK, BEŞLEMEK
+[B3]   bank id collision: estirmek <- ESTİRMEK, EŞTİRMEK
+[B3]   bank id collision: fislamak <- FISLAMAK, FIŞLAMAK
+[B3]   bank id collision: hafizali <- HAFIZALI, HAFIZALİ
+[B3]   bank id collision: kasinmak <- KASINMAK, KAŞINMAK
+[B3]   bank id collision: munakasa <- MÜNAKASA, MÜNAKAŞA
+[B3]   bank id collision: mutevazi <- MÜTEVAZI, MÜTEVAZİ
+[B3]   bank id collision: nakislik <- NAKISLIK, NAKIŞLIK
+[B3]   bank id collision: sadiklik <- SADIKLIK, SADİKLİK
+[B3]   bank id collision: suratsiz <- SURATSIZ, SÜRATSİZ
+[B3]   bank id collision: taharrus <- TAHARRÜS, TAHARRÜŞ
+[B3]   bank id collision: taslamak <- TASLAMAK, TAŞLAMAK
+[B3]   bank id collision: taslatma <- TASLATMA, TAŞLATMA
+[B3]   bank id collision: yaslanis <- YASLANIŞ, YAŞLANIŞ
+[B3]   bank id collision: yaslanma <- YASLANMA, YAŞLANMA
+[B3]   bank id collision: yaslilik <- YASLILIK, YAŞLILIK
+[B3]   bank id collision: islenmek <- İSLENMEK, İŞLENMEK
+[B3]   bank id collision: saklamak <- SAKLAMAK, ŞAKLAMAK
+[B3]   bank id collision: saklatma <- SAKLATMA, ŞAKLATMA
+[B3]   bank id collision: saklayis <- SAKLAYIŞ, ŞAKLAYIŞ
+[B3]   bank id collision: samanlik <- SAMANLIK, ŞAMANLIK
+[B3]   bank id collision: saplamak <- SAPLAMAK, ŞAPLAMAK
+[B3]   bank id collision: saplatma <- SAPLATMA, ŞAPLATMA
+[B3]   bank id collision: siklasma <- SIKLAŞMA, ŞIKLAŞMA
+[B3]   bank id collision: sirlamak <- SIRLAMAK, ŞIRLAMAK
+[B3]   bank id collision: sislemek <- SİSLEMEK, ŞİŞLEMEK
+[B3]   bank id collision: sislenme <- SİSLENME, ŞİŞLENME
+[B3] output: src/data/rounds.json (12257523 bytes, sha256=7e4e149b3862b3f5ab77f755e8a8ae4215c2c8568a8ad30ee2311384b14b9a96)
+--- T10: node tools/build-rounds.mjs (run 2)
+[B3] wordlist: tools/wordlist.txt (62809 words, sha256=ac9987ce0d07688ce5db913f5cb112efe0e035f227d908431350c2d96fde8758)
+[B3] batch: candidates(length 8)=9107 subwords(3..7)=22772
+[B3] config: tools/build-config.json thresholdT=30 evidence=evidence/B3-threshold.md
+[B3] rounds: 7393 (total words per round >= 30)
+[B3] words length 3: total=149345 distinct=757
+[B3] words length 4: total=178376 distinct=2053
+[B3] words length 5: total=122758 distinct=5195
+[B3] words length 6: total=37801 distinct=4581
+[B3] words length 7: total=14571 distinct=3912
+[B3] words length 8: total=7393 distinct=7393
+[B3] words per round: min=30 max=268 mean=69.02
+[B3] id collisions over all candidates: 45
+[B3]   id collision: asabilme <- ASABİLME, AŞABİLME
+[B3]   id collision: asilanis <- ASILANIŞ, AŞILANIŞ
+[B3]   id collision: asilanma <- ASILANMA, AŞILANMA
+[B3]   id collision: asiverme <- ASIVERME, AŞIVERME
+[B3]   id collision: astirmak <- ASTIRMAK, AŞTIRMAK
+[B3]   id collision: bahsedis <- BAHSEDİŞ, BAHŞEDİŞ
+[B3]   id collision: bahsetme <- BAHSETME, BAHŞETME
+[B3]   id collision: beslemek <- BESLEMEK, BEŞLEMEK
+[B3]   id collision: bicirgan <- BICIRGAN, BIÇIRGAN
+[B3]   id collision: burgusuz <- BURGUSUZ, BÜRGÜSÜZ
+[B3]   id collision: estirmek <- ESTİRMEK, EŞTİRMEK
+[B3]   id collision: fislamak <- FISLAMAK, FIŞLAMAK
+[B3]   id collision: hafizali <- HAFIZALI, HAFIZALİ
+[B3]   id collision: kasinmak <- KASINMAK, KAŞINMAK
+[B3]   id collision: kopuksuz <- KOPUKSUZ, KÖPÜKSÜZ
+[B3]   id collision: kusursuz <- KUSURSUZ, KÜSURSUZ
+[B3]   id collision: kinlilik <- KINLILIK, KİNLİLİK
+[B3]   id collision: munakasa <- MÜNAKASA, MÜNAKAŞA
+[B3]   id collision: mutevazi <- MÜTEVAZI, MÜTEVAZİ
+[B3]   id collision: nakislik <- NAKISLIK, NAKIŞLIK
+[B3]   id collision: sadiklik <- SADIKLIK, SADİKLİK
+[B3]   id collision: suratsiz <- SURATSIZ, SÜRATSİZ
+[B3]   id collision: sinirsiz <- SINIRSIZ, SİNİRSİZ
+[B3]   id collision: taharrus <- TAHARRÜS, TAHARRÜŞ
+[B3]   id collision: taslamak <- TASLAMAK, TAŞLAMAK
+[B3]   id collision: taslatma <- TASLATMA, TAŞLATMA
+[B3]   id collision: tutturus <- TUTTURUŞ, TÜTTÜRÜŞ
+[B3]   id collision: yaslanis <- YASLANIŞ, YAŞLANIŞ
+[B3]   id collision: yaslanma <- YASLANMA, YAŞLANMA
+[B3]   id collision: yaslilik <- YASLILIK, YAŞLILIK
+[B3]   id collision: olgunluk <- OLGUNLUK, ÖLGÜNLÜK
+[B3]   id collision: olmusluk <- OLMUŞLUK, ÖLMÜŞLÜK
+[B3]   id collision: oluverme <- OLUVERME, ÖLÜVERME
+[B3]   id collision: islenmek <- İSLENMEK, İŞLENMEK
+[B3]   id collision: issizlik <- ISSIZLIK, İŞSİZLİK
+[B3]   id collision: saklamak <- SAKLAMAK, ŞAKLAMAK
+[B3]   id collision: saklatma <- SAKLATMA, ŞAKLATMA
+[B3]   id collision: saklayis <- SAKLAYIŞ, ŞAKLAYIŞ
+[B3]   id collision: samanlik <- SAMANLIK, ŞAMANLIK
+[B3]   id collision: saplamak <- SAPLAMAK, ŞAPLAMAK
+[B3]   id collision: saplatma <- SAPLATMA, ŞAPLATMA
+[B3]   id collision: siklasma <- SIKLAŞMA, ŞIKLAŞMA
+[B3]   id collision: sirlamak <- SIRLAMAK, ŞIRLAMAK
+[B3]   id collision: sislemek <- SİSLEMEK, ŞİŞLEMEK
+[B3]   id collision: sislenme <- SİSLENME, ŞİŞLENME
+[B3] id collisions within the bank: 33
+[B3]   bank id collision: asabilme <- ASABİLME, AŞABİLME
+[B3]   bank id collision: asilanma <- ASILANMA, AŞILANMA
+[B3]   bank id collision: asiverme <- ASIVERME, AŞIVERME
+[B3]   bank id collision: astirmak <- ASTIRMAK, AŞTIRMAK
+[B3]   bank id collision: bahsedis <- BAHSEDİŞ, BAHŞEDİŞ
+[B3]   bank id collision: bahsetme <- BAHSETME, BAHŞETME
+[B3]   bank id collision: beslemek <- BESLEMEK, BEŞLEMEK
+[B3]   bank id collision: estirmek <- ESTİRMEK, EŞTİRMEK
+[B3]   bank id collision: fislamak <- FISLAMAK, FIŞLAMAK
+[B3]   bank id collision: hafizali <- HAFIZALI, HAFIZALİ
+[B3]   bank id collision: kasinmak <- KASINMAK, KAŞINMAK
+[B3]   bank id collision: munakasa <- MÜNAKASA, MÜNAKAŞA
+[B3]   bank id collision: mutevazi <- MÜTEVAZI, MÜTEVAZİ
+[B3]   bank id collision: nakislik <- NAKISLIK, NAKIŞLIK
+[B3]   bank id collision: sadiklik <- SADIKLIK, SADİKLİK
+[B3]   bank id collision: suratsiz <- SURATSIZ, SÜRATSİZ
+[B3]   bank id collision: taharrus <- TAHARRÜS, TAHARRÜŞ
+[B3]   bank id collision: taslamak <- TASLAMAK, TAŞLAMAK
+[B3]   bank id collision: taslatma <- TASLATMA, TAŞLATMA
+[B3]   bank id collision: yaslanis <- YASLANIŞ, YAŞLANIŞ
+[B3]   bank id collision: yaslanma <- YASLANMA, YAŞLANMA
+[B3]   bank id collision: yaslilik <- YASLILIK, YAŞLILIK
+[B3]   bank id collision: islenmek <- İSLENMEK, İŞLENMEK
+[B3]   bank id collision: saklamak <- SAKLAMAK, ŞAKLAMAK
+[B3]   bank id collision: saklatma <- SAKLATMA, ŞAKLATMA
+[B3]   bank id collision: saklayis <- SAKLAYIŞ, ŞAKLAYIŞ
+[B3]   bank id collision: samanlik <- SAMANLIK, ŞAMANLIK
+[B3]   bank id collision: saplamak <- SAPLAMAK, ŞAPLAMAK
+[B3]   bank id collision: saplatma <- SAPLATMA, ŞAPLATMA
+[B3]   bank id collision: siklasma <- SIKLAŞMA, ŞIKLAŞMA
+[B3]   bank id collision: sirlamak <- SIRLAMAK, ŞIRLAMAK
+[B3]   bank id collision: sislemek <- SİSLEMEK, ŞİŞLEMEK
+[B3]   bank id collision: sislenme <- SİSLENME, ŞİŞLENME
+[B3] output: src/data/rounds.json (12257523 bytes, sha256=7e4e149b3862b3f5ab77f755e8a8ae4215c2c8568a8ad30ee2311384b14b9a96)
+T10 run 1 sha256=7e4e149b3862b3f5ab77f755e8a8ae4215c2c8568a8ad30ee2311384b14b9a96
+T10 run 2 sha256=7e4e149b3862b3f5ab77f755e8a8ae4215c2c8568a8ad30ee2311384b14b9a96
+T10 recorded  sha256=7e4e149b3862b3f5ab77f755e8a8ae4215c2c8568a8ad30ee2311384b14b9a96
+T10 PASS: identical SHA-256 across the two rebuilds and the committed artifact
+===== [verify-all] idempotency (T10): PASS (exit 0) =====
+
+===== [verify-all] STEP: cross-consistency (T04/T05) =====
+$ step_cross_consistency
+--- T04: npm test -- constants
+
+> kelimator-2012@0.0.0 test
+> vitest run constants
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.2 [39m[90m/home/dev/kelimator-2012[39m
+
+ [32m✓[39m tests/constants.test.mjs [2m([22m[2m3 tests[22m[2m)[22m[32m 2[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m3 passed[39m[22m[90m (3)[39m
+[2m   Start at [22m 00:34:07
+[2m   Duration [22m 95ms[2m (transform 50%, import 29%, tests 11%, worker 10%)[22m
+
+--- T05: npm test -- audio (amended command, docs/07 §1)
+
+> kelimator-2012@0.0.0 test
+> vitest run audio
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.2 [39m[90m/home/dev/kelimator-2012[39m
+
+ [32m✓[39m tests/audio.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m17 passed[39m[22m[90m (17)[39m
+[2m   Start at [22m 00:34:08
+[2m   Duration [22m 122ms[2m (transform 62%, import 21%, tests 12%, worker 4%)[22m
+
+T04/T05 PASS: constants and sound-map cross-consistency green
+===== [verify-all] cross-consistency (T04/T05): PASS (exit 0) =====
+
+===== [verify-all] STEP: visual (T11) =====
+$ npm run e2e -- visual
+
+> kelimator-2012@0.0.0 e2e
+> playwright test visual
+
+
+Running 17 tests using 1 worker
+
+E2 S1 dsf1: raw=0.018477272727272728 (1.848%), tolerant=0.0006227272727272727 (0.062%), mismatchedPixels=4065/220000, tolerantMismatchedPixels=137, pass=true
+  ✓   1 [app] › tests/e2e/visual.spec.ts:178:7 › E2 visual states — deviceScaleFactor 1 › S1 S1-boot matches the C3 reference (1.3s)
+E2 S2 dsf1: raw=0.04189090909090909 (4.189%), tolerant=0.009804545454545455 (0.980%), mismatchedPixels=9216/220000, tolerantMismatchedPixels=2157, pass=true
+  ✓   2 [app] › tests/e2e/visual.spec.ts:178:7 › E2 visual states — deviceScaleFactor 1 › S2 S2-idle-board matches the C3 reference (866ms)
+E2 S3 dsf1: raw=0.04190454545454545 (4.190%), tolerant=0.009740909090909092 (0.974%), mismatchedPixels=9219/220000, tolerantMismatchedPixels=2143, pass=true
+  ✓   3 [app] › tests/e2e/visual.spec.ts:178:7 › E2 visual states — deviceScaleFactor 1 › S3 S3-scrambled matches the C3 reference (746ms)
+E2 S4 dsf1: raw=0.057031818181818184 (5.703%), tolerant=0.013590909090909091 (1.359%), mismatchedPixels=12547/220000, tolerantMismatchedPixels=2990, pass=true
+  ✓   4 [app] › tests/e2e/visual.spec.ts:178:7 › E2 visual states — deviceScaleFactor 1 › S4 S4-partial-entry matches the C3 reference (745ms)
+E2 S5 dsf1: raw=0.042777272727272726 (4.278%), tolerant=0.009772727272727273 (0.977%), mismatchedPixels=9411/220000, tolerantMismatchedPixels=2150, pass=true
+  ✓   5 [app] › tests/e2e/visual.spec.ts:178:7 › E2 visual states — deviceScaleFactor 1 › S5 S5-valid-word matches the C3 reference (784ms)
+E2 S6 dsf1: raw=0.0573 (5.730%), tolerant=0.01304090909090909 (1.304%), mismatchedPixels=12606/220000, tolerantMismatchedPixels=2869, pass=true
+  ✓   6 [app] › tests/e2e/visual.spec.ts:178:7 › E2 visual states — deviceScaleFactor 1 › S6 S6-invalid-word matches the C3 reference (745ms)
+E2 S7 dsf1: raw=0.04408181818181818 (4.408%), tolerant=0.0098 (0.980%), mismatchedPixels=9698/220000, tolerantMismatchedPixels=2156, pass=true
+  ✓   7 [app] › tests/e2e/visual.spec.ts:178:7 › E2 visual states — deviceScaleFactor 1 › S7 S7-bonus-word matches the C3 reference (784ms)
+E2 S10 dsf1: raw=0.04561818181818182 (4.562%), tolerant=0.009245454545454546 (0.925%), mismatchedPixels=10036/220000, tolerantMismatchedPixels=2034, pass=true
+  ✓   8 [app] › tests/e2e/visual.spec.ts:178:7 › E2 visual states — deviceScaleFactor 1 › S10 S10-next-round matches the C3 reference (833ms)
+E2 S1 dsf2: raw=0.014513636363636364 (1.451%), tolerant=0.0001534090909090909 (0.015%), mismatchedPixels=12772/880000, tolerantMismatchedPixels=135, pass=true
+  ✓   9 [app] › tests/e2e/visual.spec.ts:178:7 › E2 visual states — deviceScaleFactor 2 › S1 S1-boot matches the C3 reference (794ms)
+E2 S2 dsf2: raw=0.054327272727272724 (5.433%), tolerant=0.0028056818181818183 (0.281%), mismatchedPixels=47808/880000, tolerantMismatchedPixels=2469, pass=true
+  ✓  10 [app] › tests/e2e/visual.spec.ts:178:7 › E2 visual states — deviceScaleFactor 2 › S2 S2-idle-board matches the C3 reference (807ms)
+E2 S3 dsf2: raw=0.05434772727272727 (5.435%), tolerant=0.002796590909090909 (0.280%), mismatchedPixels=47826/880000, tolerantMismatchedPixels=2461, pass=true
+  ✓  11 [app] › tests/e2e/visual.spec.ts:178:7 › E2 visual states — deviceScaleFactor 2 › S3 S3-scrambled matches the C3 reference (814ms)
+E2 S4 dsf2: raw=0.06629204545454545 (6.629%), tolerant=0.009154545454545455 (0.915%), mismatchedPixels=58337/880000, tolerantMismatchedPixels=8056, pass=true
+  ✓  12 [app] › tests/e2e/visual.spec.ts:178:7 › E2 visual states — deviceScaleFactor 2 › S4 S4-partial-entry matches the C3 reference (809ms)
+E2 S5 dsf2: raw=0.0551875 (5.519%), tolerant=0.002925 (0.292%), mismatchedPixels=48565/880000, tolerantMismatchedPixels=2574, pass=true
+  ✓  13 [app] › tests/e2e/visual.spec.ts:178:7 › E2 visual states — deviceScaleFactor 2 › S5 S5-valid-word matches the C3 reference (803ms)
+E2 S6 dsf2: raw=0.06718636363636364 (6.719%), tolerant=0.009398863636363636 (0.940%), mismatchedPixels=59124/880000, tolerantMismatchedPixels=8271, pass=true
+  ✓  14 [app] › tests/e2e/visual.spec.ts:178:7 › E2 visual states — deviceScaleFactor 2 › S6 S6-invalid-word matches the C3 reference (865ms)
+E2 S7 dsf2: raw=0.05624886363636364 (5.625%), tolerant=0.0029761363636363635 (0.298%), mismatchedPixels=49499/880000, tolerantMismatchedPixels=2619, pass=true
+  ✓  15 [app] › tests/e2e/visual.spec.ts:178:7 › E2 visual states — deviceScaleFactor 2 › S7 S7-bonus-word matches the C3 reference (827ms)
+E2 S10 dsf2: raw=0.05824659090909091 (5.825%), tolerant=0.004114772727272727 (0.411%), mismatchedPixels=51257/880000, tolerantMismatchedPixels=3621, pass=true
+  ✓  16 [app] › tests/e2e/visual.spec.ts:178:7 › E2 visual states — deviceScaleFactor 2 › S10 S10-next-round matches the C3 reference (806ms)
+  ✓  17 [app] › tests/e2e/visual.spec.ts:262:3 › E2 V7 layout cross-consistency › rendered boxes and text styles equal src/data/layout.json (587ms)
+
+  17 passed (14.9s)
+tee: test-results/verify-all/F3-verify-all.log: No such file or directory
+===== [verify-all] visual (T11): PASS (exit 0) =====

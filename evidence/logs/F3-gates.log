@@ -1,0 +1,181 @@
+# F3 — gate re-verification outside tools/verify-all.sh (G1–G4) + fixed decisions (README §2)
+Task: F3 — Final Matrix (docs/07 §6 gate checklists; README §2 re-check)
+Started: 2026-09-28T21:41:52Z
+Host+OS: dev-host / macOS (arm64)
+
+== T01 — reference SWF MD5 (expected af059ff9d75cefbc244f03814b47be9c) ==
+MD5 (../kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf) = af059ff9d75cefbc244f03814b47be9c
+
+== T02/T03 — A1 verifier (extraction inventory, exported sounds) ==
+$ python3 artifacts/tools/a1-verify.py <swf> artifacts/decompiled ../kelimator-nostalji/sesler
+== raw SWF header
+[PASS] V2e signature is CWS (zlib) -- CWS
+[PASS] V2e stage size 550x400 -- 550.0x400.0
+[PASS] V2e frame rate 36 -- 36.0
+[PASS] V2e frame count 241 -- 241
+
+== export class counts (docs/01 section 3)
+[PASS] shape SVG count = 33+2+12 = 47 -- 47
+[PASS] sprite dir count = 37 -- 37
+[PASS] image PNG count = 2 -- 2
+[PASS] MP3 sound file count = 9 -- 9
+[PASS] font TTF count = 3 -- 3
+[PASS] text file count = 15+47 = 62 -- 62
+[PASS] script file count = 49 DoAction + 10 ButtonCondAction + 1 ClipActionRecord = 60 -- 60
+[PASS] no empty files in shapes/ -- empty=0
+[PASS] no empty files in sprites/ -- empty=0
+[PASS] no empty files in images/ -- empty=0
+[PASS] no empty files in sounds/ -- empty=0
+[PASS] no empty files in fonts/ -- empty=0
+[PASS] scripts class has non-empty files -- empty=2
+[PASS] texts class has non-empty files -- empty=21
+[PASS] file header.txt exists and is non-empty -- 187 bytes
+[PASS] file tags.txt exists and is non-empty -- 191647 bytes
+[PASS] file swf-inspect.json exists and is non-empty -- 23410 bytes
+[PASS] file tags.xml exists and is non-empty -- 9054330 bytes
+
+== V1 header.txt vs raw SWF
+[PASS] header version=6 -- 6
+[PASS] header 550x400 -- 550x400
+[PASS] header frameRate=36 -- 36
+[PASS] header frameCount=241 -- 241
+
+== V2b DefineSound payloads (raw, empirical)
+[PASS] sound ids exactly 22,24,26,30,32,34,36,38,40 -- [22, 24, 26, 30, 32, 34, 36, 38, 40]
+[PASS] DefineSound tag payload lengths match docs/01 section 3 exactly -- [1959, 4039, 919, 1569, 21849, 2739, 1439, 1699, 2739]
+    tag payload length | SoundData length | exported file | file size | export==SoundData[2:]
+    id=22    1959 |   1952 | sounds/22.mp3 |   1950 | True
+    id=24    4039 |   4032 | sounds/24.mp3 |   4030 | True
+    id=26     919 |    912 | sounds/26.mp3 |    910 | True
+    id=30    1569 |   1562 | sounds/30.mp3 |   1560 | True
+    id=32   21849 |  21842 | sounds/32.mp3 |  21840 | True
+    id=34    2739 |   2732 | sounds/34.mp3 |   2730 | True
+    id=36    1439 |   1432 | sounds/36.mp3 |   1430 | True
+    id=38    1699 |   1692 | sounds/38.mp3 |   1690 | True
+    id=40    2739 |   2732 | sounds/40.mp3 |   2730 | True
+
+== V2b local ../kelimator-nostalji/sesler copies vs export (verify, do not assume)
+[PASS] local copy count = 9 -- 9
+    sound_1_id21_fmt2_r2.mp3.fixed.mp3 (1953 B, filename id 21) vs 2012 sound id 22: relation = 0x00 + raw SoundData | sha256(local)=0dbb7009fc16a2997888a14723438afd3f9c0ce2ad0f0bc61ae9168027802a35
+[PASS] local copy sound_1_id21_fmt2_r2.mp3.fixed.mp3 verified against 2012 raw payload -- 0x00 + raw SoundData
+    sound_2_id23_fmt2_r2.mp3.fixed.mp3 (4033 B, filename id 23) vs 2012 sound id 24: relation = 0x00 + raw SoundData | sha256(local)=3f9c98b37c853600acf8edf8768921117c93157ce08f2ecf65a7f0e612f50217
+[PASS] local copy sound_2_id23_fmt2_r2.mp3.fixed.mp3 verified against 2012 raw payload -- 0x00 + raw SoundData
+    sound_3_id25_fmt2_r2.mp3.fixed.mp3 (913 B, filename id 25) vs 2012 sound id 26: relation = 0x00 + raw SoundData | sha256(local)=58e86971869cb855d7e8f441ed3c72c4ce7bcda9a026cc471fafaaa63e1d1745
+[PASS] local copy sound_3_id25_fmt2_r2.mp3.fixed.mp3 verified against 2012 raw payload -- 0x00 + raw SoundData
+    sound_4_id29_fmt2_r2.mp3.fixed.mp3 (1563 B, filename id 29) vs 2012 sound id 30: relation = 0x00 + raw SoundData | sha256(local)=7fd476b917288c3253ee7b92a9ddd0e025ea4225ffe2fac9154accc2c7c3752c
+[PASS] local copy sound_4_id29_fmt2_r2.mp3.fixed.mp3 verified against 2012 raw payload -- 0x00 + raw SoundData
+    sound_5_id31_fmt2_r2.mp3.fixed.mp3 (21843 B, filename id 31) vs 2012 sound id 32: relation = 0x00 + raw SoundData | sha256(local)=6128b1dec22dda243ceffff943695f845e93059888cb08db24fd53024c24fc8a
+[PASS] local copy sound_5_id31_fmt2_r2.mp3.fixed.mp3 verified against 2012 raw payload -- 0x00 + raw SoundData
+    sound_6_id33_fmt2_r2.mp3.fixed.mp3 (2733 B, filename id 33) vs 2012 sound id 34: relation = 0x00 + raw SoundData | sha256(local)=472b1d08a9aff893c719639850da8f38f8e2abbe470e3446d756c87c5f83e35d
+[PASS] local copy sound_6_id33_fmt2_r2.mp3.fixed.mp3 verified against 2012 raw payload -- 0x00 + raw SoundData
+    sound_7_id35_fmt2_r2.mp3.fixed.mp3 (1433 B, filename id 35) vs 2012 sound id 36: relation = 0x00 + raw SoundData | sha256(local)=0d425ffbd69436b821afcff1bf6cc9f23e38491ed00a3b5c56171a856ca9e50d
+[PASS] local copy sound_7_id35_fmt2_r2.mp3.fixed.mp3 verified against 2012 raw payload -- 0x00 + raw SoundData
+    sound_8_id37_fmt2_r2.mp3.fixed.mp3 (1693 B, filename id 37) vs 2012 sound id 38: relation = 0x00 + raw SoundData | sha256(local)=d1886b3d3be1ee7025b145735ce6d5fd1ce9a5853e5149b2aa55de894cdef94e
+[PASS] local copy sound_8_id37_fmt2_r2.mp3.fixed.mp3 verified against 2012 raw payload -- 0x00 + raw SoundData
+    sound_9_id39_fmt2_r2.mp3.fixed.mp3 (2733 B, filename id 39) vs 2012 sound id 40: relation = 0x00 + raw SoundData | sha256(local)=caf26cc94a3bb6f3694de114c21dcd82e6737a1874d8b3e6a0ca4692b7dd922c
+[PASS] local copy sound_9_id39_fmt2_r2.mp3.fixed.mp3 verified against 2012 raw payload -- 0x00 + raw SoundData
+
+== V2 sound files playable (afinfo exit 0)
+[PASS] afinfo sounds/-1.wav -- exit=0
+[PASS] afinfo sounds/22.mp3 -- exit=0
+[PASS] afinfo sounds/24.mp3 -- exit=0
+[PASS] afinfo sounds/26.mp3 -- exit=0
+[PASS] afinfo sounds/30.mp3 -- exit=0
+[PASS] afinfo sounds/32.mp3 -- exit=0
+[PASS] afinfo sounds/34.mp3 -- exit=0
+[PASS] afinfo sounds/36.mp3 -- exit=0
+[PASS] afinfo sounds/38.mp3 -- exit=0
+[PASS] afinfo sounds/40.mp3 -- exit=0
+
+== V2c SVG well-formedness (xml.dom.minidom)
+[PASS] all 521 exported SVGs parse as well-formed XML -- bad=0
+
+== V2d exported PNG dimensions vs DefineBitsLossless definitions
+[PASS] images/47.png is PNG 550x400 -- actual 550x400 magic=True
+[PASS] images/86.png is PNG 21x29 -- actual 21x29 magic=True
+
+== V2e timeline reference completeness (shapes/sprites/images/sounds/texts)
+    defined characters by kind: BitsLossless=1, BitsLossless2=1, Button2=10, EditText=47, Font2=3, Shape=33, Shape2=2, Shape3=12, Sound=9, Sprite=37, Text=15
+[PASS] every DefineShape/2/3 has an SVG export -- defined=47 exported=47 missing=[]
+[PASS] every DefineSprite has an SVG frame export -- defined=37 exported=37 missing=[]
+[PASS] every bitmap definition has a PNG export -- defined=2 exported=2
+[PASS] every DefineText/2/EditText has a text export -- defined=62 exported=62 missing=[]
+[PASS] every DefineSound is in the expected id list -- [22, 24, 26, 30, 32, 34, 36, 38, 40]
+    PlaceObject2-referenced character ids: 122 unique
+    referenced ids with no exported counterpart: none
+[PASS] every referenced character id has an exported counterpart -- []
+    StartSound-referenced sound ids: []
+[PASS] every StartSound target has an exported MP3 -- []
+[PASS] all 9 DefineSound ids have an exported MP3 -- [22, 24, 26, 30, 32, 34, 36, 38, 40]
+
+== notes
+    empty script files (no actions after decompile): ['artifacts/decompiled/scripts/frame_61/DoAction.as', 'artifacts/decompiled/scripts/frame_151/DoAction.as']
+    empty text files (dynamic fields without initial text): 21
+    sound 22: tag=1959 soundData=1952 export=1950 export==soundData[2:]=True sha256(soundData)=ec752a2a6bd9c7c858df7aa0f2517e6187eedd06c68ddf68f6cd4665bbe99281
+    sound 24: tag=4039 soundData=4032 export=4030 export==soundData[2:]=True sha256(soundData)=0c78e1799f31d4965a1b0ad78043f09013ba733ac8ff843b6ecc2ecc3903e2cf
+    sound 26: tag=919 soundData=912 export=910 export==soundData[2:]=True sha256(soundData)=0653e7acb08cdb95fdae5c5526b2d2dd014130abf0507b0a63ab75f9d6956935
+    sound 30: tag=1569 soundData=1562 export=1560 export==soundData[2:]=True sha256(soundData)=8820253d5cbc0f638e9bb5686cf92c5db46bd379477a7ac9c4165e928068394a
+    sound 32: tag=21849 soundData=21842 export=21840 export==soundData[2:]=True sha256(soundData)=02adf288eefb614c89b402b05a27eb68d52219bc1fdf582db5618356033051ce
+    sound 34: tag=2739 soundData=2732 export=2730 export==soundData[2:]=True sha256(soundData)=d7d45d198b21e4632f1a90c43157462bbce49a449112c34fff890f1be140dac0
+    sound 36: tag=1439 soundData=1432 export=1430 export==soundData[2:]=True sha256(soundData)=24ad82f5fc0cf4a81652d6f8b9ee418769dd9f30828724fe3befc7627df072f6
+    sound 38: tag=1699 soundData=1692 export=1690 export==soundData[2:]=True sha256(soundData)=4c4ece8cdb665845cc4eab94e446c37c6e3ab94fe38a067b915f3ecdcff5a128
+    sound 40: tag=2739 soundData=2732 export=2730 export==soundData[2:]=True sha256(soundData)=9fa55a397002b5eb1720655b2d21ac495219e4244d9b2497c3013253101d89c5
+    local sound_1_id21_fmt2_r2.mp3.fixed.mp3 sha256=0dbb7009fc16a2997888a14723438afd3f9c0ce2ad0f0bc61ae9168027802a35 size=1953 relation_to_2012_raw=0x00 + raw SoundData
+    local sound_2_id23_fmt2_r2.mp3.fixed.mp3 sha256=3f9c98b37c853600acf8edf8768921117c93157ce08f2ecf65a7f0e612f50217 size=4033 relation_to_2012_raw=0x00 + raw SoundData
+    local sound_3_id25_fmt2_r2.mp3.fixed.mp3 sha256=58e86971869cb855d7e8f441ed3c72c4ce7bcda9a026cc471fafaaa63e1d1745 size=913 relation_to_2012_raw=0x00 + raw SoundData
+    local sound_4_id29_fmt2_r2.mp3.fixed.mp3 sha256=7fd476b917288c3253ee7b92a9ddd0e025ea4225ffe2fac9154accc2c7c3752c size=1563 relation_to_2012_raw=0x00 + raw SoundData
+    local sound_5_id31_fmt2_r2.mp3.fixed.mp3 sha256=6128b1dec22dda243ceffff943695f845e93059888cb08db24fd53024c24fc8a size=21843 relation_to_2012_raw=0x00 + raw SoundData
+    local sound_6_id33_fmt2_r2.mp3.fixed.mp3 sha256=472b1d08a9aff893c719639850da8f38f8e2abbe470e3446d756c87c5f83e35d size=2733 relation_to_2012_raw=0x00 + raw SoundData
+    local sound_7_id35_fmt2_r2.mp3.fixed.mp3 sha256=0d425ffbd69436b821afcff1bf6cc9f23e38491ed00a3b5c56171a856ca9e50d size=1433 relation_to_2012_raw=0x00 + raw SoundData
+    local sound_8_id37_fmt2_r2.mp3.fixed.mp3 sha256=d1886b3d3be1ee7025b145735ce6d5fd1ce9a5853e5149b2aa55de894cdef94e size=1693 relation_to_2012_raw=0x00 + raw SoundData
+    local sound_9_id39_fmt2_r2.mp3.fixed.mp3 sha256=caf26cc94a3bb6f3694de114c21dcd82e6737a1874d8b3e6a0ca4692b7dd922c size=2733 relation_to_2012_raw=0x00 + raw SoundData
+
+== RESULT: PASS (0 failures)
+
+-- afinfo over the A1 source sounds (../kelimator-nostalji/sesler) --
+sounds=9 afinfo_failures=0
+
+-- afinfo over the A1 exported sounds (artifacts/decompiled/sounds) --
+exported_sounds=10 afinfo_failures=0
+
+== README §2.2/§2.3 — no network features at runtime ==
+-- src network primitives (fetch/XHR/WebSocket/sendBeacon; excluded-feature names only) --
+(no network primitives in src/)
+-- dist bundle remote-URL scan --
+http://www.w3.org/1999/xlink
+http://www.w3.org/2000/svg
+http://www.w3.org/2000/svg`,or=`game-speaker`,sr=[3,4,5,6,7,8],cr=`game-hud-styles`;function
+https://www.free-decompiler.com/flash
+(dist remote-URL scan done; empty above = none)
+
+== README §2.2 — static build ==
+$ npm run build (executed by the T14 offline spec; exit 0, see transcript)
+dist files: 15 (static assets only; no server code)
+dist/index.html: HTML document text, Unicode text, UTF-8 text
+
+== README §2.6/§2.7 — system font stack, no embedded font files, single language ==
+src/ui/board.ts:176:const FONT_STACK = 'Verdana, "DejaVu Sans", sans-serif';
+font files in dist: 0
+html lang attribute: lang="tr"
+-- data/layout.json text values (Turkish UI labels; SVG button art carries the rest) --
+distinct non-empty text values: 11
+% | / | 3 harfli: | 4 harfli: | 5 harfli: | 6 harfli: | 7 harfli: | 8 harfli: | Kelime | Puan | Süre
+-- tools/wordlist.txt charset (must be the 29 core Turkish upper-case letters) --
+words=62809 non_core_characters=[]
+
+== README §2.5/doc 04 §2 — stage scaling formula ==
+48:  const scale = Math.min(viewportWidth / stageWidth, viewportHeight / stageHeight);
+33:  offsetX: number;
+35:  offsetY: number;
+55:    offsetX: (viewportWidth - stageWidth * scale) / 2,
+56:    offsetY: (viewportHeight - stageHeight * scale) / 2,
+
+== Evidence hygiene (in-run frozen check; new F3 files are this task's own artifacts) ==
+$ git status --porcelain -- evidence/   (during the matrix run: 0 entries — see F3-verify-all.log)
+?? evidence/logs/F3-attempt1.log
+?? evidence/logs/F3-gates.log
+?? evidence/logs/F3-offline-report.log
+?? evidence/logs/F3-verify-all.log
+
+Finished: 2026-09-28T21:41:52Z
+Result: PASS (G1–G4 re-verified; fixed decisions PASS; see evidence/F3-final-report.md)

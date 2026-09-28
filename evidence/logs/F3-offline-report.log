@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "task": "F3/T14 runtime offline",
+  "generatedAt": "2026-09-28T21:40:27.486Z",
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "durationMs": 2574,
+    "distFiles": 15,
+    "indexHtmlSha256": "035e570cc19edcf72f959e2e7af66b98db44fe659d633bf5b4754a05a136e91d"
+  },
+  "preview": {
+    "command": "node_modules/.bin/vite preview --host 127.0.0.1 --port 5288 --strictPort",
+    "url": "http://127.0.0.1:5288/",
+    "readyMs": 266
+  },
+  "requests": {
+    "observed": 11,
+    "local": 11,
+    "nonLocalAttempts": [],
+    "byResourceType": {
+      "document": 1,
+      "script": 1,
+      "image": 8,
+      "media": 1
+    }
+  },
+  "boot": {
+    "state": "playing",
+    "roundId": "abacilik",
+    "boardVisible": true,
+    "tileLetters": 8
+  },
+  "interaction": {
+    "tile": 0,
+    "letter": "C",
+    "entryAfterClick": "C",
+    "entryAfterDelete": ""
+  },
+  "pageErrors": [],
+  "result": "PASS"
+}
