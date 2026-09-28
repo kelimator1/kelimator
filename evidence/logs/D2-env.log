@@ -1,0 +1,10 @@
+2026-09-28T19:00:44Z
+dev-host.home
+ProductName:		macOS
+ProductVersion:		hidden
+BuildVersion:		hidden
+arm64
+arm64 host
+v22.14.0
+10.9.0
+vitest/5.0.2 darwin-arm64 node-v22.14.0

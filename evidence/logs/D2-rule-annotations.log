@@ -1,0 +1,8 @@
+329:  it('O15(a) duplicate-letter words consume one tile instance each; none left ⇒ no-op', () => {
+379:  it('O15(a) pointer clicks append the clicked instance letter', () => {
+405:  it('O15(b) re-submitting a found word keeps the entry; only a valid new word clears it', () => {
+427:  it('O15(c) BACKSPACE on an empty entry is sound only', () => {
+449:  it('O15(d) scramble clears a partial entry and returns every tile', () => {
+478:  it('O15(e) keys for letters not in the deck are no-ops (no typer sound)', () => {
+501:  it('O15(f) ENTER with an empty entry is emitted (invalid-word buzz path)', () => {
+508:  it('O15(g) the reference CTRL extra behavior is not implemented', () => {

@@ -1,0 +1,117 @@
+
+> kelimator-2012@0.0.0 test
+> vitest run timer
+
+
+ RUN  v5.0.2 /home/dev/kelimator-2012
+
+ ❯ tests/timer.test.ts (17 tests | 4 failed) 9ms
+   ✓ timer constants and initial state (O01, evidence/A2-timer.md) (2)
+     ✓ data/constants.json carries the confirmed 200 s / 1000 ms values 1ms
+     ✓ shows the initial value before the countdown is started (init: timer = sure) 0ms
+   ✓ countdown decrements at 1000 ms wall-clock boundaries (O01) (3)
+     ✓ emits the initial value on start and one tick per second 0ms
+     ✓ uses the wall clock, not callback counts (late callback jumps, no drift) 0ms
+     ✓ emits integer seconds only, all the way down 0ms
+   ❯ expiry (V2: exactly once per round) (3)
+     × counts 200 -> 0 and fires expired exactly once 3ms
+     × expires once again only after a new start() (new round) 1ms
+     × a very late callback still expires exactly once (never negative) 0ms
+   ❯ stop semantics (clip gotoAndStop(1), O01) (4)
+     ✓ stop() freezes the last integer value and stops ticking 0ms
+     ✓ start() after a stop restarts from the initial value (no resume) 0ms
+     × stop() is safe before start, after stop and after expiry 1ms
+     ✓ a listener can stop the timer from within a tick (pending boundary cleared) 0ms
+   ✓ time bonus uses the last integer second (O14, docs/07 §1) (1)
+     ✓ remaining 100 s at completion -> +10000 0ms
+   ✓ constant validation (structural) (1)
+     ✓ rejects non-positive or non-integer timer constants 0ms
+   ✓ V7 — values come from data/constants.json; no hardcoded game literals (3)
+     ✓ data/constants.json carries the confirmed timer values 0ms
+     ✓ scans every D3 module source: no unannotated literal, no hardcoded game value 0ms
+     ✓ scanner self-test: detects unannotated and hardcoded literals 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/timer.test.ts > expiry (V2: exactly once per round) > counts 200 -> 0 and fires expired exactly once
+AssertionError: expected undefined to be 1 // Object.is equality
+
+- Expected:
+1
+
++ Received:
+undefined
+
+ ❯ tests/timer.test.ts:279:26
+    277|     );
+    278|     expect(ticks).toEqual(expectedTicks);
+    279|     expect(expiredCount).toBe(1);
+       |                          ^
+    280|     expect(timer.remainingSeconds).toBe(0);
+    281|     expect(timer.running).toBe(false);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/timer.test.ts > expiry (V2: exactly once per round) > expires once again only after a new start() (new round)
+AssertionError: expected undefined to be 1 // Object.is equality
+
+- Expected:
+1
+
++ Received:
+undefined
+
+ ❯ tests/timer.test.ts:295:26
+    293|     timer.start();
+    294|     clock.advance(constants.timer.initialSeconds * constants.timer.tic…
+    295|     expect(expiredCount).toBe(1);
+       |                          ^
+    296|
+    297|     timer.start(); // baslat(): frame 2 re-captures t, fresh countdown
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/timer.test.ts > expiry (V2: exactly once per round) > a very late callback still expires exactly once (never negative)
+AssertionError: expected undefined to be 1 // Object.is equality
+
+- Expected:
+1
+
++ Received:
+undefined
+
+ ❯ tests/timer.test.ts:309:26
+    307|     clock.jump(500_000);
+    308|     clock.runDue();
+    309|     expect(expiredCount).toBe(1);
+       |                          ^
+    310|     expect(ticks).toEqual([200, 0]);
+    311|     expect(timer.remainingSeconds).toBe(0);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/timer.test.ts > stop semantics (clip gotoAndStop(1), O01) > stop() is safe before start, after stop and after expiry
+AssertionError: expected undefined to be 1 // Object.is equality
+
+- Expected:
+1
+
++ Received:
+undefined
+
+ ❯ tests/timer.test.ts:357:26
+    355|     timer.start();
+    356|     clock.advance(constants.timer.initialSeconds * constants.timer.tic…
+    357|     expect(expiredCount).toBe(1);
+       |                          ^
+    358|     timer.stop();
+    359|     timer.stop();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 13 passed (17)
+   Start at  21:58:02
+   Duration  113ms (transform 61%, tests 19%, import 16%, worker 4%)
+
