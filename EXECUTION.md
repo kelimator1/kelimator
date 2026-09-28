@@ -159,6 +159,10 @@ A group starts only when its dependencies are satisfied and the relevant gate
 - Workers keep chat output minimal: large results go to files; the worker
   returns a short status line + evidence path.
 - One final entry point: `tools/verify-all.sh`.
+- **Silent witness runs (amendment 2026-09-28).** No test, capture or
+  reference instance may emit audio: Ruffle CLI runs always with `--volume 0`;
+  Playwright Chromium always with `--mute-audio`; audio behavior is verified by
+  state assertions, never by audibility.
 
 ## 9. Failure and deviation policy
 

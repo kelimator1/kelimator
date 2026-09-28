@@ -1,0 +1,11 @@
+# Orchestrator — silent witness runs (playwright.config.ts --mute-audio)
+2026-09-28T13:30:21Z
+cmd: npm run e2e -- smoke
+exit: 0
+---- output tail ----
+  ✓  4 [app] › tests/e2e/smoke.spec.ts:139:5 › C2 stage shell smoke › viewport 1920x1080: scale, letterbox, non-blank screenshot (114ms)
+  ✓  5 [app] › tests/e2e/smoke.spec.ts:139:5 › C2 stage shell smoke › viewport 3840x2160: scale, letterbox, non-blank screenshot (185ms)
+  ✓  6 [app] › tests/e2e/smoke.spec.ts:139:5 › C2 stage shell smoke › viewport 3440x1440: scale, letterbox, non-blank screenshot (142ms)
+  ✓  7 [app] › tests/e2e/smoke.spec.ts:197:3 › C2 stage shell smoke › fullscreen toggle keeps the scale formula for unchanged viewport dimensions (V2) (171ms)
+
+  7 passed (2.0s)

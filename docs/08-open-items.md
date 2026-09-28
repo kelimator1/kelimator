@@ -79,3 +79,8 @@ RESOLVED 2026-09-28 — evidence/A2-mochi.md — MochiAds lives entirely in the 
   `xml64.php` (plain input yields a broken board: 6/8 tiles fail). Evidence:
   `evidence/A2-kelimatorid.md`, `evidence/logs/A2-ruffle-*.log`; task note in
   `tasks/C3-reference-harness.md`.
+- 2026-09-28 — Silent witness runs (user directive, `EXECUTION.md` §8): Ruffle
+  CLI runs use `--volume 0`; Playwright Chromium launches with `--mute-audio`;
+  audio behavior is asserted via state, never audibility. Applied to
+  `playwright.config.ts` (orchestrator; verified by the C2 smoke suite —
+  `evidence/logs/orchestrator-silent-runs.log`).

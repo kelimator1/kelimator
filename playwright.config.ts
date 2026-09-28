@@ -6,6 +6,8 @@ import { defineConfig } from '@playwright/test';
 // App-suite options (Vite webServer, baseURL, Chromium) added by task C2 per
 // evidence/C1-scaffold.md §5. The "reference" project (C3) supplies its own
 // harness/server and inherits no app baseURL.
+// All projects launch Chromium with `--mute-audio` (silent witness runs —
+// EXECUTION.md §8 amendment 2026-09-28): no test instance may emit audio.
 const APP_PORT = 5199;
 const APP_URL = `http://127.0.0.1:${APP_PORT}`;
 
@@ -35,11 +37,15 @@ export default defineConfig({
         baseURL: APP_URL,
         browserName: 'chromium',
         viewport: { width: 1280, height: 720 },
+        launchOptions: { args: ['--mute-audio'] },
       },
     },
     {
       name: 'reference',
       testMatch: 'verify/**/*.spec.{ts,js,mjs}',
+      use: {
+        launchOptions: { args: ['--mute-audio'] },
+      },
     },
   ],
 });
