@@ -153,3 +153,17 @@ RESOLVED 2026-09-28 — evidence/B3-viroloji-blocker.md + tests/fixtures/rounds/
   O02 bonus rule gets a seeded RNG seed recorded in constants (value 2012,
   deterministic-test value; distribution unchanged). Schema + data amended;
   D1 consumes it.
+- 2026-09-28 — D5 test-scope + wiring: `tasks/D5-lifecycle.md` additionally owns
+  `tests/e2e/playthrough/**` (basic playthrough spec) and the `src/main.ts`
+  game wiring; `tests/fixtures/playthrough.json` stays F2's.
+- 2026-09-28 — D2 key mapping (`docs/05` §3): `keyCode`-primary with
+  `event.key`/`event.code` fallbacks (I/İ indistinguishable via `key` alone).
+  Evidence: `evidence/D2-input.md` §6.2.
+- 2026-09-28 — shuffle determinism: deck shuffle is a seeded permutation
+  (`shuffleOrder(count, seed)`, mulberry32); seed 2012 recorded as test vector;
+  production seed/advance is D5's. Evidence: `evidence/D2-input.md` §4/§6.1.
+- 2026-09-28 — O15(g): CTRL (`Key.isDown(17)` + `songecerlikelime`) is
+  reference-only and intentionally not implemented. Evidence:
+  `evidence/A2-edges.md` §2(g), `evidence/D2-input.md` §6.4.
+- 2026-09-28 — `window.__game.selectRound(main)` test hook (`docs/04` §6) for
+  E2E round selection (F2/FİNALİZM); test-only, no production UI.

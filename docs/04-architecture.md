@@ -92,6 +92,12 @@ src/
   words, score, remaining time (ms), and `lastAudioEvent`.
 - All interactive elements carry stable `data-testid` attributes
   (`tile-0`…`tile-7`, `entry`, `score`, `timer`, `found-list`, buttons).
+
+> Amendment 2026-09-28 (orchestrator): `window.__game` additionally exposes a
+> test-only `selectRound(main)` function so E2E can drive a specific bank round
+> (F2 uses the archived FİNALİZM fixture round, present in the bank with 91
+> words); it has no production UI and does not affect default sequential
+> selection. Recorded in `docs/08-open-items.md` (Amendments).
 - The app emits nothing to the network; the UI must function with devtools
   offline (verified in G5).
 

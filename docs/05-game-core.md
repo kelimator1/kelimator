@@ -51,6 +51,13 @@ type Round = {
 - Key handling uses `event.key`; mapping table (including Turkish letters)
   recorded from A2 findings on the original (O04).
 
+> Amendment 2026-09-28 (orchestrator): browser key resolution is
+> `KeyboardEvent.keyCode`-primary (O04's numeric table 65…Ç 220…Ü 221) with
+> `event.key` (Turkish-locale uppercase) and `event.code` (`Key[A-Z]`)
+> fallbacks; `event.key` alone cannot distinguish `I`/`İ` (evidence:
+> `evidence/D2-input.md` §6.2). Matching entry in `docs/08-open-items.md`
+> (Amendments).
+
 ## 4. Scoring implementation
 
 - Valid word: `n² × perLetterSquaredFactor`.

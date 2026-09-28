@@ -5,6 +5,17 @@
 - Depends on: D2, D3
 - Owned paths: `src/game/state.ts`, `src/game/lifecycle.ts`, `src/ui/hud.ts`, `src/ui/message.ts`, `tests/lifecycle.test.ts`, `evidence/D5-*`
 
+> Amendment 2026-09-28 (orchestrator): Owned paths additionally include
+> `tests/e2e/playthrough/**` (the basic playthrough spec required by Verify V6,
+> `npm run e2e -- playthrough:basic`) and `src/main.ts` bootstrap wiring for the
+> game (state machine + HUD mount; E2's board mount stays intact).
+> `tests/fixtures/playthrough.json` remains F2's file — keep the basic script
+> inline in the spec. Also implement the test-only `window.__game.selectRound(main)`
+> hook (`docs/04` §6 amendment) and own the production shuffle seed/advance plus
+> the D2/D4 audio-wiring hand-offs (`evidence/D2-input.md` §6,
+> `evidence/D4-audio.md`). SILENT witness runs apply (`EXECUTION.md` §8).
+> Recorded in `docs/08-open-items.md` (Amendments).
+
 ## Inputs
 - `docs/05-game-core.md` §1, §6
 - `docs/02-mechanics-spec.md` §4, §5 (flows from O13/O14)
