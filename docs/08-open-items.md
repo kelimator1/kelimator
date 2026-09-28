@@ -51,3 +51,8 @@ When closed, append: `RESOLVED <date> — <evidence file> — <one-line finding>
   under `data/`, E1 copies layout/animation to `src/data/`, B3 authors
   `src/data/rounds.json`; consumers per their task files. Evidence:
   `evidence/C1-scaffold.md` §5.
+- 2026-09-28 — Task-scope additions required by Verify blocks: A2 additionally
+  owns `tests/constants.test.mjs` (`npm test -- constants`); C2 additionally
+  owns `tests/e2e/**` and the `src/main.ts` bootstrap wiring (stage-shell mount
+  only). Concurrent workers propose `docs/08` status lines via their evidence;
+  the orchestrator applies them (single-writer rule).

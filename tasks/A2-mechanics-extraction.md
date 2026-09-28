@@ -5,6 +5,13 @@
 - Depends on: A1
 - Owned paths: `data/constants.json`, `data/sound-map.json`, `evidence/A2-*`, `docs/02-mechanics-spec.md` (TBC slots only), `docs/08-open-items.md` (status updates only)
 
+> Amendment 2026-09-28 (orchestrator): Owned paths additionally include
+> `tests/constants.test.mjs` — the file the Verify block's V7 dry-run
+> (`npm test -- constants`) requires. Orchestration note: concurrent workers do
+> not edit `docs/08-open-items.md`; A2 proposes the exact status lines in its
+> evidence and the orchestrator applies them after verification. Recorded in
+> `docs/08-open-items.md` (Amendments).
+
 ## Inputs
 - `artifacts/decompiled/as/**` (A1)
 - `artifacts/decompiled/header.txt`, `tags.txt`

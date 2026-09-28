@@ -5,6 +5,14 @@
 - Depends on: C1
 - Owned paths: `src/stage.ts`, `src/ui/**` (stage shell only), `tests/stage.test.ts`, `evidence/C2-*`
 
+> Amendment 2026-09-28 (orchestrator): Owned paths additionally include
+> `tests/e2e/**` (the smoke spec required by `npm run e2e -- smoke`) and
+> bootstrap wiring in `src/main.ts` (mounting the stage shell only; behavior
+> stays in `src/stage.ts`/`src/ui/**`). `playwright.config.ts` suite options
+> are added by this task per `evidence/C1-scaffold.md` §5; task C3 is
+> instructed not to touch that file in this parallel group. Recorded in
+> `docs/08-open-items.md` (Amendments).
+
 ## Inputs
 - `docs/04-architecture.md` §2, §6
 - `data/constants.json` (A2; if absent, use the placeholder stage values from
