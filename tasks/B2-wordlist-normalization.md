@@ -30,6 +30,11 @@
 - O17 resolved here. If the snapshot contains structures requiring a new rule
   not in `docs/06`, do NOT improvise: open a BLOCKER and stop.
 
+> Amendment 2026-09-28 (orchestrator): Owned paths additionally include
+> `tests/normalize-wordlist.test.mjs` — the unit tests required by Verify V4
+> (`npm test -- normalize`). Silent witness runs apply (`EXECUTION.md` §8).
+> Recorded in `docs/08-open-items.md` (Amendments).
+
 ## Verify
 - V2: output file exists; > 10,000 lines; all lines match
   `^[ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ]+$`; no duplicates (sort -u stable).

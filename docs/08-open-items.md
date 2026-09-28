@@ -130,3 +130,5 @@ RESOLVED 2026-09-28 — evidence/C3-fixture-format.md — harness fixture = Base
   `karzıhasen` excluded silently. Evidence: `evidence/B1-acquisition.md`,
   `evidence/logs/orchestrator-B1-halt.log`; task note in
   `tasks/B1-tdk-acquisition.md`.
+- 2026-09-28 — B2 test-scope: `tasks/B2-wordlist-normalization.md` additionally
+  owns `tests/normalize-wordlist.test.mjs` (`npm test -- normalize`).
