@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "stage": { "width": 550, "height": 400, "fps": 36, "frameCount": 241 },
+  "timer": { "initialSeconds": 200, "tickMs": 1000 },
+  "scoring": { "perLetterSquaredFactor": 50, "bonusPoints": 5000, "timeFactor": 100 },
+  "bonusLetter": {
+    "selectionRule": "Each time a letter is added while bonusball == -1: bonusrnd = random(bonusrange=1000); if (bonusrnd < bonusmin=50) bonusball = kelime.length, so the ball at that 0-based index (the next letter added) becomes the bonus ball (5% per added letter). A valid submit scores +5000 while bonusball > -1; removing the bonus ball or clearing a non-empty entry resets bonusball to -1.",
+    "evidence": "evidence/A2-bonus.md"
+  },
+  "input": { "scrambleKey": "SPACE", "submitKey": "ENTER", "deleteKey": "BACKSPACE" },
+  "flows": { "allFoundLabel": "hepsiburda", "celebrationLabel": "bravo" },
+  "evidence": {
+    "stage": "artifacts/decompiled/header.txt L9,L11,L12,L13; evidence/A2-labels.md",
+    "timer": "evidence/A2-timer.md",
+    "scoring": "evidence/A2-bonus.md; time bonus: evidence/A2-timer.md",
+    "bonusLetter": "evidence/A2-bonus.md",
+    "input": "evidence/A2-input.md",
+    "flows": "evidence/A2-labels.md"
+  }
+}

@@ -1,0 +1,15 @@
+fps=36.0 frameCount=241 frames-after=242
+frame 1: DoAction len=10480
+frame 2: DoAction len=191
+frame 3: DoAction len=46
+frame 4: DoAction len=203
+frame 5: DoAction len=9998
+frame 5: FrameLabel = 'main'
+frame 61: DoAction len=1
+frame 130: FrameLabel = 'preall'
+frame 131: DoAction len=10769
+frame 131: FrameLabel = 'hepsiburda'
+frame 132: DoAction len=858
+frame 132: FrameLabel = 'bravo'
+frame 151: DoAction len=1
+frame 241: DoAction len=2

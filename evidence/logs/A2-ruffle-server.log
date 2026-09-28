@@ -1,0 +1,16 @@
+### servers: port 8791 = ../kelimator-nostalji/calistir (archived plain xml64.php); port 8792 = $TMPDIR/a2ref (Base64 fixture, symlink to the same SWF)
+### 8791:
+Kelimatör nostalji sunucusu çalışıyor.
+Adres: http://127.0.0.1:8791/
+Aynı anda çalıştırılan SWF, kelime listesini bu adresten ister.
+
+Oyunu başlatmak için başka bir terminalde:
+  "../Ruffle.app/Contents/MacOS/ruffle" http://127.0.0.1:8791/kelimator_tr_2007.swf
+Durdurmak için: Ctrl+C
+[istek] "GET /xml64.php?1 HTTP/1.1" 200 -
+[istek] "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" 200 -
+[istek] "GET /xml64.php?408468 HTTP/1.1" 200 -
+### 8792:
+[istek] "GET /xml64.php?1 HTTP/1.1" 200 -
+[istek] "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" 200 -
+[istek] "GET /xml64.php?592444 HTTP/1.1" 200 -

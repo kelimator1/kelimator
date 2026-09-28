@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "sounds": {
+    "22": { "file": "sfx_22_enter.mp3", "durationSec": 0.39 },
+    "24": { "file": "sfx_24_shuffle.mp3", "durationSec": 0.806 },
+    "26": { "file": "sfx_26_countdown.mp3", "durationSec": 0.182 },
+    "30": { "file": "sfx_30_boing.mp3", "durationSec": 0.624 },
+    "32": { "file": "sfx_32_fanfare.mp3", "durationSec": 4.368 },
+    "34": { "file": "sfx_34_finishsound.mp3", "durationSec": 0.546 },
+    "36": { "file": "sfx_36_typer.mp3", "durationSec": 0.286 },
+    "38": { "file": "sfx_38_backspace.mp3", "durationSec": 0.338 },
+    "40": { "file": "sfx_40_buzz.mp3", "durationSec": 0.546 }
+  },
+  "events": {
+    "roundStart": {
+      "soundId": 32,
+      "evidence": "artifacts/decompiled/scripts/frame_131/DoAction.as L3 ses_cikart(\"fanfare\"); clip instance 'fanfare' = chid 33 (tags.txt PlaceObject2 nm:\"fanfare\"); sprite 33 frame 2 StartSound 32; evidence/A2-sounds.md"
+    },
+    "scramble": {
+      "soundId": 24,
+      "evidence": "artifacts/decompiled/scripts/frame_131/DoAction.as L310 ses_cikart(\"shuffle\"); instance 'shuffle' = chid 25; sprite 25 frame 2 StartSound 24; evidence/A2-sounds.md"
+    },
+    "delete": {
+      "soundId": 38,
+      "evidence": "artifacts/decompiled/scripts/frame_131/DoAction.as L323 ses_cikart(\"backspace\"); instance 'backspace' = chid 39; sprite 39 frame 2 StartSound 38; evidence/A2-sounds.md"
+    },
+    "submitValid": {
+      "soundId": 22,
+      "evidence": "artifacts/decompiled/scripts/frame_131/DoAction.as L644 ses_cikart(\"enter\"); instance 'enter' = chid 23; sprite 23 frame 2 StartSound 22; evidence/A2-sounds.md"
+    },
+    "submitAlreadyFound": {
+      "soundId": 30,
+      "evidence": "artifacts/decompiled/scripts/frame_131/DoAction.as L658 ses_cikart(\"boing\"); instance 'boing' = chid 31; sprite 31 frame 2 StartSound 30; evidence/A2-sounds.md"
+    },
+    "submitInvalid": {
+      "soundId": 40,
+      "evidence": "artifacts/decompiled/scripts/frame_131/DoAction.as L667 ses_cikart(\"buzz\"); instance 'buzz' = chid 41; sprite 41 frame 2 StartSound 40; evidence/A2-sounds.md"
+    },
+    "letterKey": {
+      "soundId": 36,
+      "evidence": "artifacts/decompiled/scripts/frame_131/DoAction.as L702 ses_cikart(\"typer\") (letter typed on the keyboard); instance 'typer' = chid 37; sprite 37 frame 2 StartSound 36; evidence/A2-sounds.md"
+    },
+    "tileClick": {
+      "soundId": 36,
+      "evidence": "artifacts/decompiled/scripts/DefineButton2_57/BUTTONCONDACTION on(release).as L14-L20 stopAllSounds() + tellTarget(\"_root.typer\") gotoAndPlay(2) (tile mouse click); evidence/A2-sounds.md"
+    },
+    "countdown": {
+      "soundId": 26,
+      "evidence": "artifacts/decompiled/scripts/DefineSprite_21/frame_3/DoAction.as L4-L7 _root.countdown.play() while timer<10; instance 'countdown' = chid 27; sprite 27 frame 2 StartSound 26, frame 4 replays it every 1000 ms; evidence/A2-sounds.md"
+    },
+    "timeout": {
+      "soundId": 34,
+      "evidence": "artifacts/decompiled/scripts/DefineSprite_21/frame_3/DoAction.as L14-L18 _root.finishsound.play() when timer==0; instance 'finishsound' = chid 35; sprite 35 frame 2 StartSound 34; evidence/A2-sounds.md"
+    }
+  }
+}

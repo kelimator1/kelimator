@@ -1,0 +1,49 @@
+# A2 — sound sprite mapping (raw SWF parse)
+$ python3 <walker>  (top-level tag stream; DefineSound/StartSound inside DefineSprite)
+DefineSound ids at top level:
+  DefineSound (tag 14) soundId=22 format=2 rate=2 size=1 type=0 sampleCount=6143 payloadBytes=1959
+  DefineSound (tag 14) soundId=24 format=2 rate=2 size=1 type=0 sampleCount=15366 payloadBytes=4039
+  DefineSound (tag 14) soundId=26 format=2 rate=2 size=1 type=0 sampleCount=2267 payloadBytes=919
+  DefineSound (tag 14) soundId=30 format=2 rate=1 size=1 type=0 sampleCount=4040 payloadBytes=1569
+  DefineSound (tag 14) soundId=32 format=2 rate=2 size=1 type=0 sampleCount=94046 payloadBytes=21849
+  DefineSound (tag 14) soundId=34 format=2 rate=2 size=1 type=0 sampleCount=9350 payloadBytes=2739
+  DefineSound (tag 14) soundId=36 format=2 rate=2 size=1 type=0 sampleCount=3697 payloadBytes=1439
+  DefineSound (tag 14) soundId=38 format=2 rate=2 size=1 type=0 sampleCount=4863 payloadBytes=1699
+  DefineSound (tag 14) soundId=40 format=2 rate=2 size=1 type=0 sampleCount=9322 payloadBytes=2739
+StartSound inside DefineSprite (sprite chid -> frame -> soundId):
+  sprite 23 frame 2: StartSound soundId=22
+  sprite 25 frame 2: StartSound soundId=24
+  sprite 27 frame 2: StartSound soundId=26
+  sprite 31 frame 2: StartSound soundId=30
+  sprite 33 frame 2: StartSound soundId=32
+  sprite 35 frame 2: StartSound soundId=34
+  sprite 37 frame 2: StartSound soundId=36
+  sprite 39 frame 2: StartSound soundId=38
+  sprite 41 frame 2: StartSound soundId=40
+
+$ grep -o "PlaceObject2 (chid: [0-9]*, dpt: [0-9]*, nm: \"[^\"]*\")" artifacts/decompiled/tags.txt | sort -u
+PlaceObject2 (chid: 105, dpt: 41, nm: "sbuton")
+PlaceObject2 (chid: 11, dpt: 2, nm: "bar2")
+PlaceObject2 (chid: 111, dpt: 49, nm: "puanmovie")
+PlaceObject2 (chid: 123, dpt: 52, nm: "status")
+PlaceObject2 (chid: 169, dpt: 1, nm: "havai")
+PlaceObject2 (chid: 21, dpt: 80, nm: "timerr")
+PlaceObject2 (chid: 23, dpt: 82, nm: "enter")
+PlaceObject2 (chid: 25, dpt: 84, nm: "shuffle")
+PlaceObject2 (chid: 27, dpt: 86, nm: "countdown")
+PlaceObject2 (chid: 31, dpt: 88, nm: "boing")
+PlaceObject2 (chid: 33, dpt: 90, nm: "fanfare")
+PlaceObject2 (chid: 35, dpt: 92, nm: "finishsound")
+PlaceObject2 (chid: 37, dpt: 94, nm: "typer")
+PlaceObject2 (chid: 39, dpt: 96, nm: "backspace")
+PlaceObject2 (chid: 41, dpt: 98, nm: "buzz")
+PlaceObject2 (chid: 45, dpt: 1, nm: "wball")
+PlaceObject2 (chid: 46, dpt: 100, nm: "wordball")
+PlaceObject2 (chid: 58, dpt: 8, nm: "button")
+PlaceObject2 (chid: 63, dpt: 12, nm: "kbuton")
+PlaceObject2 (chid: 65, dpt: 15, nm: "ebuton")
+PlaceObject2 (chid: 67, dpt: 18, nm: "bosbuton")
+PlaceObject2 (chid: 71, dpt: 23, nm: "ybuton")
+PlaceObject2 (chid: 74, dpt: 2, nm: "bar")
+PlaceObject2 (chid: 84, dpt: 29, nm: "xmlload")
+PlaceObject2 (chid: 90, dpt: 33, nm: "spk_btn")

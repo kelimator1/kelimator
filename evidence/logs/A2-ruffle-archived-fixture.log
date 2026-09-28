@@ -1,0 +1,29 @@
+2026-09-28T12:56:58.074326Z  INFO ruffle_desktop::gui::controller: Using preferred backend Metal
+2026-09-28T12:56:58.079882Z  INFO ruffle_desktop::gui::controller: Using graphics API metal on arm64 host (type: IntegratedGpu)
+2026-09-28T12:56:58.079910Z  INFO ruffle_desktop::gui::controller: Using surface format Bgra8Unorm
+2026-09-28T12:56:58.091767Z  WARN ruffle_desktop::gui::controller: Failed to register [Name("Noto Sans CJK KR"), Name("Malgun Gothic")] as Proportional: no unicode fonts found!
+2026-09-28T12:56:58.091971Z  WARN ruffle_desktop::gui::controller: Failed to register [Name("Noto Sans CJK JP"), Name("MS UI Gothic")] as Proportional: no unicode fonts found!
+2026-09-28T12:56:58.091977Z  WARN ruffle_desktop::gui::controller: Failed to register [Name("Noto Sans CJK SC"), Name("Microsoft YaHei")] as Proportional: no unicode fonts found!
+2026-09-28T12:56:58.091983Z  WARN ruffle_desktop::gui::controller: Failed to register [Name("Noto Sans CJK TC"), Name("Microsoft JhengHei")] as Proportional: no unicode fonts found!
+2026-09-28T12:56:58.092060Z  INFO ruffle_desktop::gui::controller: Opening http://127.0.0.1:8791/kelimator_tr_2012_mochiads.swf
+2026-09-28T12:56:58.224926Z  INFO ruffle_video_external::decoder::openh264: Using OpenH264 at "/home/dev/Library/Containers/rs.ruffle.ruffle/Data/Library/Caches/ruffle/video/libopenh264-2.4.1-mac-arm64.dylib"
+2026-09-28T12:56:58.307334Z  INFO ruffle_core::context: Loaded SWF version 6, resolution 550x400 @ 36 FPS
+2026-09-28T12:56:58.331895Z  INFO ruffle_desktop::backends::ui: Loading device font "Verdana-Bold" for "Verdana" (italic: false, bold: true)
+2026-09-28T12:56:58.332921Z  WARN ruffle_core::stub: Encountered stub: AVM1 System.security.allowDomain()
+2026-09-28T12:56:58.332929Z  WARN ruffle_core::stub: Encountered stub: AVM1 System.security.allowInsecureDomain()
+2026-09-28T12:56:58.339896Z  INFO ruffle_core::compatibility_rules: Blocking url due to compatibility ruleset 'mochiads'
+2026-09-28T12:56:58.339941Z ERROR ruffle_core::loader: Error during movie loading of "http://x.mochiads.com/srv/1/951545f2fdfbf4a6.swf": BlockedHost("*.mochiads.com")
+2026-09-28T12:57:01.630427Z  WARN ruffle_frontend_utils::backends::storage: Unable to read file "127.0.0.1/kelimator_tr_2012_mochiads.swf/data": Os { code: 2, kind: NotFound, message: "No such file or directory" }
+2026-09-28T12:57:05.185862Z  WARN symphonia_bundle_mp3::layer3: mpa: invalid main_data_begin, underflow by 117 bytes
+2026-09-28T12:57:05.225642Z  WARN ruffle_core::avm1::activation: SetProperty: Invalid target String("button2")
+2026-09-28T12:57:05.225659Z  WARN ruffle_core::avm1::activation: SetProperty: Invalid target String("button2")
+2026-09-28T12:57:05.225665Z  WARN ruffle_core::avm1::activation: SetProperty: Invalid target String("button3")
+2026-09-28T12:57:05.225668Z  WARN ruffle_core::avm1::activation: SetProperty: Invalid target String("button3")
+2026-09-28T12:57:05.225673Z  WARN ruffle_core::avm1::activation: SetProperty: Invalid target String("button4")
+2026-09-28T12:57:05.225676Z  WARN ruffle_core::avm1::activation: SetProperty: Invalid target String("button4")
+2026-09-28T12:57:05.225680Z  WARN ruffle_core::avm1::activation: SetProperty: Invalid target String("button5")
+2026-09-28T12:57:05.225685Z  WARN ruffle_core::avm1::activation: SetProperty: Invalid target String("button5")
+2026-09-28T12:57:05.225690Z  WARN ruffle_core::avm1::activation: SetProperty: Invalid target String("button6")
+2026-09-28T12:57:05.225693Z  WARN ruffle_core::avm1::activation: SetProperty: Invalid target String("button6")
+2026-09-28T12:57:05.225697Z  WARN ruffle_core::avm1::activation: SetProperty: Invalid target String("button7")
+2026-09-28T12:57:05.225701Z  WARN ruffle_core::avm1::activation: SetProperty: Invalid target String("button7")

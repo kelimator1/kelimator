@@ -34,7 +34,8 @@ evidence reference. Code must not hardcode any value that is not in that file
   **[CONFIRMED: code string + fixture bytes]**
 - 8-letter list contains only the main word in every archived fixture.
   **[CONFIRMED: fixtures]**
-- Whether the client verifies the `harf="9999"` checksum: **[TBC → O03]**
+- Whether the client verifies the `harf="9999"` checksum: **[CONFIRMED → O03: no — `kelimatorid = al(9999)` is stored but never compared or validated; used only in the excluded `hiscore.php` URL; `evidence/A2-checksum.md`]**
+- Round `<txt>` values are Base64(UTF-8) encoded before the client can use them (`Base64.decode`); the archived plain-text fixture cannot be used as the 2012 fixture as-is. **[CONFIRMED → O12: `evidence/A2-kelimatorid.md`]**
 
 Our build replaces the server with a build-time generated `rounds.json`
 (`docs/06`); the round model and validation semantics stay identical.
@@ -48,9 +49,9 @@ Our build replaces the server with a build-time generated `rounds.json`
 | SPACE scrambles the letters | **[CONFIRMED: official page ("Karıştır - [SPACE]")]** |
 | ENTER adds the word to the list if valid | **[CONFIRMED: official page]** |
 | BACKSPACE removes letters | **[CONFIRMED: official page]** |
-| A tile may be used only as many times as it appears in the deck | **[TBC → O15]** |
-| Word already found behavior (reject / no-op) | **[TBC → O15]** |
-| Invalid word feedback (visual/audio) | **[TBC → O05/O06]** |
+| A tile may be used only as many times as it appears in the deck | **[CONFIRMED → O15: each tile instance is consumed (`_visible=false`); a letter is usable only while such a tile is visible; `evidence/A2-edges.md`]** |
+| Word already found behavior (reject / no-op) | **[CONFIRMED → O15: rejected — plays the "boing" sound, no score, entry is kept; `evidence/A2-edges.md`]** |
+| Invalid word feedback (visual/audio) | **[CONFIRMED → O05/O06: "buzz" sound (ID 40) on submit; live status via the `status` sprite: "Geçerli" for a valid new word, "Girildi" for an already-found word; `evidence/A2-strings.md`, `evidence/A2-sounds.md`]** |
 
 ## 3. Scoring (official rules)
 
@@ -60,28 +61,28 @@ Our build replaces the server with a build-time generated `rounds.json`
 | Bonus: if the entered letters contain the bright/bonus letter and the word is valid | `(letter count)² × 50 + 5000` | **[CONFIRMED: 2004 official page]** |
 | End of round: remaining time added | `remaining seconds × 100` | **[CONFIRMED: 2004 official page]** |
 
-Bonus letter selection rule: **[TBC → O02]** (code hints: `bonusball`,
-`bonusrnd`, `bonusmin`, `bonusrange`).
+Bonus letter selection rule: **[CONFIRMED → O02: 5% per added letter — while `bonusball == -1`, `random(1000) < 50` sets `bonusball = kelime.length`; the next valid submit scores +5000 while `bonusball > -1`; clearing the entry resets it to -1; `evidence/A2-bonus.md`]**. (Code identifiers: `bonusball`, `bonusrnd`, `bonusmin`, `bonusrange`.)
 
 ## 4. Round completion and timer
 
 | Rule | Status |
 |---|---|
-| Finding all words in the round completes it (frame label `hepsiburda`; celebration label `bravo`) | **[CONFIRMED: labels + official note that Top10 requires all words; exact frame semantics TBC → O13]** |
+| Finding all words in the round completes it (frame label `hepsiburda`; celebration label `bravo`) | **[CONFIRMED → O13: gameplay runs on SWF frame 131 (`hepsiburda`); all words found → `gotoAndStop("bravo")` + play; only the first 10 words of each length are listed and counted (`if(k > 10) { k = 10; }`), and completion means every listed slot is filled; `evidence/A2-labels.md`]** |
 | Timer counts down; end-of-round time bonus uses remaining seconds | **[CONFIRMED: official page]** |
-| Timer initial value, tick rate, pause/resume semantics | **[TBC → O01]** |
-| Behavior when a word entry is in progress at timeout | **[TBC → O14]** |
+| Timer initial value, tick rate, pause/resume semantics | **[CONFIRMED → O01: starts at 200 s; the remaining value decrements at 1000 ms wall-clock boundaries; the timer sprite is stopped (`gotoAndStop(1)`) at round start, round end and timeout, and restarted only by `baslat()` for a new round; `evidence/A2-timer.md`]** |
+| Behavior when a word entry is in progress at timeout | **[CONFIRMED → O14: the entry is discarded (no scoring), tiles are hidden, every missing word is revealed, "finishsound" plays; `evidence/A2-timeout.md`]** |
 
-## 5. State machine (draft; refined by A2)
+## 5. State machine (refined by A2 — [CONFIRMED → O13])
 
 ```
-boot → preloader (`preall`?) → main menu/game (`main`)
-     → playing → (all words found → `hepsiburda`/`bravo`) → new round
-     → (timeout) → round end → new round
+boot → preloader (SWF frames 1–4) → intro animation (`main`, frame 5)
+     → gameplay (`hepsiburda`, frame 131; the round starts once the word list has loaded)
+     → all words found → celebration (`bravo`, frame 132) → end-of-round screen (timeline stops at frame 241)
+     → timeout → board revealed in place on frame 131
+     → "Yeni Oyun" → next round (init → reload word list → frame 131)
 ```
 
-Label semantics: `preall` **[TBC → O13]**. No state may be implemented with an
-invented structure; A2 records the actual observed flow.
+Label semantics: `preall` **[CONFIRMED → O13: frame 130, the frame immediately before `hepsiburda` ("all letters placed"); `main` = frame 5 (intro start), `hepsiburda` = frame 131 (gameplay/round controller), `bravo` = frame 132 (completion celebration); `evidence/A2-labels.md`]**. No state may be implemented with an invented structure; A2 records the actual observed flow.
 
 ## 6. Display behavior
 
@@ -89,7 +90,7 @@ invented structure; A2 records the actual observed flow.
 |---|---|
 | Found words listed/grouped (counters by length: `harfsayisi`, `toplamkelime`, `bulunanlar`) | **[CONFIRMED: code identifiers; exact layout TBC → O08]** |
 | Score display and per-word feedback animations | **[TBC → O07/O08]** |
-| Static labels and messages (e.g., "bravo") | **[TBC → O05/O08]** |
+| Static labels and messages (e.g., "bravo") | **[CONFIRMED → O05: `Karıştır`/`Ekle`/`Sil`/`Yeni Oyun` button labels, `Geçerli`/`Girildi` status, results screen `TEBRİKLER`/`Puanınız`/`Kelime Sayısı`/`Süre`, counters `3 harfli:`…`8 harfli:`, loading `Kelimeler Yükleniyor\rLütfen Bekleyiniz...`; placement/layout remains O08 — `evidence/A2-strings.md`]** |
 
 ## 7. Network features — all [EXCLUDED]
 

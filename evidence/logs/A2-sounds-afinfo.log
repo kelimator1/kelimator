@@ -1,0 +1,126 @@
+$ afinfo artifacts/decompiled/sounds/22.mp3   # 1950 bytes
+File:           artifacts/decompiled/sounds/22.mp3
+File type ID:   MPG3
+Num Tracks:     1
+----
+Data format:     1 ch,  22050 Hz, .mp3 (0x00000000) 0 bits/channel, 0 bytes/packet, 576 frames/packet, 0 bytes/frame
+                no channel layout.
+estimated duration: 0.390000 sec
+audio bytes: 1950
+audio packets: 15
+bit rate: 40000 bits per second
+packet size upper bound: 530
+maximum packet size: 130
+
+$ afinfo artifacts/decompiled/sounds/24.mp3   # 4030 bytes
+File:           artifacts/decompiled/sounds/24.mp3
+File type ID:   MPG3
+Num Tracks:     1
+----
+Data format:     1 ch,  22050 Hz, .mp3 (0x00000000) 0 bits/channel, 0 bytes/packet, 576 frames/packet, 0 bytes/frame
+                no channel layout.
+estimated duration: 0.806000 sec
+audio bytes: 4030
+audio packets: 31
+bit rate: 40000 bits per second
+packet size upper bound: 530
+maximum packet size: 130
+
+$ afinfo artifacts/decompiled/sounds/26.mp3   # 910 bytes
+File:           artifacts/decompiled/sounds/26.mp3
+File type ID:   MPG3
+Num Tracks:     1
+----
+Data format:     1 ch,  22050 Hz, .mp3 (0x00000000) 0 bits/channel, 0 bytes/packet, 576 frames/packet, 0 bytes/frame
+                no channel layout.
+estimated duration: 0.182000 sec
+audio bytes: 910
+audio packets: 7
+bit rate: 40000 bits per second
+packet size upper bound: 530
+maximum packet size: 130
+
+$ afinfo artifacts/decompiled/sounds/30.mp3   # 1560 bytes
+File:           artifacts/decompiled/sounds/30.mp3
+File type ID:   MPG3
+Num Tracks:     1
+----
+Data format:     1 ch,  11025 Hz, .mp3 (0x00000000) 0 bits/channel, 0 bytes/packet, 576 frames/packet, 0 bytes/frame
+                no channel layout.
+estimated duration: 0.624000 sec
+audio bytes: 1560
+audio packets: 12
+bit rate: 20000 bits per second
+packet size upper bound: 1052
+maximum packet size: 156
+
+$ afinfo artifacts/decompiled/sounds/32.mp3   # 21840 bytes
+File:           artifacts/decompiled/sounds/32.mp3
+File type ID:   MPG3
+Num Tracks:     1
+----
+Data format:     1 ch,  22050 Hz, .mp3 (0x00000000) 0 bits/channel, 0 bytes/packet, 576 frames/packet, 0 bytes/frame
+                no channel layout.
+estimated duration: 4.368000 sec
+audio bytes: 21840
+audio packets: 168
+bit rate: 40000 bits per second
+packet size upper bound: 530
+maximum packet size: 130
+
+$ afinfo artifacts/decompiled/sounds/34.mp3   # 2730 bytes
+File:           artifacts/decompiled/sounds/34.mp3
+File type ID:   MPG3
+Num Tracks:     1
+----
+Data format:     1 ch,  22050 Hz, .mp3 (0x00000000) 0 bits/channel, 0 bytes/packet, 576 frames/packet, 0 bytes/frame
+                no channel layout.
+estimated duration: 0.546000 sec
+audio bytes: 2730
+audio packets: 21
+bit rate: 40000 bits per second
+packet size upper bound: 530
+maximum packet size: 130
+
+$ afinfo artifacts/decompiled/sounds/36.mp3   # 1430 bytes
+File:           artifacts/decompiled/sounds/36.mp3
+File type ID:   MPG3
+Num Tracks:     1
+----
+Data format:     1 ch,  22050 Hz, .mp3 (0x00000000) 0 bits/channel, 0 bytes/packet, 576 frames/packet, 0 bytes/frame
+                no channel layout.
+estimated duration: 0.286000 sec
+audio bytes: 1430
+audio packets: 11
+bit rate: 40000 bits per second
+packet size upper bound: 530
+maximum packet size: 130
+
+$ afinfo artifacts/decompiled/sounds/38.mp3   # 1690 bytes
+File:           artifacts/decompiled/sounds/38.mp3
+File type ID:   MPG3
+Num Tracks:     1
+----
+Data format:     1 ch,  22050 Hz, .mp3 (0x00000000) 0 bits/channel, 0 bytes/packet, 576 frames/packet, 0 bytes/frame
+                no channel layout.
+estimated duration: 0.338000 sec
+audio bytes: 1690
+audio packets: 13
+bit rate: 40000 bits per second
+packet size upper bound: 530
+maximum packet size: 130
+
+$ afinfo artifacts/decompiled/sounds/40.mp3   # 2730 bytes
+File:           artifacts/decompiled/sounds/40.mp3
+File type ID:   MPG3
+Num Tracks:     1
+----
+Data format:     1 ch,  22050 Hz, .mp3 (0x00000000) 0 bits/channel, 0 bytes/packet, 576 frames/packet, 0 bytes/frame
+                no channel layout.
+estimated duration: 0.546000 sec
+audio bytes: 2730
+audio packets: 21
+bit rate: 40000 bits per second
+packet size upper bound: 530
+maximum packet size: 130
+

@@ -1,0 +1,143 @@
+# A2 verification log
+
+$ npx ajv-cli validate -s data/constants.schema.json -d data/constants.json
+data/constants.json valid
+exit=0
+
+$ npx ajv-cli validate -s data/sound-map.schema.json -d data/sound-map.json
+data/sound-map.json valid
+exit=0
+
+# V2: every sound referenced in data/sound-map.json exists under artifacts/decompiled/ with the recorded byte size
+| soundId | file (from sound-map.json) | exists | actual bytes | A1 manifest bytes | match | durationSec |
+|---|---|---|---|---|---|---|
+| 22 | `artifacts/decompiled/sounds/22.mp3` | yes | 1950 | 1950 | yes | 0.39 |
+| 24 | `artifacts/decompiled/sounds/24.mp3` | yes | 4030 | 4030 | yes | 0.806 |
+| 26 | `artifacts/decompiled/sounds/26.mp3` | yes | 910 | 910 | yes | 0.182 |
+| 30 | `artifacts/decompiled/sounds/30.mp3` | yes | 1560 | 1560 | yes | 0.624 |
+| 32 | `artifacts/decompiled/sounds/32.mp3` | yes | 21840 | 21840 | yes | 4.368 |
+| 34 | `artifacts/decompiled/sounds/34.mp3` | yes | 2730 | 2730 | yes | 0.546 |
+| 36 | `artifacts/decompiled/sounds/36.mp3` | yes | 1430 | 1430 | yes | 0.286 |
+| 38 | `artifacts/decompiled/sounds/38.mp3` | yes | 1690 | 1690 | yes | 0.338 |
+| 40 | `artifacts/decompiled/sounds/40.mp3` | yes | 2730 | 2730 | yes | 0.546 |
+
+V2 result: PASS (9/9 files verified)
+
+$ npm test -- constants
+
+ [32m✓[39m tests/constants.test.mjs [2m([22m[2m3 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m3 passed[39m[22m[90m (3)[39m
+[2m   Start at [22m 16:17:14
+[2m   Duration [22m 82ms[2m (transform 50%, import 27%, tests 13%, worker 10%)[22m
+
+exit=0
+
+$ npm test
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.2 [39m[90m/home/dev/kelimator-2012[39m
+
+ [32m✓[39m tests/constants.test.mjs [2m([22m[2m3 tests[22m[2m)[22m[32m 2[2mms[22m[39m
+ [32m✓[39m tests/stage.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+ [32m✓[39m verify/diff/diff.test.mjs [2m([22m[2m16 tests[22m[2m)[22m[33m 726[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m3 passed[39m[22m[90m (3)[39m
+[2m      Tests [22m [1m[32m30 passed[39m[22m[90m (30)[39m
+[2m   Start at [22m 16:17:14
+[2m   Duration [22m 868ms[2m (tests 86%, transform 10%, import 3%, worker 1%)[22m
+
+exit=0
+
+# final re-run (after all evidence/docs writes)
+$ npx ajv-cli validate -s data/constants.schema.json -d data/constants.json
+data/constants.json valid
+exit=0
+$ npx ajv-cli validate -s data/sound-map.schema.json -d data/sound-map.json
+data/sound-map.json valid
+exit=0
+$ npm test -- constants
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m3 passed[39m[22m[90m (3)[39m
+[2m   Start at [22m 16:18:43
+[2m   Duration [22m 90ms[2m (transform 49%, import 25%, tests 15%, worker 10%)[22m
+
+exit=0
+$ npm test
+ [32m✓[39m tests/stage.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m verify/diff/diff.test.mjs [2m([22m[2m16 tests[22m[2m)[22m[33m 731[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m3 passed[39m[22m[90m (3)[39m
+[2m      Tests [22m [1m[32m30 passed[39m[22m[90m (30)[39m
+[2m   Start at [22m 16:18:44
+[2m   Duration [22m 858ms[2m (tests 85%, transform 11%, import 3%, worker 1%)[22m
+
+exit=0
+
+# post-evidence-final check
+$ npm test -- constants && npm test
+constants exit=0
+suite exit=0
+
+# A2 follow-up (amendment 2026-09-28b): sounds[].file renamed to docs/03 §1 form
+$ npx ajv-cli validate -s data/sound-map.schema.json -d data/sound-map.json
+data/sound-map.json valid
+exit=0
+
+$ V2 cross-check by soundId: slug/file value -> A1 export artifacts/decompiled/sounds/<id>.mp3 (exists + byte size)
+| soundId | file (runtime, docs/03 §1) | A1 export path | exists | bytes | A1 manifest §6 | match | durationSec |
+|---|---|---|---|---|---|---|---|
+| 22 | `sfx_22_enter.mp3` | `artifacts/decompiled/sounds/22.mp3` | yes | 1950 | 1950 | yes | 0.39 |
+| 24 | `sfx_24_shuffle.mp3` | `artifacts/decompiled/sounds/24.mp3` | yes | 4030 | 4030 | yes | 0.806 |
+| 26 | `sfx_26_countdown.mp3` | `artifacts/decompiled/sounds/26.mp3` | yes | 910 | 910 | yes | 0.182 |
+| 30 | `sfx_30_boing.mp3` | `artifacts/decompiled/sounds/30.mp3` | yes | 1560 | 1560 | yes | 0.624 |
+| 32 | `sfx_32_fanfare.mp3` | `artifacts/decompiled/sounds/32.mp3` | yes | 21840 | 21840 | yes | 4.368 |
+| 34 | `sfx_34_finishsound.mp3` | `artifacts/decompiled/sounds/34.mp3` | yes | 2730 | 2730 | yes | 0.546 |
+| 36 | `sfx_36_typer.mp3` | `artifacts/decompiled/sounds/36.mp3` | yes | 1430 | 1430 | yes | 0.286 |
+| 38 | `sfx_38_backspace.mp3` | `artifacts/decompiled/sounds/38.mp3` | yes | 1690 | 1690 | yes | 0.338 |
+| 40 | `sfx_40_buzz.mp3` | `artifacts/decompiled/sounds/40.mp3` | yes | 2730 | 2730 | yes | 0.546 |
+
+V2 result: PASS (9/9)
+
+$ npm test
+ [32m✓[39m tests/stage.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+ [32m✓[39m verify/diff/diff.test.mjs [2m([22m[2m16 tests[22m[2m)[22m[33m 690[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m3 passed[39m[22m[90m (3)[39m
+[2m      Tests [22m [1m[32m30 passed[39m[22m[90m (30)[39m
+[2m   Start at [22m 16:23:22
+[2m   Duration [22m 808ms[2m (tests 85%, transform 11%, import 3%, worker 1%)[22m
+
+exit=0
+
+$ shasum -a 256 data/sound-map.json
+fb31fbca633c70682dce34d6c6f27388391da9ad44510ef4486f4a1198297b09  data/sound-map.json
+
+# V2 slug-source cross-check: id -> slug must equal the evidenced clip identifier (tags.txt instance name of the sprite that StartSounds that id)
+id -> slug derived from SWF evidence: {22: 'enter', 24: 'shuffle', 26: 'countdown', 30: 'boing', 32: 'fanfare', 34: 'finishsound', 36: 'typer', 38: 'backspace', 40: 'buzz'}
+  id 22: file='sfx_22_enter.mp3' expected='sfx_22_enter.mp3' OK
+  id 24: file='sfx_24_shuffle.mp3' expected='sfx_24_shuffle.mp3' OK
+  id 26: file='sfx_26_countdown.mp3' expected='sfx_26_countdown.mp3' OK
+  id 30: file='sfx_30_boing.mp3' expected='sfx_30_boing.mp3' OK
+  id 32: file='sfx_32_fanfare.mp3' expected='sfx_32_fanfare.mp3' OK
+  id 34: file='sfx_34_finishsound.mp3' expected='sfx_34_finishsound.mp3' OK
+  id 36: file='sfx_36_typer.mp3' expected='sfx_36_typer.mp3' OK
+  id 38: file='sfx_38_backspace.mp3' expected='sfx_38_backspace.mp3' OK
+  id 40: file='sfx_40_buzz.mp3' expected='sfx_40_buzz.mp3' OK
+
+slug-source cross-check: PASS (9/9)
+
+$ npx ajv-cli validate -s data/sound-map.schema.json -d data/sound-map.json
+data/sound-map.json valid
+exit=0
+$ npm test
+
+[2m Test Files [22m [1m[32m3 passed[39m[22m[90m (3)[39m
+[2m      Tests [22m [1m[32m30 passed[39m[22m[90m (30)[39m
+[2m   Start at [22m 16:25:09
+[2m   Duration [22m 802ms[2m (tests 85%, transform 11%, import 3%, worker 1%)[22m
+
+exit=0
+$ shasum -a 256 data/sound-map.json
+fb31fbca633c70682dce34d6c6f27388391da9ad44510ef4486f4a1198297b09  data/sound-map.json
