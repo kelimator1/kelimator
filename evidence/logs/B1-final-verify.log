@@ -1,0 +1,71 @@
+### 1. final extraction run (deterministic from cache)
+bundle words: 81723
+sitemap words: 81050
+merged keys: 81638
+sitemap-only forms: 128 (non-letter excluded: 118, case artifacts excluded: 10, genuine added: 0)
+letters-only words written: 63967
+non-letter words excluded: 17756
+sha256: 79ad954e569e806b230a82582f1b4e6167faf6a78163d93db9982b325a6a9a89
+EXIT:0
+### 2. artifact hash + line count
+79ad954e569e806b230a82582f1b4e6167faf6a78163d93db9982b325a6a9a89  headwords.txt
+EXIT:0
+   63967 headwords.txt
+EXIT:0
+### 3. V8: re-run extraction from cache, compare hash
+bundle words: 81723
+sitemap words: 81050
+merged keys: 81638
+sitemap-only forms: 128 (non-letter excluded: 118, case artifacts excluded: 10, genuine added: 0)
+letters-only words written: 63967
+non-letter words excluded: 17756
+sha256: 79ad954e569e806b230a82582f1b4e6167faf6a78163d93db9982b325a6a9a89
+EXIT:0
+79ad954e569e806b230a82582f1b4e6167faf6a78163d93db9982b325a6a9a89  headwords.txt
+EXIT:0
+### 4. V2 format: no empty lines, every line only Unicode letters (unicodedata L*)
+file: /home/dev/kelimator-2012/artifacts/tdk/headwords.txt
+bytes: 681749
+lines: 63967
+empty lines: 0
+non-letter lines: 0
+duplicates: 0
+byte-order sorted: True
+first line: Abana
+last line: şıvgın
+PASS: all format checks green
+EXIT:0
+### 5. source + evidence hashes
+1387c14446995b595ca02c75c8966842aa3104e2b557f16a58e1caa96c3fe133  raw/probe_app.js
+ef9e761d6b79ab5866886bdf643d8e3b3d85fc8819f27ace59d76f9f5cd3f2a9  raw/probe_sitemap-1.xml
+35c4847cd089f83288dd2938c9dc7e78041b12ad82a078895f2112a48e3696b7  raw/probe_sitemap-2.xml
+051b1efedd84cac571641d3b33373e003e503b1109bdc7ee3f09959ee5251ffa  bundle_coverage.json
+c79829f5a47583e9a748c5267a3a4fc78773994813115d01f5718ae6960611c8  headwords_stats.json
+EXIT:0
+### 6. sitemap cross-check (offline)
+exact                  headwords_missing=2255   sitemap_missing=19338
+tr_lower               headwords_missing=208    sitemap_missing=17369
+js_lower               headwords_missing=117    sitemap_missing=17277
+lower_strip_marks      headwords_missing=106    sitemap_missing=17277
+tr_lower_strip_marks   headwords_missing=118    sitemap_missing=17287
+wrote /home/dev/kelimator-2012/artifacts/tdk/sitemap_coverage.json
+EXIT:0
+### 7. archived-fixture overlap (informational, task step 6)
+fixture_entries: 29749
+fixture_unique: 27856
+snapshot_headwords: 63967
+fixture_words_present_exact: 0
+fixture_words_present_case_insensitive: 28044
+fixture_words_absent: 1705
+snapshot_headwords_present_in_fixture_tr_upper: 26335
+wrote /home/dev/kelimator-2012/artifacts/tdk/overlap_fixture.json
+EXIT:0
+### 8. request log summary (offline)
+EXIT:0
+total_requests: 2070
+by_http_status: {'200': 2059, '403': 6, '404': 1, 'None': 4}
+by_file_kind: {'middle_page': 848, 'other': 19, 'regex_page': 1171, 'step1_api_probe': 23, 'step1_probe': 9}
+first: 2026-09-28T12:27:41Z last: 2026-09-28T17:38:59Z
+### 9. file type
+headwords.txt: Unicode text, UTF-8 text
+EXIT:0

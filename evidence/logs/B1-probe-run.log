@@ -1,0 +1,39 @@
+{"query": "kelime", "url": "https://sozluk.gov.tr/gts?ara=kelime", "started_utc": "2026-09-28T12:27:41Z", "http_status": 200, "bytes": 1713, "sha256": "587db8baa6d7bb24a40ec98115319e5d0a7eecd3108d28d25bc7d63946c8d31e", "file": "probe_kelime.json", "error": ""}
+{"query": "aba", "url": "https://sozluk.gov.tr/gts?ara=aba", "started_utc": "2026-09-28T12:27:42Z", "http_status": 200, "bytes": 5287, "sha256": "9ee1d4cbc5753dac4de0c2e416c1906d61402030600e0803df3470b2a0bce077", "file": "probe_aba.json", "error": ""}
+{"query": "ab", "url": "https://sozluk.gov.tr/gts?ara=ab", "started_utc": "2026-09-28T12:28:04Z", "http_status": 200, "bytes": 832, "sha256": "7dac27c5caf2b417e267d76c6375ae931b15f689212381c333dab1cdbf737526", "file": "probe_ab.json", "error": ""}
+{"query": "kelim", "url": "https://sozluk.gov.tr/gts?ara=kelim", "started_utc": "2026-09-28T12:28:05Z", "http_status": 200, "bytes": 32, "sha256": "d87b983a939facfdb331046726cb7577e9148aabe20fd517f9511f8d2b283f4a", "file": "probe_kelim.json", "error": ""}
+{"query": "kaba", "url": "https://sozluk.gov.tr/gts?ara=kaba", "started_utc": "2026-09-28T12:28:06Z", "http_status": 200, "bytes": 3728, "sha256": "5991f070b2a11df4bc2efd5518e44e37820b804fd77269b619dd14dca677a5a4", "file": "probe_kaba.json", "error": ""}
+{"query": "zzzz", "url": "https://sozluk.gov.tr/gts?ara=zzzz", "started_utc": "2026-09-28T12:28:07Z", "http_status": 200, "bytes": 32, "sha256": "d87b983a939facfdb331046726cb7577e9148aabe20fd517f9511f8d2b283f4a", "file": "probe_zzzz.json", "error": ""}
+{"query": "a", "url": "https://sozluk.gov.tr/gts?ara=a", "started_utc": "2026-09-28T12:28:08Z", "http_status": 200, "bytes": 2381, "sha256": "ba54926df004ea3dae6e4d72e491e394413b81c3f4974e63f8aa08ea0c1829cf", "file": "probe_a.json", "error": ""}
+https://api.sozluk.gov.tr/gts-yeni/arama?q=aba&mode=start&scope=madde&sort=madde_asc&limit=25&offset=0&searchType=web -> 403 91 err: HTTPError
+https://api.sozluk.gov.tr/gts-yeni/arama?q=aba&mode=middle&scope=madde&sort=madde_asc&limit=25&offset=0&searchType=web -> 403 91 err: HTTPError
+https://api.sozluk.gov.tr/gts-yeni/arama?q=aba&mode=middle&scope=madde&sort=madde_asc&limit=1000&offset=0&searchType=web -> 403 91 err: HTTPError
+https://api.sozluk.gov.tr/gts-yeni/arama?q=aba&mode=exact&scope=madde&sort=madde_asc&limit=25&offset=0&searchType=web -> 403 91 err: HTTPError
+https://api.sozluk.gov.tr/gts-yeni/arama?q=%5Eaba&mode=regex&scope=madde&sort=madde_asc&limit=25&offset=0&searchType=web -> 403 91 err: HTTPError
+https://api.sozluk.gov.tr/gts-yeni/arama?q=.&mode=regex&scope=madde&sort=madde_asc&limit=1000&offset=0&searchType=web -> 403 91 err: HTTPError
+https://api.sozluk.gov.tr/gts-yeni/arama?q=aba&mode=start&scope=madde&sort=madde_asc&limit=25&offset=0&searchType=web -> 200 3919 err: 
+https://api.sozluk.gov.tr/gts-yeni/arama?q=aba&mode=middle&scope=madde&sort=madde_asc&limit=25&offset=0&searchType=web -> 200 4219 err: 
+https://api.sozluk.gov.tr/gts-yeni/arama?q=aba&mode=middle&scope=madde&sort=madde_asc&limit=1000&offset=0&searchType=web -> 200 8031 err: 
+https://api.sozluk.gov.tr/gts-yeni/arama?q=aba&mode=exact&scope=madde&sort=madde_asc&limit=25&offset=0&searchType=web -> 200 513 err: 
+https://api.sozluk.gov.tr/gts-yeni/arama?q=a&mode=middle&scope=madde&sort=madde_asc&limit=25&offset=0&searchType=web -> 200 3991 err: 
+https://api.sozluk.gov.tr/gts-yeni/arama?q=a&mode=middle&scope=madde&sort=madde_asc&limit=25&offset=25&searchType=web -> 200 4042 err: 
+https://api.sozluk.gov.tr/gts-yeni/arama?q=a&mode=middle&scope=madde&sort=madde_asc&limit=1000&offset=0&searchType=web -> 200 7795 err: 
+https://api.sozluk.gov.tr/gts-yeni/arama?q=a&mode=middle&scope=madde&sort=madde_asc&limit=1000&offset=1000&searchType=web -> 200 7679 err: 
+https://api.sozluk.gov.tr/gts-yeni/arama?q=.&mode=regex&scope=madde&sort=madde_asc&limit=25&offset=0&searchType=web -> 200 3999 err: 
+https://api.sozluk.gov.tr/gts-yeni/arama?q=araba&mode=middle&scope=madde&sort=madde_asc&limit=25&offset=0&searchType=web -> 200 4171 err: 
+https://api.sozluk.gov.tr/gts-yeni/arama?q=a&mode=middle&scope=madde&sort=madde_asc&limit=50&offset=9999&searchType=web -> 200 8051 err: 
+https://api.sozluk.gov.tr/gts-yeni/arama?q=a&mode=middle&scope=madde&sort=madde_asc&limit=50&offset=10000&searchType=web -> 200 8061 err: 
+https://api.sozluk.gov.tr/gts-yeni/arama?q=a&mode=middle&scope=madde&sort=madde_asc&limit=50&offset=20000&searchType=web -> 200 7782 err: 
+https://api.sozluk.gov.tr/gts-yeni/arama?q=a&mode=middle&scope=madde&sort=madde_asc&limit=50&offset=37364&searchType=web -> 200 387 err: 
+https://api.sozluk.gov.tr/gts-yeni/arama?q=.&mode=regex&scope=madde&sort=madde_asc&limit=50&offset=10000&searchType=web -> 200 7403 err: 
+https://api.sozluk.gov.tr/gts-yeni/arama?q=.&mode=regex&scope=madde&sort=madde_asc&limit=50&offset=80000&searchType=web -> 200 7894 err: 
+https://api.sozluk.gov.tr/gts-yeni/arama?q=.&mode=regex&scope=madde&sort=madde_asc&limit=50&offset=82174&searchType=web -> 200 386 err: 
+api_middle_a_l50_o9999.json toplam: 37365 | sayfa: {'limit': 50, 'offset': 9999, 'sonrakiOffset': 10049} | n: 50 | first: ['grafikçi', 'grafikçilik', 'grafiker'] | last: ['gres yağı', 'gri pasaport']
+api_middle_a_l50_o10000.json toplam: 37365 | sayfa: {'limit': 50, 'offset': 10000, 'sonrakiOffset': 10050} | n: 50 | first: ['grafikçilik', 'grafiker', 'grafikerlik'] | last: ['gri pasaport', 'gribal']
+api_middle_a_l50_o20000.json toplam: 37365 | sayfa: {'limit': 50, 'offset': 20000, 'sonrakiOffset': 20050} | n: 50 | first: ['maden ocağı', 'maden sodası', 'maden suyu'] | last: ['magazin dünyası', 'magazinel']
+api_middle_a_l50_o37364.json toplam: 37365 | sayfa: {'limit': 50, 'offset': 37364, 'sonrakiOffset': None} | n: 1 | first: ['züyuf akçe'] | last: ['züyuf akçe']
+api_regex_dot_l50_o10000.json toplam: 82175 | sayfa: {'limit': 50, 'offset': 10000, 'sonrakiOffset': 10050} | n: 50 | first: ['bezmek', 'bezsi', 'bezzaz'] | last: ['bıkılabilme', 'bıkılabilmek']
+api_regex_dot_l50_o80000.json toplam: 82175 | sayfa: {'limit': 50, 'offset': 80000, 'sonrakiOffset': 80050} | n: 50 | first: ['yıl', 'yıl dönümü', 'yıl halkası'] | last: ['yıldırımkıran', 'yıldırımlı']
+api_regex_dot_l50_o82174.json toplam: 82175 | sayfa: {'limit': 50, 'offset': 82174, 'sonrakiOffset': None} | n: 1 | first: ['züyuf akçe'] | last: ['züyuf akçe']
+https://sozluk.gov.tr/sitemap-1.xml -> 200 3143264 err: 
+https://sozluk.gov.tr/sitemap-2.xml -> 200 2483665 err: 

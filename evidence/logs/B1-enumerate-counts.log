@@ -1,0 +1,6 @@
+HTTP None q='cü' o=0
+retry q='cü' o=0 in 30s
+HTTP None q='cz' o=0
+retry q='cz' o=0 in 30s
+HTTP None q='re' o=0
+retry q='re' o=0 in 30s

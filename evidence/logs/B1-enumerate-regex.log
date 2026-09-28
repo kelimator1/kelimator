@@ -1,0 +1,15 @@
+regex population toplam=82175 pages_needed=1644
+regex population toplam=82175 pages_needed=1644
+progress: 100 pages fetched (offset 5400/82175)
+progress: 200 pages fetched (offset 10400/82175)
+progress: 300 pages fetched (offset 15400/82175)
+progress: 400 pages fetched (offset 20400/82175)
+progress: 500 pages fetched (offset 25400/82175)
+progress: 600 pages fetched (offset 30400/82175)
+progress: 700 pages fetched (offset 35400/82175)
+HTTP None mode=regex q='.' o=38350
+retry mode=regex q='.' o=38350 in 30s
+progress: 800 pages fetched (offset 40400/82175)
+progress: 900 pages fetched (offset 45400/82175)
+progress: 1000 pages fetched (offset 50400/82175)
+progress: 1100 pages fetched (offset 55400/82175)
