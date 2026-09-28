@@ -1,0 +1,58 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test smoke
+
+
+Running 7 tests using 1 worker
+
+(node:30656) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:30656) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [app] › tests/e2e/smoke.spec.ts:98:3 › C2 stage shell smoke › page loads with the stage shell and read-only __game hooks (718ms)
+(node:30676) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:30676) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 [app] › tests/e2e/smoke.spec.ts:145:5 › C2 stage shell smoke › viewport 320x480: scale, letterbox, non-blank screenshot (721ms)
+  ✓  3 [app] › tests/e2e/smoke.spec.ts:145:5 › C2 stage shell smoke › viewport 550x400: scale, letterbox, non-blank screenshot (626ms)
+  ✓  4 [app] › tests/e2e/smoke.spec.ts:145:5 › C2 stage shell smoke › viewport 1920x1080: scale, letterbox, non-blank screenshot (747ms)
+  ✓  5 [app] › tests/e2e/smoke.spec.ts:145:5 › C2 stage shell smoke › viewport 3840x2160: scale, letterbox, non-blank screenshot (1.2s)
+  ✓  6 [app] › tests/e2e/smoke.spec.ts:145:5 › C2 stage shell smoke › viewport 3440x1440: scale, letterbox, non-blank screenshot (935ms)
+  ✓  7 [app] › tests/e2e/smoke.spec.ts:203:3 › C2 stage shell smoke › fullscreen toggle keeps the scale formula for unchanged viewport dimensions (V2) (720ms)
+
+
+  1) [app] › tests/e2e/smoke.spec.ts:98:3 › C2 stage shell smoke › page loads with the stage shell and read-only __game hooks 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 4
+    + Received  + 4
+
+      Object {
+        "foundWords": Array [],
+    -   "lastAudioEvent": null,
+    -   "remainingMs": 0,
+    -   "roundId": null,
+    +   "lastAudioEvent": "roundStart",
+    +   "remainingMs": 200000,
+    +   "roundId": "abacilik",
+        "score": 0,
+    -   "state": null,
+    +   "state": "playing",
+      }
+
+      121 |     });
+      122 |
+    > 123 |     expect(hooks).toEqual({
+          |                   ^
+      124 |       state: null,
+      125 |       roundId: null,
+      126 |       foundWords: [],
+        at /home/dev/kelimator-2012/tests/e2e/smoke.spec.ts:123:19
+
+    Error Context: test-results/tests-e2e-smoke-C2-stage-s-c4b6a-ll-and-read-only-game-hooks-app/error-context.md
+
+  1 failed
+    [app] › tests/e2e/smoke.spec.ts:98:3 › C2 stage shell smoke › page loads with the stage shell and read-only __game hooks 
+  6 passed (6.6s)

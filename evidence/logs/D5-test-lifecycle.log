@@ -1,0 +1,14 @@
+
+> kelimator-2012@0.0.0 test
+> vitest run lifecycle
+
+
+ RUN  v5.0.2 /home/dev/kelimator-2012
+
+ ✓ tests/lifecycle.test.ts (23 tests) 52ms
+
+ Test Files  1 passed (1)
+      Tests  23 passed (23)
+   Start at  22:31:23
+   Duration  1.81s (transform 64%, import 33%, tests 3%)
+
