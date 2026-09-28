@@ -1,0 +1,14 @@
+
+> kelimator-2012@0.0.0 test
+> vitest run scoring
+
+
+ RUN  v5.0.2 /home/dev/kelimator-2012
+
+ ✓ tests/scoring.test.ts (17 tests) 5ms
+
+ Test Files  1 passed (1)
+      Tests  17 passed (17)
+   Start at  21:57:26
+   Duration  1.97s (transform 64%, import 35%)
+

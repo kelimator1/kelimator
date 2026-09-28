@@ -1,0 +1,43 @@
+src/game/scoring.ts:1:// src/game/scoring.ts — scoring engine (docs/04-architecture.md §4;
+src/game/scoring.ts:2:// docs/05-game-core.md §4; docs/02-mechanics-spec.md §3).
+src/game/scoring.ts:4:// Confirmed formulas (docs/02 §3, [CONFIRMED: 2004 official page]):
+src/game/scoring.ts:6://   bonus word : the same, plus bonusPoints once, while the O02 bonus is
+src/game/scoring.ts:7://                pending (`bonusball > -1`)
+src/game/scoring.ts:9://                only; the timeout path adds no time bonus — O14)
+src/game/scoring.ts:11:// Constants arrive from data/constants.json via the caller (docs/05 §1:
+src/game/scoring.ts:13:// passes typed values). All arithmetic is integer arithmetic (docs/05 §4).
+src/game/scoring.ts:15:// Bonus condition (O02): the reference scores
+src/game/scoring.ts:16://   `if(bonusball > -1) { ... + 5000 }` — the bright ball is inside the
+src/game/scoring.ts:17:// submitted entry exactly while `bonusball > -1`, and a submit immediately
+src/game/scoring.ts:19:// ball was shown yet (recorded quirk (a), evidence/A2-bonus.md §3). The single
+src/game/scoring.ts:20:// RNG owner is D1's `BonusLetterTracker` (round.ts); callers pass
+src/game/scoring.ts:22:// evidence: evidence/A2-bonus.md §2–§3; docs/02-mechanics-spec.md §3 (O02).
+src/game/scoring.ts:26:  /** `scoring.perLetterSquaredFactor` — the 2004 formula factor. */
+src/game/scoring.ts:40:const ZERO = 0;
+src/game/scoring.ts:44: * `bonusball = -1` at round start; O02).
+src/game/scoring.ts:46:// evidence: evidence/A2-bonus.md §2 — init(): bonusball = -1.
+src/game/scoring.ts:47:export const NO_BONUS_BALL = -1;
+src/game/scoring.ts:55:  /** True while the O02 bonus applies (`bonusBall > -1`). */
+src/game/scoring.ts:64:// the confirmed flow, so the integer-arithmetic guarantee (docs/05 §4) holds.
+src/game/scoring.ts:82: * `BonusLetterTracker.ball` (round.ts, O02): any value > -1 adds
+src/game/scoring.ts:83: * `bonusPoints` exactly once, per the reference `if(bonusball > -1)` branch.
+src/game/scoring.ts:84: * Invalid and already-found words are rejected by the caller (O15) and are
+src/game/scoring.ts:111: * adds no time bonus (O14, evidence/A2-timeout.md §2–§3).
+src/game/timer.ts:1:// src/game/timer.ts — countdown (docs/04-architecture.md §4;
+src/game/timer.ts:2:// docs/05-game-core.md §5; O01: evidence/A2-timer.md).
+src/game/timer.ts:4:// Evidenced semantics (O01, evidence/A2-timer.md §2–§3):
+src/game/timer.ts:5:// - every round starts at `initialSeconds` (`init()`: `sure = 200;
+src/game/timer.ts:8://   `int(sure - (getTimer() - t)/1000)` — it decrements at exact 1000 ms
+src/game/timer.ts:10:// - stop semantics: the timer clip is stopped (`gotoAndStop(1)`) at round
+src/game/timer.ts:15:// - at `timer == 0` the clip stops itself after the timeout sequence runs
+src/game/timer.ts:16://   (O14: in-progress entry discarded, no time bonus).
+src/game/timer.ts:18:// Values arrive from data/constants.json via the caller (docs/05 §1: modules
+src/game/timer.ts:21:// (silent witness runs, EXECUTION.md §8).
+src/game/timer.ts:58: * One countdown per round (O01). `start()` is `baslat()` (fresh start from the
+src/game/timer.ts:59: * initial value); `stop()` is the clip's `gotoAndStop(1)` — it freezes the
+src/game/timer.ts:86:const ZERO = 0;
+src/game/timer.ts:127:  /** Reference: `int(sure - (getTimer() - t)/1000)`, clamped at zero. */
+src/game/timer.ts:147:      // Reference frame 3: display set to zero, then the terminal branch
+src/game/timer.ts:148:      // stops the clip (`gotoAndStop(1)`) — expiry fires exactly once.
+src/game/timer.ts:173:      // `baslat()` → `gotoAndPlay(2)` re-captures `t`: a new round (or a
+src/game/timer.ts:174:      // hypothetical resume) always restarts from the initial value (O01).

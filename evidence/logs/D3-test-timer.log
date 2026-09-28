@@ -1,0 +1,14 @@
+
+> kelimator-2012@0.0.0 test
+> vitest run timer
+
+
+ RUN  v5.0.2 /home/dev/kelimator-2012
+
+ ✓ tests/timer.test.ts (17 tests) 7ms
+
+ Test Files  1 passed (1)
+      Tests  17 passed (17)
+   Start at  21:58:20
+   Duration  110ms (transform 63%, import 17%, tests 15%, worker 4%)
+

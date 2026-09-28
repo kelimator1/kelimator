@@ -1,0 +1,5 @@
+src/game/scoring.ts flagged literals: [{"line":40,"literal":"0","annotated":true},{"line":47,"literal":"1","annotated":true}]
+src/game/scoring.ts problems: []
+src/game/timer.ts flagged literals: [{"line":86,"literal":"0","annotated":true}]
+src/game/timer.ts problems: []
+injected problems: ["<injected>:1 unannotated 200","<injected>:1 hardcoded game value 200"]
