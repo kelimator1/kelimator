@@ -170,3 +170,10 @@ RESOLVED 2026-09-28 — evidence/B3-viroloji-blocker.md + tests/fixtures/rounds/
 - 2026-09-28 — C3: reference harness scenario mode (`--scenario`) added for
   E3/F2 scripted captures; schema documented in `verify/reference/README.md`.
   Evidence: `evidence/C3-harness.md`, `evidence/logs/C3-scenario.log`.
+- 2026-09-28 — E3 test-scope + wiring: `tasks/E3-animations.md` additionally
+  owns `tests/e2e/**` (animation suite), `src/main.ts` animation wiring, and
+  `tests/fixtures/reference/animations/**` (reference keyframes via C3's
+  scenario mode).
+- 2026-09-28 — F2 harness scope: `tasks/F2-e2e-playthrough.md` drives the
+  reference via C3's `--scenario` mode and owns
+  `tests/fixtures/reference/playthrough/**` for its reference captures.

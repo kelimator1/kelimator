@@ -5,6 +5,14 @@
 - Depends on: E2, A3
 - Owned paths: `src/ui/animations.ts`, `src/styles/animations.css`, `evidence/E3-*`, `evidence/visual/E3-*`
 
+> Amendment 2026-09-28 (orchestrator): Owned paths additionally include
+> `tests/e2e/**` (the animation suite required by `npm run e2e -- animation`),
+> `src/main.ts` animation-trigger wiring only (D5's game wiring stays intact),
+> and `tests/fixtures/reference/animations/**` for the reference keyframes
+> captured with C3's scenario mode (`--scenario`, documented in
+> `verify/reference/README.md`). Silent witness runs apply. Recorded in
+> `docs/08-open-items.md` (Amendments).
+
 ## Inputs
 - `src/data/animation.json` (A3/E1): sequence names, frame spans, derived
   durations, keyframe offsets

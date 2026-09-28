@@ -5,6 +5,13 @@
 - Depends on: C3, D5, E1
 - Owned paths: `tests/e2e/playthrough/**`, `tests/fixtures/playthrough.json`, `evidence/F2-*`, `evidence/visual/F2-*`
 
+> Amendment 2026-09-28 (orchestrator): the reference side of F2 is driven by
+> C3's scenario mode (`node verify/reference/capture.mjs --scenario …`,
+> documented in `verify/reference/README.md`); do not edit `verify/reference/**`.
+> Owned paths additionally include `tests/fixtures/reference/playthrough/**` for
+> F2's reference captures. Silent witness runs apply. Recorded in
+> `docs/08-open-items.md` (Amendments).
+
 ## Inputs
 - `tests/fixtures/reference/` (C3 reference captures + interaction logs)
 - `tests/fixtures/rounds/*.xml` (archived fixture rounds)
