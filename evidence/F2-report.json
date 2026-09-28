@@ -1,0 +1,1398 @@
+{
+  "schemaVersion": 1,
+  "task": "F2",
+  "generatedAt": "2026-09-28T20:46:59.999Z",
+  "reference": {
+    "captures": "tests/fixtures/reference/playthrough",
+    "scenario": "tests/fixtures/reference/playthrough/scenarios/playthrough.json",
+    "scenarioReport": "tests/fixtures/reference/playthrough/scenario-report.json",
+    "scenarioReportOk": true,
+    "runCommand": "node verify/reference/capture.mjs --scenario tests/fixtures/reference/playthrough/scenarios/playthrough.json --out tests/fixtures/reference/playthrough --runs 1 --port 8797",
+    "stateWait": "hiscore-form matched (reference all-found end screen)",
+    "timeoutScenario": "tests/fixtures/reference/playthrough/scenarios/timeout.json",
+    "timeoutScenarioReport": "tests/fixtures/reference/playthrough/timeout/scenario-report.json",
+    "timeoutScenarioReportOk": true,
+    "timeoutRunCommand": "node verify/reference/capture.mjs --scenario tests/fixtures/reference/playthrough/scenarios/timeout.json --out tests/fixtures/reference/playthrough/timeout --runs 1 --port 8797"
+  },
+  "deckMatch": {
+    "arrangement": "AFİZNLİM",
+    "instanceOrder": [
+      3,
+      0,
+      5,
+      6,
+      2,
+      4,
+      1,
+      7
+    ],
+    "selectRoundCalls": 3251,
+    "seed": 5263,
+    "advanceMs": 2552,
+    "renderedLetters": "AFİZNLİM",
+    "method": "reference deck observed in the committed 00-selected capture; app advanced to the first D2 shuffle count with the same rendered arrangement (instance order recorded; the reference İ instance mapping is unobservable in this capture set)"
+  },
+  "oracle": {
+    "source": "D1 createSeededRandom/createBonusLetterTracker + D3 scoreWord (Vite modules)",
+    "seed": 2012,
+    "spotChecks": {
+      "fal": 450,
+      "anifWithBonus": 5800,
+      "finalizmBase": 3200
+    },
+    "bonusEvents": [
+      {
+        "type": "lucky",
+        "word": "ANİF",
+        "globalAdd": 53,
+        "entryAdd": 1,
+        "rollIndex": 52,
+        "rollValue": 0,
+        "ball": 1
+      },
+      {
+        "type": "paid",
+        "word": "ANİF",
+        "ball": 1,
+        "bonusPoints": 5000
+      },
+      {
+        "type": "lucky",
+        "word": "NAFİZ",
+        "globalAdd": 118,
+        "entryAdd": 2,
+        "rollIndex": 114,
+        "rollValue": 33,
+        "ball": 2
+      },
+      {
+        "type": "paid",
+        "word": "NAFİZ",
+        "ball": 2,
+        "bonusPoints": 5000
+      },
+      {
+        "type": "lucky",
+        "word": "İNFİAL",
+        "globalAdd": 145,
+        "entryAdd": 1,
+        "rollIndex": 138,
+        "rollValue": 33,
+        "ball": 1
+      },
+      {
+        "type": "paid",
+        "word": "İNFİAL",
+        "ball": 1,
+        "bonusPoints": 5000
+      },
+      {
+        "type": "lucky",
+        "word": "FİNALİZM",
+        "globalAdd": 152,
+        "entryAdd": 2,
+        "rollIndex": 140,
+        "rollValue": 18,
+        "ball": 2
+      },
+      {
+        "type": "paid",
+        "word": "FİNALİZM",
+        "ball": 2,
+        "bonusPoints": 5000
+      }
+    ]
+  },
+  "playthrough": {
+    "steps": [
+      {
+        "index": 0,
+        "id": "00-selected",
+        "capture": "00-selected",
+        "action": "select",
+        "word": null,
+        "outcome": null,
+        "score": 0,
+        "appScore": 0,
+        "timeBonus": null,
+        "foundCount": 0,
+        "entry": "",
+        "state": "playing",
+        "audio": "roundStart",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.042027272727272726,
+        "tolerantMismatchRatio": 0.009736363636363637,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/00-selected.png",
+        "artifacts": "evidence/visual/F2/00-selected"
+      },
+      {
+        "index": 1,
+        "id": "01-invalid",
+        "capture": "01-invalid",
+        "action": "submit",
+        "word": "FZM",
+        "outcome": "invalid",
+        "score": 0,
+        "appScore": 0,
+        "timeBonus": null,
+        "foundCount": 0,
+        "entry": "FZM",
+        "state": "playing",
+        "audio": "submitInvalid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.05685,
+        "tolerantMismatchRatio": 0.013227272727272728,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/01-invalid.png",
+        "artifacts": "evidence/visual/F2/01-invalid"
+      },
+      {
+        "index": 2,
+        "id": "02-invalid-cleared",
+        "capture": "02-invalid-cleared",
+        "action": "clear",
+        "word": null,
+        "outcome": null,
+        "score": 0,
+        "appScore": 0,
+        "timeBonus": null,
+        "foundCount": 0,
+        "entry": "",
+        "state": "playing",
+        "audio": "delete",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.042009090909090906,
+        "tolerantMismatchRatio": 0.009745454545454545,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/02-invalid-cleared.png",
+        "artifacts": "evidence/visual/F2/02-invalid-cleared"
+      },
+      {
+        "index": 3,
+        "id": "03-valid-FAL",
+        "capture": "03-valid-FAL",
+        "action": "submit",
+        "word": "FAL",
+        "outcome": "valid",
+        "score": 450,
+        "appScore": 450,
+        "timeBonus": null,
+        "foundCount": 1,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.04287272727272727,
+        "tolerantMismatchRatio": 0.009768181818181818,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/03-valid-FAL.png",
+        "artifacts": "evidence/visual/F2/03-valid-FAL"
+      },
+      {
+        "index": 4,
+        "id": "04-duplicate-FAL",
+        "capture": "04-duplicate-FAL",
+        "action": "submit",
+        "word": "FAL",
+        "outcome": "duplicate",
+        "score": 450,
+        "appScore": 450,
+        "timeBonus": null,
+        "foundCount": 1,
+        "entry": "FAL",
+        "state": "playing",
+        "audio": "submitAlreadyFound",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.06307727272727273,
+        "tolerantMismatchRatio": 0.0174,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/04-duplicate-FAL.png",
+        "artifacts": "evidence/visual/F2/04-duplicate-FAL"
+      },
+      {
+        "index": 5,
+        "id": "05-duplicate-cleared",
+        "capture": "05-duplicate-cleared",
+        "action": "clear",
+        "word": null,
+        "outcome": null,
+        "score": 450,
+        "appScore": 450,
+        "timeBonus": null,
+        "foundCount": 1,
+        "entry": "",
+        "state": "playing",
+        "audio": "delete",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.04289090909090909,
+        "tolerantMismatchRatio": 0.009768181818181818,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/05-duplicate-cleared.png",
+        "artifacts": "evidence/visual/F2/05-duplicate-cleared"
+      },
+      {
+        "index": 6,
+        "id": "06-valid",
+        "capture": "06-valid",
+        "action": "submit",
+        "word": "AFİ",
+        "outcome": "valid",
+        "score": 900,
+        "appScore": 900,
+        "timeBonus": null,
+        "foundCount": 2,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.04389090909090909,
+        "tolerantMismatchRatio": 0.009813636363636363,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/06-valid.png",
+        "artifacts": "evidence/visual/F2/06-valid"
+      },
+      {
+        "index": 7,
+        "id": "07-valid",
+        "capture": "07-valid",
+        "action": "submit",
+        "word": "ALİ",
+        "outcome": "valid",
+        "score": 1350,
+        "appScore": 1350,
+        "timeBonus": null,
+        "foundCount": 3,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.04462727272727273,
+        "tolerantMismatchRatio": 0.009854545454545454,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/07-valid.png",
+        "artifacts": "evidence/visual/F2/07-valid"
+      },
+      {
+        "index": 8,
+        "id": "08-valid",
+        "capture": "08-valid",
+        "action": "submit",
+        "word": "ANİ",
+        "outcome": "valid",
+        "score": 1800,
+        "appScore": 1800,
+        "timeBonus": null,
+        "foundCount": 4,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.04554545454545455,
+        "tolerantMismatchRatio": 0.009895454545454546,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/08-valid.png",
+        "artifacts": "evidence/visual/F2/08-valid"
+      },
+      {
+        "index": 9,
+        "id": "09-valid",
+        "capture": "09-valid",
+        "action": "submit",
+        "word": "FAN",
+        "outcome": "valid",
+        "score": 2250,
+        "appScore": 2250,
+        "timeBonus": null,
+        "foundCount": 5,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.0463,
+        "tolerantMismatchRatio": 0.0099,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/09-valid.png",
+        "artifacts": "evidence/visual/F2/09-valid"
+      },
+      {
+        "index": 10,
+        "id": "10-valid",
+        "capture": "10-valid",
+        "action": "submit",
+        "word": "FAZ",
+        "outcome": "valid",
+        "score": 2700,
+        "appScore": 2700,
+        "timeBonus": null,
+        "foundCount": 6,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.047077272727272725,
+        "tolerantMismatchRatio": 0.009986363636363637,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/10-valid.png",
+        "artifacts": "evidence/visual/F2/10-valid"
+      },
+      {
+        "index": 11,
+        "id": "11-valid",
+        "capture": "11-valid",
+        "action": "submit",
+        "word": "FİL",
+        "outcome": "valid",
+        "score": 3150,
+        "appScore": 3150,
+        "timeBonus": null,
+        "foundCount": 7,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.04774090909090909,
+        "tolerantMismatchRatio": 0.010022727272727273,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/11-valid.png",
+        "artifacts": "evidence/visual/F2/11-valid"
+      },
+      {
+        "index": 12,
+        "id": "12-valid",
+        "capture": "12-valid",
+        "action": "submit",
+        "word": "FİN",
+        "outcome": "valid",
+        "score": 3600,
+        "appScore": 3600,
+        "timeBonus": null,
+        "foundCount": 8,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.04865909090909091,
+        "tolerantMismatchRatio": 0.010063636363636363,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/12-valid.png",
+        "artifacts": "evidence/visual/F2/12-valid"
+      },
+      {
+        "index": 13,
+        "id": "13-valid",
+        "capture": "13-valid",
+        "action": "submit",
+        "word": "LAF",
+        "outcome": "valid",
+        "score": 4050,
+        "appScore": 4050,
+        "timeBonus": null,
+        "foundCount": 9,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.04922272727272727,
+        "tolerantMismatchRatio": 0.010018181818181818,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/13-valid.png",
+        "artifacts": "evidence/visual/F2/13-valid"
+      },
+      {
+        "index": 14,
+        "id": "14-valid",
+        "capture": "14-valid",
+        "action": "submit",
+        "word": "LAM",
+        "outcome": "valid",
+        "score": 4500,
+        "appScore": 4500,
+        "timeBonus": null,
+        "foundCount": 10,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.05012272727272727,
+        "tolerantMismatchRatio": 0.010127272727272728,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/14-valid.png",
+        "artifacts": "evidence/visual/F2/14-valid"
+      },
+      {
+        "index": 15,
+        "id": "15-valid",
+        "capture": "15-valid",
+        "action": "submit",
+        "word": "ALİM",
+        "outcome": "valid",
+        "score": 5300,
+        "appScore": 5300,
+        "timeBonus": null,
+        "foundCount": 11,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.05133636363636364,
+        "tolerantMismatchRatio": 0.010177272727272728,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/15-valid.png",
+        "artifacts": "evidence/visual/F2/15-valid"
+      },
+      {
+        "index": 16,
+        "id": "16-valid",
+        "capture": "16-valid",
+        "action": "submit",
+        "word": "AMFİ",
+        "outcome": "valid",
+        "score": 6100,
+        "appScore": 6100,
+        "timeBonus": null,
+        "foundCount": 12,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.05256818181818182,
+        "tolerantMismatchRatio": 0.010295454545454545,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/16-valid.png",
+        "artifacts": "evidence/visual/F2/16-valid"
+      },
+      {
+        "index": 17,
+        "id": "17-valid",
+        "capture": "17-valid",
+        "action": "submit",
+        "word": "AMİL",
+        "outcome": "valid",
+        "score": 6900,
+        "appScore": 6900,
+        "timeBonus": null,
+        "foundCount": 13,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.053663636363636365,
+        "tolerantMismatchRatio": 0.01035909090909091,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/17-valid.png",
+        "artifacts": "evidence/visual/F2/17-valid"
+      },
+      {
+        "index": 18,
+        "id": "18-valid",
+        "capture": "18-valid",
+        "action": "submit",
+        "word": "AMİN",
+        "outcome": "valid",
+        "score": 7700,
+        "appScore": 7700,
+        "timeBonus": null,
+        "foundCount": 14,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.05477727272727273,
+        "tolerantMismatchRatio": 0.010477272727272727,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/18-valid.png",
+        "artifacts": "evidence/visual/F2/18-valid"
+      },
+      {
+        "index": 19,
+        "id": "19-bonus-word",
+        "capture": "19-bonus-word",
+        "action": "submit",
+        "word": "ANİF",
+        "outcome": "valid",
+        "score": 13500,
+        "appScore": 13500,
+        "timeBonus": null,
+        "foundCount": 15,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.056318181818181816,
+        "tolerantMismatchRatio": 0.01059090909090909,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/19-bonus-word.png",
+        "artifacts": "evidence/visual/F2/19-bonus-word"
+      },
+      {
+        "index": 20,
+        "id": "20-valid",
+        "capture": "20-valid",
+        "action": "submit",
+        "word": "AZİL",
+        "outcome": "valid",
+        "score": 14300,
+        "appScore": 14300,
+        "timeBonus": null,
+        "foundCount": 16,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.05715909090909091,
+        "tolerantMismatchRatio": 0.010627272727272727,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/20-valid.png",
+        "artifacts": "evidence/visual/F2/20-valid"
+      },
+      {
+        "index": 21,
+        "id": "21-valid",
+        "capture": "21-valid",
+        "action": "submit",
+        "word": "AZİM",
+        "outcome": "valid",
+        "score": 15100,
+        "appScore": 15100,
+        "timeBonus": null,
+        "foundCount": 17,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.058295454545454546,
+        "tolerantMismatchRatio": 0.010745454545454546,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/21-valid.png",
+        "artifacts": "evidence/visual/F2/21-valid"
+      },
+      {
+        "index": 22,
+        "id": "22-valid",
+        "capture": "22-valid",
+        "action": "submit",
+        "word": "FANİ",
+        "outcome": "valid",
+        "score": 15900,
+        "appScore": 15900,
+        "timeBonus": null,
+        "foundCount": 18,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.05952727272727273,
+        "tolerantMismatchRatio": 0.0109,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/22-valid.png",
+        "artifacts": "evidence/visual/F2/22-valid"
+      },
+      {
+        "index": 23,
+        "id": "23-valid",
+        "capture": "23-valid",
+        "action": "submit",
+        "word": "FAİL",
+        "outcome": "valid",
+        "score": 16700,
+        "appScore": 16700,
+        "timeBonus": null,
+        "foundCount": 19,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.060663636363636364,
+        "tolerantMismatchRatio": 0.011159090909090908,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/23-valid.png",
+        "artifacts": "evidence/visual/F2/23-valid"
+      },
+      {
+        "index": 24,
+        "id": "24-valid",
+        "capture": "24-valid",
+        "action": "submit",
+        "word": "FAİZ",
+        "outcome": "valid",
+        "score": 17500,
+        "appScore": 17500,
+        "timeBonus": null,
+        "foundCount": 20,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.06174090909090909,
+        "tolerantMismatchRatio": 0.011163636363636363,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/24-valid.png",
+        "artifacts": "evidence/visual/F2/24-valid"
+      },
+      {
+        "index": 25,
+        "id": "25-valid",
+        "capture": "25-valid",
+        "action": "submit",
+        "word": "AFİLİ",
+        "outcome": "valid",
+        "score": 18750,
+        "appScore": 18750,
+        "timeBonus": null,
+        "foundCount": 21,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.063,
+        "tolerantMismatchRatio": 0.011263636363636363,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/25-valid.png",
+        "artifacts": "evidence/visual/F2/25-valid"
+      },
+      {
+        "index": 26,
+        "id": "26-valid",
+        "capture": "26-valid",
+        "action": "submit",
+        "word": "AZNİF",
+        "outcome": "valid",
+        "score": 20000,
+        "appScore": 20000,
+        "timeBonus": null,
+        "foundCount": 22,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.06448636363636363,
+        "tolerantMismatchRatio": 0.011368181818181819,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/26-valid.png",
+        "artifacts": "evidence/visual/F2/26-valid"
+      },
+      {
+        "index": 27,
+        "id": "27-valid",
+        "capture": "27-valid",
+        "action": "submit",
+        "word": "FİLAN",
+        "outcome": "valid",
+        "score": 21250,
+        "appScore": 21250,
+        "timeBonus": null,
+        "foundCount": 23,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.06576363636363636,
+        "tolerantMismatchRatio": 0.01150909090909091,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/27-valid.png",
+        "artifacts": "evidence/visual/F2/27-valid"
+      },
+      {
+        "index": 28,
+        "id": "28-valid",
+        "capture": "28-valid",
+        "action": "submit",
+        "word": "FİLİZ",
+        "outcome": "valid",
+        "score": 22500,
+        "appScore": 22500,
+        "timeBonus": null,
+        "foundCount": 24,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.06702272727272728,
+        "tolerantMismatchRatio": 0.011545454545454546,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/28-valid.png",
+        "artifacts": "evidence/visual/F2/28-valid"
+      },
+      {
+        "index": 29,
+        "id": "29-valid",
+        "capture": "29-valid",
+        "action": "submit",
+        "word": "FİNAL",
+        "outcome": "valid",
+        "score": 23750,
+        "appScore": 23750,
+        "timeBonus": null,
+        "foundCount": 25,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.06828181818181818,
+        "tolerantMismatchRatio": 0.011613636363636364,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/29-valid.png",
+        "artifacts": "evidence/visual/F2/29-valid"
+      },
+      {
+        "index": 30,
+        "id": "30-valid",
+        "capture": "30-valid",
+        "action": "submit",
+        "word": "LAFZİ",
+        "outcome": "valid",
+        "score": 25000,
+        "appScore": 25000,
+        "timeBonus": null,
+        "foundCount": 26,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.06978636363636363,
+        "tolerantMismatchRatio": 0.011631818181818182,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/30-valid.png",
+        "artifacts": "evidence/visual/F2/30-valid"
+      },
+      {
+        "index": 31,
+        "id": "31-valid",
+        "capture": "31-valid",
+        "action": "submit",
+        "word": "LİMAN",
+        "outcome": "valid",
+        "score": 26250,
+        "appScore": 26250,
+        "timeBonus": null,
+        "foundCount": 27,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.07127272727272728,
+        "tolerantMismatchRatio": 0.01169090909090909,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/31-valid.png",
+        "artifacts": "evidence/visual/F2/31-valid"
+      },
+      {
+        "index": 32,
+        "id": "32-valid",
+        "capture": "32-valid",
+        "action": "submit",
+        "word": "MİZAN",
+        "outcome": "valid",
+        "score": 27500,
+        "appScore": 27500,
+        "timeBonus": null,
+        "foundCount": 28,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.0725909090909091,
+        "tolerantMismatchRatio": 0.011786363636363636,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/32-valid.png",
+        "artifacts": "evidence/visual/F2/32-valid"
+      },
+      {
+        "index": 33,
+        "id": "33-valid",
+        "capture": "33-valid",
+        "action": "submit",
+        "word": "NAFİZ",
+        "outcome": "valid",
+        "score": 33750,
+        "appScore": 33750,
+        "timeBonus": null,
+        "foundCount": 29,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.0738,
+        "tolerantMismatchRatio": 0.011836363636363636,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/33-valid.png",
+        "artifacts": "evidence/visual/F2/33-valid"
+      },
+      {
+        "index": 34,
+        "id": "34-valid",
+        "capture": "34-valid",
+        "action": "submit",
+        "word": "NAZİL",
+        "outcome": "valid",
+        "score": 35000,
+        "appScore": 35000,
+        "timeBonus": null,
+        "foundCount": 30,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.07510454545454545,
+        "tolerantMismatchRatio": 0.011922727272727272,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/34-valid.png",
+        "artifacts": "evidence/visual/F2/34-valid"
+      },
+      {
+        "index": 35,
+        "id": "35-valid",
+        "capture": "35-valid",
+        "action": "submit",
+        "word": "AZİMLİ",
+        "outcome": "valid",
+        "score": 36800,
+        "appScore": 36800,
+        "timeBonus": null,
+        "foundCount": 31,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.07685,
+        "tolerantMismatchRatio": 0.011968181818181819,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/35-valid.png",
+        "artifacts": "evidence/visual/F2/35-valid"
+      },
+      {
+        "index": 36,
+        "id": "36-valid",
+        "capture": "36-valid",
+        "action": "submit",
+        "word": "FAİZLİ",
+        "outcome": "valid",
+        "score": 38600,
+        "appScore": 38600,
+        "timeBonus": null,
+        "foundCount": 32,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.07835,
+        "tolerantMismatchRatio": 0.012113636363636363,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/36-valid.png",
+        "artifacts": "evidence/visual/F2/36-valid"
+      },
+      {
+        "index": 37,
+        "id": "37-valid",
+        "capture": "37-valid",
+        "action": "submit",
+        "word": "NİZAMİ",
+        "outcome": "valid",
+        "score": 40400,
+        "appScore": 40400,
+        "timeBonus": null,
+        "foundCount": 33,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.07993636363636364,
+        "tolerantMismatchRatio": 0.012131818181818181,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/37-valid.png",
+        "artifacts": "evidence/visual/F2/37-valid"
+      },
+      {
+        "index": 38,
+        "id": "38-valid",
+        "capture": "38-valid",
+        "action": "submit",
+        "word": "İNFİAL",
+        "outcome": "valid",
+        "score": 47200,
+        "appScore": 47200,
+        "timeBonus": null,
+        "foundCount": 34,
+        "entry": "",
+        "state": "playing",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": false
+        },
+        "mismatchRatio": 0.08163636363636363,
+        "tolerantMismatchRatio": 0.012231818181818182,
+        "pass": true,
+        "reference": "tests/fixtures/reference/playthrough/38-valid.png",
+        "artifacts": "evidence/visual/F2/38-valid"
+      },
+      {
+        "index": 39,
+        "id": "39-complete",
+        "capture": "39-complete",
+        "action": "submit",
+        "word": "FİNALİZM",
+        "outcome": "completion",
+        "score": 55400,
+        "appScore": 71500,
+        "timeBonus": 16100,
+        "foundCount": 35,
+        "entry": "",
+        "state": "celebration",
+        "audio": "submitValid",
+        "checks": {
+          "score": true,
+          "found": true,
+          "state": true,
+          "audio": true,
+          "entry": true,
+          "timeBonus": true
+        },
+        "stableAtCapture": true,
+        "comparison": {
+          "excluded": true,
+          "reason": "Reference all-found results screen (bravo/hiscore form) is excluded from the rebuild (docs/02 §7; evidence/D5-lifecycle.md §9.3); the app stays on the board in `celebration` while the reference shows the night-sky results screen. E2 scoped its state list to S1–S7/S10 for the same exclusion. App state/score/time-bonus are asserted; the reference end screen is captured via waitForState hiscore-form."
+        },
+        "mismatchRatio": null,
+        "tolerantMismatchRatio": null,
+        "pass": null,
+        "reference": "tests/fixtures/reference/playthrough/39-complete.png",
+        "artifacts": "evidence/visual/F2/39-complete"
+      }
+    ]
+  },
+  "timeout": {
+    "index": 40,
+    "id": "S9-timeout",
+    "capture": "timeout",
+    "action": "timeout",
+    "word": null,
+    "outcome": "timeout",
+    "score": 0,
+    "appScore": 0,
+    "timeBonus": null,
+    "foundCount": 0,
+    "entry": "",
+    "state": "timeout",
+    "audio": "timeout",
+    "checks": {
+      "score": true,
+      "found": true,
+      "state": true,
+      "revealed": true,
+      "inputLocked": true
+    },
+    "stableAtCapture": true,
+    "comparison": {
+      "excluded": false
+    },
+    "mismatchRatio": 0.07871818181818181,
+    "tolerantMismatchRatio": 0.020145454545454546,
+    "pass": false,
+    "reference": "tests/fixtures/reference/playthrough/timeout/timeout.png",
+    "artifacts": "evidence/visual/F2/timeout",
+    "appWaitMs": 200248,
+    "referenceWaitMs": 199990
+  },
+  "summary": {
+    "steps": 41,
+    "compared": 40,
+    "passed": 39,
+    "excluded": 1,
+    "excludedIds": [
+      "39-complete"
+    ],
+    "worstTolerantRatio": 0.020145454545454546,
+    "allChecks": true,
+    "allComparedPass": false,
+    "allPass": false
+  }
+}

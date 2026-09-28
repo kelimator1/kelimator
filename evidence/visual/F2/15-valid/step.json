@@ -1,0 +1,31 @@
+{
+  "index": 15,
+  "id": "15-valid",
+  "capture": "15-valid",
+  "action": "submit",
+  "word": "ALİM",
+  "outcome": "valid",
+  "score": 5300,
+  "appScore": 5300,
+  "timeBonus": null,
+  "foundCount": 11,
+  "entry": "",
+  "state": "playing",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.05133636363636364,
+  "tolerantMismatchRatio": 0.010177272727272728,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/15-valid.png",
+  "artifacts": "evidence/visual/F2/15-valid"
+}

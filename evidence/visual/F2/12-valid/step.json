@@ -1,0 +1,31 @@
+{
+  "index": 12,
+  "id": "12-valid",
+  "capture": "12-valid",
+  "action": "submit",
+  "word": "FİN",
+  "outcome": "valid",
+  "score": 3600,
+  "appScore": 3600,
+  "timeBonus": null,
+  "foundCount": 8,
+  "entry": "",
+  "state": "playing",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.04865909090909091,
+  "tolerantMismatchRatio": 0.010063636363636363,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/12-valid.png",
+  "artifacts": "evidence/visual/F2/12-valid"
+}

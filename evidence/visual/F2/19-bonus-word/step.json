@@ -1,0 +1,31 @@
+{
+  "index": 19,
+  "id": "19-bonus-word",
+  "capture": "19-bonus-word",
+  "action": "submit",
+  "word": "ANİF",
+  "outcome": "valid",
+  "score": 13500,
+  "appScore": 13500,
+  "timeBonus": null,
+  "foundCount": 15,
+  "entry": "",
+  "state": "playing",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.056318181818181816,
+  "tolerantMismatchRatio": 0.01059090909090909,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/19-bonus-word.png",
+  "artifacts": "evidence/visual/F2/19-bonus-word"
+}

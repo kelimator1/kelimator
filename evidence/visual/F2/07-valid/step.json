@@ -1,0 +1,31 @@
+{
+  "index": 7,
+  "id": "07-valid",
+  "capture": "07-valid",
+  "action": "submit",
+  "word": "ALİ",
+  "outcome": "valid",
+  "score": 1350,
+  "appScore": 1350,
+  "timeBonus": null,
+  "foundCount": 3,
+  "entry": "",
+  "state": "playing",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.04462727272727273,
+  "tolerantMismatchRatio": 0.009854545454545454,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/07-valid.png",
+  "artifacts": "evidence/visual/F2/07-valid"
+}

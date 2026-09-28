@@ -1,0 +1,33 @@
+{
+  "index": 39,
+  "id": "39-complete",
+  "capture": "39-complete",
+  "action": "submit",
+  "word": "FİNALİZM",
+  "outcome": "completion",
+  "score": 55400,
+  "appScore": 71500,
+  "timeBonus": 16100,
+  "foundCount": 35,
+  "entry": "",
+  "state": "celebration",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true,
+    "timeBonus": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": true,
+    "reason": "Reference all-found results screen (bravo/hiscore form) is excluded from the rebuild (docs/02 §7; evidence/D5-lifecycle.md §9.3); the app stays on the board in `celebration` while the reference shows the night-sky results screen. E2 scoped its state list to S1–S7/S10 for the same exclusion. App state/score/time-bonus are asserted; the reference end screen is captured via waitForState hiscore-form."
+  },
+  "mismatchRatio": null,
+  "tolerantMismatchRatio": null,
+  "pass": null,
+  "reference": "tests/fixtures/reference/playthrough/39-complete.png",
+  "artifacts": "evidence/visual/F2/39-complete"
+}

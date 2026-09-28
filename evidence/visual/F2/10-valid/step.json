@@ -1,0 +1,31 @@
+{
+  "index": 10,
+  "id": "10-valid",
+  "capture": "10-valid",
+  "action": "submit",
+  "word": "FAZ",
+  "outcome": "valid",
+  "score": 2700,
+  "appScore": 2700,
+  "timeBonus": null,
+  "foundCount": 6,
+  "entry": "",
+  "state": "playing",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.047077272727272725,
+  "tolerantMismatchRatio": 0.009986363636363637,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/10-valid.png",
+  "artifacts": "evidence/visual/F2/10-valid"
+}

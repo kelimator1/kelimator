@@ -1,0 +1,31 @@
+{
+  "index": 14,
+  "id": "14-valid",
+  "capture": "14-valid",
+  "action": "submit",
+  "word": "LAM",
+  "outcome": "valid",
+  "score": 4500,
+  "appScore": 4500,
+  "timeBonus": null,
+  "foundCount": 10,
+  "entry": "",
+  "state": "playing",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.05012272727272727,
+  "tolerantMismatchRatio": 0.010127272727272728,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/14-valid.png",
+  "artifacts": "evidence/visual/F2/14-valid"
+}

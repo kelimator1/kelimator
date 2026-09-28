@@ -1,0 +1,31 @@
+{
+  "index": 18,
+  "id": "18-valid",
+  "capture": "18-valid",
+  "action": "submit",
+  "word": "AMİN",
+  "outcome": "valid",
+  "score": 7700,
+  "appScore": 7700,
+  "timeBonus": null,
+  "foundCount": 14,
+  "entry": "",
+  "state": "playing",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.05477727272727273,
+  "tolerantMismatchRatio": 0.010477272727272727,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/18-valid.png",
+  "artifacts": "evidence/visual/F2/18-valid"
+}

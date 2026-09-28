@@ -1,0 +1,31 @@
+{
+  "index": 31,
+  "id": "31-valid",
+  "capture": "31-valid",
+  "action": "submit",
+  "word": "LİMAN",
+  "outcome": "valid",
+  "score": 26250,
+  "appScore": 26250,
+  "timeBonus": null,
+  "foundCount": 27,
+  "entry": "",
+  "state": "playing",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.07127272727272728,
+  "tolerantMismatchRatio": 0.01169090909090909,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/31-valid.png",
+  "artifacts": "evidence/visual/F2/31-valid"
+}

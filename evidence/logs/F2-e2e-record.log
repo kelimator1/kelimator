@@ -1,0 +1,113 @@
+
+Running 2 tests using 1 worker
+
+[1/2] [app] › tests/e2e/playthrough/playthrough.spec.ts:601:3 › F2 scripted playthrough › FİNALİZM: every step matches the docs/07 oracle and the reference capture
+[app] › tests/e2e/playthrough/playthrough.spec.ts:601:3 › F2 scripted playthrough › FİNALİZM: every step matches the docs/07 oracle and the reference capture
+F2 00-selected: raw=4.203% tolerant=0.974% pass=true stable=true
+
+F2 01-invalid: raw=5.685% tolerant=1.323% pass=true stable=true
+
+F2 02-invalid-cleared: raw=4.201% tolerant=0.975% pass=true stable=true
+
+F2 03-valid-FAL: raw=4.287% tolerant=0.977% pass=true stable=true
+
+F2 04-duplicate-FAL: raw=6.308% tolerant=1.740% pass=true stable=true
+
+F2 05-duplicate-cleared: raw=4.289% tolerant=0.977% pass=true stable=true
+
+F2 06-valid: raw=4.389% tolerant=0.981% pass=true stable=true
+
+F2 07-valid: raw=4.463% tolerant=0.985% pass=true stable=true
+
+F2 08-valid: raw=4.555% tolerant=0.990% pass=true stable=true
+
+F2 09-valid: raw=4.630% tolerant=0.990% pass=true stable=true
+
+F2 10-valid: raw=4.708% tolerant=0.999% pass=true stable=true
+
+F2 11-valid: raw=4.774% tolerant=1.002% pass=true stable=true
+
+F2 12-valid: raw=4.866% tolerant=1.006% pass=true stable=true
+
+F2 13-valid: raw=4.922% tolerant=1.002% pass=true stable=true
+
+F2 14-valid: raw=5.012% tolerant=1.013% pass=true stable=true
+
+F2 15-valid: raw=5.134% tolerant=1.018% pass=true stable=true
+
+F2 16-valid: raw=5.257% tolerant=1.030% pass=true stable=true
+
+F2 17-valid: raw=5.366% tolerant=1.036% pass=true stable=true
+
+F2 18-valid: raw=5.478% tolerant=1.048% pass=true stable=true
+
+F2 19-bonus-word: raw=5.632% tolerant=1.059% pass=true stable=true
+
+F2 20-valid: raw=5.716% tolerant=1.063% pass=true stable=true
+
+F2 21-valid: raw=5.830% tolerant=1.075% pass=true stable=true
+
+F2 22-valid: raw=5.953% tolerant=1.090% pass=true stable=true
+
+F2 23-valid: raw=6.066% tolerant=1.116% pass=true stable=true
+
+F2 24-valid: raw=6.174% tolerant=1.116% pass=true stable=true
+
+F2 25-valid: raw=6.300% tolerant=1.126% pass=true stable=true
+
+F2 26-valid: raw=6.449% tolerant=1.137% pass=true stable=true
+
+F2 27-valid: raw=6.576% tolerant=1.151% pass=true stable=true
+
+F2 28-valid: raw=6.702% tolerant=1.155% pass=true stable=true
+
+F2 29-valid: raw=6.828% tolerant=1.161% pass=true stable=true
+
+F2 30-valid: raw=6.979% tolerant=1.163% pass=true stable=true
+
+F2 31-valid: raw=7.127% tolerant=1.169% pass=true stable=true
+
+F2 32-valid: raw=7.259% tolerant=1.179% pass=true stable=true
+
+F2 33-valid: raw=7.380% tolerant=1.184% pass=true stable=true
+
+F2 34-valid: raw=7.510% tolerant=1.192% pass=true stable=true
+
+F2 35-valid: raw=7.685% tolerant=1.197% pass=true stable=true
+
+F2 36-valid: raw=7.835% tolerant=1.211% pass=true stable=true
+
+F2 37-valid: raw=7.994% tolerant=1.213% pass=true stable=true
+
+F2 38-valid: raw=8.164% tolerant=1.223% pass=true stable=true
+
+F2 playthrough: 40 steps, worst tolerant ratio 1.740%
+
+[2/2] [app] › tests/e2e/playthrough/playthrough.spec.ts:902:3 › F2 S9 timeout variant › FİNALİZM: the clock is waited out and the timeout state matches the reference
+[app] › tests/e2e/playthrough/playthrough.spec.ts:902:3 › F2 S9 timeout variant › FİNALİZM: the clock is waited out and the timeout state matches the reference
+F2 timeout: raw=7.872% tolerant=2.015% pass=false appWaitMs=200376 stable=true
+
+  1) [app] › tests/e2e/playthrough/playthrough.spec.ts:902:3 › F2 S9 timeout variant › FİNALİZM: the clock is waited out and the timeout state matches the reference 
+
+    Error: timeout tolerant mismatch ratio 2.015% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.020145454545454546
+
+       999 |       diff.report.tolerantMismatchRatio,
+      1000 |       `timeout tolerant mismatch ratio ${tolerantPercent.toFixed(3)}% (limit 2.000%)`,
+    > 1001 |     ).toBeLessThanOrEqual(diff.report.passRatio);
+           |       ^
+      1002 |     expect(diff.report.pass).toBe(true);
+      1003 |
+      1004 |     const record: StepRecord = {
+        at /home/dev/kelimator-2012/tests/e2e/playthrough/playthrough.spec.ts:1001:7
+
+    Error Context: test-results/tests-e2e-playthrough-play-48412-state-matches-the-reference-app/error-context.md
+
+
+  1 failed
+    [app] › tests/e2e/playthrough/playthrough.spec.ts:902:3 › F2 S9 timeout variant › FİNALİZM: the clock is waited out and the timeout state matches the reference 
+  1 passed (4.1m)

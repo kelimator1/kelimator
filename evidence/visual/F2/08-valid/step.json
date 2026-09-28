@@ -1,0 +1,31 @@
+{
+  "index": 8,
+  "id": "08-valid",
+  "capture": "08-valid",
+  "action": "submit",
+  "word": "ANİ",
+  "outcome": "valid",
+  "score": 1800,
+  "appScore": 1800,
+  "timeBonus": null,
+  "foundCount": 4,
+  "entry": "",
+  "state": "playing",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.04554545454545455,
+  "tolerantMismatchRatio": 0.009895454545454546,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/08-valid.png",
+  "artifacts": "evidence/visual/F2/08-valid"
+}

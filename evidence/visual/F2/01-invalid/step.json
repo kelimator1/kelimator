@@ -1,0 +1,31 @@
+{
+  "index": 1,
+  "id": "01-invalid",
+  "capture": "01-invalid",
+  "action": "submit",
+  "word": "FZM",
+  "outcome": "invalid",
+  "score": 0,
+  "appScore": 0,
+  "timeBonus": null,
+  "foundCount": 0,
+  "entry": "FZM",
+  "state": "playing",
+  "audio": "submitInvalid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.05685,
+  "tolerantMismatchRatio": 0.013227272727272728,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/01-invalid.png",
+  "artifacts": "evidence/visual/F2/01-invalid"
+}

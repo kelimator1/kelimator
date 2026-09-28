@@ -1,0 +1,31 @@
+{
+  "index": 9,
+  "id": "09-valid",
+  "capture": "09-valid",
+  "action": "submit",
+  "word": "FAN",
+  "outcome": "valid",
+  "score": 2250,
+  "appScore": 2250,
+  "timeBonus": null,
+  "foundCount": 5,
+  "entry": "",
+  "state": "playing",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.0463,
+  "tolerantMismatchRatio": 0.0099,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/09-valid.png",
+  "artifacts": "evidence/visual/F2/09-valid"
+}

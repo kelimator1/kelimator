@@ -1,0 +1,31 @@
+{
+  "index": 37,
+  "id": "37-valid",
+  "capture": "37-valid",
+  "action": "submit",
+  "word": "NİZAMİ",
+  "outcome": "valid",
+  "score": 40400,
+  "appScore": 40400,
+  "timeBonus": null,
+  "foundCount": 33,
+  "entry": "",
+  "state": "playing",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.07993636363636364,
+  "tolerantMismatchRatio": 0.012131818181818181,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/37-valid.png",
+  "artifacts": "evidence/visual/F2/37-valid"
+}

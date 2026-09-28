@@ -1,0 +1,31 @@
+{
+  "index": 27,
+  "id": "27-valid",
+  "capture": "27-valid",
+  "action": "submit",
+  "word": "FİLAN",
+  "outcome": "valid",
+  "score": 21250,
+  "appScore": 21250,
+  "timeBonus": null,
+  "foundCount": 23,
+  "entry": "",
+  "state": "playing",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.06576363636363636,
+  "tolerantMismatchRatio": 0.01150909090909091,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/27-valid.png",
+  "artifacts": "evidence/visual/F2/27-valid"
+}

@@ -1,0 +1,31 @@
+{
+  "index": 3,
+  "id": "03-valid-FAL",
+  "capture": "03-valid-FAL",
+  "action": "submit",
+  "word": "FAL",
+  "outcome": "valid",
+  "score": 450,
+  "appScore": 450,
+  "timeBonus": null,
+  "foundCount": 1,
+  "entry": "",
+  "state": "playing",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.04287272727272727,
+  "tolerantMismatchRatio": 0.009768181818181818,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/03-valid-FAL.png",
+  "artifacts": "evidence/visual/F2/03-valid-FAL"
+}

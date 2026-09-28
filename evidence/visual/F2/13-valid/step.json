@@ -1,0 +1,31 @@
+{
+  "index": 13,
+  "id": "13-valid",
+  "capture": "13-valid",
+  "action": "submit",
+  "word": "LAF",
+  "outcome": "valid",
+  "score": 4050,
+  "appScore": 4050,
+  "timeBonus": null,
+  "foundCount": 9,
+  "entry": "",
+  "state": "playing",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.04922272727272727,
+  "tolerantMismatchRatio": 0.010018181818181818,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/13-valid.png",
+  "artifacts": "evidence/visual/F2/13-valid"
+}

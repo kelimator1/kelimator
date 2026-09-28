@@ -1,0 +1,31 @@
+{
+  "index": 6,
+  "id": "06-valid",
+  "capture": "06-valid",
+  "action": "submit",
+  "word": "AFİ",
+  "outcome": "valid",
+  "score": 900,
+  "appScore": 900,
+  "timeBonus": null,
+  "foundCount": 2,
+  "entry": "",
+  "state": "playing",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.04389090909090909,
+  "tolerantMismatchRatio": 0.009813636363636363,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/06-valid.png",
+  "artifacts": "evidence/visual/F2/06-valid"
+}

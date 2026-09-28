@@ -1,0 +1,31 @@
+{
+  "index": 22,
+  "id": "22-valid",
+  "capture": "22-valid",
+  "action": "submit",
+  "word": "FANİ",
+  "outcome": "valid",
+  "score": 15900,
+  "appScore": 15900,
+  "timeBonus": null,
+  "foundCount": 18,
+  "entry": "",
+  "state": "playing",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.05952727272727273,
+  "tolerantMismatchRatio": 0.0109,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/22-valid.png",
+  "artifacts": "evidence/visual/F2/22-valid"
+}

@@ -1,0 +1,31 @@
+{
+  "index": 21,
+  "id": "21-valid",
+  "capture": "21-valid",
+  "action": "submit",
+  "word": "AZİM",
+  "outcome": "valid",
+  "score": 15100,
+  "appScore": 15100,
+  "timeBonus": null,
+  "foundCount": 17,
+  "entry": "",
+  "state": "playing",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.058295454545454546,
+  "tolerantMismatchRatio": 0.010745454545454546,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/21-valid.png",
+  "artifacts": "evidence/visual/F2/21-valid"
+}

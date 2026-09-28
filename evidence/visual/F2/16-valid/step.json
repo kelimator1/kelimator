@@ -1,0 +1,31 @@
+{
+  "index": 16,
+  "id": "16-valid",
+  "capture": "16-valid",
+  "action": "submit",
+  "word": "AMFİ",
+  "outcome": "valid",
+  "score": 6100,
+  "appScore": 6100,
+  "timeBonus": null,
+  "foundCount": 12,
+  "entry": "",
+  "state": "playing",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.05256818181818182,
+  "tolerantMismatchRatio": 0.010295454545454545,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/16-valid.png",
+  "artifacts": "evidence/visual/F2/16-valid"
+}

@@ -1,0 +1,31 @@
+{
+  "index": 4,
+  "id": "04-duplicate-FAL",
+  "capture": "04-duplicate-FAL",
+  "action": "submit",
+  "word": "FAL",
+  "outcome": "duplicate",
+  "score": 450,
+  "appScore": 450,
+  "timeBonus": null,
+  "foundCount": 1,
+  "entry": "FAL",
+  "state": "playing",
+  "audio": "submitAlreadyFound",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.06307727272727273,
+  "tolerantMismatchRatio": 0.0174,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/04-duplicate-FAL.png",
+  "artifacts": "evidence/visual/F2/04-duplicate-FAL"
+}

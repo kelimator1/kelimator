@@ -1,0 +1,31 @@
+{
+  "index": 5,
+  "id": "05-duplicate-cleared",
+  "capture": "05-duplicate-cleared",
+  "action": "clear",
+  "word": null,
+  "outcome": null,
+  "score": 450,
+  "appScore": 450,
+  "timeBonus": null,
+  "foundCount": 1,
+  "entry": "",
+  "state": "playing",
+  "audio": "delete",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.04289090909090909,
+  "tolerantMismatchRatio": 0.009768181818181818,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/05-duplicate-cleared.png",
+  "artifacts": "evidence/visual/F2/05-duplicate-cleared"
+}

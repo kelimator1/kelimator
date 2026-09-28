@@ -1,0 +1,31 @@
+{
+  "index": 17,
+  "id": "17-valid",
+  "capture": "17-valid",
+  "action": "submit",
+  "word": "AMİL",
+  "outcome": "valid",
+  "score": 6900,
+  "appScore": 6900,
+  "timeBonus": null,
+  "foundCount": 13,
+  "entry": "",
+  "state": "playing",
+  "audio": "submitValid",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.053663636363636365,
+  "tolerantMismatchRatio": 0.01035909090909091,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/17-valid.png",
+  "artifacts": "evidence/visual/F2/17-valid"
+}

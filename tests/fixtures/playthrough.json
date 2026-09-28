@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "round": "FİNALİZM",
+  "notes": [
+    "Deterministic input script for task F2 (V6): the sequence of typed letters and submissions against the FİNALİZM round, used by both the app Playwright suite (tests/e2e/playthrough/playthrough.spec.ts) and the C3 reference scenario generated from it (tests/e2e/playthrough/build-scenario.mjs).",
+    "Every submitted word comes from the archived FİNALİZM fixture list (../kelimator-nostalji/calistir/xml64.php). The fixture and the app's bank round (src/data/rounds.json, id finalizm) share all listed words used here; the only per-length delta is fixture-only İLMİ vs bank-only ZİLİ (evidence/B3-bank.md §3) — neither word appears in the first-10 listed slots nor in this script.",
+    "The invalid entry FZM is not a word (it is rejected by both sides, evidence/A2-edges.md O15(a)); it is composed only of letters present in the round.",
+    "The script follows docs/07 §5 S7: the bonus word is a submission step (the reference's pre-submit bright-ball state is the reference's own randomness — C3-stability names it as such — and is not painted by the rebuild, so it is not a compared capture; the bonus itself is asserted through the score oracle and the recorded ball index).",
+    "Expected scores are never guessed: the suite re-runs this script's letter/submit order against D1's exported tracker and D3's scoring (via the Vite-served modules) and asserts the app against that oracle; the '/bonus' block below is validated against the same simulation.",
+    "Clear steps use BACKSPACE (not SPACE): the reference sil()/the app deleteLast() restore tiles without reshuffling the deck, so the reference capture's deck arrangement stays comparable for every step (build-scenario.mjs)."
+  ],
+  "bonus": {
+    "seed": 2012,
+    "method": "Computed with D1's exported API (src/game/round.ts): createBonusLetterTracker(createSeededRandom(2012)) driven with this script's exact add/clear/submit order; the recorder wraps the tracker's RandomSource to log every randomInt(1000) roll. The suite re-runs the same simulation and fails if these values drift.",
+    "designatedWord": "ANİF",
+    "designatedStep": "19-bonus-word",
+    "submitState": "At the 19-bonus-word submit the tracker's ball is 1 (brightBallIndex): the submitted word contains the bright ball (reference 'contains the bright letter' semantics, evidence/A2-bonus.md §3); the +5000 is asserted through the score oracle. The pre-submit visual (the reference's bright/orange ball) is not painted by the rebuild (E3 paints only the normal wordball slide; src/ui/animations.ts header) and is not a compared capture — docs/07 §5 S7 defines the state as the submitted bonus word.",
+    "firstLuckyRollIndex": 52,
+    "firstLuckyGlobalAdd": 53,
+    "firstLuckyRollValue": 0,
+    "brightBallIndex": 1,
+    "brightLetter": "N",
+    "allBonusEvents": [
+      {
+        "type": "lucky",
+        "word": "ANİF",
+        "globalAdd": 53,
+        "entryAdd": 1,
+        "rollIndex": 52,
+        "rollValue": 0,
+        "ball": 1
+      },
+      {
+        "type": "paid",
+        "word": "ANİF",
+        "ball": 1,
+        "bonusPoints": 5000
+      },
+      {
+        "type": "lucky",
+        "word": "NAFİZ",
+        "globalAdd": 118,
+        "entryAdd": 2,
+        "rollIndex": 114,
+        "rollValue": 33,
+        "ball": 2
+      },
+      {
+        "type": "paid",
+        "word": "NAFİZ",
+        "ball": 2,
+        "bonusPoints": 5000
+      },
+      {
+        "type": "lucky",
+        "word": "İNFİAL",
+        "globalAdd": 145,
+        "entryAdd": 1,
+        "rollIndex": 138,
+        "rollValue": 33,
+        "ball": 1
+      },
+      {
+        "type": "paid",
+        "word": "İNFİAL",
+        "ball": 1,
+        "bonusPoints": 5000
+      },
+      {
+        "type": "lucky",
+        "word": "FİNALİZM",
+        "globalAdd": 152,
+        "entryAdd": 2,
+        "rollIndex": 140,
+        "rollValue": 18,
+        "ball": 2
+      },
+      {
+        "type": "paid",
+        "word": "FİNALİZM",
+        "ball": 2,
+        "bonusPoints": 5000
+      }
+    ]
+  },
+  "spotChecks": {
+    "docs/07 §1 oracle rows": [
+      { "input": "3-letter word, no bonus", "word": "FAL", "expectedTotalPoints": 450 },
+      { "input": "4-letter word containing bonus letter", "word": "ANİF", "expectedTotalPoints": 5800 },
+      { "input": "8-letter main word, no bonus (base component)", "word": "FİNALİZM", "expectedBasePoints": 3200 },
+      { "input": "remaining time 100 s at completion", "expectedTimeBonus": 10000 }
+    ]
+  },
+  "steps": [
+    { "id": "00-selected", "action": "select", "capture": "00-selected" },
+    { "id": "01-invalid", "action": "submit", "word": "FZM", "outcome": "invalid", "capture": "01-invalid" },
+    { "id": "02-invalid-cleared", "action": "clear", "count": 3, "capture": "02-invalid-cleared" },
+    { "id": "03-valid-FAL", "action": "submit", "word": "FAL", "outcome": "valid", "capture": "03-valid-FAL" },
+    { "id": "04-duplicate-FAL", "action": "submit", "word": "FAL", "outcome": "duplicate", "capture": "04-duplicate-FAL" },
+    { "id": "05-duplicate-cleared", "action": "clear", "count": 3, "capture": "05-duplicate-cleared" },
+    { "id": "06-valid", "action": "submit", "word": "AFİ", "outcome": "valid", "capture": "06-valid" },
+    { "id": "07-valid", "action": "submit", "word": "ALİ", "outcome": "valid", "capture": "07-valid" },
+    { "id": "08-valid", "action": "submit", "word": "ANİ", "outcome": "valid", "capture": "08-valid" },
+    { "id": "09-valid", "action": "submit", "word": "FAN", "outcome": "valid", "capture": "09-valid" },
+    { "id": "10-valid", "action": "submit", "word": "FAZ", "outcome": "valid", "capture": "10-valid" },
+    { "id": "11-valid", "action": "submit", "word": "FİL", "outcome": "valid", "capture": "11-valid" },
+    { "id": "12-valid", "action": "submit", "word": "FİN", "outcome": "valid", "capture": "12-valid" },
+    { "id": "13-valid", "action": "submit", "word": "LAF", "outcome": "valid", "capture": "13-valid" },
+    { "id": "14-valid", "action": "submit", "word": "LAM", "outcome": "valid", "capture": "14-valid" },
+    { "id": "15-valid", "action": "submit", "word": "ALİM", "outcome": "valid", "capture": "15-valid" },
+    { "id": "16-valid", "action": "submit", "word": "AMFİ", "outcome": "valid", "capture": "16-valid" },
+    { "id": "17-valid", "action": "submit", "word": "AMİL", "outcome": "valid", "capture": "17-valid" },
+    { "id": "18-valid", "action": "submit", "word": "AMİN", "outcome": "valid", "capture": "18-valid" },
+    {
+      "id": "19-bonus-word",
+      "action": "submit",
+      "word": "ANİF",
+      "outcome": "valid",
+      "capture": "19-bonus-word"
+    },
+    { "id": "20-valid", "action": "submit", "word": "AZİL", "outcome": "valid", "capture": "20-valid" },
+    { "id": "21-valid", "action": "submit", "word": "AZİM", "outcome": "valid", "capture": "21-valid" },
+    { "id": "22-valid", "action": "submit", "word": "FANİ", "outcome": "valid", "capture": "22-valid" },
+    { "id": "23-valid", "action": "submit", "word": "FAİL", "outcome": "valid", "capture": "23-valid" },
+    { "id": "24-valid", "action": "submit", "word": "FAİZ", "outcome": "valid", "capture": "24-valid" },
+    { "id": "25-valid", "action": "submit", "word": "AFİLİ", "outcome": "valid", "capture": "25-valid" },
+    { "id": "26-valid", "action": "submit", "word": "AZNİF", "outcome": "valid", "capture": "26-valid" },
+    { "id": "27-valid", "action": "submit", "word": "FİLAN", "outcome": "valid", "capture": "27-valid" },
+    { "id": "28-valid", "action": "submit", "word": "FİLİZ", "outcome": "valid", "capture": "28-valid" },
+    { "id": "29-valid", "action": "submit", "word": "FİNAL", "outcome": "valid", "capture": "29-valid" },
+    { "id": "30-valid", "action": "submit", "word": "LAFZİ", "outcome": "valid", "capture": "30-valid" },
+    { "id": "31-valid", "action": "submit", "word": "LİMAN", "outcome": "valid", "capture": "31-valid" },
+    { "id": "32-valid", "action": "submit", "word": "MİZAN", "outcome": "valid", "capture": "32-valid" },
+    { "id": "33-valid", "action": "submit", "word": "NAFİZ", "outcome": "valid", "capture": "33-valid" },
+    { "id": "34-valid", "action": "submit", "word": "NAZİL", "outcome": "valid", "capture": "34-valid" },
+    { "id": "35-valid", "action": "submit", "word": "AZİMLİ", "outcome": "valid", "capture": "35-valid" },
+    { "id": "36-valid", "action": "submit", "word": "FAİZLİ", "outcome": "valid", "capture": "36-valid" },
+    { "id": "37-valid", "action": "submit", "word": "NİZAMİ", "outcome": "valid", "capture": "37-valid" },
+    { "id": "38-valid", "action": "submit", "word": "İNFİAL", "outcome": "valid", "capture": "38-valid" },
+    {
+      "id": "39-complete",
+      "action": "submit",
+      "word": "FİNALİZM",
+      "outcome": "completion",
+      "capture": "39-complete"
+    }
+  ]
+}

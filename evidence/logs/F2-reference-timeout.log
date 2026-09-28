@@ -1,0 +1,6 @@
+[C3 scenario] step 0 waitForState: ok (7705 ms)
+[C3 scenario] step 1 waitStable: ok (1166 ms)
+[C3 scenario] step 2 waitForState: ok (199990 ms)
+[C3 scenario] step 3 waitStable: ok (506 ms)
+[C3 scenario] step 4 capture: ok (50 ms)
+[C3 scenario] f2-timeout run 1: OK (1 captures, 5 steps)

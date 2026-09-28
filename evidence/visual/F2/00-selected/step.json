@@ -1,0 +1,31 @@
+{
+  "index": 0,
+  "id": "00-selected",
+  "capture": "00-selected",
+  "action": "select",
+  "word": null,
+  "outcome": null,
+  "score": 0,
+  "appScore": 0,
+  "timeBonus": null,
+  "foundCount": 0,
+  "entry": "",
+  "state": "playing",
+  "audio": "roundStart",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "audio": true,
+    "entry": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.042027272727272726,
+  "tolerantMismatchRatio": 0.009736363636363637,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/00-selected.png",
+  "artifacts": "evidence/visual/F2/00-selected"
+}
