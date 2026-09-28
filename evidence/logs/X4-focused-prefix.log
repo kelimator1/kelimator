@@ -1,0 +1,39 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test timeout --reporter=line
+
+
+Running 1 test using 1 worker
+
+(node:33360) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:33360) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/1] [app] › tests/e2e/timeout/reveal-colour.spec.ts:198:3 › X4 timeout reveal colour › FİNALİZM: revealed slots render #ff6600 at timeout; found slots stay black
+  1) [app] › tests/e2e/timeout/reveal-colour.spec.ts:198:3 › X4 timeout reveal colour › FİNALİZM: revealed slots render #ff6600 at timeout; found slots stay black 
+
+    Error: slot_3_1 AFİ
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "rgb(255, 102, 0)"
+    Received: "rgb(0, 0, 0)"
+
+      269 |       );
+      270 |       expect(rendered, `${expectedSlot.word} rendered`).toBeDefined();
+    > 271 |       expect(rendered!.color, `${rendered!.element} ${expectedSlot.word}`).toBe(
+          |                                                                            ^
+      272 |         expectedSlot.revealed ? REVEAL_COLOR : FOUND_COLOR,
+      273 |       );
+      274 |     }
+        at /home/dev/kelimator-2012/tests/e2e/timeout/reveal-colour.spec.ts:271:76
+
+    Error Context: test-results/tests-e2e-timeout-reveal-c-e9497-eout-found-slots-stay-black-app/error-context.md
+
+
+  1 failed
+    [app] › tests/e2e/timeout/reveal-colour.spec.ts:198:3 › X4 timeout reveal colour › FİNALİZM: revealed slots render #ff6600 at timeout; found slots stay black 

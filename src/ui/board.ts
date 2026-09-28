@@ -94,6 +94,16 @@ const BOX_SY = 16;
 const BOX_HEIGHT = 14;
 
 /**
+ * Timeout-reveal text colour. Reference `tamamla()`
+ * (artifacts/decompiled/scripts/frame_131/DoAction.as L568–570) writes every
+ * listed-but-unfound word into the row and sets `d.textColor = 16737792`
+ * (#ff6600) on it; words already found by the player keep the default field
+ * colour (black — measured on both sides at F2's `38-valid` control step,
+ * evidence/F2-playthrough.md §6). evidence: evidence/X4-reveal-colour.md §2.
+ */
+const REVEALED_SLOT_COLOR = '#ff6600';
+
+/**
  * Found-word field geometry from the `tablociz()` accumulation in
  * frame_131/DoAction.as (fx starts at 10, dx = 2, sx = 10): rows 3..8 at
  * x = 36/70/112/162/220/286 with widths 32/40/48/56/64/72 (rounded to 0.01 px
@@ -134,6 +144,8 @@ export interface FoundWordView {
   /** Zero-based slot in the row. */
   index: number;
   text: string;
+  /** True when filled by the timeout reveal (`tamamla()`), not by the player. */
+  revealed?: boolean;
 }
 
 export interface BoardView {
@@ -588,6 +600,11 @@ function renderSlots(view: BoardView): HTMLElement {
       const found = view.found?.find((word) => word.len === row.len && word.index === j);
       if (found !== undefined) {
         box.textContent = found.text;
+        if (found.revealed === true) {
+          // Timeout reveal (`tamamla()` L568–570): unfound listed words render
+          // #ff6600; player-found words keep the field's default black.
+          box.style.color = REVEALED_SLOT_COLOR;
+        }
       }
       layer.appendChild(box);
     }

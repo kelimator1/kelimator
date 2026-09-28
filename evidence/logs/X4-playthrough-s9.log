@@ -1,0 +1,20 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test playthrough -g S9 --reporter=line
+
+
+Running 1 test using 1 worker
+
+(node:49211) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:49211) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/1] [app] › tests/e2e/playthrough/playthrough.spec.ts:902:3 › F2 S9 timeout variant › FİNALİZM: the clock is waited out and the timeout state matches the reference
+[app] › tests/e2e/playthrough/playthrough.spec.ts:902:3 › F2 S9 timeout variant › FİNALİZM: the clock is waited out and the timeout state matches the reference
+F2 timeout: raw=7.730% tolerant=0.901% pass=true appWaitMs=200377 stable=true
+
+  1 passed (3.4m)

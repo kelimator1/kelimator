@@ -1,0 +1,17 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test timeout --reporter=line
+
+
+Running 1 test using 1 worker
+
+(node:35315) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:35315) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/1] [app] › tests/e2e/timeout/reveal-colour.spec.ts:198:3 › X4 timeout reveal colour › FİNALİZM: revealed slots render #ff6600 at timeout; found slots stay black
+  1 passed (1.7s)

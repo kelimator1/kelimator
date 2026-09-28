@@ -125,7 +125,14 @@ function boardViewFor(snapshot: LifecycleSnapshot): BoardView {
     elements,
     slotCounts: WORD_LENGTHS.map((length) => snapshot.listedSlotCounts[length]),
     found: snapshot.listedFound.map(
-      (listed): FoundWordView => ({ len: listed.length, index: listed.index, text: listed.word }),
+      (listed): FoundWordView => ({
+        len: listed.length,
+        index: listed.index,
+        text: listed.word,
+        // X4: `tamamla()` colours every timeout-revealed word #ff6600
+        // (evidence/F2-playthrough.md §6/§7.1); found words stay black.
+        revealed: listed.revealed,
+      }),
     ),
     entry: snapshot.entry,
     counts: WORD_LENGTHS.map((length) => String(snapshot.remainingCounts[length])),

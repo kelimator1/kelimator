@@ -1,0 +1,31 @@
+{
+  "index": 40,
+  "id": "S9-timeout",
+  "capture": "timeout",
+  "action": "timeout",
+  "word": null,
+  "outcome": "timeout",
+  "score": 0,
+  "appScore": 0,
+  "timeBonus": null,
+  "foundCount": 0,
+  "entry": "",
+  "state": "timeout",
+  "audio": "timeout",
+  "checks": {
+    "score": true,
+    "found": true,
+    "state": true,
+    "revealed": true,
+    "inputLocked": true
+  },
+  "stableAtCapture": true,
+  "comparison": {
+    "excluded": false
+  },
+  "mismatchRatio": 0.0773,
+  "tolerantMismatchRatio": 0.009013636363636364,
+  "pass": true,
+  "reference": "tests/fixtures/reference/playthrough/timeout/timeout.png",
+  "artifacts": "test-results/F2-live/timeout"
+}

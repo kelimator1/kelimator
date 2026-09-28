@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "task": "F2",
+  "generatedAt": "2026-09-28T21:09:11.005Z",
+  "reference": {
+    "timeoutScenario": "tests/fixtures/reference/playthrough/scenarios/timeout.json",
+    "timeoutScenarioReport": "tests/fixtures/reference/playthrough/timeout/scenario-report.json",
+    "timeoutScenarioReportOk": true,
+    "timeoutRunCommand": "node verify/reference/capture.mjs --scenario tests/fixtures/reference/playthrough/scenarios/timeout.json --out tests/fixtures/reference/playthrough/timeout --runs 1 --port 8797"
+  },
+  "deckMatch": {},
+  "oracle": {},
+  "playthrough": null,
+  "timeout": {
+    "index": 40,
+    "id": "S9-timeout",
+    "capture": "timeout",
+    "action": "timeout",
+    "word": null,
+    "outcome": "timeout",
+    "score": 0,
+    "appScore": 0,
+    "timeBonus": null,
+    "foundCount": 0,
+    "entry": "",
+    "state": "timeout",
+    "audio": "timeout",
+    "checks": {
+      "score": true,
+      "found": true,
+      "state": true,
+      "revealed": true,
+      "inputLocked": true
+    },
+    "stableAtCapture": true,
+    "comparison": {
+      "excluded": false
+    },
+    "mismatchRatio": 0.0773,
+    "tolerantMismatchRatio": 0.009013636363636364,
+    "pass": true,
+    "reference": "tests/fixtures/reference/playthrough/timeout/timeout.png",
+    "artifacts": "test-results/F2-live/timeout",
+    "appWaitMs": 200377,
+    "referenceWaitMs": 199990
+  },
+  "summary": {
+    "steps": 1,
+    "compared": 1,
+    "passed": 1,
+    "excluded": 0,
+    "excludedIds": [],
+    "worstTolerantRatio": 0.009013636363636364,
+    "allChecks": true,
+    "allComparedPass": true,
+    "allPass": true
+  }
+}

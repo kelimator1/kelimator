@@ -1,0 +1,3 @@
+{"name":"reference (C3 timeout capture)","file":"test-results/F2-live/timeout/reference.png","size":"550x400","exact_ff6600_stage":4948,"exact_ff6600_wordlist_region":2424,"exact_000000_wordlist_region":3709}
+{"name":"app post-fix (X4)","file":"test-results/F2-live/timeout/actual.png","size":"550x400","exact_ff6600_stage":4878,"exact_ff6600_wordlist_region":2278,"exact_000000_wordlist_region":3536}
+{"name":"app pre-fix (F2 frozen)","file":"evidence/visual/F2/timeout/actual.png","size":"550x400","exact_ff6600_stage":2600,"exact_ff6600_wordlist_region":0,"exact_000000_wordlist_region":6121}
