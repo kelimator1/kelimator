@@ -105,3 +105,7 @@ RESOLVED 2026-09-28 — evidence/C3-fixture-format.md — harness fixture = Base
   files are committed to `src/assets/text/<symbolId>.txt` so runtime `asset`
   references resolve in a fresh clone (provenance only). Evidence:
   `evidence/E1-assets.md` §11.1/§13.
+- 2026-09-28 — E2 test-scope + wiring: `tasks/E2-static-layout-match.md`
+  additionally owns `tests/e2e/**` (visual suite) and the `src/main.ts`
+  bootstrap wiring for the board mount; dsf2 reference fixtures remain C3's
+  (`tests/fixtures/reference/dsf2/`).

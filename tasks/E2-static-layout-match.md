@@ -5,6 +5,15 @@
 - Depends on: E1
 - Owned paths: `src/ui/board.ts` (layout rendering), `src/styles/**`, `evidence/E2-*`, `evidence/visual/E2-*`
 
+> Amendment 2026-09-28 (orchestrator): Owned paths additionally include
+> `tests/e2e/**` (the visual suite required by `npm run e2e -- visual`) and
+> `src/main.ts` bootstrap wiring for the board mount only (the stage-shell
+> wiring from C2 must stay intact). Reference fixtures at
+> `deviceScaleFactor: 2` are produced by C3 under
+> `tests/fixtures/reference/dsf2/` — do not capture your own reference.
+> Silent witness runs apply (`EXECUTION.md` §8). Recorded in
+> `docs/08-open-items.md` (Amendments).
+
 ## Inputs
 - `src/data/layout.json` (E1)
 - `tests/fixtures/reference/*.png` (C3)
