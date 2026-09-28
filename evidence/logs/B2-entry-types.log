@@ -1,0 +1,108 @@
+## analysis script (exact; rerun: pipe this section's script text into python3)
+# -*- coding: utf-8 -*-
+# B2 / O17: entry-type inventory of the snapshot (analysis only; no filter added).
+# Sections: A = B1 artifact headwords.txt, B = site bundle madde forms,
+#           C = cached API census wordTypes.
+import json, glob, re, collections
+
+lmap = {}
+for lo, up in [('a','A'),('b','B'),('c','C'),('ç','Ç'),('d','D'),('e','E'),('f','F'),('g','G'),('ğ','Ğ'),('h','H'),('ı','I'),('i','İ'),('j','J'),('k','K'),('l','L'),('m','M'),('n','N'),('o','O'),('ö','Ö'),('p','P'),('r','R'),('s','S'),('ş','Ş'),('t','T'),('u','U'),('ü','Ü'),('v','V'),('y','Y'),('z','Z')]:
+    lmap[lo] = up
+def up(w):
+    return ''.join(lmap.get(c, c) for c in w)
+CORE = set('ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ')
+
+print('== A. headwords.txt (B1 artifact) ==')
+words = open('artifacts/tdk/headwords.txt', encoding='utf-8').read().splitlines()
+print('total words:', len(words))
+init_up = [w for w in words if w[0].isupper()]
+init_lo = [w for w in words if w[0].islower()]
+print('upper-case-initial (proper-noun style):', len(init_up))
+print('lower-case-initial (common-noun style):', len(init_lo))
+print('all-caps tokens (possible letter-only abbreviations):', [w for w in words if w == up(w) and len(w) >= 3])
+noncore = [w for w in words if any(c not in CORE for c in up(w))]
+circ = [w for w in words if any(c in 'âîûÂÎÛ' for c in w)]
+w_words = [w for w in words if 'w' in w.lower()]
+print('words with non-core letters after Turkish casing:', len(noncore))
+print('  circumflex (â/î/û/Â/Î/Û):', len(circ), '| example:', circ[:6])
+print("  'w':", w_words)
+short = [w for w in words if len(up(w)) < 3]
+print('words shorter than 3 letters:', len(short), '| examples:', short[:10])
+coll = collections.Counter(up(w) for w in words)
+coll = {k: v for k, v in coll.items() if v > 1}
+print('display-form collisions after Turkish upper-casing:', len(coll))
+print('  examples:', [k for k in list(coll)[:12]])
+nov = [w for w in words if len(w) >= 3 and not (set(w) & set('aeıioöuüAEIİOÖUÜ'))]
+print('no-vowel words (length >= 3):', nov)
+
+print()
+print('== B. bundle source raw/probe_app.js (site bundle madde forms) ==')
+txt = open('artifacts/tdk/raw/probe_app.js', encoding='utf-8').read()
+forms = re.findall(r'\{"madde":"((?:[^"\\]|\\.)*)"\}', txt)
+forms = [json.loads('"' + f + '"') for f in forms]
+uniq = list(dict.fromkeys(forms))
+print('madde forms (raw occurrences):', len(forms), '| unique:', len(uniq))
+space = [w for w in uniq if any(c.isspace() for c in w)]
+digit = [w for w in uniq if any(c.isdigit() for c in w)]
+punct = sorted(set(c for w in uniq for c in w if not c.isalnum() and not c.isspace() and c not in 'âîûÂÎÛ'))
+print('multi-word (contains whitespace):', len(space), '| example:', space[:3])
+print('contains digits:', len(digit), '| example:', digit[:6])
+print('punctuation inventory:', punct)
+print('forms with punctuation:', len([w for w in uniq if any(c in "-'’.(),/" for c in w)]))
+print('forms with circumflex:', len([w for w in uniq if any(c in 'âîûÂÎÛ' for c in w)]))
+letters_only = [w for w in uniq if all(c.isalpha() for c in w)]
+print('letters-only forms (Unicode alphabetic):', len(letters_only))
+core_only = [w for w in uniq if all(c in CORE for c in up(w))]
+print('forms fully inside the 29-letter core alphabet:', len(core_only))
+print('digit-bearing test-fixture family:', sorted(set(re.sub(r' \d+$', ' N', w) for w in digit)))
+print('non-lexical letters-only survivors in the artifact:', [w for w in words if w.lower() in ('gfgf','sfsfs','dswwee')])
+
+print()
+print('== C. cached API census raw/r_*.json (wordTypes) ==')
+wt = collections.Counter(); seen = set(); entries = 0
+for f in sorted(glob.glob('artifacts/tdk/raw/r_*.json')):
+    try:
+        d = json.load(open(f))
+    except Exception:
+        continue
+    for s in d.get('sonuclar', []) or []:
+        mid = s.get('madde_id')
+        if mid in seen:
+            continue
+        seen.add(mid); entries += 1
+        for t in s.get('wordTypes') or []:
+            wt[t] += 1
+print('cached census entries (distinct madde_id):', entries, 'of the full population 82,175 (regex chain 1,170/1,644 pages)')
+print('wordTypes:', dict(wt.most_common()))
+print('has kisaltma wordType:', 'kısaltma' in wt)
+
+## output
+== A. headwords.txt (B1 artifact) ==
+total words: 63967
+upper-case-initial (proper-noun style): 2150
+lower-case-initial (common-noun style): 61817
+all-caps tokens (possible letter-only abbreviations): ['DNA']
+words with non-core letters after Turkish casing: 811
+  circumflex (â/î/û/Â/Î/Û): 810 | example: ['Babagân', 'Balâ', 'Bâtıniye', 'Celâli', 'Celâlilik', 'Ceylânpınar']
+  'w': ['dswwee']
+words shorter than 3 letters: 238 | examples: ['Ac', 'Ag', 'Ar', 'As', 'Au', 'Ay', 'B', 'Ba', 'Bh', 'Bi']
+display-form collisions after Turkish upper-casing: 78
+  examples: ['AHİ', 'AKREP', 'ALACA', 'ALLAHSIZ', 'AMENTÜ', 'AR', 'ARALIK', 'ARAP', 'AS', 'ASLAN', 'AVCI', 'AY']
+no-vowel words (length >= 3): ['gfgf', 'gâh', 'hâk', 'hâkî', 'hâl', 'hâlâ', 'kâh', 'kâm', 'kâp', 'kâr', 'lâm', 'nâr', 'sfsfs', 'yâd', 'yâr', 'âlâ', 'âmâ']
+
+== B. bundle source raw/probe_app.js (site bundle madde forms) ==
+madde forms (raw occurrences): 98015 | unique: 81723
+multi-word (contains whitespace): 17685 | example: ['absorbe etmek', 'abuk sabuk', 'abur cubur']
+contains digits: 34 | example: ['bar4', 'asdf2', 'Edebi 21', 'madde deneme 1', 'örnekKelime 10', 'örnekKelime 11']
+punctuation inventory: ["'", '(', ')', ',', '-', '.', '’', '”', '…']
+forms with punctuation: 135
+forms with circumflex: 1232
+letters-only forms (Unicode alphabetic): 63967
+forms fully inside the 29-letter core alphabet: 63156
+digit-bearing test-fixture family: ['Edebi N', 'asdf2', 'bar4', 'madde deneme N', 'test madde N', 'yeni madde N', 'örnekKelime N']
+non-lexical letters-only survivors in the artifact: ['dswwee', 'gfgf', 'sfsfs']
+
+== C. cached API census raw/r_*.json (wordTypes) ==
+cached census entries (distinct madde_id): 58500 of the full population 82,175 (regex chain 1,170/1,644 pages)
+wordTypes: {'isim': 38875, 'sıfat': 9897, 'nesnesiz': 3637, '-i': 3473, 'zarf': 2631, 'özel isim': 1692, '-e': 856, 'ünlem': 270, '-le': 244, '-den': 202, 'zamir': 77, 'edat': 50, 'bağlaç': 42, '-de': 29, 'yardımcı fiil': 15}
+has kisaltma wordType: False

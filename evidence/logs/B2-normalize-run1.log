@@ -1,0 +1,9 @@
+[B2] input: /home/dev/kelimator-2012/artifacts/tdk/headwords.txt (63967 lines, sha256=79ad954e569e806b230a82582f1b4e6167faf6a78163d93db9982b325a6a9a89)
+[B2] blocklist: /home/dev/kelimator-2012/data/blocklist.txt (55 entries, sha256=2094d3b09a90ef5ca4f3750c4800f55f3ef659ae472db5d3294cadcfdfc58b0a)
+[B2] step 1 after casing: 63967
+[B2] step 2 after charset: 63156
+[B2] step 3 after shape (length >= 3): 62918
+[B2] unique after shape: 62864
+[B2] step 4 removed by blocklist: 55
+[B2] removed words: BOK, BOKLAMA, BOKLAMAK, BOKLANMA, BOKLANMAK, BOKLAŞMA, BOKLAŞMAK, BOKLU, BOKLUK, BOKTAN, BOKTANLIK, DALYARAK, DALYARAKLIK, GFGF, GODOŞ, GODOŞLUK, GÖT, KAHPE, KAHPECE, KAHPELENME, KAHPELENMEK, KAHPELEŞME, KAHPELEŞMEK, KAHPELİK, KALTAK, KALTAKLIK, KALTAKÇI, OROSPU, OROSPULUK, PEZEVENK, PEZEVENKLİK, PUŞT, PUŞTLUK, PİÇ, PİÇLİK, SFSFS, SÜRTÜK, SÜRTÜKLEŞME, SÜRTÜKLEŞMEK, SÜRTÜKLÜK, SİK, SİKLEMEME, SİKLEMEMEK, SİKME, SİKMEK, SİKTİRMEK, SİKTİRİCİ, TAŞAK, TAŞAKLI, YARAK, YAVŞAK, ÇÜK, İBNE, İBNELİK, ŞILLIK
+[B2] output: /home/dev/kelimator-2012/tools/wordlist.txt (62809 lines, sha256=ac9987ce0d07688ce5db913f5cb112efe0e035f227d908431350c2d96fde8758)

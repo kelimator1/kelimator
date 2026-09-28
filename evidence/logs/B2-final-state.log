@@ -1,0 +1,37 @@
++zsh:3> set -e
++zsh:4> date -u +%Y-%m-%dT%H:%M:%SZ
+2026-09-28T18:08:40Z
++zsh:5> node tools/normalize-wordlist.mjs artifacts/tdk/headwords.txt /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/b2-final-rerun.txt data/blocklist.txt
+[B2] input: /home/dev/kelimator-2012/artifacts/tdk/headwords.txt (63967 lines, sha256=79ad954e569e806b230a82582f1b4e6167faf6a78163d93db9982b325a6a9a89)
+[B2] blocklist: /home/dev/kelimator-2012/data/blocklist.txt (55 entries, sha256=2094d3b09a90ef5ca4f3750c4800f55f3ef659ae472db5d3294cadcfdfc58b0a)
+[B2] step 1 after casing: 63967
+[B2] step 2 after charset: 63156
+[B2] step 3 after shape (length >= 3): 62918
+[B2] unique after shape: 62864
+[B2] step 4 removed by blocklist: 55
+[B2] removed words: BOK, BOKLAMA, BOKLAMAK, BOKLANMA, BOKLANMAK, BOKLAŞMA, BOKLAŞMAK, BOKLU, BOKLUK, BOKTAN, BOKTANLIK, DALYARAK, DALYARAKLIK, GFGF, GODOŞ, GODOŞLUK, GÖT, KAHPE, KAHPECE, KAHPELENME, KAHPELENMEK, KAHPELEŞME, KAHPELEŞMEK, KAHPELİK, KALTAK, KALTAKLIK, KALTAKÇI, OROSPU, OROSPULUK, PEZEVENK, PEZEVENKLİK, PUŞT, PUŞTLUK, PİÇ, PİÇLİK, SFSFS, SÜRTÜK, SÜRTÜKLEŞME, SÜRTÜKLEŞMEK, SÜRTÜKLÜK, SİK, SİKLEMEME, SİKLEMEMEK, SİKME, SİKMEK, SİKTİRMEK, SİKTİRİCİ, TAŞAK, TAŞAKLI, YARAK, YAVŞAK, ÇÜK, İBNE, İBNELİK, ŞILLIK
+[B2] output: /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/b2-final-rerun.txt (62809 lines, sha256=ac9987ce0d07688ce5db913f5cb112efe0e035f227d908431350c2d96fde8758)
++zsh:6> cmp /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/b2-final-rerun.txt tools/wordlist.txt
++zsh:7> echo CMP_EXIT:0
+CMP_EXIT:0
++zsh:8> wc -l tools/wordlist.txt
+   62809 tools/wordlist.txt
++zsh:9> wc -c tools/wordlist.txt
+  686509 tools/wordlist.txt
++zsh:10> file -b tools/wordlist.txt
+Unicode text, UTF-8 text
++zsh:11> shasum -a 256 data/blocklist.txt tools/normalize-wordlist.mjs tests/normalize-wordlist.test.mjs tools/wordlist.txt evidence/B2-normalization.md evidence/B2-filters.md evidence/logs/B2-normalize-run1.log evidence/logs/B2-normalize-run2.log evidence/logs/B2-verify.log evidence/logs/B2-casing-equivalence.log evidence/logs/B2-entry-types.log evidence/logs/B2-tests-normalize.log evidence/logs/B2-tests-full.log
+2094d3b09a90ef5ca4f3750c4800f55f3ef659ae472db5d3294cadcfdfc58b0a  data/blocklist.txt
+3d3577b58bfdf21465d4f047bc6c37052fe1ceeef85b6535be4b6d23476f0df9  tools/normalize-wordlist.mjs
+91a1b7c879897419685f247fa894f3649ce860836521ed51bad83490a7d10743  tests/normalize-wordlist.test.mjs
+ac9987ce0d07688ce5db913f5cb112efe0e035f227d908431350c2d96fde8758  tools/wordlist.txt
+5295a175867992cf01f2ebf5cf3444007a37c3d476d79471dbbc8f5c88655d9f  evidence/B2-normalization.md
+690c5181d1546db3c53918a345b5ec1baed59b886fdf7cf6e345c8e6c3102f43  evidence/B2-filters.md
+b8c1838aa01e78b08a59257f7e5e0aa49b5f9364ae864d1440e8998381a4ccfc  evidence/logs/B2-normalize-run1.log
+b8c1838aa01e78b08a59257f7e5e0aa49b5f9364ae864d1440e8998381a4ccfc  evidence/logs/B2-normalize-run2.log
+67190ad698eb9c487cd7609f469dee6efcec8da745b80f877b67399bea7afe53  evidence/logs/B2-verify.log
+b95bc31bae6aaec956c117f3b0e44c102411e4ecbed8a0aafc7b44ce5ac2d171  evidence/logs/B2-casing-equivalence.log
+208b5c0984e68977e2820f67e2959d8874923da256461a555add498c4cef865b  evidence/logs/B2-entry-types.log
+9f5abd73e55a6cbe79661c9d2565638e19465e9eda69ae30ecf7a7a2fb672be5  evidence/logs/B2-tests-normalize.log
+4b95055b1ce45efbbf63db8e5a959eba25a7bdb7a57e74df45ca14cbb813b73a  evidence/logs/B2-tests-full.log
++zsh:12> set +x

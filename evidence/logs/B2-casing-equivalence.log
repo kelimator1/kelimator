@@ -1,0 +1,12 @@
+input lines: 63967
+toLocaleUpperCase('tr'): i -> İ / ı -> I
+casing differences (explicit table vs toLocaleUpperCase(tr)): 1
+differences on the kept set (all core letters, length >= 3): 0 []
+difference examples: [ [ 'dswwee', 'DSwwEE', 'DSWWEE' ] ]
+normalizeWord("kâse") = null
+normalizeWord("iyi") = İYİ
+normalizeWord("ırmak") = IRMAK
+normalizeWord("kişi") = KİŞİ
+normalizeWord("k-t") = null
+normalizeWord("k t") = null
+normalizeWord("ab") = null

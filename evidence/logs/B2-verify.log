@@ -1,0 +1,35 @@
++zsh:3> set -e
++zsh:4> wc -l tools/wordlist.txt
+   62809 tools/wordlist.txt
++zsh:5> wc -c tools/wordlist.txt
+  686509 tools/wordlist.txt
++zsh:6> file tools/wordlist.txt
+tools/wordlist.txt: Unicode text, UTF-8 text
++zsh:7> LC_ALL=C sort -c tools/wordlist.txt
++zsh:8> echo SORT_CHECK_EXIT:0
+SORT_CHECK_EXIT:0
++zsh:9> LC_ALL=C sort -u tools/wordlist.txt
++zsh:9> wc -l
+   62809
++zsh:10> LC_ALL=C uniq -d tools/wordlist.txt
++zsh:10> wc -l
+       0
++zsh:11> shasum -a 256 artifacts/tdk/headwords.txt data/blocklist.txt tools/wordlist.txt tools/normalize-wordlist.mjs
+79ad954e569e806b230a82582f1b4e6167faf6a78163d93db9982b325a6a9a89  artifacts/tdk/headwords.txt
+2094d3b09a90ef5ca4f3750c4800f55f3ef659ae472db5d3294cadcfdfc58b0a  data/blocklist.txt
+ac9987ce0d07688ce5db913f5cb112efe0e035f227d908431350c2d96fde8758  tools/wordlist.txt
+3d3577b58bfdf21465d4f047bc6c37052fe1ceeef85b6535be4b6d23476f0df9  tools/normalize-wordlist.mjs
++zsh:12> python3 -c 'import re;core="".join(map(chr,[65,66,67,199,68,69,70,71,286,72,73,304,74,75,76,77,78,79,214,80,82,83,350,84,85,220,86,89,90]));assert len(core)==29;rx=re.compile("^["+core+"]+$");lines=open("tools/wordlist.txt",encoding="utf-8").read().split("\n")[:-1];bad=[l for l in lines if not rx.fullmatch(l)];bl=set(open("data/blocklist.txt",encoding="utf-8").read().split("\n"))-{""};wl=set(lines);print("core_alphabet:",core);print("lines:",len(lines));print("non_matching_regex:",len(bad),bad[:5]);print("min_len:",min(map(len,lines)),"max_len:",max(map(len,lines)));print("duplicates:",len(lines)-len(wl));print("sorted_strict_codepoint:",lines==sorted(wl));print("all_len_ge_3:",all(len(l)>=3 for l in lines));print("blocklist_entries:",len(bl));print("blocklist_present_in_wordlist:",sorted(bl&wl));print("fixture_words_present:",[w for w in ("GFGF","SFSFS") if w in wl])'
+core_alphabet: ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ
+lines: 62809
+non_matching_regex: 0 []
+min_len: 3 max_len: 25
+duplicates: 0
+sorted_strict_codepoint: True
+all_len_ge_3: True
+blocklist_entries: 55
+blocklist_present_in_wordlist: []
+fixture_words_present: []
++zsh:13> echo PY_CHECK_EXIT:0
+PY_CHECK_EXIT:0
++zsh:14> set +x
