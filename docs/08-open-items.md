@@ -196,3 +196,7 @@ RESOLVED 2026-09-28 — evidence/X3-speaker.md — speaker `spk_btn` (DefineButt
   `s58_letter_tile.svg` carries no authoring glyph (`font_Verdana` spans/text
   counts; deliberate-probe verified); thresholds unchanged. Evidence:
   `evidence/X2-tile-glyph.md`.
+- 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
+  pointer-events-transparent; the single click delegation matches `buttonN`
+  only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:
+  `evidence/X1-tile-click.md`.

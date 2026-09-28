@@ -58,6 +58,12 @@ type Round = {
 > `evidence/D2-input.md` §6.2). Matching entry in `docs/08-open-items.md`
 > (Amendments).
 
+> Amendment 2026-09-28d (orchestrator): clicking anywhere on a tile enters its
+> letter, including the glyph itself — the runtime letter field is
+> pointer-events-transparent and the single click delegation matches only
+> `buttonN` (`src/main.ts`); defect fix X1, `evidence/X1-tile-click.md` §2.
+> Matching entry in `docs/08-open-items.md` (Amendments).
+
 ## 4. Scoring implementation
 
 - Valid word: `n² × perLetterSquaredFactor`.
