@@ -1,0 +1,16 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test visual -g S1-boot --reporter=line
+
+
+Running 2 tests using 1 worker
+
+[1/2] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S1 S1-boot matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S1 S1-boot matches the C3 reference
+E2 S1 dsf1: mismatchRatio=0.018477272727272728 (1.848%), mismatchedPixels=4065/220000, pass=true
+
+[2/2] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S1 S1-boot matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S1 S1-boot matches the C3 reference
+E2 S1 dsf2: mismatchRatio=0.014513636363636364 (1.451%), mismatchedPixels=12772/880000, pass=true
+
+  2 passed (1.8s)

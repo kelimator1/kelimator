@@ -1,0 +1,60 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test visual -g S1-boot --reporter=line
+
+
+Running 2 tests using 1 worker
+
+[1/2] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S1 S1-boot matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S1 S1-boot matches the C3 reference
+E2 S1 dsf1: mismatchRatio=0.02533181818181818 (2.533%), mismatchedPixels=5573/220000, pass=false
+
+  1) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S1 S1-boot matches the C3 reference 
+
+    Error: S1 dsf1 mismatch ratio 2.533% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.02533181818181818
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-3f0de-ot-matches-the-C3-reference-app/error-context.md
+
+
+[2/2] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S1 S1-boot matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S1 S1-boot matches the C3 reference
+E2 S1 dsf2: mismatchRatio=0.020048863636363635 (2.005%), mismatchedPixels=17643/880000, pass=false
+
+  2) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S1 S1-boot matches the C3 reference 
+
+    Error: S1 dsf2 mismatch ratio 2.005% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.020048863636363635
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-a8731-ot-matches-the-C3-reference-app/error-context.md
+
+
+  2 failed
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S1 S1-boot matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S1 S1-boot matches the C3 reference 

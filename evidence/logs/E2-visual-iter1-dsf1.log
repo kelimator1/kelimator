@@ -1,0 +1,184 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test visual -g deviceScaleFactor 1 --reporter=line
+
+
+Running 8 tests using 1 worker
+
+[1/8] [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S1 S1-boot matches the C3 reference
+  1) [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S1 S1-boot matches the C3 reference 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.waitForFunction: Test timeout of 30000ms exceeded.
+
+      91 |
+      92 | async function waitForBoard(page: Page): Promise<void> {
+    > 93 |   await page.waitForFunction(() => {
+         |              ^
+      94 |     const board = document.querySelector('[data-testid="board"]');
+      95 |     if (!(board instanceof HTMLElement)) {
+      96 |       return false;
+        at waitForBoard (/home/dev/kelimator-2012/tests/e2e/visual.spec.ts:93:14)
+        at preparePage (/home/dev/kelimator-2012/tests/e2e/visual.spec.ts:128:9)
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:159:9
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-3f0de-ot-matches-the-C3-reference-app/error-context.md
+
+
+[2/8] [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S2 S2-idle-board matches the C3 reference
+  2) [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S2 S2-idle-board matches the C3 reference 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.waitForFunction: Test timeout of 30000ms exceeded.
+
+      91 |
+      92 | async function waitForBoard(page: Page): Promise<void> {
+    > 93 |   await page.waitForFunction(() => {
+         |              ^
+      94 |     const board = document.querySelector('[data-testid="board"]');
+      95 |     if (!(board instanceof HTMLElement)) {
+      96 |       return false;
+        at waitForBoard (/home/dev/kelimator-2012/tests/e2e/visual.spec.ts:93:14)
+        at preparePage (/home/dev/kelimator-2012/tests/e2e/visual.spec.ts:128:9)
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:159:9
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-373b3-rd-matches-the-C3-reference-app/error-context.md
+
+
+[3/8] [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S3 S3-scrambled matches the C3 reference
+  3) [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S3 S3-scrambled matches the C3 reference 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.waitForFunction: Test timeout of 30000ms exceeded.
+
+      91 |
+      92 | async function waitForBoard(page: Page): Promise<void> {
+    > 93 |   await page.waitForFunction(() => {
+         |              ^
+      94 |     const board = document.querySelector('[data-testid="board"]');
+      95 |     if (!(board instanceof HTMLElement)) {
+      96 |       return false;
+        at waitForBoard (/home/dev/kelimator-2012/tests/e2e/visual.spec.ts:93:14)
+        at preparePage (/home/dev/kelimator-2012/tests/e2e/visual.spec.ts:128:9)
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:159:9
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-4cc6d-ed-matches-the-C3-reference-app/error-context.md
+
+
+[4/8] [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S4 S4-partial-entry matches the C3 reference
+  4) [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S4 S4-partial-entry matches the C3 reference 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.waitForFunction: Test timeout of 30000ms exceeded.
+
+      91 |
+      92 | async function waitForBoard(page: Page): Promise<void> {
+    > 93 |   await page.waitForFunction(() => {
+         |              ^
+      94 |     const board = document.querySelector('[data-testid="board"]');
+      95 |     if (!(board instanceof HTMLElement)) {
+      96 |       return false;
+        at waitForBoard (/home/dev/kelimator-2012/tests/e2e/visual.spec.ts:93:14)
+        at preparePage (/home/dev/kelimator-2012/tests/e2e/visual.spec.ts:128:9)
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:159:9
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-1e0f5-ry-matches-the-C3-reference-app/error-context.md
+
+
+[5/8] [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S5 S5-valid-word matches the C3 reference
+  5) [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S5 S5-valid-word matches the C3 reference 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.waitForFunction: Test timeout of 30000ms exceeded.
+
+      91 |
+      92 | async function waitForBoard(page: Page): Promise<void> {
+    > 93 |   await page.waitForFunction(() => {
+         |              ^
+      94 |     const board = document.querySelector('[data-testid="board"]');
+      95 |     if (!(board instanceof HTMLElement)) {
+      96 |       return false;
+        at waitForBoard (/home/dev/kelimator-2012/tests/e2e/visual.spec.ts:93:14)
+        at preparePage (/home/dev/kelimator-2012/tests/e2e/visual.spec.ts:128:9)
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:159:9
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-e07c1-rd-matches-the-C3-reference-app/error-context.md
+
+
+[6/8] [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S6 S6-invalid-word matches the C3 reference
+  6) [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S6 S6-invalid-word matches the C3 reference 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.waitForFunction: Test timeout of 30000ms exceeded.
+
+      91 |
+      92 | async function waitForBoard(page: Page): Promise<void> {
+    > 93 |   await page.waitForFunction(() => {
+         |              ^
+      94 |     const board = document.querySelector('[data-testid="board"]');
+      95 |     if (!(board instanceof HTMLElement)) {
+      96 |       return false;
+        at waitForBoard (/home/dev/kelimator-2012/tests/e2e/visual.spec.ts:93:14)
+        at preparePage (/home/dev/kelimator-2012/tests/e2e/visual.spec.ts:128:9)
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:159:9
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-00c27-rd-matches-the-C3-reference-app/error-context.md
+
+
+[7/8] [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S7 S7-bonus-word matches the C3 reference
+  7) [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S7 S7-bonus-word matches the C3 reference 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.waitForFunction: Test timeout of 30000ms exceeded.
+
+      91 |
+      92 | async function waitForBoard(page: Page): Promise<void> {
+    > 93 |   await page.waitForFunction(() => {
+         |              ^
+      94 |     const board = document.querySelector('[data-testid="board"]');
+      95 |     if (!(board instanceof HTMLElement)) {
+      96 |       return false;
+        at waitForBoard (/home/dev/kelimator-2012/tests/e2e/visual.spec.ts:93:14)
+        at preparePage (/home/dev/kelimator-2012/tests/e2e/visual.spec.ts:128:9)
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:159:9
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-7382f-rd-matches-the-C3-reference-app/error-context.md
+
+
+[8/8] [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S10 S10-next-round matches the C3 reference
+  8) [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S10 S10-next-round matches the C3 reference 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.waitForFunction: Test timeout of 30000ms exceeded.
+
+      91 |
+      92 | async function waitForBoard(page: Page): Promise<void> {
+    > 93 |   await page.waitForFunction(() => {
+         |              ^
+      94 |     const board = document.querySelector('[data-testid="board"]');
+      95 |     if (!(board instanceof HTMLElement)) {
+      96 |       return false;
+        at waitForBoard (/home/dev/kelimator-2012/tests/e2e/visual.spec.ts:93:14)
+        at preparePage (/home/dev/kelimator-2012/tests/e2e/visual.spec.ts:128:9)
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:159:9
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-146e0-nd-matches-the-C3-reference-app/error-context.md
+
+
+  8 failed
+    [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S1 S1-boot matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S2 S2-idle-board matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S3 S3-scrambled matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S4 S4-partial-entry matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S5 S5-valid-word matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S6 S6-invalid-word matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S7 S7-bonus-word matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:152:7 › E2 visual states — deviceScaleFactor 1 › S10 S10-next-round matches the C3 reference 

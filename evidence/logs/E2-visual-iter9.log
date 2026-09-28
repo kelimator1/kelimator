@@ -1,0 +1,60 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test visual -g S2-idle --reporter=line
+
+
+Running 2 tests using 1 worker
+
+[1/2] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S2 S2-idle-board matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S2 S2-idle-board matches the C3 reference
+E2 S2 dsf1: mismatchRatio=0.05481818181818182 (5.482%), mismatchedPixels=12060/220000, pass=false
+
+  1) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S2 S2-idle-board matches the C3 reference 
+
+    Error: S2 dsf1 mismatch ratio 5.482% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.05481818181818182
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-373b3-rd-matches-the-C3-reference-app/error-context.md
+
+
+[2/2] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S2 S2-idle-board matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S2 S2-idle-board matches the C3 reference
+E2 S2 dsf2: mismatchRatio=0.08466136363636363 (8.466%), mismatchedPixels=74502/880000, pass=false
+
+  2) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S2 S2-idle-board matches the C3 reference 
+
+    Error: S2 dsf2 mismatch ratio 8.466% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.08466136363636363
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-5e819-rd-matches-the-C3-reference-app/error-context.md
+
+
+  2 failed
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S2 S2-idle-board matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S2 S2-idle-board matches the C3 reference 

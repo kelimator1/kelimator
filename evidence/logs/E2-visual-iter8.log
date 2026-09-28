@@ -1,0 +1,426 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test visual --reporter=line
+
+
+Running 17 tests using 1 worker
+
+[1/17] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S1 S1-boot matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S1 S1-boot matches the C3 reference
+E2 S1 dsf1: mismatchRatio=0.03845909090909091 (3.846%), mismatchedPixels=8461/220000, pass=false
+
+  1) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S1 S1-boot matches the C3 reference 
+
+    Error: S1 dsf1 mismatch ratio 3.846% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.03845909090909091
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-3f0de-ot-matches-the-C3-reference-app/error-context.md
+
+
+[2/17] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S2 S2-idle-board matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S2 S2-idle-board matches the C3 reference
+E2 S2 dsf1: mismatchRatio=0.051981818181818185 (5.198%), mismatchedPixels=11436/220000, pass=false
+
+  2) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S2 S2-idle-board matches the C3 reference 
+
+    Error: S2 dsf1 mismatch ratio 5.198% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.051981818181818185
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-373b3-rd-matches-the-C3-reference-app/error-context.md
+
+
+[3/17] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S3 S3-scrambled matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S3 S3-scrambled matches the C3 reference
+E2 S3 dsf1: mismatchRatio=0.051995454545454546 (5.200%), mismatchedPixels=11439/220000, pass=false
+
+  3) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S3 S3-scrambled matches the C3 reference 
+
+    Error: S3 dsf1 mismatch ratio 5.200% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.051995454545454546
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-4cc6d-ed-matches-the-C3-reference-app/error-context.md
+
+
+[4/17] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S4 S4-partial-entry matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S4 S4-partial-entry matches the C3 reference
+E2 S4 dsf1: mismatchRatio=0.06446818181818181 (6.447%), mismatchedPixels=14183/220000, pass=false
+
+  4) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S4 S4-partial-entry matches the C3 reference 
+
+    Error: S4 dsf1 mismatch ratio 6.447% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.06446818181818181
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-1e0f5-ry-matches-the-C3-reference-app/error-context.md
+
+
+[5/17] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S5 S5-valid-word matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S5 S5-valid-word matches the C3 reference
+E2 S5 dsf1: mismatchRatio=0.05275454545454546 (5.275%), mismatchedPixels=11606/220000, pass=false
+
+  5) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S5 S5-valid-word matches the C3 reference 
+
+    Error: S5 dsf1 mismatch ratio 5.275% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.05275454545454546
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-e07c1-rd-matches-the-C3-reference-app/error-context.md
+
+
+[6/17] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S6 S6-invalid-word matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S6 S6-invalid-word matches the C3 reference
+E2 S6 dsf1: mismatchRatio=0.06488636363636363 (6.489%), mismatchedPixels=14275/220000, pass=false
+
+  6) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S6 S6-invalid-word matches the C3 reference 
+
+    Error: S6 dsf1 mismatch ratio 6.489% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.06488636363636363
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-00c27-rd-matches-the-C3-reference-app/error-context.md
+
+
+[7/17] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S7 S7-bonus-word matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S7 S7-bonus-word matches the C3 reference
+E2 S7 dsf1: mismatchRatio=0.053895454545454545 (5.390%), mismatchedPixels=11857/220000, pass=false
+
+  7) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S7 S7-bonus-word matches the C3 reference 
+
+    Error: S7 dsf1 mismatch ratio 5.390% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.053895454545454545
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-7382f-rd-matches-the-C3-reference-app/error-context.md
+
+
+[8/17] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S10 S10-next-round matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S10 S10-next-round matches the C3 reference
+E2 S10 dsf1: mismatchRatio=0.05570909090909091 (5.571%), mismatchedPixels=12256/220000, pass=false
+
+  8) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S10 S10-next-round matches the C3 reference 
+
+    Error: S10 dsf1 mismatch ratio 5.571% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.05570909090909091
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-146e0-nd-matches-the-C3-reference-app/error-context.md
+
+
+[9/17] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S1 S1-boot matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S1 S1-boot matches the C3 reference
+E2 S1 dsf2: mismatchRatio=0.03618863636363636 (3.619%), mismatchedPixels=31846/880000, pass=false
+
+  9) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S1 S1-boot matches the C3 reference 
+
+    Error: S1 dsf2 mismatch ratio 3.619% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.03618863636363636
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-a8731-ot-matches-the-C3-reference-app/error-context.md
+
+
+[10/17] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S2 S2-idle-board matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S2 S2-idle-board matches the C3 reference
+E2 S2 dsf2: mismatchRatio=0.0829284090909091 (8.293%), mismatchedPixels=72977/880000, pass=false
+
+  10) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S2 S2-idle-board matches the C3 reference 
+
+    Error: S2 dsf2 mismatch ratio 8.293% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.0829284090909091
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-5e819-rd-matches-the-C3-reference-app/error-context.md
+
+
+[11/17] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S3 S3-scrambled matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S3 S3-scrambled matches the C3 reference
+E2 S3 dsf2: mismatchRatio=0.08294886363636364 (8.295%), mismatchedPixels=72995/880000, pass=false
+
+  11) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S3 S3-scrambled matches the C3 reference 
+
+    Error: S3 dsf2 mismatch ratio 8.295% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.08294886363636364
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-4efac-ed-matches-the-C3-reference-app/error-context.md
+
+
+[12/17] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S4 S4-partial-entry matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S4 S4-partial-entry matches the C3 reference
+E2 S4 dsf2: mismatchRatio=0.09340568181818182 (9.341%), mismatchedPixels=82197/880000, pass=false
+
+  12) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S4 S4-partial-entry matches the C3 reference 
+
+    Error: S4 dsf2 mismatch ratio 9.341% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.09340568181818182
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-ac5b8-ry-matches-the-C3-reference-app/error-context.md
+
+
+[13/17] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S5 S5-valid-word matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S5 S5-valid-word matches the C3 reference
+E2 S5 dsf2: mismatchRatio=0.08365795454545455 (8.366%), mismatchedPixels=73619/880000, pass=false
+
+  13) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S5 S5-valid-word matches the C3 reference 
+
+    Error: S5 dsf2 mismatch ratio 8.366% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.08365795454545455
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-b082b-rd-matches-the-C3-reference-app/error-context.md
+
+
+[14/17] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S6 S6-invalid-word matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S6 S6-invalid-word matches the C3 reference
+E2 S6 dsf2: mismatchRatio=0.09415 (9.415%), mismatchedPixels=82852/880000, pass=false
+
+  14) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S6 S6-invalid-word matches the C3 reference 
+
+    Error: S6 dsf2 mismatch ratio 9.415% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.09415
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-dff5a-rd-matches-the-C3-reference-app/error-context.md
+
+
+[15/17] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S7 S7-bonus-word matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S7 S7-bonus-word matches the C3 reference
+E2 S7 dsf2: mismatchRatio=0.08450340909090909 (8.450%), mismatchedPixels=74363/880000, pass=false
+
+  15) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S7 S7-bonus-word matches the C3 reference 
+
+    Error: S7 dsf2 mismatch ratio 8.450% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.08450340909090909
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-da2bd-rd-matches-the-C3-reference-app/error-context.md
+
+
+[16/17] [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S10 S10-next-round matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S10 S10-next-round matches the C3 reference
+E2 S10 dsf2: mismatchRatio=0.08684772727272727 (8.685%), mismatchedPixels=76426/880000, pass=false
+
+  16) [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S10 S10-next-round matches the C3 reference 
+
+    Error: S10 dsf2 mismatch ratio 8.685% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.08684772727272727
+
+      183 |           report.mismatchRatio,
+      184 |           `${spec.id} dsf${dsf} mismatch ratio ${ratioPercent.toFixed(3)}% (limit 2.000%)`,
+    > 185 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      186 |         expect(report.pass).toBe(true);
+      187 |       });
+      188 |     }
+        at /home/dev/kelimator-2012/tests/e2e/visual.spec.ts:185:11
+
+    Error Context: test-results/tests-e2e-visual-E2-visual-190c3-nd-matches-the-C3-reference-app/error-context.md
+
+
+[17/17] [app] › tests/e2e/visual.spec.ts:231:3 › E2 V7 layout cross-consistency › rendered boxes and text styles equal src/data/layout.json
+  16 failed
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S1 S1-boot matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S2 S2-idle-board matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S3 S3-scrambled matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S4 S4-partial-entry matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S5 S5-valid-word matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S6 S6-invalid-word matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S7 S7-bonus-word matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 1 › S10 S10-next-round matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S1 S1-boot matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S2 S2-idle-board matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S3 S3-scrambled matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S4 S4-partial-entry matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S5 S5-valid-word matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S6 S6-invalid-word matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S7 S7-bonus-word matches the C3 reference 
+    [app] › tests/e2e/visual.spec.ts:161:7 › E2 visual states — deviceScaleFactor 2 › S10 S10-next-round matches the C3 reference 
+  1 passed (12.8s)
