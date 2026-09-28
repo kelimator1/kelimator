@@ -196,6 +196,11 @@ RESOLVED 2026-09-28 — evidence/X3-speaker.md — speaker `spk_btn` (DefineButt
   `s58_letter_tile.svg` carries no authoring glyph (`font_Verdana` spans/text
   counts; deliberate-probe verified); thresholds unchanged. Evidence:
   `evidence/X2-tile-glyph.md`.
+- 2026-09-28 — Defect wave extension **X4** (found by F2's S9 variant): timeout
+  reveal colour — the reference's `tamamla()` sets revealed words `#ff6600`;
+  the rebuild dropped the `revealed` flag and rendered `#000` (S9 tolerant
+  2.0145 % > 2.000 %). Fix task `tasks/X4-timeout-reveal-colour.md`; F2 re-runs
+  after the fix.
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:
