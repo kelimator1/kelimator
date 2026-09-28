@@ -1,9 +1,12 @@
 PASS  V1  ruffle-0.6.0-web-selfhosted.zip sha256=e8acfacc37443303872379d0e215999af846854d1dd3fa8fac0a765445b43dbf
 PASS  V1fixture  input sha256=854b7287c2e6 script sha256=e4f5198a1ddd served sha256=80506d3ef3b5; round trip + structure OK
 PASS  V2  30/30 screenshots present; 14/14 JSON files parse
-PASS  V6  run 1: 2026-09-28T14:29:29Z 127.0.0.1 "GET /xml64.php?491311 HTTP/1.1" -> 200 - | run 2: 2026-09-28T14:34:32Z 127.0.0.1 "GET /xml64.php?561837 HTTP/1.1" -> 200 -
 PASS  V5  S2 not byte-identical (stabilization documented): within-run stable streak run1=3 run2=3; cross-run mismatchRatio=0.00781 (<=0.02) bbox={"x":51,"y":315,"width":439,"height":23}
---- stability summary (O20) ---
+PASS  V2dsf2  30/30 screenshots present; 14/14 JSON files parse; canonical dims 1100x800 OK
+PASS  V5dsf2  S2 not byte-identical (stabilization documented): within-run stable streak run1=3 run2=3; cross-run mismatchRatio=0.00354 (<=0.02) bbox={"x":464,"y":172,"width":602,"height":504}
+PASS  Vmute  capture.mjs launches with --mute-audio: true; recorded in run1/run2 manifests: true/true
+PASS  V6  run 1 (dsf 2): 2026-09-28T15:17:30Z 127.0.0.1 "GET /xml64.php?311496 HTTP/1.1" -> 200 - | run 2 (dsf 2): 2026-09-28T15:24:09Z 127.0.0.1 "GET /xml64.php?912828 HTTP/1.1" -> 200 -
+--- stability summary deviceScaleFactor 1 (O20) ---
   S1-boot: byteIdentical=true mismatchRatio=0.00000 pass=true bbox=null
   S2-idle-board: byteIdentical=false mismatchRatio=0.00781 pass=true bbox={"x":51,"y":315,"width":439,"height":23}
   S3-scrambled: byteIdentical=false mismatchRatio=0.00149 pass=true bbox={"x":234,"y":315,"width":194,"height":23}
@@ -14,6 +17,18 @@ PASS  V5  S2 not byte-identical (stabilization documented): within-run stable st
   S8-all-found: byteIdentical=false mismatchRatio=0.01220 pass=true bbox={"x":222,"y":64,"width":328,"height":294}
   S9-timeout: byteIdentical=true mismatchRatio=0.00000 pass=true bbox=null
   S10-next-round: byteIdentical=false mismatchRatio=0.00599 pass=true bbox={"x":52,"y":315,"width":376,"height":23}
+  allByteIdentical=false allPass=true
+--- stability summary deviceScaleFactor 2 ---
+  S1-boot: byteIdentical=true mismatchRatio=0.00000 pass=true bbox=null
+  S2-idle-board: byteIdentical=false mismatchRatio=0.00354 pass=true bbox={"x":464,"y":172,"width":602,"height":504}
+  S3-scrambled: byteIdentical=false mismatchRatio=0.00513 pass=true bbox={"x":222,"y":182,"width":844,"height":494}
+  S4-partial-entry: byteIdentical=false mismatchRatio=0.00506 pass=true bbox={"x":461,"y":195,"width":605,"height":481}
+  S5-valid-word: byteIdentical=false mismatchRatio=0.00544 pass=true bbox={"x":222,"y":91,"width":844,"height":585}
+  S6-invalid-word: byteIdentical=false mismatchRatio=0.00967 pass=true bbox={"x":222,"y":91,"width":844,"height":623}
+  S7-bonus-word: byteIdentical=false mismatchRatio=0.00587 pass=true bbox={"x":222,"y":91,"width":844,"height":585}
+  S8-all-found: byteIdentical=false mismatchRatio=0.00753 pass=true bbox={"x":100,"y":74,"width":526,"height":641}
+  S9-timeout: byteIdentical=true mismatchRatio=0.00000 pass=true bbox=null
+  S10-next-round: byteIdentical=false mismatchRatio=0.00520 pass=true bbox={"x":225,"y":177,"width":841,"height":499}
   allByteIdentical=false allPass=true
 --- ALL CHECKS PASS ---
 check exit=0

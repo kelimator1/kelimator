@@ -66,8 +66,14 @@ const opt = (name, dflt) => {
 const PROBE = argv.includes('--probe');
 const PORT = Number(opt('--port', String(process.env.C3_PORT || 8797)));
 const RUNS = Number(opt('--runs', '2'));
+const DSF = Number(opt('--dsf', '1')); // docs/07 §4: matrix at deviceScaleFactor 1 and 2
 const PROBE_DIR = opt('--probe-dir', path.join(os.tmpdir(), 'c3-probe'));
 const URL = `http://127.0.0.1:${PORT}/`;
+// dsf 1 artifacts live at the reference root (unchanged); other scale factors
+// get their own subdirectory, e.g. tests/fixtures/reference/dsf2/.
+const RUN_ROOT = DSF === 1 ? OUT_ROOT : path.join(OUT_ROOT, `dsf${DSF}`);
+// Silent witness runs (EXECUTION.md §8): explicit browser-level mute.
+const LAUNCH_ARGS = ['--mute-audio'];
 
 // --- Measured geometry (probe run 2026-09-28, probe.json) ------------------
 // Tile row: SWF `frame_131` places `button`/`bosbuton` duplicates at
@@ -103,6 +109,13 @@ const BALL_MIN_PIXELS = 150;
 // therefore checked with this region masked out; the mask is recorded in the
 // interaction log.
 const SUN_BOX = { x: 205, y: 0, width: 120, height: 175 };
+
+// All measured boxes/points above are in CSS (stage) pixels: Playwright
+// screenshot clips and mouse clicks use CSS pixels at any deviceScaleFactor
+// (the PNG output scales automatically). Only operations on a *decoded* PNG
+// (e.g. zeroing the stability mask) address device pixels, so the mask box is
+// scaled there.
+const scaleBox = (box) => ({ x: box.x * DSF, y: box.y * DSF, width: box.width * DSF, height: box.height * DSF });
 
 // Stable-frame sampling: `samples` consecutive identical stage frames, sampled
 // `intervalMs` apart.
@@ -194,21 +207,24 @@ async function stageShot(page, file) {
   return page.screenshot({ clip: STAGE, ...(file ? { path: file } : {}) });
 }
 
-/** Screenshot -> RGBA image with an optional region zeroed out for hashing. */
-async function stageImage(page, maskBox) {
-  const img = decodePng(await stageShot(page));
-  if (maskBox) {
-    for (let y = maskBox.y; y < maskBox.y + maskBox.height; y += 1) {
-      for (let x = maskBox.x; x < maskBox.x + maskBox.width; x += 1) {
-        const i = (y * img.width + x) * 4;
-        img.data[i] = 0;
-        img.data[i + 1] = 0;
-        img.data[i + 2] = 0;
-        img.data[i + 3] = 0;
-      }
+/** Zero a device-pixel box in a decoded RGBA image (for masked hashing/diff). */
+function maskImage(img, box) {
+  if (!box) return img;
+  for (let y = box.y; y < box.y + box.height; y += 1) {
+    for (let x = box.x; x < box.x + box.width; x += 1) {
+      const i = (y * img.width + x) * 4;
+      img.data[i] = 0;
+      img.data[i + 1] = 0;
+      img.data[i + 2] = 0;
+      img.data[i + 3] = 0;
     }
   }
   return img;
+}
+
+/** Screenshot -> RGBA image with an optional region zeroed out for hashing. */
+async function stageImage(page, maskBox) {
+  return maskImage(decodePng(await stageShot(page)), maskBox);
 }
 
 async function waitStable(page, { samples = STABLE.samples, intervalMs = STABLE.intervalMs, timeoutMs = 30000, maskBox = null } = {}) {
@@ -217,7 +233,7 @@ async function waitStable(page, { samples = STABLE.samples, intervalMs = STABLE.
   let streak = 0;
   let count = 0;
   while (Date.now() - started < timeoutMs) {
-    const img = await stageImage(page, maskBox);
+    const img = await stageImage(page, maskBox ? scaleBox(maskBox) : null);
     const h = hash(Buffer.from(img.data));
     count += 1;
     if (h === last) streak += 1;
@@ -303,7 +319,7 @@ async function entryRowState(page, box = ENTRY_ROW_BOX) {
 async function clearEntry(page, presses = 10) {
   for (let i = 0; i < presses; i += 1) {
     await page.keyboard.press('Backspace');
-    await sleep(35);
+    await sleep(18);
   }
 }
 
@@ -312,7 +328,7 @@ async function waitEntryCleared(page, timeoutMs = 1500) {
   const started = Date.now();
   let state = await entryRowState(page);
   while (Date.now() - started < timeoutMs && state.ballPixels >= BALL_MIN_PIXELS) {
-    await sleep(120);
+    await sleep(60);
     state = await entryRowState(page);
   }
   return state;
@@ -420,7 +436,10 @@ function manifest() {
   return {
     url: URL,
     viewport: { width: STAGE.width, height: STAGE.height },
-    deviceScaleFactor: 1,
+    deviceScaleFactor: DSF,
+    canvasDevicePixels: { width: STAGE.width * DSF, height: STAGE.height * DSF },
+    outputRoot: path.relative(REPO, RUN_ROOT),
+    launchArgs: LAUNCH_ARGS,
     ruffle: {
       release: 'v0.6.0',
       asset: 'ruffle-0.6.0-web-selfhosted.zip',
@@ -492,7 +511,7 @@ async function typeWord(page, word, missing) {
     const key = TR_KEY[ch.toUpperCase()] ?? TR_KEY[ch];
     if (!key) { missing.add(ch); continue; }
     await page.keyboard.press(key);
-    await sleep(25);
+    await sleep(12);
   }
 }
 
@@ -621,9 +640,9 @@ async function probe(browser) {
     console: [],
     flowNotes: [],
   };
-  fs.appendFileSync(SERVER_LOG, `==== C3 harness probe start ${new Date().toISOString()} ====\n`);
+  fs.appendFileSync(SERVER_LOG, `==== C3 harness probe start ${new Date().toISOString()} dsf=${DSF} ====\n`);
   const logOffset = fs.statSync(SERVER_LOG).size;
-  const context = await browser.newContext({ viewport: { width: STAGE.width, height: STAGE.height }, deviceScaleFactor: 1 });
+  const context = await browser.newContext({ viewport: { width: STAGE.width, height: STAGE.height }, deviceScaleFactor: DSF });
   const page = await context.newPage();
   attachConsole(page, log.console, log.t0);
   await page.goto(URL, { waitUntil: 'load', timeout: 60000 });
@@ -703,7 +722,7 @@ function diffBuffers(a, b) {
 const STATE_IDS = ['S1-boot', 'S2-idle-board', 'S3-scrambled', 'S4-partial-entry', 'S5-valid-word', 'S6-invalid-word', 'S7-bonus-word', 'S8-all-found', 'S9-timeout', 'S10-next-round'];
 
 async function runMatrix(browser, n) {
-  const runDir = path.join(OUT_ROOT, `run${n}`);
+  const runDir = path.join(RUN_ROOT, `run${n}`);
   fs.mkdirSync(runDir, { recursive: true });
   const log = {
     schemaVersion: 1,
@@ -719,9 +738,9 @@ async function runMatrix(browser, n) {
     actions: [],
     console: [],
   };
-  fs.appendFileSync(SERVER_LOG, `==== C3 harness run ${n} start ${new Date().toISOString()} ====\n`);
+  fs.appendFileSync(SERVER_LOG, `==== C3 harness run ${n} start ${new Date().toISOString()} dsf=${DSF} ====\n`);
   const logOffset = fs.statSync(SERVER_LOG).size;
-  const context = await browser.newContext({ viewport: { width: STAGE.width, height: STAGE.height }, deviceScaleFactor: 1 });
+  const context = await browser.newContext({ viewport: { width: STAGE.width, height: STAGE.height }, deviceScaleFactor: DSF });
   const page = await context.newPage();
   attachConsole(page, log.console, log.t0);
 
@@ -806,7 +825,7 @@ async function runMatrix(browser, n) {
       let seenThisAttempt = false;
       for (const key of s7keys) {
         await page.keyboard.press(key);
-        await sleep(130);
+        await sleep(70);
         const st = await entryRowState(page);
         if (st.brightPixels > s7maxBright) s7maxBright = st.brightPixels;
         if (st.brightPixels >= BALL_MIN_PIXELS) seenThisAttempt = true;
@@ -819,39 +838,62 @@ async function runMatrix(browser, n) {
 
     // S8 all-found: scripted submission of every fixture word (docs/07 §5).
     // Acceptance = the reference cleared the entry row; round completion =
-    // Karıştır/Ekle/Sil hidden by `bittimi()` (fires when all 35 listed boxes
-    // are filled, i.e. the last non-empty list entry of this fixture).
+    // Karıştır/Ekle/Sil hidden. The round clock is 200 s: if it runs out
+    // mid-script, `tamamla()` hides the same buttons but the all-found end
+    // screen never appears — the harness records the timeout, restarts the
+    // round through the reference's own "Yeni Oyun" button and completes the
+    // scripted submission in the fresh round (bounded: one restart).
     const words = readFixtureWords();
     const missing = new Set();
     let s8accepted = 0;
     let s8failed = 0;
     let s8completed = false;
     let s8completedBy = null;
-    for (const { word } of words) {
-      if (s8completed) break;
-      const pre = await entryRowState(page);
-      if (pre.ballPixels >= BALL_MIN_PIXELS) await clearEntry(page, 10);
-      let accepted = false;
-      for (let attempt = 0; attempt < 3 && !accepted; attempt += 1) {
-        if (attempt > 0) await clearEntry(page, 10);
-        await typeWord(page, word, missing);
-        await page.keyboard.press('Enter');
-        const st = await waitEntryCleared(page, 1800);
-        accepted = st.ballPixels < BALL_MIN_PIXELS;
-        if ((await buttonBarFraction(page)).fraction <= 0.02) {
-          s8completed = true;
-          s8completedBy = word;
-          break;
+    let s8restarts = 0;
+    let entryDirty = false;
+
+    const runScriptedPass = async (pass) => {
+      for (const { word } of words) {
+        if (s8completed) return;
+        if (entryDirty) { await clearEntry(page, 10); entryDirty = false; }
+        let accepted = false;
+        for (let attempt = 0; attempt < 3 && !accepted; attempt += 1) {
+          if (attempt > 0) await clearEntry(page, 10);
+          await typeWord(page, word, missing);
+          await page.keyboard.press('Enter');
+          const st = await waitEntryCleared(page, 1800);
+          accepted = st.ballPixels < BALL_MIN_PIXELS;
+          if (!accepted) entryDirty = true;
+          if ((await buttonBarFraction(page)).fraction <= 0.02) {
+            s8completed = true;
+            s8completedBy = `${word} (pass ${pass})`;
+            break;
+          }
         }
+        if (accepted) { s8accepted += 1; entryDirty = false; } else s8failed += 1;
       }
-      if (accepted) s8accepted += 1; else s8failed += 1;
+    };
+
+    await runScriptedPass(1);
+    if (s8completed) {
+      const form = await waitForHiscoreForm(page, 8000);
+      if (!form.found && s8restarts < 1) {
+        s8restarts += 1;
+        s8completed = false;
+        s8completedBy = null;
+        log.flowNotes.push(`S8 pass 1 ended before all-found (round clock ran out; ${s8accepted} accepted) — restarting via Yeni Oyun`);
+        const restartOffset = fs.statSync(SERVER_LOG).size;
+        await action(page, log, 'S8-restart-yeni-oyun', () => page.mouse.click(YBUTTON.x, YBUTTON.y));
+        log.serverEvidence.xml64S8Restart = await waitForLogMatch(restartOffset, /xml64\.php[^\n]*-> 200/, { timeoutMs: 60000 });
+        await waitStable(page, { timeoutMs: 45000 });
+        entryDirty = false;
+        await runScriptedPass(2);
+      }
     }
-    log.flowNotes.push(`S8 scripted submission: ${words.length} fixture words, ${s8accepted} accepted, ${s8failed} failed, completed=${s8completed}${s8completedBy ? ` (completing word "${s8completedBy}")` : ''}, missing key mappings: ${[...missing].join('') || 'none'}`);
-    // The reference transitions from the completing submission to its end
-    // screen (TEBRİKLER + score form): wait for that state, never a fixed delay.
     const endScreen = await waitForHiscoreForm(page, 30000);
+    log.flowNotes.push(`S8 scripted submission: ${words.length} fixture words, ${s8accepted} accepted, ${s8failed} failed, restarts=${s8restarts}, completed=${s8completed}${s8completedBy ? ` (completing word "${s8completedBy}")` : ''}, missing key mappings: ${[...missing].join('') || 'none'}`);
     log.flowNotes.push(`all-found end screen detected=${endScreen.found} after ${endScreen.waitedMs} ms (panel rgb ${endScreen.panel?.r},${endScreen.panel?.g},${endScreen.panel?.b}; sky rgb ${endScreen.sky?.r},${endScreen.sky?.g},${endScreen.sky?.b})`);
-    await captureState(page, log, runDir, 'S8', 'all-found', 'submit every fixture word (scripted) -> all-found end screen (TEBRİKLER + score form)', { wordsSubmitted: s8accepted, wordsFailed: s8failed, wordsTotal: words.length, completed: s8completed, completedBy: s8completedBy, missingKeyMappings: [...missing], endScreen });
+    await captureState(page, log, runDir, 'S8', 'all-found', 'submit every fixture word (scripted) -> all-found end screen (TEBRİKLER + score form)', { wordsSubmitted: s8accepted, wordsFailed: s8failed, wordsTotal: words.length, restarts: s8restarts, completed: s8completed, completedBy: s8completedBy, missingKeyMappings: [...missing], endScreen });
 
     // S9 timeout: the all-found end screen is terminal unless the reference's
     // own return path is used — the "Gönder" handler posts the score to the
@@ -885,15 +927,15 @@ async function runMatrix(browser, n) {
 function compareRuns() {
   const results = [];
   for (const state of STATE_IDS) {
-    const a = path.join(OUT_ROOT, 'run1', `${state}.png`);
-    const b = path.join(OUT_ROOT, 'run2', `${state}.png`);
+    const a = path.join(RUN_ROOT, 'run1', `${state}.png`);
+    const b = path.join(RUN_ROOT, 'run2', `${state}.png`);
     if (!fs.existsSync(a) || !fs.existsSync(b)) {
       results.push({ state, present: false });
       continue;
     }
-    const outDir = path.join(OUT_ROOT, 'stability', state);
+    const outDir = path.join(RUN_ROOT, 'stability', state);
     const report = runComparison(a, b, outDir);
-    results.push({
+    const entry = {
       state,
       present: true,
       byteIdentical: hash(fs.readFileSync(a)) === hash(fs.readFileSync(b)),
@@ -903,7 +945,18 @@ function compareRuns() {
       pass: report.pass,
       report: path.relative(REPO, path.join(outDir, 'report.json')),
       heatmap: path.relative(REPO, path.join(outDir, 'heatmap.png')),
-    });
+    };
+    // S1's only animated element is the intro sun (SUN_BOX, the same region the
+    // S1 capture rule masks); record the sun-masked ratio alongside the raw one.
+    if (state === 'S1-boot') {
+      const masked = compareImages(
+        maskImage(decodePng(fs.readFileSync(a)), scaleBox(SUN_BOX)),
+        maskImage(decodePng(fs.readFileSync(b)), scaleBox(SUN_BOX)),
+      );
+      entry.sunMaskedMismatchRatio = masked.mismatchRatio;
+      entry.sunMaskedMismatchBBox = masked.mismatchBBox;
+    }
+    results.push(entry);
   }
   const summary = {
     schemaVersion: 1,
@@ -914,27 +967,27 @@ function compareRuns() {
     allByteIdentical: results.every((r) => r.byteIdentical === true),
     allPass: results.every((r) => r.pass === true),
   };
-  writeJson(path.join(OUT_ROOT, 'stability-report.json'), summary);
+  writeJson(path.join(RUN_ROOT, 'stability-report.json'), summary);
   return summary;
 }
 
 async function copyCanonical() {
-  const run1 = path.join(OUT_ROOT, 'run1');
-  const stability = JSON.parse(fs.readFileSync(path.join(OUT_ROOT, 'stability-report.json'), 'utf8'));
+  const run1 = path.join(RUN_ROOT, 'run1');
+  const stability = JSON.parse(fs.readFileSync(path.join(RUN_ROOT, 'stability-report.json'), 'utf8'));
   for (const state of STATE_IDS) {
     const src = path.join(run1, `${state}.png`);
-    if (fs.existsSync(src)) fs.copyFileSync(src, path.join(OUT_ROOT, `${state}.png`));
+    if (fs.existsSync(src)) fs.copyFileSync(src, path.join(RUN_ROOT, `${state}.png`));
   }
   const log = JSON.parse(fs.readFileSync(path.join(run1, 'interaction-log.json'), 'utf8'));
   log.stability = stability;
-  writeJson(path.join(OUT_ROOT, 'interaction-log.json'), log);
+  writeJson(path.join(RUN_ROOT, 'interaction-log.json'), log);
 }
 
 // --- main ------------------------------------------------------------------
 async function main() {
-  fs.mkdirSync(OUT_ROOT, { recursive: true });
+  fs.mkdirSync(RUN_ROOT, { recursive: true });
   const server = await startServer();
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true, args: LAUNCH_ARGS });
   try {
     if (PROBE) {
       await probe(browser);

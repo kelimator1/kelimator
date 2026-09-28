@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "task": "C3",
+  "createdAt": "2026-09-28T15:30:46.952Z",
+  "threshold": {
+    "mismatchThreshold": 30,
+    "passRatio": 0.02
+  },
+  "states": [
+    {
+      "state": "S1-boot",
+      "present": true,
+      "byteIdentical": true,
+      "mismatchRatio": 0,
+      "mismatchedPixels": 0,
+      "mismatchBBox": null,
+      "pass": true,
+      "report": "tests/fixtures/reference/dsf2/stability/S1-boot/report.json",
+      "heatmap": "tests/fixtures/reference/dsf2/stability/S1-boot/heatmap.png",
+      "sunMaskedMismatchRatio": 0,
+      "sunMaskedMismatchBBox": null
+    },
+    {
+      "state": "S2-idle-board",
+      "present": true,
+      "byteIdentical": false,
+      "mismatchRatio": 0.003544318181818182,
+      "mismatchedPixels": 3119,
+      "mismatchBBox": {
+        "x": 464,
+        "y": 172,
+        "width": 602,
+        "height": 504
+      },
+      "pass": true,
+      "report": "tests/fixtures/reference/dsf2/stability/S2-idle-board/report.json",
+      "heatmap": "tests/fixtures/reference/dsf2/stability/S2-idle-board/heatmap.png"
+    },
+    {
+      "state": "S3-scrambled",
+      "present": true,
+      "byteIdentical": false,
+      "mismatchRatio": 0.005127272727272727,
+      "mismatchedPixels": 4512,
+      "mismatchBBox": {
+        "x": 222,
+        "y": 182,
+        "width": 844,
+        "height": 494
+      },
+      "pass": true,
+      "report": "tests/fixtures/reference/dsf2/stability/S3-scrambled/report.json",
+      "heatmap": "tests/fixtures/reference/dsf2/stability/S3-scrambled/heatmap.png"
+    },
+    {
+      "state": "S4-partial-entry",
+      "present": true,
+      "byteIdentical": false,
+      "mismatchRatio": 0.005061363636363636,
+      "mismatchedPixels": 4454,
+      "mismatchBBox": {
+        "x": 461,
+        "y": 195,
+        "width": 605,
+        "height": 481
+      },
+      "pass": true,
+      "report": "tests/fixtures/reference/dsf2/stability/S4-partial-entry/report.json",
+      "heatmap": "tests/fixtures/reference/dsf2/stability/S4-partial-entry/heatmap.png"
+    },
+    {
+      "state": "S5-valid-word",
+      "present": true,
+      "byteIdentical": false,
+      "mismatchRatio": 0.005435227272727273,
+      "mismatchedPixels": 4783,
+      "mismatchBBox": {
+        "x": 222,
+        "y": 91,
+        "width": 844,
+        "height": 585
+      },
+      "pass": true,
+      "report": "tests/fixtures/reference/dsf2/stability/S5-valid-word/report.json",
+      "heatmap": "tests/fixtures/reference/dsf2/stability/S5-valid-word/heatmap.png"
+    },
+    {
+      "state": "S6-invalid-word",
+      "present": true,
+      "byteIdentical": false,
+      "mismatchRatio": 0.009668181818181819,
+      "mismatchedPixels": 8508,
+      "mismatchBBox": {
+        "x": 222,
+        "y": 91,
+        "width": 844,
+        "height": 623
+      },
+      "pass": true,
+      "report": "tests/fixtures/reference/dsf2/stability/S6-invalid-word/report.json",
+      "heatmap": "tests/fixtures/reference/dsf2/stability/S6-invalid-word/heatmap.png"
+    },
+    {
+      "state": "S7-bonus-word",
+      "present": true,
+      "byteIdentical": false,
+      "mismatchRatio": 0.005869318181818182,
+      "mismatchedPixels": 5165,
+      "mismatchBBox": {
+        "x": 222,
+        "y": 91,
+        "width": 844,
+        "height": 585
+      },
+      "pass": true,
+      "report": "tests/fixtures/reference/dsf2/stability/S7-bonus-word/report.json",
+      "heatmap": "tests/fixtures/reference/dsf2/stability/S7-bonus-word/heatmap.png"
+    },
+    {
+      "state": "S8-all-found",
+      "present": true,
+      "byteIdentical": false,
+      "mismatchRatio": 0.0075295454545454546,
+      "mismatchedPixels": 6626,
+      "mismatchBBox": {
+        "x": 100,
+        "y": 74,
+        "width": 526,
+        "height": 641
+      },
+      "pass": true,
+      "report": "tests/fixtures/reference/dsf2/stability/S8-all-found/report.json",
+      "heatmap": "tests/fixtures/reference/dsf2/stability/S8-all-found/heatmap.png"
+    },
+    {
+      "state": "S9-timeout",
+      "present": true,
+      "byteIdentical": true,
+      "mismatchRatio": 0,
+      "mismatchedPixels": 0,
+      "mismatchBBox": null,
+      "pass": true,
+      "report": "tests/fixtures/reference/dsf2/stability/S9-timeout/report.json",
+      "heatmap": "tests/fixtures/reference/dsf2/stability/S9-timeout/heatmap.png"
+    },
+    {
+      "state": "S10-next-round",
+      "present": true,
+      "byteIdentical": false,
+      "mismatchRatio": 0.005195454545454546,
+      "mismatchedPixels": 4572,
+      "mismatchBBox": {
+        "x": 225,
+        "y": 177,
+        "width": 841,
+        "height": 499
+      },
+      "pass": true,
+      "report": "tests/fixtures/reference/dsf2/stability/S10-next-round/report.json",
+      "heatmap": "tests/fixtures/reference/dsf2/stability/S10-next-round/heatmap.png"
+    }
+  ],
+  "allByteIdentical": false,
+  "allPass": true
+}

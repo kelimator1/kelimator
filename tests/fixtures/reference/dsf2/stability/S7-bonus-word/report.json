@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "tool": "verify/diff/diff.mjs",
+  "width": 1100,
+  "height": 800,
+  "totalPixels": 880000,
+  "mismatchThreshold": 30,
+  "passRatio": 0.02,
+  "mismatchedPixels": 5165,
+  "mismatchRatio": 0.005869318181818182,
+  "maxDistance": 390.16022349798806,
+  "meanDistance": 1.547491523783871,
+  "mismatchBBox": {
+    "x": 222,
+    "y": 91,
+    "width": 844,
+    "height": 585
+  },
+  "pass": true
+}

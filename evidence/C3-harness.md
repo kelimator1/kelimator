@@ -2,7 +2,7 @@
 
 Task: C3 — Reference Harness (Ruffle Web + Static Fixtures)
 Started: 2026-09-28T13:04:16Z (pinned-asset HEAD fetch; evidence/logs/C3-asset-head.log)
-Ended: 2026-09-28T14:46:00Z
+Ended: 2026-09-28T15:33:00Z (dsf 1 + dsf 2 matrices verified; final check exit 0)
 Host+OS: dev-host.home / hidden (macOS, arm64 / arm64 host)
 Node v22.14.0 · Python 3.14.6 · @playwright/test 1.63.0
 
@@ -19,8 +19,9 @@ Commands executed (exact; in order, from this task's shell history):
 9. `node verify/reference/make-fixture.mjs > evidence/logs/C3-fixture-transform.log` (amendment pipeline, §2)
 10. `node verify/reference/make-fixture.mjs --check` (idempotency; exit 0)
 11. `node verify/reference/capture.mjs --runs 2 > evidence/logs/C3-harness-run.log 2>&1` (final matrix on the reconstructed fixture)
-12. `node verify/reference/check.mjs > evidence/logs/C3-check-output.log 2>&1` (V1/V1fixture/V2/V5/V6; exit 0)
-13. `curl -sS "http://web.archive.org/cdx/search/cdx?url=games.lg.web.tr/kelimator/xml64.php&output=json&limit=40"` → `evidence/logs/C3-fixture-archive-probe.log`
+12. `node verify/reference/check.mjs > evidence/logs/C3-check-output.log 2>&1` (V1/V1fixture/V2/V5/V6/dsf2/mute checks; exit 0)
+13. `node verify/reference/capture.mjs --runs 2 --dsf 2 > evidence/logs/C3-harness-run-dsf2.log 2>&1` (deviceScaleFactor 2 matrix, 1100×800; same fixture and interaction sequence)
+14. `curl -sS "http://web.archive.org/cdx/search/cdx?url=games.lg.web.tr/kelimator/xml64.php&output=json&limit=40"` → `evidence/logs/C3-fixture-archive-probe.log`
 
 Exit codes: 0 for every command above (final matrix run 0; `check.mjs` exit 0,
 ALL CHECKS PASS).
@@ -29,12 +30,14 @@ Output summary:
 - `verify/reference/` — harness: `index.html`, `server.py`, `swf-codec.mjs`,
   `make-fixture.mjs`, `fixtures/xml64.base64.php` + `fixtures/fixture-meta.json`,
   `capture.mjs`, `check.mjs`, `README.md`, `ruffle/` (pinned zip + build).
-- `tests/fixtures/reference/` — 10 canonical states, `run1/` + `run2/` (10 PNGs
-  + `interaction-log.json` each), `stability/<state>/` (10 F1 reports +
+- `tests/fixtures/reference/` — dsf 1: 10 canonical states, `run1/` + `run2/`
+  (10 PNGs + `interaction-log.json` each), `stability/<state>/` (10 F1 reports +
   heatmaps), `stability-report.json`, canonical `interaction-log.json`.
-- `evidence/logs/C3-server.log` — request log with per-run markers: round 1/2/3
-  `xml64.php -> 200` for both runs, and the end screen's `hiscore.php` POST
-  (local 501, not stubbed).
+- `tests/fixtures/reference/dsf2/` — deviceScaleFactor 2 matrix (identical
+  layout, 1100×800 PNGs), same two-run + stability discipline.
+- `evidence/logs/C3-server.log` — request log with per-run markers (dsf in the
+  marker): round 1/2/3 `xml64.php -> 200` for all four matrix runs, and the end
+  screen's `hiscore.php` POST (local 501, not stubbed).
 
 Artifact SHA-256 hashes (key):
 - Ruffle asset `e8acfacc37443303872379d0e215999af846854d1dd3fa8fac0a765445b43dbf`; `ruffle.js` `a686a305345b06542dddedada71869104916a61e393f174687571528ac4225f5`; wasm `72a20ef1…` `adabc1696a2f1f95715ede6be0ac00a73364895c8e599039e60fef3b2f52efa4`, `826bb093…` `e4ba64aa1dc9f7f2368602dd0fc2c51046f3e35baba8116d6cf3ae930a63aa02`
@@ -44,17 +47,18 @@ Artifact SHA-256 hashes (key):
 - served fixture `verify/reference/fixtures/xml64.base64.php` `80506d3ef3b58a4d8fdb5779debd4819271d57a5635276963a5d01eab91cd8bf`
 - `fixtures/fixture-meta.json` `67b6e8254e9e7b7e3a5e5008b4b4f0e6a941188564e8f9638e4e6aba64760a33`
 - `swf-codec.mjs` `5b895ce4b22ab1d22877df49e3993f5c5ae03778571a9888196c9ba41a6ce51c`
-- `capture.mjs` `803bf710b9707c2dbb3e6d5a89d44164ae51e6959779c3976e77a2fce58e26cc`
-- `check.mjs` `51f17f1c154a3989edaf9e169f5d8805452d878fc3cf042c4200b288ffd41e76`
-- `server.py` `d119845b042ca1e37460828610fb55623755681a16be092ac4272debe062d32e`; `index.html` `68daaf34e36c72945a13e4ac60a11d06ef77214b97d1e566bb427478a8b40155`; `README.md` `6c6cf80a307eadcf8dd822d85911fa5372571ba326164d99006d332ce4e7a432`
-- `tests/fixtures/reference/stability-report.json` `e10f08054b6d0881388a3261160c20e6bc81b4b1f92e4b98063ded5e5f12a768`
-- `run1/interaction-log.json` `c4d2f45c640e2befb35e47542a4cf2a19897cbc206d058d2285919b96a62e5d9`; `run2/interaction-log.json` `389cfcc2766bcc2c8e9488ae42ebb21102bba6fc29bd9fb2075931f181dc678c`
-- run 1 S1 = run 2 S1 = `396153fe4dc935d41a3a8bd709986a2b1238726f3c32e239bf3ef4681117ac26`; run 1 S9 = run 2 S9 = `20596e199148f26275c06b1eb3b4ad3f0649b7555e8dd281f000eed4e7fd47b7`
-- `evidence/logs/C3-server.log` `6b6590b7bdfcbba7df4f8d2df9877717a10ab0d0e15228e8d19579747f4971ff`
+- `capture.mjs` `d8b99031e11c7eb754b64b060ae270e72a518898d1f8925caeb0f61f392bf686` (dsf 1 outputs were captured with revision `803bf710…`, which they remain byte-identical to; the current revision adds `--dsf`, the explicit mute and the faster input loops + timeout-aware S8 used by the dsf 2 runs)
+- `check.mjs` `74d1116521f17f8383992aeba2bf310328340981ea19026f9e0b362b86f78129`
+- `server.py` `d119845b042ca1e37460828610fb55623755681a16be092ac4272debe062d32e`; `index.html` `68daaf34e36c72945a13e4ac60a11d06ef77214b97d1e566bb427478a8b40155`; `README.md` `8a68d31753a2d557265ea4f8e0586f9f383f5ad999b87bedd7e55c8fa421bc84`
+- dsf 1: `tests/fixtures/reference/stability-report.json` `e10f08054b6d0881388a3261160c20e6bc81b4b1f92e4b98063ded5e5f12a768`; `run1/interaction-log.json` `c4d2f45c640e2befb35e47542a4cf2a19897cbc206d058d2285919b96a62e5d9`; `run2/interaction-log.json` `389cfcc2766bcc2c8e9488ae42ebb21102bba6fc29bd9fb2075931f181dc678c`; S1 `396153fe…` = S9 `20596e19…` (byte-identical pairs)
+- dsf 2: `tests/fixtures/reference/dsf2/stability-report.json` `04fc21b1c9512f8846b553daa7829abc22211fdd04b8bfc323910f8afc378609`; `run1/interaction-log.json` `a6a2a78d84af18f2338a3f9ec87727dce86f6de59aca6706749cf51e8d54c68d`; `run2/interaction-log.json` `bee2e39cedfe7e482de39430491c7b69a24c755c7f3205f3bc5c09b714f40a67`; canonical `dsf2/interaction-log.json` `fd1b4eab28d547c9e999e0cbabaa66e3bdb12bc524971aa52230ed3cf4fc1caa`; S1 `ac5e86aaac0216021766db2d2e2ada70f08e70e7f86bb4f43c7ad8a43757b1f6` = S9 `1cf3a7753b7906fee23471505289bfd50485fef3e630c37fbd47b19d05955f8f` (byte-identical pairs)
+- `evidence/logs/C3-server.log` `0c88bc661aad9967fc4ad6cdd717cafe3ff4670a8d02d290e5e4aaf4a03f1d5f`; `evidence/logs/C3-harness-run-dsf2.log` `04276d554bda0cf9ace1dc4d81ea4d5da5acfce44f00a3af6b6901989f49cf23`
 
-Result: PASS — all Verify checks pass (V1, V1fixture, V6, V2, V5 self-check), the
-S5–S8 target states are reachable on the reconstructed fixture, and O20 is
-closed (`evidence/C3-stability.md`). No reference file was altered.
+Result: PASS — all Verify checks pass (V1, V1fixture, V6, V2, V5 self-check, plus
+the dsf 2 set V2dsf2/V5dsf2 and the explicit-mute check Vmute), the S5–S8 target
+states are reachable on the reconstructed fixture, the matrix is captured at
+deviceScaleFactor 1 and 2, and O20 is closed
+(`evidence/C3-stability.md`). No reference file was altered.
 
 ---
 
@@ -71,12 +75,29 @@ closed (`evidence/C3-stability.md`). No reference file was altered.
 | `verify/reference/fixtures/xml64.base64.php` | served fixture |
 | `verify/reference/fixtures/fixture-meta.json` | input/script/output hashes + per-entry transform record |
 | `verify/reference/capture.mjs` | Playwright driver: probes + S1–S10 matrix (two runs) + stability compare |
-| `verify/reference/check.mjs` | reproducible V1/V1fixture/V2/V5/V6 report (exit 0) |
+| `verify/reference/check.mjs` | reproducible V1/V1fixture/V2/V2dsf2/V5/V5dsf2/Vmute/V6 report (exit 0) |
 | `verify/reference/README.md` | harness documentation |
 
 Ports used: **8797** for every harness run (server-log markers show `port=8797`);
 a scratch probe used 8798 and produced no committed artifacts. Ports 5199, 8787
 and other workers' recorded ports were avoided.
+
+Device scale factors and silent runs:
+
+- The matrix is captured twice to satisfy `docs/07` §4 ("Canvas: 550 × 400
+  logical pixels at `deviceScaleFactor: 1` and `2`"): dsf 1 → 550×400 PNGs
+  under `tests/fixtures/reference/`; dsf 2 → 1100×800 PNGs under
+  `tests/fixtures/reference/dsf2/` (`node capture.mjs --runs 2 --dsf 2`). The
+  screenshot detectors (timer gauge, button bar, entry row, sun mask, end-screen
+  probes) scale from the measured CSS-pixel boxes; clicks stay in CSS pixels.
+- Silent witness runs (EXECUTION.md §8): every `chromium.launch(...)` passes
+  `args: ['--mute-audio']` (browser-level mute, explicit — not just the headless
+  default). The dsf 2 interaction logs record
+  `harness.launchArgs: ["--mute-audio"]` and `deviceScaleFactor`; `check.mjs`
+  verifies the flag in source and in both dsf 2 run manifests (`Vmute`), so no
+  audio is emitted by any harness run. The dsf 1 outputs were captured before
+  the flag was made explicit and are kept unchanged (byte-identical), as
+  required.
 
 ## 2. Fixture reconstruction (task amendment 2026-09-28)
 
@@ -184,6 +205,51 @@ stability, server evidence (`xml64Round1`, `xml64NextRound`, S9 return path) and
 `flowNotes`; the canonical `interaction-log.json` is run 1 plus the stability
 summary.
 
+### DeviceScaleFactor 2 matrix (1100×800)
+
+`node verify/reference/capture.mjs --runs 2 --dsf 2` (exit 0; log
+`evidence/logs/C3-harness-run-dsf2.log`; outputs under
+`tests/fixtures/reference/dsf2/`, same layout, 1100×800 PNGs). Run boundaries
+and requests in `evidence/logs/C3-server.log` (markers carry `dsf=2`):
+
+```
+==== C3 harness run 1 start 2026-09-28T15:17:23.403Z dsf=2 ====
+… 2026-09-28T15:17:30Z "GET /xml64.php?311496 HTTP/1.1" -> 200      (round 1)
+… 2026-09-28T15:20:25Z "POST /hiscore.php?…&puan=195750&kelime=35&sure=163 HTTP/1.1" -> 501
+… 2026-09-28T15:20:29Z "GET /xml64.php?376358 HTTP/1.1" -> 200      (round 2, return path)
+… 2026-09-28T15:23:53Z "GET /xml64.php?67002 HTTP/1.1" -> 200       (round 3, S10)
+==== C3 harness run 2 start 2026-09-28T15:24:02.452Z dsf=2 ====
+… 2026-09-28T15:24:09Z "GET /xml64.php?912828 HTTP/1.1" -> 200      (round 1)
+… 2026-09-28T15:27:09Z "POST /hiscore.php?…&puan=165250&kelime=35&sure=168 HTTP/1.1" -> 501
+… 2026-09-28T15:27:13Z "GET /xml64.php?193041 HTTP/1.1" -> 200      (round 2, return path)
+… 2026-09-28T15:30:38Z "GET /xml64.php?268352 HTTP/1.1" -> 200      (round 3, S10)
+```
+
+| State | run 1 at | run 1 sha256 (canonical) | run 2 sha256 |
+|---|---|---|---|
+| S1 | +6.6 s | `ac5e86aaac0216021766db2d2e2ada70f08e70e7f86bb4f43c7ad8a43757b1f6` | `ac5e86aaac0216021766db2d2e2ada70f08e70e7f86bb4f43c7ad8a43757b1f6` |
+| S2 | +14.4 s | `a608218a6c6b235f7b36410566e9a7d5e33f6cf22eaa27b512b4f45eeaeca24d` | `04585b0a8eb304bbf73f7e9d5bd456b1ed5fd82d6c241a44b2386f4729e760b7` |
+| S3 | +21.4 s | `895e74aaca150158020075c02a32bb6d8197c46114e38c9bcb7f1fb160660f00` | `f6dad906eb1505a14cfddc18978390cf0c5fb7334b3b54eec15f1c1172c1632f` |
+| S4 | +33.3 s | `0874f68cdc48498dab152ca499917325b3727987063312cc613202c4d3d29be2` | `32cd93894f8555007adc8ae7749fcacb6257fc03059d799728a5c0aac08680fd` |
+| S5 | +47.6 s | `8a9704bfd087786abd873d1fda6a4928960c59fab112d146692e99d8f196462d` | `377ead7c32775243a8baa972047efe110609aeb2403ab0212de6f71e29406d76` |
+| S6 | +57.7 s | `81a60e34f00d36ca79861e1d04f53ad1310c998df79eeaf6c5f1e381b852879b` | `97171ca9178de5ec2683aea9dac2bdbb077f3c5625e2d2965553b8150fb1d859` |
+| S7 | +64.6 s | `27d0c7d75408ff493d7b526f9a21a25ed9ef07a62764c22fd59ca9e0438866c1` | `c8ce43627dba308213a34a5ff34730ed11379fed87a36b01171f12e67be05e06` |
+| S8 | +174.3 s | `753cd25ba1b3fe42f315f0b7ae61e8a7c21d5b534bcdef71d31873dce8c8b138` | `cd3388f4d93be5515d643be1ecec1432520a93ede68a32f2c46e2ba38ba5f11c` |
+| S9 | +389.4 s | `1cf3a7753b7906fee23471505289bfd50485fef3e630c37fbd47b19d05955f8f` | `1cf3a7753b7906fee23471505289bfd50485fef3e630c37fbd47b19d05955f8f` |
+| S10 | +399.0 s | `59d2f69512d26ffbaf994df07d26fcd18e2133ef4032ff0a04347a24d7242ba5` | `40081424c998c3fb9a8b244c78e9ff81f38eb3b776a9181c4fff7ffde3fcaab0` |
+
+Both dsf 2 runs behaved like the dsf 1 runs: 8 letter tiles, S4 3/3 clicks,
+S5 `FAL` accepted, S6 `MİZ` rejected, S7 bonus seen on the first attempt,
+S8 89 accepted + 2 acceptance-detection timeouts, **restarts=0** (the round
+clock did not expire), completing word `İNFİAL`, end screen detected in
+455/440 ms, the return-path POST logged, S9 = round-2 timeout, S10 = round 3.
+The dsf 2 stability report mirrors dsf 1: S1 and S9 byte-identical, every state
+within the 2 % threshold (max 0.97 %, S6), differences attributed to the same
+causes — deck-shuffle tile letters (measured bands in the tile row), the
+countdown digits (right panel) and the end-screen fireworks (S8; panel region).
+`check.mjs` validates the set (`V2dsf2`: 30/30 screenshots at 1100×800, 14/14
+JSON; `V5dsf2`: S2 within-run streak 3, cross-run 0.354 %).
+
 ## 7. Observed reference flow (reconstructed fixture)
 
 1. **Ad path** — Ruffle blocks `*.mochiads.com`; the build reaches the round
@@ -224,10 +290,13 @@ consolidated final run incl. `make-fixture.mjs --check` and the input hash:
 |---|---|---|
 | V1 | Ruffle web asset SHA-256 equals the recorded value (`e8acfacc…`) | **PASS** |
 | V1fixture | reconstructed fixture: input `854b7287…`, script `e4f5198a…`, output `80506d3e…`; round trip + preserved `9999` + `--check` idempotency | **PASS** |
-| V6 | server log contains `xml64.php -> 200` for both matrix runs (round 1 `?491311` / `?561837`, plus rounds 2 and 3) | **PASS** |
-| V2 | 30/30 screenshots present (S1–S10 × run1/run2/canonical); 14/14 JSON files parse | **PASS** |
-| V5 self-check | S2 not byte-identical across runs → stabilization documented and quantified: within-run S2 stable streak = 3 (both runs), cross-run ratio 0.00781 ≤ 0.02, bbox = the shuffled tile-letter band only; causes in `evidence/C3-stability.md` | **PASS** |
-| — | input integrity: SWF md5 `af059ff9d75cefbc244f03814b47be9c` = T01 expected; archived fixture hash unchanged (read-only package untouched) | **PASS** |
+| V6 | server log contains `xml64.php -> 200` for the latest two matrix runs (dsf 2: round 1 `?311496` / `?912828`, plus rounds 2 and 3; the dsf 1 pair `?491311` / `?561837` is in the same log) | **PASS** |
+| V2 | dsf 1: 30/30 screenshots present (S1–S10 × run1/run2/canonical); 14/14 JSON files parse | **PASS** |
+| V2dsf2 | dsf 2: 30/30 screenshots present; 14/14 JSON files parse; canonical dims 1100×800 OK | **PASS** |
+| V5 self-check | dsf 1 S2: within-run stable streak = 3 (both runs), cross-run ratio 0.00781 ≤ 0.02, bbox = the shuffled tile-letter band only | **PASS** |
+| V5dsf2 | dsf 2 S2: within-run stable streak = 3 (both runs), cross-run ratio 0.00354 ≤ 0.02 | **PASS** |
+| Vmute | `capture.mjs` launches Chromium with `args: ['--mute-audio']`; recorded in both dsf 2 run manifests (`harness.launchArgs`) → no audio emitted | **PASS** |
+| — | input integrity: SWF md5 `af059ff9d75cefbc244f03814b47be9c` = T01 expected; archived fixture hash unchanged (read-only package untouched); dsf 1 outputs unchanged (hashes verified) | **PASS** |
 
 S5–S8 reachability: valid word accepted (S5), non-list rejected (S6), bonus path
 taken (S7, both visible and invisible-bonus cases observed across runs),
@@ -238,6 +307,7 @@ all-found completion reached (S8) — see §7.
 ```
 RESOLVED 2026-09-28 — evidence/C3-stability.md — Repeat-capture stability over two full S1–S10 matrix runs with the reconstructed Base64(UTF-8) fixture: capture mechanics deterministic (S1 and the timeout state S9 byte-identical; within-run stable streak 3), every state within the docs/07 §4 static threshold (max 1.22 %), residual differences are the reference's own randomness (deck shuffle, bonus ball incl. the invisible-bonus case, timing-dependent score/time values, end-screen fireworks) each localized by the F1 bbox and quantified; stabilization = stable-frame sampling + measured region/state detectors (sun mask, tile-entry detectors, timer gauge, end-of-round button bar, end-screen probe pixels).
 RESOLVED 2026-09-28 — evidence/C3-fixture-format.md — harness fixture = Base64(UTF-8) re-encoding of the archived xml64.php word list (input/script/output sha256 recorded; archived file unmodified)
+RESOLVED 2026-09-28 — evidence/C3-harness.md — reference matrix captured at deviceScaleFactor 1 and 2 (dsf2 = 1100×800); Chromium launched with --mute-audio; fixture unchanged.
 ```
 
 The O20 line supersedes the pre-amendment wording (the fixture was
@@ -246,9 +316,11 @@ runs on the served fixture.
 
 ## 10. Result
 
-**PASS** — Verify passes (V1, V1fixture, V6, V2, V5 self-check; `check.mjs`
-exit 0); the S1–S10 captures and interaction/stability logs are committed under
-`tests/fixtures/reference/`; O20 is closed with the stability record in
-`evidence/C3-stability.md`; the fixture reconstruction and its resolution are
-recorded in `evidence/C3-fixture-format.md`; the reference SWF and the
-read-only package are byte-identical to their inputs.
+**PASS** — Verify passes (V1, V1fixture, V6, V2, V2dsf2, V5, V5dsf2, Vmute;
+`check.mjs` exit 0); the S1–S10 captures and interaction/stability logs are
+committed under `tests/fixtures/reference/` (dsf 1) and
+`tests/fixtures/reference/dsf2/` (1100×800); O20 is closed with the stability
+record in `evidence/C3-stability.md`; the fixture reconstruction and its
+resolution are recorded in `evidence/C3-fixture-format.md`; the reference SWF
+and the read-only package are byte-identical to their inputs; every harness run
+launched Chromium with an explicit `--mute-audio`.

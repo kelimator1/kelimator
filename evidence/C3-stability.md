@@ -2,15 +2,16 @@
 
 Task: C3 — Reference Harness (Ruffle Web + Static Fixtures)
 Started: 2026-09-28T14:29:21Z (final matrix run 1 start; server-log marker)
-Ended: 2026-09-28T14:46:00Z (verification + evidence)
+Ended: 2026-09-28T15:33:00Z (dsf 1 + dsf 2 stability verified)
 Host+OS: dev-host.home / hidden (macOS, arm64 / arm64 host)
 Node v22.14.0 · Python 3.14.6 · @playwright/test 1.63.0
 
 Commands executed (exact):
-- `node verify/reference/capture.mjs --runs 2 > evidence/logs/C3-harness-run.log 2>&1` → exit 0
+- `node verify/reference/capture.mjs --runs 2 > evidence/logs/C3-harness-run.log 2>&1` → exit 0 (dsf 1)
+- `node verify/reference/capture.mjs --runs 2 --dsf 2 > evidence/logs/C3-harness-run-dsf2.log 2>&1` → exit 0 (dsf 2, 1100×800)
 - `node verify/reference/check.mjs > evidence/logs/C3-check-output.log 2>&1` → exit 0 (ALL CHECKS PASS)
-- per-state F1 diff via the harness `compareRuns()` (`verify/diff/diff.mjs`), 10 reports under `tests/fixtures/reference/stability/<state>/`
-- `shasum -a 256` over both runs' captures
+- per-state F1 diff via the harness `compareRuns()` (`verify/diff/diff.mjs`), 10 reports under `tests/fixtures/reference/stability/<state>/` and 10 under `tests/fixtures/reference/dsf2/stability/<state>/`
+- `shasum -a 256` over both runs' captures (both scale factors)
 
 Exit codes: 0 (all).
 
@@ -28,6 +29,7 @@ Artifact SHA-256 hashes:
 - canonical `tests/fixtures/reference/interaction-log.json` `629b28c4d93b48212f7f6c5ada4267ff45c532901526f4ea471432b919343620`
 - run 1 S1 = run 2 S1 = `396153fe4dc935d41a3a8bd709986a2b1238726f3c32e239bf3ef4681117ac26` (byte-identical)
 - run 1 S9 = run 2 S9 = `20596e199148f26275c06b1eb3b4ad3f0649b7555e8dd281f000eed4e7fd47b7` (byte-identical)
+- dsf 2: `tests/fixtures/reference/dsf2/stability-report.json` `04fc21b1c9512f8846b553daa7829abc22211fdd04b8bfc323910f8afc378609`; `dsf2/run1/interaction-log.json` `a6a2a78d84af18f2338a3f9ec87727dce86f6de59aca6706749cf51e8d54c68d`; `dsf2/run2/interaction-log.json` `bee2e39cedfe7e482de39430491c7b69a24c755c7f3205f3bc5c09b714f40a67`; S1 `ac5e86aa…` = S9 `1cf3a775…` (byte-identical pairs, full values in the report)
 
 Result: PASS — O20 closed for the reconstructed fixture: the harness capture
 mechanics are deterministic (byte-identical S1/S9, within-run stable streak = 3
@@ -127,6 +129,39 @@ timing-dependent score/time values and end-screen fireworks — each localized t
 a measured bbox and quantified. For downstream comparisons (E2/F2): reference
 board states are arrangement-random; comparisons should expect the measured
 ≤1.22 % delta or account for the deck explicitly.
+
+## 5b. DeviceScaleFactor 2 (1100×800) stability
+
+The dsf 2 matrix (two full runs, same fixture and interaction sequence,
+`node verify/reference/capture.mjs --runs 2 --dsf 2`; outputs under
+`tests/fixtures/reference/dsf2/`) reproduces the dsf 1 discipline:
+
+| State | byte-identical | mismatch ratio | mismatch bbox (device px) | pass |
+|---|---|---|---|---|
+| S1 boot | **true** | 0.00000 | — | true |
+| S2 idle board | false | 0.00354 | tile letters + timer digits | true |
+| S3 scrambled | false | 0.00513 | tile letters + timer digits | true |
+| S4 partial entry | false | 0.00506 | tile letters + timer digits | true |
+| S5 valid word | false | 0.00544 | tile letters + timer digits | true |
+| S6 invalid word | false | 0.00967 | tile letters + timer digits | true |
+| S7 bonus word | false | 0.00587 | tile letters + entry + timer | true |
+| S8 all found | false | 0.00753 | end-screen fireworks (panel region) | true |
+| S9 timeout | **true** | 0.00000 | — | true |
+| S10 next round | false | 0.00520 | tile letters + timer digits | true |
+
+- Every dsf 2 state is within the `docs/07` §4 threshold (max 0.97 %, S6);
+  S1 and S9 are byte-identical, and S1's sun-masked ratio is 0 as well.
+- Mismatch distribution measured per region: the tile-row letter bands (deck
+  shuffle), the countdown digits in the right panel, and the S8 fireworks —
+  the same causes as dsf 1.
+- Both dsf 2 runs completed S8 before the round clock (`restarts=0`, completing
+  word `İNFİAL`), took the return path (hiscore POST 501, next round), reached
+  the round-2 timeout for S9 and started round 3 for S10.
+- `check.mjs` `V2dsf2`/`V5dsf2` validate the set (30/30 screenshots at
+  1100×800, 14/14 JSON; S2 within-run streak 3, cross-run 0.354 %); `Vmute`
+  verifies the explicit `--mute-audio` flag in source and both dsf 2 manifests.
+- The dsf 1 outputs are unchanged (hashes re-verified against the recorded
+  values after the dsf 2 runs).
 
 ## 6. docs/08 proposal (single-writer: orchestrator applies)
 

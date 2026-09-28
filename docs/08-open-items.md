@@ -109,3 +109,7 @@ RESOLVED 2026-09-28 — evidence/C3-fixture-format.md — harness fixture = Base
   additionally owns `tests/e2e/**` (visual suite) and the `src/main.ts`
   bootstrap wiring for the board mount; dsf2 reference fixtures remain C3's
   (`tests/fixtures/reference/dsf2/`).
+- 2026-09-28 — C3 reference matrix completed at `deviceScaleFactor` 1 and 2
+  (dsf2 = 1100×800); Chromium launch explicitly muted (`--mute-audio`, recorded
+  in the run manifests); fixture unchanged (`854b7287…`). Evidence:
+  `evidence/C3-harness.md`, `verify/reference/check.mjs` (V2dsf2/V5dsf2/Vmute).

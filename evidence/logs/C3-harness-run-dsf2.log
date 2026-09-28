@@ -1,0 +1,33 @@
+[C3] matrix run 1/2
+[C3] S1-boot: ac5e86aaac02 at +6.6s
+[C3] S2-idle-board: a608218a6c6b at +14.4s
+[C3] S3-scrambled: 895e74aaca15 at +21.4s
+[C3] S4-partial-entry: 0874f68cdc48 at +33.3s
+[C3] S5-valid-word: 8a9704bfd087 at +47.6s
+[C3] S6-invalid-word: 81a60e34f00d at +57.7s
+[C3] S7-bonus-word: 27d0c7d75408 at +64.6s
+[C3] S8-all-found: 753cd25ba1b3 at +174.3s
+[C3] S9-timeout: 1cf3a7753b79 at +389.4s
+[C3] S10-next-round: 59d2f69512d2 at +399.0s
+[C3] matrix run 2/2
+[C3] S1-boot: ac5e86aaac02 at +6.3s
+[C3] S2-idle-board: 04585b0a8eb3 at +10.0s
+[C3] S3-scrambled: f6dad906eb15 at +20.1s
+[C3] S4-partial-entry: 32cd93894f85 at +32.0s
+[C3] S5-valid-word: 377ead7c3277 at +48.4s
+[C3] S6-invalid-word: 97171ca9178d at +61.3s
+[C3] S7-bonus-word: c8ce43627dba at +69.9s
+[C3] S8-all-found: cd3388f4d93b at +179.6s
+[C3] S9-timeout: 1cf3a7753b79 at +396.1s
+[C3] S10-next-round: 40081424c998 at +403.7s
+[C3] S1-boot: byteIdentical=true mismatchRatio=0 pass=true
+[C3] S2-idle-board: byteIdentical=false mismatchRatio=0.003544318181818182 pass=true
+[C3] S3-scrambled: byteIdentical=false mismatchRatio=0.005127272727272727 pass=true
+[C3] S4-partial-entry: byteIdentical=false mismatchRatio=0.005061363636363636 pass=true
+[C3] S5-valid-word: byteIdentical=false mismatchRatio=0.005435227272727273 pass=true
+[C3] S6-invalid-word: byteIdentical=false mismatchRatio=0.009668181818181819 pass=true
+[C3] S7-bonus-word: byteIdentical=false mismatchRatio=0.005869318181818182 pass=true
+[C3] S8-all-found: byteIdentical=false mismatchRatio=0.0075295454545454546 pass=true
+[C3] S9-timeout: byteIdentical=true mismatchRatio=0 pass=true
+[C3] S10-next-round: byteIdentical=false mismatchRatio=0.005195454545454546 pass=true
+[C3] WARNING: not all states are byte-identical across runs

@@ -40,13 +40,22 @@ records the input/script/output SHA-256 in `fixtures/fixture-meta.json`.
 ```bash
 node verify/reference/make-fixture.mjs          # (re)generate the served fixture
 node verify/reference/capture.mjs --probe --probe-dir <dir>   # observation probe
-node verify/reference/capture.mjs --runs 2 --port 8797        # full matrix + stability
-node verify/reference/check.mjs                 # V1/V1fixture/V2/V5/V6 report
+node verify/reference/capture.mjs --runs 2 --port 8797        # full matrix at dsf 1
+node verify/reference/capture.mjs --runs 2 --dsf 2            # full matrix at dsf 2
+node verify/reference/check.mjs                 # V1/V1fixture/V2/V5/V6 + dsf2 + mute report
 ```
 
 `capture.mjs` starts `server.py` itself and appends the server's request log to
-`evidence/logs/C3-server.log` (run markers included). Ports: default `8797`
-(`C3_PORT` env or `--port`); the harness refuses to start if the port is in use.
+`evidence/logs/C3-server.log` (run markers include the scale factor). Ports:
+default `8797` (`C3_PORT` env or `--port`); the harness refuses to start if the
+port is in use. Chromium is launched with an explicit `--mute-audio`
+(silent witness runs); the launch arguments are recorded in every interaction
+log.
+
+Outputs: `--dsf 1` (default) writes `tests/fixtures/reference/` directly;
+`--dsf 2` writes `tests/fixtures/reference/dsf2/` (1100×800 PNGs, same layout:
+`S*.png`, `run1/`, `run2/`, `stability/`, `stability-report.json`,
+`interaction-log.json`).
 
 ## Serving model (EXECUTION.md §6)
 
@@ -96,6 +105,12 @@ method) — both are recorded, neither is altered.
   in `capture.mjs`).
 - Ruffle's headless-only "hardware acceleration is disabled" player notice is
   dismissed through its own close button before input (recorded in the logs).
+- Silent witness runs: Chromium is launched with `--mute-audio` (explicit, not
+  only headless-default), recorded as `harness.launchArgs` in every interaction
+  log; no audio is emitted.
+- Device scale factors: the matrix is captured at `deviceScaleFactor: 1`
+  (550×400 PNGs) and `2` (1100×800 PNGs); screenshot detectors scale from the
+  measured CSS-pixel boxes, clicks stay in CSS pixels.
 - Keyboard input uses the physical key codes the SWF maps in `frame_131`
   (`codes` → `harf`, Turkish-Q layout positions).
 - Residual non-determinism: the deck shuffle (`shuffle()`, random per run), the
