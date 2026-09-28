@@ -77,6 +77,15 @@ src/
 - `src/data/sound-map.json` — produced by A2 (committed).
 - `src/data/layout.json`, `src/data/animation.json` — produced by A3 (committed).
 
+> Amendment 2026-09-28 (orchestrator): runtime data paths are fixed as the task
+> files execute them, superseding the A2/A3 `src/data/…` attributions above:
+> A2 authors `data/constants.json` and `data/sound-map.json`; A3 authors
+> `data/layout.json` and `data/animation.json`; E1 copies layout/animation into
+> `src/data/`; B3 writes `src/data/rounds.json`. Consumers follow their task
+> files (`D1`: `src/data/rounds.json`; `D2`/`D3`/`D4`/`D5`/`C2`:
+> `data/constants.json`, `data/sound-map.json`; `E2`/`E3`: `src/data/`).
+> Matching entry: `docs/08-open-items.md` (Amendments).
+
 ## 6. Test hooks (contract for E2E)
 
 - `window.__game` exposes read-only getters: current state, round id, found

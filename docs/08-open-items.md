@@ -39,3 +39,15 @@ When closed, append: `RESOLVED <date> — <evidence file> — <one-line finding>
 ## Resolved items
 
 (none yet)
+
+## Amendments
+
+- 2026-09-28 — C1-created schemas for `docs/02` §8 and `docs/03` §5–§6: the
+  canonical blocks are data shapes, not JSON Schema documents, so a verbatim
+  copy was impossible; they were encoded as draft-07 schemas (key names and
+  nesting unchanged; every key shown is required). Evidence:
+  `evidence/C1-scaffold.md` §3.2, `evidence/logs/C1-verbatim-probe.log`.
+- 2026-09-28 — runtime data path mapping after C1 (`docs/04` §5): A2/A3 author
+  under `data/`, E1 copies layout/animation to `src/data/`, B3 authors
+  `src/data/rounds.json`; consumers per their task files. Evidence:
+  `evidence/C1-scaffold.md` §5.

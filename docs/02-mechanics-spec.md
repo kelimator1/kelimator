@@ -117,6 +117,15 @@ evidence-backed values before any dependent task starts (schema allows 0 only
 as "unresolved"; V7 test fails on unresolved placeholders for fields marked
 required).
 
+> Amendment 2026-09-28 (orchestrator): the block above is a canonical *shape*
+> (an example instance), not a JSON Schema document; a verbatim copy cannot pass
+> `ajv-cli compile`. C1 encoded it as `data/constants.schema.json` (draft-07):
+> every key shown is required, key names/spelling and nesting unchanged, zeros
+> and empty strings remain schema-valid placeholders, and the V7 dry-run above
+> remains the enforcement point. Probe: `evidence/logs/C1-verbatim-probe.log`;
+> decision record: `evidence/C1-scaffold.md` §3.2. Matching entry:
+> `docs/08-open-items.md` (Amendments).
+
 ## 9. Open questions
 
 See `docs/08-open-items.md` — items O01–O05, O13–O15.

@@ -81,6 +81,15 @@ Decision procedure (executed in E1; outcome recorded in evidence):
 Event names are defined by A2 from observed call sites; consumers (D4) must not
 invent events — the map is the contract, V7 checks it.
 
+> Amendment 2026-09-28 (orchestrator): the block above is a canonical *shape*
+> (an example instance), not a JSON Schema document; a verbatim copy cannot pass
+> `ajv-cli compile`. C1 encoded it as `data/sound-map.schema.json` (draft-07):
+> `sounds`/`events` are maps with arbitrary key names, each mapped entry
+> requires exactly the shown fields, key names/spelling unchanged. Probe:
+> `evidence/logs/C1-verbatim-probe.log`; decision record:
+> `evidence/C1-scaffold.md` §3.2. Matching entry: `docs/08-open-items.md`
+> (Amendments).
+
 ## 6. layout.json (canonical shape; created by A1/A3)
 
 ```json
@@ -97,6 +106,18 @@ invent events — the map is the contract, V7 checks it.
 
 Values come from extraction; TBC cells are forbidden — every element listed
 must be resolvable from exports or reference screenshots with recorded evidence.
+
+> Amendment 2026-09-28 (orchestrator): the block above is a canonical *shape*
+> (an example instance), not a JSON Schema document; a verbatim copy cannot pass
+> `ajv-cli compile`. C1 encoded it as `data/layout.schema.json` (draft-07):
+> every element key shown is required, key names/spelling unchanged; the `kind`
+> union notation is encoded as `enum: ["svg","bitmap","text"]` and
+> `font.align` is a plain string (no enum values invented). This section's
+> "created by A1/A3" refers to the data file `data/layout.json` (A3);
+> `data/layout.schema.json` is created by C1 per `tasks/C1-scaffold.md`. Probe:
+> `evidence/logs/C1-verbatim-probe.log`; decision record:
+> `evidence/C1-scaffold.md` §3.2. Matching entry: `docs/08-open-items.md`
+> (Amendments).
 
 ## 7. Verification hooks
 
