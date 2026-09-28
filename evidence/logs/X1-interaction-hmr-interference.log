@@ -1,0 +1,57 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test interaction --reporter=line
+
+
+Running 6 tests using 1 worker
+
+[1/6] [app] › tests/e2e/interaction/interaction.spec.ts:218:5 › tile center clicks — deviceScaleFactor 1 › clicking the center of all 8 tiles enters their letters (dsf 1)
+  1) [app] › tests/e2e/interaction/interaction.spec.ts:218:5 › tile center clicks — deviceScaleFactor 1 › clicking the center of all 8 tiles enters their letters (dsf 1) 
+
+    Error: audio after tile 7
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "tileClick"
+    Received: "roundStart"
+
+      247 |         await expect(entry(page), `entry after tile ${slot}`).toHaveText(expectedEntry);
+      248 |         await waitForEntrySlide(page);
+    > 249 |         expect((await readGame(page)).lastAudioEvent, `audio after tile ${slot}`).toBe(
+          |                                                                                   ^
+      250 |           'tileClick',
+      251 |         );
+      252 |       }
+        at /home/dev/kelimator-2012/tests/e2e/interaction/interaction.spec.ts:249:83
+
+    Error Context: test-results/tests-e2e-interaction-inte-eb795-enters-their-letters-dsf-1--app/error-context.md
+
+
+[2/6] [app] › tests/e2e/interaction/interaction.spec.ts:218:5 › tile center clicks — deviceScaleFactor 2 › clicking the center of all 8 tiles enters their letters (dsf 2)
+[3/6] [app] › tests/e2e/interaction/interaction.spec.ts:273:3 › O15 edge checks (evidence/A2-edges.md) › duplicate letters: one entry per tile, delete restores each (O15(a)/(c))
+[4/6] [app] › tests/e2e/interaction/interaction.spec.ts:314:3 › O15 edge checks (evidence/A2-edges.md) › delete/backspace: removes the last letter and restores its tile; empty delete is sound-only (O15(c))
+[5/6] [app] › tests/e2e/interaction/interaction.spec.ts:341:3 › O15 edge checks (evidence/A2-edges.md) › scramble: clears a partial entry and restores the whole deck (O15(d))
+  2) [app] › tests/e2e/interaction/interaction.spec.ts:341:3 › O15 edge checks (evidence/A2-edges.md) › scramble: clears a partial entry and restores the whole deck (O15(d)) 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 6
+    Received: 0
+
+      348 |     await clickLetter(page, before[0]!, before[0]!);
+      349 |     await clickLetter(page, before[1]!, `${before[0]}${before[1]}`);
+    > 350 |     expect(await runtimeLetterCount(page)).toBe(SLOT_COUNT - 2);
+          |                                            ^
+      351 |
+      352 |     await page.keyboard.press('Space');
+      353 |     await expect(entry(page)).toHaveText('');
+        at /home/dev/kelimator-2012/tests/e2e/interaction/interaction.spec.ts:350:44
+
+    Error Context: test-results/tests-e2e-interaction-inte-6438b-tores-the-whole-deck-O15-d--app/error-context.md
+
+
+[6/6] [app] › tests/e2e/interaction/interaction.spec.ts:365:3 › O15 edge checks (evidence/A2-edges.md) › re-submit: found word keeps the entry, scores nothing, boings; empty submit buzzes (O15(b)/(f))
+  2 failed
+    [app] › tests/e2e/interaction/interaction.spec.ts:218:5 › tile center clicks — deviceScaleFactor 1 › clicking the center of all 8 tiles enters their letters (dsf 1) 
+    [app] › tests/e2e/interaction/interaction.spec.ts:341:3 › O15 edge checks (evidence/A2-edges.md) › scramble: clears a partial entry and restores the whole deck (O15(d)) 
+  4 passed (14.9s)

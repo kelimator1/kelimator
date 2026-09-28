@@ -634,6 +634,14 @@ function renderTiles(view: BoardView): HTMLElement {
     letter.className = 'board-text';
     letter.dataset.element = `letter${j}`;
     letter.textContent = tile.letter;
+    // X1 (owner defect 1): the letter field sits directly over the tile's
+    // clickable center (60×19 px box centered on the slot registration point)
+    // and the delegation in src/main.ts routes only `buttonN` targets, so a
+    // hit on this label was dropped. Chosen mechanism (single delegation
+    // path): the label is transparent to pointer events, so every click
+    // reaches the `buttonN` node naturally — no `letterN → buttonN` mapping
+    // in the handler. evidence: evidence/X1-tile-click.md §2.
+    letter.style.pointerEvents = 'none';
     letter.style.zIndex = String(16384 + 300 + j);
     letter.style.fontFamily = FONT_STACK;
     letter.style.fontSize = '24px';

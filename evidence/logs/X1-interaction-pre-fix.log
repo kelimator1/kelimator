@@ -1,0 +1,180 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test interaction --reporter=line
+
+
+Running 6 tests using 1 worker
+
+[1/6] [app] › tests/e2e/interaction/interaction.spec.ts:218:5 › tile center clicks — deviceScaleFactor 1 › clicking the center of all 8 tiles enters their letters (dsf 1)
+  1) [app] › tests/e2e/interaction/interaction.spec.ts:218:5 › tile center clicks — deviceScaleFactor 1 › clicking the center of all 8 tiles enters their letters (dsf 1) 
+
+    Error: topmost [data-element] at tile 0 center
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "button0"
+    Received: "letter0"
+
+      241 |           await hitElementAt(page, center),
+      242 |           `topmost [data-element] at tile ${slot} center`,
+    > 243 |         ).toBe(`button${slot}`);
+          |           ^
+      244 |
+      245 |         await page.mouse.click(center.x, center.y);
+      246 |         expectedEntry += letters[slot] ?? '';
+        at /home/dev/kelimator-2012/tests/e2e/interaction/interaction.spec.ts:243:11
+
+    Error Context: test-results/tests-e2e-interaction-inte-eb795-enters-their-letters-dsf-1--app/error-context.md
+
+
+[2/6] [app] › tests/e2e/interaction/interaction.spec.ts:218:5 › tile center clicks — deviceScaleFactor 2 › clicking the center of all 8 tiles enters their letters (dsf 2)
+  2) [app] › tests/e2e/interaction/interaction.spec.ts:218:5 › tile center clicks — deviceScaleFactor 2 › clicking the center of all 8 tiles enters their letters (dsf 2) 
+
+    Error: topmost [data-element] at tile 0 center
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "button0"
+    Received: "letter0"
+
+      241 |           await hitElementAt(page, center),
+      242 |           `topmost [data-element] at tile ${slot} center`,
+    > 243 |         ).toBe(`button${slot}`);
+          |           ^
+      244 |
+      245 |         await page.mouse.click(center.x, center.y);
+      246 |         expectedEntry += letters[slot] ?? '';
+        at /home/dev/kelimator-2012/tests/e2e/interaction/interaction.spec.ts:243:11
+
+    Error Context: test-results/tests-e2e-interaction-inte-02d34-enters-their-letters-dsf-2--app/error-context.md
+
+
+[3/6] [app] › tests/e2e/interaction/interaction.spec.ts:273:3 › O15 edge checks (evidence/A2-edges.md) › duplicate letters: one entry per tile, delete restores each (O15(a)/(c))
+  3) [app] › tests/e2e/interaction/interaction.spec.ts:273:3 › O15 edge checks (evidence/A2-edges.md) › duplicate letters: one entry per tile, delete restores each (O15(a)/(c)) 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator:  locator('[data-testid="entry"]')
+    Expected: "İ"
+    Received: ""
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveText" locator('[data-testid="entry"]') with timeout 5000ms
+      - waiting for locator('[data-testid="entry"]')
+        14 × locator resolved to <output data-testid="entry"></output>
+           - unexpected value ""
+
+
+      285 |     const first = await tileCenter(page, iSlots[0]!);
+      286 |     await page.mouse.click(first.x, first.y);
+    > 287 |     await expect(entry(page)).toHaveText('İ');
+          |                               ^
+      288 |     await waitForEntrySlide(page);
+      289 |     await expect(page.locator(`[data-element="letter${iSlots[0]}"]`)).toHaveCount(0);
+      290 |
+        at /home/dev/kelimator-2012/tests/e2e/interaction/interaction.spec.ts:287:31
+
+    Error Context: test-results/tests-e2e-interaction-inte-2eb72-lete-restores-each-O15-a-c--app/error-context.md
+
+
+[4/6] [app] › tests/e2e/interaction/interaction.spec.ts:314:3 › O15 edge checks (evidence/A2-edges.md) › delete/backspace: removes the last letter and restores its tile; empty delete is sound-only (O15(c))
+  4) [app] › tests/e2e/interaction/interaction.spec.ts:314:3 › O15 edge checks (evidence/A2-edges.md) › delete/backspace: removes the last letter and restores its tile; empty delete is sound-only (O15(c)) 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator:  locator('[data-testid="entry"]')
+    Expected: "A"
+    Received: ""
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveText" locator('[data-testid="entry"]') with timeout 5000ms
+      - waiting for locator('[data-testid="entry"]')
+        14 × locator resolved to <output data-testid="entry"></output>
+           - unexpected value ""
+
+
+      319 |     const center = await tileCenter(page, 0);
+      320 |     await page.mouse.click(center.x, center.y);
+    > 321 |     await expect(entry(page)).toHaveText(letters[0]!);
+          |                               ^
+      322 |     await waitForEntrySlide(page);
+      323 |     await expect(page.locator('[data-testid="tile-0"]')).toHaveCount(0);
+      324 |     await expect(page.locator('[data-element="letter0"]')).toHaveCount(0);
+        at /home/dev/kelimator-2012/tests/e2e/interaction/interaction.spec.ts:321:31
+
+    Error Context: test-results/tests-e2e-interaction-inte-5b9ed-delete-is-sound-only-O15-c--app/error-context.md
+
+
+[5/6] [app] › tests/e2e/interaction/interaction.spec.ts:341:3 › O15 edge checks (evidence/A2-edges.md) › scramble: clears a partial entry and restores the whole deck (O15(d))
+  5) [app] › tests/e2e/interaction/interaction.spec.ts:341:3 › O15 edge checks (evidence/A2-edges.md) › scramble: clears a partial entry and restores the whole deck (O15(d)) 
+
+    Error: entry after clicking A
+
+    expect(locator).toHaveText(expected) failed
+
+    Locator:  locator('[data-testid="entry"]')
+    Expected: "A"
+    Received: ""
+    Timeout:  5000ms
+
+    Call log:
+      - entry after clicking A locator('[data-testid="entry"]') with timeout 5000ms
+      - waiting for locator('[data-testid="entry"]')
+        14 × locator resolved to <output data-testid="entry"></output>
+           - unexpected value ""
+
+
+      204 |   const center = await tileCenter(page, slot);
+      205 |   await page.mouse.click(center.x, center.y);
+    > 206 |   await expect(entry(page), `entry after clicking ${letter}`).toHaveText(expectedEntry);
+          |                                                               ^
+      207 |   await waitForEntrySlide(page);
+      208 | }
+      209 |
+        at clickLetter (/home/dev/kelimator-2012/tests/e2e/interaction/interaction.spec.ts:206:63)
+        at /home/dev/kelimator-2012/tests/e2e/interaction/interaction.spec.ts:348:5
+
+    Error Context: test-results/tests-e2e-interaction-inte-6438b-tores-the-whole-deck-O15-d--app/error-context.md
+
+
+[6/6] [app] › tests/e2e/interaction/interaction.spec.ts:365:3 › O15 edge checks (evidence/A2-edges.md) › re-submit: found word keeps the entry, scores nothing, boings; empty submit buzzes (O15(b)/(f))
+  6) [app] › tests/e2e/interaction/interaction.spec.ts:365:3 › O15 edge checks (evidence/A2-edges.md) › re-submit: found word keeps the entry, scores nothing, boings; empty submit buzzes (O15(b)/(f)) 
+
+    Error: entry after clicking A
+
+    expect(locator).toHaveText(expected) failed
+
+    Locator:  locator('[data-testid="entry"]')
+    Expected: "A"
+    Received: ""
+    Timeout:  5000ms
+
+    Call log:
+      - entry after clicking A locator('[data-testid="entry"]') with timeout 5000ms
+      - waiting for locator('[data-testid="entry"]')
+        14 × locator resolved to <output data-testid="entry"></output>
+           - unexpected value ""
+
+
+      204 |   const center = await tileCenter(page, slot);
+      205 |   await page.mouse.click(center.x, center.y);
+    > 206 |   await expect(entry(page), `entry after clicking ${letter}`).toHaveText(expectedEntry);
+          |                                                               ^
+      207 |   await waitForEntrySlide(page);
+      208 | }
+      209 |
+        at clickLetter (/home/dev/kelimator-2012/tests/e2e/interaction/interaction.spec.ts:206:63)
+        at /home/dev/kelimator-2012/tests/e2e/interaction/interaction.spec.ts:374:7
+
+    Error Context: test-results/tests-e2e-interaction-inte-437b0-mpty-submit-buzzes-O15-b-f--app/error-context.md
+
+
+  6 failed
+    [app] › tests/e2e/interaction/interaction.spec.ts:218:5 › tile center clicks — deviceScaleFactor 1 › clicking the center of all 8 tiles enters their letters (dsf 1) 
+    [app] › tests/e2e/interaction/interaction.spec.ts:218:5 › tile center clicks — deviceScaleFactor 2 › clicking the center of all 8 tiles enters their letters (dsf 2) 
+    [app] › tests/e2e/interaction/interaction.spec.ts:273:3 › O15 edge checks (evidence/A2-edges.md) › duplicate letters: one entry per tile, delete restores each (O15(a)/(c)) 
+    [app] › tests/e2e/interaction/interaction.spec.ts:314:3 › O15 edge checks (evidence/A2-edges.md) › delete/backspace: removes the last letter and restores its tile; empty delete is sound-only (O15(c)) 
+    [app] › tests/e2e/interaction/interaction.spec.ts:341:3 › O15 edge checks (evidence/A2-edges.md) › scramble: clears a partial entry and restores the whole deck (O15(d)) 
+    [app] › tests/e2e/interaction/interaction.spec.ts:365:3 › O15 edge checks (evidence/A2-edges.md) › re-submit: found word keeps the entry, scores nothing, boings; empty submit buzzes (O15(b)/(f)) 
