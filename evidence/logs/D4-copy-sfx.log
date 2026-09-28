@@ -1,0 +1,21 @@
++zsh:3> mkdir -p src/assets/sfx
++zsh:4> cp artifacts/decompiled/sounds/22.mp3 src/assets/sfx/sfx_22_enter.mp3
++zsh:5> cp artifacts/decompiled/sounds/24.mp3 src/assets/sfx/sfx_24_shuffle.mp3
++zsh:6> cp artifacts/decompiled/sounds/26.mp3 src/assets/sfx/sfx_26_countdown.mp3
++zsh:7> cp artifacts/decompiled/sounds/30.mp3 src/assets/sfx/sfx_30_boing.mp3
++zsh:8> cp artifacts/decompiled/sounds/32.mp3 src/assets/sfx/sfx_32_fanfare.mp3
++zsh:9> cp artifacts/decompiled/sounds/34.mp3 src/assets/sfx/sfx_34_finishsound.mp3
++zsh:10> cp artifacts/decompiled/sounds/36.mp3 src/assets/sfx/sfx_36_typer.mp3
++zsh:11> cp artifacts/decompiled/sounds/38.mp3 src/assets/sfx/sfx_38_backspace.mp3
++zsh:12> cp artifacts/decompiled/sounds/40.mp3 src/assets/sfx/sfx_40_buzz.mp3
++zsh:13> set +x
+total 112
+-rw-r--r--@ 1 dev  staff   1950 Sep 28 16:40 sfx_22_enter.mp3
+-rw-r--r--@ 1 dev  staff   4030 Sep 28 16:40 sfx_24_shuffle.mp3
+-rw-r--r--@ 1 dev  staff    910 Sep 28 16:40 sfx_26_countdown.mp3
+-rw-r--r--@ 1 dev  staff   1560 Sep 28 16:40 sfx_30_boing.mp3
+-rw-r--r--@ 1 dev  staff  21840 Sep 28 16:40 sfx_32_fanfare.mp3
+-rw-r--r--@ 1 dev  staff   2730 Sep 28 16:40 sfx_34_finishsound.mp3
+-rw-r--r--@ 1 dev  staff   1430 Sep 28 16:40 sfx_36_typer.mp3
+-rw-r--r--@ 1 dev  staff   1690 Sep 28 16:40 sfx_38_backspace.mp3
+-rw-r--r--@ 1 dev  staff   2730 Sep 28 16:40 sfx_40_buzz.mp3

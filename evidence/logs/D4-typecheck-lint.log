@@ -1,0 +1,4 @@
+$ npx tsc --noEmit
+tsc exit=0
+$ npx eslint src/audio/audio.ts tests/audio.test.ts
+eslint exit=0

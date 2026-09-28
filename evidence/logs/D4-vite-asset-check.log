@@ -1,0 +1,6 @@
+Vite production-build check for the dynamic asset URL pattern (temp outDir: $TMPDIR/d4-vite-asset-check)
+emitted assets: 2; mp3: 1
+  sfx_32_fanfare-CGGq7PKH.mp3
+bundle references sfx_32_fanfare.mp3: true
+RESULT: FAIL
+vite check exit=1

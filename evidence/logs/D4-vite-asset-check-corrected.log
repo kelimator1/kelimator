@@ -1,0 +1,15 @@
+Corrected Vite asset check: build a virtual entry that drives the real resolver, then
+verify each built src (data URI or file URL) against the source payload SHA-256.
+roundStart	sfx_32_fanfare.mp3	emitted file	PAYLOAD MATCH
+scramble	sfx_24_shuffle.mp3	inlined data URI	PAYLOAD MATCH
+delete	sfx_38_backspace.mp3	inlined data URI	PAYLOAD MATCH
+submitValid	sfx_22_enter.mp3	inlined data URI	PAYLOAD MATCH
+submitAlreadyFound	sfx_30_boing.mp3	inlined data URI	PAYLOAD MATCH
+submitInvalid	sfx_40_buzz.mp3	inlined data URI	PAYLOAD MATCH
+letterKey	sfx_36_typer.mp3	inlined data URI	PAYLOAD MATCH
+tileClick	sfx_36_typer.mp3	inlined data URI	PAYLOAD MATCH
+countdown	sfx_26_countdown.mp3	inlined data URI	PAYLOAD MATCH
+timeout	sfx_34_finishsound.mp3	inlined data URI	PAYLOAD MATCH
+events=10; distinct built sources=9
+RESULT: PASS (10/10 events, 9/9 payloads byte-identical)
+vite check exit=0

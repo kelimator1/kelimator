@@ -1,0 +1,6 @@
+inspect Vite output (kept in $TMPDIR/d4-vite-asset-check)
+_virtual_d4-entry-D4RM2yEg.js
+sfx_32_fanfare-CGGq7PKH.mp3
+---- bundle around first sfx occurrence ----
+var e=new URL(`sfx_32_fanfare-CGGq7PKH.mp3`,import.meta.url).href,t=`data:audio/mpeg;base64,//NQwAAAAAJYAUAAAAKIQQAAAKBWIwL4G5ugfGr1BzwM2H7gINAaYR3wMeBEbp/gozAyRYEQT/AKEDkjJlD/yogKOAkuBpxf9vwMIIAxgQPoBvU4Ih5oJs/6/8G2AnABQIHFhjMLZieBOAFgH//f/wbjHQFAQN4CmMAPTE5i4x8DIP/zUMB1LRwGif+UoAAZbFDf//f//C2AAwcQeRQNXhq8ZMiIWvhgsNvFnjJkPELjJ///////h8AxBcYooavHsG5gyDB8hCE+MgnDVBCAARcjccaSxf5zCzHtHtTvmyljCArrzm9zu0JdoWhiuM6ioeS
+inspect exit=0

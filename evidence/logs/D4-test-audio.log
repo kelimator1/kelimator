@@ -1,0 +1,16 @@
+$ npm test -- audio
+
+> kelimator-2012@0.0.0 test
+> vitest run audio
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.2 [39m[90m/home/dev/kelimator-2012[39m
+
+ [32m✓[39m tests/audio.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m17 passed[39m[22m[90m (17)[39m
+[2m   Start at [22m 16:40:19
+[2m   Duration [22m 147ms[2m (transform 69%, import 15%, tests 13%, worker 3%)[22m
+
+exit=0

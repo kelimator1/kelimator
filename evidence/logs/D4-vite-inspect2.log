@@ -1,0 +1,24 @@
+bundle size: 28468
+occurrences of "sfx_": 19
+occurrences of "data:audio": 8
+  name: sfx_32_fanfare
+  name: sfx_22_enter
+  name: sfx_24_shuffle
+  name: sfx_26_countdown
+  name: sfx_30_boing
+  name: sfx_32_fanfare
+  name: sfx_34_finishsound
+  name: sfx_36_typer
+  name: sfx_38_backspace
+  name: sfx_40_buzz
+  name: sfx_22_enter
+  name: sfx_24_shuffle
+  name: sfx_26_countdown
+  name: sfx_30_boing
+  name: sfx_32_fanfare
+  name: sfx_34_finishsound
+  name: sfx_36_typer
+  name: sfx_38_backspace
+  name: sfx_40_buzz
+---- structure (first 1200 chars) ----
+var e=new URL(`sfx_32_fanfare-CGGq7PKH.mp3`,import.meta.url).href,t=`data:audio/mpeg;base64,//NQwAAAAAJYAUAAAAKIQQAAAKBWIwL4G5ugfGr1BzwM2H7gINAaYR3wMeBEbp/gozAyRYEQT/AKEDkjJlD/yogKOAkuBpxf9vwMIIAxgQPoBvU4Ih5oJs/6/8G2AnABQIHFhjMLZieBOAFgH//f/wbjHQFAQN4CmMAPTE5i4x8DIP/zUMB1LRwGif+UoAAZbFDf//f//C2AAwcQeRQNXhq8ZMiIWvhgsNvFnjJkPELjJ///////h8AxBcYooavHsG5gyDB8hCE+MgnDVBCAARcjccaSxf5zCzHtHtTvmyljCArrzm9zu0JdoWhiuM6ioeSuJfywPZXm8xYUCMWxla3z5CX/81DANRpZrvJbz3gAzjVxS7sU1INMLF2ZlzK83bJxtWI1Z6bxi9ZIOsV9c6pmbdvbfviHgyCoSAwOML+jp8VT/SD6RxNtw1NA8pSyZC7pWG2Kp82/OvSRZN9kF4pKOcYuaSCFq1BlSBoWD86jUWo3/wYxc2mjs6HI6cxuqsZ2szlK//NQwEAVqecb/nqEtkfpDirUy0A2pqNIur1Xo8VL2+KW7ddY2rSSRSNSwE0JcLF0D8LO3M/+5t3EJJ2PZ2wob6FC80BYtf/SYQ/+YGdV+z5QqOP1m6MfXHx53ZUbrKgUM1Q71kkzn2r7SF6W2/9dNrGj3/sljoiGtejbWmQCE5NsBf/zUMBeFYLXC/5JzrrqoyKrGkZuLIrXb0PumXu4YiEKzSObQDQ3+heoDrp2r4qErL/nCobvlvY7coVHi7Gss6fuh1C7voumygDtZ/XQ1c33WrpRTDtB51WtOjfdEpcsynXSc+hlIP7pIomj/+BbyQpJym7lhFP2uLbfSMV5x8yVFBj/81DAfRga2uo+So64TiMCo4my42+hPKAGBTN/0ODf/0F3/7nIhNj21fsh5qETXb+mFi/RvzqzfVDubFJENhMVAKSx4AnPSCN//ZNkQJllQ+rBUu+4KepQ8LuoyioEfhjClmcuVu/EPrVrnReOOcP7rEer5w2dQRYeP/qMx7f/QN/9//NQwJEW0mMP/nqOtpilEEdE3utlsqlY3/lAiPllI1ESRyLZGTO4k4sWtFXdqO0hf/jG
