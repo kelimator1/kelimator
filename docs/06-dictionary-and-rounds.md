@@ -41,6 +41,13 @@ Deterministic pipeline from `headwords.txt` to `tools/wordlist.txt`:
    during B2 and committed; additions are recorded amendments.
 5. Output sorted, deduplicated; counts per step recorded in evidence.
 
+> Amendment 2026-09-28 (orchestrator): recorded `data/blocklist.txt` additions —
+> `GFGF` and `SFSFS` are site-bundle test fixtures, not headwords (discovered by
+> B2: `evidence/B2-filters.md` §1.2/§4.3), and are excluded as undesired entries.
+> Blocklist composition: 53 offensive terms with per-entry documented basis
+> (`evidence/B2-filters.md` §3) + the 2 fixture exclusions. Matching entry in
+> `docs/08-open-items.md` (Amendments).
+
 ## 3. Round generation (task B3)
 
 Algorithm (deterministic):

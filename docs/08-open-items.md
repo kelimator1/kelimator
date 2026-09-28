@@ -29,7 +29,7 @@ When closed, append: `RESOLVED <date> — <evidence file> — <one-line finding>
 | O14 | Timeout semantics (mid-entry, timer stop on completion, time-bonus timing) | A2 + reference observation | `evidence/A2-timeout.md` | D3, D5 | RESOLVED — evidence/A2-timeout.md |
 | O15 | Edge-case input rules (duplicates, re-submit, backspace on empty, scramble with entry) | A2 + reference observation | `evidence/A2-edges.md` | D2 | RESOLVED — evidence/A2-edges.md |
 | O16 | Round-bank threshold T measurement | B3: generate candidate banks per `docs/06` §3; record sizes; apply selection rule | `evidence/B3-threshold.md`; `tools/build-config.json` | D1 | OPEN |
-| O17 | Entry-type filters discovered in the TDK snapshot (abbreviations, proper nouns) | B2: inspect snapshot structure; apply and record filter decisions | `evidence/B2-filters.md` | B3 | OPEN |
+| O17 | Entry-type filters discovered in the TDK snapshot (abbreviations, proper nouns) | B2: inspect snapshot structure; apply and record filter decisions | `evidence/B2-filters.md` | B3 | RESOLVED — evidence/B2-filters.md |
 | O18 | Any visual difference between 2007 and 2012 builds relevant to layout | A3: compare extracted geometry; record differences; 2012 wins | `evidence/A3-diffs.md` | E1, E2 | RESOLVED — evidence/A3-diffs.md |
 | O19 | MochiAds removal points (which scripts/tags to strip) | A1/A2: identify ad initialization/resume paths; ensure removal does not alter game flow | `evidence/A2-mochi.md` | D5 | RESOLVED — evidence/A2-mochi.md |
 | O20 | Repeat-capture stability of the reference harness (same screenshots across runs) | C3: capture the matrix twice; compare hashes; if unstable, identify cause and record | `evidence/C3-stability.md` | F2 | RESOLVED — evidence/C3-stability.md |
@@ -58,6 +58,7 @@ RESOLVED 2026-09-28 — evidence/A1-stream.md — zero streaming content: all 38
 RESOLVED 2026-09-28 — evidence/A3-diffs.md — 2007 vs 2012 compared for 44 shared roles: 22 identical (incl. background, sockets, wordball, logo, xmlload, speaker, puanmovie, high-score form, marquee); 12 differ (credit block replaced, new "Sil" button, b3–b8 counters added, bottom buttons repositioned ≤45.8 px, timer bar/digits +(6,15) px, status sprite +6.1 px, Puan/Süre colour/shadow updates); 2012 wins and is the only geometry in `data/layout.json`.
 RESOLVED 2026-09-28 — evidence/C3-stability.md — Repeat-capture stability over two full S1–S10 matrix runs with the reconstructed Base64(UTF-8) fixture: capture mechanics deterministic (S1 and the timeout state S9 byte-identical; within-run stable streak 3), every state within the docs/07 §4 static threshold (max 1.22 %), residual differences are the reference's own randomness (deck shuffle, bonus ball incl. the invisible-bonus case, timing-dependent score/time values, end-screen fireworks) each localized by the F1 bbox and quantified; stabilization = stable-frame sampling + measured region/state detectors (sun mask, tile-entry detectors, timer gauge, end-of-round button bar, end-screen probe pixels).
 RESOLVED 2026-09-28 — evidence/C3-fixture-format.md — harness fixture = Base64(UTF-8) re-encoding of the archived xml64.php word list (input/script/output sha256 recorded; archived file unmodified)
+RESOLVED 2026-09-28 — evidence/B2-filters.md — Snapshot entry types inventoried (2,150 proper-noun-style capital-initial forms / 1,692 "özel isim" census flags; "DNA" the only letter-only abbreviation; 17,685 multi-word, 135 punctuation, 34 digit-bearing fixture and 1,232 circumflex bundle forms; 78 case-collisions; non-lexical bundle artifacts "GFGF"/"SFSFS"); only docs/06 §2 filters applied (no proper-noun/abbreviation filter and no junk filter rule added); blocklist = 53 offensive terms + the 2 fixture exclusions "GFGF"/"SFSFS" (recorded orchestrator decision 2026-09-28) = 55 entries with per-entry documented basis; gaps recorded (no citable offline offensive-word corpus; PİÇLEŞME/PİÇLEŞMEK and borderline terms left out).
 
 ## Amendments
 
@@ -132,3 +133,8 @@ RESOLVED 2026-09-28 — evidence/C3-fixture-format.md — harness fixture = Base
   `tasks/B1-tdk-acquisition.md`.
 - 2026-09-28 — B2 test-scope: `tasks/B2-wordlist-normalization.md` additionally
   owns `tests/normalize-wordlist.test.mjs` (`npm test -- normalize`).
+- 2026-09-28 — Non-lexical fixture exclusion (`docs/06` §2): `GFGF` and `SFSFS`
+  (site-bundle test fixtures found by B2) are excluded via `data/blocklist.txt`
+  as undesired entries. Evidence: `evidence/B2-filters.md` §1.2/§4.3.
+- 2026-09-28 — B3 test-scope: `tasks/B3-round-generation.md` additionally owns
+  `tests/rounds-fixtures.test.mjs` (`npm test -- fixtures`).

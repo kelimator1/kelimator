@@ -37,6 +37,12 @@
 ## Unknowns
 - O16 resolved here. No other OPEN items may be in scope.
 
+> Amendment 2026-09-28 (orchestrator): Owned paths additionally include
+> `tests/rounds-fixtures.test.mjs` — the structural/enumeration fixture tests
+> and the `id` transliteration-table unit tests required by Verify
+> (`npm test -- fixtures`). Silent witness runs apply (`EXECUTION.md` §8).
+> Recorded in `docs/08-open-items.md` (Amendments).
+
 ## Verify
 - V3: `npx ajv-cli validate -s data/rounds.schema.json -d src/data/rounds.json`
 - V4: `npm test -- fixtures` — structural + enumeration tests pass; exceptions
