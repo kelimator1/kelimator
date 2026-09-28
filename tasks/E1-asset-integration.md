@@ -5,6 +5,16 @@
 - Depends on: A3, C2
 - Owned paths: `src/assets/**`, `tools/process-assets.*`, `src/data/layout.json`, `src/data/animation.json`, `evidence/E1-*`
 
+> Amendment 2026-09-28 (orchestrator): Owned paths additionally include a
+> minimal, exact-pinned `svgo` devDependency addition to root
+> `package.json`/`package-lock.json` (no other dependency changes); re-run
+> C1's verification set (build/test/lint) after the change and record it.
+> Owned paths also include `tests/assets.test.mjs` — the file the Verify
+> block's `npm test -- assets` requires. Silent witness runs (`EXECUTION.md`
+> §8) are mandatory: sound files are hashed with `shasum`, never played;
+> screenshot comparisons run through the muted Playwright setup
+> (`--mute-audio`). Recorded in `docs/08-open-items.md` (Amendments).
+
 ## Steps (inputs and details)
 - Inputs: `artifacts/decompiled/{svg,img,sfx}/**` (A1),
   `data/layout.json`, `data/animation.json` (A3)
