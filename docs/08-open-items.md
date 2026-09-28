@@ -182,3 +182,11 @@ RESOLVED 2026-09-28 — evidence/B3-viroloji-blocker.md + tests/fixtures/rounds/
   to timeline sequences painted in the rebuild; other classes verified by
   duration/trigger/state checks (evidence: `evidence/E3-animations.md` §3).
   Intro/preloader timed motion divergence queued as O23 (OPEN).
+- 2026-09-28 — **Owner defect wave X1–X3** (EXECUTION.md §9.4; tasks `X1`–`X3`):
+  (1) tile center clicks dead (letter label swallows pointer events) → X1;
+  (2) `s58_letter_tile.svg` embeds the FLA authoring "A" glyph → X2 removes it in
+  the asset pipeline with a regression guard (`docs/07` §4 guard note added by
+  X2's evidence) and refreshed S2–S7 raw+tolerant ratios;
+  (3) speaker control inert (no handler anywhere) → X3 implements the toggle
+  with persisted volume from evidenced semantics.
+  F3 waits until the wave is verified and committed.
