@@ -7,7 +7,8 @@
 //      sha256 (name -> sha256 -> source);
 //   3. the src/data copies recorded in the manifest match the files on disk;
 //   4. the manifest records the exact-pinned svgo version from package.json;
-//   5. every element id used by src/data/animation.json exists in layout.json.
+//   5. every element id used by src/data/animation.json exists in layout.json;
+//   6. the letter_tile template carries no baked placeholder glyph (X2 guard).
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
@@ -93,5 +94,36 @@ describe('asset manifest coverage (E1)', () => {
       .flatMap((sequence) => sequence.elements)
       .filter((id) => !ids.has(id));
     expect(unknown).toEqual([]);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// X2 regression guard (owner defect 2)
+//
+// The letter_tile export (`artifacts/decompiled/sprites/DefineSprite_58/1.svg`)
+// carries the authoring-time placeholder "A" of the FLA text field as FFDec
+// geometry: the `font_Verdana_A0` glyph outline plus the `text0`/`text1` text
+// instances referenced from the button frames. The reference never displays it
+// and the rebuild draws the letter as DOM text, so tools/process-assets.mjs
+// removes exactly that subtree set from the source text before SVGO
+// (`SVG_SOURCE_CORRECTIONS`). This check fails if the glyph ever reaches
+// `src/assets/svg/s58_letter_tile.svg` again; it is proven by a deliberate
+// local probe recorded in `evidence/X2-tile-glyph.md` (guard section).
+// ---------------------------------------------------------------------------
+describe('letter_tile template carries no baked placeholder glyph (X2)', () => {
+  it('keeps the tile structure and carries no glyph markers', () => {
+    const svg = readFileSync(path.join(ROOT, 'src/assets/svg/s58_letter_tile.svg'), 'utf8');
+    // Positive anchors: the check must not pass vacuously on a stub file.
+    for (const anchor of ['id="button0"', 'id="shape0"', 'id="shape1"', 'xlink:href="#button0"']) {
+      expect(svg, `anchor ${anchor}`).toContain(anchor);
+    }
+    // `font_Verdana` = FFDec glyph group id and its references; `text0`/`text1`
+    // = the placeholder text instances (definitions and frame references); the
+    // path data is the "A" outline itself (`convertPathData` is disabled, so it
+    // would survive SVGO verbatim).
+    expect(svg, 'no FFDec glyph group/reference').not.toMatch(/font_Verdana/);
+    expect(svg, 'no placeholder text instance reference').not.toMatch(/#text[01]\b/);
+    expect(svg, 'no placeholder text instance definition').not.toMatch(/id="text[01]"/);
+    expect(svg, 'no glyph outline path').not.toContain('M24.35 -14.35');
   });
 });

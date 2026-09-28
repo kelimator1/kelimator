@@ -1,0 +1,25 @@
+removed spans: 7 | bytes removed: 1232 | raw: 40951 -> cleaned: 39719
+--- removed[1] (130 bytes) ---
+<use ffdec:characterId="52" height="32.1" transform="matrix(1.0, 0.0, 0.0, 1.0, -78.5, -15.1)" width="33.15" xlink:href="#text0"/>
+--- removed[2] (130 bytes) ---
+<use ffdec:characterId="52" height="32.1" transform="matrix(1.0, 0.0, 0.0, 1.0, -78.5, -15.1)" width="33.15" xlink:href="#text0"/>
+--- removed[3] (132 bytes) ---
+<use ffdec:characterId="55" height="32.1" transform="matrix(1.0, 0.0, 0.0, 1.0, -79.45, -13.05)" width="33.15" xlink:href="#text1"/>
+--- removed[4] (132 bytes) ---
+<use ffdec:characterId="55" height="32.1" transform="matrix(1.0, 0.0, 0.0, 1.0, -79.45, -13.05)" width="33.15" xlink:href="#text1"/>
+--- removed[5] (240 bytes) ---
+<g id="text0">
+      <g transform="matrix(1.0, 0.0, 0.0, 1.0, 63.35, 0.0)">
+        <use fill="#000000" height="32.1" transform="matrix(0.4297, 0.0, 0.0, 0.4297, 8.0, 22.15)" width="33.15" xlink:href="#font_Verdana_A0"/>
+      </g>
+    </g>
+--- removed[6] (239 bytes) ---
+<g id="text1">
+      <g transform="matrix(1.0, 0.0, 0.0, 1.0, 63.35, 0.0)">
+        <use fill="#000000" height="32.1" transform="matrix(0.3516, 0.0, 0.0, 0.3516, 9.6, 18.1)" width="33.15" xlink:href="#font_Verdana_A0"/>
+      </g>
+    </g>
+--- removed[7] (229 bytes) ---
+<g id="font_Verdana_A0">
+      <path d="M24.35 -14.35 L15.2 -14.35 19.75 -27.65 24.35 -14.35 M39.2 0.0 L25.4 -37.2 14.35 -37.2 0.6 0.0 10.3 0.0 12.9 -7.5 26.65 -7.5 29.25 0.0 39.2 0.0" fill-rule="evenodd" stroke="none"/>
+    </g>

@@ -1,0 +1,10 @@
+c5cbd92d6c7e47c7733f61aab82657903cd2256e236110542c475c281e905c51  /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/x2/process-assets.pre-x2.mjs
+407f0eef8ef0a1643b319c4a8c7173aca3820579c9d648f3469dbed804988c38  tools/process-assets.mjs
+92f03463b54fde452ff38749aa6e1d39a886bef02492282d31effc5b0636d763  /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/x2/manifest.pre-x2.json
+7a25f16754dda66669c732effd3be186e5a3a04ce96e76a2f7db368b3286949f  src/assets/manifest.json
+8a604610be095c33b5bb2f08ce276314e7805d01ad88f7bc2e87c63ee09d99dd  /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/x2/E1-svgo.pre-x2/s58_letter_tile/before.png
+4808d9403b707a0fdf052821510d00f775b12abc3c9938487f32074cdf6e9343  evidence/visual/E1-svgo/s58_letter_tile/before.png
+8a604610be095c33b5bb2f08ce276314e7805d01ad88f7bc2e87c63ee09d99dd  /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/x2/E1-svgo.pre-x2/s58_letter_tile/after.png
+4808d9403b707a0fdf052821510d00f775b12abc3c9938487f32074cdf6e9343  evidence/visual/E1-svgo/s58_letter_tile/after.png
+4808d9403b707a0fdf052821510d00f775b12abc3c9938487f32074cdf6e9343  evidence/X2-tile-glyph/tile-new.png
+1e4d6ec1427d2ad7fc7257e2e9e9dc5042d60fb2f8bb445590df6e4a4cd20c6c  src/ui/board.ts

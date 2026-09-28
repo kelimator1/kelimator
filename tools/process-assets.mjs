@@ -10,6 +10,10 @@
  *            (`--mute-audio`, EXECUTION.md §8) and pixel-diffed with F1's
  *            `verify/diff/diff.mjs`; the pass rule is 0 mismatched pixels.
  *            Screenshots + reports are copied to `evidence/visual/E1-svgo/`.
+ *            Per-asset source corrections (owner defects) are applied to the
+ *            source text before SVGO; "before" in the preservation pair is the
+ *            corrected text SVGO receives (the correction itself is verified
+ *            separately — currently only `s58_letter_tile.svg`, task X2).
  *   img      docs/03 §2 decision procedure for the two bitmaps; as-is copies
  *            to `src/assets/img/` named `img_<id>_<w>x<h>.png`.
  *   sfx      Verify the 9 sounds against the A1 hashes (file hash, SHA256SUMS
@@ -135,6 +139,73 @@ export const SVGO_OPTIONS = {
 };
 
 /**
+ * Owner defect 2 (task X2) — baked placeholder glyph in the letter-tile export.
+ *
+ * The tile's FLA text field is dynamic at runtime (the rebuild draws the letter
+ * as DOM text in `src/ui/board.ts` renderTiles), but FFDec exported the
+ * authoring-time placeholder "A" of the field as real geometry. The reference
+ * capture never shows a baked letter. Remove exactly this subtree set from the
+ * source text before SVGO, so every other element/pixel stays identical:
+ *
+ *   1. `<use xlink:href="#text0">` ×2 — up/over button frames (FFDec char 52)
+ *   2. `<use xlink:href="#text1">` ×2 — down/hittest frames (FFDec char 55)
+ *   3. `<g id="text0">` — the up/over text instance (char 52 definition)
+ *   4. `<g id="text1">` — the down/hittest text instance (char 55 definition)
+ *   5. `<g id="font_Verdana_A0">` — the glyph outline path (the "A" itself)
+ *
+ * The removal is textual and deterministic; every count is asserted, so any
+ * structural drift of the export fails loudly instead of silently skipping.
+ * Verified pixel-exact in `evidence/X2-tile-glyph.md` (old vs new processed
+ * render: mismatches confined to the glyph box; everything else unchanged).
+ */
+const SVG_SOURCE_CORRECTIONS = new Map([
+  ['s58_letter_tile.svg', stripLetterTilePlaceholderGlyph],
+]);
+
+/** Removes one `<g id="…">…</g>` subtree (balanced scan — no nested regex). */
+function removeSvgGroupById(svg, id) {
+  const open = `<g id="${id}">`;
+  const start = svg.indexOf(open);
+  if (start === -1) throw new Error(`removeSvgGroupById: ${open} not found`);
+  if (svg.indexOf(open, start + 1) !== -1) {
+    throw new Error(`removeSvgGroupById: duplicate ${open}`);
+  }
+  const tagRe = /<(\/?)g\b[^>]*>/g;
+  tagRe.lastIndex = start + open.length;
+  let depth = 1;
+  for (let m = tagRe.exec(svg); m !== null; m = tagRe.exec(svg)) {
+    depth += m[1] === '/' ? -1 : 1;
+    if (depth === 0) return svg.slice(0, start) + svg.slice(tagRe.lastIndex);
+  }
+  throw new Error(`removeSvgGroupById: unbalanced ${open}`);
+}
+
+/** Removes every self-closing `<use>` with the given href; asserts the count. */
+function removeSvgUsesByHref(svg, href, expected) {
+  const re = new RegExp(`<use\\b[^>]*xlink:href="${href}"[^>]*/>`, 'g');
+  const count = (svg.match(re) ?? []).length;
+  if (count !== expected) {
+    throw new Error(`removeSvgUsesByHref: ${href}: expected ${expected}, found ${count}`);
+  }
+  return svg.replace(re, '');
+}
+
+function stripLetterTilePlaceholderGlyph(source) {
+  let out = source;
+  out = removeSvgUsesByHref(out, '#text0', 2); // up + over frames (char 52)
+  out = removeSvgUsesByHref(out, '#text1', 2); // down + hittest frames (char 55)
+  out = removeSvgGroupById(out, 'text0');
+  out = removeSvgGroupById(out, 'text1');
+  out = removeSvgGroupById(out, 'font_Verdana_A0');
+  for (const marker of ['#text0', '#text1', 'font_Verdana_A0']) {
+    if (out.includes(marker)) {
+      throw new Error(`stripLetterTilePlaceholderGlyph: marker remains: ${marker}`);
+    }
+  }
+  return out;
+}
+
+/**
  * Character id + source kind from an A3 asset path
  * (shapes/<id>.svg | sprites/DefineSprite_<id>/<frame>.svg | DefineButton2_<id>/1_up.svg).
  */
@@ -248,7 +319,11 @@ async function cmdSvg() {
     const page = await context.newPage();
     for (const entry of entries) {
       const source = readFileSync(abs(entry.source), 'utf8');
-      const { data: optimized } = optimize(source, { path: entry.source, ...SVGO_OPTIONS });
+      const correction = SVG_SOURCE_CORRECTIONS.get(entry.name);
+      // `prepared` is the SVGO input *and* the "before" render: source
+      // corrections (X2) must not read as SVGO-induced pixel changes.
+      const prepared = correction === undefined ? source : correction(source);
+      const { data: optimized } = optimize(prepared, { path: entry.source, ...SVGO_OPTIONS });
       const outPath = path.join(outDir, entry.name);
       writeFileSync(outPath, optimized);
 
@@ -262,7 +337,7 @@ async function cmdSvg() {
       const before = path.join(work, `${entry.name}.before.png`);
       const after = path.join(work, `${entry.name}.after.png`);
       const diffDir = path.join(work, `${entry.name}.diff`);
-      const beforeInfo = await renderSvgSnapshot(page, source, size, before);
+      const beforeInfo = await renderSvgSnapshot(page, prepared, size, before);
       const afterInfo = await renderSvgSnapshot(page, optimized, size, after);
       if (
         intrinsic.width > 0 &&
@@ -302,7 +377,7 @@ async function cmdSvg() {
         element: entry.element,
         source: entry.source,
         symbol: entry.symbol,
-        sourceBytes: Buffer.byteLength(source),
+        sourceBytes: Buffer.byteLength(prepared),
         outputBytes: Buffer.byteLength(optimized),
         width: intrinsic.width,
         height: intrinsic.height,
@@ -315,7 +390,7 @@ async function cmdSvg() {
         pass: true,
       });
       OK(
-        `svg ${entry.name}: ${Buffer.byteLength(source)} -> ${Buffer.byteLength(optimized)} bytes, ` +
+        `svg ${entry.name}: ${Buffer.byteLength(prepared)} -> ${Buffer.byteLength(optimized)} bytes, ` +
           `ink=${inkPixels}, mismatchedPixels=${report.mismatchedPixels}`,
       );
     }

@@ -160,7 +160,7 @@
    "symbol": 48
   },
   "svg/s58_letter_tile.svg": {
-   "sha256": "221c62620aa3fe51630e305aa477805b3f27df70f4375b439de9189c23e78783",
+   "sha256": "4a2510f29f029f7cd4f5acbfacb48f2bb71c7f6dffdb16756b9ad971f01062d0",
    "source": "artifacts/decompiled/sprites/DefineSprite_58/1.svg",
    "kind": "svg",
    "element": "letter_tile",

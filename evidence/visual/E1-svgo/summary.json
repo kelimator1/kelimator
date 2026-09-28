@@ -443,8 +443,8 @@
     "id": 58,
     "frame": 1
    },
-   "sourceBytes": 40951,
-   "outputBytes": 35619,
+   "sourceBytes": 39719,
+   "outputBytes": 34893,
    "width": 164.2,
    "height": 114.4,
    "naturalWidth": 164,
@@ -768,8 +768,8 @@
  "totals": {
   "assets": 36,
   "mismatchedPixels": 0,
-  "sourceBytes": 272443,
-  "outputBytes": 247381,
+  "sourceBytes": 271211,
+  "outputBytes": 246655,
   "inkPixels": 882418,
   "nonBlankRenders": 23
  }
