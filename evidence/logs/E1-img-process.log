@@ -1,0 +1,6 @@
+[process-assets] img img_47_550x400.png: 550x400 (IHDR = catalog ±0), as-is, sha256=366abdbfc11be54290e48f70d5c0104f0b5fcb47084fe76884c0183a0a84ee1a
+[process-assets] img img_47_550x400.png: placement clipped bitmap fill inside shape 48 = element board_backdrop (SWF frame 131, stage box (0.45,0) 550x400); never placed directly (A1 §3; A3 §1 / O10)
+[process-assets] img img_47_550x400.png: decision displayed 550x400 = source 550x400 => as-is copy (docs/03 §2 step 2); no upscale, no re-encode, no creative edit (step 3/4 not triggered)
+[process-assets] img img_86_21x29.png: 21x29 (IHDR = catalog ±0), as-is, sha256=74710a87bbc5f61b3ab60d24d1c5b2892b3561b67b13bcb48ca2a559441cfa6e
+[process-assets] img img_86_21x29.png: placement clipped bitmap fill inside shape 87 inside DefineSprite 88 (frame label "on"), inlined into DefineButton2_90 (btn_speaker) up-state; never placed directly (A1 §3; A3 §1 / O10)
+[process-assets] img img_86_21x29.png: decision displayed 21x29 = source 21x29 => as-is copy (docs/03 §2 step 2)

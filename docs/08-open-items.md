@@ -33,6 +33,7 @@ When closed, append: `RESOLVED <date> — <evidence file> — <one-line finding>
 | O18 | Any visual difference between 2007 and 2012 builds relevant to layout | A3: compare extracted geometry; record differences; 2012 wins | `evidence/A3-diffs.md` | E1, E2 | RESOLVED — evidence/A3-diffs.md |
 | O19 | MochiAds removal points (which scripts/tags to strip) | A1/A2: identify ad initialization/resume paths; ensure removal does not alter game flow | `evidence/A2-mochi.md` | D5 | RESOLVED — evidence/A2-mochi.md |
 | O20 | Repeat-capture stability of the reference harness (same screenshots across runs) | C3: capture the matrix twice; compare hashes; if unstable, identify cause and record | `evidence/C3-stability.md` | F2 | OPEN |
+| O21 | Which fixture is served to the 2012 reference harness? | C3 + amendment 2026-09-28 (`tasks/C3-reference-harness.md`): the 2012 client Base64-decodes every round value; serve a deterministic Base64(UTF-8) re-encoding of the archived `xml64.php` word list (input/script/output SHA-256 recorded; archived file unmodified) | `evidence/C3-fixture-format.md`; `verify/reference/fixtures/` | E2, E3, F2 | BLOCKER (raised by C3 2026-09-28; resolution in progress under the C3 amendment) |
 
 ---
 
@@ -98,3 +99,7 @@ RESOLVED 2026-09-28 — evidence/A3-diffs.md — 2007 vs 2012 compared for 44 sh
   `package.json`/`package-lock.json`; C1's verification set (build/test/lint)
   is re-run by E1 after the change. Silent witness runs apply (`EXECUTION.md`
   §8): sound files are hashed, never played.
+- 2026-09-28 — E1 text-catalog destination (`docs/03` §1): the 26 text-catalog
+  files are committed to `src/assets/text/<symbolId>.txt` so runtime `asset`
+  references resolve in a fresh clone (provenance only). Evidence:
+  `evidence/E1-assets.md` §11.1/§13.

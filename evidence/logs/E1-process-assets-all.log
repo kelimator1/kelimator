@@ -1,0 +1,82 @@
+[process-assets] svg s1_intro_backdrop.svg: 1662 -> 1503 bytes, ink=220800, mismatchedPixels=0
+[process-assets] svg s3_logo_ornament.svg: 833 -> 728 bytes, ink=775, mismatchedPixels=0
+[process-assets] svg s5_intro_sky.svg: 1009 -> 870 bytes, ink=132655, mismatchedPixels=0
+[process-assets] svg s6_intro_ground.svg: 456 -> 316 bytes, ink=88320, mismatchedPixels=0
+[process-assets] svg s8_intro_layer3.svg: 991 -> 855 bytes, ink=88160, mismatchedPixels=0
+[process-assets] svg s12_preloader_progress.svg: 1412 -> 1228 bytes, ink=1206, mismatchedPixels=0
+[process-assets] svg s20_intro_glow.svg: 972 -> 807 bytes, ink=6785, mismatchedPixels=0
+[process-assets] svg s21_clip_timerr.svg: 308 -> 147 bytes, ink=0, mismatchedPixels=0
+[process-assets] svg s23_clip_enter.svg: 308 -> 147 bytes, ink=0, mismatchedPixels=0
+[process-assets] svg s25_clip_shuffle.svg: 308 -> 147 bytes, ink=0, mismatchedPixels=0
+[process-assets] svg s27_clip_countdown.svg: 308 -> 147 bytes, ink=0, mismatchedPixels=0
+[process-assets] svg s29_intro_logo.svg: 17464 -> 16134 bytes, ink=20213, mismatchedPixels=0
+[process-assets] svg s31_clip_boing.svg: 308 -> 147 bytes, ink=0, mismatchedPixels=0
+[process-assets] svg s33_clip_fanfare.svg: 308 -> 147 bytes, ink=0, mismatchedPixels=0
+[process-assets] svg s35_clip_finishsound.svg: 308 -> 147 bytes, ink=0, mismatchedPixels=0
+[process-assets] svg s37_clip_typer.svg: 308 -> 147 bytes, ink=0, mismatchedPixels=0
+[process-assets] svg s39_clip_backspace.svg: 308 -> 147 bytes, ink=0, mismatchedPixels=0
+[process-assets] svg s41_clip_buzz.svg: 308 -> 147 bytes, ink=0, mismatchedPixels=0
+[process-assets] svg s46_wordball.svg: 3602 -> 3312 bytes, ink=0, mismatchedPixels=0
+[process-assets] svg s48_board_backdrop.svg: 84112 -> 84027 bytes, ink=220000, mismatchedPixels=0
+[process-assets] svg s58_letter_tile.svg: 40951 -> 35619 bytes, ink=5478, mismatchedPixels=0
+[process-assets] svg s63_btn_kbuton.svg: 4936 -> 4507 bytes, ink=1219, mismatchedPixels=0
+[process-assets] svg s65_btn_ebuton.svg: 2744 -> 2425 bytes, ink=1277, mismatchedPixels=0
+[process-assets] svg s67_tile_socket.svg: 10941 -> 10189 bytes, ink=3529, mismatchedPixels=0
+[process-assets] svg s71_btn_ybuton.svg: 4792 -> 4332 bytes, ink=1575, mismatchedPixels=0
+[process-assets] svg s76_timer_bar.svg: 1928 -> 1743 bytes, ink=2153, mismatchedPixels=0
+[process-assets] svg s84_loading_banner.svg: 14376 -> 12657 bytes, ink=34253, mismatchedPixels=0
+[process-assets] svg s90_btn_speaker.svg: 2743 -> 2575 bytes, ink=504, mismatchedPixels=0
+[process-assets] svg s97_credit_line.svg: 14348 -> 11933 bytes, ink=1645, mismatchedPixels=0
+[process-assets] svg s103_credit_site.svg: 14090 -> 11679 bytes, ink=1587, mismatchedPixels=0
+[process-assets] svg s105_btn_sbuton.svg: 2622 -> 2346 bytes, ink=1312, mismatchedPixels=0
+[process-assets] svg s108_btn_top10.svg: 4154 -> 3792 bytes, ink=1615, mismatchedPixels=0
+[process-assets] svg s111_score_feedback.svg: 471 -> 393 bytes, ink=0, mismatchedPixels=0
+[process-assets] svg s123_status_ball.svg: 5961 -> 5415 bytes, ink=1032, mismatchedPixels=0
+[process-assets] svg s166_hiscore_form.svg: 31315 -> 26126 bytes, ink=46325, mismatchedPixels=0
+[process-assets] svg s170_bottom_marquee.svg: 478 -> 400 bytes, ink=0, mismatchedPixels=0
+[process-assets] svg done: 36 assets, 0 mismatched pixels, 272443 -> 247381 bytes, 23 non-blank renders
+[process-assets] img img_47_550x400.png: 550x400 (IHDR = catalog ±0), as-is, sha256=366abdbfc11be54290e48f70d5c0104f0b5fcb47084fe76884c0183a0a84ee1a
+[process-assets] img img_47_550x400.png: placement clipped bitmap fill inside shape 48 = element board_backdrop (SWF frame 131, stage box (0.45,0) 550x400); never placed directly (A1 §3; A3 §1 / O10)
+[process-assets] img img_47_550x400.png: decision displayed 550x400 = source 550x400 => as-is copy (docs/03 §2 step 2); no upscale, no re-encode, no creative edit (step 3/4 not triggered)
+[process-assets] img img_86_21x29.png: 21x29 (IHDR = catalog ±0), as-is, sha256=74710a87bbc5f61b3ab60d24d1c5b2892b3561b67b13bcb48ca2a559441cfa6e
+[process-assets] img img_86_21x29.png: placement clipped bitmap fill inside shape 87 inside DefineSprite 88 (frame label "on"), inlined into DefineButton2_90 (btn_speaker) up-state; never placed directly (A1 §3; A3 §1 / O10)
+[process-assets] img img_86_21x29.png: decision displayed 21x29 = source 21x29 => as-is copy (docs/03 §2 step 2)
+[process-assets] sfx src/assets/sfx/sfx_22_enter.mp3: sha256=1c3cd10320a9266fe1431d9aa46e8c6ec9d31add35313241d66f216ef0387fb2 == A1 export == SoundData[2:]; bytes=1950
+[process-assets] sfx src/assets/sfx/sfx_24_shuffle.mp3: sha256=370bbc2eadd4a88aaa473dfaa59f5da0fd37b175b1f726edd245356bfa28cc3d == A1 export == SoundData[2:]; bytes=4030
+[process-assets] sfx src/assets/sfx/sfx_26_countdown.mp3: sha256=0f878a5566c5931539b0ec8e0af9661a3447467235dc1443787f3f6e3ab350db == A1 export == SoundData[2:]; bytes=910
+[process-assets] sfx src/assets/sfx/sfx_30_boing.mp3: sha256=da643f2b8afbbfb8fac1baf9e310fdec7f453514706ac4d2a8304467150ead37 == A1 export == SoundData[2:]; bytes=1560
+[process-assets] sfx src/assets/sfx/sfx_32_fanfare.mp3: sha256=3ddbd6215e6259957ff1c7d7df24d26119ad98c522e19a91c0bd0c255e966d68 == A1 export == SoundData[2:]; bytes=21840
+[process-assets] sfx src/assets/sfx/sfx_34_finishsound.mp3: sha256=5db9654e0feb324a975822726dc41507dc2f8f30ab9154d3b329fcf9764c4ba1 == A1 export == SoundData[2:]; bytes=2730
+[process-assets] sfx src/assets/sfx/sfx_36_typer.mp3: sha256=3f34ed813e98e8ac6df1d0f97540d4cd2e44242c8a28cda0ef345bacf7e242bf == A1 export == SoundData[2:]; bytes=1430
+[process-assets] sfx src/assets/sfx/sfx_38_backspace.mp3: sha256=0ed0e6eac39dac1391f26266c31604d54ba3dcfc1829826911cdb24e793f752f == A1 export == SoundData[2:]; bytes=1690
+[process-assets] sfx src/assets/sfx/sfx_40_buzz.mp3: sha256=832f7980db3c1d1b8b12ff89c933d9d4e9281d60d3ba6b656ccd6760dcb39395 == A1 export == SoundData[2:]; bytes=2730
+[process-assets] text 14.txt: bytes=0 (element preloader_percent_value)
+[process-assets] text 16.txt: bytes=1 (element preloader_percent_sign)
+[process-assets] text 17.txt: bytes=0 (element preloader_loaded_bytes)
+[process-assets] text 18.txt: bytes=0 (element preloader_total_bytes)
+[process-assets] text 19.txt: bytes=1 (element preloader_slash)
+[process-assets] text 112.txt: bytes=0 (element timer_value)
+[process-assets] text 124.txt: bytes=0 (element result_word_template)
+[process-assets] text 125.txt: bytes=0 (element score_value)
+[process-assets] text 127.txt: bytes=4 (element label_puan_black)
+[process-assets] text 128.txt: bytes=4 (element label_puan_orange)
+[process-assets] text 129.txt: bytes=5 (element label_sure_black)
+[process-assets] text 130.txt: bytes=5 (element label_sure_orange)
+[process-assets] text 131.txt: bytes=9 (element label_harf_3)
+[process-assets] text 132.txt: bytes=9 (element label_harf_8)
+[process-assets] text 133.txt: bytes=9 (element label_harf_4)
+[process-assets] text 134.txt: bytes=9 (element label_harf_5)
+[process-assets] text 135.txt: bytes=9 (element label_harf_6)
+[process-assets] text 136.txt: bytes=9 (element label_harf_7)
+[process-assets] text 137.txt: bytes=0 (element count_3)
+[process-assets] text 138.txt: bytes=0 (element count_8)
+[process-assets] text 139.txt: bytes=0 (element count_4)
+[process-assets] text 140.txt: bytes=0 (element count_5)
+[process-assets] text 141.txt: bytes=0 (element count_6)
+[process-assets] text 142.txt: bytes=0 (element count_7)
+[process-assets] text 143.txt: bytes=6 (element label_kelime_black)
+[process-assets] text 144.txt: bytes=6 (element label_kelime_orange)
+[process-assets] text done: 26 files
+[process-assets] layout 62 asset refs rewritten -> src/data/layout.json
+[process-assets] layout src/data/animation.json: byte copy, sha256=c263ed44b8d352ed72757821f0fd3cbebd58e5c5883dd124ec2229343ce9794e
+[process-assets] manifest src/assets/manifest.json: 73 assets, 62 runtime refs

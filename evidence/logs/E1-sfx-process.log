@@ -1,0 +1,9 @@
+[process-assets] sfx src/assets/sfx/sfx_22_enter.mp3: sha256=1c3cd10320a9266fe1431d9aa46e8c6ec9d31add35313241d66f216ef0387fb2 == A1 export == SoundData[2:]; bytes=1950
+[process-assets] sfx src/assets/sfx/sfx_24_shuffle.mp3: sha256=370bbc2eadd4a88aaa473dfaa59f5da0fd37b175b1f726edd245356bfa28cc3d == A1 export == SoundData[2:]; bytes=4030
+[process-assets] sfx src/assets/sfx/sfx_26_countdown.mp3: sha256=0f878a5566c5931539b0ec8e0af9661a3447467235dc1443787f3f6e3ab350db == A1 export == SoundData[2:]; bytes=910
+[process-assets] sfx src/assets/sfx/sfx_30_boing.mp3: sha256=da643f2b8afbbfb8fac1baf9e310fdec7f453514706ac4d2a8304467150ead37 == A1 export == SoundData[2:]; bytes=1560
+[process-assets] sfx src/assets/sfx/sfx_32_fanfare.mp3: sha256=3ddbd6215e6259957ff1c7d7df24d26119ad98c522e19a91c0bd0c255e966d68 == A1 export == SoundData[2:]; bytes=21840
+[process-assets] sfx src/assets/sfx/sfx_34_finishsound.mp3: sha256=5db9654e0feb324a975822726dc41507dc2f8f30ab9154d3b329fcf9764c4ba1 == A1 export == SoundData[2:]; bytes=2730
+[process-assets] sfx src/assets/sfx/sfx_36_typer.mp3: sha256=3f34ed813e98e8ac6df1d0f97540d4cd2e44242c8a28cda0ef345bacf7e242bf == A1 export == SoundData[2:]; bytes=1430
+[process-assets] sfx src/assets/sfx/sfx_38_backspace.mp3: sha256=0ed0e6eac39dac1391f26266c31604d54ba3dcfc1829826911cdb24e793f752f == A1 export == SoundData[2:]; bytes=1690
+[process-assets] sfx src/assets/sfx/sfx_40_buzz.mp3: sha256=832f7980db3c1d1b8b12ff89c933d9d4e9281d60d3ba6b656ccd6760dcb39395 == A1 export == SoundData[2:]; bytes=2730

@@ -1,0 +1,761 @@
+{
+ "schemaVersion": 1,
+ "generator": "tools/process-assets.mjs",
+ "svgo": {
+  "version": "4.1.0",
+  "preset": "preset-default",
+  "disabledOverrides": [
+   "cleanupIds",
+   "cleanupNumericValues",
+   "convertShapeToPath",
+   "convertEllipseToCircle",
+   "moveElemsAttrsToGroup",
+   "moveGroupAttrsToElems",
+   "collapseGroups",
+   "convertPathData",
+   "convertTransform",
+   "mergePaths",
+   "removeUselessStrokeAndFill"
+  ]
+ },
+ "assets": {
+  "svg/s1_intro_backdrop.svg": {
+   "sha256": "e92f162dfba782a4d145d812decf512a76a54b3b918672a0d25a528bb1b48f06",
+   "source": "artifacts/decompiled/shapes/1.svg",
+   "kind": "svg",
+   "element": "intro_backdrop",
+   "symbol": 1
+  },
+  "svg/s3_logo_ornament.svg": {
+   "sha256": "f77c54f9e5231ab6228e54cb124dd4d6180e5e3588ab7546f58de289771bd39d",
+   "source": "artifacts/decompiled/sprites/DefineSprite_3/1.svg",
+   "kind": "svg",
+   "element": "logo_ornament",
+   "symbol": 3
+  },
+  "svg/s5_intro_sky.svg": {
+   "sha256": "6cb660a0a7416d3c67fef7584b58138849795b9804b2c435cca31566fab2a4e7",
+   "source": "artifacts/decompiled/sprites/DefineSprite_5/1.svg",
+   "kind": "svg",
+   "element": "intro_sky",
+   "symbol": 5
+  },
+  "svg/s6_intro_ground.svg": {
+   "sha256": "fb21d4949ea1f319ee61abad8c07c1a28e3eda7ef760e48d4682527fc7c6c682",
+   "source": "artifacts/decompiled/shapes/6.svg",
+   "kind": "svg",
+   "element": "intro_ground",
+   "symbol": 6
+  },
+  "svg/s8_intro_layer3.svg": {
+   "sha256": "7a014bc53fcac0a305dc55e0b281b635ae783f1f41663d8a47777c3df3167af3",
+   "source": "artifacts/decompiled/sprites/DefineSprite_8/1.svg",
+   "kind": "svg",
+   "element": "intro_layer3",
+   "symbol": 8
+  },
+  "svg/s12_preloader_progress.svg": {
+   "sha256": "43a5f9b97e773f1d7a8db3e044b4ee9c61f4be7f9158a2da3f0a75d9d3151719",
+   "source": "artifacts/decompiled/sprites/DefineSprite_12/1.svg",
+   "kind": "svg",
+   "element": "preloader_progress",
+   "symbol": 12
+  },
+  "svg/s20_intro_glow.svg": {
+   "sha256": "87961cc404678e9a120559f5ab642c829c84b4a624ea1ba9f5882fe802a1f2e8",
+   "source": "artifacts/decompiled/shapes/20.svg",
+   "kind": "svg",
+   "element": "intro_glow",
+   "symbol": 20
+  },
+  "svg/s21_clip_timerr.svg": {
+   "sha256": "bc71b0d380cfd32105486c24062d2514f3118aaae7061ecdc18111c72f378528",
+   "source": "artifacts/decompiled/sprites/DefineSprite_21/1.svg",
+   "kind": "svg",
+   "element": "clip_timerr",
+   "symbol": 21
+  },
+  "svg/s23_clip_enter.svg": {
+   "sha256": "bc71b0d380cfd32105486c24062d2514f3118aaae7061ecdc18111c72f378528",
+   "source": "artifacts/decompiled/sprites/DefineSprite_23/1.svg",
+   "kind": "svg",
+   "element": "clip_enter",
+   "symbol": 23
+  },
+  "svg/s25_clip_shuffle.svg": {
+   "sha256": "bc71b0d380cfd32105486c24062d2514f3118aaae7061ecdc18111c72f378528",
+   "source": "artifacts/decompiled/sprites/DefineSprite_25/1.svg",
+   "kind": "svg",
+   "element": "clip_shuffle",
+   "symbol": 25
+  },
+  "svg/s27_clip_countdown.svg": {
+   "sha256": "bc71b0d380cfd32105486c24062d2514f3118aaae7061ecdc18111c72f378528",
+   "source": "artifacts/decompiled/sprites/DefineSprite_27/1.svg",
+   "kind": "svg",
+   "element": "clip_countdown",
+   "symbol": 27
+  },
+  "svg/s29_intro_logo.svg": {
+   "sha256": "0e349e067d17c64e5874f73af754daffefce1ba3e80ac587d51219895b1b4323",
+   "source": "artifacts/decompiled/sprites/DefineSprite_29/1.svg",
+   "kind": "svg",
+   "element": "intro_logo",
+   "symbol": 29
+  },
+  "svg/s31_clip_boing.svg": {
+   "sha256": "bc71b0d380cfd32105486c24062d2514f3118aaae7061ecdc18111c72f378528",
+   "source": "artifacts/decompiled/sprites/DefineSprite_31/1.svg",
+   "kind": "svg",
+   "element": "clip_boing",
+   "symbol": 31
+  },
+  "svg/s33_clip_fanfare.svg": {
+   "sha256": "bc71b0d380cfd32105486c24062d2514f3118aaae7061ecdc18111c72f378528",
+   "source": "artifacts/decompiled/sprites/DefineSprite_33/1.svg",
+   "kind": "svg",
+   "element": "clip_fanfare",
+   "symbol": 33
+  },
+  "svg/s35_clip_finishsound.svg": {
+   "sha256": "bc71b0d380cfd32105486c24062d2514f3118aaae7061ecdc18111c72f378528",
+   "source": "artifacts/decompiled/sprites/DefineSprite_35/1.svg",
+   "kind": "svg",
+   "element": "clip_finishsound",
+   "symbol": 35
+  },
+  "svg/s37_clip_typer.svg": {
+   "sha256": "bc71b0d380cfd32105486c24062d2514f3118aaae7061ecdc18111c72f378528",
+   "source": "artifacts/decompiled/sprites/DefineSprite_37/1.svg",
+   "kind": "svg",
+   "element": "clip_typer",
+   "symbol": 37
+  },
+  "svg/s39_clip_backspace.svg": {
+   "sha256": "bc71b0d380cfd32105486c24062d2514f3118aaae7061ecdc18111c72f378528",
+   "source": "artifacts/decompiled/sprites/DefineSprite_39/1.svg",
+   "kind": "svg",
+   "element": "clip_backspace",
+   "symbol": 39
+  },
+  "svg/s41_clip_buzz.svg": {
+   "sha256": "bc71b0d380cfd32105486c24062d2514f3118aaae7061ecdc18111c72f378528",
+   "source": "artifacts/decompiled/sprites/DefineSprite_41/1.svg",
+   "kind": "svg",
+   "element": "clip_buzz",
+   "symbol": 41
+  },
+  "svg/s46_wordball.svg": {
+   "sha256": "f25873130dfab91477d1e572728ddd7e2155abfd53c517a5eabc0e5369b51c27",
+   "source": "artifacts/decompiled/sprites/DefineSprite_46/2.svg",
+   "kind": "svg",
+   "element": "wordball",
+   "symbol": 46
+  },
+  "svg/s48_board_backdrop.svg": {
+   "sha256": "ab35a24f2c6fae2d64a20ab35c806e12a320632a9d50fbc414550e22c8b7a9c3",
+   "source": "artifacts/decompiled/shapes/48.svg",
+   "kind": "svg",
+   "element": "board_backdrop",
+   "symbol": 48
+  },
+  "svg/s58_letter_tile.svg": {
+   "sha256": "221c62620aa3fe51630e305aa477805b3f27df70f4375b439de9189c23e78783",
+   "source": "artifacts/decompiled/sprites/DefineSprite_58/1.svg",
+   "kind": "svg",
+   "element": "letter_tile",
+   "symbol": 58
+  },
+  "svg/s63_btn_kbuton.svg": {
+   "sha256": "593b2f0c27382d85681d0cc472a87daa3ba51a358498814f4d2025bfeb61dd9a",
+   "source": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_63/1_up.svg",
+   "kind": "svg",
+   "element": "btn_kbuton",
+   "symbol": 63
+  },
+  "svg/s65_btn_ebuton.svg": {
+   "sha256": "44d6aefffd03fafcb999a5ebf8cbdafddd118f870c95f5cdf6c3709bb697fae7",
+   "source": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_65/1_up.svg",
+   "kind": "svg",
+   "element": "btn_ebuton",
+   "symbol": 65
+  },
+  "svg/s67_tile_socket.svg": {
+   "sha256": "abc8dada0257df954e5b9faf703898bee3bd0071c0a99f585e511bfc0961b394",
+   "source": "artifacts/decompiled/sprites/DefineSprite_67/1.svg",
+   "kind": "svg",
+   "element": "tile_socket",
+   "symbol": 67
+  },
+  "svg/s71_btn_ybuton.svg": {
+   "sha256": "13c941d51366c9faccd4ca9b730d5023dddc8a782c38516540715a9188bb4e65",
+   "source": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_71/1_up.svg",
+   "kind": "svg",
+   "element": "btn_ybuton",
+   "symbol": 71
+  },
+  "svg/s76_timer_bar.svg": {
+   "sha256": "3616b85e620b625b91aeea9e4f88e9a83c6a02e36c7f330975c91d51adfdf9d6",
+   "source": "artifacts/decompiled/sprites/DefineSprite_76/1.svg",
+   "kind": "svg",
+   "element": "timer_bar",
+   "symbol": 76
+  },
+  "svg/s84_loading_banner.svg": {
+   "sha256": "11bd11dfd53eb0854b892b9765110dc72c4aebdf52083ded058c7618ec32d156",
+   "source": "artifacts/decompiled/sprites/DefineSprite_84/2.svg",
+   "kind": "svg",
+   "element": "loading_banner",
+   "symbol": 84
+  },
+  "svg/s90_btn_speaker.svg": {
+   "sha256": "bebd49f7bb99427b3d56612b9a8590f01c0be67dc14ad605cdd21859bdb025e1",
+   "source": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_90/1_up.svg",
+   "kind": "svg",
+   "element": "btn_speaker",
+   "symbol": 90
+  },
+  "svg/s97_credit_line.svg": {
+   "sha256": "29ef27bfc18cad16e03a3ccebe79d046a78b2146f00be02530c88b3d8376c539",
+   "source": "artifacts/decompiled/sprites/DefineSprite_97/1.svg",
+   "kind": "svg",
+   "element": "credit_line",
+   "symbol": 97
+  },
+  "svg/s103_credit_site.svg": {
+   "sha256": "58712f673207cd4acc3bad05a06e2437e4cadfc71ed76efeac57142bc687d94f",
+   "source": "artifacts/decompiled/sprites/DefineSprite_103/1.svg",
+   "kind": "svg",
+   "element": "credit_site",
+   "symbol": 103
+  },
+  "svg/s105_btn_sbuton.svg": {
+   "sha256": "8850b8744fd771b1e4cba5ae410373ebbb7de62c69a636eb879d1510d5eba03c",
+   "source": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_105/1_up.svg",
+   "kind": "svg",
+   "element": "btn_sbuton",
+   "symbol": 105
+  },
+  "svg/s108_btn_top10.svg": {
+   "sha256": "968d79293f07d1970a9698886351eefa3d5189b448a02226c2996d8a7f9a4f7f",
+   "source": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_108/1_up.svg",
+   "kind": "svg",
+   "element": "btn_top10",
+   "symbol": 108
+  },
+  "svg/s111_score_feedback.svg": {
+   "sha256": "edc0ecc17cfc6576520670a44360df5933a55445c3121f99062546847a0f982d",
+   "source": "artifacts/decompiled/sprites/DefineSprite_111/7.svg",
+   "kind": "svg",
+   "element": "score_feedback",
+   "symbol": 111
+  },
+  "svg/s123_status_ball.svg": {
+   "sha256": "1125adfcd729ab4bd9b27d708d6576afc866057e18f6f476b6f10bc6bf9ec82d",
+   "source": "artifacts/decompiled/sprites/DefineSprite_123/1.svg",
+   "kind": "svg",
+   "element": "status_ball",
+   "symbol": 123
+  },
+  "svg/s166_hiscore_form.svg": {
+   "sha256": "fe2da4c2b8f642aee176146cced0a80cc276cf87e3d3b89963dbdeb34ef2466e",
+   "source": "artifacts/decompiled/sprites/DefineSprite_166/1.svg",
+   "kind": "svg",
+   "element": "hiscore_form",
+   "symbol": 166
+  },
+  "svg/s170_bottom_marquee.svg": {
+   "sha256": "ae41ccbd423340a6ef733c93448d6d42506536324543d9ca6b4ace7c0f31cfd6",
+   "source": "artifacts/decompiled/sprites/DefineSprite_170/1.svg",
+   "kind": "svg",
+   "element": "bottom_marquee",
+   "symbol": 170
+  },
+  "img/img_47_550x400.png": {
+   "sha256": "366abdbfc11be54290e48f70d5c0104f0b5fcb47084fe76884c0183a0a84ee1a",
+   "source": "artifacts/decompiled/images/47.png",
+   "kind": "bitmap",
+   "bitmapId": 47
+  },
+  "img/img_86_21x29.png": {
+   "sha256": "74710a87bbc5f61b3ab60d24d1c5b2892b3561b67b13bcb48ca2a559441cfa6e",
+   "source": "artifacts/decompiled/images/86.png",
+   "kind": "bitmap",
+   "bitmapId": 86
+  },
+  "sfx/sfx_22_enter.mp3": {
+   "sha256": "1c3cd10320a9266fe1431d9aa46e8c6ec9d31add35313241d66f216ef0387fb2",
+   "source": "artifacts/decompiled/sounds/22.mp3",
+   "kind": "sound",
+   "soundId": 22
+  },
+  "sfx/sfx_24_shuffle.mp3": {
+   "sha256": "370bbc2eadd4a88aaa473dfaa59f5da0fd37b175b1f726edd245356bfa28cc3d",
+   "source": "artifacts/decompiled/sounds/24.mp3",
+   "kind": "sound",
+   "soundId": 24
+  },
+  "sfx/sfx_26_countdown.mp3": {
+   "sha256": "0f878a5566c5931539b0ec8e0af9661a3447467235dc1443787f3f6e3ab350db",
+   "source": "artifacts/decompiled/sounds/26.mp3",
+   "kind": "sound",
+   "soundId": 26
+  },
+  "sfx/sfx_30_boing.mp3": {
+   "sha256": "da643f2b8afbbfb8fac1baf9e310fdec7f453514706ac4d2a8304467150ead37",
+   "source": "artifacts/decompiled/sounds/30.mp3",
+   "kind": "sound",
+   "soundId": 30
+  },
+  "sfx/sfx_32_fanfare.mp3": {
+   "sha256": "3ddbd6215e6259957ff1c7d7df24d26119ad98c522e19a91c0bd0c255e966d68",
+   "source": "artifacts/decompiled/sounds/32.mp3",
+   "kind": "sound",
+   "soundId": 32
+  },
+  "sfx/sfx_34_finishsound.mp3": {
+   "sha256": "5db9654e0feb324a975822726dc41507dc2f8f30ab9154d3b329fcf9764c4ba1",
+   "source": "artifacts/decompiled/sounds/34.mp3",
+   "kind": "sound",
+   "soundId": 34
+  },
+  "sfx/sfx_36_typer.mp3": {
+   "sha256": "3f34ed813e98e8ac6df1d0f97540d4cd2e44242c8a28cda0ef345bacf7e242bf",
+   "source": "artifacts/decompiled/sounds/36.mp3",
+   "kind": "sound",
+   "soundId": 36
+  },
+  "sfx/sfx_38_backspace.mp3": {
+   "sha256": "0ed0e6eac39dac1391f26266c31604d54ba3dcfc1829826911cdb24e793f752f",
+   "source": "artifacts/decompiled/sounds/38.mp3",
+   "kind": "sound",
+   "soundId": 38
+  },
+  "sfx/sfx_40_buzz.mp3": {
+   "sha256": "832f7980db3c1d1b8b12ff89c933d9d4e9281d60d3ba6b656ccd6760dcb39395",
+   "source": "artifacts/decompiled/sounds/40.mp3",
+   "kind": "sound",
+   "soundId": 40
+  },
+  "text/14.txt": {
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "source": "artifacts/decompiled/texts/14.txt",
+   "kind": "text",
+   "element": "preloader_percent_value"
+  },
+  "text/16.txt": {
+   "sha256": "bbf3f11cb5b43e700273a78d12de55e4a7eab741ed2abf13787a4d2dc832b8ec",
+   "source": "artifacts/decompiled/texts/16.txt",
+   "kind": "text",
+   "element": "preloader_percent_sign"
+  },
+  "text/17.txt": {
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "source": "artifacts/decompiled/texts/17.txt",
+   "kind": "text",
+   "element": "preloader_loaded_bytes"
+  },
+  "text/18.txt": {
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "source": "artifacts/decompiled/texts/18.txt",
+   "kind": "text",
+   "element": "preloader_total_bytes"
+  },
+  "text/19.txt": {
+   "sha256": "8a5edab282632443219e051e4ade2d1d5bbc671c781051bf1437897cbdfea0f1",
+   "source": "artifacts/decompiled/texts/19.txt",
+   "kind": "text",
+   "element": "preloader_slash"
+  },
+  "text/112.txt": {
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "source": "artifacts/decompiled/texts/112.txt",
+   "kind": "text",
+   "element": "timer_value"
+  },
+  "text/124.txt": {
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "source": "artifacts/decompiled/texts/124.txt",
+   "kind": "text",
+   "element": "result_word_template"
+  },
+  "text/125.txt": {
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "source": "artifacts/decompiled/texts/125.txt",
+   "kind": "text",
+   "element": "score_value"
+  },
+  "text/127.txt": {
+   "sha256": "63da5e101298db1a17949928984a24ccea2e61bd129136efad9dc72fc68e2685",
+   "source": "artifacts/decompiled/texts/127.txt",
+   "kind": "text",
+   "element": "label_puan_black"
+  },
+  "text/128.txt": {
+   "sha256": "63da5e101298db1a17949928984a24ccea2e61bd129136efad9dc72fc68e2685",
+   "source": "artifacts/decompiled/texts/128.txt",
+   "kind": "text",
+   "element": "label_puan_orange"
+  },
+  "text/129.txt": {
+   "sha256": "fbfceccd03c04d42f067a75626e504655ace250bc42f7a3ae15c6d08dd256505",
+   "source": "artifacts/decompiled/texts/129.txt",
+   "kind": "text",
+   "element": "label_sure_black"
+  },
+  "text/130.txt": {
+   "sha256": "fbfceccd03c04d42f067a75626e504655ace250bc42f7a3ae15c6d08dd256505",
+   "source": "artifacts/decompiled/texts/130.txt",
+   "kind": "text",
+   "element": "label_sure_orange"
+  },
+  "text/131.txt": {
+   "sha256": "2cbc4cece9fd77290eca161eb0a416ff6d744fcaa3f9f36927d01631962c7775",
+   "source": "artifacts/decompiled/texts/131.txt",
+   "kind": "text",
+   "element": "label_harf_3"
+  },
+  "text/132.txt": {
+   "sha256": "c2fa99bedc4754b3c5a2124b6adc73048247803988fd8ee046e9e5edf0f5a729",
+   "source": "artifacts/decompiled/texts/132.txt",
+   "kind": "text",
+   "element": "label_harf_8"
+  },
+  "text/133.txt": {
+   "sha256": "cedb5c737f63857c1621557996df7b7982265a595a97aa5a6cab8eae29855071",
+   "source": "artifacts/decompiled/texts/133.txt",
+   "kind": "text",
+   "element": "label_harf_4"
+  },
+  "text/134.txt": {
+   "sha256": "545e328ee9f38a8f9f7ed8b3d01264a333c12d2c7bb00f903271eb8a8ac0b44c",
+   "source": "artifacts/decompiled/texts/134.txt",
+   "kind": "text",
+   "element": "label_harf_5"
+  },
+  "text/135.txt": {
+   "sha256": "d4edaa3bd95f58689cec5d1ead77b812efc549d959616459ee787c0f74e26ecd",
+   "source": "artifacts/decompiled/texts/135.txt",
+   "kind": "text",
+   "element": "label_harf_6"
+  },
+  "text/136.txt": {
+   "sha256": "a6a6856e0b299c13c18d80e57fdbe3c0f81eb7171e0e848cf1c94789b8952fa9",
+   "source": "artifacts/decompiled/texts/136.txt",
+   "kind": "text",
+   "element": "label_harf_7"
+  },
+  "text/137.txt": {
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "source": "artifacts/decompiled/texts/137.txt",
+   "kind": "text",
+   "element": "count_3"
+  },
+  "text/138.txt": {
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "source": "artifacts/decompiled/texts/138.txt",
+   "kind": "text",
+   "element": "count_8"
+  },
+  "text/139.txt": {
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "source": "artifacts/decompiled/texts/139.txt",
+   "kind": "text",
+   "element": "count_4"
+  },
+  "text/140.txt": {
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "source": "artifacts/decompiled/texts/140.txt",
+   "kind": "text",
+   "element": "count_5"
+  },
+  "text/141.txt": {
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "source": "artifacts/decompiled/texts/141.txt",
+   "kind": "text",
+   "element": "count_6"
+  },
+  "text/142.txt": {
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "source": "artifacts/decompiled/texts/142.txt",
+   "kind": "text",
+   "element": "count_7"
+  },
+  "text/143.txt": {
+   "sha256": "033ea5c71d3be090b1af8e9fdb672d5097e58a0d55f57864f1cd424c698885db",
+   "source": "artifacts/decompiled/texts/143.txt",
+   "kind": "text",
+   "element": "label_kelime_black"
+  },
+  "text/144.txt": {
+   "sha256": "033ea5c71d3be090b1af8e9fdb672d5097e58a0d55f57864f1cd424c698885db",
+   "source": "artifacts/decompiled/texts/144.txt",
+   "kind": "text",
+   "element": "label_kelime_orange"
+  }
+ },
+ "data": {
+  "src/data/layout.json": {
+   "source": "data/layout.json",
+   "sourceSha256": "eb8a098cab21df360cf24dea2f38c2b6b2e56cd16c248b4d6447ce51d3cb292d",
+   "sha256": "f25d873d96a648760172b293ff2f6b36cfe19c3c46a18d516b4e41d90b38253f",
+   "assetRefsRewritten": 62
+  },
+  "src/data/animation.json": {
+   "source": "data/animation.json",
+   "sourceSha256": "c263ed44b8d352ed72757821f0fd3cbebd58e5c5883dd124ec2229343ce9794e",
+   "sha256": "c263ed44b8d352ed72757821f0fd3cbebd58e5c5883dd124ec2229343ce9794e",
+   "assetRefsRewritten": 0
+  }
+ },
+ "references": {
+  "intro_backdrop": {
+   "source": "artifacts/decompiled/shapes/1.svg",
+   "runtime": "src/assets/svg/s1_intro_backdrop.svg"
+  },
+  "logo_ornament": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_3/1.svg",
+   "runtime": "src/assets/svg/s3_logo_ornament.svg"
+  },
+  "intro_sky": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_5/1.svg",
+   "runtime": "src/assets/svg/s5_intro_sky.svg"
+  },
+  "intro_ground": {
+   "source": "artifacts/decompiled/shapes/6.svg",
+   "runtime": "src/assets/svg/s6_intro_ground.svg"
+  },
+  "intro_layer3": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_8/1.svg",
+   "runtime": "src/assets/svg/s8_intro_layer3.svg"
+  },
+  "preloader_progress": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_12/1.svg",
+   "runtime": "src/assets/svg/s12_preloader_progress.svg"
+  },
+  "preloader_percent_value": {
+   "source": "artifacts/decompiled/texts/14.txt",
+   "runtime": "src/assets/text/14.txt"
+  },
+  "preloader_percent_sign": {
+   "source": "artifacts/decompiled/texts/16.txt",
+   "runtime": "src/assets/text/16.txt"
+  },
+  "preloader_loaded_bytes": {
+   "source": "artifacts/decompiled/texts/17.txt",
+   "runtime": "src/assets/text/17.txt"
+  },
+  "preloader_total_bytes": {
+   "source": "artifacts/decompiled/texts/18.txt",
+   "runtime": "src/assets/text/18.txt"
+  },
+  "preloader_slash": {
+   "source": "artifacts/decompiled/texts/19.txt",
+   "runtime": "src/assets/text/19.txt"
+  },
+  "intro_glow": {
+   "source": "artifacts/decompiled/shapes/20.svg",
+   "runtime": "src/assets/svg/s20_intro_glow.svg"
+  },
+  "clip_timerr": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_21/1.svg",
+   "runtime": "src/assets/svg/s21_clip_timerr.svg"
+  },
+  "clip_enter": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_23/1.svg",
+   "runtime": "src/assets/svg/s23_clip_enter.svg"
+  },
+  "clip_shuffle": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_25/1.svg",
+   "runtime": "src/assets/svg/s25_clip_shuffle.svg"
+  },
+  "clip_countdown": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_27/1.svg",
+   "runtime": "src/assets/svg/s27_clip_countdown.svg"
+  },
+  "intro_logo": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_29/1.svg",
+   "runtime": "src/assets/svg/s29_intro_logo.svg"
+  },
+  "clip_boing": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_31/1.svg",
+   "runtime": "src/assets/svg/s31_clip_boing.svg"
+  },
+  "clip_fanfare": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_33/1.svg",
+   "runtime": "src/assets/svg/s33_clip_fanfare.svg"
+  },
+  "clip_finishsound": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_35/1.svg",
+   "runtime": "src/assets/svg/s35_clip_finishsound.svg"
+  },
+  "clip_typer": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_37/1.svg",
+   "runtime": "src/assets/svg/s37_clip_typer.svg"
+  },
+  "clip_backspace": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_39/1.svg",
+   "runtime": "src/assets/svg/s39_clip_backspace.svg"
+  },
+  "clip_buzz": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_41/1.svg",
+   "runtime": "src/assets/svg/s41_clip_buzz.svg"
+  },
+  "wordball": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_46/2.svg",
+   "runtime": "src/assets/svg/s46_wordball.svg"
+  },
+  "board_backdrop": {
+   "source": "artifacts/decompiled/shapes/48.svg",
+   "runtime": "src/assets/svg/s48_board_backdrop.svg"
+  },
+  "letter_tile": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_58/1.svg",
+   "runtime": "src/assets/svg/s58_letter_tile.svg"
+  },
+  "btn_kbuton": {
+   "source": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_63/1_up.svg",
+   "runtime": "src/assets/svg/s63_btn_kbuton.svg"
+  },
+  "btn_ebuton": {
+   "source": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_65/1_up.svg",
+   "runtime": "src/assets/svg/s65_btn_ebuton.svg"
+  },
+  "tile_socket": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_67/1.svg",
+   "runtime": "src/assets/svg/s67_tile_socket.svg"
+  },
+  "btn_ybuton": {
+   "source": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_71/1_up.svg",
+   "runtime": "src/assets/svg/s71_btn_ybuton.svg"
+  },
+  "timer_bar": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_76/1.svg",
+   "runtime": "src/assets/svg/s76_timer_bar.svg"
+  },
+  "loading_banner": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_84/2.svg",
+   "runtime": "src/assets/svg/s84_loading_banner.svg"
+  },
+  "btn_speaker": {
+   "source": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_90/1_up.svg",
+   "runtime": "src/assets/svg/s90_btn_speaker.svg"
+  },
+  "credit_line": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_97/1.svg",
+   "runtime": "src/assets/svg/s97_credit_line.svg"
+  },
+  "credit_site": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_103/1.svg",
+   "runtime": "src/assets/svg/s103_credit_site.svg"
+  },
+  "btn_sbuton": {
+   "source": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_105/1_up.svg",
+   "runtime": "src/assets/svg/s105_btn_sbuton.svg"
+  },
+  "btn_top10": {
+   "source": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_108/1_up.svg",
+   "runtime": "src/assets/svg/s108_btn_top10.svg"
+  },
+  "score_feedback": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_111/7.svg",
+   "runtime": "src/assets/svg/s111_score_feedback.svg"
+  },
+  "timer_value": {
+   "source": "artifacts/decompiled/texts/112.txt",
+   "runtime": "src/assets/text/112.txt"
+  },
+  "status_ball": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_123/1.svg",
+   "runtime": "src/assets/svg/s123_status_ball.svg"
+  },
+  "result_word_template": {
+   "source": "artifacts/decompiled/texts/124.txt",
+   "runtime": "src/assets/text/124.txt"
+  },
+  "score_value": {
+   "source": "artifacts/decompiled/texts/125.txt",
+   "runtime": "src/assets/text/125.txt"
+  },
+  "label_puan_black": {
+   "source": "artifacts/decompiled/texts/127.txt",
+   "runtime": "src/assets/text/127.txt"
+  },
+  "label_puan_orange": {
+   "source": "artifacts/decompiled/texts/128.txt",
+   "runtime": "src/assets/text/128.txt"
+  },
+  "label_sure_black": {
+   "source": "artifacts/decompiled/texts/129.txt",
+   "runtime": "src/assets/text/129.txt"
+  },
+  "label_sure_orange": {
+   "source": "artifacts/decompiled/texts/130.txt",
+   "runtime": "src/assets/text/130.txt"
+  },
+  "label_harf_3": {
+   "source": "artifacts/decompiled/texts/131.txt",
+   "runtime": "src/assets/text/131.txt"
+  },
+  "label_harf_8": {
+   "source": "artifacts/decompiled/texts/132.txt",
+   "runtime": "src/assets/text/132.txt"
+  },
+  "label_harf_4": {
+   "source": "artifacts/decompiled/texts/133.txt",
+   "runtime": "src/assets/text/133.txt"
+  },
+  "label_harf_5": {
+   "source": "artifacts/decompiled/texts/134.txt",
+   "runtime": "src/assets/text/134.txt"
+  },
+  "label_harf_6": {
+   "source": "artifacts/decompiled/texts/135.txt",
+   "runtime": "src/assets/text/135.txt"
+  },
+  "label_harf_7": {
+   "source": "artifacts/decompiled/texts/136.txt",
+   "runtime": "src/assets/text/136.txt"
+  },
+  "count_3": {
+   "source": "artifacts/decompiled/texts/137.txt",
+   "runtime": "src/assets/text/137.txt"
+  },
+  "count_8": {
+   "source": "artifacts/decompiled/texts/138.txt",
+   "runtime": "src/assets/text/138.txt"
+  },
+  "count_4": {
+   "source": "artifacts/decompiled/texts/139.txt",
+   "runtime": "src/assets/text/139.txt"
+  },
+  "count_5": {
+   "source": "artifacts/decompiled/texts/140.txt",
+   "runtime": "src/assets/text/140.txt"
+  },
+  "count_6": {
+   "source": "artifacts/decompiled/texts/141.txt",
+   "runtime": "src/assets/text/141.txt"
+  },
+  "count_7": {
+   "source": "artifacts/decompiled/texts/142.txt",
+   "runtime": "src/assets/text/142.txt"
+  },
+  "label_kelime_black": {
+   "source": "artifacts/decompiled/texts/143.txt",
+   "runtime": "src/assets/text/143.txt"
+  },
+  "label_kelime_orange": {
+   "source": "artifacts/decompiled/texts/144.txt",
+   "runtime": "src/assets/text/144.txt"
+  },
+  "hiscore_form": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_166/1.svg",
+   "runtime": "src/assets/svg/s166_hiscore_form.svg"
+  },
+  "bottom_marquee": {
+   "source": "artifacts/decompiled/sprites/DefineSprite_170/1.svg",
+   "runtime": "src/assets/svg/s170_bottom_marquee.svg"
+  }
+ }
+}

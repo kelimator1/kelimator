@@ -1,0 +1,16 @@
+# npm audit report
+
+fast-json-patch  <3.1.1
+Severity: high
+Starcounter-Jack JSON-Patch Prototype Pollution vulnerability - https://github.com/advisories/GHSA-8gh8-hqwg-xf34
+fix available via `npm audit fix --force`
+Will install ajv-cli@0.6.0, which is a breaking change
+node_modules/fast-json-patch
+  ajv-cli  >=0.7.0
+  Depends on vulnerable versions of fast-json-patch
+  node_modules/ajv-cli
+
+2 high severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force

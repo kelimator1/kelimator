@@ -1,0 +1,27 @@
+File:           src/assets/sfx/sfx_22_enter.mp3
+Data format:     1 ch,  22050 Hz, .mp3 (0x00000000) 0 bits/channel, 0 bytes/packet, 576 frames/packet, 0 bytes/frame
+estimated duration: 0.390000 sec
+File:           src/assets/sfx/sfx_24_shuffle.mp3
+Data format:     1 ch,  22050 Hz, .mp3 (0x00000000) 0 bits/channel, 0 bytes/packet, 576 frames/packet, 0 bytes/frame
+estimated duration: 0.806000 sec
+File:           src/assets/sfx/sfx_26_countdown.mp3
+Data format:     1 ch,  22050 Hz, .mp3 (0x00000000) 0 bits/channel, 0 bytes/packet, 576 frames/packet, 0 bytes/frame
+estimated duration: 0.182000 sec
+File:           src/assets/sfx/sfx_30_boing.mp3
+Data format:     1 ch,  11025 Hz, .mp3 (0x00000000) 0 bits/channel, 0 bytes/packet, 576 frames/packet, 0 bytes/frame
+estimated duration: 0.624000 sec
+File:           src/assets/sfx/sfx_32_fanfare.mp3
+Data format:     1 ch,  22050 Hz, .mp3 (0x00000000) 0 bits/channel, 0 bytes/packet, 576 frames/packet, 0 bytes/frame
+estimated duration: 4.368000 sec
+File:           src/assets/sfx/sfx_34_finishsound.mp3
+Data format:     1 ch,  22050 Hz, .mp3 (0x00000000) 0 bits/channel, 0 bytes/packet, 576 frames/packet, 0 bytes/frame
+estimated duration: 0.546000 sec
+File:           src/assets/sfx/sfx_36_typer.mp3
+Data format:     1 ch,  22050 Hz, .mp3 (0x00000000) 0 bits/channel, 0 bytes/packet, 576 frames/packet, 0 bytes/frame
+estimated duration: 0.286000 sec
+File:           src/assets/sfx/sfx_38_backspace.mp3
+Data format:     1 ch,  22050 Hz, .mp3 (0x00000000) 0 bits/channel, 0 bytes/packet, 576 frames/packet, 0 bytes/frame
+estimated duration: 0.338000 sec
+File:           src/assets/sfx/sfx_40_buzz.mp3
+Data format:     1 ch,  22050 Hz, .mp3 (0x00000000) 0 bits/channel, 0 bytes/packet, 576 frames/packet, 0 bytes/frame
+estimated duration: 0.546000 sec

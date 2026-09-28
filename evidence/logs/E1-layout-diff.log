@@ -1,0 +1,248 @@
+12c12
+<    "asset": "artifacts/decompiled/shapes/1.svg",
+---
+>    "asset": "src/assets/svg/s1_intro_backdrop.svg",
+29c29
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_3/1.svg",
+---
+>    "asset": "src/assets/svg/s3_logo_ornament.svg",
+46c46
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_5/1.svg",
+---
+>    "asset": "src/assets/svg/s5_intro_sky.svg",
+63c63
+<    "asset": "artifacts/decompiled/shapes/6.svg",
+---
+>    "asset": "src/assets/svg/s6_intro_ground.svg",
+80c80
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_8/1.svg",
+---
+>    "asset": "src/assets/svg/s8_intro_layer3.svg",
+97c97
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_12/1.svg",
+---
+>    "asset": "src/assets/svg/s12_preloader_progress.svg",
+114c114
+<    "asset": "artifacts/decompiled/texts/14.txt",
+---
+>    "asset": "src/assets/text/14.txt",
+131c131
+<    "asset": "artifacts/decompiled/texts/16.txt",
+---
+>    "asset": "src/assets/text/16.txt",
+148c148
+<    "asset": "artifacts/decompiled/texts/17.txt",
+---
+>    "asset": "src/assets/text/17.txt",
+165c165
+<    "asset": "artifacts/decompiled/texts/18.txt",
+---
+>    "asset": "src/assets/text/18.txt",
+182c182
+<    "asset": "artifacts/decompiled/texts/19.txt",
+---
+>    "asset": "src/assets/text/19.txt",
+199c199
+<    "asset": "artifacts/decompiled/shapes/20.svg",
+---
+>    "asset": "src/assets/svg/s20_intro_glow.svg",
+216c216
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_21/1.svg",
+---
+>    "asset": "src/assets/svg/s21_clip_timerr.svg",
+233c233
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_23/1.svg",
+---
+>    "asset": "src/assets/svg/s23_clip_enter.svg",
+250c250
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_25/1.svg",
+---
+>    "asset": "src/assets/svg/s25_clip_shuffle.svg",
+267c267
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_27/1.svg",
+---
+>    "asset": "src/assets/svg/s27_clip_countdown.svg",
+284c284
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_29/1.svg",
+---
+>    "asset": "src/assets/svg/s29_intro_logo.svg",
+301c301
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_31/1.svg",
+---
+>    "asset": "src/assets/svg/s31_clip_boing.svg",
+318c318
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_33/1.svg",
+---
+>    "asset": "src/assets/svg/s33_clip_fanfare.svg",
+335c335
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_35/1.svg",
+---
+>    "asset": "src/assets/svg/s35_clip_finishsound.svg",
+352c352
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_37/1.svg",
+---
+>    "asset": "src/assets/svg/s37_clip_typer.svg",
+369c369
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_39/1.svg",
+---
+>    "asset": "src/assets/svg/s39_clip_backspace.svg",
+386c386
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_41/1.svg",
+---
+>    "asset": "src/assets/svg/s41_clip_buzz.svg",
+403c403
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_46/2.svg",
+---
+>    "asset": "src/assets/svg/s46_wordball.svg",
+420c420
+<    "asset": "artifacts/decompiled/shapes/48.svg",
+---
+>    "asset": "src/assets/svg/s48_board_backdrop.svg",
+437c437
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_58/1.svg",
+---
+>    "asset": "src/assets/svg/s58_letter_tile.svg",
+454c454
+<    "asset": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_63/1_up.svg",
+---
+>    "asset": "src/assets/svg/s63_btn_kbuton.svg",
+471c471
+<    "asset": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_65/1_up.svg",
+---
+>    "asset": "src/assets/svg/s65_btn_ebuton.svg",
+488c488
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_67/1.svg",
+---
+>    "asset": "src/assets/svg/s67_tile_socket.svg",
+505c505
+<    "asset": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_71/1_up.svg",
+---
+>    "asset": "src/assets/svg/s71_btn_ybuton.svg",
+522c522
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_76/1.svg",
+---
+>    "asset": "src/assets/svg/s76_timer_bar.svg",
+539c539
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_84/2.svg",
+---
+>    "asset": "src/assets/svg/s84_loading_banner.svg",
+556c556
+<    "asset": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_90/1_up.svg",
+---
+>    "asset": "src/assets/svg/s90_btn_speaker.svg",
+573c573
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_97/1.svg",
+---
+>    "asset": "src/assets/svg/s97_credit_line.svg",
+590c590
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_103/1.svg",
+---
+>    "asset": "src/assets/svg/s103_credit_site.svg",
+607c607
+<    "asset": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_105/1_up.svg",
+---
+>    "asset": "src/assets/svg/s105_btn_sbuton.svg",
+624c624
+<    "asset": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_108/1_up.svg",
+---
+>    "asset": "src/assets/svg/s108_btn_top10.svg",
+641c641
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_111/7.svg",
+---
+>    "asset": "src/assets/svg/s111_score_feedback.svg",
+658c658
+<    "asset": "artifacts/decompiled/texts/112.txt",
+---
+>    "asset": "src/assets/text/112.txt",
+675c675
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_123/1.svg",
+---
+>    "asset": "src/assets/svg/s123_status_ball.svg",
+692c692
+<    "asset": "artifacts/decompiled/texts/124.txt",
+---
+>    "asset": "src/assets/text/124.txt",
+709c709
+<    "asset": "artifacts/decompiled/texts/125.txt",
+---
+>    "asset": "src/assets/text/125.txt",
+726c726
+<    "asset": "artifacts/decompiled/texts/127.txt",
+---
+>    "asset": "src/assets/text/127.txt",
+743c743
+<    "asset": "artifacts/decompiled/texts/128.txt",
+---
+>    "asset": "src/assets/text/128.txt",
+760c760
+<    "asset": "artifacts/decompiled/texts/129.txt",
+---
+>    "asset": "src/assets/text/129.txt",
+777c777
+<    "asset": "artifacts/decompiled/texts/130.txt",
+---
+>    "asset": "src/assets/text/130.txt",
+794c794
+<    "asset": "artifacts/decompiled/texts/131.txt",
+---
+>    "asset": "src/assets/text/131.txt",
+811c811
+<    "asset": "artifacts/decompiled/texts/132.txt",
+---
+>    "asset": "src/assets/text/132.txt",
+828c828
+<    "asset": "artifacts/decompiled/texts/133.txt",
+---
+>    "asset": "src/assets/text/133.txt",
+845c845
+<    "asset": "artifacts/decompiled/texts/134.txt",
+---
+>    "asset": "src/assets/text/134.txt",
+862c862
+<    "asset": "artifacts/decompiled/texts/135.txt",
+---
+>    "asset": "src/assets/text/135.txt",
+879c879
+<    "asset": "artifacts/decompiled/texts/136.txt",
+---
+>    "asset": "src/assets/text/136.txt",
+896c896
+<    "asset": "artifacts/decompiled/texts/137.txt",
+---
+>    "asset": "src/assets/text/137.txt",
+913c913
+<    "asset": "artifacts/decompiled/texts/138.txt",
+---
+>    "asset": "src/assets/text/138.txt",
+930c930
+<    "asset": "artifacts/decompiled/texts/139.txt",
+---
+>    "asset": "src/assets/text/139.txt",
+947c947
+<    "asset": "artifacts/decompiled/texts/140.txt",
+---
+>    "asset": "src/assets/text/140.txt",
+964c964
+<    "asset": "artifacts/decompiled/texts/141.txt",
+---
+>    "asset": "src/assets/text/141.txt",
+981c981
+<    "asset": "artifacts/decompiled/texts/142.txt",
+---
+>    "asset": "src/assets/text/142.txt",
+998c998
+<    "asset": "artifacts/decompiled/texts/143.txt",
+---
+>    "asset": "src/assets/text/143.txt",
+1015c1015
+<    "asset": "artifacts/decompiled/texts/144.txt",
+---
+>    "asset": "src/assets/text/144.txt",
+1032c1032
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_166/1.svg",
+---
+>    "asset": "src/assets/svg/s166_hiscore_form.svg",
+1049c1049
+<    "asset": "artifacts/decompiled/sprites/DefineSprite_170/1.svg",
+---
+>    "asset": "src/assets/svg/s170_bottom_marquee.svg",

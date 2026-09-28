@@ -1,0 +1,776 @@
+{
+ "schemaVersion": 1,
+ "svgo": {
+  "version": "4.1.0",
+  "preset": "preset-default",
+  "disabledOverrides": [
+   "cleanupIds",
+   "cleanupNumericValues",
+   "convertShapeToPath",
+   "convertEllipseToCircle",
+   "moveElemsAttrsToGroup",
+   "moveGroupAttrsToElems",
+   "collapseGroups",
+   "convertPathData",
+   "convertTransform",
+   "mergePaths",
+   "removeUselessStrokeAndFill"
+  ]
+ },
+ "assets": [
+  {
+   "name": "s1_intro_backdrop.svg",
+   "element": "intro_backdrop",
+   "source": "artifacts/decompiled/shapes/1.svg",
+   "symbol": {
+    "kind": "shape",
+    "id": 1
+   },
+   "sourceBytes": 1662,
+   "outputBytes": 1503,
+   "width": 551.8,
+   "height": 400.1,
+   "naturalWidth": 552,
+   "naturalHeight": 400,
+   "inkPixels": 220800,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s3_logo_ornament.svg",
+   "element": "logo_ornament",
+   "source": "artifacts/decompiled/sprites/DefineSprite_3/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 3,
+    "frame": 1
+   },
+   "sourceBytes": 833,
+   "outputBytes": 728,
+   "width": 37.5,
+   "height": 50,
+   "naturalWidth": 38,
+   "naturalHeight": 50,
+   "inkPixels": 775,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s5_intro_sky.svg",
+   "element": "intro_sky",
+   "source": "artifacts/decompiled/sprites/DefineSprite_5/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 5,
+    "frame": 1
+   },
+   "sourceBytes": 1009,
+   "outputBytes": 870,
+   "width": 551.05,
+   "height": 240.5,
+   "naturalWidth": 551,
+   "naturalHeight": 241,
+   "inkPixels": 132655,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s6_intro_ground.svg",
+   "element": "intro_ground",
+   "source": "artifacts/decompiled/shapes/6.svg",
+   "symbol": {
+    "kind": "shape",
+    "id": 6
+   },
+   "sourceBytes": 456,
+   "outputBytes": 316,
+   "width": 551.8,
+   "height": 159.65,
+   "naturalWidth": 552,
+   "naturalHeight": 160,
+   "inkPixels": 88320,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s8_intro_layer3.svg",
+   "element": "intro_layer3",
+   "source": "artifacts/decompiled/sprites/DefineSprite_8/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 8,
+    "frame": 1
+   },
+   "sourceBytes": 991,
+   "outputBytes": 855,
+   "width": 550.6,
+   "height": 159.6,
+   "naturalWidth": 551,
+   "naturalHeight": 160,
+   "inkPixels": 88160,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s12_preloader_progress.svg",
+   "element": "preloader_progress",
+   "source": "artifacts/decompiled/sprites/DefineSprite_12/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 12,
+    "frame": 1
+   },
+   "sourceBytes": 1412,
+   "outputBytes": 1228,
+   "width": 201.1,
+   "height": 6,
+   "naturalWidth": 201,
+   "naturalHeight": 6,
+   "inkPixels": 1206,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s20_intro_glow.svg",
+   "element": "intro_glow",
+   "source": "artifacts/decompiled/shapes/20.svg",
+   "symbol": {
+    "kind": "shape",
+    "id": 20
+   },
+   "sourceBytes": 972,
+   "outputBytes": 807,
+   "width": 93.5,
+   "height": 93.5,
+   "naturalWidth": 94,
+   "naturalHeight": 94,
+   "inkPixels": 6785,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s21_clip_timerr.svg",
+   "element": "clip_timerr",
+   "source": "artifacts/decompiled/sprites/DefineSprite_21/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 21,
+    "frame": 1
+   },
+   "sourceBytes": 308,
+   "outputBytes": 147,
+   "width": 0,
+   "height": 0,
+   "naturalWidth": 0,
+   "naturalHeight": 0,
+   "inkPixels": 0,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s23_clip_enter.svg",
+   "element": "clip_enter",
+   "source": "artifacts/decompiled/sprites/DefineSprite_23/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 23,
+    "frame": 1
+   },
+   "sourceBytes": 308,
+   "outputBytes": 147,
+   "width": 0,
+   "height": 0,
+   "naturalWidth": 0,
+   "naturalHeight": 0,
+   "inkPixels": 0,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s25_clip_shuffle.svg",
+   "element": "clip_shuffle",
+   "source": "artifacts/decompiled/sprites/DefineSprite_25/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 25,
+    "frame": 1
+   },
+   "sourceBytes": 308,
+   "outputBytes": 147,
+   "width": 0,
+   "height": 0,
+   "naturalWidth": 0,
+   "naturalHeight": 0,
+   "inkPixels": 0,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s27_clip_countdown.svg",
+   "element": "clip_countdown",
+   "source": "artifacts/decompiled/sprites/DefineSprite_27/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 27,
+    "frame": 1
+   },
+   "sourceBytes": 308,
+   "outputBytes": 147,
+   "width": 0,
+   "height": 0,
+   "naturalWidth": 0,
+   "naturalHeight": 0,
+   "inkPixels": 0,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s29_intro_logo.svg",
+   "element": "intro_logo",
+   "source": "artifacts/decompiled/sprites/DefineSprite_29/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 29,
+    "frame": 1
+   },
+   "sourceBytes": 17464,
+   "outputBytes": 16134,
+   "width": 375.4,
+   "height": 104.6,
+   "naturalWidth": 375,
+   "naturalHeight": 105,
+   "inkPixels": 20213,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s31_clip_boing.svg",
+   "element": "clip_boing",
+   "source": "artifacts/decompiled/sprites/DefineSprite_31/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 31,
+    "frame": 1
+   },
+   "sourceBytes": 308,
+   "outputBytes": 147,
+   "width": 0,
+   "height": 0,
+   "naturalWidth": 0,
+   "naturalHeight": 0,
+   "inkPixels": 0,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s33_clip_fanfare.svg",
+   "element": "clip_fanfare",
+   "source": "artifacts/decompiled/sprites/DefineSprite_33/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 33,
+    "frame": 1
+   },
+   "sourceBytes": 308,
+   "outputBytes": 147,
+   "width": 0,
+   "height": 0,
+   "naturalWidth": 0,
+   "naturalHeight": 0,
+   "inkPixels": 0,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s35_clip_finishsound.svg",
+   "element": "clip_finishsound",
+   "source": "artifacts/decompiled/sprites/DefineSprite_35/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 35,
+    "frame": 1
+   },
+   "sourceBytes": 308,
+   "outputBytes": 147,
+   "width": 0,
+   "height": 0,
+   "naturalWidth": 0,
+   "naturalHeight": 0,
+   "inkPixels": 0,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s37_clip_typer.svg",
+   "element": "clip_typer",
+   "source": "artifacts/decompiled/sprites/DefineSprite_37/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 37,
+    "frame": 1
+   },
+   "sourceBytes": 308,
+   "outputBytes": 147,
+   "width": 0,
+   "height": 0,
+   "naturalWidth": 0,
+   "naturalHeight": 0,
+   "inkPixels": 0,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s39_clip_backspace.svg",
+   "element": "clip_backspace",
+   "source": "artifacts/decompiled/sprites/DefineSprite_39/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 39,
+    "frame": 1
+   },
+   "sourceBytes": 308,
+   "outputBytes": 147,
+   "width": 0,
+   "height": 0,
+   "naturalWidth": 0,
+   "naturalHeight": 0,
+   "inkPixels": 0,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s41_clip_buzz.svg",
+   "element": "clip_buzz",
+   "source": "artifacts/decompiled/sprites/DefineSprite_41/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 41,
+    "frame": 1
+   },
+   "sourceBytes": 308,
+   "outputBytes": 147,
+   "width": 0,
+   "height": 0,
+   "naturalWidth": 0,
+   "naturalHeight": 0,
+   "inkPixels": 0,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s46_wordball.svg",
+   "element": "wordball",
+   "source": "artifacts/decompiled/sprites/DefineSprite_46/2.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 46,
+    "frame": 2
+   },
+   "sourceBytes": 3602,
+   "outputBytes": 3312,
+   "width": 50,
+   "height": 220,
+   "naturalWidth": 50,
+   "naturalHeight": 220,
+   "inkPixels": 0,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s48_board_backdrop.svg",
+   "element": "board_backdrop",
+   "source": "artifacts/decompiled/shapes/48.svg",
+   "symbol": {
+    "kind": "shape",
+    "id": 48
+   },
+   "sourceBytes": 84112,
+   "outputBytes": 84027,
+   "width": 550,
+   "height": 400,
+   "naturalWidth": 550,
+   "naturalHeight": 400,
+   "inkPixels": 220000,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s58_letter_tile.svg",
+   "element": "letter_tile",
+   "source": "artifacts/decompiled/sprites/DefineSprite_58/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 58,
+    "frame": 1
+   },
+   "sourceBytes": 40951,
+   "outputBytes": 35619,
+   "width": 164.2,
+   "height": 114.4,
+   "naturalWidth": 164,
+   "naturalHeight": 114,
+   "inkPixels": 5478,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s63_btn_kbuton.svg",
+   "element": "btn_kbuton",
+   "source": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_63/1_up.svg",
+   "symbol": {
+    "kind": "button",
+    "id": 63
+   },
+   "sourceBytes": 4936,
+   "outputBytes": 4507,
+   "width": 76.1,
+   "height": 21.7,
+   "naturalWidth": 76,
+   "naturalHeight": 22,
+   "inkPixels": 1219,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s65_btn_ebuton.svg",
+   "element": "btn_ebuton",
+   "source": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_65/1_up.svg",
+   "symbol": {
+    "kind": "button",
+    "id": 65
+   },
+   "sourceBytes": 2744,
+   "outputBytes": 2425,
+   "width": 69.3,
+   "height": 21.7,
+   "naturalWidth": 69,
+   "naturalHeight": 22,
+   "inkPixels": 1277,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s67_tile_socket.svg",
+   "element": "tile_socket",
+   "source": "artifacts/decompiled/sprites/DefineSprite_67/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 67,
+    "frame": 1
+   },
+   "sourceBytes": 10941,
+   "outputBytes": 10189,
+   "width": 60,
+   "height": 60,
+   "naturalWidth": 60,
+   "naturalHeight": 60,
+   "inkPixels": 3529,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s71_btn_ybuton.svg",
+   "element": "btn_ybuton",
+   "source": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_71/1_up.svg",
+   "symbol": {
+    "kind": "button",
+    "id": 71
+   },
+   "sourceBytes": 4792,
+   "outputBytes": 4332,
+   "width": 98.3,
+   "height": 21.7,
+   "naturalWidth": 98,
+   "naturalHeight": 22,
+   "inkPixels": 1575,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s76_timer_bar.svg",
+   "element": "timer_bar",
+   "source": "artifacts/decompiled/sprites/DefineSprite_76/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 76,
+    "frame": 1
+   },
+   "sourceBytes": 1928,
+   "outputBytes": 1743,
+   "width": 24.05,
+   "height": 108,
+   "naturalWidth": 24,
+   "naturalHeight": 108,
+   "inkPixels": 2153,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s84_loading_banner.svg",
+   "element": "loading_banner",
+   "source": "artifacts/decompiled/sprites/DefineSprite_84/2.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 84,
+    "frame": 2
+   },
+   "sourceBytes": 14376,
+   "outputBytes": 12657,
+   "width": 311.9,
+   "height": 110,
+   "naturalWidth": 312,
+   "naturalHeight": 110,
+   "inkPixels": 34253,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s90_btn_speaker.svg",
+   "element": "btn_speaker",
+   "source": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_90/1_up.svg",
+   "symbol": {
+    "kind": "button",
+    "id": 90
+   },
+   "sourceBytes": 2743,
+   "outputBytes": 2575,
+   "width": 33.5,
+   "height": 34.05,
+   "naturalWidth": 34,
+   "naturalHeight": 34,
+   "inkPixels": 504,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s97_credit_line.svg",
+   "element": "credit_line",
+   "source": "artifacts/decompiled/sprites/DefineSprite_97/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 97,
+    "frame": 1
+   },
+   "sourceBytes": 14348,
+   "outputBytes": 11933,
+   "width": 144.1,
+   "height": 19.25,
+   "naturalWidth": 144,
+   "naturalHeight": 19,
+   "inkPixels": 1645,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s103_credit_site.svg",
+   "element": "credit_site",
+   "source": "artifacts/decompiled/sprites/DefineSprite_103/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 103,
+    "frame": 1
+   },
+   "sourceBytes": 14090,
+   "outputBytes": 11679,
+   "width": 145.5,
+   "height": 19.25,
+   "naturalWidth": 146,
+   "naturalHeight": 19,
+   "inkPixels": 1587,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s105_btn_sbuton.svg",
+   "element": "btn_sbuton",
+   "source": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_105/1_up.svg",
+   "symbol": {
+    "kind": "button",
+    "id": 105
+   },
+   "sourceBytes": 2622,
+   "outputBytes": 2346,
+   "width": 69.3,
+   "height": 21.7,
+   "naturalWidth": 69,
+   "naturalHeight": 22,
+   "inkPixels": 1312,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s108_btn_top10.svg",
+   "element": "btn_top10",
+   "source": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_108/1_up.svg",
+   "symbol": {
+    "kind": "button",
+    "id": 108
+   },
+   "sourceBytes": 4154,
+   "outputBytes": 3792,
+   "width": 89.45,
+   "height": 21.7,
+   "naturalWidth": 89,
+   "naturalHeight": 22,
+   "inkPixels": 1615,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s111_score_feedback.svg",
+   "element": "score_feedback",
+   "source": "artifacts/decompiled/sprites/DefineSprite_111/7.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 111,
+    "frame": 7
+   },
+   "sourceBytes": 471,
+   "outputBytes": 393,
+   "width": 93,
+   "height": 167.55,
+   "naturalWidth": 93,
+   "naturalHeight": 168,
+   "inkPixels": 0,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s123_status_ball.svg",
+   "element": "status_ball",
+   "source": "artifacts/decompiled/sprites/DefineSprite_123/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 123,
+    "frame": 1
+   },
+   "sourceBytes": 5961,
+   "outputBytes": 5415,
+   "width": 107,
+   "height": 34.8,
+   "naturalWidth": 107,
+   "naturalHeight": 35,
+   "inkPixels": 1032,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s166_hiscore_form.svg",
+   "element": "hiscore_form",
+   "source": "artifacts/decompiled/sprites/DefineSprite_166/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 166,
+    "frame": 1
+   },
+   "sourceBytes": 31315,
+   "outputBytes": 26126,
+   "width": 311.9,
+   "height": 169,
+   "naturalWidth": 312,
+   "naturalHeight": 169,
+   "inkPixels": 46325,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s170_bottom_marquee.svg",
+   "element": "bottom_marquee",
+   "source": "artifacts/decompiled/sprites/DefineSprite_170/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 170,
+    "frame": 1
+   },
+   "sourceBytes": 478,
+   "outputBytes": 400,
+   "width": 451.25,
+   "height": 15,
+   "naturalWidth": 451,
+   "naturalHeight": 15,
+   "inkPixels": 0,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  }
+ ],
+ "totals": {
+  "assets": 36,
+  "mismatchedPixels": 0,
+  "sourceBytes": 272443,
+  "outputBytes": 247381,
+  "inkPixels": 882418,
+  "nonBlankRenders": 23
+ }
+}

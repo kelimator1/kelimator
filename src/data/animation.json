@@ -1,0 +1,711 @@
+{
+ "schemaVersion": 1,
+ "fps": 36,
+ "totalFrames": 241,
+ "frameNumbering": "1-based SWF frame numbers (FLA DOMFrame index + 1)",
+ "durationFormula": "durationSec = frames / fps",
+ "source": "artifacts/decompiled/header.txt (frameRate=36, frameCount=241); artifacts/decompiled/tags.xml (FrameLabel/PlaceObject2/ShowFrame)",
+ "sequences": [
+  {
+   "id": "preloader",
+   "kind": "main-timeline",
+   "state": "preloader",
+   "elements": [
+    "intro_backdrop",
+    "intro_ground",
+    "intro_layer3",
+    "intro_sky",
+    "logo_ornament",
+    "preloader_loaded_bytes",
+    "preloader_percent_sign",
+    "preloader_percent_value",
+    "preloader_progress",
+    "preloader_slash",
+    "preloader_total_bytes"
+   ],
+   "frameStart": 1,
+   "frameEnd": 4,
+   "frames": 4,
+   "durationSec": 0.1111,
+   "keyframeFrames": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.0278,
+    0.0556,
+    0.0833
+   ],
+   "evidence": "tags.xml labels/PlaceObject2 spans; frames 1-4 (before label 'main'); MochiAds gate + preloader fields (docs/02 §5); active elements derived from placement frame spans"
+  },
+  {
+   "id": "intro",
+   "kind": "main-timeline",
+   "state": "intro",
+   "elements": [
+    "clip_backspace",
+    "clip_boing",
+    "clip_buzz",
+    "clip_countdown",
+    "clip_enter",
+    "clip_fanfare",
+    "clip_finishsound",
+    "clip_shuffle",
+    "clip_timerr",
+    "clip_typer",
+    "intro_backdrop",
+    "intro_glow",
+    "intro_ground",
+    "intro_layer3",
+    "intro_logo",
+    "intro_sky",
+    "logo_ornament",
+    "wordball"
+   ],
+   "frameStart": 5,
+   "frameEnd": 130,
+   "frames": 126,
+   "durationSec": 3.5,
+   "keyframeFrames": [
+    5,
+    36,
+    68,
+    99,
+    130
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.8611,
+    1.75,
+    2.6111,
+    3.4722
+   ],
+   "evidence": "tags.xml labels/PlaceObject2 spans; label 'main' at SWF frame 5 (tags.xml FrameLabel); intro animation; active elements derived from placement frame spans"
+  },
+  {
+   "id": "board",
+   "kind": "main-timeline",
+   "state": "board",
+   "elements": [
+    "board_backdrop",
+    "btn_ebuton",
+    "btn_kbuton",
+    "btn_sbuton",
+    "btn_speaker",
+    "btn_top10",
+    "btn_ybuton",
+    "clip_backspace",
+    "clip_boing",
+    "clip_buzz",
+    "clip_countdown",
+    "clip_enter",
+    "clip_fanfare",
+    "clip_finishsound",
+    "clip_shuffle",
+    "clip_timerr",
+    "clip_typer",
+    "count_3",
+    "count_4",
+    "count_5",
+    "count_6",
+    "count_7",
+    "count_8",
+    "credit_line",
+    "credit_site",
+    "intro_backdrop",
+    "intro_glow",
+    "intro_logo",
+    "label_harf_3",
+    "label_harf_4",
+    "label_harf_5",
+    "label_harf_6",
+    "label_harf_7",
+    "label_harf_8",
+    "label_kelime_black",
+    "label_kelime_orange",
+    "label_puan_black",
+    "label_puan_orange",
+    "label_sure_black",
+    "label_sure_orange",
+    "letter_tile",
+    "loading_banner",
+    "logo_ornament",
+    "result_word_template",
+    "score_feedback",
+    "score_value",
+    "status_ball",
+    "tile_socket",
+    "timer_bar",
+    "timer_value",
+    "wordball"
+   ],
+   "frameStart": 131,
+   "frameEnd": 131,
+   "frames": 1,
+   "durationSec": 0.0278,
+   "keyframeFrames": [
+    131
+   ],
+   "keyframeOffsetsSec": [
+    0.0
+   ],
+   "evidence": "tags.xml labels/PlaceObject2 spans; label 'hepsiburda' at SWF frame 131; gameplay round controller frame (docs/02 §5); active elements derived from placement frame spans"
+  },
+  {
+   "id": "win",
+   "kind": "main-timeline",
+   "state": "win",
+   "elements": [
+    "bottom_marquee",
+    "hiscore_form",
+    "intro_backdrop",
+    "intro_glow",
+    "intro_ground",
+    "intro_layer3",
+    "intro_logo",
+    "intro_sky",
+    "logo_ornament"
+   ],
+   "frameStart": 132,
+   "frameEnd": 241,
+   "frames": 110,
+   "durationSec": 3.0556,
+   "keyframeFrames": [
+    132,
+    159,
+    186,
+    214,
+    241
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.75,
+    1.5,
+    2.2778,
+    3.0278
+   ],
+   "evidence": "tags.xml labels/PlaceObject2 spans; label 'bravo' at SWF frame 132; celebration + end-of-round screen up to the final ShowFrame; active elements derived from placement frame spans"
+  },
+  {
+   "id": "intro_glow_motion",
+   "kind": "element-motion",
+   "state": "intro",
+   "elements": [
+    "intro_glow"
+   ],
+   "frameStart": 5,
+   "frameEnd": 222,
+   "frames": 218,
+   "durationSec": 6.0556,
+   "keyframeFrames": [
+    5,
+    59,
+    114,
+    168,
+    222
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    1.5,
+    3.0278,
+    4.5278,
+    6.0278
+   ],
+   "evidence": "tags.xml main-timeline Move tags: 214 moves, first frame 5, last frame 222; glow ball path; Move tags on depth 7"
+  },
+  {
+   "id": "intro_logo_motion",
+   "kind": "element-motion",
+   "state": "intro",
+   "elements": [
+    "intro_logo"
+   ],
+   "frameStart": 41,
+   "frameEnd": 202,
+   "frames": 162,
+   "durationSec": 4.5,
+   "keyframeFrames": [
+    41,
+    81,
+    122,
+    162,
+    202
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    1.1111,
+    2.25,
+    3.3611,
+    4.4722
+   ],
+   "evidence": "tags.xml main-timeline Move tags: 86 moves, first frame 41, last frame 202; falling logo; Move tags on depth 47"
+  },
+  {
+   "id": "hiscore_form_motion",
+   "kind": "element-motion",
+   "state": "win",
+   "elements": [
+    "hiscore_form"
+   ],
+   "frameStart": 222,
+   "frameEnd": 241,
+   "frames": 20,
+   "durationSec": 0.5556,
+   "keyframeFrames": [
+    222,
+    227,
+    232,
+    236,
+    241
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.1389,
+    0.2778,
+    0.3889,
+    0.5278
+   ],
+   "evidence": "tags.xml main-timeline Move tags: 19 moves, first frame 222, last frame 241; high-score form rise; Move tags on depth 51"
+  },
+  {
+   "id": "sprite_preloader_progress_timeline",
+   "kind": "sprite-timeline",
+   "state": "sprite-internal",
+   "elements": [
+    "preloader_progress"
+   ],
+   "frameStart": 1,
+   "frameEnd": 2,
+   "frames": 2,
+   "durationSec": 0.0556,
+   "keyframeFrames": [
+    1,
+    2
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.0278
+   ],
+   "evidence": "tags.xml DefineSprite 12 frameCount=2 (relative sprite frames 1..2); shown on stage at main-timeline frames 2-4"
+  },
+  {
+   "id": "sprite_clip_timerr_timeline",
+   "kind": "sprite-timeline",
+   "state": "sprite-internal",
+   "elements": [
+    "clip_timerr"
+   ],
+   "frameStart": 1,
+   "frameEnd": 4,
+   "frames": 4,
+   "durationSec": 0.1111,
+   "keyframeFrames": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.0278,
+    0.0556,
+    0.0833
+   ],
+   "evidence": "tags.xml DefineSprite 21 frameCount=4 (relative sprite frames 1..4); shown on stage at main-timeline frames 5-131"
+  },
+  {
+   "id": "sprite_clip_enter_timeline",
+   "kind": "sprite-timeline",
+   "state": "sprite-internal",
+   "elements": [
+    "clip_enter"
+   ],
+   "frameStart": 1,
+   "frameEnd": 11,
+   "frames": 11,
+   "durationSec": 0.3056,
+   "keyframeFrames": [
+    1,
+    4,
+    6,
+    8,
+    11
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.0833,
+    0.1389,
+    0.1944,
+    0.2778
+   ],
+   "evidence": "tags.xml DefineSprite 23 frameCount=11 (relative sprite frames 1..11); shown on stage at main-timeline frames 16-131"
+  },
+  {
+   "id": "sprite_clip_shuffle_timeline",
+   "kind": "sprite-timeline",
+   "state": "sprite-internal",
+   "elements": [
+    "clip_shuffle"
+   ],
+   "frameStart": 1,
+   "frameEnd": 29,
+   "frames": 29,
+   "durationSec": 0.8056,
+   "keyframeFrames": [
+    1,
+    8,
+    15,
+    22,
+    29
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.1944,
+    0.3889,
+    0.5833,
+    0.7778
+   ],
+   "evidence": "tags.xml DefineSprite 25 frameCount=29 (relative sprite frames 1..29); shown on stage at main-timeline frames 26-131"
+  },
+  {
+   "id": "sprite_clip_countdown_timeline",
+   "kind": "sprite-timeline",
+   "state": "sprite-internal",
+   "elements": [
+    "clip_countdown"
+   ],
+   "frameStart": 1,
+   "frameEnd": 4,
+   "frames": 4,
+   "durationSec": 0.1111,
+   "keyframeFrames": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.0278,
+    0.0556,
+    0.0833
+   ],
+   "evidence": "tags.xml DefineSprite 27 frameCount=4 (relative sprite frames 1..4); shown on stage at main-timeline frames 36-131"
+  },
+  {
+   "id": "sprite_clip_boing_timeline",
+   "kind": "sprite-timeline",
+   "state": "sprite-internal",
+   "elements": [
+    "clip_boing"
+   ],
+   "frameStart": 1,
+   "frameEnd": 12,
+   "frames": 12,
+   "durationSec": 0.3333,
+   "keyframeFrames": [
+    1,
+    4,
+    6,
+    9,
+    12
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.0833,
+    0.1389,
+    0.2222,
+    0.3056
+   ],
+   "evidence": "tags.xml DefineSprite 31 frameCount=12 (relative sprite frames 1..12); shown on stage at main-timeline frames 46-131"
+  },
+  {
+   "id": "sprite_clip_fanfare_timeline",
+   "kind": "sprite-timeline",
+   "state": "sprite-internal",
+   "elements": [
+    "clip_fanfare"
+   ],
+   "frameStart": 1,
+   "frameEnd": 12,
+   "frames": 12,
+   "durationSec": 0.3333,
+   "keyframeFrames": [
+    1,
+    4,
+    6,
+    9,
+    12
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.0833,
+    0.1389,
+    0.2222,
+    0.3056
+   ],
+   "evidence": "tags.xml DefineSprite 33 frameCount=12 (relative sprite frames 1..12); shown on stage at main-timeline frames 56-131"
+  },
+  {
+   "id": "sprite_clip_finishsound_timeline",
+   "kind": "sprite-timeline",
+   "state": "sprite-internal",
+   "elements": [
+    "clip_finishsound"
+   ],
+   "frameStart": 1,
+   "frameEnd": 5,
+   "frames": 5,
+   "durationSec": 0.1389,
+   "keyframeFrames": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.0278,
+    0.0556,
+    0.0833,
+    0.1111
+   ],
+   "evidence": "tags.xml DefineSprite 35 frameCount=5 (relative sprite frames 1..5); shown on stage at main-timeline frames 66-131"
+  },
+  {
+   "id": "sprite_clip_typer_timeline",
+   "kind": "sprite-timeline",
+   "state": "sprite-internal",
+   "elements": [
+    "clip_typer"
+   ],
+   "frameStart": 1,
+   "frameEnd": 7,
+   "frames": 7,
+   "durationSec": 0.1944,
+   "keyframeFrames": [
+    1,
+    2,
+    4,
+    6,
+    7
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.0278,
+    0.0833,
+    0.1389,
+    0.1667
+   ],
+   "evidence": "tags.xml DefineSprite 37 frameCount=7 (relative sprite frames 1..7); shown on stage at main-timeline frames 76-131"
+  },
+  {
+   "id": "sprite_clip_backspace_timeline",
+   "kind": "sprite-timeline",
+   "state": "sprite-internal",
+   "elements": [
+    "clip_backspace"
+   ],
+   "frameStart": 1,
+   "frameEnd": 11,
+   "frames": 11,
+   "durationSec": 0.3056,
+   "keyframeFrames": [
+    1,
+    4,
+    6,
+    8,
+    11
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.0833,
+    0.1389,
+    0.1944,
+    0.2778
+   ],
+   "evidence": "tags.xml DefineSprite 39 frameCount=11 (relative sprite frames 1..11); shown on stage at main-timeline frames 109-131"
+  },
+  {
+   "id": "sprite_clip_buzz_timeline",
+   "kind": "sprite-timeline",
+   "state": "sprite-internal",
+   "elements": [
+    "clip_buzz"
+   ],
+   "frameStart": 1,
+   "frameEnd": 15,
+   "frames": 15,
+   "durationSec": 0.4167,
+   "keyframeFrames": [
+    1,
+    4,
+    8,
+    12,
+    15
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.0833,
+    0.1944,
+    0.3056,
+    0.3889
+   ],
+   "evidence": "tags.xml DefineSprite 41 frameCount=15 (relative sprite frames 1..15); shown on stage at main-timeline frames 119-131"
+  },
+  {
+   "id": "sprite_wordball_timeline",
+   "kind": "sprite-timeline",
+   "state": "sprite-internal",
+   "elements": [
+    "wordball"
+   ],
+   "frameStart": 1,
+   "frameEnd": 39,
+   "frames": 39,
+   "durationSec": 1.0833,
+   "keyframeFrames": [
+    1,
+    10,
+    20,
+    30,
+    39
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.25,
+    0.5278,
+    0.8056,
+    1.0556
+   ],
+   "evidence": "tags.xml DefineSprite 46 frameCount=39 (relative sprite frames 1..39); shown on stage at main-timeline frames 119-131"
+  },
+  {
+   "id": "sprite_timer_bar_timeline",
+   "kind": "sprite-timeline",
+   "state": "sprite-internal",
+   "elements": [
+    "timer_bar"
+   ],
+   "frameStart": 1,
+   "frameEnd": 2,
+   "frames": 2,
+   "durationSec": 0.0556,
+   "keyframeFrames": [
+    1,
+    2
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.0278
+   ],
+   "evidence": "tags.xml DefineSprite 76 frameCount=2 (relative sprite frames 1..2); shown on stage at main-timeline frames 131-131"
+  },
+  {
+   "id": "sprite_loading_banner_timeline",
+   "kind": "sprite-timeline",
+   "state": "sprite-internal",
+   "elements": [
+    "loading_banner"
+   ],
+   "frameStart": 1,
+   "frameEnd": 4,
+   "frames": 4,
+   "durationSec": 0.1111,
+   "keyframeFrames": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.0278,
+    0.0556,
+    0.0833
+   ],
+   "evidence": "tags.xml DefineSprite 84 frameCount=4 (relative sprite frames 1..4); shown on stage at main-timeline frames 131-131"
+  },
+  {
+   "id": "sprite_score_feedback_timeline",
+   "kind": "sprite-timeline",
+   "state": "sprite-internal",
+   "elements": [
+    "score_feedback"
+   ],
+   "frameStart": 1,
+   "frameEnd": 37,
+   "frames": 37,
+   "durationSec": 1.0278,
+   "keyframeFrames": [
+    1,
+    10,
+    19,
+    28,
+    37
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+   ],
+   "evidence": "tags.xml DefineSprite 111 frameCount=37 (relative sprite frames 1..37); shown on stage at main-timeline frames 131-131"
+  },
+  {
+   "id": "sprite_status_ball_timeline",
+   "kind": "sprite-timeline",
+   "state": "sprite-internal",
+   "elements": [
+    "status_ball"
+   ],
+   "frameStart": 1,
+   "frameEnd": 3,
+   "frames": 3,
+   "durationSec": 0.0833,
+   "keyframeFrames": [
+    1,
+    2,
+    3
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.0278,
+    0.0556
+   ],
+   "evidence": "tags.xml DefineSprite 123 frameCount=3 (relative sprite frames 1..3); shown on stage at main-timeline frames 131-131"
+  },
+  {
+   "id": "sprite_bottom_marquee_timeline",
+   "kind": "sprite-timeline",
+   "state": "sprite-internal",
+   "elements": [
+    "bottom_marquee"
+   ],
+   "frameStart": 1,
+   "frameEnd": 65,
+   "frames": 65,
+   "durationSec": 1.8056,
+   "keyframeFrames": [
+    1,
+    17,
+    33,
+    49,
+    65
+   ],
+   "keyframeOffsetsSec": [
+    0.0,
+    0.4444,
+    0.8889,
+    1.3333,
+    1.7778
+   ],
+   "evidence": "tags.xml DefineSprite 170 frameCount=65 (relative sprite frames 1..65); shown on stage at main-timeline frames 241-241"
+  }
+ ]
+}

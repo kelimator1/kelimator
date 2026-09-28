@@ -1,0 +1,14 @@
+
+> kelimator-2012@0.0.0 test
+> vitest run assets
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.2 [39m[90m/home/dev/kelimator-2012[39m
+
+ [32m✓[39m tests/assets.test.mjs [2m([22m[2m8 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m8 passed[39m[22m[90m (8)[39m
+[2m   Start at [22m 17:09:24
+[2m   Duration [22m 86ms[2m (transform 41%, tests 27%, import 24%, worker 8%)[22m
+

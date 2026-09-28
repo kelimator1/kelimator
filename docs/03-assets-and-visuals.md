@@ -22,6 +22,14 @@ Naming convention:
 - Images: `img_<id>_<w>x<h>.png`.
 Slugs are assigned in A3's layout catalog, not guessed ad hoc.
 
+> Amendment 2026-09-28 (orchestrator): text-catalog copies of A3's layout
+> sources (`artifacts/decompiled/texts/<id>.txt`) are committed to
+> `src/assets/text/<symbolId>.txt` so every runtime `asset` reference resolves
+> in a fresh clone (`artifacts/` is not committed); they are provenance only.
+> Slugs are the A3 element ids (§6). Decision record:
+> `evidence/E1-assets.md` §11.1/§13; matching entry in
+> `docs/08-open-items.md` (Amendments).
+
 ## 2. Bitmap handling (decision procedure, evidence-based)
 
 Two bitmap definitions exist (**[CONFIRMED-OBSERVED]** on 2007/EN builds:
