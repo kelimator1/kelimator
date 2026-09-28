@@ -1,0 +1,16 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test
+
+
+Running 7 tests using 1 worker
+
+  ✓  1 [app] › tests/e2e/smoke.spec.ts:92:3 › C2 stage shell smoke › page loads with the stage shell and read-only __game hooks (1.0s)
+  ✓  2 [app] › tests/e2e/smoke.spec.ts:139:5 › C2 stage shell smoke › viewport 320x480: scale, letterbox, non-blank screenshot (229ms)
+  ✓  3 [app] › tests/e2e/smoke.spec.ts:139:5 › C2 stage shell smoke › viewport 550x400: scale, letterbox, non-blank screenshot (212ms)
+  ✓  4 [app] › tests/e2e/smoke.spec.ts:139:5 › C2 stage shell smoke › viewport 1920x1080: scale, letterbox, non-blank screenshot (179ms)
+  ✓  5 [app] › tests/e2e/smoke.spec.ts:139:5 › C2 stage shell smoke › viewport 3840x2160: scale, letterbox, non-blank screenshot (319ms)
+  ✓  6 [app] › tests/e2e/smoke.spec.ts:139:5 › C2 stage shell smoke › viewport 3440x1440: scale, letterbox, non-blank screenshot (212ms)
+  ✓  7 [app] › tests/e2e/smoke.spec.ts:197:3 › C2 stage shell smoke › fullscreen toggle keeps the scale formula for unchanged viewport dimensions (V2) (312ms)
+
+  7 passed (4.9s)

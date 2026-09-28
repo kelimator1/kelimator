@@ -1,0 +1,12 @@
+
+> kelimator-2012@0.0.0 lint
+> eslint .
+
+
+/home/dev/kelimator-2012/verify/diff/diff.mjs
+  123:5  error  There is no `cause` attached to the symptom error being thrown  preserve-caught-error
+  340:5  error  There is no `cause` attached to the symptom error being thrown  preserve-caught-error
+  345:5  error  There is no `cause` attached to the symptom error being thrown  preserve-caught-error
+
+✖ 3 problems (3 errors, 0 warnings)
+

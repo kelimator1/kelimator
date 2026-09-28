@@ -1,0 +1,2 @@
+# C2-owned files: npx eslint src/stage.ts src/main.ts tests/stage.test.ts tests/e2e/smoke.spec.ts playwright.config.ts
+npx eslint exit=0
