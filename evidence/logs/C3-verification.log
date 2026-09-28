@@ -1,0 +1,38 @@
+=== C3 verification log ===
+# V1 — Ruffle web asset SHA-256 recorded and stable
+$ shasum -a 256 verify/reference/ruffle/ruffle-0.6.0-web-selfhosted.zip
+e8acfacc37443303872379d0e215999af846854d1dd3fa8fac0a765445b43dbf  verify/reference/ruffle/ruffle-0.6.0-web-selfhosted.zip
+$ shasum -a 256 artifacts/a3-captures/ruffle-0.6.0-web-selfhosted.zip   # independent download of the same pinned asset
+e8acfacc37443303872379d0e215999af846854d1dd3fa8fac0a765445b43dbf  artifacts/a3-captures/ruffle-0.6.0-web-selfhosted.zip
+$ shasum -a 256 verify/reference/ruffle/web/ruffle.js
+a686a305345b06542dddedada71869104916a61e393f174687571528ac4225f5  verify/reference/ruffle/web/ruffle.js
+
+# Inputs
+$ shasum -a 256 ../kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf
+236ed9359719d061c4c9426c8533b126bffcb3466f7b5f818601b50bd7afbf39  ../kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf
+$ md5 ../kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf
+MD5 (../kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf) = af059ff9d75cefbc244f03814b47be9c
+$ shasum -a 256 ../kelimator-nostalji/calistir/xml64.php   # read-only package, unchanged
+854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed  ../kelimator-nostalji/calistir/xml64.php
+
+
+=== final V1/V2/V5/V6 check 2026-09-28T14:00:27Z ===
+$ node verify/reference/check.mjs
+PASS  V1  ruffle-0.6.0-web-selfhosted.zip sha256=e8acfacc37443303872379d0e215999af846854d1dd3fa8fac0a765445b43dbf
+PASS  V2  30/30 screenshots present; 14/14 JSON files parse
+PASS  V6  run 1: 2026-09-28T13:47:52Z 127.0.0.1 "GET /xml64.php?687477 HTTP/1.1" -> 200 - | run 2: 2026-09-28T13:51:23Z 127.0.0.1 "GET /xml64.php?264647 HTTP/1.1" -> 200 -
+PASS  V5  S2 not byte-identical (stabilization documented): within-run stable streak run1=3 run2=3; cross-run mismatchRatio=0.01031 (<=0.02) bbox={"x":33,"y":303,"width":414,"height":54}
+--- stability summary (O20) ---
+  S1-boot: byteIdentical=true mismatchRatio=0.00000 pass=true bbox=null
+  S2-idle-board: byteIdentical=false mismatchRatio=0.01031 pass=true bbox={"x":33,"y":303,"width":414,"height":54}
+  S3-scrambled: byteIdentical=false mismatchRatio=0.00525 pass=true bbox={"x":33,"y":303,"width":114,"height":54}
+  S4-partial-entry: byteIdentical=false mismatchRatio=0.00521 pass=true bbox={"x":449,"y":240,"width":92,"height":31}
+  S5-valid-word: byteIdentical=false mismatchRatio=0.01902 pass=true bbox={"x":93,"y":45,"width":440,"height":312}
+  S6-invalid-word: byteIdentical=false mismatchRatio=0.00606 pass=true bbox={"x":33,"y":45,"width":500,"height":312}
+  S7-bonus-word: byteIdentical=false mismatchRatio=0.00607 pass=true bbox={"x":33,"y":45,"width":500,"height":312}
+  S8-all-found: byteIdentical=false mismatchRatio=0.00603 pass=true bbox={"x":33,"y":45,"width":500,"height":312}
+  S9-timeout: byteIdentical=false mismatchRatio=0.00061 pass=true bbox={"x":497,"y":45,"width":19,"height":12}
+  S10-next-round: byteIdentical=false mismatchRatio=0.00517 pass=true bbox={"x":333,"y":303,"width":174,"height":54}
+  allByteIdentical=false allPass=true
+--- ALL CHECKS PASS ---
+check exit=0

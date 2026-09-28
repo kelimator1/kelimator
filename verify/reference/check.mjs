@@ -1,0 +1,169 @@
+#!/usr/bin/env node
+/**
+ * C3 verification checks (V1 / V2 / V5 self-check / V6) — reproducible report.
+ *
+ * Usage: node verify/reference/check.mjs
+ * Exit code: 0 when every check passes, 1 otherwise. Prints one line per check.
+ *
+ * Checks
+ *   V1  the pinned Ruffle web asset SHA-256 equals the recorded value
+ *       (recorded in evidence/logs/C3-ruffle-sha256.log on 2026-09-28).
+ *   V2  S1–S10 screenshots exist in run1/, run2/ and at the canonical flat
+ *       paths; every interaction/stability JSON parses.
+ *   V5  self-check: run1 vs run2 S2 are byte-identical, or the stabilization
+ *       is quantified: within-run stable-frame streak >= 3 for S2 and the
+ *       cross-run mismatch ratio is within the docs/07 §4 static threshold;
+ *       the cause is documented in evidence/C3-stability.md.
+ *   V6  the server log contains an `xml64.php ... -> 200` line in both matrix
+ *       runs (segments delimited by "==== C3 harness run N start" markers).
+ */
+import { createHash } from 'node:crypto';
+import { spawnSync } from 'node:child_process';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { compareImages, decodePng } from '../diff/diff.mjs';
+import { decodeLatin5, swfBase64Decode } from './swf-codec.mjs';
+
+const HERE = path.dirname(fileURLToPath(import.meta.url));
+const REPO = path.resolve(HERE, '..', '..');
+const OUT = path.join(REPO, 'tests', 'fixtures', 'reference');
+const LOG_DIR = path.join(REPO, 'evidence', 'logs');
+const SERVER_LOG = path.join(LOG_DIR, 'C3-server.log');
+const ZIP = path.join(HERE, 'ruffle', 'ruffle-0.6.0-web-selfhosted.zip');
+const FIXTURE_INPUT = path.resolve(REPO, '..', 'kelimator-nostalji', 'calistir', 'xml64.php');
+const FIXTURE_SERVED = path.join(HERE, 'fixtures', 'xml64.base64.php');
+const FIXTURE_META = path.join(HERE, 'fixtures', 'fixture-meta.json');
+const FIXTURE_SCRIPT = path.join(HERE, 'make-fixture.mjs');
+
+// evidence/logs/C3-ruffle-sha256.log (2026-09-28); independent copy:
+// artifacts/a3-captures/ruffle-0.6.0-web-selfhosted.zip has the same value.
+const RUFFLE_ZIP_SHA256 = 'e8acfacc37443303872379d0e215999af846854d1dd3fa8fac0a765445b43dbf';
+
+const STATES = ['S1-boot', 'S2-idle-board', 'S3-scrambled', 'S4-partial-entry', 'S5-valid-word', 'S6-invalid-word', 'S7-bonus-word', 'S8-all-found', 'S9-timeout', 'S10-next-round'];
+const PASS_RATIO = 0.02;
+
+const sha256 = (buf) => createHash('sha256').update(buf).digest('hex');
+const results = [];
+function check(id, ok, detail) {
+  results.push({ id, ok, detail });
+  console.log(`${ok ? 'PASS' : 'FAIL'}  ${id}  ${detail}`);
+}
+
+// --- V1 --------------------------------------------------------------------
+const zipHash = sha256(fs.readFileSync(ZIP));
+check('V1', zipHash === RUFFLE_ZIP_SHA256, `ruffle-0.6.0-web-selfhosted.zip sha256=${zipHash}`);
+
+// --- V1fixture: fixture transform integrity (amendment 2026-09-28) ---------
+function fixturePipelineCheck() {
+  const inputBuf = fs.readFileSync(FIXTURE_INPUT);
+  const servedBuf = fs.readFileSync(FIXTURE_SERVED);
+  const meta = JSON.parse(fs.readFileSync(FIXTURE_META, 'utf8'));
+  const inputText = decodeLatin5(inputBuf);
+  const servedText = decodeLatin5(servedBuf);
+  const entries = (text) => [...text.matchAll(/<kelime\s+harf="(\d+)">\s*<txt>([^<]*)<\/txt>\s*<\/kelime>/g)].map((m) => ({ harf: Number(m[1]), value: m[2] }));
+  const archived = new Map(entries(inputText).map((e) => [e.harf, e.value]));
+  const served = new Map(entries(servedText).map((e) => [e.harf, e.value]));
+  const problems = [];
+  for (const [harf, value] of archived) {
+    if (!served.has(harf)) { problems.push(`harf=${harf} missing in served fixture`); continue; }
+    if (harf >= 2 && harf <= 8) {
+      const decoded = swfBase64Decode(served.get(harf));
+      if (decoded !== value) problems.push(`harf=${harf} decodes to a different value`);
+    } else if (served.get(harf) !== value) {
+      problems.push(`harf=${harf} (raw-preserved entry) changed`);
+    }
+  }
+  if (meta.input.sha256 !== sha256(inputBuf)) problems.push('meta input sha256 mismatch');
+  if (meta.output.sha256 !== sha256(servedBuf)) problems.push('meta output sha256 mismatch');
+  if (meta.script.sha256 !== sha256(fs.readFileSync(FIXTURE_SCRIPT))) problems.push('meta script sha256 mismatch (script edited after generation?)');
+  const rerun = spawnSync(process.execPath, [FIXTURE_SCRIPT, '--check'], { encoding: 'utf8' });
+  if (rerun.status !== 0) problems.push(`make-fixture.mjs --check exit ${rerun.status}: ${(rerun.stdout ?? '').trim()}`);
+  return { problems, inputSha: sha256(inputBuf), servedSha: sha256(servedBuf), scriptSha: meta.script.sha256 };
+}
+const fixture = fixturePipelineCheck();
+check(
+  'V1fixture',
+  fixture.problems.length === 0,
+  `input sha256=${fixture.inputSha.slice(0, 12)} script sha256=${fixture.scriptSha.slice(0, 12)} served sha256=${fixture.servedSha.slice(0, 12)}; round trip + structure ${fixture.problems.length === 0 ? 'OK' : `PROBLEMS: ${fixture.problems.join('; ')}`}`,
+);
+
+// --- V2 --------------------------------------------------------------------
+const missing = [];
+for (const state of STATES) {
+  for (const p of [path.join(OUT, 'run1', `${state}.png`), path.join(OUT, 'run2', `${state}.png`), path.join(OUT, `${state}.png`)]) {
+    if (!fs.existsSync(p)) missing.push(path.relative(REPO, p));
+  }
+}
+const jsonFiles = [
+  path.join(OUT, 'run1', 'interaction-log.json'),
+  path.join(OUT, 'run2', 'interaction-log.json'),
+  path.join(OUT, 'interaction-log.json'),
+  path.join(OUT, 'stability-report.json'),
+];
+for (const state of STATES) {
+  const p = path.join(OUT, 'stability', state, 'report.json');
+  if (fs.existsSync(p)) jsonFiles.push(p);
+}
+const badJson = [];
+for (const p of jsonFiles) {
+  try {
+    JSON.parse(fs.readFileSync(p, 'utf8'));
+  } catch (err) {
+    badJson.push(`${path.relative(REPO, p)}: ${err.message}`);
+  }
+}
+check('V2', missing.length === 0 && badJson.length === 0, `${STATES.length * 3 - missing.length}/${STATES.length * 3} screenshots present; ${jsonFiles.length - badJson.length}/${jsonFiles.length} JSON files parse${missing.length ? `; missing: ${missing.join(', ')}` : ''}${badJson.length ? `; bad: ${badJson.join('; ')}` : ''}`);
+
+// --- V6 --------------------------------------------------------------------
+const lines = fs.readFileSync(SERVER_LOG, 'utf8').split('\n');
+const starts = [];
+lines.forEach((line, i) => {
+  const m = line.match(/^==== C3 harness run (\d+) start /);
+  if (m) starts.push({ run: m[1], i });
+});
+const lastTwo = starts.slice(-2);
+const v6 = lastTwo.map(({ run, i }) => {
+  const end = starts.find((s) => s.i > i)?.i ?? lines.length;
+  const segment = lines.slice(i, end);
+  const hit = segment.find((l) => /GET \/xml64\.php\?\d+ HTTP\/1\.1" -> 200/.test(l));
+  return { run, hit: hit ? hit.trim() : null };
+});
+check('V6', v6.length === 2 && v6.every((r) => r.hit), v6.map((r) => `run ${r.run}: ${r.hit ?? 'NO xml64.php 200'}`).join(' | '));
+
+// --- V5 self-check ---------------------------------------------------------
+const s2aPath = path.join(OUT, 'run1', 'S2-idle-board.png');
+const s2bPath = path.join(OUT, 'run2', 'S2-idle-board.png');
+if (!fs.existsSync(s2aPath) || !fs.existsSync(s2bPath)) {
+  check('V5', false, `run1/run2 S2 captures missing (${path.relative(REPO, s2aPath)}, ${path.relative(REPO, s2bPath)})`);
+} else {
+  const s2a = fs.readFileSync(s2aPath);
+  const s2b = fs.readFileSync(s2bPath);
+  const byteIdentical = sha256(s2a) === sha256(s2b);
+  const report = compareImages(decodePng(s2a), decodePng(s2b));
+  const run1Log = JSON.parse(fs.readFileSync(path.join(OUT, 'run1', 'interaction-log.json'), 'utf8'));
+  const run2Log = JSON.parse(fs.readFileSync(path.join(OUT, 'run2', 'interaction-log.json'), 'utf8'));
+  const streak = (log) => log.states.find((s) => s.id === 'S2')?.stability?.streak ?? 0;
+  const stable = (log) => log.states.find((s) => s.id === 'S2')?.stability?.stable === true;
+  const withinRunStable = stable(run1Log) && stable(run2Log) && streak(run1Log) >= 3 && streak(run2Log) >= 3;
+  const v5ok = byteIdentical || (withinRunStable && report.mismatchRatio <= PASS_RATIO);
+  check(
+    'V5',
+    v5ok,
+    byteIdentical
+      ? `S2 byte-identical across runs (sha256=${sha256(s2a)})`
+      : `S2 not byte-identical (stabilization documented): within-run stable streak run1=${streak(run1Log)} run2=${streak(run2Log)}; cross-run mismatchRatio=${report.mismatchRatio.toFixed(5)} (<=${PASS_RATIO}) bbox=${JSON.stringify(report.mismatchBBox)}`,
+  );
+}
+
+// --- summary ---------------------------------------------------------------
+const stability = JSON.parse(fs.readFileSync(path.join(OUT, 'stability-report.json'), 'utf8'));
+console.log('--- stability summary (O20) ---');
+for (const s of stability.states) {
+  console.log(`  ${s.state}: byteIdentical=${s.byteIdentical} mismatchRatio=${Number(s.mismatchRatio).toFixed(5)} pass=${s.pass} bbox=${JSON.stringify(s.mismatchBBox)}`);
+}
+console.log(`  allByteIdentical=${stability.allByteIdentical} allPass=${stability.allPass}`);
+
+const failed = results.filter((r) => !r.ok);
+console.log(`--- ${failed.length === 0 ? 'ALL CHECKS PASS' : `${failed.length} CHECK(S) FAILED`} ---`);
+process.exitCode = failed.length === 0 ? 0 : 1;

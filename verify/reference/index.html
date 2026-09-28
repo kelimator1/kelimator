@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>C3 reference harness — Kelimatör 2012 (Ruffle 0.6.0 web self-hosted)</title>
+<!--
+  Reference capture page (task C3, docs/07-verification.md §3).
+
+  Loads the 2012 reference build (kelimator_tr_2012_mochiads.swf) in the pinned
+  Ruffle 0.6.0 web self-hosted player. The page is served by server.py from the
+  same origin/root as the fixture xml64.php, so the SWF's relative fetch
+  resolves locally. No ad/network request is stubbed or intercepted.
+-->
+<style>
+  html, body { margin: 0; padding: 0; background: #000; }
+  #stage { width: 550px; height: 400px; }
+  #stage ruffle-player, #stage ruffle-embed, #stage canvas {
+    width: 550px !important;
+    height: 400px !important;
+    display: block;
+  }
+</style>
+<script src="ruffle/web/ruffle.js"></script>
+</head>
+<body>
+<div id="stage"><div id="player"></div></div>
+<script>
+  window.RufflePlayer = window.RufflePlayer || {};
+  window.RufflePlayer.config = {
+    autoplay: "on",
+    unmuteOverlay: "hidden",
+    letterbox: "off",
+    scale: "exactFit",
+    warnOnUnsupportedContent: false,
+    logLevel: "info",
+    allowScriptAccess: false,
+    openUrlMode: "deny",
+    upgradeToHttps: false
+  };
+  window.__c3 = { playerCreated: false };
+  window.addEventListener("load", function () {
+    var ruffle = window.RufflePlayer.newest();
+    var player = ruffle.createPlayer();
+    player.id = "ruffle";
+    document.getElementById("player").appendChild(player);
+    player.load({ url: "kelimator_tr_2012_mochiads.swf" });
+    window.__c3.playerCreated = true;
+  });
+</script>
+</body>
+</html>

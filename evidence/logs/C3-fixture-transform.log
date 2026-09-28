@@ -1,0 +1,12 @@
+C3 fixture transform — Base64(UTF-8) re-encoding of the archived round values
+input : ../kelimator-nostalji/calistir/xml64.php sha256=854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed
+script: verify/reference/make-fixture.mjs sha256=e4f5198a1ddd94eceeb20639a41855a2bb385e75782e169a5768205272007788
+output: verify/reference/fixtures/xml64.base64.php sha256=80506d3ef3b58a4d8fdb5779debd4819271d57a5635276963a5d01eab91cd8bf
+  harf=8 encoded (8 chars, 1 words, base64 16 chars)
+  harf=3 encoded (111 chars, 28 words, base64 172 chars)
+  harf=4 encoded (204 chars, 41 words, base64 336 chars)
+  harf=5 encoded (101 chars, 17 words, base64 164 chars)
+  harf=6 encoded (27 chars, 4 words, base64 48 chars)
+  harf=7 encoded (0 chars, 0 words, base64 0 chars)
+  harf=9999 preserved (raw, 32 chars)
+round trip: OK (SWF decoder reproduces every archived value)

@@ -1,0 +1,13 @@
+Archive:  verify/reference/ruffle/ruffle-0.6.0-web-selfhosted.zip
+  inflating: verify/reference/ruffle/web//ruffle.js  
+  inflating: verify/reference/ruffle/web//core.ruffle.c80159b526e567babaf5.js.map  
+  inflating: verify/reference/ruffle/web//72a20ef1c0b8ceb37720.wasm  
+  inflating: verify/reference/ruffle/web//core.ruffle.c80159b526e567babaf5.js  
+  inflating: verify/reference/ruffle/web//LICENSE_APACHE  
+  inflating: verify/reference/ruffle/web//package.json  
+  inflating: verify/reference/ruffle/web//LICENSE_MIT  
+  inflating: verify/reference/ruffle/web//ruffle.js.map  
+  inflating: verify/reference/ruffle/web//core.ruffle.f000070ea72f8ae4fe3a.js  
+  inflating: verify/reference/ruffle/web//README.md  
+  inflating: verify/reference/ruffle/web//core.ruffle.f000070ea72f8ae4fe3a.js.map  
+  inflating: verify/reference/ruffle/web//826bb0938097485a2c9d.wasm  

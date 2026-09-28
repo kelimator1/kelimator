@@ -1,0 +1,27 @@
+
+=== final C3 verification 2026-09-28T14:50:01Z ===
+$ node verify/reference/make-fixture.mjs --check
+OK fixture=80506d3ef3b58a4d8fdb5779debd4819271d57a5635276963a5d01eab91cd8bf input=854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed
+make-fixture --check exit=0
+$ node verify/reference/check.mjs
+PASS  V1  ruffle-0.6.0-web-selfhosted.zip sha256=e8acfacc37443303872379d0e215999af846854d1dd3fa8fac0a765445b43dbf
+PASS  V1fixture  input sha256=854b7287c2e6 script sha256=e4f5198a1ddd served sha256=80506d3ef3b5; round trip + structure OK
+PASS  V2  30/30 screenshots present; 14/14 JSON files parse
+PASS  V6  run 1: 2026-09-28T14:29:29Z 127.0.0.1 "GET /xml64.php?491311 HTTP/1.1" -> 200 - | run 2: 2026-09-28T14:34:32Z 127.0.0.1 "GET /xml64.php?561837 HTTP/1.1" -> 200 -
+PASS  V5  S2 not byte-identical (stabilization documented): within-run stable streak run1=3 run2=3; cross-run mismatchRatio=0.00781 (<=0.02) bbox={"x":51,"y":315,"width":439,"height":23}
+--- stability summary (O20) ---
+  S1-boot: byteIdentical=true mismatchRatio=0.00000 pass=true bbox=null
+  S2-idle-board: byteIdentical=false mismatchRatio=0.00781 pass=true bbox={"x":51,"y":315,"width":439,"height":23}
+  S3-scrambled: byteIdentical=false mismatchRatio=0.00149 pass=true bbox={"x":234,"y":315,"width":194,"height":23}
+  S4-partial-entry: byteIdentical=false mismatchRatio=0.00149 pass=true bbox={"x":234,"y":315,"width":194,"height":23}
+  S5-valid-word: byteIdentical=false mismatchRatio=0.00149 pass=true bbox={"x":234,"y":315,"width":194,"height":23}
+  S6-invalid-word: byteIdentical=false mismatchRatio=0.00155 pass=true bbox={"x":234,"y":134,"width":297,"height":204}
+  S7-bonus-word: byteIdentical=false mismatchRatio=0.00355 pass=true bbox={"x":234,"y":93,"width":299,"height":245}
+  S8-all-found: byteIdentical=false mismatchRatio=0.01220 pass=true bbox={"x":222,"y":64,"width":328,"height":294}
+  S9-timeout: byteIdentical=true mismatchRatio=0.00000 pass=true bbox=null
+  S10-next-round: byteIdentical=false mismatchRatio=0.00599 pass=true bbox={"x":52,"y":315,"width":376,"height":23}
+  allByteIdentical=false allPass=true
+--- ALL CHECKS PASS ---
+check exit=0
+$ shasum -a 256 ../kelimator-nostalji/calistir/xml64.php
+854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed  ../kelimator-nostalji/calistir/xml64.php

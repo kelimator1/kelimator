@@ -1,0 +1,16 @@
+# C3 fixture-archive probe — is the original 2012-era xml64.php recoverable from the Wayback Machine?
+# command: curl -sS 'http://web.archive.org/cdx/search/cdx?url=games.lg.web.tr/kelimator/xml64.php&output=json&limit=40'
+# date: 2026-09-28T13:26:57Z
+[["urlkey","timestamp","original","mimetype","statuscode","digest","length"],
+["tr,web,lg,games)/kelimator/xml64.php","20090304133902","http://games.lg.web.tr:80/kelimator/xml64.php?","text/html","200","3I42H3S6NNFQ2MSVX7XZKYAYSCX5QBYJ","355"],
+["tr,web,lg,games)/kelimator/xml64.php","20100202233814","http://games.lg.web.tr:80/kelimator/xml64.php","text/html","200","3I42H3S6NNFQ2MSVX7XZKYAYSCX5QBYJ","355"],
+["tr,web,lg,games)/kelimator/xml64.php","20140901100456","http://games.lg.web.tr:80/kelimator/xml64.php?","text/html","200","3I42H3S6NNFQ2MSVX7XZKYAYSCX5QBYJ","375"]]
+
+# all three captures share digest 3I42H3S6NNFQ2MSVX7XZKYAYSCX5QBYJ = base32(SHA-1 of the empty string) => empty responses
+# replay probe of the 2014 capture (headers):
+HTTP/2 200 
+content-length: 0
+x-archive-orig-content-length: 0
+memento-datetime: Mon, 01 Sep 2014 10:04:56 GMT
+# result: HTTP 200 with content-length: 0 — the original word list was not archived
+base32(SHA1 empty) = 3I42H3S6NNFQ2MSVX7XZKYAYSCX5QBYJ

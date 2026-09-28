@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "task": "C3",
+  "description": "Base64(UTF-8) re-encoding of the archived xml64.php round values the 2012 client decodes (harf 2..8); harf=9999 preserved; structure unchanged",
+  "input": {
+    "file": "../kelimator-nostalji/calistir/xml64.php",
+    "sha256": "854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed"
+  },
+  "script": {
+    "file": "verify/reference/make-fixture.mjs",
+    "sha256": "e4f5198a1ddd94eceeb20639a41855a2bb385e75782e169a5768205272007788"
+  },
+  "output": {
+    "file": "verify/reference/fixtures/xml64.base64.php",
+    "sha256": "80506d3ef3b58a4d8fdb5779debd4819271d57a5635276963a5d01eab91cd8bf"
+  },
+  "entries": [
+    {
+      "harf": 8,
+      "preserved": false,
+      "plainLength": 8,
+      "wordCount": 1,
+      "encodedLength": 16
+    },
+    {
+      "harf": 3,
+      "preserved": false,
+      "plainLength": 111,
+      "wordCount": 28,
+      "encodedLength": 172
+    },
+    {
+      "harf": 4,
+      "preserved": false,
+      "plainLength": 204,
+      "wordCount": 41,
+      "encodedLength": 336
+    },
+    {
+      "harf": 5,
+      "preserved": false,
+      "plainLength": 101,
+      "wordCount": 17,
+      "encodedLength": 164
+    },
+    {
+      "harf": 6,
+      "preserved": false,
+      "plainLength": 27,
+      "wordCount": 4,
+      "encodedLength": 48
+    },
+    {
+      "harf": 7,
+      "preserved": false,
+      "plainLength": 0,
+      "wordCount": 0,
+      "encodedLength": 0
+    },
+    {
+      "harf": 9999,
+      "preserved": true,
+      "plainLength": 32
+    }
+  ]
+}
