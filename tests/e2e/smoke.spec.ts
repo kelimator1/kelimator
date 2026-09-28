@@ -2,7 +2,8 @@
 // Run with: npm run e2e -- smoke
 // Verifies: page loads; applied scale equals min(vw/550, vh/400) ± 0.01 px;
 // letterbox color equals the documented fallback; screenshots are non-blank
-// (saved under evidence/visual/C2-smoke/); fullscreen keeps the same scale
+// (recorded under evidence/visual/C2-smoke/ with C2_RECORD=1; live runs write
+// transient screenshots to test-results/c2-smoke-live/); fullscreen keeps the same scale
 // formula for unchanged viewport dimensions.
 import { expect, test, type Page } from '@playwright/test';
 import fs from 'node:fs';
@@ -20,7 +21,12 @@ const TOLERANCE_PX = 0.01;
 // the 0.01 px task tolerance plus that documented browser quantization.
 const RECT_QUANTIZATION_PX = 1 / 64;
 const OFFSET_TOLERANCE_PX = TOLERANCE_PX + RECT_QUANTIZATION_PX;
-const EVIDENCE_DIR = path.resolve(process.cwd(), 'evidence/visual/C2-smoke');
+// Recorded evidence (C2) lives under evidence/visual/C2-smoke/ and stays frozen.
+// Live re-runs (verify-all / F3) write transient screenshots to test-results/;
+// set C2_RECORD=1 to record into the evidence directory again.
+const EVIDENCE_DIR = process.env.C2_RECORD
+  ? path.resolve(process.cwd(), 'evidence/visual/C2-smoke')
+  : path.resolve(process.cwd(), 'test-results/c2-smoke-live');
 
 const VIEWPORT_MATRIX = [
   { width: 320, height: 480 },

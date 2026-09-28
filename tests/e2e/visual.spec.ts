@@ -28,7 +28,12 @@ import type { BoardView } from '../../src/ui/board';
 
 const REPO_ROOT = process.cwd();
 const REFERENCE_DIR = path.join(REPO_ROOT, 'tests/fixtures/reference');
-const EVIDENCE_DIR = path.join(REPO_ROOT, 'evidence/visual/E2');
+// Recorded evidence (E2) lives under evidence/visual/E2/ and stays frozen.
+// Live re-runs (verify-all / F3) write transient artifacts to test-results/;
+// set E2_RECORD=1 to record into the evidence directory again.
+const EVIDENCE_DIR = process.env.E2_RECORD
+  ? path.join(REPO_ROOT, 'evidence/visual/E2')
+  : path.join(REPO_ROOT, 'test-results/E2-live');
 const DIFF_TOOL = path.join(REPO_ROOT, 'verify/diff/diff.mjs');
 const LAYOUT_PATH = path.join(REPO_ROOT, 'src/data/layout.json');
 

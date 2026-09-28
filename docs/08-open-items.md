@@ -119,3 +119,8 @@ RESOLVED 2026-09-28 — evidence/C3-fixture-format.md — harness fixture = Base
   `evidence/logs/orchestrator-tolerance-probe.log`, `evidence/E2-layout.md`
   §4/§6. Tool support lands in F1 (`verify/diff/`); E2/E3/F2 evaluate on the
   tolerant ratio.
+- 2026-09-28 — Evidence freeze for suite re-runs: live Playwright runs write
+  transient artifacts under `test-results/` (gitignored); committed
+  `evidence/visual/**` copies stay frozen from each owning task's recording
+  run. `C2_RECORD=1` / `E2_RECORD=1` re-record (`tests/e2e/smoke.spec.ts`,
+  `tests/e2e/visual.spec.ts`).
