@@ -17,3 +17,18 @@ b01bd3da03f0c3bab3489c758998093d8c045602c6974f0eb31e6cb4e4276bbd  evidence/F1-ar
 616f265556d94a78b01ef925eccbd6e93c97e8cf6c1d9a68f28689a6be96af87  verify/diff/diff.mjs
 17e668b8990f179b61108a91cb3d9ffeeede06d1c6f05bccbcd1c24a39d7ce1c  evidence/F1-artifacts/mutated-run-1/report.json  (re-verified unchanged, follow-up rerun)
 a7e7dc1edf64e0f24bc05939b3fe2fbbdf93cc0986e7e778c6063785faf2dabc  evidence/F1-artifacts/mutated-run-1/heatmap.png  (re-verified unchanged, follow-up rerun)
+
+# Follow-up (tolerant metric, schema v2), 2026-09-28T17:06:02Z — appended
+# Supersedes the diff.mjs/fixtures.mjs/diff.test.mjs/README.md lines above and the v1 artifacts.
+f211ed94002d1220b7c48951c4e63bca55316e73669b0fa1b976be572ffec148  verify/diff/diff.mjs
+7069c569188ca8d1b40d782e7c6c985e8e94450568adaed82451d57b190f0b52  verify/diff/fixtures.mjs
+cf32eba80c5ac9042b4d9cff2f61734877746aff130dd42e0e77bf00efeb92ce  verify/diff/diff.test.mjs
+0c5b04cfe3fdb9fe5fd299236ba8e7a05d08ce1bf99d9c55e27e5202674b07d5  verify/diff/README.md
+4936fcfb6029d5ef4848298708490c7c1e5e23246663870ed8e2dfefff843175  evidence/F1-artifacts/tolerance/base.png
+f1d05dbf79ed7f7a0e91ef3b15272f7d3b384ca70aab53fa87f4e4e05995ef0c  evidence/F1-artifacts/tolerance/mutated.png
+394d5b0441846f75d23a7d5dbc52656f67dbb4a4cdd54b24dc8cf0c1c5ba3270  evidence/F1-artifacts/tolerance/run-1/report.json
+23ea004d3dd09f58ae92a18f1406046fee82908dee88bae94e7059e9846d20b3  evidence/F1-artifacts/tolerance/run-1/heatmap.png
+394d5b0441846f75d23a7d5dbc52656f67dbb4a4cdd54b24dc8cf0c1c5ba3270  evidence/F1-artifacts/tolerance/run-2/report.json
+23ea004d3dd09f58ae92a18f1406046fee82908dee88bae94e7059e9846d20b3  evidence/F1-artifacts/tolerance/run-2/heatmap.png
+35eaeab20324a1bec3fe5c1ad541ffa348cdd75f03d797fb3c825fdd9b40dc27  evidence/F1-artifacts/tolerance/identical-run/report.json
+4d6e279f8f81225af1378304dbed82ed1ed194c102f3e93f77488f3c7b90b36d  evidence/F1-artifacts/tolerance/identical-run/heatmap.png

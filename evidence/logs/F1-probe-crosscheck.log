@@ -1,0 +1,82 @@
+# F1 cross-check against the orchestrator tolerance probe (evidence/logs/orchestrator-tolerance-probe.log)
+# expected S2 dsf1: raw=4.526, symR2=0.975 ; S2 dsf2: raw=5.732, symR2=0.363
+
+$ node verify/diff/diff.mjs evidence/visual/E2/S2/dsf1/actual.png tests/fixtures/reference/S2-idle-board.png dsf1  $TMPDIR/f1-crosscheck/
+diff: cannot read S2-idle-board.png dsf1: ENOENT: no such file or directory, open 'evidence/visual/E2/S2/dsf1/actual.png tests/fixtures/reference/S2-idle-board.png dsf1'
+exit=1
+node:fs:442
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
+                   ^
+
+Error: ENOENT: no such file or directory, open '/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//f1-crosscheck//report.json'
+    at Object.readFileSync (node:fs:442:20)
+    at [eval]:1:28
+    at runScriptInThisContext (node:internal/vm:209:10)
+    at node:internal/process/execution:449:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:447:60)
+    at evalFunction (node:internal/process/execution:87:30)
+    at evalScript (node:internal/process/execution:99:3)
+    at node:internal/main/eval_string:74:3 {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//f1-crosscheck//report.json'
+}
+
+Node.js v22.14.0
+
+$ node verify/diff/diff.mjs evidence/visual/E2/S2/dsf2/actual.png tests/fixtures/reference/dsf2/S2-idle-board.png dsf2  $TMPDIR/f1-crosscheck/
+diff: cannot read S2-idle-board.png dsf2: ENOENT: no such file or directory, open 'evidence/visual/E2/S2/dsf2/actual.png tests/fixtures/reference/dsf2/S2-idle-board.png dsf2'
+exit=1
+node:fs:442
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
+                   ^
+
+Error: ENOENT: no such file or directory, open '/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//f1-crosscheck//report.json'
+    at Object.readFileSync (node:fs:442:20)
+    at [eval]:1:28
+    at runScriptInThisContext (node:internal/vm:209:10)
+    at node:internal/process/execution:449:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:447:60)
+    at evalFunction (node:internal/process/execution:87:30)
+    at evalScript (node:internal/process/execution:99:3)
+    at node:internal/main/eval_string:74:3 {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//f1-crosscheck//report.json'
+}
+
+Node.js v22.14.0
+
+NOTE: the loop above failed (zsh does not word-split $pair). Corrected explicit runs:
+
+$ node verify/diff/diff.mjs evidence/visual/E2/S2/dsf1/actual.png tests/fixtures/reference/S2-idle-board.png $TMPDIR/f1-crosscheck/dsf1
+diff: mismatchedPixels=9957 totalPixels=220000 mismatchRatio=0.04525909090909091 pass=true -> /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/f1-crosscheck/dsf1/report.json
+exit=0
+S2 dsf1: rawRatio=4.526% rawPixels=9957 tolerantRatio=0.975% tolerantPixels=2144 pass=true schemaVersion=2
+
+$ node verify/diff/diff.mjs evidence/visual/E2/S2/dsf2/actual.png tests/fixtures/reference/dsf2/S2-idle-board.png $TMPDIR/f1-crosscheck/dsf2
+diff: mismatchedPixels=50444 totalPixels=880000 mismatchRatio=0.057322727272727275 pass=true -> /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/f1-crosscheck/dsf2/report.json
+exit=0
+S2 dsf2: rawRatio=5.732% rawPixels=50444 tolerantRatio=0.363% tolerantPixels=3194 pass=true schemaVersion=2
+
+# Extended cross-check: S4, S6, S10 (dsf1) vs probe values (raw / symR2):
+# expected S4: 5.914 / 1.363 ; S6: 5.949 / 1.301 ; S10: 4.899 / 0.918
+
+$ node verify/diff/diff.mjs evidence/visual/E2/S4/dsf1/actual.png tests/fixtures/reference/S4-partial-entry.png $TMPDIR/f1-crosscheck/S4
+diff: mismatchedPixels=13011 totalPixels=220000 mismatchRatio=0.05914090909090909 pass=true -> /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/f1-crosscheck/S4/report.json
+exit=0
+S4: raw=5.914% tolerant=1.363% pass=true
+
+$ node verify/diff/diff.mjs evidence/visual/E2/S6/dsf1/actual.png tests/fixtures/reference/S6-invalid-word.png $TMPDIR/f1-crosscheck/S6
+diff: mismatchedPixels=13088 totalPixels=220000 mismatchRatio=0.059490909090909094 pass=true -> /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/f1-crosscheck/S6/report.json
+exit=0
+S6: raw=5.949% tolerant=1.301% pass=true
+
+$ node verify/diff/diff.mjs evidence/visual/E2/S10/dsf1/actual.png tests/fixtures/reference/S10-next-round.png $TMPDIR/f1-crosscheck/S10
+diff: mismatchedPixels=10777 totalPixels=220000 mismatchRatio=0.04898636363636363 pass=true -> /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/f1-crosscheck/S10/report.json
+exit=0
+S10: raw=4.899% tolerant=0.918% pass=true

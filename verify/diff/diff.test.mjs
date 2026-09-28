@@ -1,16 +1,22 @@
 /**
  * F1 self-tests — run with `npm test -- diff` (Vitest, from the repo root).
  *
- * Covers the task F1 checklist:
- *   - identical images -> ratio 0, pass: true
- *   - known mutation (10x10 block, +100/channel) -> exact bbox and ratio
+ * Covers the task F1 checklist plus the anti-aliasing-tolerant metric added by
+ * the Amendment 2026-09-28 in docs/07-verification.md §4:
+ *   - identical images -> raw and tolerant ratio 0, pass: true
+ *   - known mutation (10x10 block, +100/channel) -> exact raw bbox/ratio and
+ *     exact tolerant 6x6 core (36 px) at (x0+2, y0+2)
+ *   - structural changes (30x30 recolour, 40x40 square shifted 6 px) still
+ *     detected by the tolerant metric, confined to the expected band
+ *   - radius boundary: a 4 px shift is fully absorbed by the 5x5 tolerance
  *   - size mismatch -> clean error, non-zero exit
  *   - undecodable input / usage / --help exit-code contract
  *   - threshold boundary and alpha semantics (docs/07-verification.md §4)
  *   - determinism: two runs -> byte-identical report.json (and heatmap.png)
  *
  * Test images are generated deterministically in a temp directory at test
- * time (no binary fixtures committed); see verify/diff/fixtures.mjs.
+ * time (no binary fixtures committed); see verify/diff/fixtures.mjs, whose
+ * triangle-wave pattern makes the tolerant expectations analytically exact.
  */
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
@@ -22,12 +28,13 @@ import { afterAll, describe, expect, it } from 'vitest';
 import {
   MISMATCH_THRESHOLD,
   PASS_RATIO,
+  TOLERANT_RADIUS,
   compareImages,
   decodePng,
   encodePng,
   runComparison,
 } from './diff.mjs';
-import { MUTATED_BLOCK, STAGE, makeStageImage, mutateBlock } from './fixtures.mjs';
+import { MUTATED_BLOCK, STAGE, makeSolidSquareImage, makeStageImage, mutateBlock } from './fixtures.mjs';
 
 const DIFF_MJS = fileURLToPath(new URL('./diff.mjs', import.meta.url));
 const scratch = mkdtempSync(join(tmpdir(), 'kelimator-f1-'));
@@ -85,6 +92,7 @@ describe('threshold semantics (docs/07-verification.md §4)', () => {
   it('uses the documented constants', () => {
     expect(MISMATCH_THRESHOLD).toBe(30);
     expect(PASS_RATIO).toBe(0.02);
+    expect(TOLERANT_RADIUS).toBe(2);
   });
 
   it('distance exactly 30 is a match; anything greater is a mismatch', () => {
@@ -99,10 +107,15 @@ describe('threshold semantics (docs/07-verification.md §4)', () => {
       data: Uint8Array.from([40, 10, 10, 255, 41, 10, 10, 255, 10, 10, 10, 255]),
     };
     const report = compareImages(a, b);
+    // Raw: pixel 0 at exactly 30 matches, pixel 1 at 31 is the only mismatch.
     expect(report.mismatchedPixels).toBe(1);
     expect(report.mismatchBBox).toEqual({ x: 1, y: 0, width: 1, height: 1 });
     expect(report.maxDistance).toBe(31);
     expect(report.mismatchRatio).toBe(1 / 3);
+    // Tolerant: pixel 1 is tolerated because B[0] is at distance 30 from A[1]
+    // (symmetric neighbourhood check, direction A[p] vs B[q]).
+    expect(report.tolerantMismatchedPixels).toBe(0);
+    expect(report.tolerantMismatchBBox).toBeNull();
   });
 
   it('ignores alpha-only differences (RGB distance only)', () => {
@@ -119,13 +132,14 @@ describe('threshold semantics (docs/07-verification.md §4)', () => {
     const report = compareImages(a, b);
     expect(report.mismatchedPixels).toBe(0);
     expect(report.mismatchRatio).toBe(0);
+    expect(report.tolerantMismatchedPixels).toBe(0);
     expect(report.pass).toBe(true);
   });
 });
 
 describe('identical images', () => {
   it(
-    'produces ratio 0 and pass: true (CLI, 550x400)',
+    'produces raw ratio 0, tolerant ratio 0 and pass: true (CLI, 550x400)',
     { timeout: TIMEOUT },
     () => {
       const base = makeStageImage();
@@ -136,11 +150,16 @@ describe('identical images', () => {
       expect(res.status).toBe(0);
       expect(res.stderr).toBe('');
       const report = readReport(out);
+      expect(report.schemaVersion).toBe(2);
+      expect(report.tolerantRadius).toBe(2);
       expect(report.mismatchedPixels).toBe(0);
       expect(report.mismatchRatio).toBe(0);
       expect(report.maxDistance).toBe(0);
       expect(report.meanDistance).toBe(0);
       expect(report.mismatchBBox).toBeNull();
+      expect(report.tolerantMismatchedPixels).toBe(0);
+      expect(report.tolerantMismatchRatio).toBe(0);
+      expect(report.tolerantMismatchBBox).toBeNull();
       expect(report.pass).toBe(true);
       expect(existsSync(join(out, 'heatmap.png'))).toBe(true);
     },
@@ -149,7 +168,7 @@ describe('identical images', () => {
 
 describe('known mutation (10x10 block, +100 per channel)', () => {
   it(
-    'detects exactly the mutated region, exact ratio, heatmap produced (CLI)',
+    'raw bbox stays exact; tolerant is the 6x6 core at (+2,+2), exact ratio (CLI)',
     { timeout: TIMEOUT },
     () => {
       const base = makeStageImage();
@@ -161,10 +180,11 @@ describe('known mutation (10x10 block, +100 per channel)', () => {
       expect(res.status).toBe(0);
 
       const report = readReport(out);
-      expect(report.schemaVersion).toBe(1);
+      expect(report.schemaVersion).toBe(2);
       expect(report.width).toBe(STAGE.width);
       expect(report.height).toBe(STAGE.height);
       expect(report.totalPixels).toBe(STAGE.width * STAGE.height);
+      // Raw metric: unchanged, exactly the mutated block.
       expect(report.mismatchedPixels).toBe(MUTATED_BLOCK.width * MUTATED_BLOCK.height);
       expect(report.mismatchBBox).toEqual(MUTATED_BLOCK);
       expect(report.mismatchRatio).toBe(
@@ -175,13 +195,23 @@ describe('known mutation (10x10 block, +100 per channel)', () => {
         (100 * Math.sqrt(3 * 100 * 100)) / (STAGE.width * STAGE.height),
         9,
       );
-      expect(report.pass).toBe(true); // 100/220000 << 2 %
+      // Tolerant metric: 2-px border ring tolerated, 6x6 core counted.
+      expect(report.tolerantRadius).toBe(2);
+      expect(report.tolerantMismatchedPixels).toBe(36);
+      expect(report.tolerantMismatchRatio).toBe(36 / (STAGE.width * STAGE.height));
+      expect(report.tolerantMismatchBBox).toEqual({
+        x: MUTATED_BLOCK.x + 2,
+        y: MUTATED_BLOCK.y + 2,
+        width: 6,
+        height: 6,
+      });
+      expect(report.pass).toBe(true); // tolerant ratio << 2 %
 
       const heatmap = decodePng(readFileSync(join(out, 'heatmap.png')));
       expect(heatmap.width).toBe(STAGE.width);
       expect(heatmap.height).toBe(STAGE.height);
       const inside = ((MUTATED_BLOCK.y + 1) * STAGE.width + MUTATED_BLOCK.x + 1) * 4;
-      expect(heatmap.data[inside]).toBe(255); // red ramp for mismatches
+      expect(heatmap.data[inside]).toBe(255); // red ramp for raw mismatches
       expect(heatmap.data[inside + 2]).toBe(0);
       expect(heatmap.data[inside + 3]).toBe(255);
       expect(heatmap.data[0]).toBe(heatmap.data[1]); // gray context outside the block
@@ -202,8 +232,85 @@ describe('known mutation (10x10 block, +100 per channel)', () => {
       const report = runComparison(a, b, out);
       expect(report.mismatchBBox).toEqual(MUTATED_BLOCK);
       expect(report.mismatchedPixels).toBe(100);
+      expect(report.tolerantMismatchedPixels).toBe(36);
+      expect(report.tolerantMismatchBBox).toEqual({
+        x: MUTATED_BLOCK.x + 2,
+        y: MUTATED_BLOCK.y + 2,
+        width: 6,
+        height: 6,
+      });
     },
   );
+});
+
+describe('structural changes still detected by the tolerant metric', () => {
+  it(
+    '30x30 colour change -> exactly the 26x26 core (676 px), bbox exact',
+    { timeout: TIMEOUT },
+    () => {
+      const base = makeStageImage();
+      const block = { x: 200, y: 150, width: 30, height: 30 };
+      const report = compareImages(base, mutateBlock(base, block));
+      expect(report.mismatchedPixels).toBe(900);
+      expect(report.mismatchBBox).toEqual(block);
+      expect(report.tolerantMismatchedPixels).toBe(26 * 26);
+      expect(report.tolerantMismatchRatio).toBe((26 * 26) / (STAGE.width * STAGE.height));
+      expect(report.tolerantMismatchBBox).toEqual({
+        x: block.x + 2,
+        y: block.y + 2,
+        width: 26,
+        height: 26,
+      });
+      expect(report.pass).toBe(true); // small region on a 550x400 stage
+    },
+  );
+
+  it('40x40 solid square shifted by 6 px -> survivors confined to the 2-px remnant band', () => {
+    // A: square [100,139]x[40,79]; B: same square shifted +6 px. Raw mismatch
+    // strips are 6 px wide; with radius 2 tolerance the outermost 2 px of each
+    // strip survive (no counterpart within 2 px), for rows 2..37 (vertical
+    // background neighbours tolerate the top/bottom 2 rows).
+    const W = 220;
+    const H = 120;
+    const background = [210, 210, 210];
+    const squareColor = [40, 40, 40];
+    const square = { x: 100, y: 40, width: 40, height: 40 };
+    const a = makeSolidSquareImage(W, H, background, square, squareColor);
+    const b = makeSolidSquareImage(
+      W,
+      H,
+      background,
+      { ...square, x: square.x + 6 },
+      squareColor,
+    );
+    const report = compareImages(a, b);
+    expect(report.mismatchedPixels).toBe(480); // 2 strips of 6x40
+    expect(report.mismatchBBox).toEqual({ x: 100, y: 40, width: 46, height: 40 });
+    expect(report.tolerantMismatchedPixels).toBe(144); // (2+2) px wide x 36 rows
+    expect(report.tolerantMismatchRatio).toBe(144 / (W * H));
+    expect(report.tolerantMismatchBBox).toEqual({ x: 102, y: 42, width: 42, height: 36 });
+    expect(report.tolerantMismatchedPixels).toBeGreaterThan(0);
+  });
+
+  it('radius boundary: a 4 px shift is fully absorbed (tolerant 0)', () => {
+    const W = 220;
+    const H = 120;
+    const background = [210, 210, 210];
+    const squareColor = [40, 40, 40];
+    const square = { x: 100, y: 40, width: 40, height: 40 };
+    const a = makeSolidSquareImage(W, H, background, square, squareColor);
+    const b = makeSolidSquareImage(
+      W,
+      H,
+      background,
+      { ...square, x: square.x + 4 },
+      squareColor,
+    );
+    const report = compareImages(a, b);
+    expect(report.mismatchedPixels).toBe(320); // 2 strips of 4x40
+    expect(report.tolerantMismatchedPixels).toBe(0);
+    expect(report.tolerantMismatchBBox).toBeNull();
+  });
 });
 
 describe('error contract', () => {

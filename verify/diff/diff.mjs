@@ -10,6 +10,9 @@
  *   report.json  — numeric metrics (schema documented in verify/diff/README.md)
  *   heatmap.png  — visual diff (encoding documented in verify/diff/README.md)
  *
+ * Schema v2 reports the raw metric plus the anti-aliasing-tolerant metric that
+ * is the V5 pass basis (docs/07-verification.md §4, Amendment 2026-09-28).
+ *
  * Exit codes:
  *   0 — comparison ran to completion; pass/fail is the "pass" field of report.json
  *   1 — usage error, missing file, undecodable PNG, or size mismatch;
@@ -26,11 +29,21 @@ import { crc32, deflateSync, inflateSync } from 'node:zlib';
 
 // evidence: docs/07-verification.md §4 — "a pixel is 'mismatched' if distance > 30"
 export const MISMATCH_THRESHOLD = 30;
-// evidence: docs/07-verification.md §4 — "pass if mismatched ≤ 2.0 % of stage pixels"
+// evidence: docs/07-verification.md §4 — "pass if mismatched ≤ 2.0 % of stage
+// pixels"; since the Amendment 2026-09-28 the pass basis is the
+// anti-aliasing-tolerant ratio (the raw ratio is still reported).
 export const PASS_RATIO = 0.02;
+// evidence: docs/07-verification.md §4, Amendment 2026-09-28 — symmetric 5×5
+// (Chebyshev radius 2, edge-clamped) anti-aliasing tolerance: a raw mismatch p
+// is tolerated when some q in N2(p) has dist(A[p], B[q]) <= 30 or
+// dist(B[p], A[q]) <= 30. Measurements: evidence/logs/orchestrator-tolerance-probe.log.
+export const TOLERANT_RADIUS = 2;
 // evidence: docs/07-verification.md §4 — "of 441.7 max" = sqrt(3) * 255
 export const MAX_RGB_DISTANCE = Math.sqrt(3 * 255 * 255);
-export const SCHEMA_VERSION = 1;
+// v1 = raw metric only; v2 adds tolerantRadius/tolerantMismatchedPixels/
+// tolerantMismatchRatio/tolerantMismatchBBox and moves `pass` to the tolerant
+// ratio; all raw fields are unchanged in name and value.
+export const SCHEMA_VERSION = 2;
 
 const PNG_SIGNATURE = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
 
@@ -233,6 +246,14 @@ export function encodePng({ width, height, data }) {
   ]);
 }
 
+/** RGB Euclidean distance between byte-address `i` of `dataA` and `j` of `dataB`. */
+function pixelDistance(dataA, i, dataB, j) {
+  const dr = dataA[i] - dataB[j];
+  const dg = dataA[i + 1] - dataB[j + 1];
+  const db = dataA[i + 2] - dataB[j + 2];
+  return Math.sqrt(dr * dr + dg * dg + db * db);
+}
+
 /**
  * Compare two RGBA8 images of identical dimensions.
  * Returns the report object (see verify/diff/README.md for the schema).
@@ -251,16 +272,18 @@ export function compareImages(a, b) {
   let minY = 0;
   let maxX = -1;
   let maxY = 0;
+  // Raw pass: full statistics + row-major addresses of the raw mismatches, so
+  // the tolerant pass only ever re-checks pixels already mismatched.
+  const rawMismatchPixelIndices = [];
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
-      const i = (y * width + x) * 4;
-      const dr = a.data[i] - b.data[i];
-      const dg = a.data[i + 1] - b.data[i + 1];
-      const db = a.data[i + 2] - b.data[i + 2];
-      const distance = Math.sqrt(dr * dr + dg * dg + db * db);
+      const n = y * width + x;
+      const i = n * 4;
+      const distance = pixelDistance(a.data, i, b.data, i);
       sumDistance += distance;
       if (distance > maxDistance) maxDistance = distance;
       if (distance > MISMATCH_THRESHOLD) {
+        rawMismatchPixelIndices.push(n);
         if (maxX < minX) {
           minX = x;
           minY = y;
@@ -276,6 +299,51 @@ export function compareImages(a, b) {
       }
     }
   }
+
+  // Anti-aliasing-tolerant pass (docs/07-verification.md §4, Amendment
+  // 2026-09-28): symmetric radius-2 Chebyshev neighbourhood, borders clamped.
+  let tolerantMismatchedPixels = 0;
+  let tolerantMinX = 0;
+  let tolerantMinY = 0;
+  let tolerantMaxX = -1;
+  let tolerantMaxY = 0;
+  for (const n of rawMismatchPixelIndices) {
+    const px = n % width;
+    const py = (n - px) / width;
+    const x0 = Math.max(0, px - TOLERANT_RADIUS);
+    const x1 = Math.min(width - 1, px + TOLERANT_RADIUS);
+    const y0 = Math.max(0, py - TOLERANT_RADIUS);
+    const y1 = Math.min(height - 1, py + TOLERANT_RADIUS);
+    const p = n * 4;
+    let tolerated = false;
+    for (let qy = y0; qy <= y1 && !tolerated; qy++) {
+      for (let qx = x0; qx <= x1; qx++) {
+        const q = (qy * width + qx) * 4;
+        if (
+          pixelDistance(a.data, p, b.data, q) <= MISMATCH_THRESHOLD ||
+          pixelDistance(b.data, p, a.data, q) <= MISMATCH_THRESHOLD
+        ) {
+          tolerated = true;
+          break;
+        }
+      }
+    }
+    if (!tolerated) {
+      if (tolerantMaxX < tolerantMinX) {
+        tolerantMinX = px;
+        tolerantMinY = py;
+        tolerantMaxX = px;
+        tolerantMaxY = py;
+      } else {
+        if (px < tolerantMinX) tolerantMinX = px;
+        if (px > tolerantMaxX) tolerantMaxX = px;
+        if (py < tolerantMinY) tolerantMinY = py;
+        if (py > tolerantMaxY) tolerantMaxY = py;
+      }
+      tolerantMismatchedPixels += 1;
+    }
+  }
+  const tolerantMismatchRatio = tolerantMismatchedPixels / totalPixels;
   return {
     schemaVersion: SCHEMA_VERSION,
     tool: 'verify/diff/diff.mjs',
@@ -284,13 +352,25 @@ export function compareImages(a, b) {
     totalPixels,
     mismatchThreshold: MISMATCH_THRESHOLD,
     passRatio: PASS_RATIO,
+    tolerantRadius: TOLERANT_RADIUS,
     mismatchedPixels,
     mismatchRatio: mismatchedPixels / totalPixels,
     maxDistance,
     meanDistance: sumDistance / totalPixels,
     mismatchBBox:
       maxX < minX ? null : { x: minX, y: minY, width: maxX - minX + 1, height: maxY - minY + 1 },
-    pass: mismatchedPixels <= totalPixels * PASS_RATIO,
+    tolerantMismatchedPixels,
+    tolerantMismatchRatio,
+    tolerantMismatchBBox:
+      tolerantMaxX < tolerantMinX
+        ? null
+        : {
+            x: tolerantMinX,
+            y: tolerantMinY,
+            width: tolerantMaxX - tolerantMinX + 1,
+            height: tolerantMaxY - tolerantMinY + 1,
+          },
+    pass: tolerantMismatchRatio <= PASS_RATIO,
   };
 }
 

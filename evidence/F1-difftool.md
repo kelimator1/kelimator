@@ -214,3 +214,117 @@ ignore the vendored Ruffle bundle). Raw before/after outputs:
 
 Follow-up result: F1 file clean; behavior byte-identical; repo-wide lint
 blocked on C3-owned files (not an F1 failure).
+
+---
+
+# Follow-up (tolerant metric, schema v2) — 2026-09-28
+
+Read first (as instructed): `docs/07-verification.md` §4, Amendment
+2026-09-28, and its matching entry in `docs/08-open-items.md` (Amendments),
+plus `evidence/logs/orchestrator-tolerance-probe.log`. The implemented rule
+matches the amendment: symmetric 5×5 Chebyshev (`radius = 2`, edge-clamped)
+anti-aliasing tolerance, threshold 30 unchanged, pass basis = tolerant ratio.
+
+## Changes
+
+- `verify/diff/diff.mjs`: `schemaVersion` bumped 1 → 2; added `tolerantRadius`
+  (2), `tolerantMismatchedPixels`, `tolerantMismatchRatio`,
+  `tolerantMismatchBBox`; `pass = tolerantMismatchRatio <= 0.02`. All raw fields
+  keep their names and values; the tolerant pass re-checks only pixels already
+  raw-mismatched.
+- `verify/diff/fixtures.mjs`: base pattern replaced by 1-Lipschitz triangle
+  waves with channel values in [60, 90], which makes the tolerant expectations
+  analytic (any two pixels within Chebyshev 2 differ by ≤ 12/channel → the 2-px
+  ring is always tolerated; a +100 shift leaves a ≥ 70/channel gap → the 6×6
+  core is always counted). v1-pattern artifacts remain under
+  `evidence/F1-artifacts/` as history; v2 artifacts under
+  `evidence/F1-artifacts/tolerance/`.
+- `verify/diff/README.md`: schema v2 table, tolerant definition + rationale
+  pointer, fixture description.
+- `verify/diff/diff.test.mjs`: 16 → 19 tests (no test removed).
+
+## Commands, exit codes, logs
+
+| # | Command | Exit | Log |
+|---|---|---|---|
+| T1 | `npm test -- diff` | 0 — **19 tests passed** | `evidence/logs/F1-test-tolerant.log` |
+| T2 | `npm run lint` | 0 — repo-wide clean | `evidence/logs/F1-lint-tolerant.log` |
+| T3 | `npm run build` | 0 — `tsc --noEmit && vite build` | `evidence/logs/F1-build-tolerant.log` |
+| T4 | `node verify/diff/fixtures.mjs evidence/F1-artifacts/tolerance` + two runs + `shasum`/`cmp` | 0 | `evidence/logs/F1-v8-tolerant.log` |
+| T5 | probe cross-check S2/S4/S6/S10 | 0 | `evidence/logs/F1-probe-crosscheck.log` |
+
+## Mutated-case report, v2 (`evidence/F1-artifacts/tolerance/run-1/report.json`)
+
+```json
+{"schemaVersion":2,"tool":"verify/diff/diff.mjs","width":550,"height":400,
+ "totalPixels":220000,"mismatchThreshold":30,"passRatio":0.02,"tolerantRadius":2,
+ "mismatchedPixels":100,"mismatchRatio":0.00045454545454545455,
+ "maxDistance":173.20508075688772,"meanDistance":0.07872958216222185,
+ "mismatchBBox":{"x":123,"y":45,"width":10,"height":10},
+ "tolerantMismatchedPixels":36,"tolerantMismatchRatio":0.00016363636363636363,
+ "tolerantMismatchBBox":{"x":125,"y":47,"width":6,"height":6},"pass":true}
+```
+
+- Raw metric unchanged: 10×10 bbox at (123, 45), ratio 100/220000.
+- Tolerant metric: exactly the 6×6 core at (+2,+2), 36 px, ratio 36/220000.
+- Identical inputs: raw 0 / tolerant 0, bboxes null, `pass: true`.
+
+## V8 determinism
+
+```
+394d5b0441846f75d23a7d5dbc52656f67dbb4a4cdd54b24dc8cf0c1c5ba3270  run-1/report.json
+394d5b0441846f75d23a7d5dbc52656f67dbb4a4cdd54b24dc8cf0c1c5ba3270  run-2/report.json
+23ea004d3dd09f58ae92a18f1406046fee82908dee88bae94e7059e9846d20b3  run-1/heatmap.png
+23ea004d3dd09f58ae92a18f1406046fee82908dee88bae94e7059e9846d20b3  run-2/heatmap.png
+```
+
+`cmp -s run-1/report.json run-2/report.json` exits 0. The previously recorded
+hash `17e668b8…` is legitimately superseded: schema v2 adds fields, and the
+v2 +100-block fixtures use the new pattern. Raw-metric continuity was verified
+by re-running the v2 tool on the retained v1 inputs (`evidence/F1-artifacts/`
+`base.png`/`mutated.png`): identical raw values (100, 0.00045454…,
+173.20508075…, 0.078729582…, bbox (123,45,10,10)); only the added tolerant
+fields differ (`tolerantMismatchedPixels` 39 on that old pattern — its modular
+wraps cause fortuitous matches, which is exactly why fixtures v2 were designed
+to make the tests exact).
+
+## Probe cross-check (independent external validation)
+
+My implementation vs the orchestrator's independent probe script
+(`evidence/logs/orchestrator-tolerance-probe.log`, "symR2"):
+
+| pair | probe raw / symR2 | this tool raw / tolerant |
+|---|---|---|
+| S2 dsf1 | 4.526 % / 0.975 % | 4.526 % / 0.975 % |
+| S2 dsf2 | 5.732 % / 0.363 % | 5.732 % / 0.363 % |
+| S4 dsf1 | 5.914 % / 1.363 % | 5.914 % / 1.363 % |
+| S6 dsf1 | 5.949 % / 1.301 % | 5.949 % / 1.301 % |
+| S10 dsf1 | 4.899 % / 0.918 % | 4.899 % / 0.918 % |
+
+Exact match on all five pairs (pairs: `evidence/visual/E2/<state>/dsf*/actual.png`
+vs `tests/fixtures/reference[/dsf2]/<state>.png`; outputs written to `$TMPDIR`
+only, no other task's files touched).
+
+## New SHA-256 (full list in `evidence/logs/F1-hashes.log`, supersede block)
+
+```
+f211ed94002d1220b7c48951c4e63bca55316e73669b0fa1b976be572ffec148  verify/diff/diff.mjs
+7069c569188ca8d1b40d782e7c6c985e8e94450568adaed82451d57b190f0b52  verify/diff/fixtures.mjs
+cf32eba80c5ac9042b4d9cff2f61734877746aff130dd42e0e77bf00efeb92ce  verify/diff/diff.test.mjs
+0c5b04cfe3fdb9fe5fd299236ba8e7a05d08ce1bf99d9c55e27e5202674b07d5  verify/diff/README.md
+4936fcfb6029d5ef4848298708490c7c1e5e23246663870ed8e2dfefff843175  evidence/F1-artifacts/tolerance/base.png
+f1d05dbf79ed7f7a0e91ef3b15272f7d3b384ca70aab53fa87f4e4e05995ef0c  evidence/F1-artifacts/tolerance/mutated.png
+394d5b0441846f75d23a7d5dbc52656f67dbb4a4cdd54b24dc8cf0c1c5ba3270  evidence/F1-artifacts/tolerance/run-1/report.json
+23ea004d3dd09f58ae92a18f1406046fee82908dee88bae94e7059e9846d20b3  evidence/F1-artifacts/tolerance/run-1/heatmap.png
+394d5b0441846f75d23a7d5dbc52656f67dbb4a4cdd54b24dc8cf0c1c5ba3270  evidence/F1-artifacts/tolerance/run-2/report.json
+23ea004d3dd09f58ae92a18f1406046fee82908dee88bae94e7059e9846d20b3  evidence/F1-artifacts/tolerance/run-2/heatmap.png
+35eaeab20324a1bec3fe5c1ad541ffa348cdd75f03d797fb3c825fdd9b40dc27  evidence/F1-artifacts/tolerance/identical-run/report.json
+4d6e279f8f81225af1378304dbed82ed1ed194c102f3e93f77488f3c7b90b36d  evidence/F1-artifacts/tolerance/identical-run/heatmap.png
+```
+
+Constraints respected: writes only under `verify/diff/**`, `evidence/F1-*`,
+`evidence/logs/F1-*`; no git commands; no other task's files modified;
+`../kelimator-nostalji/` untouched. Silent-witness directive not applicable
+here (no audio/emulated runs).
+
+Follow-up result: PASS.
