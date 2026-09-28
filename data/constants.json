@@ -5,7 +5,8 @@
   "scoring": { "perLetterSquaredFactor": 50, "bonusPoints": 5000, "timeFactor": 100 },
   "bonusLetter": {
     "selectionRule": "Each time a letter is added while bonusball == -1: bonusrnd = random(bonusrange=1000); if (bonusrnd < bonusmin=50) bonusball = kelime.length, so the ball at that 0-based index (the next letter added) becomes the bonus ball (5% per added letter). A valid submit scores +5000 while bonusball > -1; removing the bonus ball or clearing a non-empty entry resets bonusball to -1.",
-    "evidence": "evidence/A2-bonus.md"
+    "evidence": "evidence/A2-bonus.md",
+    "seed": 2012
   },
   "input": { "scrambleKey": "SPACE", "submitKey": "ENTER", "deleteKey": "BACKSPACE" },
   "flows": { "allFoundLabel": "hepsiburda", "celebrationLabel": "bravo" },

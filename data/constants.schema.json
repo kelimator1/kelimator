@@ -38,11 +38,12 @@
     },
     "bonusLetter": {
       "type": "object",
-      "required": ["selectionRule", "evidence"],
+      "required": ["selectionRule", "evidence", "seed"],
       "additionalProperties": false,
       "properties": {
         "selectionRule": { "type": "string" },
-        "evidence": { "type": "string" }
+        "evidence": { "type": "string" },
+        "seed": { "type": "number" }
       }
     },
     "input": {

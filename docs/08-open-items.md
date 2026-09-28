@@ -149,3 +149,7 @@ RESOLVED 2026-09-28 — evidence/B3-viroloji-blocker.md + tests/fixtures/rounds/
   `tests/fixtures/rounds/viroloji.xml` (sha256 `594e6a53…`, 559 B, ISO-8859);
   B3's gated structural test activates. Evidence:
   `evidence/B3-viroloji-blocker.md`.
+- 2026-09-28 — constants `bonusLetter.seed` (`docs/02` §8): the probabilistic
+  O02 bonus rule gets a seeded RNG seed recorded in constants (value 2012,
+  deterministic-test value; distribution unchanged). Schema + data amended;
+  D1 consumes it.

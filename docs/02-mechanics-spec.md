@@ -127,6 +127,14 @@ required).
 > decision record: `evidence/C1-scaffold.md` §3.2. Matching entry:
 > `docs/08-open-items.md` (Amendments).
 
+> Amendment 2026-09-28b (orchestrator): `bonusLetter.seed` (number) added to
+> `data/constants.schema.json` and `data/constants.json` (value 2012). D1's task
+> requires the probabilistic O02 rule to run on a seeded RNG with the seed
+> recorded in constants (`tasks/D1-round-module.md` step 2). The seed is a
+> deterministic-test implementation value, not a reference constant; the O02
+> distribution semantics (5 % per added letter) are unchanged. Matching entry:
+> `docs/08-open-items.md` (Amendments).
+
 ## 9. Open questions
 
 See `docs/08-open-items.md` — items O01–O05, O13–O15.
