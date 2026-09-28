@@ -1,0 +1,155 @@
+=== C1 follow-up: eslint ignores for vendored Ruffle ===
+date=2026-09-28T13:29:14Z
+
+CMD: shasum -a 256 eslint.config.js   # BEFORE
+3cd8a8b070cd08e314fec47ff7e4ab2680c94205a9aafb7cb6775b22122c2cff  eslint.config.js
+
+CMD: npm run lint   # BEFORE (baseline failure)
+EXIT: 1
+---- baseline summary ----
+error lines: 600
+  1:465006  error  'window' is not defined                                                no-undef
+
+✖ 598 problems (598 errors, 0 warnings)
+  2 errors and 0 warnings potentially fixable with the `--fix` option.
+
+---- top offending files ----
+   4 /home/dev/Documents/Default
+---- offending file extensions/dirs ----
+   3 verify/reference/ruffle/**
+   1 /home/dev/kelimator-2012/verify/reference/capture.mjs
+
+=== POST-CHANGE (eslint ignores for vendored Ruffle), 2026-09-28T13:30:32Z ===
+
+CMD: diff -u <eslint.config.js.before> eslint.config.js
+--- /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/eslint.config.js.before	2026-09-28 16:30:02
++++ eslint.config.js	2026-09-28 16:30:16
+@@ -5,7 +5,17 @@
+ 
+ export default tseslint.config(
+   {
+-    ignores: ['dist/**', 'node_modules/**', 'artifacts/**', 'evidence/**'],
++    ignores: [
++      'dist/**',
++      'node_modules/**',
++      'artifacts/**',
++      'evidence/**',
++      // Vendored third-party reference material: pinned Ruffle web self-hosted
++      // distribution (task C3) and any other minified bundles. Hand-written
++      // C3 harness scripts outside this directory stay linted.
++      'verify/reference/ruffle/**',
++      '**/*.min.js',
++    ],
+   },
+   js.configs.recommended,
+   ...tseslint.configs.recommended,
+@@ -23,4 +33,11 @@
+     ],
+     languageOptions: { globals: globals.node },
+   },
++  {
++    // C3 harness scripts run in Node but embed browser-context callbacks
++    // (Playwright `page.evaluate`), so they see both global sets. Not ignored —
++    // every rule still applies.
++    files: ['verify/reference/**/*.{ts,mts,js,mjs}'],
++    languageOptions: { globals: { ...globals.node, ...globals.browser } },
++  },
+ );
+EXIT: 1
+
+CMD: shasum -a 256 eslint.config.js   # AFTER
+df93ec86e482e4392141d96d8235b89a62b919a6cbc57701e689526f4161046b  eslint.config.js
+
+CMD: npx eslint --no-warn-ignored verify/reference/ruffle/web/ruffle.js   # vendored path must be ignored
+EXIT: 0
+
+CMD: npx eslint verify/reference/capture.mjs   # hand-written C3 script must stay linted
+EXIT: 0
+
+CMD: npm run lint   # AFTER (repo-wide)
+
+> kelimator-2012@0.0.0 lint
+> eslint .
+
+EXIT: 0
+
+CMD: npm test
+
+> kelimator-2012@0.0.0 test
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.2 [39m[90m/home/dev/kelimator-2012[39m
+
+ [32m✓[39m tests/constants.test.mjs [2m([22m[2m3 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/stage.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m verify/diff/diff.test.mjs [2m([22m[2m16 tests[22m[2m)[22m[33m 798[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m3 passed[39m[22m[90m (3)[39m
+[2m      Tests [22m [1m[32m30 passed[39m[22m[90m (30)[39m
+[2m   Start at [22m 16:30:35
+[2m   Duration [22m 947ms[2m (tests 85%, transform 11%, import 3%, worker 1%)[22m
+
+EXIT: 0
+
+CMD: npm run build
+
+> kelimator-2012@0.0.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.1 building client environment for production...
+transforming...
+✓ 5 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                0.29 kB │ gzip: 0.22 kB
+dist/assets/index-BKCRGzoE.js  2.94 kB │ gzip: 1.30 kB
+
+✓ built in 24ms
+EXIT: 0
+
+CMD: npx ajv-cli compile -s data/rounds.schema.json
+schema data/rounds.schema.json is valid
+EXIT: 0
+CMD: npx ajv-cli compile -s data/constants.schema.json
+schema data/constants.schema.json is valid
+EXIT: 0
+CMD: npx ajv-cli compile -s data/sound-map.schema.json
+schema data/sound-map.schema.json is valid
+EXIT: 0
+CMD: npx ajv-cli compile -s data/layout.schema.json
+schema data/layout.schema.json is valid
+EXIT: 0
+
+CMD: shasum -a 256 verify/reference/capture.mjs   # C3 file as linted in this run
+8cd288522ca2ba24d574f14877394d32bcc122569cc3abab9607b7a783e7e4f0  verify/reference/capture.mjs
+
+=== ignore-vs-linted proof (stdin with --stdin-filename; deliberately erroneous probe content) ===
+
+CMD: printf 'document.title; foo();' | npx eslint --stdin --stdin-filename verify/reference/ruffle/web/ruffle.js
+
+/home/dev/kelimator-2012/verify/reference/ruffle/web/ruffle.js
+  0:0  warning  File ignored because of a matching ignore pattern. Use "--no-ignore" to disable file ignore settings or use "--no-warn-ignored" to suppress this warning
+
+✖ 1 problem (0 errors, 1 warning)
+
+EXIT: 0  (ignored path: no problems reported)
+
+CMD: printf 'document.title; foo();' | npx eslint --stdin --stdin-filename verify/reference/capture.mjs
+
+/home/dev/kelimator-2012/verify/reference/capture.mjs
+  1:1   error  Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+  1:17  error  'foo' is not defined                                                   no-undef
+
+✖ 2 problems (2 errors, 0 warnings)
+
+EXIT: 1  (linted path: foo no-undef reported, document accepted via browser globals)
+
+CMD: printf 'process.exit(0); document.title;' | npx eslint --stdin --stdin-filename verify/reference/capture.mjs
+
+/home/dev/kelimator-2012/verify/reference/capture.mjs
+  1:18  error  Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+
+✖ 1 problem (1 error, 0 warnings)
+
+EXIT: 1  (both node and browser globals active)

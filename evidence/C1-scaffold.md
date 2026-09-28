@@ -222,3 +222,98 @@ failure. F3 replaces it with the final gate matrix.
    A2/A3/B3/E1 per `docs/04` §5.
 5. The four schema files are frozen interfaces; any later change requires the
    amendment protocol (`EXECUTION.md` §5).
+
+---
+
+## 6. Follow-up (eslint ignores for vendored Ruffle)
+
+Added: 2026-09-28T13:31Z — config hygiene only, no behavior change. Scope of the
+follow-up: `eslint.config.js`, `evidence/C1-*`, `evidence/logs/C1-*` only.
+
+**Problem.** Repo-wide `npm run lint` failed with 598 errors (baseline logged):
+594 from the pinned Ruffle web self-hosted distribution vendored by C3 at
+`verify/reference/ruffle/**` (third-party code ESLint walked), plus 4 genuine
+`no-undef` errors in C3's hand-written `verify/reference/capture.mjs` —
+`document` used inside Playwright `page.evaluate` callbacks, which execute in
+the browser context while the script itself runs in Node.
+
+**Change (exact diff, `eslint.config.js`).**
+
+```diff
+--- eslint.config.js.before
++++ eslint.config.js
+@@ -5,7 +5,17 @@
+ 
+ export default tseslint.config(
+   {
+-    ignores: ['dist/**', 'node_modules/**', 'artifacts/**', 'evidence/**'],
++    ignores: [
++      'dist/**',
++      'node_modules/**',
++      'artifacts/**',
++      'evidence/**',
++      // Vendored third-party reference material: pinned Ruffle web self-hosted
++      // distribution (task C3) and any other minified bundles. Hand-written
++      // C3 harness scripts outside this directory stay linted.
++      'verify/reference/ruffle/**',
++      '**/*.min.js',
++    ],
+   },
+   js.configs.recommended,
+   ...tseslint.configs.recommended,
+@@ -23,4 +33,11 @@
+     ],
+     languageOptions: { globals: globals.node },
+   },
++  {
++    // C3 harness scripts run in Node but embed browser-context callbacks
++    // (Playwright `page.evaluate`), so they see both global sets. Not ignored —
++    // every rule still applies.
++    files: ['verify/reference/**/*.{ts,mts,js,mjs}'],
++    languageOptions: { globals: { ...globals.node, ...globals.browser } },
++  },
+ );
+```
+
+Nothing else is ignored: `verify/reference/**` hand-written scripts, `verify/diff/**`
+(F1), `tests/**`, `tools/**`, `src/**`, root configs and the scripts under
+`verify/reference/` remain linted.
+
+**Scope proof** (deliberate-error probe content via `--stdin-filename`; the
+real files were not modified — `verify/**` is not C1-owned):
+
+```
+verify/reference/ruffle/web/ruffle.js → "File ignored because of a matching ignore pattern" (0 errors)
+verify/reference/capture.mjs          → still linted: typo'd `foo` reported as no-undef;
+                                        `document` and `process` both resolve (node+browser globals)
+```
+
+**Commands and exit codes** (raw log: `evidence/logs/C1-lint-ignores.log`):
+
+| Command | Exit |
+|---|---|
+| `npm run lint` (before) | 1 (598 errors: 594 vendored + 4 capture.mjs) |
+| `npm run lint` (after, repo-wide) | 0 |
+| `npx eslint --no-warn-ignored verify/reference/ruffle/web/ruffle.js` | 0 (ignored) |
+| `npx eslint verify/reference/capture.mjs` | 0 (linted clean) |
+| `npm test` | 0 — 3 files, 30 tests passed (`tests/constants.test.mjs`, `tests/stage.test.ts`, `verify/diff/diff.test.mjs`) |
+| `npm run build` | 0 |
+| `npx ajv-cli compile -s data/{rounds,constants,sound-map,layout}.schema.json` | 0, 0, 0, 0 |
+
+The `npm test` run above is also live evidence of the C1 requirement that
+Vitest discovers `verify/**` tests: F1's `verify/diff/diff.test.mjs` ran
+(16 tests) alongside `tests/**`.
+
+New `eslint.config.js` SHA-256:
+`df93ec86e482e4392141d96d8235b89a62b919a6cbc57701e689526f4161046b`
+(previous: `3cd8a8b070cd08e314fec47ff7e4ab2680c94205a9aafb7cb6775b22122c2cff`).
+C3's `verify/reference/capture.mjs` as linted in this run:
+`8cd288522ca2ba24d574f14877394d32bcc12259cc3abab9607b7a783e7e4f0`.
+
+Notes: the ignore is path-based, so it keeps matching while C3 continues to
+write into `verify/reference/ruffle/`. The vendored tree also contains
+`verify/reference/__pycache__/server.cpython-314.pyc` (compiled Python cache,
+not an ESLint concern); if it should not be committed, the orchestrator owns
+`.gitignore` changes (this follow-up was restricted to `eslint.config.js` and
+C1 evidence). No git commands were run; no other config or task file was
+touched.

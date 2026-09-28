@@ -12,6 +12,10 @@ playwright-report/
 test-results/
 coverage/
 
+# Python bytecode caches (helper scripts).
+__pycache__/
+*.pyc
+
 # OS files.
 .DS_Store
 **/.DS_Store
