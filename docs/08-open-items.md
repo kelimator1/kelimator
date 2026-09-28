@@ -113,3 +113,9 @@ RESOLVED 2026-09-28 — evidence/C3-fixture-format.md — harness fixture = Base
   (dsf2 = 1100×800); Chromium launch explicitly muted (`--mute-audio`, recorded
   in the run manifests); fixture unchanged (`854b7287…`). Evidence:
   `evidence/C3-harness.md`, `verify/reference/check.mjs` (V2dsf2/V5dsf2/Vmute).
+- 2026-09-28 — V5 comparison basis (`docs/07` §4): static/animation checks use
+  the symmetric 5×5 anti-aliasing-tolerant metric (threshold unchanged at
+  2.0 %; raw ratio remains reported). Basis/measurements:
+  `evidence/logs/orchestrator-tolerance-probe.log`, `evidence/E2-layout.md`
+  §4/§6. Tool support lands in F1 (`verify/diff/`); E2/E3/F2 evaluate on the
+  tolerant ratio.

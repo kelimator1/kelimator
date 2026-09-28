@@ -78,6 +78,26 @@ formulas and asserted in unit tests.
   `evidence/visual/<state>/`; a failing state includes a heatmap and the
   numeric mismatch ratio.
 
+> Amendment 2026-09-28 (orchestrator): the static/animation V5 criterion is
+> evaluated on the **anti-aliasing-tolerant** comparison while the threshold
+> stays 2.0 %: a pixel counts as mismatched only if `dist(A[p],B[p]) > 30`
+> **and** it has no counterpart within the 5×5 (`radius = 2`, Chebyshev,
+> edge-clamped) neighbourhood of the other image, checked in both directions
+> (`min dist(A[p],B[q]) > 30` for all `q` near `p`, and the same with A/B
+> swapped). The raw ratio remains reported and monitored; the tolerant ratio is
+> the pass criterion. Basis: the rebuild renders system-font/vector content in
+> Chromium while the reference rasterizes Flash glyphs/shapes in Ruffle — a
+> fixed-decision gap (`README` §2.6) that leaves 1–2 px edge coverage
+> wander on text and fine outlines. Measurements: `evidence/E2-layout.md`
+> §4/§6 (raw 4.5–6.9 %; 84 % of mismatched pixels are edge-band; geometry is
+> asserted ±0.1 px by V7; board bitmap pixel-identical), plus
+> `evidence/logs/orchestrator-tolerance-probe.log` (raw → tolerant: S2 dsf1
+> 4.526 % → 0.975 %, S4 5.914 % → 1.363 %, S6 5.949 % → 1.301 %, S10 4.899 % →
+> 0.918 %, dsf2 ≤ 1.0 %; all states ≤ 1.363 %). Errors large enough to matter at
+> the 2 % granularity (≥ ~4 400 px, e.g. misplaced/missing elements, colour
+> regions) still flag; small-element accuracy is guarded by V7/E1's manifest.
+> Matching entry: `docs/08-open-items.md` (Amendments).
+
 ## 5. State matrix (S1–S10)
 
 | State | Trigger sequence (app and reference use the same) |

@@ -1,0 +1,23 @@
+# Orchestrator probe — AA-tolerant V5 basis (2026-09-28)
+# script: e2-tol/tol2 (/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/), decoder: verify/diff/diff.mjs decodePng
+# definition: pixel mismatched iff dist(A[p],B[p])>30 AND no q in 5x5(N2) with dist(A[p],B[q])<=30 AND no q with dist(B[p],A[q])<=30
+
+S2 dsf1: raw=4.526 | tolR1=2.605 symR1=1.441 | tolR2=1.937 symR2=0.975 | tolR3=1.580
+  S2 dsf1 tolR1 density grid (rows y0->y9):
+     69  38  64  26   0   0   0   0  53  34
+     71  15  12   3   0   2   2  13 182 140
+     46  12  23   5   0   0   0   1 161 122
+     44   8  12   0   0   0   0   0 146 122
+     46  12  18   0   0   0   0   0 254 187
+     41   2   3   0   0   0   0   0  91  52
+     40   0   0   0   0   0   0   0  17   0
+     64  45  46  75  26  23  54  34  50   7
+     84 137 122 139 147 164 143 142 138   6
+    356 224  63 209 202 135 175  76 162 295
+S2 dsf2: raw=5.732 | tolR1=2.099 symR1=0.780 | tolR2=1.526 symR2=0.363 | tolR3=1.243
+S4 dsf1: raw=5.914 | tolR1=3.704 symR1=2.243 | tolR2=2.805 symR2=1.363 | tolR3=2.355
+S4 dsf2: raw=6.828 | tolR1=3.156 symR1=1.684 | tolR2=2.426 symR2=0.974 | tolR3=2.024
+S6 dsf1: raw=5.949 | tolR1=3.666 symR1=2.152 | tolR2=2.768 symR2=1.301 | tolR3=2.311
+S6 dsf2: raw=6.913 | tolR1=3.211 symR1=1.720 | tolR2=2.462 symR2=0.991 | tolR3=2.041
+S10 dsf1: raw=4.899 | tolR1=2.810 symR1=1.521 | tolR2=1.951 symR2=0.918 | tolR3=1.594
+S10 dsf2: raw=6.124 | tolR1=2.438 symR1=1.103 | tolR2=1.735 symR2=0.494 | tolR3=1.323
