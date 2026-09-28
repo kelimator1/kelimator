@@ -1,0 +1,26 @@
+== A3 environment ==
+date -u: 2026-09-28T13:47:53Z
+host: dev-host.home / macOS (hidden) / arm64
+python3: Python 3.14.6
+node: v22.14.0
+npx ajv-cli:                ajv help <command>
+
+Ruffle desktop CLI version:
+Ruffle 0.6.0-stable (cac5c99ce4a17e606f4ee3090389bb878f852055 2026-09-06)
+
+FFDec version:
+JPEXS Free Flash Decompiler v.26.3.0
+------------------------------------
+
+read-only sources:
+MD5 (../kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf) = af059ff9d75cefbc244f03814b47be9c
+236ed9359719d061c4c9426c8533b126bffcb3466f7b5f818601b50bd7afbf39  ../kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf
+MD5 (../kelimator-nostalji/calistir/kelimator_tr_2007.swf) = 54f794c3c70fd8ce123e46cca8e0d39f
+665c2489765782303c355c64e92f09372ef0a9e89fdf88fd7f990cd15eb50473  ../kelimator-nostalji/calistir/kelimator_tr_2007.swf
+
+Ruffle downloads:
+83d26cae9d0217cbaeef2095b7e7a104e8cd48aa2dfb327dea07d28f46962805  artifacts/a3-captures/ruffle-0.6.0-macos-universal.tar.gz
+e8acfacc37443303872379d0e215999af846854d1dd3fa8fac0a765445b43dbf  artifacts/a3-captures/ruffle-0.6.0-web-selfhosted.zip
+
+static server: python3 -m http.server 8793 --bind 127.0.0.1 --directory artifacts/a3-captures/serve
+server request log: artifacts/a3-captures/serve-requests.log

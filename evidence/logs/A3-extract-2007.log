@@ -1,0 +1,47 @@
+== 2026-09-28T13:20:00Z extract_2007.py ==
+elements: 44  labels: [{'frame': 3, 'name': 'main'}, {'frame': 128, 'name': 'preall'}, {'frame': 129, 'name': 'hepsiburda'}, {'frame': 130, 'name': 'bravo'}]
+ch=   1 DefineShape2Tag        nm=             pl=1 canon=f1 d2 disp=(-0.85,0.25,550.95,400.35)
+ch=   3 DefineSpriteTag        nm=             pl=1 canon=f1 d3 disp=(50.00,37.00,87.50,87.00)
+ch=   5 DefineSpriteTag        nm=             pl=2 canon=f1 d5 disp=(-0.85,0.20,550.20,240.70)
+ch=   6 DefineShapeTag         nm=             pl=2 canon=f1 d8 disp=(-0.85,240.70,550.95,400.35)
+ch=   8 DefineSpriteTag        nm=             pl=2 canon=f1 d9 disp=(-0.90,240.70,549.70,400.30)
+ch=  12 DefineSpriteTag        nm=             pl=1 canon=f1 d11 disp=(169.30,176.85,370.40,182.85)
+ch=  14 DefineEditTextTag      nm=             pl=1 canon=f2 d14 disp=(380.95,171.95,419.95,186.90)
+ch=  15 DefineTextTag          nm=             pl=1 canon=f2 d15 disp=(370.60,173.95,385.35,183.15)
+ch=  16 DefineEditTextTag      nm=             pl=1 canon=f2 d16 disp=(233.45,185.55,272.45,200.50)
+ch=  17 DefineEditTextTag      nm=             pl=1 canon=f2 d17 disp=(278.45,185.55,317.45,200.50)
+ch=  18 DefineTextTag          nm=             pl=1 canon=f2 d18 disp=(273.80,187.55,283.40,198.00)
+ch=  19 DefineShape3Tag        nm=             pl=1 canon=f4 d7 disp=(217.10,254.10,310.60,347.60)
+ch=  20 DefineSpriteTag        nm=timerr       pl=1 canon=f4 d62 disp=None
+ch=  22 DefineSpriteTag        nm=enter        pl=1 canon=f15 d64 disp=None
+ch=  24 DefineSpriteTag        nm=shuffle      pl=1 canon=f25 d66 disp=None
+ch=  26 DefineSpriteTag        nm=countdown    pl=1 canon=f35 d68 disp=None
+ch=  28 DefineSpriteTag        nm=             pl=1 canon=f40 d45 disp=(119.96,-86.05,416.03,-3.56)
+ch=  30 DefineSpriteTag        nm=boing        pl=1 canon=f45 d70 disp=None
+ch=  32 DefineSpriteTag        nm=fanfare      pl=1 canon=f55 d72 disp=None
+ch=  34 DefineSpriteTag        nm=finishsound  pl=1 canon=f65 d74 disp=None
+ch=  36 DefineSpriteTag        nm=typer        pl=1 canon=f75 d76 disp=None
+ch=  38 DefineSpriteTag        nm=backspace    pl=1 canon=f108 d78 disp=None
+ch=  40 DefineSpriteTag        nm=buzz         pl=1 canon=f118 d80 disp=None
+ch=  46 DefineSpriteTag        nm=wordball     pl=1 canon=f118 d82 disp=(701.85,166.85,751.85,386.85)
+ch=  48 DefineShapeTag         nm=             pl=1 canon=f130 d5 disp=(0.45,0.00,550.45,400.00)
+ch=  58 DefineSpriteTag        nm=button       pl=1 canon=f130 d8 disp=(694.17,-9.26,826.81,79.88)
+ch=  62 DefineButton2Tag       nm=kbuton       pl=1 canon=f130 d12 disp=(123.35,363.05,277.50,394.45)
+ch=  64 DefineButton2Tag       nm=ebuton       pl=1 canon=f130 d16 disp=(251.30,364.05,405.45,393.60)
+ch=  66 DefineSpriteTag        nm=bosbuton     pl=1 canon=f130 d20 disp=(690.40,80.35,744.40,134.35)
+ch=  68 DefineButton2Tag       nm=ybuton       pl=1 canon=f130 d25 disp=(413.30,193.05,578.00,224.35)
+ch=  73 DefineSpriteTag        nm=             pl=1 canon=f130 d29 disp=(508.30,68.85,532.35,176.85)
+ch=  81 DefineSpriteTag        nm=xmlload      pl=1 canon=f130 d32 disp=(107.55,88.50,419.45,198.50)
+ch=  87 DefineButton2Tag       nm=spk_btn      pl=1 canon=f130 d36 disp=(520.45,366.30,551.50,397.45)
+ch=  94 DefineSpriteTag        nm=             pl=1 canon=f130 d38 disp=(-1.35,379.85,186.35,408.15)
+ch=  96 DefineButton2Tag       nm=             pl=1 canon=f130 d41 disp=(383.30,366.05,537.45,397.35)
+ch=  99 DefineSpriteTag        nm=puanmovie    pl=1 canon=f130 d47 disp=(213.50,96.88,306.50,264.40)
+ch= 101 DefineEditTextTag      nm=             pl=1 canon=f130 d49 disp=(507.00,115.50,528.00,131.65)
+ch= 112 DefineSpriteTag        nm=status       pl=1 canon=f130 d50 disp=(447.37,238.45,548.28,273.25)
+ch= 114 DefineEditTextTag      nm=             pl=1 canon=f130 d58 disp=(694.85,323.75,1032.80,368.75)
+ch= 115 DefineEditTextTag      nm=             pl=1 canon=f130 d59 disp=(455.95,39.90,527.95,60.95)
+ch= 117 DefineEditTextTag      nm=             pl=1 canon=f130 d60 disp=(437.95,17.90,541.95,38.95)
+ch= 118 DefineEditTextTag      nm=             pl=1 canon=f130 d61 disp=(445.95,112.90,501.95,135.00)
+ch= 140 DefineSpriteTag        nm=             pl=1 canon=f221 d49 disp=(114.90,368.85,426.80,541.30)
+ch= 144 DefineSpriteTag        nm=             pl=1 canon=f240 d47 disp=(-441.75,-2.68,9.50,12.38)
+exit=0

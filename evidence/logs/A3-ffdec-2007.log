@@ -1,0 +1,40 @@
+== 2026-09-28T13:19:01Z ffdec 2007 header ==
+exit=0
+[header]
+fileSize=390828
+version=6
+compression=ZLIB
+encrypted=false
+gfx=false
+displayRect=[0, 0, 11000, 8000]
+width=11000
+widthPx=550
+height=8000
+heightPx=400
+frameCount=240
+frameRate=36
+MD5 (../kelimator-nostalji/calistir/kelimator_tr_2007.swf) = 54f794c3c70fd8ce123e46cca8e0d39f
+665c2489765782303c355c64e92f09372ef0a9e89fdf88fd7f990cd15eb50473  ../kelimator-nostalji/calistir/kelimator_tr_2007.swf
+== 2026-09-28T13:19:11Z ffdec 2007 swf2xml ==
+./artifacts/tools/ffdec/ffdec.sh: line 49: [: java version "17.0.20.1" 2026-08-18 OpenJDK Runtime Environment Homebrew (build 17.0.20.1+0) OpenJDK 64-Bit Server VM Homebrew (build 17.0.20.1+0, mixed mode, sharing): integer expression expected
+./artifacts/tools/ffdec/ffdec.sh: line 51: [: java version "17.0.20.1" 2026-08-18 OpenJDK Runtime Environment Homebrew (build 17.0.20.1+0) OpenJDK 64-Bit Server VM Homebrew (build 17.0.20.1+0, mixed mode, sharing): integer expression expected
+./artifacts/tools/ffdec/ffdec.sh: line 55: [: java version "17.0.20.1" 2026-08-18 OpenJDK Runtime Environment Homebrew (build 17.0.20.1+0) OpenJDK 64-Bit Server VM Homebrew (build 17.0.20.1+0, mixed mode, sharing): integer expression expected
+./artifacts/tools/ffdec/ffdec.sh: line 57: [: java version "17.0.20.1" 2026-08-18 OpenJDK Runtime Environment Homebrew (build 17.0.20.1+0) OpenJDK 64-Bit Server VM Homebrew (build 17.0.20.1+0, mixed mode, sharing): integer expression expected
+./artifacts/tools/ffdec/ffdec.sh: line 61: [: java version "17.0.20.1" 2026-08-18 OpenJDK Runtime Environment Homebrew (build 17.0.20.1+0) OpenJDK 64-Bit Server VM Homebrew (build 17.0.20.1+0, mixed mode, sharing): integer expression expected
+./artifacts/tools/ffdec/ffdec.sh: line 63: [: java version "17.0.20.1" 2026-08-18 OpenJDK Runtime Environment Homebrew (build 17.0.20.1+0) OpenJDK 64-Bit Server VM Homebrew (build 17.0.20.1+0, mixed mode, sharing): integer expression expected
+./artifacts/tools/ffdec/ffdec.sh: line 67: [: java version "17.0.20.1" 2026-08-18 OpenJDK Runtime Environment Homebrew (build 17.0.20.1+0) OpenJDK 64-Bit Server VM Homebrew (build 17.0.20.1+0, mixed mode, sharing): integer expression expected
+exit=0
+== 2026-09-28T13:19:27Z ffdec 2007 fla export ==
+./artifacts/tools/ffdec/ffdec.sh: line 49: [: java version "17.0.20.1" 2026-08-18 OpenJDK Runtime Environment Homebrew (build 17.0.20.1+0) OpenJDK 64-Bit Server VM Homebrew (build 17.0.20.1+0, mixed mode, sharing): integer expression expected
+./artifacts/tools/ffdec/ffdec.sh: line 51: [: java version "17.0.20.1" 2026-08-18 OpenJDK Runtime Environment Homebrew (build 17.0.20.1+0) OpenJDK 64-Bit Server VM Homebrew (build 17.0.20.1+0, mixed mode, sharing): integer expression expected
+./artifacts/tools/ffdec/ffdec.sh: line 55: [: java version "17.0.20.1" 2026-08-18 OpenJDK Runtime Environment Homebrew (build 17.0.20.1+0) OpenJDK 64-Bit Server VM Homebrew (build 17.0.20.1+0, mixed mode, sharing): integer expression expected
+./artifacts/tools/ffdec/ffdec.sh: line 57: [: java version "17.0.20.1" 2026-08-18 OpenJDK Runtime Environment Homebrew (build 17.0.20.1+0) OpenJDK 64-Bit Server VM Homebrew (build 17.0.20.1+0, mixed mode, sharing): integer expression expected
+./artifacts/tools/ffdec/ffdec.sh: line 61: [: java version "17.0.20.1" 2026-08-18 OpenJDK Runtime Environment Homebrew (build 17.0.20.1+0) OpenJDK 64-Bit Server VM Homebrew (build 17.0.20.1+0, mixed mode, sharing): integer expression expected
+./artifacts/tools/ffdec/ffdec.sh: line 63: [: java version "17.0.20.1" 2026-08-18 OpenJDK Runtime Environment Homebrew (build 17.0.20.1+0) OpenJDK 64-Bit Server VM Homebrew (build 17.0.20.1+0, mixed mode, sharing): integer expression expected
+./artifacts/tools/ffdec/ffdec.sh: line 67: [: java version "17.0.20.1" 2026-08-18 OpenJDK Runtime Environment Homebrew (build 17.0.20.1+0) OpenJDK 64-Bit Server VM Homebrew (build 17.0.20.1+0, mixed mode, sharing): integer expression expected
+JPEXS Free Flash Decompiler v.26.3.0
+------------------------------------
+Exporting FLA...
+Export finished. Total export time: 00:02.689
+OK
+exit=0

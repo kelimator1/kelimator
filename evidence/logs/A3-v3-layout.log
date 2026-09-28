@@ -1,0 +1,21 @@
+== V3 schema validation — all runs recorded (failure then pass) ==
+
+== 2026-09-28T13:24:17Z run 1 (extra `-c ajv-formats` option; FAILED: module not installed) ==
+$ npx ajv-cli validate -s data/layout.schema.json -d data/layout.json -c ajv-formats
+Error: Cannot find module 'ajv-formats' / Require stack: node_modules/ajv-cli/dist/commands/{ajv,compile,index}.js
+exit=1
+
+== 2026-09-28T13:24:28Z run 2 (task-mandated command; PASS) ==
+$ npx ajv-cli validate -s data/layout.schema.json -d data/layout.json
+data/layout.json valid
+exit=0
+
+== 2026-09-28T13:40:xxZ run 3 (after board-state regeneration; PASS) ==
+$ npx ajv-cli validate -s data/layout.schema.json -d data/layout.json
+data/layout.json valid
+exit=0
+
+== 2026-09-28T13:48:54Z run 4 (final, after FLA scratch move; PASS) ==
+$ npx ajv-cli validate -s data/layout.schema.json -d data/layout.json
+data/layout.json valid
+exit=0

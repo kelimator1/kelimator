@@ -1,0 +1,33 @@
+== 2026-09-28T13:48:54Z FINAL: ajv-cli validate + a3-verify (post FLA move) ==
+data/layout.json valid
+ajv exit=0
+[PASS] V2a element count == distinct stage-placed symbols (tags.xml) — elements=62 distinct_chids=62 placements=65
+     distinct chids: [1, 3, 5, 6, 8, 12, 14, 16, 17, 18, 19, 20, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 46, 48, 58, 63, 65, 67, 71, 76, 84, 90, 97, 103, 105, 108, 111, 112, 123, 124, 125, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 166, 170]
+[PASS] V2a FLA main timeline symbols (+inline shape 48) == tags.xml symbols minus text fields — fla_symbols=35 +inline(1) tags_minus_text=36 text_chids=26
+[PASS] V2b every referenced asset exists — 62 assets checked; missing=[]
+[PASS] V2b non-text assets are non-empty — empty=[]
+[PASS] V2c fps numeric — 36
+[PASS] V2c animation.json: spans, durations, keyframes, no empty fields — 24 sequences; problems=[]
+[PASS] V2d fps == header frameRate — 36 == 36
+[PASS] V2d totalFrames == header frameCount — 241
+[PASS] V2d stage 550x400 + background from SetBackgroundColor(FFFFFF) — {"width": 550, "height": 400, "background": "#ffffff"}
+verify exit=0
+
+data file hashes (must match evidence/A3-layout.md §9):
+eb8a098cab21df360cf24dea2f38c2b6b2e56cd16c248b4d6447ce51d3cb292d  data/layout.json
+c263ed44b8d352ed72757821f0fd3cbebd58e5c5883dd124ec2229343ce9794e  data/animation.json
+
+== 2026-09-28T13:50:56Z FINAL verification re-run (after evidence edits) ==
+data/layout.json valid
+ajv exit=0
+[PASS] V2a element count == distinct stage-placed symbols (tags.xml) — elements=62 distinct_chids=62 placements=65
+     distinct chids: [1, 3, 5, 6, 8, 12, 14, 16, 17, 18, 19, 20, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 46, 48, 58, 63, 65, 67, 71, 76, 84, 90, 97, 103, 105, 108, 111, 112, 123, 124, 125, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 166, 170]
+[PASS] V2a FLA main timeline symbols (+inline shape 48) == tags.xml symbols minus text fields — fla_symbols=35 +inline(1) tags_minus_text=36 text_chids=26
+[PASS] V2b every referenced asset exists — 62 assets checked; missing=[]
+[PASS] V2b non-text assets are non-empty — empty=[]
+[PASS] V2c fps numeric — 36
+[PASS] V2c animation.json: spans, durations, keyframes, no empty fields — 24 sequences; problems=[]
+[PASS] V2d fps == header frameRate — 36 == 36
+[PASS] V2d totalFrames == header frameCount — 241
+[PASS] V2d stage 550x400 + background from SetBackgroundColor(FFFFFF) — {"width": 550, "height": 400, "background": "#ffffff"}
+verify exit=0

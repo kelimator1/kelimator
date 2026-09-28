@@ -1,0 +1,8 @@
+== 2026-09-28T13:33:22Z cross-check timer bar + socket grid vs capture ==
+timer_bar layout box (514.3, 83.85, 538.3499999999999, 191.85)
+timer_bar asset red bbox in asset (0, 0, 18, 107) predicted stage red bbox (514.3, 83.85, 532.3, 190.85)
+timer_bar measured red bbox in capture (506, 75, 536, 198) max_delta= 8.849999999999994
+socket asset content bbox (0, 0, 59, 59) natural (60, 60)
+predicted first socket display box 33.0 303.0 87.0 357.0
+measured gold faces @y330: [(20, 24), (36, 78), (96, 138), (156, 161), (163, 198), (216, 258), (276, 318), (336, 378)]
+gold face inset within socket: asset gold face bbox vs asset box: (3, 3, 55, 58)

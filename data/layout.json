@@ -1,0 +1,1064 @@
+{
+ "schemaVersion": 1,
+ "stage": {
+  "width": 550,
+  "height": 400,
+  "background": "#ffffff"
+ },
+ "elements": [
+  {
+   "id": "intro_backdrop",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/shapes/1.svg",
+   "x": -0.85,
+   "y": 0.25,
+   "w": 551.8,
+   "h": 400.1,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=1 depth=2 frames 2-241 tx=0.0 ty=0.0; DefineShape2Tag geometry=(551.8x400.1); board state (SWF frame 131) display bbox=(-0.85,0.25,550.95,400.35); full-stage intro background shape (2 frames of the intro)"
+  },
+  {
+   "id": "logo_ornament",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_3/1.svg",
+   "x": 50.0,
+   "y": 37.0,
+   "w": 37.5,
+   "h": 50.0,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=3 depth=3 frames 2-241 tx=68.75 ty=62.0; DefineSpriteTag geometry=(37.5x50.0); board state (SWF frame 131) display bbox=(50.0,37.0,87.5,87.0); small logo ornament shown during intro"
+  },
+  {
+   "id": "intro_sky",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_5/1.svg",
+   "x": -0.85,
+   "y": 0.2,
+   "w": 551.05,
+   "h": 240.5,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=5 depth=5 frames 2-130 tx=274.65 ty=120.45; DefineSpriteTag geometry=(551.05x240.5); element is not on stage at the gameplay frame (131); initial placement state; intro sky layer"
+  },
+  {
+   "id": "intro_ground",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/shapes/6.svg",
+   "x": -0.85,
+   "y": 240.7,
+   "w": 551.8,
+   "h": 159.65,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=6 depth=8 frames 2-130 tx=0.0 ty=0.0; DefineShapeTag geometry=(551.8x159.65); element is not on stage at the gameplay frame (131); initial placement state; intro ground layer"
+  },
+  {
+   "id": "intro_layer3",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_8/1.svg",
+   "x": -0.9,
+   "y": 240.7,
+   "w": 550.6,
+   "h": 159.6,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=8 depth=9 frames 2-130 tx=274.4 ty=320.5; DefineSpriteTag geometry=(550.6x159.6); element is not on stage at the gameplay frame (131); initial placement state; intro foreground layer"
+  },
+  {
+   "id": "preloader_progress",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_12/1.svg",
+   "x": 169.3,
+   "y": 176.85,
+   "w": 201.1,
+   "h": 6.0,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=12 depth=11 frames 2-4 tx=269.8 ty=180.35; DefineSpriteTag geometry=(201.1x6.0); element is not on stage at the gameplay frame (131); initial placement state; preloader progress bar (2 sprite frames)"
+  },
+  {
+   "id": "preloader_percent_value",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/14.txt",
+   "x": 380.95,
+   "y": 171.95,
+   "w": 39.0,
+   "h": 14.95,
+   "text": "",
+   "font": {
+    "family": "Verdana",
+    "size": 9.0,
+    "bold": true,
+    "align": "left"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=14 depth=14 frames 3-4 tx=382.95 ty=173.95; DefineEditTextTag geometry=(39.0x14.95); element is not on stage at the gameplay frame (131); initial placement state; preloader percent field (var 'yuzde'); dynamic field (var 'yuzde'), empty at definition"
+  },
+  {
+   "id": "preloader_percent_sign",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/16.txt",
+   "x": 370.6,
+   "y": 176.25,
+   "w": 16.95,
+   "h": 6.9,
+   "text": "%",
+   "font": {
+    "family": "Verdana",
+    "size": 9.0,
+    "bold": false,
+    "align": "left"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=16 depth=15 frames 3-4 tx=369.95 ty=173.95; DefineTextTag geometry=(16.95x6.9); element is not on stage at the gameplay frame (131); initial placement state; static '%' glyph next to the percent field; static text from artifacts/decompiled/texts/16.txt; DefineText has no align attribute: layout is absolute glyph runs, recorded as left"
+  },
+  {
+   "id": "preloader_loaded_bytes",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/17.txt",
+   "x": 233.45,
+   "y": 185.55,
+   "w": 39.0,
+   "h": 14.95,
+   "text": "",
+   "font": {
+    "family": "Verdana",
+    "size": 9.0,
+    "bold": true,
+    "align": "right"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=17 depth=16 frames 3-4 tx=235.45 ty=187.55; DefineEditTextTag geometry=(39.0x14.95); element is not on stage at the gameplay frame (131); initial placement state; preloader loaded-bytes field (var 'flb'); dynamic field (var 'flb'), empty at definition"
+  },
+  {
+   "id": "preloader_total_bytes",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/18.txt",
+   "x": 278.45,
+   "y": 185.55,
+   "w": 39.0,
+   "h": 14.95,
+   "text": "",
+   "font": {
+    "family": "Verdana",
+    "size": 9.0,
+    "bold": true,
+    "align": "left"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=18 depth=17 frames 3-4 tx=280.45 ty=187.55; DefineEditTextTag geometry=(39.0x14.95); element is not on stage at the gameplay frame (131); initial placement state; preloader total-bytes field (var 'tfb'); dynamic field (var 'tfb'), empty at definition"
+  },
+  {
+   "id": "preloader_slash",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/19.txt",
+   "x": 273.1,
+   "y": 189.75,
+   "w": 12.15,
+   "h": 8.2,
+   "text": "/",
+   "font": {
+    "family": "Verdana",
+    "size": 9.0,
+    "bold": false,
+    "align": "left"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=19 depth=18 frames 3-4 tx=273.25 ty=187.55; DefineTextTag geometry=(12.15x8.2); element is not on stage at the gameplay frame (131); initial placement state; static '/' glyph between the byte fields; static text from artifacts/decompiled/texts/19.txt; DefineText has no align attribute: layout is absolute glyph runs, recorded as left"
+  },
+  {
+   "id": "intro_glow",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/shapes/20.svg",
+   "x": 217.1,
+   "y": -104.9,
+   "w": 93.5,
+   "h": 93.5,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=20 depth=7 frames 5-241 tx=260.1 ty=-59.9; DefineShape3Tag geometry=(93.5x93.5); board state (SWF frame 131) display bbox=(217.1,-104.9,310.6,-11.4); soft glow ball animated by 214 main-timeline moves (frames 5-222)"
+  },
+  {
+   "id": "clip_timerr",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_21/1.svg",
+   "x": 717.85,
+   "y": 161.85,
+   "w": 0,
+   "h": 0,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=21 depth=80 frames 5-131 tx=717.85 ty=161.85; DefineSpriteTag geometry=—; element is not on stage at the gameplay frame (131); initial placement state; no visual geometry; action/sound-only sprite (no visual geometry); timer sound container"
+  },
+  {
+   "id": "clip_enter",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_23/1.svg",
+   "x": 749.8,
+   "y": 160.85,
+   "w": 0,
+   "h": 0,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=23 depth=82 frames 16-131 tx=749.8 ty=160.85; DefineSpriteTag geometry=—; element is not on stage at the gameplay frame (131); initial placement state; no visual geometry; action/sound-only sprite (no visual geometry); ENTER sound container"
+  },
+  {
+   "id": "clip_shuffle",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_25/1.svg",
+   "x": 776.8,
+   "y": 159.85,
+   "w": 0,
+   "h": 0,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=25 depth=84 frames 26-131 tx=776.8 ty=159.85; DefineSpriteTag geometry=—; element is not on stage at the gameplay frame (131); initial placement state; no visual geometry; action/sound-only sprite (no visual geometry); SPACE/shuffle sound container"
+  },
+  {
+   "id": "clip_countdown",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_27/1.svg",
+   "x": 719.8,
+   "y": 194.85,
+   "w": 0,
+   "h": 0,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=27 depth=86 frames 36-131 tx=719.8 ty=194.85; DefineSpriteTag geometry=—; element is not on stage at the gameplay frame (131); initial placement state; no visual geometry; action/sound-only sprite (no visual geometry); countdown SFX container"
+  },
+  {
+   "id": "intro_logo",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_29/1.svg",
+   "x": 2.0,
+   "y": 1.06,
+   "w": 179.84,
+   "h": 50.11,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=29 depth=47 frames 41-241 tx=91.8 ty=26.0 scale=(0.4791,0.4791); DefineSpriteTag geometry=(296.07x82.49); board state (SWF frame 131) display bbox=(2.0,1.06,181.84,51.17); falling 'kelimator' logo, 86 main-timeline moves (frames 41-202)"
+  },
+  {
+   "id": "clip_boing",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_31/1.svg",
+   "x": 751.8,
+   "y": 193.85,
+   "w": 0,
+   "h": 0,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=31 depth=88 frames 46-131 tx=751.8 ty=193.85; DefineSpriteTag geometry=—; element is not on stage at the gameplay frame (131); initial placement state; no visual geometry; action/sound-only sprite (no visual geometry); boing SFX container"
+  },
+  {
+   "id": "clip_fanfare",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_33/1.svg",
+   "x": 776.8,
+   "y": 196.85,
+   "w": 0,
+   "h": 0,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=33 depth=90 frames 56-131 tx=776.8 ty=196.85; DefineSpriteTag geometry=—; element is not on stage at the gameplay frame (131); initial placement state; no visual geometry; action/sound-only sprite (no visual geometry); fanfare SFX container"
+  },
+  {
+   "id": "clip_finishsound",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_35/1.svg",
+   "x": 718.8,
+   "y": 219.85,
+   "w": 0,
+   "h": 0,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=35 depth=92 frames 66-131 tx=718.8 ty=219.85; DefineSpriteTag geometry=—; element is not on stage at the gameplay frame (131); initial placement state; no visual geometry; action/sound-only sprite (no visual geometry); round-finish SFX container"
+  },
+  {
+   "id": "clip_typer",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_37/1.svg",
+   "x": 751.8,
+   "y": 218.85,
+   "w": 0,
+   "h": 0,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=37 depth=94 frames 76-131 tx=751.8 ty=218.85; DefineSpriteTag geometry=—; element is not on stage at the gameplay frame (131); initial placement state; no visual geometry; action/sound-only sprite (no visual geometry); typing SFX container"
+  },
+  {
+   "id": "clip_backspace",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_39/1.svg",
+   "x": 719.8,
+   "y": 244.85,
+   "w": 0,
+   "h": 0,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=39 depth=96 frames 109-131 tx=719.8 ty=244.85; DefineSpriteTag geometry=—; element is not on stage at the gameplay frame (131); initial placement state; no visual geometry; action/sound-only sprite (no visual geometry); backspace SFX container"
+  },
+  {
+   "id": "clip_buzz",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_41/1.svg",
+   "x": 752.8,
+   "y": 241.85,
+   "w": 0,
+   "h": 0,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=41 depth=98 frames 119-131 tx=752.8 ty=241.85; DefineSpriteTag geometry=—; element is not on stage at the gameplay frame (131); initial placement state; no visual geometry; action/sound-only sprite (no visual geometry); invalid-word SFX container"
+  },
+  {
+   "id": "wordball",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_46/2.svg",
+   "x": 701.85,
+   "y": 166.85,
+   "w": 50.0,
+   "h": 220.0,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=46 depth=100 frames 119-131 tx=726.85 ty=291.85; DefineSpriteTag geometry=(50.0x220.0); board state (SWF frame 131) display bbox=(701.85,166.85,751.85,386.85); letter ball template; 8 runtime duplicates (frame_131 AS) at x=60+j*60 starting y=-130"
+  },
+  {
+   "id": "board_backdrop",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/shapes/48.svg",
+   "x": 0.45,
+   "y": 0.0,
+   "w": 550.0,
+   "h": 400.0,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=48 depth=5 frames 131-131 tx=0.0 ty=0.0; DefineShapeTag geometry=(550.0x400.0); board state (SWF frame 131) display bbox=(0.45,0.0,550.45,400.0); board-state backdrop shape (contains bitmap 47 as fill); visible on frame 131 only"
+  },
+  {
+   "id": "letter_tile",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_58/1.svg",
+   "x": 694.17,
+   "y": -9.26,
+   "w": 118.05,
+   "h": 82.27,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=58 depth=8 frames 131-131 tx=721.1 ty=46.2 scale=(0.7186,0.7186); DefineSpriteTag geometry=(118.05x82.27); board state (SWF frame 131) display bbox=(694.17,-9.26,812.22,73.0); letter tile template (contains button 57 with the 'word' text field); 8 runtime duplicates (frame_131 AS) at x=60+j*60, y=330 (inherited scale 0.7186)"
+  },
+  {
+   "id": "btn_kbuton",
+   "kind": "svg",
+   "asset": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_63/1_up.svg",
+   "x": 156.25,
+   "y": 367.95,
+   "w": 76.1,
+   "h": 21.7,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=63 depth=12 frames 131-131 tx=191.75 ty=377.45; DefineButton2Tag geometry=(76.1x21.7); board state (SWF frame 131) display bbox=(156.25,367.95,232.35,389.65); button 'kbuton' (Karıştır)"
+  },
+  {
+   "id": "btn_ebuton",
+   "kind": "svg",
+   "asset": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_65/1_up.svg",
+   "x": 232.85,
+   "y": 367.95,
+   "w": 69.3,
+   "h": 21.7,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=65 depth=15 frames 131-131 tx=268.35 ty=377.45; DefineButton2Tag geometry=(69.3x21.7); board state (SWF frame 131) display bbox=(232.85,367.95,302.15,389.65); button 'ebuton' (Ekle)"
+  },
+  {
+   "id": "tile_socket",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_67/1.svg",
+   "x": 690.4,
+   "y": 80.35,
+   "w": 54.0,
+   "h": 54.0,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=67 depth=18 frames 131-131 tx=717.4 ty=107.35 scale=(0.9000,0.9000); DefineSpriteTag geometry=(54.0x54.0); board state (SWF frame 131) display bbox=(690.4,80.35,744.4,134.35); empty socket template; 8 runtime duplicates (frame_131 AS) at x=60+j*60, y=330 (inherited scale 0.9)"
+  },
+  {
+   "id": "btn_ybuton",
+   "kind": "svg",
+   "asset": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_71/1_up.svg",
+   "x": 445.8,
+   "y": 196.45,
+   "w": 98.3,
+   "h": 21.7,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=71 depth=23 frames 131-131 tx=491.35 ty=205.95; DefineButton2Tag geometry=(98.3x21.7); board state (SWF frame 131) display bbox=(445.8,196.45,544.1,218.15); button 'ybuton' (Yeni Oyun)"
+  },
+  {
+   "id": "timer_bar",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_76/1.svg",
+   "x": 514.3,
+   "y": 83.85,
+   "w": 24.05,
+   "h": 108.0,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=76 depth=26 frames 131-131 tx=523.8 ty=137.35; DefineSpriteTag geometry=(24.05x108.0); board state (SWF frame 131) display bbox=(514.3,83.85,538.35,191.85); red timer bar (2 sprite frames)"
+  },
+  {
+   "id": "loading_banner",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_84/2.svg",
+   "x": 107.55,
+   "y": 88.5,
+   "w": 311.9,
+   "h": 110.0,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=84 depth=29 frames 131-131 tx=263.0 ty=144.0; DefineSpriteTag geometry=(311.9x110.0); board state (SWF frame 131) display bbox=(107.55,88.5,419.45,198.5); loading banner 'Kelimeler YükleniyorLütfen Bekleyiniz...' (sprite frames 2-4)"
+  },
+  {
+   "id": "btn_speaker",
+   "kind": "svg",
+   "asset": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_90/1_up.svg",
+   "x": 513.99,
+   "y": 364.74,
+   "w": 33.54,
+   "h": 34.09,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=90 depth=33 frames 131-131 tx=530.5 ty=381.8; DefineButton2Tag geometry=(33.54x34.09); board state (SWF frame 131) display bbox=(513.99,364.74,547.53,398.83); button 'spk_btn' (sound on/off)"
+  },
+  {
+   "id": "credit_line",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_97/1.svg",
+   "x": -48.25,
+   "y": 367.25,
+   "w": 144.1,
+   "h": 19.0,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=97 depth=35 frames 131-131 tx=10.4 ty=399.75; DefineSpriteTag geometry=(144.1x19.0); board state (SWF frame 131) display bbox=(-48.25,367.25,95.85,386.25); bottom-left credit/links line 1 ('Diğer oyunlar')"
+  },
+  {
+   "id": "credit_site",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_103/1.svg",
+   "x": -41.4,
+   "y": 383.55,
+   "w": 145.5,
+   "h": 18.64,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=103 depth=38 frames 131-131 tx=18.65 ty=416.1; DefineSpriteTag geometry=(145.5x18.64); board state (SWF frame 131) display bbox=(-41.4,383.55,104.1,402.19); bottom-left credit/links line 2 ('kelimator.com')"
+  },
+  {
+   "id": "btn_sbuton",
+   "kind": "svg",
+   "asset": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_105/1_up.svg",
+   "x": 308.6,
+   "y": 367.95,
+   "w": 69.3,
+   "h": 21.7,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=105 depth=41 frames 131-131 tx=344.1 ty=377.45; DefineButton2Tag geometry=(69.3x21.7); board state (SWF frame 131) display bbox=(308.6,367.95,377.9,389.65); button 'sbuton' (Sil)"
+  },
+  {
+   "id": "btn_top10",
+   "kind": "svg",
+   "asset": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_108/1_up.svg",
+   "x": 419.8,
+   "y": 372.95,
+   "w": 89.45,
+   "h": 21.7,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=108 depth=44 frames 131-131 tx=465.35 ty=382.45; DefineButton2Tag geometry=(89.45x21.7); board state (SWF frame 131) display bbox=(419.8,372.95,509.25,394.65); button 'Top10'"
+  },
+  {
+   "id": "score_feedback",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_111/7.svg",
+   "x": 213.5,
+   "y": 96.88,
+   "w": 93.0,
+   "h": 167.53,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=111 depth=49 frames 131-131 tx=260.0 ty=264.9; DefineSpriteTag geometry=(93.0x167.53); board state (SWF frame 131) display bbox=(213.5,96.88,306.5,264.4); score feedback movie (37 sprite frames; 'Geçerli'/score popups)"
+  },
+  {
+   "id": "timer_value",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/112.txt",
+   "x": 513.0,
+   "y": 130.5,
+   "w": 21.0,
+   "h": 16.15,
+   "text": "",
+   "font": {
+    "family": "Verdana",
+    "size": 8.0,
+    "bold": false,
+    "align": "center"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=112 depth=51 frames 131-131 tx=515.0 ty=132.5; DefineEditTextTag geometry=(21.0x16.15); board state (SWF frame 131) display bbox=(513.0,130.5,534.0,146.65); timer value field (var 'timer', centered); dynamic field (var 'timer'), empty at definition"
+  },
+  {
+   "id": "status_ball",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_123/1.svg",
+   "x": 447.37,
+   "y": 238.45,
+   "w": 107.01,
+   "h": 34.81,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=123 depth=52 frames 131-131 tx=447.35 ty=238.45; DefineSpriteTag geometry=(107.01x34.81); board state (SWF frame 131) display bbox=(447.37,238.45,554.38,273.25); status ball + message ('Geçerli'/'Girildi', 3 sprite frames)"
+  },
+  {
+   "id": "result_word_template",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/124.txt",
+   "x": 694.85,
+   "y": 323.75,
+   "w": 337.95,
+   "h": 45.0,
+   "text": "",
+   "font": {
+    "family": "Verdana",
+    "size": 30.0,
+    "bold": true,
+    "align": "center"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=124 depth=60 frames 131-131 tx=696.85 ty=325.75; DefineEditTextTag geometry=(337.95x45.0); board state (SWF frame 131) display bbox=(694.85,323.75,1032.8,368.75); found-word list template (var 'kelime'); duplicated/positioned by AS frame_131; dynamic field (var 'kelime'), empty at definition"
+  },
+  {
+   "id": "score_value",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/125.txt",
+   "x": 455.95,
+   "y": 39.9,
+   "w": 72.0,
+   "h": 21.05,
+   "text": "",
+   "font": {
+    "family": "Verdana",
+    "size": 14.0,
+    "bold": true,
+    "align": "right"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=125 depth=61 frames 131-131 tx=457.95 ty=41.9; DefineEditTextTag geometry=(72.0x21.05); board state (SWF frame 131) display bbox=(455.95,39.9,527.95,60.95); score value field (var 'puan'); dynamic field (var 'puan'), empty at definition"
+  },
+  {
+   "id": "label_puan_black",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/127.txt",
+   "x": 438.45,
+   "y": 17.4,
+   "w": 104.0,
+   "h": 21.05,
+   "text": "Puan",
+   "font": {
+    "family": "Verdana",
+    "size": 14.0,
+    "bold": true,
+    "align": "center"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=127 depth=62 frames 131-131 tx=440.45 ty=19.4; DefineEditTextTag geometry=(104.0x21.05); board state (SWF frame 131) display bbox=(438.45,17.4,542.45,38.45); static 'Puan' label (black variant); static text from artifacts/decompiled/texts/127.txt"
+  },
+  {
+   "id": "label_puan_orange",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/128.txt",
+   "x": 437.75,
+   "y": 17.0,
+   "w": 104.0,
+   "h": 21.05,
+   "text": "Puan",
+   "font": {
+    "family": "Verdana",
+    "size": 14.0,
+    "bold": true,
+    "align": "center"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=128 depth=63 frames 131-131 tx=439.75 ty=19.0; DefineEditTextTag geometry=(104.0x21.05); board state (SWF frame 131) display bbox=(437.75,17.0,541.75,38.05); static 'Puan' label (orange variant); static text from artifacts/decompiled/texts/128.txt"
+  },
+  {
+   "id": "label_sure_black",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/129.txt",
+   "x": 500.75,
+   "y": 63.4,
+   "w": 40.4,
+   "h": 21.05,
+   "text": "Süre",
+   "font": {
+    "family": "Verdana",
+    "size": 14.0,
+    "bold": true,
+    "align": "left"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=129 depth=64 frames 131-131 tx=502.75 ty=65.4; DefineEditTextTag geometry=(40.4x21.05); board state (SWF frame 131) display bbox=(500.75,63.4,541.15,84.45); static 'Süre' label (black variant); static text from artifacts/decompiled/texts/129.txt"
+  },
+  {
+   "id": "label_sure_orange",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/130.txt",
+   "x": 500.25,
+   "y": 62.9,
+   "w": 40.5,
+   "h": 21.05,
+   "text": "Süre",
+   "font": {
+    "family": "Verdana",
+    "size": 14.0,
+    "bold": true,
+    "align": "left"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=130 depth=65 frames 131-131 tx=502.25 ty=64.9; DefineEditTextTag geometry=(40.5x21.05); board state (SWF frame 131) display bbox=(500.25,62.9,540.75,83.95); static 'Süre' label (orange variant); static text from artifacts/decompiled/texts/130.txt"
+  },
+  {
+   "id": "label_harf_3",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/131.txt",
+   "x": 437.6,
+   "y": 84.1,
+   "w": 48.35,
+   "h": 16.05,
+   "text": "3 harfli:",
+   "font": {
+    "family": "Verdana",
+    "size": 10.0,
+    "bold": true,
+    "align": "left"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=131 depth=66 frames 131-131 tx=439.6 ty=86.1; DefineEditTextTag geometry=(48.35x16.05); board state (SWF frame 131) display bbox=(437.6,84.1,485.95,100.15); static '3 harfli:' counter label; static text from artifacts/decompiled/texts/131.txt"
+  },
+  {
+   "id": "label_harf_8",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/132.txt",
+   "x": 437.6,
+   "y": 175.6,
+   "w": 48.35,
+   "h": 16.05,
+   "text": "8 harfli:",
+   "font": {
+    "family": "Verdana",
+    "size": 10.0,
+    "bold": true,
+    "align": "left"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=132 depth=67 frames 131-131 tx=439.6 ty=177.6; DefineEditTextTag geometry=(48.35x16.05); board state (SWF frame 131) display bbox=(437.6,175.6,485.95,191.65); static '8 harfli:' counter label; static text from artifacts/decompiled/texts/132.txt"
+  },
+  {
+   "id": "label_harf_4",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/133.txt",
+   "x": 437.6,
+   "y": 102.4,
+   "w": 48.35,
+   "h": 16.05,
+   "text": "4 harfli:",
+   "font": {
+    "family": "Verdana",
+    "size": 10.0,
+    "bold": true,
+    "align": "left"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=133 depth=68 frames 131-131 tx=439.6 ty=104.4; DefineEditTextTag geometry=(48.35x16.05); board state (SWF frame 131) display bbox=(437.6,102.4,485.95,118.45); static '4 harfli:' counter label; static text from artifacts/decompiled/texts/133.txt"
+  },
+  {
+   "id": "label_harf_5",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/134.txt",
+   "x": 437.6,
+   "y": 120.7,
+   "w": 48.35,
+   "h": 16.05,
+   "text": "5 harfli:",
+   "font": {
+    "family": "Verdana",
+    "size": 10.0,
+    "bold": true,
+    "align": "left"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=134 depth=69 frames 131-131 tx=439.6 ty=122.7; DefineEditTextTag geometry=(48.35x16.05); board state (SWF frame 131) display bbox=(437.6,120.7,485.95,136.75); static '5 harfli:' counter label; static text from artifacts/decompiled/texts/134.txt"
+  },
+  {
+   "id": "label_harf_6",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/135.txt",
+   "x": 437.6,
+   "y": 139.0,
+   "w": 48.35,
+   "h": 16.05,
+   "text": "6 harfli:",
+   "font": {
+    "family": "Verdana",
+    "size": 10.0,
+    "bold": true,
+    "align": "left"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=135 depth=70 frames 131-131 tx=439.6 ty=141.0; DefineEditTextTag geometry=(48.35x16.05); board state (SWF frame 131) display bbox=(437.6,139.0,485.95,155.05); static '6 harfli:' counter label; static text from artifacts/decompiled/texts/135.txt"
+  },
+  {
+   "id": "label_harf_7",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/136.txt",
+   "x": 437.6,
+   "y": 157.3,
+   "w": 48.35,
+   "h": 16.05,
+   "text": "7 harfli:",
+   "font": {
+    "family": "Verdana",
+    "size": 10.0,
+    "bold": true,
+    "align": "left"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=136 depth=71 frames 131-131 tx=439.6 ty=159.3; DefineEditTextTag geometry=(48.35x16.05); board state (SWF frame 131) display bbox=(437.6,157.3,485.95,173.35); static '7 harfli:' counter label; static text from artifacts/decompiled/texts/136.txt"
+  },
+  {
+   "id": "count_3",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/137.txt",
+   "x": 482.5,
+   "y": 84.35,
+   "w": 23.0,
+   "h": 16.05,
+   "text": "",
+   "font": {
+    "family": "Verdana",
+    "size": 10.0,
+    "bold": true,
+    "align": "right"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=137 depth=72 frames 131-131 tx=484.5 ty=86.35; DefineEditTextTag geometry=(23.0x16.05); board state (SWF frame 131) display bbox=(482.5,84.35,505.5,100.4); word-count field for 3-letter words (var 'b3'); dynamic field (var 'b3'), empty at definition"
+  },
+  {
+   "id": "count_8",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/138.txt",
+   "x": 482.5,
+   "y": 175.85,
+   "w": 23.0,
+   "h": 16.05,
+   "text": "",
+   "font": {
+    "family": "Verdana",
+    "size": 10.0,
+    "bold": true,
+    "align": "right"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=138 depth=73 frames 131-131 tx=484.5 ty=177.85; DefineEditTextTag geometry=(23.0x16.05); board state (SWF frame 131) display bbox=(482.5,175.85,505.5,191.9); word-count field for 8-letter words (var 'b8'); dynamic field (var 'b8'), empty at definition"
+  },
+  {
+   "id": "count_4",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/139.txt",
+   "x": 482.5,
+   "y": 102.65,
+   "w": 23.0,
+   "h": 16.05,
+   "text": "",
+   "font": {
+    "family": "Verdana",
+    "size": 10.0,
+    "bold": true,
+    "align": "right"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=139 depth=74 frames 131-131 tx=484.5 ty=104.65; DefineEditTextTag geometry=(23.0x16.05); board state (SWF frame 131) display bbox=(482.5,102.65,505.5,118.7); word-count field for 4-letter words (var 'b4'); dynamic field (var 'b4'), empty at definition"
+  },
+  {
+   "id": "count_5",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/140.txt",
+   "x": 482.5,
+   "y": 120.95,
+   "w": 23.0,
+   "h": 16.05,
+   "text": "",
+   "font": {
+    "family": "Verdana",
+    "size": 10.0,
+    "bold": true,
+    "align": "right"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=140 depth=75 frames 131-131 tx=484.5 ty=122.95; DefineEditTextTag geometry=(23.0x16.05); board state (SWF frame 131) display bbox=(482.5,120.95,505.5,137.0); word-count field for 5-letter words (var 'b5'); dynamic field (var 'b5'), empty at definition"
+  },
+  {
+   "id": "count_6",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/141.txt",
+   "x": 482.5,
+   "y": 139.25,
+   "w": 23.0,
+   "h": 16.05,
+   "text": "",
+   "font": {
+    "family": "Verdana",
+    "size": 10.0,
+    "bold": true,
+    "align": "right"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=141 depth=76 frames 131-131 tx=484.5 ty=141.25; DefineEditTextTag geometry=(23.0x16.05); board state (SWF frame 131) display bbox=(482.5,139.25,505.5,155.3); word-count field for 6-letter words (var 'b6'); dynamic field (var 'b6'), empty at definition"
+  },
+  {
+   "id": "count_7",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/142.txt",
+   "x": 482.5,
+   "y": 157.55,
+   "w": 23.0,
+   "h": 16.05,
+   "text": "",
+   "font": {
+    "family": "Verdana",
+    "size": 10.0,
+    "bold": true,
+    "align": "right"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=142 depth=77 frames 131-131 tx=484.5 ty=159.55; DefineEditTextTag geometry=(23.0x16.05); board state (SWF frame 131) display bbox=(482.5,157.55,505.5,173.6); word-count field for 7-letter words (var 'b7'); dynamic field (var 'b7'), empty at definition"
+  },
+  {
+   "id": "label_kelime_black",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/143.txt",
+   "x": 436.75,
+   "y": 63.4,
+   "w": 57.85,
+   "h": 21.05,
+   "text": "Kelime",
+   "font": {
+    "family": "Verdana",
+    "size": 14.0,
+    "bold": true,
+    "align": "left"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=143 depth=78 frames 131-131 tx=438.75 ty=65.4; DefineEditTextTag geometry=(57.85x21.05); board state (SWF frame 131) display bbox=(436.75,63.4,494.6,84.45); static 'Kelime' label (black variant); static text from artifacts/decompiled/texts/143.txt"
+  },
+  {
+   "id": "label_kelime_orange",
+   "kind": "text",
+   "asset": "artifacts/decompiled/texts/144.txt",
+   "x": 436.25,
+   "y": 62.9,
+   "w": 58.0,
+   "h": 21.05,
+   "text": "Kelime",
+   "font": {
+    "family": "Verdana",
+    "size": 14.0,
+    "bold": true,
+    "align": "left"
+   },
+   "evidence": "tags.xml PlaceObject2 ch=144 depth=79 frames 131-131 tx=438.25 ty=64.9; DefineEditTextTag geometry=(58.0x21.05); board state (SWF frame 131) display bbox=(436.25,62.9,494.25,83.95); static 'Kelime' label (orange variant); static text from artifacts/decompiled/texts/144.txt"
+  },
+  {
+   "id": "hiscore_form",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_166/1.svg",
+   "x": 114.9,
+   "y": 368.85,
+   "w": 311.9,
+   "h": 169.0,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=166 depth=51 frames 222-241 tx=270.35 ty=483.35; DefineSpriteTag geometry=(311.9x169.0); element is not on stage at the gameplay frame (131); initial placement state; end-of-round high-score form; 19 main-timeline moves (frames 222-241)"
+  },
+  {
+   "id": "bottom_marquee",
+   "kind": "svg",
+   "asset": "artifacts/decompiled/sprites/DefineSprite_170/1.svg",
+   "x": -441.75,
+   "y": -2.68,
+   "w": 451.25,
+   "h": 15.06,
+   "text": "",
+   "font": {
+    "family": "",
+    "size": 0,
+    "bold": false,
+    "align": ""
+   },
+   "evidence": "tags.xml PlaceObject2 ch=170 depth=49 frames 241-241 tx=2.4 ty=3.35; DefineSpriteTag geometry=(451.25x15.06); element is not on stage at the gameplay frame (131); initial placement state; bottom marquee strip (65 sprite frames); placed on frame 241"
+  }
+ ]
+}

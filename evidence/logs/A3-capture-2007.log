@@ -1,0 +1,28 @@
+== 2026-09-28T13:18:18Z capture 2007 idle ==
+[nav] loaded http://127.0.0.1:8793/index.html?swf=kelimator_tr_2007.swf
+[console] log %cINFO%c web/src/lib.rs:1416%c Ruffle WASM module has been initialized color: whitesmoke; background: #444 color: gray; font-style: italic color: inherit
+[console] log %cINFO%c web/src/builder.rs:565%c Creating wgpu webgl renderer... color: whitesmoke; background: #444 color: gray; font-style: italic color: inherit
+[console] warning The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio
+[console] warning The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio
+[console] log %cNew Ruffle instance created (Version: 0.6.0 | WebAssembly extensions: ON | Used renderer: wgpu-webgl) background: #37528C; color: #FFAD33
+[console] warning The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://developer.chrome.com/blog/autoplay/#web_audio
+[console] log Loading SWF file kelimator_tr_2007.swf
+[console] log %cINFO%c core/src/context.rs:364%c Loaded SWF version 6, resolution 550x400 @ 36 FPS color: whitesmoke; background: #444 color: gray; font-style: italic color: inherit
+[console] warning [.WebGL-0x12c0043ea00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[console] warning [.WebGL-0x12c0043ea00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[console] warning [.WebGL-0x12c0043ea00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[console] warning [.WebGL-0x12c0043ea00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+[console] log %cINFO%c %c estimating duration from bitrate, may be inaccurate for vbr files log.target = "symphonia_bundle_mp3::demuxer";
+log.module_path = "symphonia_bundle_mp3::demuxer";
+log.file = "/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/demuxer.rs";
+log.line = 150; color: whitesmoke; background: #444 color: gray; font-style: italic color: inherit
+[console] log %cWARN%c %c mpa: invalid main_data_begin, underflow by 117 bytes log.target = "symphonia_bundle_mp3::layer3";
+log.module_path = "symphonia_bundle_mp3::layer3";
+log.file = "/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/layer3/mod.rs";
+log.line = 86; color: orange; background: #444 color: gray; font-style: italic color: inherit
+[console] log %cWARN%c core/src/library.rs:567%c Unknown device font "Times New Roman" (bold: false, italic: false) color: orange; background: #444 color: gray; font-style: italic color: inherit
+[shot] artifacts/a3-captures/a3-2007/run2007-08s.png
+[shot] artifacts/a3-captures/a3-2007/run2007-13s.png
+[shot] artifacts/a3-captures/a3-2007/run2007-18s.png
+[done] artifacts/a3-captures/a3-2007/run2007-08s.png, artifacts/a3-captures/a3-2007/run2007-13s.png, artifacts/a3-captures/a3-2007/run2007-18s.png
+exit=0

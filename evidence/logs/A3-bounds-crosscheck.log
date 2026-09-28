@@ -1,0 +1,16 @@
+== 2026-09-28T13:32:38Z check_bounds_vs_svg.py (final) ==
+SKIP sprite 21 (0.0, 0.0) None
+SKIP sprite 23 (0.0, 0.0) None
+SKIP sprite 25 (0.0, 0.0) None
+SKIP sprite 27 (0.0, 0.0) None
+SKIP sprite 31 (0.0, 0.0) None
+SKIP sprite 33 (0.0, 0.0) None
+SKIP sprite 35 (0.0, 0.0) None
+SKIP sprite 37 (0.0, 0.0) None
+SKIP sprite 39 (0.0, 0.0) None
+SKIP sprite 41 (0.0, 0.0) None
+SKIP sprite 49 (0.0, 0.0) None
+NEAR sprite 97: computed 144.10x19.00 svg 144.1x19.25 (text-field bounds rounding)
+NEAR sprite 103: computed 145.50x18.64 svg 145.5x19.25 (text-field bounds rounding)
+checked=73 mismatches=0
+exit=0

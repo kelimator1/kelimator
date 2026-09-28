@@ -1,0 +1,94 @@
+== 2026-09-28T13:22:06Z compare_2007_2012.py ==
+# 2007 vs 2012 geometry diff (generated)
+
+Bounding rectangles are display bboxes at the canonical placement (largest frame span), px.
+
+| role (2012 ch) | match basis | 2012 bbox (x0,y0,x1,y1) | 2007 bbox | Δx0 | Δy0 | Δw | Δh | verdict |
+|---|---|---|---|---|---|---|---|---|
+| 1 | same chid; full-stage intro background shape | (-0.85, 0.25, 550.95, 400.35) | (-0.85, 0.25, 550.95, 400.35) | +0.00 | +0.00 | +0.00 | +0.00 | identical |
+| 3 | same chid; logo ornament | (50.00, 37.00, 87.50, 87.00) | (50.00, 37.00, 87.50, 87.00) | +0.00 | +0.00 | +0.00 | +0.00 | identical |
+| 5 | same chid; intro sky layer | (-0.85, 0.20, 550.20, 240.70) | (-0.85, 0.20, 550.20, 240.70) | +0.00 | +0.00 | +0.00 | +0.00 | identical |
+| 6 | same chid; intro ground layer | (-0.85, 240.70, 550.95, 400.35) | (-0.85, 240.70, 550.95, 400.35) | +0.00 | +0.00 | +0.00 | +0.00 | identical |
+| 8 | same chid; intro layer-3 shape | (-0.90, 240.70, 549.70, 400.30) | (-0.90, 240.70, 549.70, 400.30) | +0.00 | +0.00 | +0.00 | +0.00 | identical |
+| 12 | same chid; preloader progress bar | (169.30, 176.85, 370.40, 182.85) | (169.30, 176.85, 370.40, 182.85) | +0.00 | +0.00 | +0.00 | +0.00 | identical |
+| 14 | same chid; preloader percent field | (380.95, 171.95, 419.95, 186.90) | (380.95, 171.95, 419.95, 186.90) | +0.00 | +0.00 | +0.00 | +0.00 | identical |
+| 16 | preloader static glyph (2012 ch16 / 2007 ch15) | (370.60, 176.25, 387.55, 183.15) | (370.60, 173.95, 385.35, 183.15) | +0.00 | +2.30 | +2.20 | -2.30 | DIFFERS |
+| 17 | preloader field (2012 ch17 / 2007 ch16) | (233.45, 185.55, 272.45, 200.50) | (233.45, 185.55, 272.45, 200.50) | +0.00 | +0.00 | +0.00 | +0.00 | identical |
+| 18 | preloader field (2012 ch18 / 2007 ch17) | (278.45, 185.55, 317.45, 200.50) | (278.45, 185.55, 317.45, 200.50) | +0.00 | +0.00 | +0.00 | +0.00 | identical |
+| 19 | preloader static glyph (2012 ch19 / 2007 ch18) | (273.10, 189.75, 285.25, 197.95) | (273.80, 187.55, 283.40, 198.00) | -0.70 | +2.20 | +2.55 | -2.25 | DIFFERS |
+| 20 | intro glow ball (2012 ch20 / 2007 ch19) | (217.10, 254.10, 310.60, 347.60) | (217.10, 254.10, 310.60, 347.60) | +0.00 | +0.00 | +0.00 | +0.00 | identical |
+| 21 | name 'timerr' | — | — | | | | | both non-visual / equal span |
+| 23 | name 'enter' | — | — | | | | | both non-visual / equal span |
+| 25 | name 'shuffle' | — | — | | | | | both non-visual / equal span |
+| 27 | name 'countdown' | — | — | | | | | both non-visual / equal span |
+| 29 | intro falling logo (2012 ch29 / 2007 ch28) | (119.96, -86.05, 416.03, -3.56) | (119.96, -86.05, 416.03, -3.56) | +0.00 | +0.00 | +0.00 | +0.00 | identical |
+| 31 | name 'boing' | — | — | | | | | both non-visual / equal span |
+| 33 | name 'fanfare' | — | — | | | | | both non-visual / equal span |
+| 35 | name 'finishsound' | — | — | | | | | both non-visual / equal span |
+| 37 | name 'typer' | — | — | | | | | both non-visual / equal span |
+| 39 | name 'backspace' | — | — | | | | | both non-visual / equal span |
+| 41 | name 'buzz' | — | — | | | | | both non-visual / equal span |
+| 46 | name 'wordball' | (701.85, 166.85, 751.85, 386.85) | (701.85, 166.85, 751.85, 386.85) | +0.00 | +0.00 | +0.00 | +0.00 | identical |
+| 48 | same chid; board state background shape | (0.45, 0.00, 550.45, 400.00) | (0.45, 0.00, 550.45, 400.00) | +0.00 | +0.00 | +0.00 | +0.00 | identical |
+| 58 | name 'button' (letter tile) | (694.17, -9.26, 826.81, 79.88) | (694.17, -9.26, 826.81, 79.88) | +0.00 | +0.00 | +0.00 | +0.00 | identical |
+| 63 | name 'kbuton' | (156.25, 367.95, 262.35, 394.45) | (123.35, 363.05, 277.50, 394.45) | +32.90 | +4.90 | -48.05 | -4.90 | DIFFERS |
+| 65 | name 'ebuton' | (232.85, 367.95, 328.10, 391.75) | (251.30, 364.05, 405.45, 393.60) | -18.45 | +3.90 | -58.90 | -5.75 | DIFFERS |
+| 67 | name 'bosbuton' (socket) | (690.40, 80.35, 744.40, 134.35) | (690.40, 80.35, 744.40, 134.35) | +0.00 | +0.00 | +0.00 | +0.00 | identical |
+| 71 | name 'ybuton' | (445.80, 196.45, 585.10, 222.85) | (413.30, 193.05, 578.00, 224.35) | +32.50 | +3.40 | -25.40 | -4.90 | DIFFERS |
+| 76 | timer red bar (2012 ch76 / 2007 ch73) | (514.30, 83.85, 538.35, 191.85) | (508.30, 68.85, 532.35, 176.85) | +6.00 | +15.00 | +0.00 | +0.00 | DIFFERS |
+| 84 | name 'xmlload' | (107.55, 88.50, 419.45, 198.50) | (107.55, 88.50, 419.45, 198.50) | +0.00 | +0.00 | +0.00 | +0.00 | identical |
+| 90 | name 'spk_btn' | (520.45, 366.30, 551.50, 397.45) | (520.45, 366.30, 551.50, 397.45) | +0.00 | +0.00 | +0.00 | +0.00 | identical |
+| 97 | bottom-left credit line 1 (2012 'Diğer oyunlar' / 2007 'levent@lg.web.tr') | (-1.50, 369.25, 164.25, 393.10) | (-1.35, 379.85, 186.35, 408.15) | -0.15 | -10.60 | -21.95 | -4.45 | DIFFERS |
+| 108 | Top10 button (2012 ch108 / 2007 ch96, no name in either) | (419.80, 372.95, 533.00, 399.35) | (383.30, 366.05, 537.45, 397.35) | +36.50 | +6.90 | -40.95 | -4.90 | DIFFERS |
+| 111 | name 'puanmovie' | (213.50, 96.88, 306.50, 264.40) | (213.50, 96.88, 306.50, 264.40) | +0.00 | +0.00 | +0.00 | +0.00 | identical |
+| 112 | timer digits field (2012 ch112 / 2007 ch101) | (513.00, 130.50, 534.00, 146.65) | (507.00, 115.50, 528.00, 131.65) | +6.00 | +15.00 | +0.00 | +0.00 | DIFFERS |
+| 123 | name 'status' | (447.37, 238.45, 554.38, 273.25) | (447.37, 238.45, 548.28, 273.25) | +0.00 | +0.00 | +6.10 | +0.00 | DIFFERS |
+| 166 | high-score form (2012 ch166 / 2007 ch140) | (114.90, 368.85, 426.80, 540.30) | (114.90, 368.85, 426.80, 541.30) | +0.00 | +0.00 | +0.00 | -1.00 | DIFFERS |
+| 170 | bottom marquee (2012 ch170 / 2007 ch144) | (-441.75, -2.68, 9.50, 12.38) | (-441.75, -2.68, 9.50, 12.38) | +0.00 | +0.00 | +0.00 | +0.00 | identical |
+
+## 2012-only stage-placed symbols
+
+| ch | type | name | bbox |
+|---|---|---|---|
+| 103 | DefineSpriteTag |  | (-1.50, 385.60, 171.10, 409.40) |
+| 105 | DefineButton2Tag | sbuton | (308.60, 367.95, 397.10, 391.75) |
+| 124 | DefineEditTextTag |  | (694.85, 323.75, 1032.80, 368.75) |
+| 125 | DefineEditTextTag |  | (455.95, 39.90, 527.95, 60.95) |
+| 127 | DefineEditTextTag |  | (438.45, 17.40, 542.45, 38.45) |
+| 128 | DefineEditTextTag |  | (437.75, 17.00, 541.75, 38.05) |
+| 129 | DefineEditTextTag |  | (500.75, 63.40, 541.15, 84.45) |
+| 130 | DefineEditTextTag |  | (500.25, 62.90, 540.75, 83.95) |
+| 131 | DefineEditTextTag |  | (437.60, 84.10, 485.95, 100.15) |
+| 132 | DefineEditTextTag |  | (437.60, 175.60, 485.95, 191.65) |
+| 133 | DefineEditTextTag |  | (437.60, 102.40, 485.95, 118.45) |
+| 134 | DefineEditTextTag |  | (437.60, 120.70, 485.95, 136.75) |
+| 135 | DefineEditTextTag |  | (437.60, 139.00, 485.95, 155.05) |
+| 136 | DefineEditTextTag |  | (437.60, 157.30, 485.95, 173.35) |
+| 137 | DefineEditTextTag |  | (482.50, 84.35, 505.50, 100.40) |
+| 138 | DefineEditTextTag |  | (482.50, 175.85, 505.50, 191.90) |
+| 139 | DefineEditTextTag |  | (482.50, 102.65, 505.50, 118.70) |
+| 140 | DefineEditTextTag |  | (482.50, 120.95, 505.50, 137.00) |
+| 141 | DefineEditTextTag |  | (482.50, 139.25, 505.50, 155.30) |
+| 142 | DefineEditTextTag |  | (482.50, 157.55, 505.50, 173.60) |
+| 143 | DefineEditTextTag |  | (436.75, 63.40, 494.60, 84.45) |
+| 144 | DefineEditTextTag |  | (436.25, 62.90, 494.25, 83.95) |
+
+## 2007-only stage-placed symbols
+
+| ch | type | name | bbox |
+|---|---|---|---|
+| 114 | DefineEditTextTag |  | (694.85, 323.75, 1032.80, 368.75) |
+| 115 | DefineEditTextTag |  | (455.95, 39.90, 527.95, 60.95) |
+| 117 | DefineEditTextTag |  | (437.95, 17.90, 541.95, 38.95) |
+| 118 | DefineEditTextTag |  | (445.95, 112.90, 501.95, 135.00) |
+exit=0
+== 2026-09-28T13:31:40Z re-run 2007 extraction (post placeMatrix fix) ==
+exit=0
+exit=0
+== 2026-09-28T13:43:43Z 2007 extraction with build-specific anchor 130 ==
+exit=0
+exit=0
+== 2026-09-28T13:44:45Z compare (gameplay-frame states) ==
+exit=0
+== 2026-09-28T13:45:42Z compare (with role-matched text fields) ==
+exit=0

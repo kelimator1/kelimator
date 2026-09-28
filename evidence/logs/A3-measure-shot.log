@@ -1,0 +1,16 @@
+== 2026-09-28T13:17:32Z measure_shot.py run2-15s.png ==
+timer_bar_red (76): x=515..532 y=89..190 (w=18, h=102) npx=1805
+timer_digits (112): NOT FOUND (0 px)
+btn_kbuton_orange (63): x=158..280 y=369..385 (w=123, h=17) npx=1292
+btn_ebuton_orange (65): x=280..340 y=369..385 (w=61, h=17) npx=761
+btn_sbuton_orange (105): x=421..460 y=374..390 (w=40, h=17) npx=555
+btn_ybuton_orange (71): x=450..531 y=198..214 (w=82, h=17) npx=934
+btn_top10_orange (108): x=480..505 y=374..390 (w=26, h=17) npx=367
+row_3harfli_label (131): x=441..468 y=89..96 (w=28, h=8) npx=28
+row_3harfli_count (137): x=498..502 y=90..96 (w=5, h=7) npx=12
+puan_title_orange (128): x=471..507 y=23..32 (w=37, h=10) npx=146
+puan_title_black (127): x=473..544 y=22..40 (w=72, h=19) npx=35
+tile_row_runs@y330: [(20, 32), (34, 85), (87, 92), (94, 145), (147, 206), (214, 265), (274, 325), (334, 385), (392, 452), (454, 505), (507, 529)]
+status_ball (123): x=449..520 y=240..285 (w=72, h=46) npx=610
+stage bg sample corners: [ 84 133 167] [ 40 137 205] [184 220  99] [249 229 177]
+exit=0

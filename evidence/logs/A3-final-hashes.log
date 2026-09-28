@@ -1,0 +1,23 @@
+== A3 final artifact hashes (2026-09-28T13:51:26Z) ==
+eb8a098cab21df360cf24dea2f38c2b6b2e56cd16c248b4d6447ce51d3cb292d  data/layout.json
+c263ed44b8d352ed72757821f0fd3cbebd58e5c5883dd124ec2229343ce9794e  data/animation.json
+407f33f903174bc795f991423e457dacc0793d607ab4befab72f6586529417c7  evidence/A3-layout.md
+dc551cc4d279e92500bdd2cf40af0c11012a0bceab409d8537d60e338bd4cbfe  evidence/A3-timing.md
+7f6cae854244195c36046e946000a86a71092de3ecc715a5aff5fa7adbb6ae5f  evidence/A3-diffs.md
+
+-- inputs --
+23d6a2afca68b837a353c412857cc57ac56a32aaf41285b1b174e5b072aae521  artifacts/decompiled/header.txt
+c5290f02ea0d8bedec255fa64c476877f41adf09bbf92aa565e90f2bb5523765  artifacts/decompiled/tags.xml
+16ea9a45a05469ded7d13054cbab28b8b85e6cf442246870ab2d8a7e4a71fe57  artifacts/a3-2007/tags.xml
+f60ac55169ec0684239d42ac21452d53b999be89dfec9ecaf7cbbbc200ce607f  artifacts/a3-2007/header.txt
+
+-- reference captures --
+85acf99ae28e939931ce688eed6f9311b4b727ce60fc810baedeeecf153b99dd  artifacts/a3-captures/run2-15s.png
+0f798a43ead11a4130df526f5c6f543f0a18ee58b80282241dbe1e35cecf3eaa  artifacts/a3-captures/run2-intro-07s.png
+44779892e2a0ac9ac9f5785660ff164c2af90ceb7a8d3d2152e4a8b9e1819bbf  artifacts/a3-captures/a3-2007/run2007-18s.png
+
+-- sources / tools --
+236ed9359719d061c4c9426c8533b126bffcb3466f7b5f818601b50bd7afbf39  ../kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf
+665c2489765782303c355c64e92f09372ef0a9e89fdf88fd7f990cd15eb50473  ../kelimator-nostalji/calistir/kelimator_tr_2007.swf
+83d26cae9d0217cbaeef2095b7e7a104e8cd48aa2dfb327dea07d28f46962805  artifacts/a3-captures/ruffle-0.6.0-macos-universal.tar.gz
+e8acfacc37443303872379d0e215999af846854d1dd3fa8fac0a765445b43dbf  artifacts/a3-captures/ruffle-0.6.0-web-selfhosted.zip

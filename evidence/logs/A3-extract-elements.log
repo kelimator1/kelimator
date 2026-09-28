@@ -1,0 +1,93 @@
+== 2026-09-28T13:05:31Z extract_elements.py ==
+elements: 62
+ch=   1 DefineShape2Tag        nm=             placements=1 canon=start1 d2 disp=(-0.85,0.25,550.95,400.35) local=(-0.85, 0.25, 550.95, 400.35)
+ch=   3 DefineSpriteTag        nm=             placements=1 canon=start1 d3 disp=(50.00,37.00,87.50,87.00) local=(-18.75, -25.0, 18.75, 25.0)
+ch=   5 DefineSpriteTag        nm=             placements=2 canon=start1 d5 disp=(-0.85,0.20,550.20,240.70) local=(-275.5, -120.25, 275.55, 120.25)
+ch=   6 DefineShapeTag         nm=             placements=2 canon=start1 d8 disp=(-0.85,240.70,550.95,400.35) local=(-0.85, 240.7, 550.95, 400.35)
+ch=   8 DefineSpriteTag        nm=             placements=2 canon=start1 d9 disp=(-0.90,240.70,549.70,400.30) local=(-275.3, -79.8, 275.3, 79.8)
+ch=  12 DefineSpriteTag        nm=             placements=1 canon=start1 d11 disp=(169.30,176.85,370.40,182.85) local=(-100.5, -3.5, 100.6, 2.5)
+ch=  14 DefineEditTextTag      nm=             placements=1 canon=start2 d14 disp=(380.95,171.95,419.95,186.90) local=(-2.0, -2.0, 37.0, 12.95)
+ch=  16 DefineTextTag          nm=             placements=1 canon=start2 d15 disp=(370.60,176.25,387.55,183.15) local=(0.65, 2.3, 17.6, 9.2)
+ch=  17 DefineEditTextTag      nm=             placements=1 canon=start2 d16 disp=(233.45,185.55,272.45,200.50) local=(-2.0, -2.0, 37.0, 12.95)
+ch=  18 DefineEditTextTag      nm=             placements=1 canon=start2 d17 disp=(278.45,185.55,317.45,200.50) local=(-2.0, -2.0, 37.0, 12.95)
+ch=  19 DefineTextTag          nm=             placements=1 canon=start2 d18 disp=(273.10,189.75,285.25,197.95) local=(-0.15, 2.2, 12.0, 10.4)
+ch=  20 DefineShape3Tag        nm=             placements=1 canon=start4 d7 disp=(217.10,254.10,310.60,347.60) local=(-43.0, -45.0, 50.5, 48.5)
+ch=  21 DefineSpriteTag        nm=timerr       placements=1 canon=start4 d80 disp=None local=None
+ch=  23 DefineSpriteTag        nm=enter        placements=1 canon=start15 d82 disp=None local=None
+ch=  25 DefineSpriteTag        nm=shuffle      placements=1 canon=start25 d84 disp=None local=None
+ch=  27 DefineSpriteTag        nm=countdown    placements=1 canon=start35 d86 disp=None local=None
+ch=  29 DefineSpriteTag        nm=             placements=1 canon=start40 d47 disp=(119.96,-86.05,416.03,-3.56) local=(-187.45, -52.05, 187.95, 52.55)
+ch=  31 DefineSpriteTag        nm=boing        placements=1 canon=start45 d88 disp=None local=None
+ch=  33 DefineSpriteTag        nm=fanfare      placements=1 canon=start55 d90 disp=None local=None
+ch=  35 DefineSpriteTag        nm=finishsound  placements=1 canon=start65 d92 disp=None local=None
+ch=  37 DefineSpriteTag        nm=typer        placements=1 canon=start75 d94 disp=None local=None
+ch=  39 DefineSpriteTag        nm=backspace    placements=1 canon=start108 d96 disp=None local=None
+ch=  41 DefineSpriteTag        nm=buzz         placements=1 canon=start118 d98 disp=None local=None
+ch=  46 DefineSpriteTag        nm=wordball     placements=1 canon=start118 d100 disp=(701.85,166.85,751.85,386.85) local=(-25.0, -125.0, 25.0, 95.0)
+ch=  48 DefineShapeTag         nm=             placements=1 canon=start130 d5 disp=(0.45,0.00,550.45,400.00) local=(0.45, 0.0, 550.45, 400.0)
+ch=  58 DefineSpriteTag        nm=button       placements=1 canon=start130 d8 disp=(694.17,-9.26,826.81,79.88) local=(-37.4754465, -77.18248249999999, 147.101385, 46.872293)
+ch=  63 DefineButton2Tag       nm=kbuton       placements=1 canon=start130 d12 disp=(156.25,367.95,262.35,394.45) local=(-35.5, -9.5, 70.6, 17.0)
+ch=  65 DefineButton2Tag       nm=ebuton       placements=1 canon=start130 d15 disp=(232.85,367.95,328.10,391.75) local=(-35.5, -9.5, 59.75, 14.3)
+ch=  67 DefineSpriteTag        nm=bosbuton     placements=1 canon=start130 d18 disp=(690.40,80.35,744.40,134.35) local=(-30.0, -30.0, 30.0, 30.0)
+ch=  71 DefineButton2Tag       nm=ybuton       placements=1 canon=start130 d23 disp=(445.80,196.45,585.10,222.85) local=(-45.55, -9.5, 93.75, 16.9)
+ch=  76 DefineSpriteTag        nm=             placements=1 canon=start130 d26 disp=(513.80,83.85,538.35,191.85) local=(-10.0, -53.5, 14.55, 54.5)
+ch=  84 DefineSpriteTag        nm=xmlload      placements=1 canon=start130 d29 disp=(107.55,88.50,419.45,198.50) local=(-155.45, -55.5, 156.45, 54.5)
+ch=  90 DefineButton2Tag       nm=spk_btn      placements=1 canon=start130 d33 disp=(515.00,366.30,551.50,397.45) local=(-15.5, -15.5, 21.0, 15.65)
+ch=  97 DefineSpriteTag        nm=             placements=1 canon=start130 d35 disp=(-24.25,367.05,164.25,393.10) local=(-34.65, -32.7, 153.85, -6.649999999999999)
+ch= 103 DefineSpriteTag        nm=             placements=1 canon=start130 d38 disp=(-17.40,383.35,171.10,409.40) local=(-36.05, -32.75, 152.45, -6.699999999999999)
+ch= 105 DefineButton2Tag       nm=sbuton       placements=1 canon=start130 d41 disp=(308.60,367.95,397.10,391.75) local=(-35.5, -9.5, 53.0, 14.3)
+ch= 108 DefineButton2Tag       nm=             placements=1 canon=start130 d44 disp=(419.80,372.95,533.00,399.35) local=(-45.55, -9.5, 67.65, 16.9)
+ch= 111 DefineSpriteTag        nm=puanmovie    placements=1 canon=start130 d49 disp=(213.50,96.88,306.50,264.40) local=(-46.5, -168.0249942, 46.5, -0.4968034099999983)
+ch= 112 DefineEditTextTag      nm=             placements=1 canon=start130 d51 disp=(513.00,130.50,534.00,146.65) local=(-2.0, -2.0, 19.0, 14.15)
+ch= 123 DefineSpriteTag        nm=status       placements=1 canon=start130 d52 disp=(431.35,222.70,554.38,273.25) local=(-16.0, -15.75, 107.0306726, 34.803547785)
+ch= 124 DefineEditTextTag      nm=             placements=1 canon=start130 d60 disp=(694.85,323.75,1032.80,368.75) local=(-2.0, -2.0, 335.95, 43.0)
+ch= 125 DefineEditTextTag      nm=             placements=1 canon=start130 d61 disp=(455.95,39.90,527.95,60.95) local=(-2.0, -2.0, 70.0, 19.05)
+ch= 127 DefineEditTextTag      nm=             placements=1 canon=start130 d62 disp=(438.45,17.40,542.45,38.45) local=(-2.0, -2.0, 102.0, 19.05)
+ch= 128 DefineEditTextTag      nm=             placements=1 canon=start130 d63 disp=(437.75,17.00,541.75,38.05) local=(-2.0, -2.0, 102.0, 19.05)
+ch= 129 DefineEditTextTag      nm=             placements=1 canon=start130 d64 disp=(500.75,63.40,541.15,84.45) local=(-2.0, -2.0, 38.4, 19.05)
+ch= 130 DefineEditTextTag      nm=             placements=1 canon=start130 d65 disp=(500.25,62.90,540.75,83.95) local=(-2.0, -2.0, 38.5, 19.05)
+ch= 131 DefineEditTextTag      nm=             placements=1 canon=start130 d66 disp=(437.60,84.10,485.95,100.15) local=(-2.0, -2.0, 46.35, 14.05)
+ch= 132 DefineEditTextTag      nm=             placements=1 canon=start130 d67 disp=(437.60,175.60,485.95,191.65) local=(-2.0, -2.0, 46.35, 14.05)
+ch= 133 DefineEditTextTag      nm=             placements=1 canon=start130 d68 disp=(437.60,102.40,485.95,118.45) local=(-2.0, -2.0, 46.35, 14.05)
+ch= 134 DefineEditTextTag      nm=             placements=1 canon=start130 d69 disp=(437.60,120.70,485.95,136.75) local=(-2.0, -2.0, 46.35, 14.05)
+ch= 135 DefineEditTextTag      nm=             placements=1 canon=start130 d70 disp=(437.60,139.00,485.95,155.05) local=(-2.0, -2.0, 46.35, 14.05)
+ch= 136 DefineEditTextTag      nm=             placements=1 canon=start130 d71 disp=(437.60,157.30,485.95,173.35) local=(-2.0, -2.0, 46.35, 14.05)
+ch= 137 DefineEditTextTag      nm=             placements=1 canon=start130 d72 disp=(482.50,84.35,505.50,100.40) local=(-2.0, -2.0, 21.0, 14.05)
+ch= 138 DefineEditTextTag      nm=             placements=1 canon=start130 d73 disp=(482.50,175.85,505.50,191.90) local=(-2.0, -2.0, 21.0, 14.05)
+ch= 139 DefineEditTextTag      nm=             placements=1 canon=start130 d74 disp=(482.50,102.65,505.50,118.70) local=(-2.0, -2.0, 21.0, 14.05)
+ch= 140 DefineEditTextTag      nm=             placements=1 canon=start130 d75 disp=(482.50,120.95,505.50,137.00) local=(-2.0, -2.0, 21.0, 14.05)
+ch= 141 DefineEditTextTag      nm=             placements=1 canon=start130 d76 disp=(482.50,139.25,505.50,155.30) local=(-2.0, -2.0, 21.0, 14.05)
+ch= 142 DefineEditTextTag      nm=             placements=1 canon=start130 d77 disp=(482.50,157.55,505.50,173.60) local=(-2.0, -2.0, 21.0, 14.05)
+ch= 143 DefineEditTextTag      nm=             placements=1 canon=start130 d78 disp=(436.75,63.40,494.60,84.45) local=(-2.0, -2.0, 55.85, 19.05)
+ch= 144 DefineEditTextTag      nm=             placements=1 canon=start130 d79 disp=(436.25,62.90,494.25,83.95) local=(-2.0, -2.0, 56.0, 19.05)
+ch= 166 DefineSpriteTag        nm=             placements=1 canon=start221 d51 disp=(114.90,368.85,426.80,540.30) local=(-155.45, -114.5, 156.45, 56.949999999999996)
+ch= 170 DefineSpriteTag        nm=             placements=1 canon=start240 d49 disp=(-441.75,-2.68,9.50,12.38) local=(-444.15, -6.028392065, 7.1000000000000005, 9.028392065)
+exit=0
+== 2026-09-28T13:21:35Z extract_elements.py (post-fix) ==
+exit=0
+ch= 127 DefineEditTextTag      nm=             placements=1 canon=start130 d62 disp=(438.45,17.40,542.45,38.45) local=(-2.0, -2.0, 102.0, 19.05)
+ch= 128 DefineEditTextTag      nm=             placements=1 canon=start130 d63 disp=(437.75,17.00,541.75,38.05) local=(-2.0, -2.0, 102.0, 19.05)
+ch= 129 DefineEditTextTag      nm=             placements=1 canon=start130 d64 disp=(500.75,63.40,541.15,84.45) local=(-2.0, -2.0, 38.4, 19.05)
+ch= 130 DefineEditTextTag      nm=             placements=1 canon=start130 d65 disp=(500.25,62.90,540.75,83.95) local=(-2.0, -2.0, 38.5, 19.05)
+ch= 131 DefineEditTextTag      nm=             placements=1 canon=start130 d66 disp=(437.60,84.10,485.95,100.15) local=(-2.0, -2.0, 46.35, 14.05)
+ch= 132 DefineEditTextTag      nm=             placements=1 canon=start130 d67 disp=(437.60,175.60,485.95,191.65) local=(-2.0, -2.0, 46.35, 14.05)
+ch= 133 DefineEditTextTag      nm=             placements=1 canon=start130 d68 disp=(437.60,102.40,485.95,118.45) local=(-2.0, -2.0, 46.35, 14.05)
+ch= 134 DefineEditTextTag      nm=             placements=1 canon=start130 d69 disp=(437.60,120.70,485.95,136.75) local=(-2.0, -2.0, 46.35, 14.05)
+ch= 135 DefineEditTextTag      nm=             placements=1 canon=start130 d70 disp=(437.60,139.00,485.95,155.05) local=(-2.0, -2.0, 46.35, 14.05)
+ch= 136 DefineEditTextTag      nm=             placements=1 canon=start130 d71 disp=(437.60,157.30,485.95,173.35) local=(-2.0, -2.0, 46.35, 14.05)
+ch= 137 DefineEditTextTag      nm=             placements=1 canon=start130 d72 disp=(482.50,84.35,505.50,100.40) local=(-2.0, -2.0, 21.0, 14.05)
+ch= 138 DefineEditTextTag      nm=             placements=1 canon=start130 d73 disp=(482.50,175.85,505.50,191.90) local=(-2.0, -2.0, 21.0, 14.05)
+ch= 139 DefineEditTextTag      nm=             placements=1 canon=start130 d74 disp=(482.50,102.65,505.50,118.70) local=(-2.0, -2.0, 21.0, 14.05)
+ch= 140 DefineEditTextTag      nm=             placements=1 canon=start130 d75 disp=(482.50,120.95,505.50,137.00) local=(-2.0, -2.0, 21.0, 14.05)
+ch= 141 DefineEditTextTag      nm=             placements=1 canon=start130 d76 disp=(482.50,139.25,505.50,155.30) local=(-2.0, -2.0, 21.0, 14.05)
+ch= 142 DefineEditTextTag      nm=             placements=1 canon=start130 d77 disp=(482.50,157.55,505.50,173.60) local=(-2.0, -2.0, 21.0, 14.05)
+ch= 143 DefineEditTextTag      nm=             placements=1 canon=start130 d78 disp=(436.75,63.40,494.60,84.45) local=(-2.0, -2.0, 55.85, 19.05)
+ch= 144 DefineEditTextTag      nm=             placements=1 canon=start130 d79 disp=(436.25,62.90,494.25,83.95) local=(-2.0, -2.0, 56.0, 19.05)
+ch= 166 DefineSpriteTag        nm=             placements=1 canon=start221 d51 disp=(114.90,368.85,426.80,540.30) local=(-155.45, -114.5, 156.45, 56.949999999999996)
+ch= 170 DefineSpriteTag        nm=             placements=1 canon=start240 d49 disp=(-441.75,-2.68,9.50,12.38) local=(-444.15, -6.028392065, 7.1000000000000005, 9.028392065)
+== 2026-09-28T13:31:27Z extract (post placeMatrix fix) ==
+exit=0
+wrote data/layout.json: 62 elements
+unique ids: 62
+exit=0
+exit=0

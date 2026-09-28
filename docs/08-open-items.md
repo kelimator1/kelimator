@@ -19,18 +19,18 @@ When closed, append: `RESOLVED <date> — <evidence file> — <one-line finding>
 | O04 | Key handling specifics (key codes vs characters; Turkish letters; which keys act when) | A2: read input handlers and confirm against reference behavior | `evidence/A2-input.md` | D2 | RESOLVED — evidence/A2-input.md |
 | O05 | Exact user-visible strings and their display conditions | A2/A3: read static text and dynamic text fields; confirm via reference screenshots | `evidence/A2-strings.md`; layout catalog | E2 | RESOLVED — evidence/A2-strings.md |
 | O06 | Sound trigger map (event → sound ID) | A2: trace `ses_cikart`/sound calls for all 9 sounds | `evidence/A2-sounds.md`; `data/sound-map.json` | D4, F2 | RESOLVED — evidence/A2-sounds.md |
-| O07 | FPS and frame spans of every animation | A3: read header FPS; measure spans from FLA/timeline | `evidence/A3-timing.md`; `data/animation.json` | E3, F2 | OPEN |
-| O08 | Layout coordinates of all elements, colors, font metrics | A3: extract from FLA/SVG placement + stage data | `evidence/A3-layout.md`; `data/layout.json` | E1, E2 | OPEN |
-| O09 | Font names/styles used by the 2012 build | A1: read DefineFont2 records; cross-check A3 text metrics | `evidence/A1-fonts.md` | E2 | OPEN — A1 partial: 3× Verdana (Bold/Regular/BoldItalic), TTF hashes recorded; pending A3 text metrics |
-| O10 | Bitmap dimensions and usage locations in the 2012 build | A1/A3: export and inspect; map placements via PlaceObject2 | `evidence/A1-bitmaps.md` | E1 | OPEN — A1 partial: id 47 550×400 RGB, id 86 21×29 RGBA; used as shape fills 48/87; pending A3 placement mapping |
-| O11 | Streaming sound (`SoundStreamHead2`) content and purpose | A1/A3: extract stream blocks; determine whether it is music/SFX; confirm audibility in reference | `evidence/A1-stream.md` | D4, E3 | OPEN — A1 partial: 38 empty `SoundStreamHead2`, zero `SoundStreamBlock`; no streaming audio content exists |
+| O07 | FPS and frame spans of every animation | A3: read header FPS; measure spans from FLA/timeline | `evidence/A3-timing.md`; `data/animation.json` | E3, F2 | RESOLVED — evidence/A3-timing.md |
+| O08 | Layout coordinates of all elements, colors, font metrics | A3: extract from FLA/SVG placement + stage data | `evidence/A3-layout.md`; `data/layout.json` | E1, E2 | RESOLVED — evidence/A3-layout.md |
+| O09 | Font names/styles used by the 2012 build | A1: read DefineFont2 records; cross-check A3 text metrics | `evidence/A1-fonts.md` | E2 | RESOLVED — evidence/A1-fonts.md + evidence/A3-layout.md |
+| O10 | Bitmap dimensions and usage locations in the 2012 build | A1/A3: export and inspect; map placements via PlaceObject2 | `evidence/A1-bitmaps.md` | E1 | RESOLVED — evidence/A1-bitmaps.md + evidence/A3-layout.md |
+| O11 | Streaming sound (`SoundStreamHead2`) content and purpose | A1/A3: extract stream blocks; determine whether it is music/SFX; confirm audibility in reference | `evidence/A1-stream.md` | D4, E3 | RESOLVED — evidence/A1-stream.md (EXCLUDED: zero streaming content; D4 disposition) |
 | O12 | Role of `kelimatorid` and `Base64.decode` | A2: trace usage; classify as EXCLUDED (score/identity) or needed for core flow | `evidence/A2-kelimatorid.md` | D1 | RESOLVED — evidence/A2-kelimatorid.md |
 | O13 | Meaning/sequence of `preall`, `hepsiburda`, `bravo` labels | A2: trace frame transitions; confirm in reference | `evidence/A2-labels.md`; `constants.flows` | D5, E3 | RESOLVED — evidence/A2-labels.md |
 | O14 | Timeout semantics (mid-entry, timer stop on completion, time-bonus timing) | A2 + reference observation | `evidence/A2-timeout.md` | D3, D5 | RESOLVED — evidence/A2-timeout.md |
 | O15 | Edge-case input rules (duplicates, re-submit, backspace on empty, scramble with entry) | A2 + reference observation | `evidence/A2-edges.md` | D2 | RESOLVED — evidence/A2-edges.md |
 | O16 | Round-bank threshold T measurement | B3: generate candidate banks per `docs/06` §3; record sizes; apply selection rule | `evidence/B3-threshold.md`; `tools/build-config.json` | D1 | OPEN |
 | O17 | Entry-type filters discovered in the TDK snapshot (abbreviations, proper nouns) | B2: inspect snapshot structure; apply and record filter decisions | `evidence/B2-filters.md` | B3 | OPEN |
-| O18 | Any visual difference between 2007 and 2012 builds relevant to layout | A3: compare extracted geometry; record differences; 2012 wins | `evidence/A3-diffs.md` | E1, E2 | OPEN |
+| O18 | Any visual difference between 2007 and 2012 builds relevant to layout | A3: compare extracted geometry; record differences; 2012 wins | `evidence/A3-diffs.md` | E1, E2 | RESOLVED — evidence/A3-diffs.md |
 | O19 | MochiAds removal points (which scripts/tags to strip) | A1/A2: identify ad initialization/resume paths; ensure removal does not alter game flow | `evidence/A2-mochi.md` | D5 | RESOLVED — evidence/A2-mochi.md |
 | O20 | Repeat-capture stability of the reference harness (same screenshots across runs) | C3: capture the matrix twice; compare hashes; if unstable, identify cause and record | `evidence/C3-stability.md` | F2 | OPEN |
 
@@ -49,6 +49,12 @@ RESOLVED 2026-09-28 — evidence/A2-labels.md — `main`=frame 5, `preall`=130, 
 RESOLVED 2026-09-28 — evidence/A2-timeout.md — On timeout the in-progress entry is discarded without scoring, tiles are hidden, all unfound listed words are revealed, `finishsound` plays and input is blocked (`bitti = 1`); the time bonus is applied only on all-found completion, from the last integer remaining second.
 RESOLVED 2026-09-28 — evidence/A2-edges.md — Duplicate letters consume one tile instance each; re-submitting a found word is rejected with `boing` and keeps the entry; BACKSPACE on an empty entry only plays the sound; scramble clears a partial entry (and skips the reset on an empty entry).
 RESOLVED 2026-09-28 — evidence/A2-mochi.md — MochiAds lives entirely in the SWF frame-1 DoAction (10,480 bytes; `MochiAd.showPreGameAd` call at L582); removal = drop that script, no other script reads MochiAds state and the game continues without it (Ruffle blocks `*.mochiads.com`; the round still loads).
+RESOLVED 2026-09-28 — evidence/A3-timing.md — FPS = 36 (header); all 24 animation sequences catalogued in `data/animation.json` with numeric SWF frame spans and frames ÷ 36 durations (4 main-timeline states, 3 element-motion paths with 214/86/19 Move tags, 17 sprite timelines); keyframe offsets defined for capture per `docs/07` §4.
+RESOLVED 2026-09-28 — data/layout.json + evidence/A3-layout.md — all 62 stage-placed symbols of the 2012 build catalogued (x/y/w/h from PlaceObject2 matrices × definition bounds, board state = SWF frame 131; 26 text elements with Verdana metrics); schema-valid (ajv), asset paths verified, screenshot cross-check ≤1.2 px on solid edges.
+RESOLVED 2026-09-28 — evidence/A1-fonts.md + evidence/A3-layout.md — three `DefineFont2` records all named Verdana (Bold/Regular/BoldItalic); all 26 text elements carry their size/bold/align metrics from the tag records; no other family is used.
+RESOLVED 2026-09-28 — evidence/A1-bitmaps.md + evidence/A3-layout.md — the two bitmaps (id 47 550×400 RGB, id 86 21×29 RGBA) are used only as clipped fills inside shapes 48/87, never placed directly; fill id 65535 is referenced without a bitmap definition (no export exists).
+RESOLVED 2026-09-28 — evidence/A1-stream.md — zero streaming content: all 38 `SoundStreamHead2` are empty, no `SoundStreamBlock` exists; EXCLUDED (nothing to integrate; D4 disposition).
+RESOLVED 2026-09-28 — evidence/A3-diffs.md — 2007 vs 2012 compared for 44 shared roles: 22 identical (incl. background, sockets, wordball, logo, xmlload, speaker, puanmovie, high-score form, marquee); 12 differ (credit block replaced, new "Sil" button, b3–b8 counters added, bottom buttons repositioned ≤45.8 px, timer bar/digits +(6,15) px, status sprite +6.1 px, Puan/Süre colour/shadow updates); 2012 wins and is the only geometry in `data/layout.json`.
 
 ## Amendments
 
@@ -87,3 +93,8 @@ RESOLVED 2026-09-28 — evidence/A2-mochi.md — MochiAds lives entirely in the 
 - 2026-09-28 — T05 command reconciled (`docs/07` §1): the sound-map V7 check
   runs as `npm test -- audio` (D4's `tests/audio.test.ts`); semantics
   unchanged. Evidence: `evidence/D4-audio.md`.
+- 2026-09-28 — E1 dependency ownership: `tasks/E1-asset-integration.md`
+  additionally owns the minimal pinned `svgo` devDependency addition to root
+  `package.json`/`package-lock.json`; C1's verification set (build/test/lint)
+  is re-run by E1 after the change. Silent witness runs apply (`EXECUTION.md`
+  §8): sound files are hashed, never played.

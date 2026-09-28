@@ -1,0 +1,32 @@
+== 2026-09-28T13:27:54Z Ruffle 0.6.0 desktop CLI against local static server (port 8793) ==
+cmd: artifacts/a3-captures/tools/Ruffle.app/Contents/MacOS/ruffle http://127.0.0.1:8793/kelimator_tr_2012_mochiads.swf
+cli terminated after 14s (pid 22721)
+exit=0
+--- cli log:
+[2m2026-09-28T13:27:54.725289Z[0m [32m INFO[0m [2mruffle_desktop::gui::controller[0m[2m:[0m Using preferred backend Metal
+[2m2026-09-28T13:27:54.730641Z[0m [32m INFO[0m [2mruffle_desktop::gui::controller[0m[2m:[0m Using graphics API metal on arm64 host (type: IntegratedGpu)
+[2m2026-09-28T13:27:54.730680Z[0m [32m INFO[0m [2mruffle_desktop::gui::controller[0m[2m:[0m Using surface format Bgra8Unorm
+[2m2026-09-28T13:27:54.956181Z[0m [33m WARN[0m [2mruffle_desktop::gui::controller[0m[2m:[0m Failed to register [Name("Noto Sans CJK KR"), Name("Malgun Gothic")] as Proportional: no unicode fonts found!
+[2m2026-09-28T13:27:54.956233Z[0m [33m WARN[0m [2mruffle_desktop::gui::controller[0m[2m:[0m Failed to register [Name("Noto Sans CJK JP"), Name("MS UI Gothic")] as Proportional: no unicode fonts found!
+[2m2026-09-28T13:27:54.956238Z[0m [33m WARN[0m [2mruffle_desktop::gui::controller[0m[2m:[0m Failed to register [Name("Noto Sans CJK SC"), Name("Microsoft YaHei")] as Proportional: no unicode fonts found!
+[2m2026-09-28T13:27:54.956244Z[0m [33m WARN[0m [2mruffle_desktop::gui::controller[0m[2m:[0m Failed to register [Name("Noto Sans CJK TC"), Name("Microsoft JhengHei")] as Proportional: no unicode fonts found!
+[2m2026-09-28T13:27:54.956350Z[0m [32m INFO[0m [2mruffle_desktop::gui::controller[0m[2m:[0m Opening http://127.0.0.1:8793/kelimator_tr_2012_mochiads.swf
+[2m2026-09-28T13:27:55.066443Z[0m [32m INFO[0m [2mruffle_video_external::decoder::openh264[0m[2m:[0m Using OpenH264 at "/home/dev/Library/Containers/rs.ruffle.ruffle/Data/Library/Caches/ruffle/video/libopenh264-2.4.1-mac-arm64.dylib"
+[2m2026-09-28T13:27:55.893845Z[0m [32m INFO[0m [2mruffle_core::context[0m[2m:[0m Loaded SWF version 6, resolution 550x400 @ 36 FPS
+[2m2026-09-28T13:27:55.912902Z[0m [32m INFO[0m [2mruffle_desktop::backends::ui[0m[2m:[0m Loading device font "Verdana-Bold" for "Verdana" (italic: false, bold: true)
+[2m2026-09-28T13:27:55.914144Z[0m [33m WARN[0m [2mruffle_core::stub[0m[2m:[0m Encountered stub: AVM1 System.security.allowDomain()
+[2m2026-09-28T13:27:55.914161Z[0m [33m WARN[0m [2mruffle_core::stub[0m[2m:[0m Encountered stub: AVM1 System.security.allowInsecureDomain()
+[2m2026-09-28T13:27:55.919209Z[0m [32m INFO[0m [2mruffle_core::compatibility_rules[0m[2m:[0m Blocking url due to compatibility ruleset 'mochiads'
+[2m2026-09-28T13:27:55.919257Z[0m [31mERROR[0m [2mruffle_core::loader[0m[2m:[0m Error during movie loading of "http://x.mochiads.com/srv/1/951545f2fdfbf4a6.swf": BlockedHost("*.mochiads.com")
+[2m2026-09-28T13:27:59.250690Z[0m [33m WARN[0m [2mruffle_frontend_utils::backends::storage[0m[2m:[0m Unable to read file "127.0.0.1/kelimator_tr_2012_mochiads.swf/data": Os { code: 2, kind: NotFound, message: "No such file or directory" }
+[2m2026-09-28T13:28:02.803704Z[0m [33m WARN[0m [2msymphonia_bundle_mp3::layer3[0m[2m:[0m mpa: invalid main_data_begin, underflow by 117 bytes
+[2m2026-09-28T13:28:02.848585Z[0m [33m WARN[0m [2mruffle_core::avm1::activation[0m[2m:[0m SetProperty: Invalid target String("button2")
+[2m2026-09-28T13:28:02.848602Z[0m [33m WARN[0m [2mruffle_core::avm1::activation[0m[2m:[0m SetProperty: Invalid target String("button2")
+[2m2026-09-28T13:28:02.848606Z[0m [33m WARN[0m [2mruffle_core::avm1::activation[0m[2m:[0m SetProperty: Invalid target String("button3")
+--- server requests:
+127.0.0.1 - - [28/Sep/2026 16:18:18] "GET /ruffle/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" 200 -
+127.0.0.1 - - [28/Sep/2026 16:18:18] "GET /ruffle/826bb0938097485a2c9d.wasm HTTP/1.1" 200 -
+127.0.0.1 - - [28/Sep/2026 16:18:19] "GET /kelimator_tr_2007.swf HTTP/1.1" 200 -
+127.0.0.1 - - [28/Sep/2026 16:18:23] "GET /xml.php?899269 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Sep/2026 16:27:55] "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" 200 -
+127.0.0.1 - - [28/Sep/2026 16:28:02] "GET /xml64.php?859929 HTTP/1.1" 200 -
