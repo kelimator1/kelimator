@@ -3,8 +3,9 @@
 // Verifies: page loads; applied scale equals min(vw/550, vh/400) ± 0.01 px;
 // letterbox color equals the documented fallback; screenshots are non-blank
 // (recorded under evidence/visual/C2-smoke/ with C2_RECORD=1; live runs write
-// transient screenshots to test-results/c2-smoke-live/); fullscreen keeps the same scale
-// formula for unchanged viewport dimensions.
+// transient screenshots to test-results/c2-smoke-live/); `window.__game` matches
+// the D5-wired getter contract (evidence/D5-lifecycle.md §9.4); fullscreen keeps
+// the same scale formula for unchanged viewport dimensions.
 import { expect, test, type Page } from '@playwright/test';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -120,14 +121,28 @@ test.describe('C2 stage shell smoke', () => {
       };
     });
 
-    expect(hooks).toEqual({
-      state: null,
-      roundId: null,
-      foundWords: [],
-      score: 0,
-      remainingMs: 0,
-      lastAudioEvent: null,
-    });
+    if (hooks === null) {
+      throw new Error('window.__game is not installed');
+    }
+
+    // D5 wired the real hooks (evidence/D5-lifecycle.md §9.4). Assert the live
+    // getter contract instead of the C2 placeholder values: FSM state string,
+    // round id string, string array, numeric score and remaining time,
+    // nullable last audio event.
+    expect(hooks.state).toBe('playing');
+    expect(typeof hooks.roundId).toBe('string');
+    expect(hooks.roundId).not.toBe('');
+    const foundWords = hooks.foundWords as unknown[];
+    expect(Array.isArray(foundWords)).toBe(true);
+    expect(foundWords.every((word) => typeof word === 'string')).toBe(true);
+    expect(typeof hooks.score).toBe('number');
+    expect((hooks.score as number) >= 0).toBe(true);
+    const remainingMs = hooks.remainingMs as number;
+    expect(typeof remainingMs).toBe('number');
+    expect(Number.isFinite(remainingMs)).toBe(true);
+    expect(remainingMs).toBeGreaterThan(0); // live countdown
+    expect(remainingMs).toBeLessThanOrEqual(200_000); // 200 s initial (data/constants.json)
+    expect(hooks.lastAudioEvent === null || typeof hooks.lastAudioEvent === 'string').toBe(true);
 
     // docs/04 §2 step 2: the orientationchange listener recomputes without
     // changing the (unchanged) viewport metrics and without page errors.

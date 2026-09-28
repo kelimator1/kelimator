@@ -180,3 +180,71 @@ f047fb0968c9f9877c47af13c7c55831fc22181788538fc43af78e71c3741569  evidence/visua
 ```
 
 Log hashes (generated 2026-09-28T12:57:52Z) are in `evidence/logs/C2-hashes.log`.
+
+---
+
+## Follow-up (D5 wiring) — `window.__game` smoke assertion
+
+Task: C2 follow-up — align the smoke `__game` assertion with the D5-wired hooks
+(D5 evidence §9.4)
+Started: 2026-09-28T19:37:57Z (first follow-up artifact: before-run log)
+Ended: 2026-09-28T19:39:08Z
+Host+OS: dev-host.home / macOS (same host as the original record)
+
+Commands executed (exact), exit codes, results:
+
+| # | Command | Exit | Result | Log |
+|---|---|---|---|---|
+| 1 | `npm run e2e -- smoke` (before fix) | 1 | 6/7 — stale placeholder assertion fails exactly as D5 §9.4 predicted: received `state: "playing"`, `roundId: "abacilik"`, `remainingMs: 200000`, `lastAudioEvent: "roundStart"`, `score: 0`, `foundWords: []` | `evidence/logs/C2-followup-smoke-before.log` |
+| 2 | `npm run e2e -- smoke` (after fix) | 0 | **7/7 pass** | `evidence/logs/C2-followup-e2e-smoke.log` |
+| 3 | `npm run e2e -- visual` | 0 | **17/17 pass** (S1–S7/S10 × dsf1/dsf2 + V7 layout cross-consistency) | `evidence/logs/C2-followup-e2e-visual.log` |
+| 4 | `npm test` | 0 | **12 files, 217/217 pass** | `evidence/logs/C2-followup-test.log` |
+| 5 | `npm run lint` | 0 | no diagnostics | `evidence/logs/C2-followup-lint.log` |
+| 6 | `npm run build` | 0 | static build; expected >500 kB chunk warning (documented by D5 §8 #4, not a failure) | `evidence/logs/C2-followup-build.log` |
+
+### Change (only `tests/e2e/smoke.spec.ts`)
+
+The C2 placeholder deep-equality (`state: null`, `roundId: null`,
+`remainingMs: 0`, `lastAudioEvent: null`, …) is replaced by the wired getter
+contract (D5 §9.4):
+
+- `state` is the FSM string `'playing'` at boot;
+- `roundId` is a non-empty string;
+- `foundWords` is an array of strings;
+- `score` is a finite number ≥ 0;
+- `remainingMs` is a finite number, `> 0` (live countdown) and `≤ 200000`
+  (200 s initial, `data/constants.json` `timer.initialSeconds`);
+- `lastAudioEvent` is `null` or a string.
+
+All stage/scale/letterbox/non-blank/fullscreen assertions are unchanged; no new
+waits were added (the same single `page.goto` + poll structure as the original
+record). The file header comment now names the D5 query. Live smoke runs write
+transient screenshots to `test-results/c2-smoke-live/` via the pre-existing
+`C2_RECORD` mechanism, so the original evidence PNGs stay frozen (verified
+below).
+
+`data/constants.json` is now present (A2; SHA-256
+`ea0684028be5eeb892a11ba3699c5dcc93a73f062b1939646df6ec8591e90661`): its
+`stage.width/height` are 550/400, matching the C2 constants, and the letterbox
+fallback is unchanged (the frozen constants schema still has no background
+color field, §1 of this record).
+
+### Refreshed hashes (`evidence/logs/C2-followup-hashes.log`)
+
+```
+171069a7e3372e53e3f14dd2d61899cffa6afdacc661899ec2f0ca3970d55ac8  tests/e2e/smoke.spec.ts
+1129b89ac2ea0abb96615ca66cd6732fe0ca6da0a75315b643ff0303dad6f87b  evidence/logs/C2-followup-smoke-before.log
+8f90c7c0f532ed6531f6a6f7a706db53b4d6f066ee20441ed62ebcbae4e49b51  evidence/logs/C2-followup-e2e-smoke.log
+75b033823baf4c50c438caa18119e6a552bf6dd54c793337d01a0eec4612585a  evidence/logs/C2-followup-e2e-visual.log
+74f6ee2bd201ecaaa732139267e127b97b38ce346d35a941402ad607473837ba  evidence/logs/C2-followup-test.log
+1127abec44245b91cc3e51990e56293ddb992d67248afcfa1440f5ffa3f11ad1  evidence/logs/C2-followup-lint.log
+1296ae2d7c258938a5dbc4dc4e044cab33d4a002540436015263a9825e170e02  evidence/logs/C2-followup-build.log
+593ab88dc74871b6b91c32b61a188c97ad7453da8e5b1fde0af47aa9945c32dc  evidence/visual/C2-smoke/smoke-320x480.png   (frozen, unchanged)
+90ed53be78a0ffe3d967dda14f2cdd3d30898b17f4db7ec5731529657faea8c4  evidence/visual/C2-smoke/smoke-550x400.png   (frozen, unchanged)
+b460e456b48e82dc68d5353826888f4c5866f8379854cc1c406dc7007c2da278  evidence/visual/C2-smoke/smoke-1920x1080.png (frozen, unchanged)
+b432bf373a345d71b828354afb584eae79a9a65cde41849e752fb23de4a24e1e  evidence/visual/C2-smoke/smoke-3840x2160.png (frozen, unchanged)
+f047fb0968c9f9877c47af13c7c55831fc22181788538fc43af78e71c3741569  evidence/visual/C2-smoke/smoke-3440x1440.png (frozen, unchanged)
+ea0684028be5eeb892a11ba3699c5dcc93a73f062b1939646df6ec8591e90661  data/constants.json (input, unchanged by this follow-up)
+```
+
+Result: PASS
