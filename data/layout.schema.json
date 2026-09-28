@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Kelimatör layout catalog",
+  "type": "object",
+  "required": ["schemaVersion", "stage", "elements"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "stage": {
+      "type": "object",
+      "required": ["width", "height", "background"],
+      "additionalProperties": false,
+      "properties": {
+        "width": { "type": "number" },
+        "height": { "type": "number" },
+        "background": { "type": "string" }
+      }
+    },
+    "elements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "asset", "x", "y", "w", "h", "text", "font", "evidence"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "kind": { "enum": ["svg", "bitmap", "text"] },
+          "asset": { "type": "string" },
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "w": { "type": "number" },
+          "h": { "type": "number" },
+          "text": { "type": "string" },
+          "font": {
+            "type": "object",
+            "required": ["family", "size", "bold", "align"],
+            "additionalProperties": false,
+            "properties": {
+              "family": { "type": "string" },
+              "size": { "type": "number" },
+              "bold": { "type": "boolean" },
+              "align": { "type": "string" }
+            }
+          },
+          "evidence": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Kelimatör sound map",
+  "type": "object",
+  "required": ["schemaVersion", "sounds", "events"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "sounds": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["file", "durationSec"],
+        "additionalProperties": false,
+        "properties": {
+          "file": { "type": "string" },
+          "durationSec": { "type": "number" }
+        }
+      }
+    },
+    "events": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["soundId", "evidence"],
+        "additionalProperties": false,
+        "properties": {
+          "soundId": { "type": "number" },
+          "evidence": { "type": "string" }
+        }
+      }
+    }
+  }
+}

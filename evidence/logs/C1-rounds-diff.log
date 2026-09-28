@@ -1,0 +1,10 @@
+CMD: awk extract docs/06-dictionary-and-rounds.md (first ```json block) > /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/rounds-canonical.json
+EXIT: 0
+
+CMD: diff -u /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/rounds-canonical.json data/rounds.schema.json
+diff EXIT: 0
+
+CMD: shasum -a 256 /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/rounds-canonical.json data/rounds.schema.json
+44fd8ead39a03f890c9934be94d9c673a19137f8fa4ad6eca575aaedd8e148fc  /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/rounds-canonical.json
+44fd8ead39a03f890c9934be94d9c673a19137f8fa4ad6eca575aaedd8e148fc  data/rounds.schema.json
+EXIT: 0

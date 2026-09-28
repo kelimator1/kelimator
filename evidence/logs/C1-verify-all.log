@@ -1,0 +1,33 @@
+CMD: tools/verify-all.sh
+[verify-all] lint
+
+> kelimator-2012@0.0.0 lint
+> eslint .
+
+[verify-all] unit/integration tests
+
+> kelimator-2012@0.0.0 test
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.2 [39m[90m/home/dev/kelimator-2012[39m
+
+No test files found, exiting with code 0
+
+[2minclude: [22m[33mtests/**/*.test.{ts,mts,js,mjs}[2m, [22mverify/**/*.test.{ts,mts,js,mjs}[39m
+[2mexclude:  [22m[33m**/node_modules/**[2m, [22m**/.git/**[39m
+
+[verify-all] schema compilation
+[verify-all] compile data/constants.schema.json
+schema data/constants.schema.json is valid
+[verify-all] compile data/layout.schema.json
+schema data/layout.schema.json is valid
+[verify-all] compile data/rounds.schema.json
+schema data/rounds.schema.json is valid
+[verify-all] compile data/sound-map.schema.json
+schema data/sound-map.schema.json is valid
+[verify-all] schema validation for present data files
+[verify-all] Playwright suites (when present)
+[verify-all] no Playwright suites present — skipped
+[verify-all] OK
+EXIT: 0

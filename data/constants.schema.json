@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Kelimatör constants",
+  "type": "object",
+  "required": ["schemaVersion", "stage", "timer", "scoring", "bonusLetter", "input", "flows", "evidence"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "stage": {
+      "type": "object",
+      "required": ["width", "height", "fps", "frameCount"],
+      "additionalProperties": false,
+      "properties": {
+        "width": { "type": "number" },
+        "height": { "type": "number" },
+        "fps": { "type": "number" },
+        "frameCount": { "type": "number" }
+      }
+    },
+    "timer": {
+      "type": "object",
+      "required": ["initialSeconds", "tickMs"],
+      "additionalProperties": false,
+      "properties": {
+        "initialSeconds": { "type": "number" },
+        "tickMs": { "type": "number" }
+      }
+    },
+    "scoring": {
+      "type": "object",
+      "required": ["perLetterSquaredFactor", "bonusPoints", "timeFactor"],
+      "additionalProperties": false,
+      "properties": {
+        "perLetterSquaredFactor": { "type": "number" },
+        "bonusPoints": { "type": "number" },
+        "timeFactor": { "type": "number" }
+      }
+    },
+    "bonusLetter": {
+      "type": "object",
+      "required": ["selectionRule", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "selectionRule": { "type": "string" },
+        "evidence": { "type": "string" }
+      }
+    },
+    "input": {
+      "type": "object",
+      "required": ["scrambleKey", "submitKey", "deleteKey"],
+      "additionalProperties": false,
+      "properties": {
+        "scrambleKey": { "type": "string" },
+        "submitKey": { "type": "string" },
+        "deleteKey": { "type": "string" }
+      }
+    },
+    "flows": {
+      "type": "object",
+      "required": ["allFoundLabel", "celebrationLabel"],
+      "additionalProperties": false,
+      "properties": {
+        "allFoundLabel": { "type": "string" },
+        "celebrationLabel": { "type": "string" }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    }
+  }
+}

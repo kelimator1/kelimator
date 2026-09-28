@@ -1,0 +1,7 @@
+CMD: git check-ignore -v artifacts dist node_modules .DS_Store foo/.DS_Store
+.gitignore:2:artifacts/	artifacts
+.gitignore:8:dist/	dist
+.gitignore:5:node_modules/	node_modules
+.gitignore:17:**/.DS_Store	.DS_Store
+.gitignore:17:**/.DS_Store	foo/.DS_Store
+EXIT: 0

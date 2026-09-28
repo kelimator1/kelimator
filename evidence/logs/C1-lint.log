@@ -1,0 +1,6 @@
+CMD: npm run lint
+
+> kelimator-2012@0.0.0 lint
+> eslint .
+
+EXIT: 0

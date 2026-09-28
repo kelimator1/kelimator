@@ -1,0 +1,17 @@
+CMD: node --input-type=module -e (vitest include glob probe)
+tests/stage.test.ts                  true
+tests/round.test.mjs                 true
+verify/diff/pngdiff.test.mjs         true
+verify/reference/capture.spec.ts     false
+src/main.ts                          false
+data/rounds.json                     false
+(node:57450) ExperimentalWarning: glob is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+EXIT: 0
+
+CMD: npx playwright test --list (no suites exist yet — expected non-zero, F2/E2/E3/C2 add specs)
+
+Error: No tests found
+Listing tests:
+Total: 0 tests in 0 files
+EXIT: 1

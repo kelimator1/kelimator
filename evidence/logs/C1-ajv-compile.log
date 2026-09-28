@@ -1,0 +1,25 @@
+CMD: npx ajv-cli compile -s data/rounds.schema.json
+schema data/rounds.schema.json is valid
+EXIT: 0
+
+CMD: npx ajv-cli compile -s data/constants.schema.json
+schema data/constants.schema.json is valid
+EXIT: 0
+
+CMD: npx ajv-cli compile -s data/sound-map.schema.json
+schema data/sound-map.schema.json is valid
+EXIT: 0
+
+CMD: npx ajv-cli compile -s data/layout.schema.json
+schema data/layout.schema.json is valid
+EXIT: 0
+
+CMD: JSON.parse check for all schemas
+data/constants.schema.json JSON OK
+EXIT: 0
+data/layout.schema.json JSON OK
+EXIT: 0
+data/rounds.schema.json JSON OK
+EXIT: 0
+data/sound-map.schema.json JSON OK
+EXIT: 0

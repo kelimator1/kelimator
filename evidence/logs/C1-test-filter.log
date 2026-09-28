@@ -1,0 +1,15 @@
+CMD: npm test -- diff
+
+> kelimator-2012@0.0.0 test
+> vitest run diff
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.2 [39m[90m/home/dev/kelimator-2012[39m
+
+No test files found, exiting with code 0
+
+[2mfilter: [22m[33mdiff[39m
+[2minclude: [22m[33mtests/**/*.test.{ts,mts,js,mjs}[2m, [22mverify/**/*.test.{ts,mts,js,mjs}[39m
+[2mexclude:  [22m[33m**/node_modules/**[2m, [22m**/.git/**[39m
+
+EXIT: 0

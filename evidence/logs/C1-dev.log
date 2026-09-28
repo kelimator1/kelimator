@@ -1,0 +1,33 @@
+
+> kelimator-2012@0.0.0 dev
+> vite --port 5199 --strictPort
+
+
+  VITE v8.3.1  ready in 133 ms
+
+  ➜  Local:   http://localhost:5199/
+  ➜  Network: use --host to expose
+CMD: curl -sS -o /dev/null -w '%{http_code}' http://localhost:5199/
+HTTP 200
+EXIT: 0
+
+---- dev server log ----
+
+> kelimator-2012@0.0.0 dev
+> vite --port 5199 --strictPort
+
+
+  VITE v8.3.1  ready in 133 ms
+
+  ➜  Local:   http://localhost:5199/
+  ➜  Network: use --host to expose
+CMD: curl -sS -o /dev/null -w '%{http_code}' http://localhost:5199/
+HTTP 200
+EXIT: 0
+
+---- dev server log ----
+
+CMD: kill dev server on port 5199
+EXIT: 0
+CMD: pgrep -fl 'vite --port 5199'
+no vite process remains

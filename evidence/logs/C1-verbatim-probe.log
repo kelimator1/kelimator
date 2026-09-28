@@ -1,0 +1,52 @@
+CMD: awk extract docs/02-mechanics-spec.md (first ```json block = §8 constants shape)
+{
+  "schemaVersion": 1,
+  "stage": { "width": 550, "height": 400, "fps": 0, "frameCount": 0 },
+  "timer": { "initialSeconds": 0, "tickMs": 0 },
+  "scoring": { "perLetterSquaredFactor": 50, "bonusPoints": 5000, "timeFactor": 100 },
+  "bonusLetter": { "selectionRule": "", "evidence": "" },
+  "input": { "scrambleKey": "SPACE", "submitKey": "ENTER", "deleteKey": "BACKSPACE" },
+  "flows": { "allFoundLabel": "hepsiburda", "celebrationLabel": "bravo" },
+  "evidence": { "<field>": "<evidence file / doc ref>" }
+}
+
+CMD: npx ajv-cli compile -s /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/constants-block.json
+schema /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/constants-block.json is invalid
+error: strict mode: unknown keyword: "schemaVersion"
+EXIT: 1
+
+CMD: awk extract docs/03-assets-and-visuals.md (first ```json block = §5 sound-map shape)
+{
+  "schemaVersion": 1,
+  "sounds": {
+    "<soundId>": { "file": "sfx_<id>_<slug>.mp3", "durationSec": 0.0 }
+  },
+  "events": {
+    "<eventName>": { "soundId": 0, "evidence": "" }
+  }
+}
+
+CMD: npx ajv-cli compile -s /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/sound-map-block.json
+schema /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/sound-map-block.json is invalid
+error: strict mode: unknown keyword: "schemaVersion"
+EXIT: 1
+
+CMD: awk extract docs/03-assets-and-visuals.md (second ```json block = §6 layout shape)
+{
+  "schemaVersion": 1,
+  "stage": { "width": 550, "height": 400, "background": "#000000" },
+  "elements": [
+    { "id": "", "kind": "svg|bitmap|text", "asset": "", "x": 0, "y": 0,
+      "w": 0, "h": 0, "text": "", "font": { "family": "Verdana", "size": 0,
+      "bold": false, "align": "left" }, "evidence": "" }
+  ]
+}
+
+CMD: npx ajv-cli compile -s /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/layout-block.json
+schema /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/layout-block.json is invalid
+error: strict mode: unknown keyword: "schemaVersion"
+EXIT: 1
+
+CMD: ./node_modules/.bin/ajv-cli --version
+zsh:1: no such file or directory: ./node_modules/.bin/ajv-cli
+EXIT: 127

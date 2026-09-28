@@ -1,0 +1,33 @@
+CMD: git status --short
+?? .gitignore
+?? .prettierignore
+?? .prettierrc.json
+?? EXECUTION.md
+?? README.md
+?? data/
+?? docs/
+?? eslint.config.js
+?? evidence/
+?? index.html
+?? package-lock.json
+?? package.json
+?? playwright.config.ts
+?? src/
+?? tasks/
+?? tools/
+?? tsconfig.json
+?? vite.config.ts
+?? vitest.config.ts
+
+CMD: git diff --cached --name-only (must be empty: nothing staged)
+staged_EXIT: 0
+
+CMD: ls -d verify tests 2>/dev/null
+verify/ and tests/ do not exist yet (not touched by C1)
+
+CMD: ls -la .git | head -5
+total 24
+drwxr-xr-x@  9 dev  staff  288 Sep 28 15:36 .
+drwxr-xr-x@ 25 dev  staff  800 Sep 28 15:33 ..
+-rw-r--r--@  1 dev  staff   23 Sep 28 15:31 HEAD
+-rw-r--r--@  1 dev  staff  137 Sep 28 15:31 config

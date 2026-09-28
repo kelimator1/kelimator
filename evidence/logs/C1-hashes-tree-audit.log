@@ -1,0 +1,51 @@
+CMD: shasum -a 256 data/rounds.schema.json data/constants.schema.json data/sound-map.schema.json data/layout.schema.json package-lock.json tools/verify-all.sh
+44fd8ead39a03f890c9934be94d9c673a19137f8fa4ad6eca575aaedd8e148fc  data/rounds.schema.json
+60ff0693dec47ee3e6cdfc68688479988ed2c7ec4686ece1b5304c5fe5ac3447  data/constants.schema.json
+1ebac08dfed6859cbc414ba8ad5984707b45f73f27cab88a671964d2b11186ac  data/sound-map.schema.json
+089e2fd4facae3803a59974181d5ab1dc641cfa149b698c460e9640ab160d96a  data/layout.schema.json
+62ea8fde39d000c1510f3b3189521653b5009ee078aada505518d53e917e8a43  package-lock.json
+855d8fab3eba751d79a75a7f4e886609f6c2836c8c484545312a46f453522d98  tools/verify-all.sh
+EXIT: 0
+
+CMD: find src data tools -type f | sort
+data/constants.schema.json
+data/layout.schema.json
+data/rounds.schema.json
+data/sound-map.schema.json
+src/audio/audio.ts
+src/data/.gitkeep
+src/game/input.ts
+src/game/lifecycle.ts
+src/game/round.ts
+src/game/scoring.ts
+src/game/state.ts
+src/game/tiles.ts
+src/game/timer.ts
+src/main.ts
+src/stage.ts
+src/ui/board.ts
+src/ui/hud.ts
+src/ui/message.ts
+tools/verify-all.sh
+EXIT: 0
+
+CMD: npm audit (summary)
+# npm audit report
+
+fast-json-patch  <3.1.1
+Severity: high
+Starcounter-Jack JSON-Patch Prototype Pollution vulnerability - https://github.com/advisories/GHSA-8gh8-hqwg-xf34
+fix available via `npm audit fix --force`
+Will install ajv-cli@0.6.0, which is a breaking change
+node_modules/fast-json-patch
+  ajv-cli  >=0.7.0
+  Depends on vulnerable versions of fast-json-patch
+  node_modules/ajv-cli
+
+2 high severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+CMD: date -u +%Y-%m-%dT%H:%M:%SZ
+2026-09-28T12:35:25Z

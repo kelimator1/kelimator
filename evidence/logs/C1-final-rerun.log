@@ -1,0 +1,12 @@
+=== final re-run after all writes, 2026-09-28T12:36:40Z ===
+
+CMD: npm run build
+EXIT: 0
+CMD: npm test
+EXIT: 0
+CMD: npm run lint
+EXIT: 0
+CMD: tools/verify-all.sh
+EXIT: 0
+
+=== end final re-run ===

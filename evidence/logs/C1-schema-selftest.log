@@ -1,0 +1,26 @@
+CMD: npx ajv-cli validate -s data/constants.schema.json -d /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/constants-block.json
+/private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/constants-block.json valid
+EXIT: 0
+
+CMD: npx ajv-cli validate -s data/sound-map.schema.json -d /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/sound-map-block.json
+/private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/sound-map-block.json valid
+EXIT: 0
+
+CMD: npx ajv-cli validate -s data/layout.schema.json -d /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/layout-block.json
+/private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/layout-block.json invalid
+[
+  {
+    instancePath: '/elements/0/kind',
+    schemaPath: '#/properties/elements/items/properties/kind/enum',
+    keyword: 'enum',
+    params: { allowedValues: [Array] },
+    message: 'must be equal to one of the allowed values'
+  }
+]
+EXIT: 1
+CMD: sed 's/"svg|bitmap|text"/"svg"/' <layout shape block> > /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/layout-block-svg.json
+EXIT: 0
+
+CMD: npx ajv-cli validate -s data/layout.schema.json -d /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/layout-block-svg.json
+/private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/c1/layout-block-svg.json valid
+EXIT: 0

@@ -1,0 +1,10 @@
+CMD: ls -l node_modules/.bin | grep -i ajv
+lrwxr-xr-x@ 1 dev  staff  24 Sep 28 15:31 ajv -> ../ajv-cli/dist/index.js
+EXIT: 0
+
+CMD: grep '"version"' node_modules/ajv-cli/package.json
+  "version": "5.0.0",
+
+CMD: npx --no-install ajv-cli compile -s data/rounds.schema.json
+schema data/rounds.schema.json is valid
+EXIT: 0
