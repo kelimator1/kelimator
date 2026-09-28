@@ -98,6 +98,17 @@ formulas and asserted in unit tests.
 > regions) still flag; small-element accuracy is guarded by V7/E1's manifest.
 > Matching entry: `docs/08-open-items.md` (Amendments).
 
+> Amendment 2026-09-28b (orchestrator): animation keyframe checks apply to the
+> catalogued sequences whose subject is painted in the rebuild and has a
+> timeline-defined keyframe. The other catalogued classes are verified by their
+> own checks with evidence in `evidence/E3-animations.md` §3: action/sound-only
+> sprites (0×0 geometry, no pixels — duration + trigger checks), `gotoAndStop`
+> state sprites (exercised by E2/D5 state tests), excluded end-screen sequences
+> (`docs/02` §7), and instantaneous loading states. Recorded divergence: the
+> rebuild presents the preloader/intro synchronously (D5 design) while the
+> reference plays a ~3.5 s intro motion before its first stable frame — queued
+> as **O23** in `docs/08-open-items.md`. Matching entry: same (Amendments).
+
 ## 5. State matrix (S1–S10)
 
 | State | Trigger sequence (app and reference use the same) |

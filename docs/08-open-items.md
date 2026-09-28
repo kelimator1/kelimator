@@ -35,6 +35,7 @@ When closed, append: `RESOLVED <date> — <evidence file> — <one-line finding>
 | O20 | Repeat-capture stability of the reference harness (same screenshots across runs) | C3: capture the matrix twice; compare hashes; if unstable, identify cause and record | `evidence/C3-stability.md` | F2 | RESOLVED — evidence/C3-stability.md |
 | O21 | Which fixture is served to the 2012 reference harness? | C3 + amendment 2026-09-28 (`tasks/C3-reference-harness.md`): the 2012 client Base64-decodes every round value; serve a deterministic Base64(UTF-8) re-encoding of the archived `xml64.php` word list (input/script/output SHA-256 recorded; archived file unmodified) | `evidence/C3-fixture-format.md`; `verify/reference/fixtures/` | E2, E3, F2 | RESOLVED — evidence/C3-fixture-format.md |
 | O22 | `viroloji` round fixture (docs/06 §5) absent from both trees; the cited 2007-05-14 Wayback URL was not in the package; B3 was network-frozen | B3 availability search; orchestrator fetched the cited capture when the Internet Archive returned; fixture committed unchanged; the gated structural test activates on it | `evidence/B3-viroloji-blocker.md`; `tests/fixtures/rounds/viroloji.xml` | B3 (test), F2 (fixture list) | RESOLVED — evidence/B3-viroloji-blocker.md |
+| O23 | Intro/preloader timed motion: the reference plays frames 5–130 (~3.5 s: falling logo, glow, sun) before its first stable frame; the rebuild starts at the settled state (D5 skips the intro), so those keyframes cannot be compared | Recorded divergence; resolution = implement the timed intro/preloader (D5 sequencing + E3 animations) with reference keyframe captures (C3 scenario mode), or an explicit owner decision to exclude | `evidence/E3-animations.md` §3 rows 1–2/5–6; `data/animation.json` | E3 (animations), D5 (sequencing) | OPEN |
 
 ---
 
@@ -177,3 +178,7 @@ RESOLVED 2026-09-28 — evidence/B3-viroloji-blocker.md + tests/fixtures/rounds/
 - 2026-09-28 — F2 harness scope: `tasks/F2-e2e-playthrough.md` drives the
   reference via C3's `--scenario` mode and owns
   `tests/fixtures/reference/playthrough/**` for its reference captures.
+- 2026-09-28 — E3 animation-check coverage (`docs/07` §4): keyframe checks apply
+  to timeline sequences painted in the rebuild; other classes verified by
+  duration/trigger/state checks (evidence: `evidence/E3-animations.md` §3).
+  Intro/preloader timed motion divergence queued as O23 (OPEN).
