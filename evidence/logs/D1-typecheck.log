@@ -1,0 +1,4 @@
+$ npx tsc --noEmit --listFiles 2>&1 | grep -E "round\.ts|rounds\.json"
+
+/home/dev/kelimator-2012/src/data/rounds.json
+/home/dev/kelimator-2012/src/game/round.ts

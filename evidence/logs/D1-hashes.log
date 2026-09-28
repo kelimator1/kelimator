@@ -1,0 +1,8 @@
+$ shasum -a 256 src/game/round.ts tests/round.test.ts src/data/rounds.json data/rounds.schema.json data/constants.json data/constants.schema.json
+
+5a17d833d714b09a8247564a1e03c896cd24bedcd8b1311399d021aa2e6957bd  src/game/round.ts
+a07d82d4106885f3a4b3f9405024bbd15cec1da8f6811dadd56167b44c3082e1  tests/round.test.ts
+7e4e149b3862b3f5ab77f755e8a8ae4215c2c8568a8ad30ee2311384b14b9a96  src/data/rounds.json
+44fd8ead39a03f890c9934be94d9c673a19137f8fa4ad6eca575aaedd8e148fc  data/rounds.schema.json
+ea0684028be5eeb892a11ba3699c5dcc93a73f062b1939646df6ec8591e90661  data/constants.json
+e33b5dfa20cb68aa5a339ac98135adc89952ebc718ae799e46d881c5a7b32053  data/constants.schema.json

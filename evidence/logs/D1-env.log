@@ -1,0 +1,11 @@
+$ date -u +%Y-%m-%dT%H:%M:%SZ ; hostname ; sw_vers ; uname -m ; sysctl -n machdep.cpu.brand_string ; node --version ; npm --version
+
+2026-09-28T18:45:54Z
+dev-host.home
+ProductName:		macOS
+ProductVersion:		hidden
+BuildVersion:		hidden
+arm64
+arm64 host
+v22.14.0
+10.9.0

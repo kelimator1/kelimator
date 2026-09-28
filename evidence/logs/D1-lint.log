@@ -1,0 +1,6 @@
+$ NO_COLOR=1 npm run lint
+
+
+> kelimator-2012@0.0.0 lint
+> eslint .
+
