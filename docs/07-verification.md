@@ -109,6 +109,14 @@ formulas and asserted in unit tests.
 > reference plays a ~3.5 s intro motion before its first stable frame — queued
 > as **O23** in `docs/08-open-items.md`. Matching entry: same (Amendments).
 
+> Amendment 2026-09-28c (orchestrator): tile-template regression guard — the
+> processed `src/assets/svg/s58_letter_tile.svg` must carry no authoring
+> placeholder glyph; `tests/assets.test.mjs` asserts the absence of the FLA
+> text/font artifacts (`font_Verdana` spans/text counts) with a deliberate-probe
+> verified failure. Thresholds are unchanged. Evidence:
+> `evidence/X2-tile-glyph.md`; matching entry in `docs/08-open-items.md`
+> (Amendments).
+
 ## 5. State matrix (S1–S10)
 
 | State | Trigger sequence (app and reference use the same) |

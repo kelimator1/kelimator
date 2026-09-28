@@ -192,3 +192,7 @@ RESOLVED 2026-09-28 — evidence/X3-speaker.md — speaker `spk_btn` (DefineButt
   (3) speaker control inert (no handler anywhere) → X3 implements the toggle
   with persisted volume from evidenced semantics.
   F3 waits until the wave is verified and committed.
+- 2026-09-28 — X2 tile-template guard (`docs/07` §4): structural check that
+  `s58_letter_tile.svg` carries no authoring glyph (`font_Verdana` spans/text
+  counts; deliberate-probe verified); thresholds unchanged. Evidence:
+  `evidence/X2-tile-glyph.md`.
