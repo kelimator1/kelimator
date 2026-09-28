@@ -1,0 +1,13 @@
+$ date -u +%Y-%m-%dT%H:%M:%SZ
+2026-09-28T12:42:32Z
+
+$ node --version; npm --version
+v22.14.0
+10.9.0
+
+$ node -e crc32 probe
+crc32 type: function | crc32("123456789") = cbf43926
+
+$ hostname; sw_vers -productVersion
+dev-host.home
+hidden

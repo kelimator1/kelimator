@@ -1,0 +1,55 @@
+$ node --version
+v22.14.0
+exit=0
+$ node verify/diff/diff.mjs
+diff: usage: node verify/diff/diff.mjs <a.png> <b.png> <outdir> (try --help)
+exit=1
+$ node verify/diff/diff.mjs --help
+verify/diff/diff.mjs — deterministic PNG pixel-diff (Kelimatör 2012, task F1)
+
+usage: node verify/diff/diff.mjs <a.png> <b.png> <outdir>
+
+Compares two PNGs of identical dimensions pixel by pixel over the RGB
+channels. A pixel is mismatched when its Euclidean distance is > 30;
+the report passes when the mismatch ratio is <= 0.02 (2.0 % of pixels)
+per docs/07-verification.md §4. Writes <outdir>/report.json and
+<outdir>/heatmap.png.
+
+Exit codes:
+  0  comparison completed; pass/fail is the "pass" field of report.json
+  1  usage error, size mismatch, missing file, or undecodable PNG
+exit=0
+$ node -e <write 64x48 png fixture to $TMP/f1/small.png>
+node:fs:562
+  return binding.open(
+                 ^
+
+Error: ENOENT: no such file or directory, open '/private/var/folders/kt/hj1k21b6g5hctjhpjk1m3c0000gn/T/opencode/f1/small.png'
+    at Object.openSync (node:fs:562:18)
+    at writeFileSync (node:fs:2440:35)
+    at file:///home/dev/Documents/Default%20Project/kelimator-2012/[eval1]:1:152 {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/private/var/folders/kt/hj1k21b6g5hctjhpjk1m3c0000gn/T/opencode/f1/small.png'
+}
+
+Node.js v22.14.0
+exit=1
+$ node verify/diff/diff.mjs evidence/F1-artifacts/base.png /private/var/folders/kt/hj1k21b6g5hctjhpjk1m3c0000gn/T/opencode/f1/small.png /private/var/folders/kt/hj1k21b6g5hctjhpjk1m3c0000gn/T/opencode/f1/size-mismatch-out
+diff: cannot read small.png: ENOENT: no such file or directory, open '/private/var/folders/kt/hj1k21b6g5hctjhpjk1m3c0000gn/T/opencode/f1/small.png'
+exit=1
+$ file evidence/F1-artifacts/mutated-run-1/heatmap.png evidence/F1-artifacts/mutated-run-1/report.json
+evidence/F1-artifacts/mutated-run-1/heatmap.png: PNG image data, 550 x 400, 8-bit/color RGBA, non-interlaced
+evidence/F1-artifacts/mutated-run-1/report.json: JSON data
+exit=0
+
+NOTE: the first size-mismatch attempt below used the env-provided temp path
+/private/var/folders/kt/hj1k21b6g5hctjhpjk1m3c0000gn (does not exist / permission denied).
+Corrected run uses the actual $TMPDIR=/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/
+
+$ node -e <write 64x48 png fixture to $TMPDIR/f1/small.png>
+exit=0
+$ node verify/diff/diff.mjs evidence/F1-artifacts/base.png $TMPDIR/f1/small.png $TMPDIR/f1/size-mismatch-out
+diff: size mismatch: base.png is 550x400, small.png is 64x48
+exit=1

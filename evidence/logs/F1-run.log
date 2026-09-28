@@ -1,0 +1,35 @@
+$ node verify/diff/fixtures.mjs evidence/F1-artifacts
+fixtures: wrote evidence/F1-artifacts/base.png and evidence/F1-artifacts/mutated.png (550x400)
+exit=0
+$ node verify/diff/diff.mjs evidence/F1-artifacts/base.png evidence/F1-artifacts/mutated.png evidence/F1-artifacts/mutated-run-1
+diff: mismatchedPixels=100 totalPixels=220000 mismatchRatio=0.00045454545454545455 pass=true -> evidence/F1-artifacts/mutated-run-1/report.json
+exit=0
+$ node verify/diff/diff.mjs evidence/F1-artifacts/base.png evidence/F1-artifacts/mutated.png evidence/F1-artifacts/mutated-run-2
+diff: mismatchedPixels=100 totalPixels=220000 mismatchRatio=0.00045454545454545455 pass=true -> evidence/F1-artifacts/mutated-run-2/report.json
+exit=0
+$ node verify/diff/diff.mjs evidence/F1-artifacts/base.png evidence/F1-artifacts/base.png evidence/F1-artifacts/identical-run
+diff: mismatchedPixels=0 totalPixels=220000 mismatchRatio=0 pass=true -> evidence/F1-artifacts/identical-run/report.json
+exit=0
+$ shasum -a 256 evidence/F1-artifacts/mutated-run-1/report.json evidence/F1-artifacts/mutated-run-2/report.json
+17e668b8990f179b61108a91cb3d9ffeeede06d1c6f05bccbcd1c24a39d7ce1c  evidence/F1-artifacts/mutated-run-1/report.json
+17e668b8990f179b61108a91cb3d9ffeeede06d1c6f05bccbcd1c24a39d7ce1c  evidence/F1-artifacts/mutated-run-2/report.json
+exit=0
+$ node -e <parse all three reports>
+mutated-run-1: {"schemaVersion":1,"tool":"verify/diff/diff.mjs","width":550,"height":400,"totalPixels":220000,"mismatchThreshold":30,"passRatio":0.02,"mismatchedPixels":100,"mismatchRatio":0.00045454545454545455,"maxDistance":173.20508075688772,"meanDistance":0.07872958216222185,"mismatchBBox":{"x":123,"y":45,"width":10,"height":10},"pass":true}
+mutated-run-2: {"schemaVersion":1,"tool":"verify/diff/diff.mjs","width":550,"height":400,"totalPixels":220000,"mismatchThreshold":30,"passRatio":0.02,"mismatchedPixels":100,"mismatchRatio":0.00045454545454545455,"maxDistance":173.20508075688772,"meanDistance":0.07872958216222185,"mismatchBBox":{"x":123,"y":45,"width":10,"height":10},"pass":true}
+identical-run: {"schemaVersion":1,"tool":"verify/diff/diff.mjs","width":550,"height":400,"totalPixels":220000,"mismatchThreshold":30,"passRatio":0.02,"mismatchedPixels":0,"mismatchRatio":0,"maxDistance":0,"meanDistance":0,"mismatchBBox":null,"pass":true}
+exit=0
+$ ls -l evidence/F1-artifacts evidence/F1-artifacts/mutated-run-1
+evidence/F1-artifacts:
+total 1808
+-rw-r--r--@ 1 dev  staff  461105 Sep 28 15:44 base.png
+drwxr-xr-x@ 4 dev  staff     128 Sep 28 15:44 identical-run
+drwxr-xr-x@ 4 dev  staff     128 Sep 28 15:44 mutated-run-1
+drwxr-xr-x@ 4 dev  staff     128 Sep 28 15:44 mutated-run-2
+-rw-r--r--@ 1 dev  staff  461632 Sep 28 15:44 mutated.png
+
+evidence/F1-artifacts/mutated-run-1:
+total 256
+-rw-r--r--@ 1 dev  staff  123668 Sep 28 15:44 heatmap.png
+-rw-r--r--@ 1 dev  staff     413 Sep 28 15:44 report.json
+exit=0

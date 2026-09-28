@@ -1,0 +1,14 @@
+
+> kelimator-2012@0.0.0 test
+> vitest run diff
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.2 [39m[90m/home/dev/kelimator-2012[39m
+
+ [32m✓[39m verify/diff/diff.test.mjs [2m([22m[2m16 tests[22m[2m)[22m[33m 691[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m16 passed[39m[22m[90m (16)[39m
+[2m   Start at [22m 15:44:02
+[2m   Duration [22m 791ms[2m (tests 95%, transform 3%, import 1%)[22m
+
