@@ -399,6 +399,10 @@ const CLICK_TARGETS = {
   gonder: HISCORE_FORM.send,
   'form-name': HISCORE_FORM.name,
   'form-email': HISCORE_FORM.email,
+  // Speaker toggle (DefineButton2_90): center from src/data/layout.json
+  // `btn_speaker` (x 513.99, y 364.74, w 33.54, h 34.09) / PlaceObject2 ch=90
+  // tx=530.5 ty=381.8.
+  speaker: { x: 531, y: 382 },
 };
 
 // Scenario `key` names for the non-letter keys (letters use TR_KEY, the
@@ -742,7 +746,7 @@ function diffBuffers(a, b) {
 // --- scenario mode (E3/F2 scripted captures) -------------------------------
 // `node capture.mjs --scenario <scenario.json> --out <dir> [--dsf 1|2] [--runs N] [--port P]`
 // Schema: `{ name, steps: [ { action, ... } ] }` — documented in README.md.
-// Steps: waitStable | key | click | waitMs | capture | waitForState.
+// Steps: waitStable | key | click | waitMs | capture | waitForState | reload.
 // Outputs: `<out>/<capture>.png`, `<out>/interaction-log.json`,
 // `<out>/scenario-report.json` (compact per-step report; with `--runs N > 1`
 // each run lands in `<out>/run<i>/` plus canonical copies and a repeat summary).
@@ -892,6 +896,17 @@ async function runScenarioSteps(page, log, outDir, scenario, report) {
           entry.result = result;
           entry.ok = result.matched === true;
           if (result.reason) entry.reason = result.reason;
+          break;
+        }
+        case 'reload': {
+          // Reference boot flow (e.g. persisted SharedObject state): reload the
+          // page in the same context (localStorage/SOLs kept) and wait for the
+          // canvas; the player-UI notice listener re-arms, so it is re-handled.
+          await page.reload({ waitUntil: 'load', timeout: 60000 });
+          await page.waitForSelector('#stage canvas', { timeout: 30000 });
+          noticeHandled = false;
+          entry.result = { reloaded: true };
+          entry.ok = true;
           break;
         }
         default:

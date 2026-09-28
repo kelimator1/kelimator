@@ -1,0 +1,1961 @@
+{
+  "name": "f2-playthrough",
+  "steps": [
+    {
+      "action": "waitForState",
+      "condition": "board",
+      "timeoutMs": 60000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "00-selected"
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "Z"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "M"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "01-invalid"
+    },
+    {
+      "action": "key",
+      "key": "BACKSPACE"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "BACKSPACE"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "BACKSPACE"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "02-invalid-cleared"
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "03-valid-FAL"
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "04-duplicate-FAL"
+    },
+    {
+      "action": "key",
+      "key": "BACKSPACE"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "BACKSPACE"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "BACKSPACE"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "05-duplicate-cleared"
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "06-valid"
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "07-valid"
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "N"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "08-valid"
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "N"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "09-valid"
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "Z"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "10-valid"
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "11-valid"
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "N"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "12-valid"
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "13-valid"
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "M"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "14-valid"
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "M"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "15-valid"
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "M"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "16-valid"
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "M"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "17-valid"
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "M"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "N"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "18-valid"
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "N"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "19-bonus-word"
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "Z"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "20-valid"
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "Z"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "M"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "21-valid"
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "N"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "22-valid"
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "23-valid"
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "Z"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "24-valid"
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "25-valid"
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "Z"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "N"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "26-valid"
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "N"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "27-valid"
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "Z"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "28-valid"
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "N"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "29-valid"
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "Z"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "30-valid"
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "M"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "N"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "31-valid"
+    },
+    {
+      "action": "key",
+      "key": "M"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "Z"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "N"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "32-valid"
+    },
+    {
+      "action": "key",
+      "key": "N"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "Z"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "33-valid"
+    },
+    {
+      "action": "key",
+      "key": "N"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "Z"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "34-valid"
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "Z"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "M"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "35-valid"
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "Z"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "36-valid"
+    },
+    {
+      "action": "key",
+      "key": "N"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "Z"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "M"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "37-valid"
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "N"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "entry-cleared",
+      "timeoutMs": 5000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "38-valid"
+    },
+    {
+      "action": "key",
+      "key": "F"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "N"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "A"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "L"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "İ"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "Z"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "M"
+    },
+    {
+      "action": "waitMs",
+      "ms": 20
+    },
+    {
+      "action": "key",
+      "key": "ENTER"
+    },
+    {
+      "action": "waitForState",
+      "condition": "hiscore-form",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "capture",
+      "name": "39-complete"
+    }
+  ]
+}

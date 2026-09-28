@@ -12,13 +12,13 @@
       "captures": [
         {
           "name": "after-space",
-          "sha256": "ca6b669e9de6b49922660da536535fca8bf3e06a4cff6617bcc74323957ca4ae",
+          "sha256": "520ecdde5d8b85e654a956452f05a8956419ec4e080788ad688d15b393863324",
           "width": 550,
           "height": 400
         },
         {
           "name": "settled",
-          "sha256": "f0e076328da7383163ad6579a3863c9c5d85f56aace3c4182dbccde9d9d2bc32",
+          "sha256": "f11b2e12dcd56578dff295c5bdbd4db25aebd2d2d5eb658defd5e302b12bffc2",
           "width": 550,
           "height": 400
         }
@@ -31,13 +31,13 @@
       "captures": [
         {
           "name": "after-space",
-          "sha256": "d7950ed54ba0b6900f255e9c74d98dde27b37b0b4896752c8cea6fc72d656f84",
+          "sha256": "c80cef6fb73c176c956e2606c04a1412fe93710d2a800606734bab9b7d63e20c",
           "width": 550,
           "height": 400
         },
         {
           "name": "settled",
-          "sha256": "de0f54e84664ea64359af1169fb13f6c6f2f56e886075dd4f9c7fde72296b39a",
+          "sha256": "c80cef6fb73c176c956e2606c04a1412fe93710d2a800606734bab9b7d63e20c",
           "width": 550,
           "height": 400
         }

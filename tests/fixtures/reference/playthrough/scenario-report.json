@@ -1,0 +1,5797 @@
+{
+  "schemaVersion": 1,
+  "task": "C3",
+  "scenario": "f2-playthrough",
+  "run": 1,
+  "startedAt": "2026-09-28T20:24:42.065Z",
+  "endedAt": "2026-09-28T20:26:19.116Z",
+  "ok": true,
+  "steps": [
+    {
+      "index": 0,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 1577,
+      "result": {
+        "condition": "board",
+        "matched": true,
+        "xml64": {
+          "matched": true,
+          "line": "2026-09-28T20:24:50Z 127.0.0.1 \"GET /xml64.php?279562 HTTP/1.1\" -> 200 -",
+          "waitedMs": 6907,
+          "cursor": 34634
+        },
+        "stable": {
+          "stable": true,
+          "samples": 5,
+          "streak": 3,
+          "elapsedMs": 1607,
+          "sha256": "4e34c259315c7babc66142973720ee38ea8cf3e475bf085e91e640abdfee30ac",
+          "maskedBox": null
+        },
+        "gaugeFraction": 0.6706521739130434,
+        "boardSignal": true
+      },
+      "durationMs": 8577
+    },
+    {
+      "index": 1,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 10154,
+      "result": {
+        "stable": true,
+        "samples": 5,
+        "streak": 3,
+        "elapsedMs": 973,
+        "sha256": "7100cb6ae285c6e69ef3730f7b073e50a9e2889bb16cc4b619919d630b43b0d5",
+        "maskedBox": null
+      },
+      "durationMs": 973
+    },
+    {
+      "index": 2,
+      "action": "capture",
+      "ok": true,
+      "atMs": 11127,
+      "result": {
+        "name": "00-selected",
+        "file": "tests/fixtures/reference/playthrough/00-selected.png",
+        "sha256": "ec037b6cdb445e18432310c3844b3a994de6f20ce81a937d56feb0a82d459831",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 76
+    },
+    {
+      "index": 3,
+      "action": "key",
+      "ok": true,
+      "atMs": 11203,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 293
+    },
+    {
+      "index": 4,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 11496,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 5,
+      "action": "key",
+      "ok": true,
+      "atMs": 11517,
+      "result": {
+        "key": "Z",
+        "physical": "KeyZ"
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 6,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 11538,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 7,
+      "action": "key",
+      "ok": true,
+      "atMs": 11559,
+      "result": {
+        "key": "M",
+        "physical": "KeyM"
+      },
+      "durationMs": 11
+    },
+    {
+      "index": 8,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 11570,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 9,
+      "action": "key",
+      "ok": true,
+      "atMs": 11591,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 29
+    },
+    {
+      "index": 10,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 11620,
+      "result": {
+        "stable": true,
+        "samples": 4,
+        "streak": 3,
+        "elapsedMs": 764,
+        "sha256": "b30d342aa8b5b97e2d8a89be87856d5a2035a5595de186f8ad1ce24819a09321",
+        "maskedBox": null
+      },
+      "durationMs": 764
+    },
+    {
+      "index": 11,
+      "action": "capture",
+      "ok": true,
+      "atMs": 12384,
+      "result": {
+        "name": "01-invalid",
+        "file": "tests/fixtures/reference/playthrough/01-invalid.png",
+        "sha256": "66e18b0a09466613a75099ceec8bdac6b8de211b6d8b93424689a7c787371963",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 75
+    },
+    {
+      "index": 12,
+      "action": "key",
+      "ok": true,
+      "atMs": 12459,
+      "result": {
+        "key": "BACKSPACE",
+        "physical": "Backspace"
+      },
+      "durationMs": 2
+    },
+    {
+      "index": 13,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 12461,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 22
+    },
+    {
+      "index": 14,
+      "action": "key",
+      "ok": true,
+      "atMs": 12483,
+      "result": {
+        "key": "BACKSPACE",
+        "physical": "Backspace"
+      },
+      "durationMs": 2
+    },
+    {
+      "index": 15,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 12485,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 16,
+      "action": "key",
+      "ok": true,
+      "atMs": 12505,
+      "result": {
+        "key": "BACKSPACE",
+        "physical": "Backspace"
+      },
+      "durationMs": 32
+    },
+    {
+      "index": 17,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 12537,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 18,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 12557,
+      "result": {
+        "stable": true,
+        "samples": 4,
+        "streak": 3,
+        "elapsedMs": 784,
+        "sha256": "a6b1d98b87a7ad6d8bd1aed6052880a990ec4576d1202d20ee17d997c78ad106",
+        "maskedBox": null
+      },
+      "durationMs": 784
+    },
+    {
+      "index": 19,
+      "action": "capture",
+      "ok": true,
+      "atMs": 13341,
+      "result": {
+        "name": "02-invalid-cleared",
+        "file": "tests/fixtures/reference/playthrough/02-invalid-cleared.png",
+        "sha256": "cbb7bab1b7815d91829793f60d6bf2af4511cdb0c108c3af3b0c4e5e6b0057a0",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 78
+    },
+    {
+      "index": 20,
+      "action": "key",
+      "ok": true,
+      "atMs": 13419,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 37
+    },
+    {
+      "index": 21,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 13456,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 22,
+      "action": "key",
+      "ok": true,
+      "atMs": 13477,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 10
+    },
+    {
+      "index": 23,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 13487,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 24,
+      "action": "key",
+      "ok": true,
+      "atMs": 13508,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 28
+    },
+    {
+      "index": 25,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 13536,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 26,
+      "action": "key",
+      "ok": true,
+      "atMs": 13556,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 15
+    },
+    {
+      "index": 27,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 13571,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 91
+      },
+      "durationMs": 250
+    },
+    {
+      "index": 28,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 13821,
+      "result": {
+        "stable": true,
+        "samples": 7,
+        "streak": 3,
+        "elapsedMs": 1346,
+        "sha256": "dd19016df560dadcd0e74ea0bf9a7c1126baab73e0a8f4c79ccfc6a3570f12e4",
+        "maskedBox": null
+      },
+      "durationMs": 1346
+    },
+    {
+      "index": 29,
+      "action": "capture",
+      "ok": true,
+      "atMs": 15167,
+      "result": {
+        "name": "03-valid-FAL",
+        "file": "tests/fixtures/reference/playthrough/03-valid-FAL.png",
+        "sha256": "eedf2c25ce5b64dfae9b6171ff0c255e7a52a480a46bf1978737ed18ed810966",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 74
+    },
+    {
+      "index": 30,
+      "action": "key",
+      "ok": true,
+      "atMs": 15241,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 2
+    },
+    {
+      "index": 31,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 15243,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 32,
+      "action": "key",
+      "ok": true,
+      "atMs": 15263,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 33,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 15284,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 34,
+      "action": "key",
+      "ok": true,
+      "atMs": 15305,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 14
+    },
+    {
+      "index": 35,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 15319,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 36,
+      "action": "key",
+      "ok": true,
+      "atMs": 15340,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 31
+    },
+    {
+      "index": 37,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 15371,
+      "result": {
+        "stable": true,
+        "samples": 4,
+        "streak": 3,
+        "elapsedMs": 670,
+        "sha256": "b708a0d4d297dc9ee88131edc6f134cbc5f45bfbee67e0e48aa27b3ab43a337e",
+        "maskedBox": null
+      },
+      "durationMs": 670
+    },
+    {
+      "index": 38,
+      "action": "capture",
+      "ok": true,
+      "atMs": 16041,
+      "result": {
+        "name": "04-duplicate-FAL",
+        "file": "tests/fixtures/reference/playthrough/04-duplicate-FAL.png",
+        "sha256": "05bceeff1cc94a9527cc474de280aa282a9743914afd2e6f18a900108936778c",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 43
+    },
+    {
+      "index": 39,
+      "action": "key",
+      "ok": true,
+      "atMs": 16084,
+      "result": {
+        "key": "BACKSPACE",
+        "physical": "Backspace"
+      },
+      "durationMs": 35
+    },
+    {
+      "index": 40,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 16119,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 41,
+      "action": "key",
+      "ok": true,
+      "atMs": 16140,
+      "result": {
+        "key": "BACKSPACE",
+        "physical": "Backspace"
+      },
+      "durationMs": 13
+    },
+    {
+      "index": 42,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 16153,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 22
+    },
+    {
+      "index": 43,
+      "action": "key",
+      "ok": true,
+      "atMs": 16175,
+      "result": {
+        "key": "BACKSPACE",
+        "physical": "Backspace"
+      },
+      "durationMs": 28
+    },
+    {
+      "index": 44,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 16203,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 45,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 16224,
+      "result": {
+        "stable": true,
+        "samples": 5,
+        "streak": 3,
+        "elapsedMs": 921,
+        "sha256": "f8bdb89b4fdefa1129d6682ff2d209ed5866e282db3783fa51f810c8a81d6bfe",
+        "maskedBox": null
+      },
+      "durationMs": 921
+    },
+    {
+      "index": 46,
+      "action": "capture",
+      "ok": true,
+      "atMs": 17145,
+      "result": {
+        "name": "05-duplicate-cleared",
+        "file": "tests/fixtures/reference/playthrough/05-duplicate-cleared.png",
+        "sha256": "5b9e56ddad0957ba9a0293367f6f4ccefaa7834db35b94f9e444320f152b9328",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 107
+    },
+    {
+      "index": 47,
+      "action": "key",
+      "ok": true,
+      "atMs": 17252,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 37
+    },
+    {
+      "index": 48,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 17289,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 49,
+      "action": "key",
+      "ok": true,
+      "atMs": 17310,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 13
+    },
+    {
+      "index": 50,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 17323,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 51,
+      "action": "key",
+      "ok": true,
+      "atMs": 17344,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 27
+    },
+    {
+      "index": 52,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 17371,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 53,
+      "action": "key",
+      "ok": true,
+      "atMs": 17391,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 12
+    },
+    {
+      "index": 54,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 17403,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 132
+      },
+      "durationMs": 240
+    },
+    {
+      "index": 55,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 17643,
+      "result": {
+        "stable": true,
+        "samples": 7,
+        "streak": 3,
+        "elapsedMs": 1397,
+        "sha256": "05a74a3c6adc80d64cce1f2fe438f78e64013472bd12be276e4d374e2b252902",
+        "maskedBox": null
+      },
+      "durationMs": 1397
+    },
+    {
+      "index": 56,
+      "action": "capture",
+      "ok": true,
+      "atMs": 19040,
+      "result": {
+        "name": "06-valid",
+        "file": "tests/fixtures/reference/playthrough/06-valid.png",
+        "sha256": "b26fd9f45c12095366f60feebc952251501beedabe90ba46d1831eb088b079bc",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 44
+    },
+    {
+      "index": 57,
+      "action": "key",
+      "ok": true,
+      "atMs": 19084,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 51
+    },
+    {
+      "index": 58,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 19135,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 59,
+      "action": "key",
+      "ok": true,
+      "atMs": 19157,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 2
+    },
+    {
+      "index": 60,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 19159,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 61,
+      "action": "key",
+      "ok": true,
+      "atMs": 19180,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 23
+    },
+    {
+      "index": 62,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 19203,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 63,
+      "action": "key",
+      "ok": true,
+      "atMs": 19224,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 14
+    },
+    {
+      "index": 64,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 19238,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 91
+      },
+      "durationMs": 248
+    },
+    {
+      "index": 65,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 19486,
+      "result": {
+        "stable": true,
+        "samples": 8,
+        "streak": 3,
+        "elapsedMs": 1600,
+        "sha256": "472c669b01dc546e96099f3cc8330b172cdc47e9f1ef9bd556be1d4c92d042a3",
+        "maskedBox": null
+      },
+      "durationMs": 1600
+    },
+    {
+      "index": 66,
+      "action": "capture",
+      "ok": true,
+      "atMs": 21086,
+      "result": {
+        "name": "07-valid",
+        "file": "tests/fixtures/reference/playthrough/07-valid.png",
+        "sha256": "f1c4112cfea71d1b1c6801f1de6021616c2a18577c0c58794b86ef9528472a6e",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 88
+    },
+    {
+      "index": 67,
+      "action": "key",
+      "ok": true,
+      "atMs": 21174,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 35
+    },
+    {
+      "index": 68,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 21209,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 69,
+      "action": "key",
+      "ok": true,
+      "atMs": 21230,
+      "result": {
+        "key": "N",
+        "physical": "KeyN"
+      },
+      "durationMs": 12
+    },
+    {
+      "index": 70,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 21242,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 71,
+      "action": "key",
+      "ok": true,
+      "atMs": 21263,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 26
+    },
+    {
+      "index": 72,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 21289,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 73,
+      "action": "key",
+      "ok": true,
+      "atMs": 21309,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 19
+    },
+    {
+      "index": 74,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 21328,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 26
+      },
+      "durationMs": 305
+    },
+    {
+      "index": 75,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 21633,
+      "result": {
+        "stable": true,
+        "samples": 7,
+        "streak": 3,
+        "elapsedMs": 1453,
+        "sha256": "b041a469e5e5a35ab6b80f89d79ae87c7046d35f560cfcbf7aec39c827243110",
+        "maskedBox": null
+      },
+      "durationMs": 1453
+    },
+    {
+      "index": 76,
+      "action": "capture",
+      "ok": true,
+      "atMs": 23087,
+      "result": {
+        "name": "08-valid",
+        "file": "tests/fixtures/reference/playthrough/08-valid.png",
+        "sha256": "451e34fbd9c86f095ed05cd1f18d01e6ff660967511f4e00ad25960d0f7fda6a",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 111
+    },
+    {
+      "index": 77,
+      "action": "key",
+      "ok": true,
+      "atMs": 23198,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 50
+    },
+    {
+      "index": 78,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 23248,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 79,
+      "action": "key",
+      "ok": true,
+      "atMs": 23269,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 23
+    },
+    {
+      "index": 80,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 23292,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 81,
+      "action": "key",
+      "ok": true,
+      "atMs": 23313,
+      "result": {
+        "key": "N",
+        "physical": "KeyN"
+      },
+      "durationMs": 11
+    },
+    {
+      "index": 82,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 23324,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 22
+    },
+    {
+      "index": 83,
+      "action": "key",
+      "ok": true,
+      "atMs": 23346,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 38
+    },
+    {
+      "index": 84,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 23384,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 132
+      },
+      "durationMs": 157
+    },
+    {
+      "index": 85,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 23541,
+      "result": {
+        "stable": true,
+        "samples": 8,
+        "streak": 3,
+        "elapsedMs": 1829,
+        "sha256": "b7861b3ca412a52af6417cecb6bb1fdd2d142b6f3b09414ff2ba7f63470676aa",
+        "maskedBox": null
+      },
+      "durationMs": 1829
+    },
+    {
+      "index": 86,
+      "action": "capture",
+      "ok": true,
+      "atMs": 25370,
+      "result": {
+        "name": "09-valid",
+        "file": "tests/fixtures/reference/playthrough/09-valid.png",
+        "sha256": "7d74fea34f295f6a2b7e72e3c82b968666fd384209522fd431ceeeba41470c00",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 108
+    },
+    {
+      "index": 87,
+      "action": "key",
+      "ok": true,
+      "atMs": 25478,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 23
+    },
+    {
+      "index": 88,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 25501,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 89,
+      "action": "key",
+      "ok": true,
+      "atMs": 25522,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 17
+    },
+    {
+      "index": 90,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 25539,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 91,
+      "action": "key",
+      "ok": true,
+      "atMs": 25560,
+      "result": {
+        "key": "Z",
+        "physical": "KeyZ"
+      },
+      "durationMs": 13
+    },
+    {
+      "index": 92,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 25573,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 93,
+      "action": "key",
+      "ok": true,
+      "atMs": 25594,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 42
+    },
+    {
+      "index": 94,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 25636,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 103
+    },
+    {
+      "index": 95,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 25739,
+      "result": {
+        "stable": true,
+        "samples": 7,
+        "streak": 3,
+        "elapsedMs": 1428,
+        "sha256": "b5618d7c71541355c656d0f8f5953ad9df442a429f349293ecc2a83991754a4d",
+        "maskedBox": null
+      },
+      "durationMs": 1428
+    },
+    {
+      "index": 96,
+      "action": "capture",
+      "ok": true,
+      "atMs": 27167,
+      "result": {
+        "name": "10-valid",
+        "file": "tests/fixtures/reference/playthrough/10-valid.png",
+        "sha256": "59c31366786aee22df7eb0bbcf9f68e002fe898be46c89353ab2280b0a10706a",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 84
+    },
+    {
+      "index": 97,
+      "action": "key",
+      "ok": true,
+      "atMs": 27251,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 37
+    },
+    {
+      "index": 98,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 27289,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 99,
+      "action": "key",
+      "ok": true,
+      "atMs": 27310,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 9
+    },
+    {
+      "index": 100,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 27319,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 101,
+      "action": "key",
+      "ok": true,
+      "atMs": 27340,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 30
+    },
+    {
+      "index": 102,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 27371,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 103,
+      "action": "key",
+      "ok": true,
+      "atMs": 27392,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 10
+    },
+    {
+      "index": 104,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 27402,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 448
+    },
+    {
+      "index": 105,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 27850,
+      "result": {
+        "stable": true,
+        "samples": 6,
+        "streak": 3,
+        "elapsedMs": 1167,
+        "sha256": "a4138c6496f70ad9653841139ef60544bb5453790d4573f1ba82f1918e898768",
+        "maskedBox": null
+      },
+      "durationMs": 1167
+    },
+    {
+      "index": 106,
+      "action": "capture",
+      "ok": true,
+      "atMs": 29017,
+      "result": {
+        "name": "11-valid",
+        "file": "tests/fixtures/reference/playthrough/11-valid.png",
+        "sha256": "eee6a0d46652724b03fa96159e6b3fcb6b04c6d10ddf9bae534b665003029dc8",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 75
+    },
+    {
+      "index": 107,
+      "action": "key",
+      "ok": true,
+      "atMs": 29092,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 3
+    },
+    {
+      "index": 108,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 29096,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 109,
+      "action": "key",
+      "ok": true,
+      "atMs": 29117,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 19
+    },
+    {
+      "index": 110,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 29136,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 111,
+      "action": "key",
+      "ok": true,
+      "atMs": 29157,
+      "result": {
+        "key": "N",
+        "physical": "KeyN"
+      },
+      "durationMs": 12
+    },
+    {
+      "index": 112,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 29169,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 113,
+      "action": "key",
+      "ok": true,
+      "atMs": 29190,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 30
+    },
+    {
+      "index": 114,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 29220,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 68
+    },
+    {
+      "index": 115,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 29288,
+      "result": {
+        "stable": true,
+        "samples": 9,
+        "streak": 3,
+        "elapsedMs": 1885,
+        "sha256": "df2528db0ced92fd52f0b0ab6aafc3e80812e1d524109bbdbde8a34c7a9f0516",
+        "maskedBox": null
+      },
+      "durationMs": 1885
+    },
+    {
+      "index": 116,
+      "action": "capture",
+      "ok": true,
+      "atMs": 31173,
+      "result": {
+        "name": "12-valid",
+        "file": "tests/fixtures/reference/playthrough/12-valid.png",
+        "sha256": "fde0ee53f92495a81aa96fd08acb13df2c65f2c21c00470084e369269205c7aa",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 50
+    },
+    {
+      "index": 117,
+      "action": "key",
+      "ok": true,
+      "atMs": 31223,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 34
+    },
+    {
+      "index": 118,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 31257,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 119,
+      "action": "key",
+      "ok": true,
+      "atMs": 31278,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 9
+    },
+    {
+      "index": 120,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 31287,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 121,
+      "action": "key",
+      "ok": true,
+      "atMs": 31308,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 29
+    },
+    {
+      "index": 122,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 31337,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 123,
+      "action": "key",
+      "ok": true,
+      "atMs": 31358,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 12
+    },
+    {
+      "index": 124,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 31370,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 132
+      },
+      "durationMs": 216
+    },
+    {
+      "index": 125,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 31586,
+      "result": {
+        "stable": true,
+        "samples": 7,
+        "streak": 3,
+        "elapsedMs": 1717,
+        "sha256": "684e9ecc473bf35f45088aa6c7e92829ffde0eb644a819dc7aadf55fb404e290",
+        "maskedBox": null
+      },
+      "durationMs": 1717
+    },
+    {
+      "index": 126,
+      "action": "capture",
+      "ok": true,
+      "atMs": 33303,
+      "result": {
+        "name": "13-valid",
+        "file": "tests/fixtures/reference/playthrough/13-valid.png",
+        "sha256": "76f1280c39dca3ede79d540da295b087f5c85aa96b663a0b0fd1cfa14ac73571",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 105
+    },
+    {
+      "index": 127,
+      "action": "key",
+      "ok": true,
+      "atMs": 33408,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 16
+    },
+    {
+      "index": 128,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 33424,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 129,
+      "action": "key",
+      "ok": true,
+      "atMs": 33445,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 11
+    },
+    {
+      "index": 130,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 33456,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 131,
+      "action": "key",
+      "ok": true,
+      "atMs": 33477,
+      "result": {
+        "key": "M",
+        "physical": "KeyM"
+      },
+      "durationMs": 26
+    },
+    {
+      "index": 132,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 33503,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 133,
+      "action": "key",
+      "ok": true,
+      "atMs": 33524,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 16
+    },
+    {
+      "index": 134,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 33540,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 91
+      },
+      "durationMs": 279
+    },
+    {
+      "index": 135,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 33819,
+      "result": {
+        "stable": true,
+        "samples": 6,
+        "streak": 3,
+        "elapsedMs": 1348,
+        "sha256": "6a484b943ac57f18eb467fcb6116a2d01eaf852471b1bb77f2dba551d5bd0481",
+        "maskedBox": null
+      },
+      "durationMs": 1348
+    },
+    {
+      "index": 136,
+      "action": "capture",
+      "ok": true,
+      "atMs": 35167,
+      "result": {
+        "name": "14-valid",
+        "file": "tests/fixtures/reference/playthrough/14-valid.png",
+        "sha256": "815705e86a22ead1a847c6d87c5b1b0bdd64009fa8b4d53b1c30b737cb9864a6",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 79
+    },
+    {
+      "index": 137,
+      "action": "key",
+      "ok": true,
+      "atMs": 35246,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 19
+    },
+    {
+      "index": 138,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 35265,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 139,
+      "action": "key",
+      "ok": true,
+      "atMs": 35286,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 3
+    },
+    {
+      "index": 140,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 35289,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 141,
+      "action": "key",
+      "ok": true,
+      "atMs": 35310,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 28
+    },
+    {
+      "index": 142,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 35338,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 143,
+      "action": "key",
+      "ok": true,
+      "atMs": 35359,
+      "result": {
+        "key": "M",
+        "physical": "KeyM"
+      },
+      "durationMs": 12
+    },
+    {
+      "index": 144,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 35371,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 145,
+      "action": "key",
+      "ok": true,
+      "atMs": 35392,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 35
+    },
+    {
+      "index": 146,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 35427,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 91
+    },
+    {
+      "index": 147,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 35518,
+      "result": {
+        "stable": true,
+        "samples": 7,
+        "streak": 3,
+        "elapsedMs": 1554,
+        "sha256": "b77a8bfe970a393f31af92cc0b7dfc7264b40c6a1c38d77eff8616bbb7115f4a",
+        "maskedBox": null
+      },
+      "durationMs": 1554
+    },
+    {
+      "index": 148,
+      "action": "capture",
+      "ok": true,
+      "atMs": 37072,
+      "result": {
+        "name": "15-valid",
+        "file": "tests/fixtures/reference/playthrough/15-valid.png",
+        "sha256": "fb29778105b17bc8d078c18d660b697e0baa08d9bfeab771becdffab2de8a6c1",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 44
+    },
+    {
+      "index": 149,
+      "action": "key",
+      "ok": true,
+      "atMs": 37116,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 150,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 37136,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 151,
+      "action": "key",
+      "ok": true,
+      "atMs": 37156,
+      "result": {
+        "key": "M",
+        "physical": "KeyM"
+      },
+      "durationMs": 2
+    },
+    {
+      "index": 152,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 37158,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 153,
+      "action": "key",
+      "ok": true,
+      "atMs": 37180,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 4
+    },
+    {
+      "index": 154,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 37184,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 155,
+      "action": "key",
+      "ok": true,
+      "atMs": 37205,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 27
+    },
+    {
+      "index": 156,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 37232,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 157,
+      "action": "key",
+      "ok": true,
+      "atMs": 37253,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 15
+    },
+    {
+      "index": 158,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 37268,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 99
+      },
+      "durationMs": 224
+    },
+    {
+      "index": 159,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 37492,
+      "result": {
+        "stable": true,
+        "samples": 8,
+        "streak": 3,
+        "elapsedMs": 1546,
+        "sha256": "90fc15ad9e770aa7b6843ffadf9c08caf630371d86884175cce59f0053d4501d",
+        "maskedBox": null
+      },
+      "durationMs": 1546
+    },
+    {
+      "index": 160,
+      "action": "capture",
+      "ok": true,
+      "atMs": 39038,
+      "result": {
+        "name": "16-valid",
+        "file": "tests/fixtures/reference/playthrough/16-valid.png",
+        "sha256": "4b5c7e2a9582eaadf850ad720bd57c8437c43e59a3494203e65c90c8c10675e9",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 81
+    },
+    {
+      "index": 161,
+      "action": "key",
+      "ok": true,
+      "atMs": 39119,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 34
+    },
+    {
+      "index": 162,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 39153,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 163,
+      "action": "key",
+      "ok": true,
+      "atMs": 39174,
+      "result": {
+        "key": "M",
+        "physical": "KeyM"
+      },
+      "durationMs": 11
+    },
+    {
+      "index": 164,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 39185,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 165,
+      "action": "key",
+      "ok": true,
+      "atMs": 39206,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 12
+    },
+    {
+      "index": 166,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 39218,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 167,
+      "action": "key",
+      "ok": true,
+      "atMs": 39238,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 13
+    },
+    {
+      "index": 168,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 39251,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 169,
+      "action": "key",
+      "ok": true,
+      "atMs": 39272,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 32
+    },
+    {
+      "index": 170,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 39304,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 103
+    },
+    {
+      "index": 171,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 39407,
+      "result": {
+        "stable": true,
+        "samples": 8,
+        "streak": 3,
+        "elapsedMs": 1685,
+        "sha256": "3f4827fc21ff31f4a1c2d43d54080b72534e9a484f4561127311eca8f0bf3bd0",
+        "maskedBox": null
+      },
+      "durationMs": 1685
+    },
+    {
+      "index": 172,
+      "action": "capture",
+      "ok": true,
+      "atMs": 41092,
+      "result": {
+        "name": "17-valid",
+        "file": "tests/fixtures/reference/playthrough/17-valid.png",
+        "sha256": "50aab573626b56bb367e1b44ef730992a162ec13bd43c96c513302726db06132",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 67
+    },
+    {
+      "index": 173,
+      "action": "key",
+      "ok": true,
+      "atMs": 41159,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 2
+    },
+    {
+      "index": 174,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 41161,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 175,
+      "action": "key",
+      "ok": true,
+      "atMs": 41182,
+      "result": {
+        "key": "M",
+        "physical": "KeyM"
+      },
+      "durationMs": 4
+    },
+    {
+      "index": 176,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 41187,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 177,
+      "action": "key",
+      "ok": true,
+      "atMs": 41207,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 26
+    },
+    {
+      "index": 178,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 41233,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 179,
+      "action": "key",
+      "ok": true,
+      "atMs": 41254,
+      "result": {
+        "key": "N",
+        "physical": "KeyN"
+      },
+      "durationMs": 16
+    },
+    {
+      "index": 180,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 41270,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 181,
+      "action": "key",
+      "ok": true,
+      "atMs": 41291,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 33
+    },
+    {
+      "index": 182,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 41324,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 82
+    },
+    {
+      "index": 183,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 41406,
+      "result": {
+        "stable": true,
+        "samples": 8,
+        "streak": 3,
+        "elapsedMs": 1629,
+        "sha256": "08159b3fa03e94cda658ad530e686a717c228451ed6bcf7b8f9c5b0149631070",
+        "maskedBox": null
+      },
+      "durationMs": 1629
+    },
+    {
+      "index": 184,
+      "action": "capture",
+      "ok": true,
+      "atMs": 43035,
+      "result": {
+        "name": "18-valid",
+        "file": "tests/fixtures/reference/playthrough/18-valid.png",
+        "sha256": "919bc67d159c7161439f7bd95534fba2dbc492786433a79771a700ff57d0791f",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 81
+    },
+    {
+      "index": 185,
+      "action": "key",
+      "ok": true,
+      "atMs": 43116,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 35
+    },
+    {
+      "index": 186,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 43151,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 22
+    },
+    {
+      "index": 187,
+      "action": "key",
+      "ok": true,
+      "atMs": 43173,
+      "result": {
+        "key": "N",
+        "physical": "KeyN"
+      },
+      "durationMs": 12
+    },
+    {
+      "index": 188,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 43185,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 189,
+      "action": "key",
+      "ok": true,
+      "atMs": 43205,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 27
+    },
+    {
+      "index": 190,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 43232,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 191,
+      "action": "key",
+      "ok": true,
+      "atMs": 43254,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 13
+    },
+    {
+      "index": 192,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 43267,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 193,
+      "action": "key",
+      "ok": true,
+      "atMs": 43289,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 13
+    },
+    {
+      "index": 194,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 43302,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 418
+    },
+    {
+      "index": 195,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 43720,
+      "result": {
+        "stable": true,
+        "samples": 7,
+        "streak": 3,
+        "elapsedMs": 1484,
+        "sha256": "9a4f167abfb4a53afcdf0653755637b1589cafb3031e3efa208414501e05deb5",
+        "maskedBox": null
+      },
+      "durationMs": 1484
+    },
+    {
+      "index": 196,
+      "action": "capture",
+      "ok": true,
+      "atMs": 45204,
+      "result": {
+        "name": "19-bonus-word",
+        "file": "tests/fixtures/reference/playthrough/19-bonus-word.png",
+        "sha256": "093fe8be067f2793d2f193179aa649c3f564c5b89b068f904e35ee99b510d873",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 82
+    },
+    {
+      "index": 197,
+      "action": "key",
+      "ok": true,
+      "atMs": 45286,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 33
+    },
+    {
+      "index": 198,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 45319,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 199,
+      "action": "key",
+      "ok": true,
+      "atMs": 45340,
+      "result": {
+        "key": "Z",
+        "physical": "KeyZ"
+      },
+      "durationMs": 14
+    },
+    {
+      "index": 200,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 45354,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 22
+    },
+    {
+      "index": 201,
+      "action": "key",
+      "ok": true,
+      "atMs": 45376,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 26
+    },
+    {
+      "index": 202,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 45402,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 203,
+      "action": "key",
+      "ok": true,
+      "atMs": 45423,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 13
+    },
+    {
+      "index": 204,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 45436,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 205,
+      "action": "key",
+      "ok": true,
+      "atMs": 45457,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 33
+    },
+    {
+      "index": 206,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 45490,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 79
+    },
+    {
+      "index": 207,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 45569,
+      "result": {
+        "stable": true,
+        "samples": 8,
+        "streak": 3,
+        "elapsedMs": 1549,
+        "sha256": "81e736a969545db1b3067020742ed196b68bd2b755610df261b2ae98b5cef866",
+        "maskedBox": null
+      },
+      "durationMs": 1549
+    },
+    {
+      "index": 208,
+      "action": "capture",
+      "ok": true,
+      "atMs": 47118,
+      "result": {
+        "name": "20-valid",
+        "file": "tests/fixtures/reference/playthrough/20-valid.png",
+        "sha256": "2064ae66df2307b493e21ee7bf8275596c9ccb0b4b075cf9ac59d4a2e8f9202c",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 84
+    },
+    {
+      "index": 209,
+      "action": "key",
+      "ok": true,
+      "atMs": 47202,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 33
+    },
+    {
+      "index": 210,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 47235,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 211,
+      "action": "key",
+      "ok": true,
+      "atMs": 47256,
+      "result": {
+        "key": "Z",
+        "physical": "KeyZ"
+      },
+      "durationMs": 14
+    },
+    {
+      "index": 212,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 47270,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 213,
+      "action": "key",
+      "ok": true,
+      "atMs": 47291,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 33
+    },
+    {
+      "index": 214,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 47325,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 215,
+      "action": "key",
+      "ok": true,
+      "atMs": 47345,
+      "result": {
+        "key": "M",
+        "physical": "KeyM"
+      },
+      "durationMs": 10
+    },
+    {
+      "index": 216,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 47355,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 217,
+      "action": "key",
+      "ok": true,
+      "atMs": 47376,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 33
+    },
+    {
+      "index": 218,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 47410,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 79
+    },
+    {
+      "index": 219,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 47489,
+      "result": {
+        "stable": true,
+        "samples": 8,
+        "streak": 3,
+        "elapsedMs": 1589,
+        "sha256": "01555ebf0c26dbd3c797dd2e745f8154c2234a19e52aacefff5acaf2fce5610b",
+        "maskedBox": null
+      },
+      "durationMs": 1589
+    },
+    {
+      "index": 220,
+      "action": "capture",
+      "ok": true,
+      "atMs": 49078,
+      "result": {
+        "name": "21-valid",
+        "file": "tests/fixtures/reference/playthrough/21-valid.png",
+        "sha256": "ae57cf6a5c07c63a7f3c863e06c6758e686e94ff993b6c72f18a163fccacd464",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 43
+    },
+    {
+      "index": 221,
+      "action": "key",
+      "ok": true,
+      "atMs": 49121,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 39
+    },
+    {
+      "index": 222,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 49160,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 223,
+      "action": "key",
+      "ok": true,
+      "atMs": 49181,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 7
+    },
+    {
+      "index": 224,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 49188,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 225,
+      "action": "key",
+      "ok": true,
+      "atMs": 49209,
+      "result": {
+        "key": "N",
+        "physical": "KeyN"
+      },
+      "durationMs": 33
+    },
+    {
+      "index": 226,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 49242,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 227,
+      "action": "key",
+      "ok": true,
+      "atMs": 49263,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 6
+    },
+    {
+      "index": 228,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 49269,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 229,
+      "action": "key",
+      "ok": true,
+      "atMs": 49290,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 37
+    },
+    {
+      "index": 230,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 49327,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 91
+    },
+    {
+      "index": 231,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 49418,
+      "result": {
+        "stable": true,
+        "samples": 12,
+        "streak": 3,
+        "elapsedMs": 6998,
+        "sha256": "7df6c61def6911ac10cc3d964748173770527af98482d2ac106fc5c9a7d1a6de",
+        "maskedBox": null
+      },
+      "durationMs": 6998
+    },
+    {
+      "index": 232,
+      "action": "capture",
+      "ok": true,
+      "atMs": 56416,
+      "result": {
+        "name": "22-valid",
+        "file": "tests/fixtures/reference/playthrough/22-valid.png",
+        "sha256": "3aca01341c5645cd29aff35a2d906c572528308ad64128a048f16179a192cec6",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 99
+    },
+    {
+      "index": 233,
+      "action": "key",
+      "ok": true,
+      "atMs": 56515,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 74
+    },
+    {
+      "index": 234,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 56589,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 22
+    },
+    {
+      "index": 235,
+      "action": "key",
+      "ok": true,
+      "atMs": 56611,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 27
+    },
+    {
+      "index": 236,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 56638,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 237,
+      "action": "key",
+      "ok": true,
+      "atMs": 56658,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 26
+    },
+    {
+      "index": 238,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 56684,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 239,
+      "action": "key",
+      "ok": true,
+      "atMs": 56705,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 4
+    },
+    {
+      "index": 240,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 56709,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 241,
+      "action": "key",
+      "ok": true,
+      "atMs": 56730,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 13
+    },
+    {
+      "index": 242,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 56743,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 123
+    },
+    {
+      "index": 243,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 56866,
+      "result": {
+        "stable": true,
+        "samples": 7,
+        "streak": 3,
+        "elapsedMs": 2630,
+        "sha256": "8d9f1feb8c0491493be47936f8d8f3c9fae6abad8a5b71f17a20bfb8962e4697",
+        "maskedBox": null
+      },
+      "durationMs": 2630
+    },
+    {
+      "index": 244,
+      "action": "capture",
+      "ok": true,
+      "atMs": 59496,
+      "result": {
+        "name": "23-valid",
+        "file": "tests/fixtures/reference/playthrough/23-valid.png",
+        "sha256": "60290addb73e6393d10ed84cd449e49be424eff3d06b298d5f6b94e3df66ac31",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 157
+    },
+    {
+      "index": 245,
+      "action": "key",
+      "ok": true,
+      "atMs": 59653,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 40
+    },
+    {
+      "index": 246,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 59693,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 247,
+      "action": "key",
+      "ok": true,
+      "atMs": 59714,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 237
+    },
+    {
+      "index": 248,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 59951,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 249,
+      "action": "key",
+      "ok": true,
+      "atMs": 59972,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 52
+    },
+    {
+      "index": 250,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 60024,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 22
+    },
+    {
+      "index": 251,
+      "action": "key",
+      "ok": true,
+      "atMs": 60046,
+      "result": {
+        "key": "Z",
+        "physical": "KeyZ"
+      },
+      "durationMs": 84
+    },
+    {
+      "index": 252,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 60130,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 253,
+      "action": "key",
+      "ok": true,
+      "atMs": 60152,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 173
+    },
+    {
+      "index": 254,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 60325,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 306
+    },
+    {
+      "index": 255,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 60632,
+      "result": {
+        "stable": true,
+        "samples": 5,
+        "streak": 3,
+        "elapsedMs": 1885,
+        "sha256": "1195b6498de3f95e520e61cff1da0e1347cee6a4cfae1d4b4bd3d0662793e508",
+        "maskedBox": null
+      },
+      "durationMs": 1885
+    },
+    {
+      "index": 256,
+      "action": "capture",
+      "ok": true,
+      "atMs": 62517,
+      "result": {
+        "name": "24-valid",
+        "file": "tests/fixtures/reference/playthrough/24-valid.png",
+        "sha256": "096eddb6324333460fa6bca5f3c46c04cf76e66c69545a060807fbc5e2b5b2e7",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 293
+    },
+    {
+      "index": 257,
+      "action": "key",
+      "ok": true,
+      "atMs": 62810,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 64
+    },
+    {
+      "index": 258,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 62874,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 259,
+      "action": "key",
+      "ok": true,
+      "atMs": 62895,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 394
+    },
+    {
+      "index": 260,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 63289,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 22
+    },
+    {
+      "index": 261,
+      "action": "key",
+      "ok": true,
+      "atMs": 63311,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 84
+    },
+    {
+      "index": 262,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 63395,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 263,
+      "action": "key",
+      "ok": true,
+      "atMs": 63416,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 53
+    },
+    {
+      "index": 264,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 63469,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 265,
+      "action": "key",
+      "ok": true,
+      "atMs": 63490,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 46
+    },
+    {
+      "index": 266,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 63536,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 267,
+      "action": "key",
+      "ok": true,
+      "atMs": 63556,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 28
+    },
+    {
+      "index": 268,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 63584,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 307
+    },
+    {
+      "index": 269,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 63891,
+      "result": {
+        "stable": true,
+        "samples": 6,
+        "streak": 3,
+        "elapsedMs": 1338,
+        "sha256": "8d817deca5701a8488e1205d47242b0be9f25147ab53c8e077b8e955ae26cd7d",
+        "maskedBox": null
+      },
+      "durationMs": 1338
+    },
+    {
+      "index": 270,
+      "action": "capture",
+      "ok": true,
+      "atMs": 65229,
+      "result": {
+        "name": "25-valid",
+        "file": "tests/fixtures/reference/playthrough/25-valid.png",
+        "sha256": "0c94d55c507066645d1ce43f732865c3aaf71197a886eca11935ce6dfe52e0d0",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 52
+    },
+    {
+      "index": 271,
+      "action": "key",
+      "ok": true,
+      "atMs": 65281,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 59
+    },
+    {
+      "index": 272,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 65340,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 273,
+      "action": "key",
+      "ok": true,
+      "atMs": 65361,
+      "result": {
+        "key": "Z",
+        "physical": "KeyZ"
+      },
+      "durationMs": 5
+    },
+    {
+      "index": 274,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 65366,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 22
+    },
+    {
+      "index": 275,
+      "action": "key",
+      "ok": true,
+      "atMs": 65388,
+      "result": {
+        "key": "N",
+        "physical": "KeyN"
+      },
+      "durationMs": 2
+    },
+    {
+      "index": 276,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 65390,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 277,
+      "action": "key",
+      "ok": true,
+      "atMs": 65411,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 54
+    },
+    {
+      "index": 278,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 65465,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 22
+    },
+    {
+      "index": 279,
+      "action": "key",
+      "ok": true,
+      "atMs": 65487,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 30
+    },
+    {
+      "index": 280,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 65517,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 281,
+      "action": "key",
+      "ok": true,
+      "atMs": 65538,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 282,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 65559,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 153
+    },
+    {
+      "index": 283,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 65712,
+      "result": {
+        "stable": true,
+        "samples": 6,
+        "streak": 3,
+        "elapsedMs": 1645,
+        "sha256": "2fadaacf25c86c26c426deeb275a5a6e250df14b2b841d1c51379b2d7bf77705",
+        "maskedBox": null
+      },
+      "durationMs": 1645
+    },
+    {
+      "index": 284,
+      "action": "capture",
+      "ok": true,
+      "atMs": 67357,
+      "result": {
+        "name": "26-valid",
+        "file": "tests/fixtures/reference/playthrough/26-valid.png",
+        "sha256": "ff375c0ad365ddfdaf2016304627b2630c4ec4499f4fb08d3b0973804c83d391",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 155
+    },
+    {
+      "index": 285,
+      "action": "key",
+      "ok": true,
+      "atMs": 67512,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 56
+    },
+    {
+      "index": 286,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 67568,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 287,
+      "action": "key",
+      "ok": true,
+      "atMs": 67589,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 2
+    },
+    {
+      "index": 288,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 67591,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 289,
+      "action": "key",
+      "ok": true,
+      "atMs": 67611,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 152
+    },
+    {
+      "index": 290,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 67763,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 291,
+      "action": "key",
+      "ok": true,
+      "atMs": 67783,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 36
+    },
+    {
+      "index": 292,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 67819,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 293,
+      "action": "key",
+      "ok": true,
+      "atMs": 67840,
+      "result": {
+        "key": "N",
+        "physical": "KeyN"
+      },
+      "durationMs": 50
+    },
+    {
+      "index": 294,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 67891,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 295,
+      "action": "key",
+      "ok": true,
+      "atMs": 67912,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 36
+    },
+    {
+      "index": 296,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 67948,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 366
+    },
+    {
+      "index": 297,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 68314,
+      "result": {
+        "stable": true,
+        "samples": 8,
+        "streak": 3,
+        "elapsedMs": 1903,
+        "sha256": "c14a32ea8740b62c955aff30e63a31573d6e098d56c7703a5ae591911ecc069b",
+        "maskedBox": null
+      },
+      "durationMs": 1903
+    },
+    {
+      "index": 298,
+      "action": "capture",
+      "ok": true,
+      "atMs": 70217,
+      "result": {
+        "name": "27-valid",
+        "file": "tests/fixtures/reference/playthrough/27-valid.png",
+        "sha256": "6d977e31ba4124c2d673661ab2fc69fe08bca2831f8d273112a902d7f15bfd16",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 83
+    },
+    {
+      "index": 299,
+      "action": "key",
+      "ok": true,
+      "atMs": 70300,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 56
+    },
+    {
+      "index": 300,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 70356,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 301,
+      "action": "key",
+      "ok": true,
+      "atMs": 70377,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 35
+    },
+    {
+      "index": 302,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 70412,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 303,
+      "action": "key",
+      "ok": true,
+      "atMs": 70433,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 18
+    },
+    {
+      "index": 304,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 70451,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 305,
+      "action": "key",
+      "ok": true,
+      "atMs": 70472,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 30
+    },
+    {
+      "index": 306,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 70502,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 307,
+      "action": "key",
+      "ok": true,
+      "atMs": 70523,
+      "result": {
+        "key": "Z",
+        "physical": "KeyZ"
+      },
+      "durationMs": 13
+    },
+    {
+      "index": 308,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 70536,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 309,
+      "action": "key",
+      "ok": true,
+      "atMs": 70557,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 30
+    },
+    {
+      "index": 310,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 70587,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 1
+      },
+      "durationMs": 85
+    },
+    {
+      "index": 311,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 70672,
+      "result": {
+        "stable": true,
+        "samples": 5,
+        "streak": 3,
+        "elapsedMs": 1679,
+        "sha256": "bff7f808e2d9ff20d43558be9d376b41c5cdfc56ad68e83a6e7eaa1f0809a654",
+        "maskedBox": null
+      },
+      "durationMs": 1679
+    },
+    {
+      "index": 312,
+      "action": "capture",
+      "ok": true,
+      "atMs": 72351,
+      "result": {
+        "name": "28-valid",
+        "file": "tests/fixtures/reference/playthrough/28-valid.png",
+        "sha256": "205e0e40320ff276e246f5acaeca0bd1fbba95673af48650209d2ccd9aa6c3dd",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 85
+    },
+    {
+      "index": 313,
+      "action": "key",
+      "ok": true,
+      "atMs": 72436,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 39
+    },
+    {
+      "index": 314,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 72475,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 315,
+      "action": "key",
+      "ok": true,
+      "atMs": 72496,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 28
+    },
+    {
+      "index": 316,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 72524,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 317,
+      "action": "key",
+      "ok": true,
+      "atMs": 72545,
+      "result": {
+        "key": "N",
+        "physical": "KeyN"
+      },
+      "durationMs": 8
+    },
+    {
+      "index": 318,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 72553,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 319,
+      "action": "key",
+      "ok": true,
+      "atMs": 72574,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 13
+    },
+    {
+      "index": 320,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 72587,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 321,
+      "action": "key",
+      "ok": true,
+      "atMs": 72608,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 27
+    },
+    {
+      "index": 322,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 72635,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 323,
+      "action": "key",
+      "ok": true,
+      "atMs": 72656,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 19
+    },
+    {
+      "index": 324,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 72675,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 1
+      },
+      "durationMs": 157
+    },
+    {
+      "index": 325,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 72833,
+      "result": {
+        "stable": true,
+        "samples": 6,
+        "streak": 3,
+        "elapsedMs": 1266,
+        "sha256": "dfe60b03cc49feb1b44ad0bf2e0215b545fa16a890c33d68e7e60ddcc277b635",
+        "maskedBox": null
+      },
+      "durationMs": 1266
+    },
+    {
+      "index": 326,
+      "action": "capture",
+      "ok": true,
+      "atMs": 74099,
+      "result": {
+        "name": "29-valid",
+        "file": "tests/fixtures/reference/playthrough/29-valid.png",
+        "sha256": "9d85b6c650f0b4dedf1ce453ea3f60ba9294a20862775efafb64fe95d2e333b7",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 84
+    },
+    {
+      "index": 327,
+      "action": "key",
+      "ok": true,
+      "atMs": 74183,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 40
+    },
+    {
+      "index": 328,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 74223,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 22
+    },
+    {
+      "index": 329,
+      "action": "key",
+      "ok": true,
+      "atMs": 74245,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 6
+    },
+    {
+      "index": 330,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 74251,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 22
+    },
+    {
+      "index": 331,
+      "action": "key",
+      "ok": true,
+      "atMs": 74273,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 44
+    },
+    {
+      "index": 332,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 74317,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 333,
+      "action": "key",
+      "ok": true,
+      "atMs": 74338,
+      "result": {
+        "key": "Z",
+        "physical": "KeyZ"
+      },
+      "durationMs": 2
+    },
+    {
+      "index": 334,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 74340,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 335,
+      "action": "key",
+      "ok": true,
+      "atMs": 74361,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 26
+    },
+    {
+      "index": 336,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 74387,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 337,
+      "action": "key",
+      "ok": true,
+      "atMs": 74408,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 15
+    },
+    {
+      "index": 338,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 74423,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 128
+      },
+      "durationMs": 248
+    },
+    {
+      "index": 339,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 74671,
+      "result": {
+        "stable": true,
+        "samples": 7,
+        "streak": 3,
+        "elapsedMs": 1469,
+        "sha256": "601d7cd7b1e542858d286cf36c78b95701b93ec8e33def221f1f2653b124b4dc",
+        "maskedBox": null
+      },
+      "durationMs": 1469
+    },
+    {
+      "index": 340,
+      "action": "capture",
+      "ok": true,
+      "atMs": 76140,
+      "result": {
+        "name": "30-valid",
+        "file": "tests/fixtures/reference/playthrough/30-valid.png",
+        "sha256": "2764f8115caefb859eda917da54c3a1c6dbc16819581d917dcac7b6fbcd612bb",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 43
+    },
+    {
+      "index": 341,
+      "action": "key",
+      "ok": true,
+      "atMs": 76183,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 36
+    },
+    {
+      "index": 342,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 76219,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 343,
+      "action": "key",
+      "ok": true,
+      "atMs": 76240,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 11
+    },
+    {
+      "index": 344,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 76251,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 345,
+      "action": "key",
+      "ok": true,
+      "atMs": 76272,
+      "result": {
+        "key": "M",
+        "physical": "KeyM"
+      },
+      "durationMs": 29
+    },
+    {
+      "index": 346,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 76301,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 347,
+      "action": "key",
+      "ok": true,
+      "atMs": 76322,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 12
+    },
+    {
+      "index": 348,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 76334,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 349,
+      "action": "key",
+      "ok": true,
+      "atMs": 76355,
+      "result": {
+        "key": "N",
+        "physical": "KeyN"
+      },
+      "durationMs": 28
+    },
+    {
+      "index": 350,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 76383,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 351,
+      "action": "key",
+      "ok": true,
+      "atMs": 76404,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 14
+    },
+    {
+      "index": 352,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 76418,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 384
+    },
+    {
+      "index": 353,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 76802,
+      "result": {
+        "stable": true,
+        "samples": 7,
+        "streak": 3,
+        "elapsedMs": 1466,
+        "sha256": "3d7ff281755f3c54f93b95603742c9c038fae449bdc11b0131e1e3e9da6bcfc4",
+        "maskedBox": null
+      },
+      "durationMs": 1466
+    },
+    {
+      "index": 354,
+      "action": "capture",
+      "ok": true,
+      "atMs": 78268,
+      "result": {
+        "name": "31-valid",
+        "file": "tests/fixtures/reference/playthrough/31-valid.png",
+        "sha256": "a4dd29933620810f5c13a3fa67bc4d9c0cba863e2289dd82718c00a9b96cb235",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 82
+    },
+    {
+      "index": 355,
+      "action": "key",
+      "ok": true,
+      "atMs": 78350,
+      "result": {
+        "key": "M",
+        "physical": "KeyM"
+      },
+      "durationMs": 39
+    },
+    {
+      "index": 356,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 78389,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 357,
+      "action": "key",
+      "ok": true,
+      "atMs": 78411,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 7
+    },
+    {
+      "index": 358,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 78418,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 359,
+      "action": "key",
+      "ok": true,
+      "atMs": 78439,
+      "result": {
+        "key": "Z",
+        "physical": "KeyZ"
+      },
+      "durationMs": 29
+    },
+    {
+      "index": 360,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 78468,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 361,
+      "action": "key",
+      "ok": true,
+      "atMs": 78489,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 12
+    },
+    {
+      "index": 362,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 78501,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 363,
+      "action": "key",
+      "ok": true,
+      "atMs": 78522,
+      "result": {
+        "key": "N",
+        "physical": "KeyN"
+      },
+      "durationMs": 28
+    },
+    {
+      "index": 364,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 78550,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 365,
+      "action": "key",
+      "ok": true,
+      "atMs": 78570,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 13
+    },
+    {
+      "index": 366,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 78583,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 387
+    },
+    {
+      "index": 367,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 78970,
+      "result": {
+        "stable": true,
+        "samples": 6,
+        "streak": 3,
+        "elapsedMs": 1168,
+        "sha256": "ee1e1f8a9e5a653ffb57b8838d122547c5d5f6488b2d523c6172cbc1adef4a55",
+        "maskedBox": null
+      },
+      "durationMs": 1168
+    },
+    {
+      "index": 368,
+      "action": "capture",
+      "ok": true,
+      "atMs": 80138,
+      "result": {
+        "name": "32-valid",
+        "file": "tests/fixtures/reference/playthrough/32-valid.png",
+        "sha256": "44133eec40e799696e175f47d227fffda76988c202c45e3c3cc0e9a7ee3b4c77",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 467
+    },
+    {
+      "index": 369,
+      "action": "key",
+      "ok": true,
+      "atMs": 80605,
+      "result": {
+        "key": "N",
+        "physical": "KeyN"
+      },
+      "durationMs": 43
+    },
+    {
+      "index": 370,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 80648,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 371,
+      "action": "key",
+      "ok": true,
+      "atMs": 80669,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 78
+    },
+    {
+      "index": 372,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 80747,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 373,
+      "action": "key",
+      "ok": true,
+      "atMs": 80768,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 45
+    },
+    {
+      "index": 374,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 80814,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 375,
+      "action": "key",
+      "ok": true,
+      "atMs": 80835,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 37
+    },
+    {
+      "index": 376,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 80872,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 377,
+      "action": "key",
+      "ok": true,
+      "atMs": 80893,
+      "result": {
+        "key": "Z",
+        "physical": "KeyZ"
+      },
+      "durationMs": 55
+    },
+    {
+      "index": 378,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 80948,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 22
+    },
+    {
+      "index": 379,
+      "action": "key",
+      "ok": true,
+      "atMs": 80970,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 60
+    },
+    {
+      "index": 380,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 81030,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 231
+    },
+    {
+      "index": 381,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 81261,
+      "result": {
+        "stable": true,
+        "samples": 7,
+        "streak": 3,
+        "elapsedMs": 1795,
+        "sha256": "ab205852a98049c492f71cb63a5012b386be4cd182444fdfa6fd863bb1f7adcc",
+        "maskedBox": null
+      },
+      "durationMs": 1795
+    },
+    {
+      "index": 382,
+      "action": "capture",
+      "ok": true,
+      "atMs": 83057,
+      "result": {
+        "name": "33-valid",
+        "file": "tests/fixtures/reference/playthrough/33-valid.png",
+        "sha256": "84a0b6bfcf34aa2ee13fc94b9979b8c1133817594cb43aedd82621531ddef34f",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 45
+    },
+    {
+      "index": 383,
+      "action": "key",
+      "ok": true,
+      "atMs": 83102,
+      "result": {
+        "key": "N",
+        "physical": "KeyN"
+      },
+      "durationMs": 38
+    },
+    {
+      "index": 384,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 83140,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 385,
+      "action": "key",
+      "ok": true,
+      "atMs": 83161,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 7
+    },
+    {
+      "index": 386,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 83168,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 387,
+      "action": "key",
+      "ok": true,
+      "atMs": 83189,
+      "result": {
+        "key": "Z",
+        "physical": "KeyZ"
+      },
+      "durationMs": 31
+    },
+    {
+      "index": 388,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 83220,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 389,
+      "action": "key",
+      "ok": true,
+      "atMs": 83241,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 13
+    },
+    {
+      "index": 390,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 83254,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 22
+    },
+    {
+      "index": 391,
+      "action": "key",
+      "ok": true,
+      "atMs": 83276,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 32
+    },
+    {
+      "index": 392,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 83308,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 393,
+      "action": "key",
+      "ok": true,
+      "atMs": 83329,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 6
+    },
+    {
+      "index": 394,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 83335,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 113
+      },
+      "durationMs": 249
+    },
+    {
+      "index": 395,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 83584,
+      "result": {
+        "stable": true,
+        "samples": 6,
+        "streak": 3,
+        "elapsedMs": 1556,
+        "sha256": "6d017f09d70809231ca2c0d9721fd53601e63fab19a2596326a334d603e8b07a",
+        "maskedBox": null
+      },
+      "durationMs": 1556
+    },
+    {
+      "index": 396,
+      "action": "capture",
+      "ok": true,
+      "atMs": 85140,
+      "result": {
+        "name": "34-valid",
+        "file": "tests/fixtures/reference/playthrough/34-valid.png",
+        "sha256": "4c1a06b43ba9c86985972d3bc967066af4873b77a5cf692af648f27536f1472a",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 44
+    },
+    {
+      "index": 397,
+      "action": "key",
+      "ok": true,
+      "atMs": 85185,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 34
+    },
+    {
+      "index": 398,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 85219,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 399,
+      "action": "key",
+      "ok": true,
+      "atMs": 85240,
+      "result": {
+        "key": "Z",
+        "physical": "KeyZ"
+      },
+      "durationMs": 12
+    },
+    {
+      "index": 400,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 85252,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 401,
+      "action": "key",
+      "ok": true,
+      "atMs": 85273,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 31
+    },
+    {
+      "index": 402,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 85304,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 403,
+      "action": "key",
+      "ok": true,
+      "atMs": 85325,
+      "result": {
+        "key": "M",
+        "physical": "KeyM"
+      },
+      "durationMs": 14
+    },
+    {
+      "index": 404,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 85338,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 405,
+      "action": "key",
+      "ok": true,
+      "atMs": 85359,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 28
+    },
+    {
+      "index": 406,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 85387,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 407,
+      "action": "key",
+      "ok": true,
+      "atMs": 85408,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 10
+    },
+    {
+      "index": 408,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 85418,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 409,
+      "action": "key",
+      "ok": true,
+      "atMs": 85439,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 32
+    },
+    {
+      "index": 410,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 85471,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 82
+    },
+    {
+      "index": 411,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 85553,
+      "result": {
+        "stable": true,
+        "samples": 8,
+        "streak": 3,
+        "elapsedMs": 1569,
+        "sha256": "889a4ed6d28f5ea09a447832dd1c125f78e5d2ce9e40fe911cd37b901a3bce41",
+        "maskedBox": null
+      },
+      "durationMs": 1569
+    },
+    {
+      "index": 412,
+      "action": "capture",
+      "ok": true,
+      "atMs": 87122,
+      "result": {
+        "name": "35-valid",
+        "file": "tests/fixtures/reference/playthrough/35-valid.png",
+        "sha256": "67cc6bdf783884f5d778456a088cd0c968e4a55d8755a1105e5128cebc1aee3f",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 91
+    },
+    {
+      "index": 413,
+      "action": "key",
+      "ok": true,
+      "atMs": 87213,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 16
+    },
+    {
+      "index": 414,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 87229,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 415,
+      "action": "key",
+      "ok": true,
+      "atMs": 87250,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 4
+    },
+    {
+      "index": 416,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 87254,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 417,
+      "action": "key",
+      "ok": true,
+      "atMs": 87275,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 34
+    },
+    {
+      "index": 418,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 87309,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 419,
+      "action": "key",
+      "ok": true,
+      "atMs": 87330,
+      "result": {
+        "key": "Z",
+        "physical": "KeyZ"
+      },
+      "durationMs": 59
+    },
+    {
+      "index": 420,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 87389,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 421,
+      "action": "key",
+      "ok": true,
+      "atMs": 87410,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 31
+    },
+    {
+      "index": 422,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 87441,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 423,
+      "action": "key",
+      "ok": true,
+      "atMs": 87462,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 19
+    },
+    {
+      "index": 424,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 87481,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 425,
+      "action": "key",
+      "ok": true,
+      "atMs": 87502,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 4
+    },
+    {
+      "index": 426,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 87506,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 329
+    },
+    {
+      "index": 427,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 87835,
+      "result": {
+        "stable": true,
+        "samples": 7,
+        "streak": 3,
+        "elapsedMs": 1349,
+        "sha256": "aef820e448e50966f044f9f3bab9d26870cd5349c12dd7dd9b2aa56e10bd52b0",
+        "maskedBox": null
+      },
+      "durationMs": 1349
+    },
+    {
+      "index": 428,
+      "action": "capture",
+      "ok": true,
+      "atMs": 89184,
+      "result": {
+        "name": "36-valid",
+        "file": "tests/fixtures/reference/playthrough/36-valid.png",
+        "sha256": "0cac8e6cc9319b7c0dac74c54e7797df8a43848d3bdf2dae0ccf03f69fd3290b",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 104
+    },
+    {
+      "index": 429,
+      "action": "key",
+      "ok": true,
+      "atMs": 89288,
+      "result": {
+        "key": "N",
+        "physical": "KeyN"
+      },
+      "durationMs": 15
+    },
+    {
+      "index": 430,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 89303,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 431,
+      "action": "key",
+      "ok": true,
+      "atMs": 89324,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 10
+    },
+    {
+      "index": 432,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 89334,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 22
+    },
+    {
+      "index": 433,
+      "action": "key",
+      "ok": true,
+      "atMs": 89356,
+      "result": {
+        "key": "Z",
+        "physical": "KeyZ"
+      },
+      "durationMs": 34
+    },
+    {
+      "index": 434,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 89390,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 435,
+      "action": "key",
+      "ok": true,
+      "atMs": 89411,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 14
+    },
+    {
+      "index": 436,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 89425,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 437,
+      "action": "key",
+      "ok": true,
+      "atMs": 89446,
+      "result": {
+        "key": "M",
+        "physical": "KeyM"
+      },
+      "durationMs": 22
+    },
+    {
+      "index": 438,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 89468,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 439,
+      "action": "key",
+      "ok": true,
+      "atMs": 89489,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 13
+    },
+    {
+      "index": 440,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 89502,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 441,
+      "action": "key",
+      "ok": true,
+      "atMs": 89523,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 29
+    },
+    {
+      "index": 442,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 89552,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 0
+      },
+      "durationMs": 86
+    },
+    {
+      "index": 443,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 89638,
+      "result": {
+        "stable": true,
+        "samples": 7,
+        "streak": 3,
+        "elapsedMs": 1771,
+        "sha256": "493e77effe6551005359f2eaeceee88c59188a1648e722238cc47690156c867a",
+        "maskedBox": null
+      },
+      "durationMs": 1771
+    },
+    {
+      "index": 444,
+      "action": "capture",
+      "ok": true,
+      "atMs": 91409,
+      "result": {
+        "name": "37-valid",
+        "file": "tests/fixtures/reference/playthrough/37-valid.png",
+        "sha256": "8f97354e19d85904dd4a5ba00cbfea124107e4d5a0c15a1e17cc668ccba13827",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 158
+    },
+    {
+      "index": 445,
+      "action": "key",
+      "ok": true,
+      "atMs": 91567,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 18
+    },
+    {
+      "index": 446,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 91585,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 447,
+      "action": "key",
+      "ok": true,
+      "atMs": 91605,
+      "result": {
+        "key": "N",
+        "physical": "KeyN"
+      },
+      "durationMs": 38
+    },
+    {
+      "index": 448,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 91643,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 449,
+      "action": "key",
+      "ok": true,
+      "atMs": 91664,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 7
+    },
+    {
+      "index": 450,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 91671,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 451,
+      "action": "key",
+      "ok": true,
+      "atMs": 91691,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 49
+    },
+    {
+      "index": 452,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 91740,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 453,
+      "action": "key",
+      "ok": true,
+      "atMs": 91762,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 2
+    },
+    {
+      "index": 454,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 91764,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 455,
+      "action": "key",
+      "ok": true,
+      "atMs": 91785,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 25
+    },
+    {
+      "index": 456,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 91810,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 457,
+      "action": "key",
+      "ok": true,
+      "atMs": 91831,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 8
+    },
+    {
+      "index": 458,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 91839,
+      "result": {
+        "condition": "entry-cleared",
+        "matched": true,
+        "ballPixels": 122
+      },
+      "durationMs": 249
+    },
+    {
+      "index": 459,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 92088,
+      "result": {
+        "stable": true,
+        "samples": 7,
+        "streak": 3,
+        "elapsedMs": 1346,
+        "sha256": "b473c9e7f3ca4864be4620e28efe57397d04fe4382a6b27442cdbbba662993ae",
+        "maskedBox": null
+      },
+      "durationMs": 1346
+    },
+    {
+      "index": 460,
+      "action": "capture",
+      "ok": true,
+      "atMs": 93434,
+      "result": {
+        "name": "38-valid",
+        "file": "tests/fixtures/reference/playthrough/38-valid.png",
+        "sha256": "7bd6129e42c4743cc99e52c14ae6f2643b09818791cd93d25f70e3b62e5c7702",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 84
+    },
+    {
+      "index": 461,
+      "action": "key",
+      "ok": true,
+      "atMs": 93518,
+      "result": {
+        "key": "F",
+        "physical": "KeyF"
+      },
+      "durationMs": 41
+    },
+    {
+      "index": 462,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 93559,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 20
+    },
+    {
+      "index": 463,
+      "action": "key",
+      "ok": true,
+      "atMs": 93579,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 7
+    },
+    {
+      "index": 464,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 93586,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 465,
+      "action": "key",
+      "ok": true,
+      "atMs": 93607,
+      "result": {
+        "key": "N",
+        "physical": "KeyN"
+      },
+      "durationMs": 27
+    },
+    {
+      "index": 466,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 93634,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 467,
+      "action": "key",
+      "ok": true,
+      "atMs": 93655,
+      "result": {
+        "key": "A",
+        "physical": "KeyA"
+      },
+      "durationMs": 15
+    },
+    {
+      "index": 468,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 93670,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 469,
+      "action": "key",
+      "ok": true,
+      "atMs": 93691,
+      "result": {
+        "key": "L",
+        "physical": "KeyL"
+      },
+      "durationMs": 34
+    },
+    {
+      "index": 470,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 93725,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 471,
+      "action": "key",
+      "ok": true,
+      "atMs": 93746,
+      "result": {
+        "key": "İ",
+        "physical": "Quote"
+      },
+      "durationMs": 6
+    },
+    {
+      "index": 472,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 93752,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 473,
+      "action": "key",
+      "ok": true,
+      "atMs": 93774,
+      "result": {
+        "key": "Z",
+        "physical": "KeyZ"
+      },
+      "durationMs": 26
+    },
+    {
+      "index": 474,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 93800,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 22
+    },
+    {
+      "index": 475,
+      "action": "key",
+      "ok": true,
+      "atMs": 93822,
+      "result": {
+        "key": "M",
+        "physical": "KeyM"
+      },
+      "durationMs": 11
+    },
+    {
+      "index": 476,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 93833,
+      "result": {
+        "requestedMs": 20
+      },
+      "durationMs": 21
+    },
+    {
+      "index": 477,
+      "action": "key",
+      "ok": true,
+      "atMs": 93854,
+      "result": {
+        "key": "ENTER",
+        "physical": "Enter"
+      },
+      "durationMs": 14
+    },
+    {
+      "index": 478,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 93868,
+      "result": {
+        "condition": "hiscore-form",
+        "matched": true,
+        "waitedMs": 3129,
+        "panel": {
+          "r": 204,
+          "g": 204,
+          "b": 51
+        },
+        "sky": {
+          "r": 10,
+          "g": 22,
+          "b": 30
+        }
+      },
+      "durationMs": 3129
+    },
+    {
+      "index": 479,
+      "action": "capture",
+      "ok": true,
+      "atMs": 96997,
+      "result": {
+        "name": "39-complete",
+        "file": "tests/fixtures/reference/playthrough/39-complete.png",
+        "sha256": "f59dc4b497581f6752f4f120d62d0d4c0384bb4d30860cdc838fe98e23d5ea69",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 54
+    }
+  ],
+  "captures": [
+    {
+      "name": "00-selected",
+      "file": "tests/fixtures/reference/playthrough/00-selected.png",
+      "sha256": "ec037b6cdb445e18432310c3844b3a994de6f20ce81a937d56feb0a82d459831",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "01-invalid",
+      "file": "tests/fixtures/reference/playthrough/01-invalid.png",
+      "sha256": "66e18b0a09466613a75099ceec8bdac6b8de211b6d8b93424689a7c787371963",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "02-invalid-cleared",
+      "file": "tests/fixtures/reference/playthrough/02-invalid-cleared.png",
+      "sha256": "cbb7bab1b7815d91829793f60d6bf2af4511cdb0c108c3af3b0c4e5e6b0057a0",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "03-valid-FAL",
+      "file": "tests/fixtures/reference/playthrough/03-valid-FAL.png",
+      "sha256": "eedf2c25ce5b64dfae9b6171ff0c255e7a52a480a46bf1978737ed18ed810966",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "04-duplicate-FAL",
+      "file": "tests/fixtures/reference/playthrough/04-duplicate-FAL.png",
+      "sha256": "05bceeff1cc94a9527cc474de280aa282a9743914afd2e6f18a900108936778c",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "05-duplicate-cleared",
+      "file": "tests/fixtures/reference/playthrough/05-duplicate-cleared.png",
+      "sha256": "5b9e56ddad0957ba9a0293367f6f4ccefaa7834db35b94f9e444320f152b9328",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "06-valid",
+      "file": "tests/fixtures/reference/playthrough/06-valid.png",
+      "sha256": "b26fd9f45c12095366f60feebc952251501beedabe90ba46d1831eb088b079bc",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "07-valid",
+      "file": "tests/fixtures/reference/playthrough/07-valid.png",
+      "sha256": "f1c4112cfea71d1b1c6801f1de6021616c2a18577c0c58794b86ef9528472a6e",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "08-valid",
+      "file": "tests/fixtures/reference/playthrough/08-valid.png",
+      "sha256": "451e34fbd9c86f095ed05cd1f18d01e6ff660967511f4e00ad25960d0f7fda6a",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "09-valid",
+      "file": "tests/fixtures/reference/playthrough/09-valid.png",
+      "sha256": "7d74fea34f295f6a2b7e72e3c82b968666fd384209522fd431ceeeba41470c00",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "10-valid",
+      "file": "tests/fixtures/reference/playthrough/10-valid.png",
+      "sha256": "59c31366786aee22df7eb0bbcf9f68e002fe898be46c89353ab2280b0a10706a",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "11-valid",
+      "file": "tests/fixtures/reference/playthrough/11-valid.png",
+      "sha256": "eee6a0d46652724b03fa96159e6b3fcb6b04c6d10ddf9bae534b665003029dc8",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "12-valid",
+      "file": "tests/fixtures/reference/playthrough/12-valid.png",
+      "sha256": "fde0ee53f92495a81aa96fd08acb13df2c65f2c21c00470084e369269205c7aa",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "13-valid",
+      "file": "tests/fixtures/reference/playthrough/13-valid.png",
+      "sha256": "76f1280c39dca3ede79d540da295b087f5c85aa96b663a0b0fd1cfa14ac73571",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "14-valid",
+      "file": "tests/fixtures/reference/playthrough/14-valid.png",
+      "sha256": "815705e86a22ead1a847c6d87c5b1b0bdd64009fa8b4d53b1c30b737cb9864a6",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "15-valid",
+      "file": "tests/fixtures/reference/playthrough/15-valid.png",
+      "sha256": "fb29778105b17bc8d078c18d660b697e0baa08d9bfeab771becdffab2de8a6c1",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "16-valid",
+      "file": "tests/fixtures/reference/playthrough/16-valid.png",
+      "sha256": "4b5c7e2a9582eaadf850ad720bd57c8437c43e59a3494203e65c90c8c10675e9",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "17-valid",
+      "file": "tests/fixtures/reference/playthrough/17-valid.png",
+      "sha256": "50aab573626b56bb367e1b44ef730992a162ec13bd43c96c513302726db06132",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "18-valid",
+      "file": "tests/fixtures/reference/playthrough/18-valid.png",
+      "sha256": "919bc67d159c7161439f7bd95534fba2dbc492786433a79771a700ff57d0791f",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "19-bonus-word",
+      "file": "tests/fixtures/reference/playthrough/19-bonus-word.png",
+      "sha256": "093fe8be067f2793d2f193179aa649c3f564c5b89b068f904e35ee99b510d873",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "20-valid",
+      "file": "tests/fixtures/reference/playthrough/20-valid.png",
+      "sha256": "2064ae66df2307b493e21ee7bf8275596c9ccb0b4b075cf9ac59d4a2e8f9202c",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "21-valid",
+      "file": "tests/fixtures/reference/playthrough/21-valid.png",
+      "sha256": "ae57cf6a5c07c63a7f3c863e06c6758e686e94ff993b6c72f18a163fccacd464",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "22-valid",
+      "file": "tests/fixtures/reference/playthrough/22-valid.png",
+      "sha256": "3aca01341c5645cd29aff35a2d906c572528308ad64128a048f16179a192cec6",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "23-valid",
+      "file": "tests/fixtures/reference/playthrough/23-valid.png",
+      "sha256": "60290addb73e6393d10ed84cd449e49be424eff3d06b298d5f6b94e3df66ac31",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "24-valid",
+      "file": "tests/fixtures/reference/playthrough/24-valid.png",
+      "sha256": "096eddb6324333460fa6bca5f3c46c04cf76e66c69545a060807fbc5e2b5b2e7",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "25-valid",
+      "file": "tests/fixtures/reference/playthrough/25-valid.png",
+      "sha256": "0c94d55c507066645d1ce43f732865c3aaf71197a886eca11935ce6dfe52e0d0",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "26-valid",
+      "file": "tests/fixtures/reference/playthrough/26-valid.png",
+      "sha256": "ff375c0ad365ddfdaf2016304627b2630c4ec4499f4fb08d3b0973804c83d391",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "27-valid",
+      "file": "tests/fixtures/reference/playthrough/27-valid.png",
+      "sha256": "6d977e31ba4124c2d673661ab2fc69fe08bca2831f8d273112a902d7f15bfd16",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "28-valid",
+      "file": "tests/fixtures/reference/playthrough/28-valid.png",
+      "sha256": "205e0e40320ff276e246f5acaeca0bd1fbba95673af48650209d2ccd9aa6c3dd",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "29-valid",
+      "file": "tests/fixtures/reference/playthrough/29-valid.png",
+      "sha256": "9d85b6c650f0b4dedf1ce453ea3f60ba9294a20862775efafb64fe95d2e333b7",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "30-valid",
+      "file": "tests/fixtures/reference/playthrough/30-valid.png",
+      "sha256": "2764f8115caefb859eda917da54c3a1c6dbc16819581d917dcac7b6fbcd612bb",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "31-valid",
+      "file": "tests/fixtures/reference/playthrough/31-valid.png",
+      "sha256": "a4dd29933620810f5c13a3fa67bc4d9c0cba863e2289dd82718c00a9b96cb235",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "32-valid",
+      "file": "tests/fixtures/reference/playthrough/32-valid.png",
+      "sha256": "44133eec40e799696e175f47d227fffda76988c202c45e3c3cc0e9a7ee3b4c77",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "33-valid",
+      "file": "tests/fixtures/reference/playthrough/33-valid.png",
+      "sha256": "84a0b6bfcf34aa2ee13fc94b9979b8c1133817594cb43aedd82621531ddef34f",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "34-valid",
+      "file": "tests/fixtures/reference/playthrough/34-valid.png",
+      "sha256": "4c1a06b43ba9c86985972d3bc967066af4873b77a5cf692af648f27536f1472a",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "35-valid",
+      "file": "tests/fixtures/reference/playthrough/35-valid.png",
+      "sha256": "67cc6bdf783884f5d778456a088cd0c968e4a55d8755a1105e5128cebc1aee3f",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "36-valid",
+      "file": "tests/fixtures/reference/playthrough/36-valid.png",
+      "sha256": "0cac8e6cc9319b7c0dac74c54e7797df8a43848d3bdf2dae0ccf03f69fd3290b",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "37-valid",
+      "file": "tests/fixtures/reference/playthrough/37-valid.png",
+      "sha256": "8f97354e19d85904dd4a5ba00cbfea124107e4d5a0c15a1e17cc668ccba13827",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "38-valid",
+      "file": "tests/fixtures/reference/playthrough/38-valid.png",
+      "sha256": "7bd6129e42c4743cc99e52c14ae6f2643b09818791cd93d25f70e3b62e5c7702",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "39-complete",
+      "file": "tests/fixtures/reference/playthrough/39-complete.png",
+      "sha256": "f59dc4b497581f6752f4f120d62d0d4c0384bb4d30860cdc838fe98e23d5ea69",
+      "width": 550,
+      "height": 400
+    }
+  ],
+  "missingKeys": [],
+  "harness": {
+    "url": "http://127.0.0.1:8797/",
+    "viewport": {
+      "width": 550,
+      "height": 400
+    },
+    "deviceScaleFactor": 1,
+    "canvasDevicePixels": {
+      "width": 550,
+      "height": 400
+    },
+    "outputRoot": "tests/fixtures/reference/playthrough",
+    "launchArgs": [
+      "--mute-audio"
+    ],
+    "ruffle": {
+      "release": "v0.6.0",
+      "asset": "ruffle-0.6.0-web-selfhosted.zip",
+      "zipSha256": "e8acfacc37443303872379d0e215999af846854d1dd3fa8fac0a765445b43dbf",
+      "ruffleJsSha256": "a686a305345b06542dddedada71869104916a61e393f174687571528ac4225f5"
+    },
+    "swf": {
+      "file": "/home/dev/kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf",
+      "sha256": "236ed9359719d061c4c9426c8533b126bffcb3466f7b5f818601b50bd7afbf39",
+      "md5": "af059ff9d75cefbc244f03814b47be9c"
+    },
+    "fixture": {
+      "input": {
+        "file": "/home/dev/kelimator-nostalji/calistir/xml64.php",
+        "sha256": "854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed"
+      },
+      "served": {
+        "file": "/home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php",
+        "sha256": "80506d3ef3b58a4d8fdb5779debd4819271d57a5635276963a5d01eab91cd8bf"
+      },
+      "script": {
+        "file": "/home/dev/kelimator-2012/verify/reference/make-fixture.mjs",
+        "sha256": "e4f5198a1ddd94eceeb20639a41855a2bb385e75782e169a5768205272007788"
+      }
+    },
+    "playwright": "1.63.0",
+    "node": "v22.14.0",
+    "port": 8797,
+    "canvasBox": {
+      "x": 0,
+      "y": 0,
+      "width": 550,
+      "height": 400
+    }
+  }
+}

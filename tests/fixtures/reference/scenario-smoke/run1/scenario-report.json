@@ -3,114 +3,114 @@
   "task": "C3",
   "scenario": "smoke",
   "run": 1,
-  "startedAt": "2026-09-28T19:15:07.302Z",
-  "endedAt": "2026-09-28T19:15:17.367Z",
+  "startedAt": "2026-09-28T20:52:34.638Z",
+  "endedAt": "2026-09-28T20:52:44.854Z",
   "ok": true,
   "steps": [
     {
       "index": 0,
       "action": "waitForState",
       "ok": true,
-      "atMs": 903,
+      "atMs": 1024,
       "result": {
         "condition": "board",
         "matched": true,
         "xml64": {
           "matched": true,
-          "line": "2026-09-28T19:15:14Z 127.0.0.1 \"GET /xml64.php?577147 HTTP/1.1\" -> 200 -",
-          "waitedMs": 6791,
-          "cursor": 26985
+          "line": "2026-09-28T20:52:42Z 127.0.0.1 \"GET /xml64.php?587414 HTTP/1.1\" -> 200 -",
+          "waitedMs": 6780,
+          "cursor": 45394
         },
         "stable": {
           "stable": true,
           "samples": 3,
           "streak": 3,
-          "elapsedMs": 658,
-          "sha256": "7eefe4a76a023e770a60447e775090755eda023eb033fb7bab405c07cb1a73cf",
+          "elapsedMs": 761,
+          "sha256": "67fdfcb3d79dd5fb0a93d0164a6c16661222319a6e3ffa79ac639c83a06aa8f2",
           "maskedBox": null
         },
         "gaugeFraction": 0.6782608695652174,
         "boardSignal": true
       },
-      "durationMs": 7569
+      "durationMs": 7620
     },
     {
       "index": 1,
       "action": "waitStable",
       "ok": true,
-      "atMs": 8472,
+      "atMs": 8644,
       "result": {
         "stable": true,
         "samples": 5,
         "streak": 3,
-        "elapsedMs": 915,
-        "sha256": "943b604b1a46f86a7de8263f3d8ae3ec98521a2d5e82d390d184d911166dddf0",
+        "elapsedMs": 880,
+        "sha256": "e39a9749a55c23ef9631f4f020806e3a019eb5246ec99776e2265af3955a118e",
         "maskedBox": null
       },
-      "durationMs": 915
+      "durationMs": 880
     },
     {
       "index": 2,
       "action": "key",
       "ok": true,
-      "atMs": 9387,
+      "atMs": 9524,
       "result": {
         "key": "SPACE",
         "physical": "Space"
       },
-      "durationMs": 284
+      "durationMs": 272
     },
     {
       "index": 3,
       "action": "capture",
       "ok": true,
-      "atMs": 9671,
+      "atMs": 9796,
       "result": {
         "name": "after-space",
         "file": "tests/fixtures/reference/scenario-smoke/run1/after-space.png",
-        "sha256": "ca6b669e9de6b49922660da536535fca8bf3e06a4cff6617bcc74323957ca4ae",
+        "sha256": "520ecdde5d8b85e654a956452f05a8956419ec4e080788ad688d15b393863324",
         "width": 550,
         "height": 400
       },
-      "durationMs": 51
+      "durationMs": 57
     },
     {
       "index": 4,
       "action": "waitMs",
       "ok": true,
-      "atMs": 9722,
+      "atMs": 9853,
       "result": {
         "requestedMs": 300
       },
-      "durationMs": 300
+      "durationMs": 301
     },
     {
       "index": 5,
       "action": "capture",
       "ok": true,
-      "atMs": 10022,
+      "atMs": 10154,
       "result": {
         "name": "settled",
         "file": "tests/fixtures/reference/scenario-smoke/run1/settled.png",
-        "sha256": "f0e076328da7383163ad6579a3863c9c5d85f56aace3c4182dbccde9d9d2bc32",
+        "sha256": "f11b2e12dcd56578dff295c5bdbd4db25aebd2d2d5eb658defd5e302b12bffc2",
         "width": 550,
         "height": 400
       },
-      "durationMs": 43
+      "durationMs": 62
     }
   ],
   "captures": [
     {
       "name": "after-space",
       "file": "tests/fixtures/reference/scenario-smoke/run1/after-space.png",
-      "sha256": "ca6b669e9de6b49922660da536535fca8bf3e06a4cff6617bcc74323957ca4ae",
+      "sha256": "520ecdde5d8b85e654a956452f05a8956419ec4e080788ad688d15b393863324",
       "width": 550,
       "height": 400
     },
     {
       "name": "settled",
       "file": "tests/fixtures/reference/scenario-smoke/run1/settled.png",
-      "sha256": "f0e076328da7383163ad6579a3863c9c5d85f56aace3c4182dbccde9d9d2bc32",
+      "sha256": "f11b2e12dcd56578dff295c5bdbd4db25aebd2d2d5eb658defd5e302b12bffc2",
       "width": 550,
       "height": 400
     }

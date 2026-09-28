@@ -1,0 +1,57 @@
+# C3 speaker-scenario log (X3 defect-3: reference speaker ON/OFF pixels)
+# $ node verify/reference/capture.mjs --scenario verify/reference/scenarios/speaker.json --out tests/fixtures/reference/speaker --runs 1 --port 8799
+# 2026-09-28T20:38:33Z
+[C3 scenario] step 0 waitForState: ok (7495 ms)
+[C3 scenario] step 1 waitStable: ok (1174 ms)
+[C3 scenario] step 2 capture: ok (49 ms)
+[C3 scenario] step 3 click: ok (281 ms)
+[C3 scenario] step 4 waitMs: ok (1001 ms)
+[C3 scenario] step 5 reload: ok (189 ms)
+[C3 scenario] step 6 waitForState: ok (7628 ms)
+[C3 scenario] step 7 waitStable: ok (972 ms)
+[C3 scenario] step 8 capture: ok (68 ms)
+[C3 scenario] step 9 click: ok (177 ms)
+[C3 scenario] step 10 waitMs: ok (1001 ms)
+[C3 scenario] step 11 reload: ok (213 ms)
+[C3 scenario] step 12 waitForState: ok (7593 ms)
+[C3 scenario] step 13 waitStable: ok (1108 ms)
+[C3 scenario] step 14 capture: ok (57 ms)
+[C3 scenario] speaker run 1: OK (3 captures, 15 steps)
+speaker scenario exit=0
+
+# ===== C3 task continuation — fresh witness runs, started 2026-09-28T20:45:32Z =====
+# $ node verify/reference/capture.mjs --scenario verify/reference/scenarios/speaker-probe.json --out tests/fixtures/reference/speaker-probe --runs 1 --port 8799
+[C3 scenario] step 0 waitForState: ok (7552 ms)
+[C3 scenario] step 1 waitStable: ok (898 ms)
+[C3 scenario] step 2 capture: ok (73 ms)
+[C3 scenario] step 3 click: ok (247 ms)
+[C3 scenario] step 4 waitStable: ok (896 ms)
+[C3 scenario] step 5 capture: ok (71 ms)
+[C3 scenario] step 6 click: ok (1 ms)
+[C3 scenario] step 7 waitStable: ok (880 ms)
+[C3 scenario] step 8 capture: ok (105 ms)
+[C3 scenario] step 9 click: ok (15 ms)
+[C3 scenario] step 10 click: ok (18 ms)
+[C3 scenario] step 11 waitStable: ok (910 ms)
+[C3 scenario] step 12 capture: ok (73 ms)
+[C3 scenario] speaker-probe run 1: OK (4 captures, 13 steps)
+speaker-probe exit=0
+
+# $ node verify/reference/capture.mjs --scenario verify/reference/scenarios/speaker.json --out tests/fixtures/reference/speaker --runs 1 --port 8799
+[C3 scenario] step 0 waitForState: ok (7554 ms)
+[C3 scenario] step 1 waitStable: ok (938 ms)
+[C3 scenario] step 2 capture: ok (45 ms)
+[C3 scenario] step 3 click: ok (267 ms)
+[C3 scenario] step 4 waitMs: ok (1001 ms)
+[C3 scenario] step 5 reload: ok (198 ms)
+[C3 scenario] step 6 waitForState: ok (7527 ms)
+[C3 scenario] step 7 waitStable: ok (505 ms)
+[C3 scenario] step 8 capture: ok (44 ms)
+[C3 scenario] step 9 click: ok (189 ms)
+[C3 scenario] step 10 waitMs: ok (1001 ms)
+[C3 scenario] step 11 reload: ok (176 ms)
+[C3 scenario] step 12 waitForState: ok (7772 ms)
+[C3 scenario] step 13 waitStable: ok (1233 ms)
+[C3 scenario] step 14 capture: ok (57 ms)
+[C3 scenario] speaker run 1: OK (3 captures, 15 steps)
+speaker exit=0

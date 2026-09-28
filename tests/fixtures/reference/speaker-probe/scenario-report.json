@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "task": "C3",
+  "scenario": "speaker-probe",
+  "run": 1,
+  "startedAt": "2026-09-28T20:45:32.668Z",
+  "endedAt": "2026-09-28T20:45:45.031Z",
+  "ok": true,
+  "steps": [
+    {
+      "index": 0,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 620,
+      "result": {
+        "condition": "board",
+        "matched": true,
+        "xml64": {
+          "matched": true,
+          "line": "2026-09-28T20:45:40Z 127.0.0.1 \"GET /xml64.php?517729 HTTP/1.1\" -> 200 -",
+          "waitedMs": 6798,
+          "cursor": 40325
+        },
+        "stable": {
+          "stable": true,
+          "samples": 3,
+          "streak": 3,
+          "elapsedMs": 698,
+          "sha256": "74561fda5598ddb3868d3219b373f05aa910b8f21976ab96392adf573532c577",
+          "maskedBox": null
+        },
+        "gaugeFraction": 0.6782608695652174,
+        "boardSignal": true
+      },
+      "durationMs": 7552
+    },
+    {
+      "index": 1,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 8173,
+      "result": {
+        "stable": true,
+        "samples": 5,
+        "streak": 3,
+        "elapsedMs": 898,
+        "sha256": "b0ae8c47821846938fab573385e2a69a35c5ebefdacdb74d85f92d5af93b7417",
+        "maskedBox": null
+      },
+      "durationMs": 898
+    },
+    {
+      "index": 2,
+      "action": "capture",
+      "ok": true,
+      "atMs": 9071,
+      "result": {
+        "name": "p0-before-away",
+        "file": "tests/fixtures/reference/speaker-probe/p0-before-away.png",
+        "sha256": "44d6c8efcb46b7ccc11c839551672ec71b06b9c5a4e8cdaeba2bb0cfc96fbe2a",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 73
+    },
+    {
+      "index": 3,
+      "action": "click",
+      "ok": true,
+      "atMs": 9144,
+      "result": {
+        "target": "button:speaker",
+        "point": {
+          "x": 531,
+          "y": 382
+        },
+        "kind": "button"
+      },
+      "durationMs": 247
+    },
+    {
+      "index": 4,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 9391,
+      "result": {
+        "stable": true,
+        "samples": 5,
+        "streak": 3,
+        "elapsedMs": 896,
+        "sha256": "f14a5874120bde83e40194d3f8d7cc6254f86e6f1368bbe8644340cda8f355a5",
+        "maskedBox": null
+      },
+      "durationMs": 896
+    },
+    {
+      "index": 5,
+      "action": "capture",
+      "ok": true,
+      "atMs": 10288,
+      "result": {
+        "name": "p1-after-click-hover",
+        "file": "tests/fixtures/reference/speaker-probe/p1-after-click-hover.png",
+        "sha256": "fdb496e9fab6d46eaec58ccbd38d6d2b875495bfece87d056ce5bcef8a0515cf",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 71
+    },
+    {
+      "index": 6,
+      "action": "click",
+      "ok": true,
+      "atMs": 10359,
+      "result": {
+        "target": "coord:275,200",
+        "point": {
+          "x": 275,
+          "y": 200
+        },
+        "kind": "coord"
+      },
+      "durationMs": 1
+    },
+    {
+      "index": 7,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 10360,
+      "result": {
+        "stable": true,
+        "samples": 5,
+        "streak": 3,
+        "elapsedMs": 880,
+        "sha256": "520de4ca2378572ebf9bf088fed5d2f8d05a75220e59ba59d6fe5fcf7c244c1e",
+        "maskedBox": null
+      },
+      "durationMs": 880
+    },
+    {
+      "index": 8,
+      "action": "capture",
+      "ok": true,
+      "atMs": 11240,
+      "result": {
+        "name": "p2-away-after-off",
+        "file": "tests/fixtures/reference/speaker-probe/p2-away-after-off.png",
+        "sha256": "11ce8b1ee1942f74ca4b34ba6000c4a47480b2c0c0bcfec16dbd907322beb654",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 105
+    },
+    {
+      "index": 9,
+      "action": "click",
+      "ok": true,
+      "atMs": 11346,
+      "result": {
+        "target": "button:speaker",
+        "point": {
+          "x": 531,
+          "y": 382
+        },
+        "kind": "button"
+      },
+      "durationMs": 15
+    },
+    {
+      "index": 10,
+      "action": "click",
+      "ok": true,
+      "atMs": 11361,
+      "result": {
+        "target": "coord:275,200",
+        "point": {
+          "x": 275,
+          "y": 200
+        },
+        "kind": "coord"
+      },
+      "durationMs": 18
+    },
+    {
+      "index": 11,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 11380,
+      "result": {
+        "stable": true,
+        "samples": 4,
+        "streak": 3,
+        "elapsedMs": 910,
+        "sha256": "c4817e8836148d56b9ada91bcd523092eeeafedbce12957628e54e40b53ef46b",
+        "maskedBox": null
+      },
+      "durationMs": 910
+    },
+    {
+      "index": 12,
+      "action": "capture",
+      "ok": true,
+      "atMs": 12290,
+      "result": {
+        "name": "p3-away-after-on",
+        "file": "tests/fixtures/reference/speaker-probe/p3-away-after-on.png",
+        "sha256": "bb552199e6a4ccacef18f20ae3c7ede42bdd121ab3d009aa5c623def3060fbd8",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 73
+    }
+  ],
+  "captures": [
+    {
+      "name": "p0-before-away",
+      "file": "tests/fixtures/reference/speaker-probe/p0-before-away.png",
+      "sha256": "44d6c8efcb46b7ccc11c839551672ec71b06b9c5a4e8cdaeba2bb0cfc96fbe2a",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "p1-after-click-hover",
+      "file": "tests/fixtures/reference/speaker-probe/p1-after-click-hover.png",
+      "sha256": "fdb496e9fab6d46eaec58ccbd38d6d2b875495bfece87d056ce5bcef8a0515cf",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "p2-away-after-off",
+      "file": "tests/fixtures/reference/speaker-probe/p2-away-after-off.png",
+      "sha256": "11ce8b1ee1942f74ca4b34ba6000c4a47480b2c0c0bcfec16dbd907322beb654",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "p3-away-after-on",
+      "file": "tests/fixtures/reference/speaker-probe/p3-away-after-on.png",
+      "sha256": "bb552199e6a4ccacef18f20ae3c7ede42bdd121ab3d009aa5c623def3060fbd8",
+      "width": 550,
+      "height": 400
+    }
+  ],
+  "missingKeys": [],
+  "harness": {
+    "url": "http://127.0.0.1:8799/",
+    "viewport": {
+      "width": 550,
+      "height": 400
+    },
+    "deviceScaleFactor": 1,
+    "canvasDevicePixels": {
+      "width": 550,
+      "height": 400
+    },
+    "outputRoot": "tests/fixtures/reference/speaker-probe",
+    "launchArgs": [
+      "--mute-audio"
+    ],
+    "ruffle": {
+      "release": "v0.6.0",
+      "asset": "ruffle-0.6.0-web-selfhosted.zip",
+      "zipSha256": "e8acfacc37443303872379d0e215999af846854d1dd3fa8fac0a765445b43dbf",
+      "ruffleJsSha256": "a686a305345b06542dddedada71869104916a61e393f174687571528ac4225f5"
+    },
+    "swf": {
+      "file": "/home/dev/kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf",
+      "sha256": "236ed9359719d061c4c9426c8533b126bffcb3466f7b5f818601b50bd7afbf39",
+      "md5": "af059ff9d75cefbc244f03814b47be9c"
+    },
+    "fixture": {
+      "input": {
+        "file": "/home/dev/kelimator-nostalji/calistir/xml64.php",
+        "sha256": "854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed"
+      },
+      "served": {
+        "file": "/home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php",
+        "sha256": "80506d3ef3b58a4d8fdb5779debd4819271d57a5635276963a5d01eab91cd8bf"
+      },
+      "script": {
+        "file": "/home/dev/kelimator-2012/verify/reference/make-fixture.mjs",
+        "sha256": "e4f5198a1ddd94eceeb20639a41855a2bb385e75782e169a5768205272007788"
+      }
+    },
+    "playwright": "1.63.0",
+    "node": "v22.14.0",
+    "port": 8799,
+    "canvasBox": {
+      "x": 0,
+      "y": 0,
+      "width": 550,
+      "height": 400
+    }
+  }
+}

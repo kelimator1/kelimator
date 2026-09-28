@@ -1,0 +1,38 @@
+# C3 speaker capture — pixel measurements on the fresh dsf-1 outputs (2026-09-28T20:46:26Z)
+# speaker box = x 505..549, y 356..399 (45x44 = 1980 px); decode+compare via verify/diff/diff.mjs
+sha256 bb620e1ef8d73151dd899c1918a65aa2cc43e04bedfac7a0db8785fc9a6fb271  550x400  speaker/speaker-before.png
+sha256 2578c16f0a9e269f2f3a31cf63b21f45cd09fe3152b3f1d035df2fb58c94ec5d  550x400  speaker/speaker-off.png
+sha256 af21a62fd0a083c315dec853c29654f3fa973ea9827b38ad94bd364e62bb3243  550x400  speaker/speaker-on.png
+sha256 f22b7f8819942ed8a75ec18269e3800ec87511f4e79432d644c21d81702d2e2a  (json)  speaker/interaction-log.json
+sha256 d231233a7287ef054218e7bb435f2994868d13df637e8e77dae30a4f85ca23b4  (json)  speaker/scenario-report.json
+sha256 44d6c8efcb46b7ccc11c839551672ec71b06b9c5a4e8cdaeba2bb0cfc96fbe2a  550x400  speaker-probe/p0-before-away.png
+sha256 fdb496e9fab6d46eaec58ccbd38d6d2b875495bfece87d056ce5bcef8a0515cf  550x400  speaker-probe/p1-after-click-hover.png
+sha256 11ce8b1ee1942f74ca4b34ba6000c4a47480b2c0c0bcfec16dbd907322beb654  550x400  speaker-probe/p2-away-after-off.png
+sha256 bb552199e6a4ccacef18f20ae3c7ede42bdd121ab3d009aa5c623def3060fbd8  550x400  speaker-probe/p3-away-after-on.png
+p0 vs p2: mismatched=0px ratio=0.00000 maxDist=0.0 bbox=null
+p0 vs p1: mismatched=403px ratio=0.20354 maxDist=441.7 bbox={"x":9,"y":8,"width":34,"height":35}
+p0 vs p3: mismatched=0px ratio=0.00000 maxDist=0.0 bbox=null
+before vs off: mismatched=331px ratio=0.16717 maxDist=381.8 bbox={"x":10,"y":10,"width":32,"height":32}
+before vs on: mismatched=0px ratio=0.00000 maxDist=0.0 bbox=null
+off vs on: mismatched=331px ratio=0.16717 maxDist=381.8 bbox={"x":10,"y":10,"width":32,"height":32}
+p2 vs off: mismatched=331px ratio=0.16717 maxDist=381.8 bbox={"x":10,"y":10,"width":32,"height":32}
+before: mean=(221.3,194.4,156.7) darkPx=258
+off: mean=(233.3,212.6,173.9) darkPx=47
+on: mean=(221.3,194.4,156.7) darkPx=258
+
+# CXFORM check: off == on*108/256 + 148 on the pixels the transform touched (box x505..549 y356..399)
+touchedPixels=331 matchWithin1=240 (72.5%) matchWithin2=240 (72.5%) worstChannelDelta=101
+sample (529,368) on=149,41,41 -> off=211,165,165
+sample (530,368) on=231,166,166 -> off=245,218,218
+sample (531,368) on=0,0,0 -> off=148,148,148
+sample (532,368) on=231,166,166 -> off=245,218,218
+sample (533,368) on=203,64,64 -> off=234,175,175
+
+# CXFORM residuals: characterise the 91 pixels that do not match within 1
+residuals: alpha<255=0 alpha=255=91
+first alpha<255: []
+first alpha=255: [{"x":540,"y":366,"alpha":255,"on":[187,172,133],"off":[249,229,177],"worst":27},{"x":541,"y":366,"alpha":255,"on":[125,115,89],"off":[249,229,177],"worst":48},{"x":530,"y":367,"alpha":255,"on":[174,88,75],"off":[221,181,168],"worst":12},{"x":531,"y":367,"alpha":255,"on":[63,58,45],"off":[174,169,156],"worst":11},{"x":532,"y":367,"alpha":255,"on":[63,58,45],"off":[174,169,156],"worst":11},{"x":538,"y":367,"alpha":255,"on":[187,172,133],"off":[249,229,177],"worst":27}]
+
+# spatial split: bbox of CXFORM-matching vs residual pixels (box-local coords)
+matched=240 bbox={"x0":11,"y0":12,"x1":30,"y1":39}  residual=91 bbox={"x0":10,"y0":10,"x1":41,"y1":41}
+background sample (505,360) off=172,180,217

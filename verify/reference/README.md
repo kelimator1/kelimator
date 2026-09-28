@@ -85,15 +85,21 @@ muted Chromium as the matrix; no network beyond localhost). Scenario schema:
 |---|---|---|
 | `waitStable` | `timeoutMs?` | 3 identical consecutive stage frames (the matrix's stable-frame machinery); result records `stable/samples/streak/elapsedMs` — a timeout is recorded, not hidden |
 | `key` | `key` | Turkish letter (`A–Z`, `Ç Ğ İ I Ö Ş Ü`) or `SPACE`/`ENTER`/`BACKSPACE`; mapped to the SWF's physical key codes (`frame_131` `codes`→`harf`, Turkish-Q positions). Unmapped keys are reported in `missingKeys` and fail the step |
-| `click` | `target` | `tile:<0..7>` (the SWF tile row: `_X = 60 + t*60`, `_Y = 330`) · `button:<name>` with names `karistir`, `ekle`, `sil`, `yeni-oyun`, `gonder`, `form-name`, `form-email` (measured CSS-pixel centers) · `coord:<x>,<y>` escape hatch in CSS pixels |
+| `click` | `target` | `tile:<0..7>` (the SWF tile row: `_X = 60 + t*60`, `_Y = 330`) · `button:<name>` with names `karistir`, `ekle`, `sil`, `yeni-oyun`, `gonder`, `form-name`, `form-email`, `speaker` (measured CSS-pixel centers) · `coord:<x>,<y>` escape hatch in CSS pixels |
 | `waitMs` | `ms` | explicit caller-specified delay. Documented semantics: the harness never uses fixed delays for state transitions; scenario authors may use it for animation-phase offsets (E3) |
 | `capture` | `name` | writes `<out>/<name>.png` at the selected `--dsf` (550×400 at dsf 1, 1100×800 at dsf 2); records path, SHA-256 and dimensions |
 | `waitForState` | `condition`, `timeoutMs?` | named state waits: `content` (first game frame), `board` (`xml64.php -> 200` server evidence + stable frame + gauge check), `xml64` (next round request), `round-end` (`tamamla()`/`bittimi()` signal), `hiscore-form` (all-found end screen), `entry-cleared`, `bonus-ball` (bright bonus ball) |
+| `reload` | — | reloads the page in the same context (keeps the SWF's persisted `SharedObject` state, e.g. the speaker `vol`), waits for the canvas and re-arms the player-UI notice handling. Used by `scenarios/speaker.json`: the speaker sprite evaluates `_root.vol` when its frame is entered, so the OFF frame is reached through the reference's own persistence path (click → reload), not by a plain in-session click (measured in `tests/fixtures/reference/speaker-probe/`; see `evidence/C3-speaker-capture.md`) |
 
 `waitForText` is deliberately **not** provided: the harness has no OCR, so a
 text wait would be a guess; use `waitForState` (the reference's own states) or
 add a condition. Unknown actions/targets fail fast; failed steps set
 `report.ok = false` and the harness exits 1.
+
+`scenarios/speaker.json` captures the speaker control's ON/OFF frames for X3
+defect 3 (O24) into `tests/fixtures/reference/speaker/` (reproduction command
+and measured semantics: `evidence/C3-speaker-capture.md`; the committed
+artifacts are validated statically as `Vspeaker`).
 
 Outputs: `<out>/<capture>.png`, `<out>/interaction-log.json` (console, server
 evidence, harness manifest incl. `launchArgs`/`deviceScaleFactor`) and

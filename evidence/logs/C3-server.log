@@ -335,3 +335,223 @@ C3 reference server on http://127.0.0.1:8798/
 2026-09-28T19:15:17Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
 2026-09-28T19:15:17Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
 2026-09-28T19:15:24Z 127.0.0.1 "GET /xml64.php?475777 HTTP/1.1" -> 200 -
+
+==== C3 harness server start 2026-09-28T19:45:37.734Z port=8801 ====
+C3 reference server on http://127.0.0.1:8801/
+  harness root : /home/dev/kelimator-2012/verify/reference
+  ruffle web   : /home/dev/kelimator-2012/verify/reference/ruffle/web
+  /xml64.php   : /home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php (derived; archived input read-only at /home/dev/kelimator-nostalji/calistir)
+2026-09-28T19:45:37Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+==== C3 harness scenario e3-board run 1 start 2026-09-28T19:45:38.197Z dsf=1 ====
+2026-09-28T19:45:38Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-28T19:45:38Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-28T19:45:38Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-28T19:45:38Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-28T19:45:38Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-28T19:45:45Z 127.0.0.1 "GET /xml64.php?993931 HTTP/1.1" -> 200 -
+
+==== C3 harness server start 2026-09-28T19:45:55.997Z port=8801 ====
+C3 reference server on http://127.0.0.1:8801/
+  harness root : /home/dev/kelimator-2012/verify/reference
+  ruffle web   : /home/dev/kelimator-2012/verify/reference/ruffle/web
+  /xml64.php   : /home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php (derived; archived input read-only at /home/dev/kelimator-nostalji/calistir)
+2026-09-28T19:45:56Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+==== C3 harness scenario e3-sprite-wordball run 1 start 2026-09-28T19:45:56.360Z dsf=1 ====
+2026-09-28T19:45:56Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-28T19:45:56Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-28T19:45:56Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-28T19:45:56Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-28T19:45:56Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-28T19:46:03Z 127.0.0.1 "GET /xml64.php?153491 HTTP/1.1" -> 200 -
+
+==== C3 harness server start 2026-09-28T19:47:42.135Z port=8797 ====
+C3 reference server on http://127.0.0.1:8797/
+  harness root : /home/dev/kelimator-2012/verify/reference
+  ruffle web   : /home/dev/kelimator-2012/verify/reference/ruffle/web
+  /xml64.php   : /home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php (derived; archived input read-only at /home/dev/kelimator-nostalji/calistir)
+2026-09-28T19:47:42Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+==== C3 harness scenario f2-probe run 1 start 2026-09-28T19:47:42.908Z dsf=1 ====
+2026-09-28T19:47:43Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-28T19:47:43Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-28T19:47:43Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-28T19:47:43Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-28T19:47:43Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-28T19:47:50Z 127.0.0.1 "GET /xml64.php?229329 HTTP/1.1" -> 200 -
+
+==== C3 harness server start 2026-09-28T19:55:35.180Z port=8797 ====
+C3 reference server on http://127.0.0.1:8797/
+  harness root : /home/dev/kelimator-2012/verify/reference
+  ruffle web   : /home/dev/kelimator-2012/verify/reference/ruffle/web
+  /xml64.php   : /home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php (derived; archived input read-only at /home/dev/kelimator-nostalji/calistir)
+2026-09-28T19:55:35Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+==== C3 harness scenario f2-playthrough run 1 start 2026-09-28T19:55:35.735Z dsf=1 ====
+2026-09-28T19:55:36Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-28T19:55:36Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-28T19:55:36Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-28T19:55:36Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-28T19:55:36Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-28T19:55:43Z 127.0.0.1 "GET /xml64.php?606990 HTTP/1.1" -> 200 -
+
+==== C3 harness server start 2026-09-28T19:59:28.038Z port=8797 ====
+C3 reference server on http://127.0.0.1:8797/
+  harness root : /home/dev/kelimator-2012/verify/reference
+  ruffle web   : /home/dev/kelimator-2012/verify/reference/ruffle/web
+  /xml64.php   : /home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php (derived; archived input read-only at /home/dev/kelimator-nostalji/calistir)
+2026-09-28T19:59:28Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+==== C3 harness scenario f2-timeout run 1 start 2026-09-28T19:59:28.484Z dsf=1 ====
+2026-09-28T19:59:28Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-28T19:59:28Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-28T19:59:28Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-28T19:59:28Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-28T19:59:29Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-28T19:59:35Z 127.0.0.1 "GET /xml64.php?883473 HTTP/1.1" -> 200 -
+
+==== C3 harness server start 2026-09-28T20:24:41.401Z port=8797 ====
+C3 reference server on http://127.0.0.1:8797/
+  harness root : /home/dev/kelimator-2012/verify/reference
+  ruffle web   : /home/dev/kelimator-2012/verify/reference/ruffle/web
+  /xml64.php   : /home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php (derived; archived input read-only at /home/dev/kelimator-nostalji/calistir)
+2026-09-28T20:24:41Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+==== C3 harness scenario f2-playthrough run 1 start 2026-09-28T20:24:42.065Z dsf=1 ====
+2026-09-28T20:24:42Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-28T20:24:42Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-28T20:24:42Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-28T20:24:42Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-28T20:24:43Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-28T20:24:50Z 127.0.0.1 "GET /xml64.php?279562 HTTP/1.1" -> 200 -
+
+==== C3 harness server start 2026-09-28T20:36:43.884Z port=8799 ====
+C3 reference server on http://127.0.0.1:8799/
+  harness root : /home/dev/kelimator-2012/verify/reference
+  ruffle web   : /home/dev/kelimator-2012/verify/reference/ruffle/web
+  /xml64.php   : /home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php (derived; archived input read-only at /home/dev/kelimator-nostalji/calistir)
+2026-09-28T20:36:44Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+==== C3 harness scenario speaker run 1 start 2026-09-28T20:36:44.359Z dsf=1 ====
+2026-09-28T20:36:44Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-28T20:36:44Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-28T20:36:44Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-28T20:36:44Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-28T20:36:44Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-28T20:36:51Z 127.0.0.1 "GET /xml64.php?170192 HTTP/1.1" -> 200 -
+
+==== C3 harness server start 2026-09-28T20:37:29.696Z port=8799 ====
+C3 reference server on http://127.0.0.1:8799/
+  harness root : /home/dev/kelimator-2012/verify/reference
+  ruffle web   : /home/dev/kelimator-2012/verify/reference/ruffle/web
+  /xml64.php   : /home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php (derived; archived input read-only at /home/dev/kelimator-nostalji/calistir)
+2026-09-28T20:37:29Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+==== C3 harness scenario speaker-probe run 1 start 2026-09-28T20:37:30.173Z dsf=1 ====
+2026-09-28T20:37:30Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-28T20:37:30Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-28T20:37:30Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-28T20:37:30Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-28T20:37:30Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-28T20:37:37Z 127.0.0.1 "GET /xml64.php?520601 HTTP/1.1" -> 200 -
+
+==== C3 harness server start 2026-09-28T20:38:33.660Z port=8799 ====
+C3 reference server on http://127.0.0.1:8799/
+  harness root : /home/dev/kelimator-2012/verify/reference
+  ruffle web   : /home/dev/kelimator-2012/verify/reference/ruffle/web
+  /xml64.php   : /home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php (derived; archived input read-only at /home/dev/kelimator-nostalji/calistir)
+2026-09-28T20:38:33Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+==== C3 harness scenario speaker run 1 start 2026-09-28T20:38:34.146Z dsf=1 ====
+2026-09-28T20:38:34Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-28T20:38:34Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-28T20:38:34Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-28T20:38:34Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-28T20:38:34Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-28T20:38:41Z 127.0.0.1 "GET /xml64.php?364959 HTTP/1.1" -> 200 -
+2026-09-28T20:38:44Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-28T20:38:44Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-28T20:38:44Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-28T20:38:44Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-28T20:38:45Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-28T20:38:51Z 127.0.0.1 "GET /xml64.php?447958 HTTP/1.1" -> 200 -
+2026-09-28T20:38:54Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-28T20:38:54Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-28T20:38:55Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-28T20:38:55Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-28T20:38:55Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-28T20:39:01Z 127.0.0.1 "GET /xml64.php?59054 HTTP/1.1" -> 200 -
+
+==== C3 harness server start 2026-09-28T20:45:32.353Z port=8799 ====
+C3 reference server on http://127.0.0.1:8799/
+  harness root : /home/dev/kelimator-2012/verify/reference
+  ruffle web   : /home/dev/kelimator-2012/verify/reference/ruffle/web
+  /xml64.php   : /home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php (derived; archived input read-only at /home/dev/kelimator-nostalji/calistir)
+2026-09-28T20:45:32Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+==== C3 harness scenario speaker-probe run 1 start 2026-09-28T20:45:32.667Z dsf=1 ====
+2026-09-28T20:45:32Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-28T20:45:32Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-28T20:45:32Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-28T20:45:32Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-28T20:45:33Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-28T20:45:40Z 127.0.0.1 "GET /xml64.php?517729 HTTP/1.1" -> 200 -
+
+==== C3 harness server start 2026-09-28T20:45:45.277Z port=8799 ====
+C3 reference server on http://127.0.0.1:8799/
+  harness root : /home/dev/kelimator-2012/verify/reference
+  ruffle web   : /home/dev/kelimator-2012/verify/reference/ruffle/web
+  /xml64.php   : /home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php (derived; archived input read-only at /home/dev/kelimator-nostalji/calistir)
+2026-09-28T20:45:45Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+==== C3 harness scenario speaker run 1 start 2026-09-28T20:45:45.588Z dsf=1 ====
+2026-09-28T20:45:45Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-28T20:45:45Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-28T20:45:45Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-28T20:45:45Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-28T20:45:46Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-28T20:45:53Z 127.0.0.1 "GET /xml64.php?29462 HTTP/1.1" -> 200 -
+2026-09-28T20:45:56Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-28T20:45:56Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-28T20:45:56Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-28T20:45:56Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-28T20:45:56Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-28T20:46:03Z 127.0.0.1 "GET /xml64.php?512947 HTTP/1.1" -> 200 -
+2026-09-28T20:46:05Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-28T20:46:05Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-28T20:46:05Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-28T20:46:05Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-28T20:46:05Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-28T20:46:12Z 127.0.0.1 "GET /xml64.php?520750 HTTP/1.1" -> 200 -
+
+==== C3 harness server start 2026-09-28T20:47:21.509Z port=8798 ====
+C3 reference server on http://127.0.0.1:8798/
+  harness root : /home/dev/kelimator-2012/verify/reference
+  ruffle web   : /home/dev/kelimator-2012/verify/reference/ruffle/web
+  /xml64.php   : /home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php (derived; archived input read-only at /home/dev/kelimator-nostalji/calistir)
+2026-09-28T20:47:21Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+==== C3 harness scenario smoke run 1 start 2026-09-28T20:47:21.951Z dsf=1 ====
+2026-09-28T20:47:22Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-28T20:47:22Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-28T20:47:22Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-28T20:47:22Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-28T20:47:22Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-28T20:47:29Z 127.0.0.1 "GET /xml64.php?404303 HTTP/1.1" -> 200 -
+==== C3 harness scenario smoke run 2 start 2026-09-28T20:47:32.026Z dsf=1 ====
+2026-09-28T20:47:32Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-28T20:47:32Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-28T20:47:32Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-28T20:47:32Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-28T20:47:32Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-28T20:47:39Z 127.0.0.1 "GET /xml64.php?157757 HTTP/1.1" -> 200 -
+
+==== C3 harness server start 2026-09-28T20:52:34.044Z port=8798 ====
+C3 reference server on http://127.0.0.1:8798/
+  harness root : /home/dev/kelimator-2012/verify/reference
+  ruffle web   : /home/dev/kelimator-2012/verify/reference/ruffle/web
+  /xml64.php   : /home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php (derived; archived input read-only at /home/dev/kelimator-nostalji/calistir)
+2026-09-28T20:52:34Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+==== C3 harness scenario smoke run 1 start 2026-09-28T20:52:34.638Z dsf=1 ====
+2026-09-28T20:52:34Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-28T20:52:34Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-28T20:52:35Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-28T20:52:35Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-28T20:52:35Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-28T20:52:42Z 127.0.0.1 "GET /xml64.php?587414 HTTP/1.1" -> 200 -
+==== C3 harness scenario smoke run 2 start 2026-09-28T20:52:44.858Z dsf=1 ====
+2026-09-28T20:52:44Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-28T20:52:44Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-28T20:52:44Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-28T20:52:44Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-28T20:52:45Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-28T20:52:51Z 127.0.0.1 "GET /xml64.php?11230 HTTP/1.1" -> 200 -

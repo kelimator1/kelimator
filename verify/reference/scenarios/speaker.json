@@ -1,0 +1,21 @@
+{
+  "name": "speaker",
+  "description": "Speaker ON/OFF reference captures for X3's defect-3 verification. Reference semantics (DefineButton2_90 on(release): vol 0<->1, stopAllSounds, SharedObject 'data'.vol persisted; DefineSprite_88 frames on/off with the raw CXFORM in tags.xml; frame_2 boot restores vol from the SharedObject). The sprite's frame check runs when its frames are entered, so the OFF visual is rendered at boot with a persisted vol=0 — the scenario reaches it through the reference's own persistence path: click (vol=0) -> flush wait -> reload -> capture speaker-off; then click (vol=1) -> reload -> capture speaker-on for symmetry. Speaker center (531, 382) = src/data/layout.json btn_speaker (PlaceObject2 ch=90 tx=530.5 ty=381.8).",
+  "steps": [
+    { "action": "waitForState", "condition": "board", "timeoutMs": 60000 },
+    { "action": "waitStable", "timeoutMs": 15000 },
+    { "action": "capture", "name": "speaker-before" },
+    { "action": "click", "target": "button:speaker" },
+    { "action": "waitMs", "ms": 1000 },
+    { "action": "reload" },
+    { "action": "waitForState", "condition": "board", "timeoutMs": 60000 },
+    { "action": "waitStable", "timeoutMs": 15000 },
+    { "action": "capture", "name": "speaker-off" },
+    { "action": "click", "target": "button:speaker" },
+    { "action": "waitMs", "ms": 1000 },
+    { "action": "reload" },
+    { "action": "waitForState", "condition": "board", "timeoutMs": 60000 },
+    { "action": "waitStable", "timeoutMs": 15000 },
+    { "action": "capture", "name": "speaker-on" }
+  ]
+}

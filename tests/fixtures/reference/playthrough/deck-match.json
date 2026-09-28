@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "round": "FİNALİZM",
+  "arrangement": "AFİZNLİM",
+  "instanceOrder": [3, 0, 5, 6, 2, 4, 1, 7],
+  "observedFrom": "tests/fixtures/reference/playthrough/00-selected.png (tile row, display slots 0..7)",
+  "selectRoundCalls": 3251,
+  "seed": 5263,
+  "seedFormula": "data/constants.json bonusLetter.seed (2012) + production shuffle count; the boot deal consumes count 0 (D5 evidence §4), so the k-th __game.selectRound('FİNALİZM') call deals shuffleOrder(8, 2012 + k)",
+  "search": {
+    "algorithm": "D2 shuffleOrder(8, seed) (src/game/tiles.ts); the matching seed is the first k >= 1 whose per-slot letters equal the observed reference arrangement, searched over k = 1..300000",
+    "maxSearched": 300000,
+    "instanceOrderNote": "instanceOrder is the D2 slot -> instance order at the matching seed. The reference's İ instance mapping is not observable in this capture set (the only pre-submit capture types FZM, which contains no İ; every other capture is post-submit with all tiles restored), so only the rendered letters are constrained — the first matching seed is recorded. Both İ instances render identically, and no compared step depends on which İ instance sits at which slot."
+  },
+  "method": "The reference deck shuffle is unseeded (Math.random per run; evidence/C3-stability.md §3 names the deck as the measured residual). The app's shuffle is the D2 seeded permutation. To compare rendering rather than shuffle randomness, the app is advanced to the deal whose D2 permutation reproduces the reference capture's rendered letter arrangement; the spec re-runs the search, asserts this value, and asserts the rendered tile letters equal 'arrangement' before the playthrough starts. No threshold is altered; the raw and tolerant ratios are reported unchanged.",
+  "verifiedBy": "tests/e2e/playthrough/playthrough.spec.ts (re-search + rendered DOM letters), recorded in evidence/F2-playthrough.md"
+}

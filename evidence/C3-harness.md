@@ -382,3 +382,19 @@ record in `evidence/C3-stability.md`; the fixture reconstruction and its
 resolution are recorded in `evidence/C3-fixture-format.md`; the reference SWF
 and the read-only package are byte-identical to their inputs; every harness run
 launched Chromium with an explicit `--mute-audio`.
+
+---
+
+## Continuation 2026-09-28 (speaker capture, X3 defect 3 / O24)
+
+The harness was reused after the matrix verification for the speaker capture:
+`scenarios/speaker.json` — click `button:speaker` (531, 382; `DefineButton2_90`)
+→ persisted `vol=0` → reload → capture `speaker-off`; second click → reload →
+capture `speaker-on` — plus the supplementary `scenarios/speaker-probe.json`
+(measured: a plain in-session click does not repaint the sprite, 0 px). The
+scenario mode's `reload` action and `speaker` click target (already implemented)
+are now documented in `README.md`; `check.mjs` gained the static `Vspeaker` check
+(`ALL CHECKS PASS`, exit 0). Captures/hashes/dims, pixel measurements (OFF vs ON
+331 px; icon pixels match the raw sprite-88 CXFORM within 1/255; waves removed)
+and the full record: `evidence/C3-speaker-capture.md`,
+`evidence/logs/C3-speaker-*.log`.

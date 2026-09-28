@@ -3,82 +3,82 @@
   "task": "C3",
   "scenario": "smoke",
   "run": 2,
-  "startedAt": "2026-09-28T19:15:17.373Z",
-  "endedAt": "2026-09-28T19:15:27.088Z",
+  "startedAt": "2026-09-28T20:52:44.858Z",
+  "endedAt": "2026-09-28T20:52:53.829Z",
   "ok": true,
   "steps": [
     {
       "index": 0,
       "action": "waitForState",
       "ok": true,
-      "atMs": 362,
+      "atMs": 340,
       "result": {
         "condition": "board",
         "matched": true,
         "xml64": {
           "matched": true,
-          "line": "2026-09-28T19:15:24Z 127.0.0.1 \"GET /xml64.php?475777 HTTP/1.1\" -> 200 -",
-          "waitedMs": 6796,
-          "cursor": 27554
+          "line": "2026-09-28T20:52:51Z 127.0.0.1 \"GET /xml64.php?11230 HTTP/1.1\" -> 200 -",
+          "waitedMs": 6797,
+          "cursor": 45962
         },
         "stable": {
           "stable": true,
           "samples": 3,
           "streak": 3,
-          "elapsedMs": 670,
-          "sha256": "4b36937b85352ab94f3b548c38282a6528952981f74d9a94ca95f3ea1931fca5",
+          "elapsedMs": 615,
+          "sha256": "400a82b9cf02fa503b9a6bdee6716048e6b24e221f99d9df10ba896b01fba28a",
           "maskedBox": null
         },
         "gaugeFraction": 0.6782608695652174,
         "boardSignal": true
       },
-      "durationMs": 7584
+      "durationMs": 7513
     },
     {
       "index": 1,
       "action": "waitStable",
       "ok": true,
-      "atMs": 7946,
+      "atMs": 7853,
       "result": {
         "stable": true,
-        "samples": 6,
+        "samples": 3,
         "streak": 3,
-        "elapsedMs": 1088,
-        "sha256": "38279e51c3f0c3a4af70d6af5f86ab7f3a76d835342e5df6aefac4a990262aba",
+        "elapsedMs": 472,
+        "sha256": "400a82b9cf02fa503b9a6bdee6716048e6b24e221f99d9df10ba896b01fba28a",
         "maskedBox": null
       },
-      "durationMs": 1088
+      "durationMs": 472
     },
     {
       "index": 2,
       "action": "key",
       "ok": true,
-      "atMs": 9034,
+      "atMs": 8326,
       "result": {
         "key": "SPACE",
         "physical": "Space"
       },
-      "durationMs": 245
+      "durationMs": 247
     },
     {
       "index": 3,
       "action": "capture",
       "ok": true,
-      "atMs": 9279,
+      "atMs": 8573,
       "result": {
         "name": "after-space",
         "file": "tests/fixtures/reference/scenario-smoke/run2/after-space.png",
-        "sha256": "d7950ed54ba0b6900f255e9c74d98dde27b37b0b4896752c8cea6fc72d656f84",
+        "sha256": "c80cef6fb73c176c956e2606c04a1412fe93710d2a800606734bab9b7d63e20c",
         "width": 550,
         "height": 400
       },
-      "durationMs": 87
+      "durationMs": 46
     },
     {
       "index": 4,
       "action": "waitMs",
       "ok": true,
-      "atMs": 9367,
+      "atMs": 8619,
       "result": {
         "requestedMs": 300
       },
@@ -88,29 +88,29 @@
       "index": 5,
       "action": "capture",
       "ok": true,
-      "atMs": 9668,
+      "atMs": 8920,
       "result": {
         "name": "settled",
         "file": "tests/fixtures/reference/scenario-smoke/run2/settled.png",
-        "sha256": "de0f54e84664ea64359af1169fb13f6c6f2f56e886075dd4f9c7fde72296b39a",
+        "sha256": "c80cef6fb73c176c956e2606c04a1412fe93710d2a800606734bab9b7d63e20c",
         "width": 550,
         "height": 400
       },
-      "durationMs": 47
+      "durationMs": 50
     }
   ],
   "captures": [
     {
       "name": "after-space",
       "file": "tests/fixtures/reference/scenario-smoke/run2/after-space.png",
-      "sha256": "d7950ed54ba0b6900f255e9c74d98dde27b37b0b4896752c8cea6fc72d656f84",
+      "sha256": "c80cef6fb73c176c956e2606c04a1412fe93710d2a800606734bab9b7d63e20c",
       "width": 550,
       "height": 400
     },
     {
       "name": "settled",
       "file": "tests/fixtures/reference/scenario-smoke/run2/settled.png",
-      "sha256": "de0f54e84664ea64359af1169fb13f6c6f2f56e886075dd4f9c7fde72296b39a",
+      "sha256": "c80cef6fb73c176c956e2606c04a1412fe93710d2a800606734bab9b7d63e20c",
       "width": 550,
       "height": 400
     }

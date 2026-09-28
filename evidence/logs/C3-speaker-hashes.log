@@ -1,0 +1,23 @@
+# C3 speaker capture — final artifact SHA-256 record (2026-09-28T20:50:44Z)
+# paths: scenarios/speaker*.json, check.mjs, capture.mjs, README.md, speaker{,-probe} outputs, evidence logs + evidence/C3-speaker-capture.md + evidence/C3-harness.md
+911bfd841021ed7255ea6ce54fb9c901dded6c71c4ac075a0e580fe6d36c457a  verify/reference/scenarios/speaker.json
+9da2da6160d3b8f94f462ba41fc0ea0aa6969d887435bd1c5bc671bd2dc97b88  verify/reference/scenarios/speaker-probe.json
+6ed35858067490ea53417cc2caedafe10a1ffc60b33aa67c78f6ec76dadaa911  verify/reference/check.mjs
+1e30d3688dcba2b613a715cb542854982efcd5a197b7a0edec8deaa07aac51a0  verify/reference/capture.mjs
+3171315e1ce89faeb0fe208ba121ba2cd09b81cadb22cd85b86c3a10251908fe  verify/reference/README.md
+bb620e1ef8d73151dd899c1918a65aa2cc43e04bedfac7a0db8785fc9a6fb271  tests/fixtures/reference/speaker/speaker-before.png
+2578c16f0a9e269f2f3a31cf63b21f45cd09fe3152b3f1d035df2fb58c94ec5d  tests/fixtures/reference/speaker/speaker-off.png
+af21a62fd0a083c315dec853c29654f3fa973ea9827b38ad94bd364e62bb3243  tests/fixtures/reference/speaker/speaker-on.png
+f22b7f8819942ed8a75ec18269e3800ec87511f4e79432d644c21d81702d2e2a  tests/fixtures/reference/speaker/interaction-log.json
+d231233a7287ef054218e7bb435f2994868d13df637e8e77dae30a4f85ca23b4  tests/fixtures/reference/speaker/scenario-report.json
+44d6c8efcb46b7ccc11c839551672ec71b06b9c5a4e8cdaeba2bb0cfc96fbe2a  tests/fixtures/reference/speaker-probe/p0-before-away.png
+fdb496e9fab6d46eaec58ccbd38d6d2b875495bfece87d056ce5bcef8a0515cf  tests/fixtures/reference/speaker-probe/p1-after-click-hover.png
+11ce8b1ee1942f74ca4b34ba6000c4a47480b2c0c0bcfec16dbd907322beb654  tests/fixtures/reference/speaker-probe/p2-away-after-off.png
+bb552199e6a4ccacef18f20ae3c7ede42bdd121ab3d009aa5c623def3060fbd8  tests/fixtures/reference/speaker-probe/p3-away-after-on.png
+1e594eac60adf3ff88910d038771199eacb0acaf295110cd9fd01beddff0aa73  tests/fixtures/reference/speaker-probe/interaction-log.json
+102cf8f2f0c06f004373f69e2467a60db48456c6178ddffe11de4b14dfda0eae  tests/fixtures/reference/speaker-probe/scenario-report.json
+31907e2c30c69c9b841600896e8077803b06faaa461e11eeaa34b61460d6d7bd  evidence/logs/C3-speaker-scenario.log
+40c83cd14b8a286d7bd950d63c930d17984ba4facb65abf573fc3c393bc324fd  evidence/logs/C3-speaker-measure.log
+edf592aa56d358b73b247ee5143984b2c46db036524fc3cbdc5ec0252fa51f9c  evidence/logs/C3-speaker-check.log
+d1a03894741308c3b20390b3182146de0a7e3b1e155ea089fbf38b69224f0ced  evidence/C3-speaker-capture.md
+3490bafbf45b7ad63077e846a02f4a2779edc13a07bbb2d958f68c4ba1953620  evidence/C3-harness.md

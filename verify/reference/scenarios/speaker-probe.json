@@ -1,0 +1,19 @@
+{
+  "name": "speaker-probe",
+  "description": "TEMP probe: distinguish the speaker's vol-based OFF visual from the button hover state (click -> capture with mouse over -> click away -> capture).",
+  "steps": [
+    { "action": "waitForState", "condition": "board", "timeoutMs": 60000 },
+    { "action": "waitStable", "timeoutMs": 15000 },
+    { "action": "capture", "name": "p0-before-away" },
+    { "action": "click", "target": "button:speaker" },
+    { "action": "waitStable", "timeoutMs": 10000 },
+    { "action": "capture", "name": "p1-after-click-hover" },
+    { "action": "click", "target": "coord:275,200" },
+    { "action": "waitStable", "timeoutMs": 10000 },
+    { "action": "capture", "name": "p2-away-after-off" },
+    { "action": "click", "target": "button:speaker" },
+    { "action": "click", "target": "coord:275,200" },
+    { "action": "waitStable", "timeoutMs": 10000 },
+    { "action": "capture", "name": "p3-away-after-on" }
+  ]
+}

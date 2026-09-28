@@ -16,6 +16,10 @@
  *       the cause is documented in evidence/C3-stability.md.
  *   V6  the server log contains an `xml64.php ... -> 200` line in both matrix
  *       runs (segments delimited by "==== C3 harness run N start" markers).
+ *   Vspeaker  speaker scenario (X3 defect 3 / O24) artifacts: the committed
+ *       captures exist at 550x400, the JSONs parse and agree (hashes/dims),
+ *       and the OFF capture really differs from the ON capture inside the
+ *       speaker box while the restored ON capture matches the initial ON.
  */
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
@@ -229,6 +233,82 @@ check(
   smoke.problems.length === 0,
   `smoke scenario: ${smoke.captures} captures (${smoke.dims}), JSONs parse: ${smoke.logOk}${smoke.problems.length ? `; PROBLEMS: ${smoke.problems.join('; ')}` : ''}`,
 );
+
+// --- speaker scenario artifacts (X3 defect 3 / O24) — static check ----------
+// Source command (muted, dsf 1):
+//   node verify/reference/capture.mjs --scenario verify/reference/scenarios/speaker.json \
+//     --out tests/fixtures/reference/speaker --runs 1 --port 8799
+// The scenario reaches the reference's OFF frame through its own persistence
+// path (click -> reload): DefineSprite_88 evaluates `_root.vol` when its frame
+// is entered, and a plain in-session click does not repaint the sprite (probe
+// measurement in tests/fixtures/reference/speaker-probe/, written up in
+// evidence/C3-speaker-capture.md). Like V2, this check validates the committed
+// artifacts; re-run the scenario with the command above to refresh them.
+const SPEAKER_OUT = path.join(OUT, 'speaker');
+const SPEAKER_CAPTURES = ['speaker-before', 'speaker-off', 'speaker-on'];
+const SPEAKER_BOX = { x0: 505, y0: 356, x1: 550, y1: 400 };
+function speakerScenarioCheck() {
+  const problems = [];
+  let report = null;
+  let log = null;
+  try {
+    report = JSON.parse(fs.readFileSync(path.join(SPEAKER_OUT, 'scenario-report.json'), 'utf8'));
+  } catch (err) {
+    problems.push(`scenario-report.json: ${err.message}`);
+  }
+  try {
+    log = JSON.parse(fs.readFileSync(path.join(SPEAKER_OUT, 'interaction-log.json'), 'utf8'));
+  } catch (err) {
+    problems.push(`interaction-log.json: ${err.message}`);
+  }
+  const captures = report?.captures ?? [];
+  const byName = new Map(captures.map((c) => [c.name, c]));
+  const images = new Map();
+  for (const name of SPEAKER_CAPTURES) {
+    const c = byName.get(name);
+    if (!c) { problems.push(`capture ${name} not recorded in scenario-report.json`); continue; }
+    const p = path.join(SPEAKER_OUT, `${name}.png`);
+    if (!fs.existsSync(p)) { problems.push(`missing ${path.relative(REPO, p)}`); continue; }
+    const buf = fs.readFileSync(p);
+    const img = decodePng(buf);
+    images.set(name, img);
+    if (img.width !== 550 || img.height !== 400) problems.push(`${name}: ${img.width}x${img.height} != 550x400`);
+    if (c.width !== img.width || c.height !== img.height) problems.push(`${name}: report ${c.width}x${c.height} != file ${img.width}x${img.height}`);
+    if (c.sha256 !== sha256(buf)) problems.push(`${name}: report sha256 != file sha256`);
+  }
+  if (report && report.ok !== true) problems.push('scenario-report.json ok != true');
+  if (report && (report.missingKeys ?? []).length > 0) problems.push(`missingKeys: ${report.missingKeys.join(',')}`);
+  if (log && log.scenario?.name !== 'speaker') problems.push(`interaction-log scenario name ${JSON.stringify(log.scenario?.name)} != "speaker"`);
+  const harness = report?.harness ?? log?.harness ?? {};
+  if (harness.deviceScaleFactor !== 1) problems.push(`deviceScaleFactor ${harness.deviceScaleFactor} != 1`);
+  if (!(harness.launchArgs ?? []).includes('--mute-audio')) problems.push('harness.launchArgs missing --mute-audio');
+  let offPixels = null;
+  let restoredPixels = null;
+  if (images.size === SPEAKER_CAPTURES.length) {
+    const crop = (img) => {
+      const w = SPEAKER_BOX.x1 - SPEAKER_BOX.x0;
+      const h = SPEAKER_BOX.y1 - SPEAKER_BOX.y0;
+      const data = new Uint8Array(w * h * 4);
+      for (let y = 0; y < h; y++) {
+        for (let x = 0; x < w; x++) {
+          const si = ((y + SPEAKER_BOX.y0) * img.width + (x + SPEAKER_BOX.x0)) * 4;
+          data.set(img.data.subarray(si, si + 4), (y * w + x) * 4);
+        }
+      }
+      return { width: w, height: h, data };
+    };
+    const on = images.get('speaker-before');
+    offPixels = compareImages(crop(on), crop(images.get('speaker-off'))).mismatchedPixels;
+    restoredPixels = compareImages(crop(on), crop(images.get('speaker-on'))).mismatchedPixels;
+    if (offPixels === 0) problems.push('speaker-off equals speaker-before inside the speaker box (OFF frame not captured)');
+    if (restoredPixels !== 0) problems.push(`restored speaker-on differs from speaker-before by ${restoredPixels}px inside the speaker box`);
+  }
+  return { problems, captures: captures.length, offPixels, restoredPixels };
+}
+const speaker = speakerScenarioCheck();
+check('Vspeaker', speaker.problems.length === 0,
+  `speaker scenario artifacts: ${SPEAKER_CAPTURES.length} captures at 550x400, JSONs parse; speaker-box mismatch OFF vs ON=${speaker.offPixels}px, restored ON vs ON=${speaker.restoredPixels}px` +
+  (speaker.problems.length ? `; PROBLEMS: ${speaker.problems.join('; ')}` : ''));
 
 // --- V6 --------------------------------------------------------------------
 const lines = fs.readFileSync(SERVER_LOG, 'utf8').split('\n');

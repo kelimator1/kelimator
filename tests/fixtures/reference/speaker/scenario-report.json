@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 1,
+  "task": "C3",
+  "scenario": "speaker",
+  "run": 1,
+  "startedAt": "2026-09-28T20:45:45.588Z",
+  "endedAt": "2026-09-28T20:46:14.825Z",
+  "ok": true,
+  "steps": [
+    {
+      "index": 0,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 729,
+      "result": {
+        "condition": "board",
+        "matched": true,
+        "xml64": {
+          "matched": true,
+          "line": "2026-09-28T20:45:53Z 127.0.0.1 \"GET /xml64.php?29462 HTTP/1.1\" -> 200 -",
+          "waitedMs": 6784,
+          "cursor": 41499
+        },
+        "stable": {
+          "stable": true,
+          "samples": 3,
+          "streak": 3,
+          "elapsedMs": 674,
+          "sha256": "25c709782668b7f1b2d5f4a686486b7c7e032fd6f4cc03d545c180cb9d71899d",
+          "maskedBox": null
+        },
+        "gaugeFraction": 0.6782608695652174,
+        "boardSignal": true
+      },
+      "durationMs": 7554
+    },
+    {
+      "index": 1,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 8283,
+      "result": {
+        "stable": true,
+        "samples": 5,
+        "streak": 3,
+        "elapsedMs": 938,
+        "sha256": "f92e9633525eb21c49efe5500f320a0f30e712b06560d28db7074e8414411e5e",
+        "maskedBox": null
+      },
+      "durationMs": 938
+    },
+    {
+      "index": 2,
+      "action": "capture",
+      "ok": true,
+      "atMs": 9221,
+      "result": {
+        "name": "speaker-before",
+        "file": "tests/fixtures/reference/speaker/speaker-before.png",
+        "sha256": "bb620e1ef8d73151dd899c1918a65aa2cc43e04bedfac7a0db8785fc9a6fb271",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 45
+    },
+    {
+      "index": 3,
+      "action": "click",
+      "ok": true,
+      "atMs": 9266,
+      "result": {
+        "target": "button:speaker",
+        "point": {
+          "x": 531,
+          "y": 382
+        },
+        "kind": "button"
+      },
+      "durationMs": 267
+    },
+    {
+      "index": 4,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 9534,
+      "result": {
+        "requestedMs": 1000
+      },
+      "durationMs": 1001
+    },
+    {
+      "index": 5,
+      "action": "reload",
+      "ok": true,
+      "atMs": 10535,
+      "result": {
+        "reloaded": true
+      },
+      "durationMs": 198
+    },
+    {
+      "index": 6,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 10733,
+      "result": {
+        "condition": "board",
+        "matched": true,
+        "xml64": {
+          "matched": true,
+          "line": "2026-09-28T20:46:03Z 127.0.0.1 \"GET /xml64.php?512947 HTTP/1.1\" -> 200 -",
+          "waitedMs": 7030,
+          "cursor": 41989
+        },
+        "stable": {
+          "stable": true,
+          "samples": 3,
+          "streak": 3,
+          "elapsedMs": 450,
+          "sha256": "5e35fbcfe8c70a90fc4c87c3e3e83efbd5878d3a9e697c4ad665caa50b6aa751",
+          "maskedBox": null
+        },
+        "gaugeFraction": 0.6782608695652174,
+        "boardSignal": true
+      },
+      "durationMs": 7527
+    },
+    {
+      "index": 7,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 18260,
+      "result": {
+        "stable": true,
+        "samples": 3,
+        "streak": 3,
+        "elapsedMs": 505,
+        "sha256": "5e35fbcfe8c70a90fc4c87c3e3e83efbd5878d3a9e697c4ad665caa50b6aa751",
+        "maskedBox": null
+      },
+      "durationMs": 505
+    },
+    {
+      "index": 8,
+      "action": "capture",
+      "ok": true,
+      "atMs": 18765,
+      "result": {
+        "name": "speaker-off",
+        "file": "tests/fixtures/reference/speaker/speaker-off.png",
+        "sha256": "2578c16f0a9e269f2f3a31cf63b21f45cd09fe3152b3f1d035df2fb58c94ec5d",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 44
+    },
+    {
+      "index": 9,
+      "action": "click",
+      "ok": true,
+      "atMs": 18809,
+      "result": {
+        "target": "button:speaker",
+        "point": {
+          "x": 531,
+          "y": 382
+        },
+        "kind": "button"
+      },
+      "durationMs": 189
+    },
+    {
+      "index": 10,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 18998,
+      "result": {
+        "requestedMs": 1000
+      },
+      "durationMs": 1001
+    },
+    {
+      "index": 11,
+      "action": "reload",
+      "ok": true,
+      "atMs": 19999,
+      "result": {
+        "reloaded": true
+      },
+      "durationMs": 176
+    },
+    {
+      "index": 12,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 20175,
+      "result": {
+        "condition": "board",
+        "matched": true,
+        "xml64": {
+          "matched": true,
+          "line": "2026-09-28T20:46:12Z 127.0.0.1 \"GET /xml64.php?520750 HTTP/1.1\" -> 200 -",
+          "waitedMs": 7037,
+          "cursor": 42479
+        },
+        "stable": {
+          "stable": true,
+          "samples": 3,
+          "streak": 3,
+          "elapsedMs": 664,
+          "sha256": "01581ab76eddc01549a80bf9d546d9749c22c0190cd1b629b8fdfa57de01c43e",
+          "maskedBox": null
+        },
+        "gaugeFraction": 0.6782608695652174,
+        "boardSignal": true
+      },
+      "durationMs": 7772
+    },
+    {
+      "index": 13,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 27947,
+      "result": {
+        "stable": true,
+        "samples": 6,
+        "streak": 3,
+        "elapsedMs": 1233,
+        "sha256": "e692fa4781c0230151af6cf2bb0b434dba9df978e8f0914755ad602a88e4bb23",
+        "maskedBox": null
+      },
+      "durationMs": 1233
+    },
+    {
+      "index": 14,
+      "action": "capture",
+      "ok": true,
+      "atMs": 29180,
+      "result": {
+        "name": "speaker-on",
+        "file": "tests/fixtures/reference/speaker/speaker-on.png",
+        "sha256": "af21a62fd0a083c315dec853c29654f3fa973ea9827b38ad94bd364e62bb3243",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 57
+    }
+  ],
+  "captures": [
+    {
+      "name": "speaker-before",
+      "file": "tests/fixtures/reference/speaker/speaker-before.png",
+      "sha256": "bb620e1ef8d73151dd899c1918a65aa2cc43e04bedfac7a0db8785fc9a6fb271",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "speaker-off",
+      "file": "tests/fixtures/reference/speaker/speaker-off.png",
+      "sha256": "2578c16f0a9e269f2f3a31cf63b21f45cd09fe3152b3f1d035df2fb58c94ec5d",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "speaker-on",
+      "file": "tests/fixtures/reference/speaker/speaker-on.png",
+      "sha256": "af21a62fd0a083c315dec853c29654f3fa973ea9827b38ad94bd364e62bb3243",
+      "width": 550,
+      "height": 400
+    }
+  ],
+  "missingKeys": [],
+  "harness": {
+    "url": "http://127.0.0.1:8799/",
+    "viewport": {
+      "width": 550,
+      "height": 400
+    },
+    "deviceScaleFactor": 1,
+    "canvasDevicePixels": {
+      "width": 550,
+      "height": 400
+    },
+    "outputRoot": "tests/fixtures/reference/speaker",
+    "launchArgs": [
+      "--mute-audio"
+    ],
+    "ruffle": {
+      "release": "v0.6.0",
+      "asset": "ruffle-0.6.0-web-selfhosted.zip",
+      "zipSha256": "e8acfacc37443303872379d0e215999af846854d1dd3fa8fac0a765445b43dbf",
+      "ruffleJsSha256": "a686a305345b06542dddedada71869104916a61e393f174687571528ac4225f5"
+    },
+    "swf": {
+      "file": "/home/dev/kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf",
+      "sha256": "236ed9359719d061c4c9426c8533b126bffcb3466f7b5f818601b50bd7afbf39",
+      "md5": "af059ff9d75cefbc244f03814b47be9c"
+    },
+    "fixture": {
+      "input": {
+        "file": "/home/dev/kelimator-nostalji/calistir/xml64.php",
+        "sha256": "854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed"
+      },
+      "served": {
+        "file": "/home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php",
+        "sha256": "80506d3ef3b58a4d8fdb5779debd4819271d57a5635276963a5d01eab91cd8bf"
+      },
+      "script": {
+        "file": "/home/dev/kelimator-2012/verify/reference/make-fixture.mjs",
+        "sha256": "e4f5198a1ddd94eceeb20639a41855a2bb385e75782e169a5768205272007788"
+      }
+    },
+    "playwright": "1.63.0",
+    "node": "v22.14.0",
+    "port": 8799,
+    "canvasBox": {
+      "x": 0,
+      "y": 0,
+      "width": 550,
+      "height": 400
+    }
+  }
+}

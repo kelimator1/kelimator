@@ -1,0 +1,27 @@
+{
+  "name": "f2-timeout",
+  "steps": [
+    {
+      "action": "waitForState",
+      "condition": "board",
+      "timeoutMs": 60000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "waitForState",
+      "condition": "round-end",
+      "timeoutMs": 260000
+    },
+    {
+      "action": "waitStable",
+      "timeoutMs": 30000
+    },
+    {
+      "action": "capture",
+      "name": "timeout"
+    }
+  ]
+}

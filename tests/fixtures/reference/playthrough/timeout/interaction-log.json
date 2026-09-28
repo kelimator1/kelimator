@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "task": "C3",
+  "mode": "scenario",
+  "scenario": {
+    "file": "tests/fixtures/reference/playthrough/scenarios/timeout.json",
+    "name": "f2-timeout",
+    "steps": 5
+  },
+  "run": 1,
+  "startedAt": "2026-09-28T19:59:28.484Z",
+  "t0": 1790625568484,
+  "harness": {
+    "url": "http://127.0.0.1:8797/",
+    "viewport": {
+      "width": 550,
+      "height": 400
+    },
+    "deviceScaleFactor": 1,
+    "canvasDevicePixels": {
+      "width": 550,
+      "height": 400
+    },
+    "outputRoot": "tests/fixtures/reference/playthrough/timeout",
+    "launchArgs": [
+      "--mute-audio"
+    ],
+    "ruffle": {
+      "release": "v0.6.0",
+      "asset": "ruffle-0.6.0-web-selfhosted.zip",
+      "zipSha256": "e8acfacc37443303872379d0e215999af846854d1dd3fa8fac0a765445b43dbf",
+      "ruffleJsSha256": "a686a305345b06542dddedada71869104916a61e393f174687571528ac4225f5"
+    },
+    "swf": {
+      "file": "/home/dev/kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf",
+      "sha256": "236ed9359719d061c4c9426c8533b126bffcb3466f7b5f818601b50bd7afbf39",
+      "md5": "af059ff9d75cefbc244f03814b47be9c"
+    },
+    "fixture": {
+      "input": {
+        "file": "/home/dev/kelimator-nostalji/calistir/xml64.php",
+        "sha256": "854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed"
+      },
+      "served": {
+        "file": "/home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php",
+        "sha256": "80506d3ef3b58a4d8fdb5779debd4819271d57a5635276963a5d01eab91cd8bf"
+      },
+      "script": {
+        "file": "/home/dev/kelimator-2012/verify/reference/make-fixture.mjs",
+        "sha256": "e4f5198a1ddd94eceeb20639a41855a2bb385e75782e169a5768205272007788"
+      }
+    },
+    "playwright": "1.63.0",
+    "node": "v22.14.0",
+    "port": 8797,
+    "canvasBox": {
+      "x": 0,
+      "y": 0,
+      "width": 550,
+      "height": 400
+    }
+  },
+  "serverEvidence": {},
+  "flowNotes": [],
+  "states": [],
+  "actions": [],
+  "console": [
+    {
+      "atMs": 261,
+      "type": "requestfailed",
+      "text": "http://127.0.0.1:8797/ruffle/web/826bb0938097485a2c9d.wasm net::ERR_ABORTED"
+    },
+    {
+      "atMs": 261,
+      "type": "log",
+      "text": "%cINFO%c web/src/lib.rs:1416%c Ruffle WASM module has been initialized color: whitesmoke; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 273,
+      "type": "log",
+      "text": "%cINFO%c web/src/builder.rs:565%c Creating wgpu webgl renderer... color: whitesmoke; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 540,
+      "type": "log",
+      "text": "%cNew Ruffle instance created (Version: 0.6.0 | WebAssembly extensions: ON | Used renderer: wgpu-webgl) background: #37528C; color: #FFAD33"
+    },
+    {
+      "atMs": 540,
+      "type": "log",
+      "text": "Loading SWF file kelimator_tr_2012_mochiads.swf"
+    },
+    {
+      "atMs": 551,
+      "type": "log",
+      "text": "%cINFO%c core/src/context.rs:364%c Loaded SWF version 6, resolution 550x400 @ 36 FPS color: whitesmoke; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 585,
+      "type": "log",
+      "text": "%cWARN%c core/src/library.rs:567%c Unknown device font \"Verdana\" (bold: true, italic: false) color: orange; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 585,
+      "type": "log",
+      "text": "%cWARN%c core/src/library.rs:567%c Unknown device font \"Noto Sans\" (bold: true, italic: false) color: orange; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 589,
+      "type": "log",
+      "text": "%cWARN%c core/src/stub.rs:144%c Encountered stub: AVM1 System.security.allowDomain() color: orange; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 591,
+      "type": "log",
+      "text": "%cWARN%c core/src/stub.rs:144%c Encountered stub: AVM1 System.security.allowInsecureDomain() color: orange; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 595,
+      "type": "log",
+      "text": "%cINFO%c core/src/compatibility_rules.rs:181%c Blocking url due to compatibility ruleset 'mochiads' color: whitesmoke; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 595,
+      "type": "log",
+      "text": "%cERROR%c core/src/loader.rs:853%c Error during movie loading of \"http://x.mochiads.com/srv/1/951545f2fdfbf4a6.swf\": BlockedHost(\"*.mochiads.com\") color: red; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 707,
+      "type": "warning",
+      "text": "[.WebGL-0x13c00440800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "atMs": 711,
+      "type": "warning",
+      "text": "[.WebGL-0x13c00440800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "atMs": 714,
+      "type": "warning",
+      "text": "[.WebGL-0x13c00440800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "atMs": 748,
+      "type": "warning",
+      "text": "[.WebGL-0x13c00440800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+    },
+    {
+      "atMs": 7524,
+      "type": "log",
+      "text": "%cINFO%c %c estimating duration from bitrate, may be inaccurate for vbr files log.target = \"symphonia_bundle_mp3::demuxer\";\nlog.module_path = \"symphonia_bundle_mp3::demuxer\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/demuxer.rs\";\nlog.line = 150; color: whitesmoke; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 7571,
+      "type": "log",
+      "text": "%cWARN%c %c mpa: invalid main_data_begin, underflow by 117 bytes log.target = \"symphonia_bundle_mp3::layer3\";\nlog.module_path = \"symphonia_bundle_mp3::layer3\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/layer3/mod.rs\";\nlog.line = 86; color: orange; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 7836,
+      "type": "log",
+      "text": "%cWARN%c core/src/library.rs:567%c Unknown device font \"Times New Roman\" (bold: false, italic: false) color: orange; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 197884,
+      "type": "log",
+      "text": "%cINFO%c %c estimating duration from bitrate, may be inaccurate for vbr files log.target = \"symphonia_bundle_mp3::demuxer\";\nlog.module_path = \"symphonia_bundle_mp3::demuxer\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/demuxer.rs\";\nlog.line = 150; color: whitesmoke; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 197884,
+      "type": "log",
+      "text": "%cWARN%c %c mpa: invalid main_data_begin, underflow by 117 bytes log.target = \"symphonia_bundle_mp3::layer3\";\nlog.module_path = \"symphonia_bundle_mp3::layer3\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/layer3/mod.rs\";\nlog.line = 86; color: orange; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 198906,
+      "type": "log",
+      "text": "%cINFO%c %c estimating duration from bitrate, may be inaccurate for vbr files log.target = \"symphonia_bundle_mp3::demuxer\";\nlog.module_path = \"symphonia_bundle_mp3::demuxer\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/demuxer.rs\";\nlog.line = 150; color: whitesmoke; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 198906,
+      "type": "log",
+      "text": "%cWARN%c %c mpa: invalid main_data_begin, underflow by 117 bytes log.target = \"symphonia_bundle_mp3::layer3\";\nlog.module_path = \"symphonia_bundle_mp3::layer3\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/layer3/mod.rs\";\nlog.line = 86; color: orange; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 199961,
+      "type": "log",
+      "text": "%cINFO%c %c estimating duration from bitrate, may be inaccurate for vbr files log.target = \"symphonia_bundle_mp3::demuxer\";\nlog.module_path = \"symphonia_bundle_mp3::demuxer\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/demuxer.rs\";\nlog.line = 150; color: whitesmoke; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 199961,
+      "type": "log",
+      "text": "%cWARN%c %c mpa: invalid main_data_begin, underflow by 117 bytes log.target = \"symphonia_bundle_mp3::layer3\";\nlog.module_path = \"symphonia_bundle_mp3::layer3\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/layer3/mod.rs\";\nlog.line = 86; color: orange; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 200989,
+      "type": "log",
+      "text": "%cINFO%c %c estimating duration from bitrate, may be inaccurate for vbr files log.target = \"symphonia_bundle_mp3::demuxer\";\nlog.module_path = \"symphonia_bundle_mp3::demuxer\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/demuxer.rs\";\nlog.line = 150; color: whitesmoke; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 200989,
+      "type": "log",
+      "text": "%cWARN%c %c mpa: invalid main_data_begin, underflow by 117 bytes log.target = \"symphonia_bundle_mp3::layer3\";\nlog.module_path = \"symphonia_bundle_mp3::layer3\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/layer3/mod.rs\";\nlog.line = 86; color: orange; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 201989,
+      "type": "log",
+      "text": "%cINFO%c %c estimating duration from bitrate, may be inaccurate for vbr files log.target = \"symphonia_bundle_mp3::demuxer\";\nlog.module_path = \"symphonia_bundle_mp3::demuxer\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/demuxer.rs\";\nlog.line = 150; color: whitesmoke; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 201989,
+      "type": "log",
+      "text": "%cWARN%c %c mpa: invalid main_data_begin, underflow by 117 bytes log.target = \"symphonia_bundle_mp3::layer3\";\nlog.module_path = \"symphonia_bundle_mp3::layer3\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/layer3/mod.rs\";\nlog.line = 86; color: orange; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 203022,
+      "type": "log",
+      "text": "%cINFO%c %c estimating duration from bitrate, may be inaccurate for vbr files log.target = \"symphonia_bundle_mp3::demuxer\";\nlog.module_path = \"symphonia_bundle_mp3::demuxer\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/demuxer.rs\";\nlog.line = 150; color: whitesmoke; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 203022,
+      "type": "log",
+      "text": "%cWARN%c %c mpa: invalid main_data_begin, underflow by 117 bytes log.target = \"symphonia_bundle_mp3::layer3\";\nlog.module_path = \"symphonia_bundle_mp3::layer3\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/layer3/mod.rs\";\nlog.line = 86; color: orange; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 204022,
+      "type": "log",
+      "text": "%cINFO%c %c estimating duration from bitrate, may be inaccurate for vbr files log.target = \"symphonia_bundle_mp3::demuxer\";\nlog.module_path = \"symphonia_bundle_mp3::demuxer\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/demuxer.rs\";\nlog.line = 150; color: whitesmoke; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 204022,
+      "type": "log",
+      "text": "%cWARN%c %c mpa: invalid main_data_begin, underflow by 117 bytes log.target = \"symphonia_bundle_mp3::layer3\";\nlog.module_path = \"symphonia_bundle_mp3::layer3\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/layer3/mod.rs\";\nlog.line = 86; color: orange; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 205023,
+      "type": "log",
+      "text": "%cINFO%c %c estimating duration from bitrate, may be inaccurate for vbr files log.target = \"symphonia_bundle_mp3::demuxer\";\nlog.module_path = \"symphonia_bundle_mp3::demuxer\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/demuxer.rs\";\nlog.line = 150; color: whitesmoke; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 205023,
+      "type": "log",
+      "text": "%cWARN%c %c mpa: invalid main_data_begin, underflow by 117 bytes log.target = \"symphonia_bundle_mp3::layer3\";\nlog.module_path = \"symphonia_bundle_mp3::layer3\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/layer3/mod.rs\";\nlog.line = 86; color: orange; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 206040,
+      "type": "log",
+      "text": "%cINFO%c %c estimating duration from bitrate, may be inaccurate for vbr files log.target = \"symphonia_bundle_mp3::demuxer\";\nlog.module_path = \"symphonia_bundle_mp3::demuxer\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/demuxer.rs\";\nlog.line = 150; color: whitesmoke; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 206040,
+      "type": "log",
+      "text": "%cWARN%c %c mpa: invalid main_data_begin, underflow by 117 bytes log.target = \"symphonia_bundle_mp3::layer3\";\nlog.module_path = \"symphonia_bundle_mp3::layer3\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/layer3/mod.rs\";\nlog.line = 86; color: orange; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 206874,
+      "type": "log",
+      "text": "%cINFO%c %c estimating duration from bitrate, may be inaccurate for vbr files log.target = \"symphonia_bundle_mp3::demuxer\";\nlog.module_path = \"symphonia_bundle_mp3::demuxer\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/demuxer.rs\";\nlog.line = 150; color: whitesmoke; background: #444 color: gray; font-style: italic color: inherit"
+    },
+    {
+      "atMs": 206874,
+      "type": "log",
+      "text": "%cWARN%c %c mpa: invalid main_data_begin, underflow by 117 bytes log.target = \"symphonia_bundle_mp3::layer3\";\nlog.module_path = \"symphonia_bundle_mp3::layer3\";\nlog.file = \"/home/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/symphonia-bundle-mp3-0.5.5/src/layer3/mod.rs\";\nlog.line = 86; color: orange; background: #444 color: gray; font-style: italic color: inherit"
+    }
+  ],
+  "endedAt": "2026-09-28T20:02:58.629Z"
+}
