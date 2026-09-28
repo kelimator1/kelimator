@@ -5,6 +5,14 @@
 - Depends on: all previous tasks
 - Owned paths: `tools/verify-all.sh` (final), `evidence/F3-*`
 
+> Amendment 2026-09-29 (orchestrator): Owned paths additionally include
+> `tests/e2e/offline/**` — the offline-mode check spec required by T14 (serve
+> the built `dist/` locally, assert the app is functional with all non-local
+> requests blocked/absent). `tools/verify-all.sh` must run the e2e suites
+> WITHOUT recording flags so committed evidence stays frozen (outputs under
+> `test-results/` only; `git status` clean after a run). Silent witness runs
+> apply. Recorded in `docs/08-open-items.md` (Amendments).
+
 ## Steps
 1. Finalize `tools/verify-all.sh` to run, in order:
    - lint (`npm run lint`)

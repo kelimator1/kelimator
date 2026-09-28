@@ -212,6 +212,10 @@ RESOLVED 2026-09-28 — evidence/B3-threshold.md — Round-bank threshold measur
   timer path; pre-fix run fails on the revealed colour) + F2's S9 re-runs:
   tolerant 2.0145 % → 0.901 % (raw 7.730 %), pass. Evidence:
   `evidence/X4-reveal-colour.md`.
+- 2026-09-29 — F3 test-scope: `tasks/F3-final-matrix.md` additionally owns
+  `tests/e2e/offline/**` (T14 offline check); `tools/verify-all.sh` runs suites
+  without recording flags (frozen evidence; transient outputs in
+  `test-results/`).
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:
