@@ -138,3 +138,12 @@ RESOLVED 2026-09-28 — evidence/B2-filters.md — Snapshot entry types inventor
   as undesired entries. Evidence: `evidence/B2-filters.md` §1.2/§4.3.
 - 2026-09-28 — B3 test-scope: `tasks/B3-round-generation.md` additionally owns
   `tests/rounds-fixtures.test.mjs` (`npm test -- fixtures`).
+- 2026-09-28 — `id` uniqueness (`docs/06` §4): duplicate slugs are accepted
+  (the transliteration folds Turkish diacritics; 33 pairs inside the emitted
+  bank); consumers must not assume uniqueness; no disambiguation suffix.
+  Evidence: `evidence/B3-bank.md` §6.
+- 2026-09-28 — viroloji fixture provided (B3 BLOCKER resolved): Wayback capture
+  `2007-05-14 06:32:46` of `xml.php`, committed unchanged at
+  `tests/fixtures/rounds/viroloji.xml` (sha256 `594e6a53…`, 559 B, ISO-8859);
+  B3's gated structural test activates. Evidence:
+  `evidence/B3-viroloji-blocker.md`.

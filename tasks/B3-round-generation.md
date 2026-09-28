@@ -43,6 +43,12 @@
 > (`npm test -- fixtures`). Silent witness runs apply (`EXECUTION.md` §8).
 > Recorded in `docs/08-open-items.md` (Amendments).
 
+> Amendment 2026-09-28b (orchestrator): the `viroloji` fixture was provided by
+> the orchestrator as `tests/fixtures/rounds/viroloji.xml` (Wayback capture
+> 2007-05-14 06:32:46, bytes unchanged, sha256 `594e6a53…`); the task's gated
+> structural test activates on it. `tests/fixtures/rounds/**` is read-only input
+> for this task.
+
 ## Verify
 - V3: `npx ajv-cli validate -s data/rounds.schema.json -d src/data/rounds.json`
 - V4: `npm test -- fixtures` — structural + enumeration tests pass; exceptions

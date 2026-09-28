@@ -120,6 +120,13 @@ Algorithm (deterministic):
 `id` = lowercased main word with Turkish casing applied then transliterated to
 `[a-z0-9-]` (transliteration table lives in `tools/` and is recorded).
 
+> Amendment 2026-09-28 (orchestrator): duplicate `id` slugs are accepted as
+> produced by this rule (`I/İ→i`, `C/Ç→c`, `G/Ğ→g`, `O/Ö→o`, `S/Ş→s`, `U/Ü→u`):
+> 45 colliding pairs over all 8-letter candidates, 33 within the emitted bank
+> (`evidence/B3-bank.md` §6). Consumers must not assume `id` uniqueness; round
+> identity is the array order (sequential selection). No disambiguation suffix
+> is added; matching entry in `docs/08-open-items.md` (Amendments).
+
 ## 5. Golden fixtures (algorithm verification)
 
 Fixtures under `tests/fixtures/rounds/`:
