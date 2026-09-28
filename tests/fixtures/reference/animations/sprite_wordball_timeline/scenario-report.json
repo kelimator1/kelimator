@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "task": "C3",
+  "scenario": "e3-sprite-wordball",
+  "run": 1,
+  "startedAt": "2026-09-28T19:45:56.361Z",
+  "endedAt": "2026-09-28T19:46:07.332Z",
+  "ok": true,
+  "steps": [
+    {
+      "index": 0,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 785,
+      "result": {
+        "condition": "board",
+        "matched": true,
+        "xml64": {
+          "matched": true,
+          "line": "2026-09-28T19:46:03Z 127.0.0.1 \"GET /xml64.php?153491 HTTP/1.1\" -> 200 -",
+          "waitedMs": 7036,
+          "cursor": 29916
+        },
+        "stable": {
+          "stable": true,
+          "samples": 3,
+          "streak": 3,
+          "elapsedMs": 512,
+          "sha256": "eb1394d448536cd8c43a5fc217b65ca5b28752be405029750db009a6d68e117c",
+          "maskedBox": null
+        },
+        "gaugeFraction": 0.6782608695652174,
+        "boardSignal": true
+      },
+      "durationMs": 7649
+    },
+    {
+      "index": 1,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 8434,
+      "result": {
+        "stable": true,
+        "samples": 5,
+        "streak": 3,
+        "elapsedMs": 887,
+        "sha256": "d27bd3ad2e9a61316ff95caa13a8e77ca7bd66d670bf30dd91a8d3a2682c8a91",
+        "maskedBox": null
+      },
+      "durationMs": 887
+    },
+    {
+      "index": 2,
+      "action": "click",
+      "ok": true,
+      "atMs": 9321,
+      "result": {
+        "target": "tile:0",
+        "point": {
+          "x": 60,
+          "y": 330
+        },
+        "kind": "tile"
+      },
+      "durationMs": 307
+    },
+    {
+      "index": 3,
+      "action": "capture",
+      "ok": true,
+      "atMs": 9628,
+      "result": {
+        "name": "wordball-0.0",
+        "file": "tests/fixtures/reference/animations/sprite_wordball_timeline/wordball-0.0.png",
+        "sha256": "48d10c482eb332bba8380c541a4cfea2e67c32d6717b50a4623910cde7014d89",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 71
+    },
+    {
+      "index": 4,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 9699,
+      "result": {
+        "requestedMs": 190
+      },
+      "durationMs": 190
+    },
+    {
+      "index": 5,
+      "action": "capture",
+      "ok": true,
+      "atMs": 9890,
+      "result": {
+        "name": "wordball-0.25",
+        "file": "tests/fixtures/reference/animations/sprite_wordball_timeline/wordball-0.25.png",
+        "sha256": "26a9ec5333f13cb1c2ece1b5dd569d57dad529f3334ef7f00d5d84b32d9650f3",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 55
+    },
+    {
+      "index": 6,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 9945,
+      "result": {
+        "requestedMs": 278
+      },
+      "durationMs": 279
+    },
+    {
+      "index": 7,
+      "action": "capture",
+      "ok": true,
+      "atMs": 10224,
+      "result": {
+        "name": "wordball-0.5278",
+        "file": "tests/fixtures/reference/animations/sprite_wordball_timeline/wordball-0.5278.png",
+        "sha256": "26a9ec5333f13cb1c2ece1b5dd569d57dad529f3334ef7f00d5d84b32d9650f3",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 89
+    },
+    {
+      "index": 8,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 10313,
+      "result": {
+        "requestedMs": 278
+      },
+      "durationMs": 279
+    },
+    {
+      "index": 9,
+      "action": "capture",
+      "ok": true,
+      "atMs": 10593,
+      "result": {
+        "name": "wordball-0.8056",
+        "file": "tests/fixtures/reference/animations/sprite_wordball_timeline/wordball-0.8056.png",
+        "sha256": "26a9ec5333f13cb1c2ece1b5dd569d57dad529f3334ef7f00d5d84b32d9650f3",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 62
+    },
+    {
+      "index": 10,
+      "action": "waitMs",
+      "ok": true,
+      "atMs": 10656,
+      "result": {
+        "requestedMs": 250
+      },
+      "durationMs": 250
+    },
+    {
+      "index": 11,
+      "action": "capture",
+      "ok": true,
+      "atMs": 10907,
+      "result": {
+        "name": "wordball-1.0556",
+        "file": "tests/fixtures/reference/animations/sprite_wordball_timeline/wordball-1.0556.png",
+        "sha256": "f13dd44619394ead9e24da005d94a14f32554cce06bba0b64aba6b991075cec9",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 64
+    }
+  ],
+  "captures": [
+    {
+      "name": "wordball-0.0",
+      "file": "tests/fixtures/reference/animations/sprite_wordball_timeline/wordball-0.0.png",
+      "sha256": "48d10c482eb332bba8380c541a4cfea2e67c32d6717b50a4623910cde7014d89",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "wordball-0.25",
+      "file": "tests/fixtures/reference/animations/sprite_wordball_timeline/wordball-0.25.png",
+      "sha256": "26a9ec5333f13cb1c2ece1b5dd569d57dad529f3334ef7f00d5d84b32d9650f3",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "wordball-0.5278",
+      "file": "tests/fixtures/reference/animations/sprite_wordball_timeline/wordball-0.5278.png",
+      "sha256": "26a9ec5333f13cb1c2ece1b5dd569d57dad529f3334ef7f00d5d84b32d9650f3",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "wordball-0.8056",
+      "file": "tests/fixtures/reference/animations/sprite_wordball_timeline/wordball-0.8056.png",
+      "sha256": "26a9ec5333f13cb1c2ece1b5dd569d57dad529f3334ef7f00d5d84b32d9650f3",
+      "width": 550,
+      "height": 400
+    },
+    {
+      "name": "wordball-1.0556",
+      "file": "tests/fixtures/reference/animations/sprite_wordball_timeline/wordball-1.0556.png",
+      "sha256": "f13dd44619394ead9e24da005d94a14f32554cce06bba0b64aba6b991075cec9",
+      "width": 550,
+      "height": 400
+    }
+  ],
+  "missingKeys": [],
+  "harness": {
+    "url": "http://127.0.0.1:8801/",
+    "viewport": {
+      "width": 550,
+      "height": 400
+    },
+    "deviceScaleFactor": 1,
+    "canvasDevicePixels": {
+      "width": 550,
+      "height": 400
+    },
+    "outputRoot": "tests/fixtures/reference/animations/sprite_wordball_timeline",
+    "launchArgs": [
+      "--mute-audio"
+    ],
+    "ruffle": {
+      "release": "v0.6.0",
+      "asset": "ruffle-0.6.0-web-selfhosted.zip",
+      "zipSha256": "e8acfacc37443303872379d0e215999af846854d1dd3fa8fac0a765445b43dbf",
+      "ruffleJsSha256": "a686a305345b06542dddedada71869104916a61e393f174687571528ac4225f5"
+    },
+    "swf": {
+      "file": "/home/dev/kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf",
+      "sha256": "236ed9359719d061c4c9426c8533b126bffcb3466f7b5f818601b50bd7afbf39",
+      "md5": "af059ff9d75cefbc244f03814b47be9c"
+    },
+    "fixture": {
+      "input": {
+        "file": "/home/dev/kelimator-nostalji/calistir/xml64.php",
+        "sha256": "854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed"
+      },
+      "served": {
+        "file": "/home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php",
+        "sha256": "80506d3ef3b58a4d8fdb5779debd4819271d57a5635276963a5d01eab91cd8bf"
+      },
+      "script": {
+        "file": "/home/dev/kelimator-2012/verify/reference/make-fixture.mjs",
+        "sha256": "e4f5198a1ddd94eceeb20639a41855a2bb385e75782e169a5768205272007788"
+      }
+    },
+    "playwright": "1.63.0",
+    "node": "v22.14.0",
+    "port": 8801,
+    "canvasBox": {
+      "x": 0,
+      "y": 0,
+      "width": 550,
+      "height": 400
+    }
+  }
+}

@@ -18,10 +18,19 @@ import {
 } from './ui/board';
 import { mountHud, type HudControlsVisibility } from './ui/hud';
 import { mountMessage } from './ui/message';
+import {
+  animationCatalog,
+  createAnimationController,
+  type AnimationCatalogEntry,
+} from './ui/animations';
 
 const stage = mountStage();
 const board = mountBoard(stage.root, defaultBoardView());
 const message = mountMessage(stage.root);
+// E3: presentation-only animation controller. Triggers are D5 lifecycle
+// outputs (state/round/tick/entry change) and the D4 audio hand-off; it never
+// touches game state (src/ui/animations.ts).
+const animations = createAnimationController({ board: board.element });
 
 // ---------------------------------------------------------------------------
 // Game wiring
@@ -38,7 +47,20 @@ const WORD_LENGTHS = [3, 4, 5, 6, 7, 8] as const;
 declare global {
   interface Window {
     __visualTest?: { apply(view: BoardView): void };
+    __animations?: AnimationTestHooks;
   }
+}
+
+/**
+ * E3 dev-only animation test hooks (`window.__animations`): triggered-sequence
+ * counts for the e2e suite and the code-side timing/trigger catalog for the
+ * V2/V7 cross-checks. Installed on the dev server only (E2 `__visualTest`
+ * pattern); it exposes no game state.
+ */
+export interface AnimationTestHooks {
+  plays(sequenceId: string): number;
+  lastSequence(): string | null;
+  catalog(): readonly AnimationCatalogEntry[];
 }
 
 let visualOverride: BoardView | null = null;
@@ -50,6 +72,11 @@ if (devServer) {
       visualOverride = view;
       board.apply(view);
     },
+  };
+  window.__animations = {
+    plays: (sequenceId: string): number => animations.plays[sequenceId] ?? 0,
+    lastSequence: (): string | null => animations.lastSequence,
+    catalog: (): readonly AnimationCatalogEntry[] => animationCatalog(),
   };
 }
 
@@ -134,12 +161,15 @@ function controlsVisibleFor(state: GameState): HudControlsVisibility {
 function render(snapshot: LifecycleSnapshot): void {
   currentSnapshot = snapshot;
   if (visualOverride !== null) return;
+  animations.beforeRender();
   board.apply(boardViewFor(snapshot));
   decorateTiles(board.element);
   hud.update(snapshot);
   hud.setControls(controlsVisibleFor(snapshot.state));
   // O05 status message: live entry feedback (Geçerli / Girildi).
   message.showStatus(snapshot.entryStatus);
+  // E3: entry-change wordball slides (presentation only).
+  animations.afterRender(snapshot);
 }
 
 function onTimerTick(remainingSeconds: number): void {
@@ -155,14 +185,26 @@ const lifecycle = createRoundLifecycle({
   },
   playAudio: (event): void => {
     playAudioEvent(event);
+    // E3: the D4 event names are the trigger source for the sound clips.
+    animations.audio(event);
   },
   onChanged: render,
-  onTick: onTimerTick,
+  onTick: (remainingSeconds): void => {
+    animations.tick(remainingSeconds);
+    onTimerTick(remainingSeconds);
+  },
   onStateChanged: (change): void => {
+    animations.stateChanged(change);
     if (change.state === 'preloader') {
       // O05 loading banner (evidence/A2-strings.md §2, text ids 78/82/83).
       message.showLoading();
     }
+  },
+  onRoundStarted: (): void => {
+    animations.roundStarted();
+  },
+  onRoundCompleted: (reason): void => {
+    animations.roundCompleted(reason);
   },
 });
 

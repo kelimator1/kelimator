@@ -1,0 +1,4 @@
+[C3 scenario] step 0 waitForState: ok (7569 ms)
+[C3 scenario] step 1 waitStable: ok (885 ms)
+[C3 scenario] step 2 capture: ok (47 ms)
+[C3 scenario] e3-board run 1: OK (1 captures, 3 steps)

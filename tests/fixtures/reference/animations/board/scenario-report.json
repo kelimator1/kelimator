@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "task": "C3",
+  "scenario": "e3-board",
+  "run": 1,
+  "startedAt": "2026-09-28T19:45:38.197Z",
+  "endedAt": "2026-09-28T19:45:47.524Z",
+  "ok": true,
+  "steps": [
+    {
+      "index": 0,
+      "action": "waitForState",
+      "ok": true,
+      "atMs": 824,
+      "result": {
+        "condition": "board",
+        "matched": true,
+        "xml64": {
+          "matched": true,
+          "line": "2026-09-28T19:45:45Z 127.0.0.1 \"GET /xml64.php?993931 HTTP/1.1\" -> 200 -",
+          "waitedMs": 6785,
+          "cursor": 28730
+        },
+        "stable": {
+          "stable": true,
+          "samples": 3,
+          "streak": 3,
+          "elapsedMs": 674,
+          "sha256": "94d41fc96a36bb1315635d71ad75cf7f53b4bd47dbc2d691faf1355f3a70de59",
+          "maskedBox": null
+        },
+        "gaugeFraction": 0.6782608695652174,
+        "boardSignal": true
+      },
+      "durationMs": 7569
+    },
+    {
+      "index": 1,
+      "action": "waitStable",
+      "ok": true,
+      "atMs": 8394,
+      "result": {
+        "stable": true,
+        "samples": 5,
+        "streak": 3,
+        "elapsedMs": 885,
+        "sha256": "a45d490382af497172c1a7e0b628d2a85ab2348ac51ffee0de74d4d5f0b96c46",
+        "maskedBox": null
+      },
+      "durationMs": 885
+    },
+    {
+      "index": 2,
+      "action": "capture",
+      "ok": true,
+      "atMs": 9280,
+      "result": {
+        "name": "board-0.0",
+        "file": "tests/fixtures/reference/animations/board/board-0.0.png",
+        "sha256": "4a6f9bfdd04c85b64465a3cf1e902c6ff8a45538b6b71bcbefc21af252865339",
+        "width": 550,
+        "height": 400
+      },
+      "durationMs": 47
+    }
+  ],
+  "captures": [
+    {
+      "name": "board-0.0",
+      "file": "tests/fixtures/reference/animations/board/board-0.0.png",
+      "sha256": "4a6f9bfdd04c85b64465a3cf1e902c6ff8a45538b6b71bcbefc21af252865339",
+      "width": 550,
+      "height": 400
+    }
+  ],
+  "missingKeys": [],
+  "harness": {
+    "url": "http://127.0.0.1:8801/",
+    "viewport": {
+      "width": 550,
+      "height": 400
+    },
+    "deviceScaleFactor": 1,
+    "canvasDevicePixels": {
+      "width": 550,
+      "height": 400
+    },
+    "outputRoot": "tests/fixtures/reference/animations/board",
+    "launchArgs": [
+      "--mute-audio"
+    ],
+    "ruffle": {
+      "release": "v0.6.0",
+      "asset": "ruffle-0.6.0-web-selfhosted.zip",
+      "zipSha256": "e8acfacc37443303872379d0e215999af846854d1dd3fa8fac0a765445b43dbf",
+      "ruffleJsSha256": "a686a305345b06542dddedada71869104916a61e393f174687571528ac4225f5"
+    },
+    "swf": {
+      "file": "/home/dev/kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf",
+      "sha256": "236ed9359719d061c4c9426c8533b126bffcb3466f7b5f818601b50bd7afbf39",
+      "md5": "af059ff9d75cefbc244f03814b47be9c"
+    },
+    "fixture": {
+      "input": {
+        "file": "/home/dev/kelimator-nostalji/calistir/xml64.php",
+        "sha256": "854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed"
+      },
+      "served": {
+        "file": "/home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php",
+        "sha256": "80506d3ef3b58a4d8fdb5779debd4819271d57a5635276963a5d01eab91cd8bf"
+      },
+      "script": {
+        "file": "/home/dev/kelimator-2012/verify/reference/make-fixture.mjs",
+        "sha256": "e4f5198a1ddd94eceeb20639a41855a2bb385e75782e169a5768205272007788"
+      }
+    },
+    "playwright": "1.63.0",
+    "node": "v22.14.0",
+    "port": 8801,
+    "canvasBox": {
+      "x": 0,
+      "y": 0,
+      "width": 550,
+      "height": 400
+    }
+  }
+}

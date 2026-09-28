@@ -1,0 +1,9 @@
+{
+  "name": "e3-board",
+  "description": "E3 animation keyframe capture: board sequence (data/animation.json id 'board', frame 131, offset 0.0). The round board is the reference's stopped main-timeline frame ('hepsiburda', evidence/A3-timing.md §3.1); the capture point is the catalog offset 0.0 taken from the state-based board wait (xml64.php 200 + stable frame + timer gauge).",
+  "steps": [
+    { "action": "waitForState", "condition": "board", "timeoutMs": 60000 },
+    { "action": "waitStable", "timeoutMs": 15000 },
+    { "action": "capture", "name": "board-0.0" }
+  ]
+}

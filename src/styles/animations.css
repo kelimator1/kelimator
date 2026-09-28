@@ -1,0 +1,62 @@
+/*
+ * src/styles/animations.css — E3 animation keyframes (presentation only).
+ *
+ * Visual subset of the catalogued sequences that the rebuild actually paints
+ * (see src/ui/animations.ts for the full 24-sequence timing/trigger registry):
+ * the wordball entry slide ("getir" / "gotur"), whose per-frame offsets are
+ * read from the SWF sprite itself.
+ *
+ * Source of every number below (no invented values):
+ *   artifacts/a3-captures/sprite_dump.txt — DefineSprite_46 (wordball) per-frame
+ *   translations, stage px = twips / 20:
+ *     frame 1  ("gizle") ty=+70.00
+ *     frame 2  ("getir") ty=+53.60   phase 1: slide the ball up into the row
+ *     frames 3..9        +39.40 +27.35 +17.50 +9.85 +4.40 +1.10 0.00
+ *     frame 10 stop()    ty=0.00     (rest — DefineSprite_46/frame_10/DoAction.as)
+ *     frame 11 ("gotur") ty=-11.10   phase 2: slide the ball out upwards
+ *     frames 12..19      -22.20 -33.35 -44.45 -55.55 -66.65 -77.80 -88.90 -100.00
+ *     frame 20 gotoAndStop("gizle")
+ *   Sprite timeline length: 39 frames (data/animation.json
+ *   sprite_wordball_timeline, duration 39/36 s); each phase advances 8 frames,
+ *   hence 8/36 s = 0.2222 s per slide, sampled every 1/8 (12.5 %) per frame.
+ *
+ * evidence: evidence/A3-timing.md §3.3 (DefineSprite 46 frameCount=39);
+ * artifacts/decompiled/scripts/frame_131/DoAction.as L355-L460
+ * (`duzenle("ekle"|"sil"|"temizle")` -> gotoAndStop("getir"|"gotur"); play());
+ * artifacts/decompiled/scripts/DefineSprite_46/{frame_10,frame_20}.as.
+ */
+
+/* Wordball add: "getir" (frames 2..10 of DefineSprite_46). */
+@keyframes e3-wordball-getir {
+  0% { transform: translateY(53.6px); }
+  12.5% { transform: translateY(39.4px); }
+  25% { transform: translateY(27.35px); }
+  37.5% { transform: translateY(17.5px); }
+  50% { transform: translateY(9.85px); }
+  62.5% { transform: translateY(4.4px); }
+  75% { transform: translateY(1.1px); }
+  87.5% { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}
+
+.board-ball.e3-wordball-getir {
+  animation: e3-wordball-getir calc(8s / 36) linear both;
+}
+
+/* Wordball remove: "gotur" (frames 11..19 of DefineSprite_46). */
+@keyframes e3-wordball-gotur {
+  0% { transform: translateY(-11.1px); }
+  12.5% { transform: translateY(-22.2px); }
+  25% { transform: translateY(-33.35px); }
+  37.5% { transform: translateY(-44.45px); }
+  50% { transform: translateY(-55.55px); }
+  62.5% { transform: translateY(-66.65px); }
+  75% { transform: translateY(-77.8px); }
+  87.5% { transform: translateY(-88.9px); }
+  100% { transform: translateY(-100px); }
+}
+
+.board-ball.e3-wordball-gotur {
+  animation: e3-wordball-gotur calc(8s / 36) linear both;
+  pointer-events: none;
+}

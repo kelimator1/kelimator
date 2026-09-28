@@ -1,0 +1,18 @@
+{
+  "name": "e3-sprite-wordball",
+  "description": "E3 animation keyframe capture: sprite_wordball_timeline (data/animation.json frames 1-39, keyframe offsets 0/0.25/0.5278/0.8056/1.0556). Trigger = one tile click on the stopped board (reference `ekle` -> `gotoAndStop(\"getir\"); play();`, artifacts/decompiled/scripts/frame_131/DoAction.as L384-L397); the sprite stops at its frame 10 (`DefineSprite_46/frame_10/DoAction.as` stop() -> 'getir' end state) and the playhead does not reach the later catalog sample frames (20/30/39) on the add path, so captures after 0.25 s record the held end state, not frames 20/30/39. waitMs deltas are the catalog offset differences after the click step.",
+  "steps": [
+    { "action": "waitForState", "condition": "board", "timeoutMs": 60000 },
+    { "action": "waitStable", "timeoutMs": 15000 },
+    { "action": "click", "target": "tile:0" },
+    { "action": "capture", "name": "wordball-0.0" },
+    { "action": "waitMs", "ms": 190 },
+    { "action": "capture", "name": "wordball-0.25" },
+    { "action": "waitMs", "ms": 278 },
+    { "action": "capture", "name": "wordball-0.5278" },
+    { "action": "waitMs", "ms": 278 },
+    { "action": "capture", "name": "wordball-0.8056" },
+    { "action": "waitMs", "ms": 250 },
+    { "action": "capture", "name": "wordball-1.0556" }
+  ]
+}
