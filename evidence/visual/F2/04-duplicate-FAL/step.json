@@ -23,8 +23,8 @@
   "comparison": {
     "excluded": false
   },
-  "mismatchRatio": 0.06307727272727273,
-  "tolerantMismatchRatio": 0.0174,
+  "mismatchRatio": 0.06315454545454545,
+  "tolerantMismatchRatio": 0.017395454545454544,
   "pass": true,
   "reference": "tests/fixtures/reference/playthrough/04-duplicate-FAL.png",
   "artifacts": "evidence/visual/F2/04-duplicate-FAL"

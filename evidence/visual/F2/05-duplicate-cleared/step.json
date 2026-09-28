@@ -23,7 +23,7 @@
   "comparison": {
     "excluded": false
   },
-  "mismatchRatio": 0.04289090909090909,
+  "mismatchRatio": 0.042945454545454544,
   "tolerantMismatchRatio": 0.009768181818181818,
   "pass": true,
   "reference": "tests/fixtures/reference/playthrough/05-duplicate-cleared.png",

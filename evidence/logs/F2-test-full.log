@@ -5,9 +5,9 @@
 
  RUN  v5.0.2 /home/dev/kelimator-2012
 
- ✓ tests/assets.test.mjs (9 tests) 21ms
- ✓ tests/timer.test.ts (17 tests) 15ms
- ✓ tests/normalize-wordlist.test.mjs (19 tests) 116ms
+ ✓ tests/assets.test.mjs (9 tests) 19ms
+ ✓ tests/audio.test.ts (17 tests) 13ms
+ ✓ tests/normalize-wordlist.test.mjs (19 tests) 84ms
 stdout | tests/rounds-fixtures.test.mjs
 [B3] viroloji source: tests/fixtures/rounds/viroloji.xml sha256=594e6a5377fbe8edef05f93850ac9eea4fc50c25fd5e6e9facf33186d4cd8621
 
@@ -20,7 +20,7 @@ stdout | tests/rounds-fixtures.test.mjs > fixture: finalizm (archived xml.php, I
 stdout | tests/rounds-fixtures.test.mjs > fixture: finalizm (archived xml.php, ISO-8859-9) > xml.php and xml64.php are byte-identical (the two archived FİNALİZM copies)
 [B3] xml.php = xml64.php sha256=854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed
 
- ✓ tests/audio.test.ts (17 tests) 10ms
+ ✓ tests/timer.test.ts (17 tests) 14ms
 stdout | tests/rounds-fixtures.test.mjs > fixture: finalizm (archived xml.php, ISO-8859-9) > enumeration check: every archived subword present in the archived dictionary is producible from FİNALİZM
 [B3] archived dictionary: /home/dev/kelimator-nostalji/kayitlar/sozluk_29749_kelime.xml sha256=558269a0fa7de05e90e96d62f583dcbb1c4a95510a0e7fe360629ffa40f47f00 raw=29749 uniqueRaw=27856 normalized=27814 droppedByPipeline=11 blocklisted=32
 [B3] finalizm enumeration: fixtureWords=90 inDictionary=83 producible=83 exceptions=0
@@ -77,22 +77,22 @@ stdout | tests/rounds-fixtures.test.mjs > emitted bank (src/data/rounds.json; V2
 [B3]   sislemek <- SİSLEMEK, ŞİŞLEMEK
 [B3]   sislenme <- SİSLENME, ŞİŞLENME
 
- ✓ tests/rounds-fixtures.test.mjs (20 tests) 132ms
- ✓ tests/constants.test.mjs (3 tests) 4ms
- ✓ verify/diff/diff.test.mjs (19 tests) 636ms
- ✓ tests/speaker.test.ts (9 tests) 5ms
- ✓ tests/stage.test.ts (11 tests) 4ms
- ✓ tests/scoring.test.ts (17 tests) 8ms
- ✓ tests/input.test.ts (29 tests) 9ms
+ ✓ tests/rounds-fixtures.test.mjs (20 tests) 126ms
+ ✓ verify/diff/diff.test.mjs (19 tests) 535ms
+ ✓ tests/constants.test.mjs (3 tests) 2ms
+ ✓ tests/speaker.test.ts (9 tests) 4ms
+ ✓ tests/stage.test.ts (11 tests) 5ms
+ ✓ tests/input.test.ts (29 tests) 10ms
+ ✓ tests/scoring.test.ts (17 tests) 5ms
  ✓ tests/lifecycle.test.ts (23 tests) 45ms
  ✓ tests/round.test.ts (34 tests) 56ms
 
  Test Files  13 passed (13)
       Tests  227 passed (227)
-   Start at  23:47:40
-   Duration  2.87s (transform 48%, import 42%, tests 9%)
+   Start at  00:23:07
+   Duration  2.55s (transform 51%, import 41%, tests 8%)
 
-  Transform  transforming modules took 5.79s · 48% of tracked time, re-done on every run
+  Transform  transforming modules took 5.78s · 51% of tracked time, re-done on every run
              persist transforms across runs with fsModuleCache: true
              learn more: https://vitest.dev/guide/improving-performance#caching-between-reruns
 

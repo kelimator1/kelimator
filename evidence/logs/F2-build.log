@@ -21,11 +21,11 @@ dist/assets/s166_hiscore_form-CrWAScQw.svg      26.12 kB │ gzip:     5.20 kB
 dist/assets/s58_letter_tile-MF_7VP-n.svg        34.89 kB │ gzip:     5.94 kB
 dist/assets/img_47_550x400-B8mzCasb.png         62.49 kB
 dist/assets/s48_board_backdrop-DxQWhOEH.svg     84.02 kB │ gzip:    63.16 kB
-dist/assets/index-tQdhkg04.js                4,799.21 kB │ gzip: 1,272.03 kB
+dist/assets/index-vYq1_QEE.js                4,799.26 kB │ gzip: 1,272.05 kB
 
-✓ built in 440ms
 [plugin builtin:vite-reporter] 
 (!) Some chunks are larger than 500 kB after minification. Consider:
 - Using dynamic import() to code-split the application
 - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 469ms

@@ -1,0 +1,22 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test interaction --reporter=line
+
+
+Running 6 tests using 1 worker
+
+(node:74448) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:74448) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/6] [app] › tests/e2e/interaction/interaction.spec.ts:218:5 › tile center clicks — deviceScaleFactor 1 › clicking the center of all 8 tiles enters their letters (dsf 1)
+[2/6] [app] › tests/e2e/interaction/interaction.spec.ts:218:5 › tile center clicks — deviceScaleFactor 2 › clicking the center of all 8 tiles enters their letters (dsf 2)
+[3/6] [app] › tests/e2e/interaction/interaction.spec.ts:273:3 › O15 edge checks (evidence/A2-edges.md) › duplicate letters: one entry per tile, delete restores each (O15(a)/(c))
+[4/6] [app] › tests/e2e/interaction/interaction.spec.ts:314:3 › O15 edge checks (evidence/A2-edges.md) › delete/backspace: removes the last letter and restores its tile; empty delete is sound-only (O15(c))
+[5/6] [app] › tests/e2e/interaction/interaction.spec.ts:341:3 › O15 edge checks (evidence/A2-edges.md) › scramble: clears a partial entry and restores the whole deck (O15(d))
+[6/6] [app] › tests/e2e/interaction/interaction.spec.ts:365:3 › O15 edge checks (evidence/A2-edges.md) › re-submit: found word keeps the entry, scores nothing, boings; empty submit buzzes (O15(b)/(f))
+  6 passed (12.4s)

@@ -4,7 +4,8 @@ Task: F2 — E2E Playthrough (App vs Reference)
 Started: 2026-09-28T20:22:00Z (first artifact write, `tests/fixtures/playthrough.json`; the
 session began earlier with reading `EXECUTION.md`, the task file, `docs/07`, the C3/F1
 readmes and the referenced evidence)
-Ended: 2026-09-28T20:50:08Z (`date -u` after the final logs and this file)
+Ended: 2026-09-28T20:50:08Z (2026-09-28 run, kept as history; resolution §11)
+Updated: 2026-09-28T21:25:16Z (X4 reveal-colour fix re-run; §11 — Result: PASS)
 Host+OS: dev-host.home / macOS (hidden, arm64 / arm64 host; Node v22.14.0,
 npm 10.9.0, Playwright 1.63.0, Python 3.14.6)
 
@@ -32,11 +33,13 @@ asserts every step's score/found/state/audio/entry and compares all 40 step scre
 with the F1 tool; the S9 timeout variant waits out the 200 s clock on both sides and
 compares the timeout states.
 
-Artifact SHA-256 (key; full list `evidence/logs/F2-artifact-hashes.log`):
+Artifact SHA-256 (key; full list `evidence/logs/F2-artifact-hashes.log`; refreshed after
+the 2026-09-29 re-run — reference captures and fixture inputs are unchanged from
+2026-09-28, the report/logs/visual evidence carry the re-run numbers):
 
 | Artifact | SHA-256 |
 |---|---|
-| `evidence/F2-report.json` | `f5301efade398c35ec670556627456e02300bfd22f36bf7a2afc18bed69d2fcb` |
+| `evidence/F2-report.json` | `4dd333cd33c36bdcd87c3acadf0de95baf6485d12880683e15004ab919366820` |
 | `tests/fixtures/playthrough.json` | `aa8a1e4f89dc5e2876c9285c155a188fb899145b45de47be2e285223b3267558` |
 | `tests/e2e/playthrough/playthrough.spec.ts` | `6d6ee47ec527cb052af808b24bb24f75d9d324e81b192ab2d0121e0d9044fea8` |
 | `tests/e2e/playthrough/build-scenario.mjs` | `372c6e07b9d7d8e990065b0b6c21b098f5d9b1ee431f2b9214a68e323caa3b99` |
@@ -46,13 +49,15 @@ Artifact SHA-256 (key; full list `evidence/logs/F2-artifact-hashes.log`):
 | `tests/fixtures/reference/playthrough/scenario-report.json` | `cfdc5773dd68c072db0bc6fa6b9868263dda3dea345806c17e8719efa7170334` |
 | `tests/fixtures/reference/playthrough/timeout/timeout.png` | `20596e199148f26275c06b1eb3b4ad3f0649b7555e8dd281f000eed4e7fd47b7` (byte-identical to C3's matrix S9, `evidence/C3-stability.md` §2) |
 | `tests/fixtures/reference/playthrough/timeout/scenario-report.json` | `af6c4d01528509d49faa8794996338651cf31a2994e716ba2364ecb5f5203218` |
-| `evidence/logs/F2-e2e-playthrough.log` | `074b11a454f2b33164d0c9b78f803232081313a9aa0836f9ec84ada37dfae609` |
+| `evidence/logs/F2-e2e-playthrough.log` | `050421b3c441edf936d86b7baee5e7958f7aaa46d1c3f507b6111a73db671185` |
+| `evidence/logs/F2-e2e-visual.log` | `1eeca5bd423a95a15f5cdfc50a68fef1e3bff53d871b4c6f31c7c0278d90def9` |
+| `evidence/logs/F2-e2e-interaction.log` | `26bc9801d00e5df28ca8e4506299248d6e323a38379264e23356bc76f6c72de5` |
 | `evidence/logs/F2-reference-playthrough.log` | `1337072bb0db308a0cf059ea91b46352de3905e80401e0a3d13f165d3859c80c` |
 | `evidence/logs/F2-reference-timeout.log` | `283fc31eca2e23196913e170ce6b9c6d2ac2f2876eae6712ae93193cc6cee8d3` |
-| `evidence/logs/F2-step-table.log` | `49647c47d1c3601937ea2b0938c893f6a6e986205bcbda238ce0dccc1046eeb6` |
-| `evidence/logs/F2-test-full.log` | `0a68dfa06bcc8c265ac265dc4ef503c8082f59c4cb93de6accd31b15598d6ec2` |
+| `evidence/logs/F2-step-table.log` | `0beafdadd2cd5be07117f5b97ff9e6624579b5c5fc675d1ed7eb33f7e58f97b3` |
+| `evidence/logs/F2-test-full.log` | `473de6483967259e0bb74f4bd7d221de51c4069fa7ccd3c136b304cbaad1bbd0` |
 | `evidence/logs/F2-lint.log` | `1127abec44245b91cc3e51990e56293ddb992d67248afcfa1440f5ffa3f11ad1` |
-| `evidence/logs/F2-build.log` | `fba3a11d01d483f84d66b40d8672c4fde137affbf1635e73218aa383c9ed1e21` |
+| `evidence/logs/F2-build.log` | `7467340e94471729cf022ca98a5baf5cadb7a9997cb173522244e00ed445becb` |
 
 Reference captures: 40 step PNGs under `tests/fixtures/reference/playthrough/` with
 per-capture SHA-256 in `scenario-report.json` (`ok: true`, 480/480 steps, no missing key
@@ -62,13 +67,14 @@ capture + report under `tests/fixtures/reference/playthrough/timeout/`.
 Per-step results (score, raw %, tolerant %, pass, stability):
 `evidence/logs/F2-step-table.log`; machine-readable: `evidence/F2-report.json`.
 
-Result: **FAIL** — V6 main playthrough PASS (40 steps, 39 compared all ≤ 2.000 %, worst
+Result (2026-09-28 run, kept as history): **FAIL** — V6 main playthrough PASS (40 steps, 39 compared all ≤ 2.000 %, worst
 1.740 %, every `window.__game` assertion true, machine-readable report produced) and
 V2 PASS (every step with score/ratio/pass), but V5 **S9 FAIL**: the timeout variant's
 tolerant ratio is **2.0145 % > 2.000 %**. Root cause identified and localised (§6): the
 rebuild renders the timeout-revealed words in black while the reference colours them
 `#ff6600`. The fix is in `src/` (not F2's owned paths) — proposed owner/fix in §7. All
-other gates green (`npm test` 227/227, `npm run lint`, `npm run build`).
+other gates green (`npm test` 227/227, `npm run lint`, `npm run build`). Resolution and
+re-run: §11 (2026-09-29, PASS).
 
 ---
 
@@ -233,6 +239,56 @@ node verify/reference/capture.mjs --scenario tests/fixtures/reference/playthroug
   --out tests/fixtures/reference/playthrough --runs 1 --port 8797
 node verify/reference/capture.mjs --scenario tests/fixtures/reference/playthrough/scenarios/timeout.json \
   --out tests/fixtures/reference/playthrough/timeout --runs 1 --port 8797
-F2_RECORD=1 npm run e2e -- playthrough    # records evidence/ + evidence/F2-report.json; currently exit 1 on S9 (V5)
+F2_RECORD=1 npm run e2e -- playthrough    # records evidence/ + evidence/F2-report.json (exit 0; S9 passes since 2026-09-29)
 npm test && npm run lint && npm run build
 ```
+
+---
+
+## 11. Resolution (2026-09-29) — X4 reveal colour fix; F2 re-run PASS
+
+The §6 blocker was fixed in the owner-defect wave (orchestrator):
+
+- **X4 — timeout reveal colour** (`evidence/X4-reveal-colour.md`): `src/ui/board.ts` gained
+  `FoundWordView.revealed` + `REVEALED_SLOT_COLOR = '#ff6600'` and colours timeout-revealed
+  slots; `src/main.ts` maps `snapshot.listedFound[].revealed` into the board view. X4's own
+  focused run recorded the same S9 step at tolerant **0.901 %** (was 2.0145 %).
+- **X1 — tile-center click** (`evidence/X1-tile-click.md`) and **X2 — tile-template glyph
+  removal** (`evidence/X2-tile-glyph.md`) landed in the same wave (no changes to F2 inputs).
+
+F2 re-ran its full suite in recording mode (refresh of `evidence/visual/F2/**` and
+`evidence/F2-report.json`):
+
+| # | Command | Exit | Log |
+|---|---|---|---|
+| 1 | `F2_RECORD=1 NO_COLOR=1 npm run e2e -- playthrough --reporter=line` | **0** | `evidence/logs/F2-e2e-playthrough.log` (3 passed: D5 basic + 40-step playthrough + S9) |
+| 2 | `NO_COLOR=1 npm run e2e -- visual --reporter=line` | 0 | `evidence/logs/F2-e2e-visual.log` (17/17) |
+| 3 | `NO_COLOR=1 npm run e2e -- interaction --reporter=line` | 0 | `evidence/logs/F2-e2e-interaction.log` (6/6) |
+| 4 | `NO_COLOR=1 npm test` | 0 | `evidence/logs/F2-test-full.log` (13 files / 227 tests) |
+| 5 | `NO_COLOR=1 npm run lint` | 0 | `evidence/logs/F2-lint.log` (0 diagnostics) |
+| 6 | `NO_COLOR=1 npm run build` | 0 | `evidence/logs/F2-build.log` (expected >500 kB chunk warning) |
+
+Re-run results (`evidence/F2-report.json`, refreshed; step table
+`evidence/logs/F2-step-table.log`):
+
+- Main playthrough: **40/40 steps pass**; worst tolerant ratio **1.740 %**
+  (`04-duplicate-FAL`); every `window.__game` step assertion true; one documented exclusion
+  (`39-complete`, reference results screen, §7.3).
+- **S9 timeout variant: raw 7.730 %, tolerant 0.901 % ≤ 2.000 % → PASS** (app wait
+  200 505 ms; reference wait 199 990 ms; capture still byte-identical to C3's S9).
+- Combined summary: 41 steps, 40 compared, 40 passed, 1 excluded, `allChecks: true`,
+  `allComparedPass: true`, `allPass: true`.
+
+Updated `docs/08` proposal (orchestrator applies):
+
+```
+RESOLVED 2026-09-29 — F2 re-run PASS after X1/X2/X4 — main playthrough worst tolerant 1.740 % (04-duplicate-FAL), S9 timeout tolerant 0.901 % (was 2.0145 %); X4 fixed the revealed-slot colour (#ff6600). Evidence: evidence/F2-playthrough.md §11, evidence/X4-reveal-colour.md.
+```
+
+The §1–§10 record above (2026-09-28 FAIL run, root cause, fix proposal) is kept unchanged
+as history; no threshold was altered and no comparison was masked.
+
+Result (2026-09-29 re-run): **PASS** — full F2 suite exit 0; main playthrough worst
+tolerant 1.740 %, S9 timeout tolerant 0.901 %; V6/V2/V5 hold; `npm test` (227/227),
+`npm run lint`, `npm run build`, `npm run e2e -- visual` (17/17) and
+`npm run e2e -- interaction` (6/6) all exit 0.

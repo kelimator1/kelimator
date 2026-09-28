@@ -23,7 +23,7 @@
   "comparison": {
     "excluded": false
   },
-  "mismatchRatio": 0.07835,
+  "mismatchRatio": 0.07834545454545455,
   "tolerantMismatchRatio": 0.012113636363636363,
   "pass": true,
   "reference": "tests/fixtures/reference/playthrough/36-valid.png",

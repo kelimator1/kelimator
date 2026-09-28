@@ -23,9 +23,9 @@
   "comparison": {
     "excluded": false
   },
-  "mismatchRatio": 0.07871818181818181,
-  "tolerantMismatchRatio": 0.020145454545454546,
-  "pass": false,
+  "mismatchRatio": 0.0773,
+  "tolerantMismatchRatio": 0.009013636363636364,
+  "pass": true,
   "reference": "tests/fixtures/reference/playthrough/timeout/timeout.png",
   "artifacts": "evidence/visual/F2/timeout"
 }

@@ -23,8 +23,8 @@
   "comparison": {
     "excluded": false
   },
-  "mismatchRatio": 0.04774090909090909,
-  "tolerantMismatchRatio": 0.010022727272727273,
+  "mismatchRatio": 0.04775454545454545,
+  "tolerantMismatchRatio": 0.010095454545454545,
   "pass": true,
   "reference": "tests/fixtures/reference/playthrough/11-valid.png",
   "artifacts": "evidence/visual/F2/11-valid"

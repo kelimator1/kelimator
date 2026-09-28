@@ -23,7 +23,7 @@
   "comparison": {
     "excluded": false
   },
-  "mismatchRatio": 0.04287272727272727,
+  "mismatchRatio": 0.04285,
   "tolerantMismatchRatio": 0.009768181818181818,
   "pass": true,
   "reference": "tests/fixtures/reference/playthrough/03-valid-FAL.png",

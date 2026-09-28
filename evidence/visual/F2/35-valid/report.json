@@ -7,18 +7,18 @@
   "mismatchThreshold": 30,
   "passRatio": 0.02,
   "tolerantRadius": 2,
-  "mismatchedPixels": 16907,
-  "mismatchRatio": 0.07685,
+  "mismatchedPixels": 16919,
+  "mismatchRatio": 0.07690454545454545,
   "maxDistance": 441.6729559300637,
-  "meanDistance": 14.84178414620715,
+  "meanDistance": 14.867477733891612,
   "mismatchBBox": {
     "x": 0,
     "y": 0,
     "width": 547,
     "height": 400
   },
-  "tolerantMismatchedPixels": 2633,
-  "tolerantMismatchRatio": 0.011968181818181819,
+  "tolerantMismatchedPixels": 2650,
+  "tolerantMismatchRatio": 0.012045454545454545,
   "tolerantMismatchBBox": {
     "x": 0,
     "y": 6,

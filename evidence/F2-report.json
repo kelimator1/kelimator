@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "task": "F2",
-  "generatedAt": "2026-09-28T20:46:59.999Z",
+  "generatedAt": "2026-09-28T21:21:34.836Z",
   "reference": {
     "captures": "tests/fixtures/reference/playthrough",
     "scenario": "tests/fixtures/reference/playthrough/scenarios/playthrough.json",
@@ -28,7 +28,7 @@
     ],
     "selectRoundCalls": 3251,
     "seed": 5263,
-    "advanceMs": 2552,
+    "advanceMs": 2459,
     "renderedLetters": "AFİZNLİM",
     "method": "reference deck observed in the committed 00-selected capture; app advanced to the first D2 shuffle count with the same rendered arrangement (instance order recorded; the reference İ instance mapping is unobservable in this capture set)"
   },
@@ -130,8 +130,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.042027272727272726,
-        "tolerantMismatchRatio": 0.009736363636363637,
+        "mismatchRatio": 0.04210909090909091,
+        "tolerantMismatchRatio": 0.009731818181818182,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/00-selected.png",
         "artifacts": "evidence/visual/F2/00-selected"
@@ -161,7 +161,7 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.05685,
+        "mismatchRatio": 0.056836363636363636,
         "tolerantMismatchRatio": 0.013227272727272728,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/01-invalid.png",
@@ -192,7 +192,7 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.042009090909090906,
+        "mismatchRatio": 0.04208636363636364,
         "tolerantMismatchRatio": 0.009745454545454545,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/02-invalid-cleared.png",
@@ -223,7 +223,7 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.04287272727272727,
+        "mismatchRatio": 0.04285,
         "tolerantMismatchRatio": 0.009768181818181818,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/03-valid-FAL.png",
@@ -254,8 +254,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.06307727272727273,
-        "tolerantMismatchRatio": 0.0174,
+        "mismatchRatio": 0.06315454545454545,
+        "tolerantMismatchRatio": 0.017395454545454544,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/04-duplicate-FAL.png",
         "artifacts": "evidence/visual/F2/04-duplicate-FAL"
@@ -285,7 +285,7 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.04289090909090909,
+        "mismatchRatio": 0.042945454545454544,
         "tolerantMismatchRatio": 0.009768181818181818,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/05-duplicate-cleared.png",
@@ -316,7 +316,7 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.04389090909090909,
+        "mismatchRatio": 0.04388636363636363,
         "tolerantMismatchRatio": 0.009813636363636363,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/06-valid.png",
@@ -347,7 +347,7 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.04462727272727273,
+        "mismatchRatio": 0.044713636363636365,
         "tolerantMismatchRatio": 0.009854545454545454,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/07-valid.png",
@@ -378,8 +378,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.04554545454545455,
-        "tolerantMismatchRatio": 0.009895454545454546,
+        "mismatchRatio": 0.04555,
+        "tolerantMismatchRatio": 0.00989090909090909,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/08-valid.png",
         "artifacts": "evidence/visual/F2/08-valid"
@@ -409,8 +409,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.0463,
-        "tolerantMismatchRatio": 0.0099,
+        "mismatchRatio": 0.046368181818181815,
+        "tolerantMismatchRatio": 0.009977272727272727,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/09-valid.png",
         "artifacts": "evidence/visual/F2/09-valid"
@@ -440,7 +440,7 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.047077272727272725,
+        "mismatchRatio": 0.047122727272727274,
         "tolerantMismatchRatio": 0.009986363636363637,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/10-valid.png",
@@ -471,8 +471,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.04774090909090909,
-        "tolerantMismatchRatio": 0.010022727272727273,
+        "mismatchRatio": 0.04775454545454545,
+        "tolerantMismatchRatio": 0.010095454545454545,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/11-valid.png",
         "artifacts": "evidence/visual/F2/11-valid"
@@ -502,7 +502,7 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.04865909090909091,
+        "mismatchRatio": 0.04870909090909091,
         "tolerantMismatchRatio": 0.010063636363636363,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/12-valid.png",
@@ -533,8 +533,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.04922272727272727,
-        "tolerantMismatchRatio": 0.010018181818181818,
+        "mismatchRatio": 0.0493,
+        "tolerantMismatchRatio": 0.010090909090909091,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/13-valid.png",
         "artifacts": "evidence/visual/F2/13-valid"
@@ -564,8 +564,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.05012272727272727,
-        "tolerantMismatchRatio": 0.010127272727272728,
+        "mismatchRatio": 0.05013181818181818,
+        "tolerantMismatchRatio": 0.010118181818181818,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/14-valid.png",
         "artifacts": "evidence/visual/F2/14-valid"
@@ -595,8 +595,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.05133636363636364,
-        "tolerantMismatchRatio": 0.010177272727272728,
+        "mismatchRatio": 0.05139090909090909,
+        "tolerantMismatchRatio": 0.01025,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/15-valid.png",
         "artifacts": "evidence/visual/F2/15-valid"
@@ -626,7 +626,7 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.05256818181818182,
+        "mismatchRatio": 0.05256363636363636,
         "tolerantMismatchRatio": 0.010295454545454545,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/16-valid.png",
@@ -657,8 +657,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.053663636363636365,
-        "tolerantMismatchRatio": 0.01035909090909091,
+        "mismatchRatio": 0.05375,
+        "tolerantMismatchRatio": 0.010436363636363636,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/17-valid.png",
         "artifacts": "evidence/visual/F2/17-valid"
@@ -688,8 +688,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.05477727272727273,
-        "tolerantMismatchRatio": 0.010477272727272727,
+        "mismatchRatio": 0.054854545454545454,
+        "tolerantMismatchRatio": 0.01055,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/18-valid.png",
         "artifacts": "evidence/visual/F2/18-valid"
@@ -719,8 +719,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.056318181818181816,
-        "tolerantMismatchRatio": 0.01059090909090909,
+        "mismatchRatio": 0.056313636363636364,
+        "tolerantMismatchRatio": 0.010595454545454545,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/19-bonus-word.png",
         "artifacts": "evidence/visual/F2/19-bonus-word"
@@ -750,8 +750,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.05715909090909091,
-        "tolerantMismatchRatio": 0.010627272727272727,
+        "mismatchRatio": 0.057227272727272724,
+        "tolerantMismatchRatio": 0.0107,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/20-valid.png",
         "artifacts": "evidence/visual/F2/20-valid"
@@ -781,7 +781,7 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.058295454545454546,
+        "mismatchRatio": 0.058236363636363635,
         "tolerantMismatchRatio": 0.010745454545454546,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/21-valid.png",
@@ -812,8 +812,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.05952727272727273,
-        "tolerantMismatchRatio": 0.0109,
+        "mismatchRatio": 0.05962272727272727,
+        "tolerantMismatchRatio": 0.010972727272727273,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/22-valid.png",
         "artifacts": "evidence/visual/F2/22-valid"
@@ -843,7 +843,7 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.060663636363636364,
+        "mismatchRatio": 0.060681818181818184,
         "tolerantMismatchRatio": 0.011159090909090908,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/23-valid.png",
@@ -874,8 +874,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.06174090909090909,
-        "tolerantMismatchRatio": 0.011163636363636363,
+        "mismatchRatio": 0.06184090909090909,
+        "tolerantMismatchRatio": 0.011227272727272728,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/24-valid.png",
         "artifacts": "evidence/visual/F2/24-valid"
@@ -905,8 +905,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.063,
-        "tolerantMismatchRatio": 0.011263636363636363,
+        "mismatchRatio": 0.06298181818181818,
+        "tolerantMismatchRatio": 0.011272727272727273,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/25-valid.png",
         "artifacts": "evidence/visual/F2/25-valid"
@@ -936,8 +936,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.06448636363636363,
-        "tolerantMismatchRatio": 0.011368181818181819,
+        "mismatchRatio": 0.06457272727272727,
+        "tolerantMismatchRatio": 0.011445454545454545,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/26-valid.png",
         "artifacts": "evidence/visual/F2/26-valid"
@@ -967,8 +967,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.06576363636363636,
-        "tolerantMismatchRatio": 0.01150909090909091,
+        "mismatchRatio": 0.06574090909090909,
+        "tolerantMismatchRatio": 0.011513636363636363,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/27-valid.png",
         "artifacts": "evidence/visual/F2/27-valid"
@@ -998,8 +998,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.06702272727272728,
-        "tolerantMismatchRatio": 0.011545454545454546,
+        "mismatchRatio": 0.06710454545454546,
+        "tolerantMismatchRatio": 0.011613636363636364,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/28-valid.png",
         "artifacts": "evidence/visual/F2/28-valid"
@@ -1060,8 +1060,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.06978636363636363,
-        "tolerantMismatchRatio": 0.011631818181818182,
+        "mismatchRatio": 0.06984090909090909,
+        "tolerantMismatchRatio": 0.011709090909090909,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/30-valid.png",
         "artifacts": "evidence/visual/F2/30-valid"
@@ -1091,7 +1091,7 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.07127272727272728,
+        "mismatchRatio": 0.07125454545454546,
         "tolerantMismatchRatio": 0.01169090909090909,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/31-valid.png",
@@ -1122,8 +1122,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.0725909090909091,
-        "tolerantMismatchRatio": 0.011786363636363636,
+        "mismatchRatio": 0.07271363636363637,
+        "tolerantMismatchRatio": 0.011863636363636364,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/32-valid.png",
         "artifacts": "evidence/visual/F2/32-valid"
@@ -1153,8 +1153,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.0738,
-        "tolerantMismatchRatio": 0.011836363636363636,
+        "mismatchRatio": 0.07387727272727272,
+        "tolerantMismatchRatio": 0.011913636363636364,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/33-valid.png",
         "artifacts": "evidence/visual/F2/33-valid"
@@ -1184,8 +1184,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.07510454545454545,
-        "tolerantMismatchRatio": 0.011922727272727272,
+        "mismatchRatio": 0.07511363636363637,
+        "tolerantMismatchRatio": 0.011913636363636364,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/34-valid.png",
         "artifacts": "evidence/visual/F2/34-valid"
@@ -1215,8 +1215,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.07685,
-        "tolerantMismatchRatio": 0.011968181818181819,
+        "mismatchRatio": 0.07690454545454545,
+        "tolerantMismatchRatio": 0.012045454545454545,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/35-valid.png",
         "artifacts": "evidence/visual/F2/35-valid"
@@ -1246,7 +1246,7 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.07835,
+        "mismatchRatio": 0.07834545454545455,
         "tolerantMismatchRatio": 0.012113636363636363,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/36-valid.png",
@@ -1277,8 +1277,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.07993636363636364,
-        "tolerantMismatchRatio": 0.012131818181818181,
+        "mismatchRatio": 0.07999545454545455,
+        "tolerantMismatchRatio": 0.012204545454545454,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/37-valid.png",
         "artifacts": "evidence/visual/F2/37-valid"
@@ -1308,8 +1308,8 @@
         "comparison": {
           "excluded": false
         },
-        "mismatchRatio": 0.08163636363636363,
-        "tolerantMismatchRatio": 0.012231818181818182,
+        "mismatchRatio": 0.0816409090909091,
+        "tolerantMismatchRatio": 0.012227272727272727,
         "pass": true,
         "reference": "tests/fixtures/reference/playthrough/38-valid.png",
         "artifacts": "evidence/visual/F2/38-valid"
@@ -1322,8 +1322,8 @@
         "word": "FİNALİZM",
         "outcome": "completion",
         "score": 55400,
-        "appScore": 71500,
-        "timeBonus": 16100,
+        "appScore": 71600,
+        "timeBonus": 16200,
         "foundCount": 35,
         "entry": "",
         "state": "celebration",
@@ -1374,25 +1374,25 @@
     "comparison": {
       "excluded": false
     },
-    "mismatchRatio": 0.07871818181818181,
-    "tolerantMismatchRatio": 0.020145454545454546,
-    "pass": false,
+    "mismatchRatio": 0.0773,
+    "tolerantMismatchRatio": 0.009013636363636364,
+    "pass": true,
     "reference": "tests/fixtures/reference/playthrough/timeout/timeout.png",
     "artifacts": "evidence/visual/F2/timeout",
-    "appWaitMs": 200248,
+    "appWaitMs": 200505,
     "referenceWaitMs": 199990
   },
   "summary": {
     "steps": 41,
     "compared": 40,
-    "passed": 39,
+    "passed": 40,
     "excluded": 1,
     "excludedIds": [
       "39-complete"
     ],
-    "worstTolerantRatio": 0.020145454545454546,
+    "worstTolerantRatio": 0.017395454545454544,
     "allChecks": true,
-    "allComparedPass": false,
-    "allPass": false
+    "allComparedPass": true,
+    "allPass": true
   }
 }

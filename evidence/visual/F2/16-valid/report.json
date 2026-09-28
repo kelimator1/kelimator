@@ -7,10 +7,10 @@
   "mismatchThreshold": 30,
   "passRatio": 0.02,
   "tolerantRadius": 2,
-  "mismatchedPixels": 11565,
-  "mismatchRatio": 0.05256818181818182,
+  "mismatchedPixels": 11564,
+  "mismatchRatio": 0.05256363636363636,
   "maxDistance": 441.6729559300637,
-  "meanDistance": 7.885545077584994,
+  "meanDistance": 7.886090532130448,
   "mismatchBBox": {
     "x": 0,
     "y": 0,

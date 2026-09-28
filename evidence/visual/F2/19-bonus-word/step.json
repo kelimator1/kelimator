@@ -23,8 +23,8 @@
   "comparison": {
     "excluded": false
   },
-  "mismatchRatio": 0.056318181818181816,
-  "tolerantMismatchRatio": 0.01059090909090909,
+  "mismatchRatio": 0.056313636363636364,
+  "tolerantMismatchRatio": 0.010595454545454545,
   "pass": true,
   "reference": "tests/fixtures/reference/playthrough/19-bonus-word.png",
   "artifacts": "evidence/visual/F2/19-bonus-word"
