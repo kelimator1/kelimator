@@ -216,6 +216,15 @@ RESOLVED 2026-09-28 — evidence/B3-threshold.md — Round-bank threshold measur
   `tests/e2e/offline/**` (T14 offline check); `tools/verify-all.sh` runs suites
   without recording flags (frozen evidence; transient outputs in
   `test-results/`).
+- 2026-09-29 — F3 transcript location: `tools/verify-all.sh`'s verified
+  transcript is written to `artifacts/verify-all/F3-verify-all.log`
+  (Playwright wipes `test-results/` at every run) and committed as
+  `evidence/logs/F3-verify-all.log`; suites stay recording-flag-free.
+- 2026-09-29 — F3 completion: `tools/verify-all.sh` exit 0 (11/11 steps);
+  gate checklists G1–G5 complete; T14 asserts the built `dist/` runs offline
+  with zero non-local requests; README §2 fixed decisions re-checked PASS;
+  O23 and O25 remain OPEN with resolution pointers in
+  `evidence/F3-final-report.md` §7 (neither is a G5 blocker).
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:

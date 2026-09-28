@@ -12,6 +12,9 @@ playwright-report/
 test-results/
 coverage/
 
+# Harness runtime data.
+.openchamber/
+
 # Python bytecode caches (helper scripts).
 __pycache__/
 *.pyc
