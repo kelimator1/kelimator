@@ -1,0 +1,10 @@
+A1 source verification
+command: md5 "../kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf"
+MD5 (../kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf) = af059ff9d75cefbc244f03814b47be9c
+command: shasum -a 256 "../kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf"
+236ed9359719d061c4c9426c8533b126bffcb3466f7b5f818601b50bd7afbf39  ../kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf
+command: file "../kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf"
+../kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf: Macromedia Flash data (compressed), version 6
+command: stat -f %z "../kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf"
+188830
+expected_md5: af059ff9d75cefbc244f03814b47be9c

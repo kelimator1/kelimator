@@ -1,0 +1,32 @@
+A1 artifact type checks
+== file(1) on key artifacts:
+artifacts/decompiled/fla/kelimator_tr_2012_mochiads.fla/kelimator_tr_2012_mochiads.fla: Zip archive data, at least v2.0 to extract, compression method=deflate
+artifacts/decompiled/header.txt:                                                        ASCII text
+artifacts/decompiled/tags.txt:                                                          ASCII text
+artifacts/decompiled/fonts/126_Verdana.ttf:                                             TrueType Font data, 11 tables, 1st "OS/2", 18 names, Macintosh, © Copyright , FFDec v.26.3.0.VerdanaRegulardtype: FFDec v.26.3.0: Verdana Regular: Version 1.0: 
+artifacts/decompiled/fonts/13_Verdana.ttf:                                              TrueType Font data, 11 tables, 1st "OS/2", 18 names, Macintosh, © Copyright , FFDec v.26.3.0.VerdanaRegulardtype: FFDec v.26.3.0: Verdana Regular: Version 1.0: 
+artifacts/decompiled/fonts/15_Verdana.ttf:                                              TrueType Font data, 11 tables, 1st "OS/2", 18 names, Macintosh, © Copyright , FFDec v.26.3.0.VerdanaRegulardtype: FFDec v.26.3.0: Verdana Regular: Version 1.0: 
+artifacts/decompiled/images/47.png:                                                     PNG image data, 550 x 400, 8-bit/color RGB, non-interlaced
+artifacts/decompiled/images/86.png:                                                     PNG image data, 21 x 29, 8-bit/color RGBA, non-interlaced
+artifacts/decompiled/sounds/22.mp3:                                                     MPEG ADTS, layer III, v2,  40 kbps, 22.05 kHz, Monaural
+artifacts/decompiled/sounds/24.mp3:                                                     MPEG ADTS, layer III, v2,  40 kbps, 22.05 kHz, Monaural
+artifacts/decompiled/sounds/26.mp3:                                                     MPEG ADTS, layer III, v2,  40 kbps, 22.05 kHz, Monaural
+artifacts/decompiled/sounds/30.mp3:                                                     MPEG ADTS, layer III,  v2.5,  24 kbps, 11.025 kHz, Monaural
+artifacts/decompiled/sounds/32.mp3:                                                     MPEG ADTS, layer III, v2,  40 kbps, 22.05 kHz, Monaural
+artifacts/decompiled/sounds/34.mp3:                                                     MPEG ADTS, layer III, v2,  40 kbps, 22.05 kHz, Monaural
+artifacts/decompiled/sounds/36.mp3:                                                     MPEG ADTS, layer III, v2,  40 kbps, 22.05 kHz, Monaural
+artifacts/decompiled/sounds/38.mp3:                                                     MPEG ADTS, layer III, v2,  40 kbps, 22.05 kHz, Monaural
+artifacts/decompiled/sounds/40.mp3:                                                     MPEG ADTS, layer III, v2,  40 kbps, 22.05 kHz, Monaural
+artifacts/decompiled/sounds/-1.wav:                                                     RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 5512 Hz
+
+== FLA zip top-level entries:
+   1 DOMDocument.xml
+  90 LIBRARY
+   1 PublishSettings.xml
+  11 bin
+
+== FLA: counts by entry class:
+symbol_xml: 78
+bitmap_png: 2
+sound_wav: 9
+total_entries: 103

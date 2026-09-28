@@ -55,8 +55,9 @@ Known inventory to check completeness against **[CONFIRMED]** (prior analysis):
 - Sound payload byte sizes: 1959, 4039, 919, 1569, 21849, 2739, 1439, 1699, 2739
   (payloads byte-identical in size to the 2007 build; byte-level identity to be
   verified here)
-- Bitmap definitions: 1 lossless + 1 lossless2 (dimensions **[TBC → O10]**;
-  2007/EN builds use 768×550 and 768×21)
+- Bitmap definitions: 1 lossless + 1 lossless2 (dimensions **[CONFIRMED A1]**:
+  550×400 for lossless id 47, 21×29 for lossless2 id 86; the 2007/EN values
+  768×550 and 768×21 do not apply to this build; see `evidence/A1-bitmaps.md`)
 - MochiAds code present (startup ad). Mark its scripts/tags for removal in A2;
   never execute its network calls.
 

@@ -1,0 +1,46 @@
+A1 fonts usage evidence (2012 build)
+== DefineFont2/DefineFont tags present (from tags.txt dump):
+DefineFont2 (chid: 13, fn: "Verdana") tagId= 48 len=   95143  0d 00 8d 01 08 56 65 72 64 61 6e 61 00 e8 05 a4 17 00 00 a6 17 00 00 c4 17 00 00 e4 17 00 00 3d ... 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 00 00
+DefineFont2 (chid: 15, fn: "Verdana") tagId= 48 len=    8537  0f 00 84 01 08 56 65 72 64 61 6e 61 00 72 00 e6 00 e8 00 05 01 25 01 7e 01 21 02 dc 02 a5 03 b6 ... 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 00 00
+DefineFont2 (chid: 126, fn: "Verdana") tagId= 48 len=   97441  7e 00 8f 01 08 56 65 72 64 61 6e 61 00 e8 05 a4 17 00 00 a6 17 00 00 c6 17 00 00 e6 17 00 00 43 ... 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 08 00 00 00
+
+== DefineFontInfo tags (font style forcing) present:
+0
+
+== Font records parsed from raw binary (a1-swf-inspect.py):
+  {"ANSI": false, "bold": true, "flagsRaw": 141, "fontId": 13, "fontNameLen": 8, "hasLayout": true, "italic": false, "languageCode": 1, "name": "Verdana", "nameRawHex": "56657264616e6100", "numGlyphs": 1512, "shiftJIS": false, "smallText": false, "type": "DefineFont2", "wideCodes": true, "wideOffsets": true}
+  {"ANSI": false, "bold": false, "flagsRaw": 132, "fontId": 15, "fontNameLen": 8, "hasLayout": true, "italic": false, "languageCode": 1, "name": "Verdana", "nameRawHex": "56657264616e6100", "numGlyphs": 114, "shiftJIS": false, "smallText": false, "type": "DefineFont2", "wideCodes": true, "wideOffsets": false}
+  {"ANSI": false, "bold": true, "flagsRaw": 143, "fontId": 126, "fontNameLen": 8, "hasLayout": true, "italic": true, "languageCode": 1, "name": "Verdana", "nameRawHex": "56657264616e6100", "numGlyphs": 1512, "shiftJIS": false, "smallText": false, "type": "DefineFont2", "wideCodes": true, "wideOffsets": true}
+
+== DefineText -> font id usage (parsed from FFDec tags.xml):
+  DefineText id 16 -> fontId(s) ['15']
+  DefineText id 19 -> fontId(s) ['15']
+  DefineText id 60 -> fontId(s) ['13']
+  DefineText id 64 -> fontId(s) ['13']
+  DefineText id 69 -> fontId(s) ['13']
+  DefineText id 104 -> fontId(s) ['13']
+  DefineText id 106 -> fontId(s) ['13']
+  DefineText id 119 -> fontId(s) ['13']
+  DefineText id 122 -> fontId(s) ['13']
+  DefineText id 158 -> fontId(s) ['13']
+  DefineText id 159 -> fontId(s) ['13']
+  DefineText id 160 -> fontId(s) ['13']
+  DefineText id 161 -> fontId(s) ['13']
+  DefineText id 164 -> fontId(s) ['13']
+  DefineText id 165 -> fontId(s) ['13']
+
+== DefineEditText -> font id usage (parsed from FFDec tags.xml):
+  fontId 13 -> DefineEditText ids ['14', '17', '18', '43', '44', '52', '55', '78', '82', '83', '92', '93', '94', '99', '100', '101', '109', '124', '125', '131', '132', '133', '134', '135', '136', '137', '138', '139', '140', '141', '142', '148', '150', '152', '154', '155', '156', '157', '162', '163']
+  fontId 15 -> DefineEditText ids ['112']
+  fontId 126 -> DefineEditText ids ['127', '128', '129', '130', '143', '144']
+
+== TTF table evidence (independent style check, see A1-ttf-inspect.log):
+== 126_Verdana.ttf 244208 bytes
+head: version=0x00010000 magic=0x5f0f3cf5 unitsPerEm=1024 bbox=(-170,-213,1746,1024) macStyle=0x0003 (bold=1 italic=1)
+OS/2: version=2 usWeightClass=700 fsSelection=0x0021 (italic=1 bold=1 regular=0)
+== 13_Verdana.ttf 243560 bytes
+head: version=0x00010000 magic=0x5f0f3cf5 unitsPerEm=1024 bbox=(-75,-213,1748,1024) macStyle=0x0001 (bold=1 italic=0)
+OS/2: version=2 usWeightClass=700 fsSelection=0x0020 (italic=0 bold=1 regular=0)
+== 15_Verdana.ttf 23676 bytes
+head: version=0x00010000 magic=0x5f0f3cf5 unitsPerEm=1024 bbox=(-31,-212,1482,838) macStyle=0x0000 (bold=0 italic=0)
+OS/2: version=2 usWeightClass=400 fsSelection=0x0040 (italic=0 bold=0 regular=1)

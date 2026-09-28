@@ -1,0 +1,26 @@
+A1 bitmap definitions and usage in the 2012 build
+
+== raw definitions (a1-swf-inspect.py):
+  {"bitmapFormat": 3, "characterId": 47, "colorTableSize": 127, "compressedDataLength": 43261, "defineBitsLossless2": false, "height": 400, "uncompressedDataLength": 221184, "width": 550, "zlibOk": true}
+  {"bitmapFormat": 3, "characterId": 86, "colorTableSize": 7, "compressedDataLength": 189, "defineBitsLossless2": true, "height": 29, "uncompressedDataLength": 728, "width": 21, "zlibOk": true}
+
+== DefineBitsLossless/2 tags as printed by FFDec -dumpSWF (len includes tag payload):
+  0002d1c7:  463. DefineBitsLossless (chid: 47) tagId= 20 len=   43269  2f 00 03 26 02 90 01 7f 78 da ec bd 0b 90 9c 57 76
+  000396d4:  510. DefineBitsLossless2 (chid: 86) tagId= 36 len=     197  56 00 03 15 00 1d 00 07 78 da 6d 92 dd 11 c3 20 0
+
+== PNG exports:
+  images/47.png: 62493 bytes, PNG 550x400
+  images/86.png: 312 bytes, PNG 21x29
+
+== shape-fill usage (FILLSTYLE bitmapId, fillStyleType=65 clipped bitmap):
+  bitmap 47 -> [('48', 'DefineShapeTag')]
+  bitmap 86 -> [('87', 'DefineShapeTag')]
+
+== placements of those shapes (PlaceObject2 across tags.txt, indentation = nested context):
+  indent=0   00037ad2:  464. DefineShape (chid: 48)    tagId=  2 len=      51  30 00 78 00 95 60 20 00 0f a0 00 02 41 ff ff
+  indent=0   00037b0b:  465. PlaceObject2 (chid: 48, dpt: 5) tagId= 26 len=       6  06 05 00 30 00 00
+  indent=0   0003979f:  511. DefineShape (chid: 87)    tagId=  2 len=      49  57 00 56 5c 69 5b c9 10 02 41 ff ff d9 40 00
+  indent=0   0003982a:      4. PlaceObject2 (chid: 87, dpt: 2) tagId= 26 len=       8  06 02 00 57 00 0a 90 00
+
+== note: bitmap ids 47/86 are not referenced by PlaceObject2/BUTTONRECORD directly;
+   they enter the stage only through the shapes listed above.

@@ -1,0 +1,27 @@
+== 126_Verdana.ttf 244208 bytes
+tables: OS/2 cmap glyf hdmx head hhea hmtx loca maxp name post
+head: version=0x00010000 magic=0x5f0f3cf5 unitsPerEm=1024 bbox=(-170,-213,1746,1024) macStyle=0x0003 (bold=1 italic=1)
+OS/2: version=2 usWeightClass=700 fsSelection=0x0021 (italic=1 bold=1 regular=0)
+name id 1 (family): ['Verdana']
+name id 2 (subfamily): ['Regular']
+name id 4 (fullname): ['Verdana']
+name id 6 (postscript): ['Verdana']
+glyf table length: 183244 | cmap present: True
+== 13_Verdana.ttf 243560 bytes
+tables: OS/2 cmap glyf hdmx head hhea hmtx loca maxp name post
+head: version=0x00010000 magic=0x5f0f3cf5 unitsPerEm=1024 bbox=(-75,-213,1748,1024) macStyle=0x0001 (bold=1 italic=0)
+OS/2: version=2 usWeightClass=700 fsSelection=0x0020 (italic=0 bold=1 regular=0)
+name id 1 (family): ['Verdana']
+name id 2 (subfamily): ['Regular']
+name id 4 (fullname): ['Verdana']
+name id 6 (postscript): ['Verdana']
+glyf table length: 182596 | cmap present: True
+== 15_Verdana.ttf 23676 bytes
+tables: OS/2 cmap glyf hdmx head hhea hmtx loca maxp name post
+head: version=0x00010000 magic=0x5f0f3cf5 unitsPerEm=1024 bbox=(-31,-212,1482,838) macStyle=0x0000 (bold=0 italic=0)
+OS/2: version=2 usWeightClass=400 fsSelection=0x0040 (italic=0 bold=0 regular=1)
+name id 1 (family): ['Verdana']
+name id 2 (subfamily): ['Regular']
+name id 4 (fullname): ['Verdana']
+name id 6 (postscript): ['Verdana']
+glyf table length: 17256 | cmap present: True

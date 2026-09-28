@@ -1,0 +1,19 @@
+A1 install/tooling log
+start_iso: 2026-09-28T12:31:22Z
+hostname: dev-host.home
+sw_vers: hidden
+uname_m: arm64
+
+--- java -version ---
+openjdk version "17.0.20.1" 2026-08-18
+OpenJDK Runtime Environment Homebrew (build 17.0.20.1+0)
+OpenJDK 64-Bit Server VM Homebrew (build 17.0.20.1+0, mixed mode, sharing)
+
+--- download ---
+command: curl -sSL --max-time 300 -o /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/ffdec_26.3.0.zip https://github.com/jindrapetrik/jpexs-decompiler/releases/download/version26.3.0/ffdec_26.3.0.zip
+archive_sha256: 35f4930eb7c380afe66f2117f90b006deac0631473ad7500bb39c78f68645ecd  /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/ffdec_26.3.0.zip
+archive_size: 19871169
+install_command: unzip -q -o /private/var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/opencode/ffdec_26.3.0.zip -d artifacts/tools/ffdec
+
+--- ffdec version ---
+JPEXS Free Flash Decompiler v.26.3.0
