@@ -1,0 +1,31 @@
+$ node verify/diff/diff.mjs evidence/F1-artifacts/base.png evidence/F1-artifacts/mutated.png $TMPDIR/f1-followup/run-1
+diff: mismatchedPixels=100 totalPixels=220000 mismatchRatio=0.00045454545454545455 pass=true -> /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/f1-followup/run-1/report.json
+exit=0
+$ node verify/diff/diff.mjs evidence/F1-artifacts/base.png evidence/F1-artifacts/mutated.png $TMPDIR/f1-followup/run-2
+diff: mismatchedPixels=100 totalPixels=220000 mismatchRatio=0.00045454545454545455 pass=true -> /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T/f1-followup/run-2/report.json
+exit=0
+
+$ shasum -a 256 $TMPDIR/f1-followup/run-{1,2}/report.json
+17e668b8990f179b61108a91cb3d9ffeeede06d1c6f05bccbcd1c24a39d7ce1c  /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//f1-followup/run-1/report.json
+17e668b8990f179b61108a91cb3d9ffeeede06d1c6f05bccbcd1c24a39d7ce1c  /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//f1-followup/run-2/report.json
+exit=0
+recorded pre-fix hash: 17e668b8990f179b61108a91cb3d9ffeeede06d1c6f05bccbcd1c24a39d7ce1c
+
+$ cmp -s $TMPDIR/f1-followup/run-1/report.json evidence/F1-artifacts/mutated-run-1/report.json
+cmp exit=0
+
+$ shasum -a 256 $TMPDIR/f1-followup/run-{1,2}/heatmap.png
+a7e7dc1edf64e0f24bc05939b3fe2fbbdf93cc0986e7e778c6063785faf2dabc  /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//f1-followup/run-1/heatmap.png
+a7e7dc1edf64e0f24bc05939b3fe2fbbdf93cc0986e7e778c6063785faf2dabc  /var/folders/kt/hj1k21b96gx5hctjhpjk1m3c0000gn/T//f1-followup/run-2/heatmap.png
+exit=0
+recorded pre-fix heatmap hash: a7e7dc1edf64e0f24bc05939b3fe2fbbdf93cc0986e7e778c6063785faf2dabc
+
+$ cmp -s $TMPDIR/f1-followup/run-1/heatmap.png evidence/F1-artifacts/mutated-run-1/heatmap.png
+cmp exit=0
+
+$ shasum -a 256 verify/diff/diff.mjs verify/diff/fixtures.mjs verify/diff/diff.test.mjs verify/diff/README.md
+616f265556d94a78b01ef925eccbd6e93c97e8cf6c1d9a68f28689a6be96af87  verify/diff/diff.mjs
+5908d2f5680192ffdb6a0892b24f3fd4c6ffe0ad2c08f5d3495127eefc0d1dcc  verify/diff/fixtures.mjs
+ab33e0b656cc7e4e56337f29336e7b9dc2bfe000de6ce895fb29ec3039918f70  verify/diff/diff.test.mjs
+d6b098fd7cfd524312677a2ff2e3ee5563b139271e81c0a71ce3e266ad54762e  verify/diff/README.md
+exit=0

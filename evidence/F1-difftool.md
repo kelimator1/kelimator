@@ -145,3 +145,72 @@ change to root `package.json`, `vitest.config.ts`, or any other C1-owned file;
 no git commands run; `../kelimator-nostalji/` untouched.
 
 Result: PASS
+
+---
+
+# Follow-up (lint fix) — 2026-09-28
+
+Scope: fix ESLint `preserve-caught-error` errors in `verify/diff/diff.mjs`
+only; no behavior change.
+
+## Commands, outputs, exit codes
+
+| # | Command | Exit | Log |
+|---|---|---|---|
+| F1 | `npm run lint` (before fix) | 1 | `evidence/logs/F1-lint-followup-before.log` |
+| F2 | `npx eslint verify/diff/diff.mjs` (after fix) | **0** | `evidence/logs/F1-lint-followup-after.log` |
+| F3 | `npm run lint` (after fix, repo-wide) | 1 | `evidence/logs/F1-lint-followup-after-full.log` |
+| F4 | `npm test -- diff` (after fix) | 0 | `evidence/logs/F1-test-followup.log` |
+| F5 | two CLI runs on the mutated pair + `shasum -a 256` + `cmp` (V8) | 0 | `evidence/logs/F1-v8-followup.log` |
+| F6 | `shasum -a 256 verify/diff/*.mjs verify/diff/README.md` | 0 | `evidence/logs/F1-v8-followup.log` |
+
+- F2: `verify/diff/diff.mjs` lints clean (exit 0).
+- F4: **16 tests passed**, 1 test file passed, exit 0.
+- F3 raw totals: `✖ 598 problems (598 errors, 0 warnings)` — see exact
+  file split below. All remaining errors are in `verify/reference/**`
+  (task C3's owned paths, created concurrently at 16:04–16:25 today);
+  the three former `verify/diff/diff.mjs` errors are gone. Zero remaining
+  errors in any F1 file.
+- F5 V8: both new runs:
+  `17e668b8990f179b61108a91cb3d9ffeeede06d1c6f05bccbcd1c24a39d7ce1c`
+  — identical to the previously recorded hash, and
+  `cmp -s` against `evidence/F1-artifacts/mutated-run-1/report.json`
+  exits 0. Heatmaps also byte-identical to the recorded
+  `a7e7dc1edf64e0f24bc05939b3fe2fbbdf93cc0986e7e778c6063785faf2dabc`.
+  Exit 0 for both runs.
+
+## Change made (behavior-neutral)
+
+Three `catch` blocks in `verify/diff/diff.mjs` now pass `{ cause: err }` as the
+second argument of the rethrown `Error` (`zlib inflate failed`, `cannot read`,
+`cannot decode`). Error messages, CLI stdout/stderr text, exit codes,
+`report.json` shape/values and PNG bytes are unchanged; only the (unused)
+`error.cause` property is now attached, as the ESLint rule requires.
+
+Updated `verify/diff/diff.mjs` SHA-256:
+`616f265556d94a78b01ef925eccbd6e93c97e8cf6c1d9a68f28689a6be96af87`
+(previous pre-fix value was `89dc4bcf1415ad5e9c76cc1570a96568b9a32a13ddf99648b7bae573d44c2b75`;
+appended, marked superseding, in `evidence/logs/F1-hashes.log`).
+
+## Repo-wide lint status (for the orchestrator; outside F1 write scope)
+
+`npm run lint` currently exits 1 with 598 errors, all in C3-owned files —
+F1's own files are clean:
+
+```
+  4  verify/reference/capture.mjs
+114  verify/reference/ruffle/web/core.ruffle.c80159b526e567babaf5.js
+115  verify/reference/ruffle/web/core.ruffle.f000070ea72f8ae4fe3a.js
+365  verify/reference/ruffle/web/ruffle.js
+```
+
+`verify/reference/**` is task C3's owned path, and `eslint.config.js` is
+C1-owned/pinned; both are outside the F1 follow-up's allowed write set, so
+F1 does not modify them. Repo-wide `npm run lint` can only reach exit 0 after
+C3 lints its own `capture.mjs` (or the orchestrator amends the C1 config to
+ignore the vendored Ruffle bundle). Raw before/after outputs:
+`evidence/logs/F1-lint-followup-before.log`,
+`evidence/logs/F1-lint-followup-after-full.log`.
+
+Follow-up result: F1 file clean; behavior byte-identical; repo-wide lint
+blocked on C3-owned files (not an F1 failure).

@@ -1,0 +1,22 @@
+$ npx eslint verify/diff/diff.mjs  # after lint fix, F1 files only
+exit=0
+
+$ npm run lint  # after lint fix, repo-wide
+  1:464379  error  'HTMLScriptElement' is not defined                                     no-undef
+  1:464403  error  'document' is not defined                                              no-undef
+  1:464437  error  'document' is not defined                                              no-undef
+  1:464464  error  Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+  1:464587  error  Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+  1:464611  error  Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+  1:464611  error  'window' is not defined                                                no-undef
+  1:464646  error  'window' is not defined                                                no-undef
+  1:464675  error  'window' is not defined                                                no-undef
+  1:464696  error  'window' is not defined                                                no-undef
+  1:465006  error  'window' is not defined                                                no-undef
+
+✖ 598 problems (598 errors, 0 warnings)
+  2 errors and 0 warnings potentially fixable with the `--fix` option.
+
+npm run lint exit=1
+
+[repo-wide raw output truncated here for readability; full raw output in evidence/logs/F1-lint-followup-after-full.log]

@@ -120,7 +120,7 @@ export function decodePng(input) {
   try {
     raw = inflateSync(Buffer.concat(idat));
   } catch (err) {
-    throw new Error(`zlib inflate failed (${err.message})`);
+    throw new Error(`zlib inflate failed (${err.message})`, { cause: err });
   }
   if (raw.length < height * (stride + 1)) throw new Error('truncated PNG image data');
 
@@ -337,12 +337,16 @@ function decodePngFile(path) {
   try {
     bytes = readFileSync(path);
   } catch (err) {
-    throw new Error(`cannot read ${basename(path)}: ${String(err.message).split('\n')[0]}`);
+    throw new Error(`cannot read ${basename(path)}: ${String(err.message).split('\n')[0]}`, {
+      cause: err,
+    });
   }
   try {
     return decodePng(bytes);
   } catch (err) {
-    throw new Error(`cannot decode ${basename(path)}: ${String(err.message).split('\n')[0]}`);
+    throw new Error(`cannot decode ${basename(path)}: ${String(err.message).split('\n')[0]}`, {
+      cause: err,
+    });
   }
 }
 

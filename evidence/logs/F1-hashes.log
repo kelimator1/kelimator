@@ -10,3 +10,10 @@ a7e7dc1edf64e0f24bc05939b3fe2fbbdf93cc0986e7e778c6063785faf2dabc  evidence/F1-ar
 a7e7dc1edf64e0f24bc05939b3fe2fbbdf93cc0986e7e778c6063785faf2dabc  evidence/F1-artifacts/mutated-run-2/heatmap.png
 b99589dee0f3def7067bb2c6c830314d54365dd625a4d596953619ddcd76d545  evidence/F1-artifacts/identical-run/report.json
 b01bd3da03f0c3bab3489c758998093d8c045602c6974f0eb31e6cb4e4276bbd  evidence/F1-artifacts/identical-run/heatmap.png
+
+# Follow-up (lint fix), 2026-09-28T13:27:46Z — appended
+# verify/diff/diff.mjs gained { cause } on 3 rethrows (ESLint preserve-caught-error);
+# behavior/messages unchanged. Supersedes the diff.mjs line above.
+616f265556d94a78b01ef925eccbd6e93c97e8cf6c1d9a68f28689a6be96af87  verify/diff/diff.mjs
+17e668b8990f179b61108a91cb3d9ffeeede06d1c6f05bccbcd1c24a39d7ce1c  evidence/F1-artifacts/mutated-run-1/report.json  (re-verified unchanged, follow-up rerun)
+a7e7dc1edf64e0f24bc05939b3fe2fbbdf93cc0986e7e778c6063785faf2dabc  evidence/F1-artifacts/mutated-run-1/heatmap.png  (re-verified unchanged, follow-up rerun)
