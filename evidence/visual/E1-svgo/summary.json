@@ -594,19 +594,19 @@
     "id": 90
    },
    "remaster": {
-    "artifact": "artifacts/hd-assets/ai86-8x.webp",
-    "sha256": "490794263c69e920a8f061088c33dff5d63cc5f47f8937727cb15163273dfa2f",
+    "artifact": "artifacts/hd-assets/ai86-8x-alpha.webp",
+    "sha256": "a5a840abdca472e96d07325b7b6281ad1b0ee22e13700dc64a377bc13da29c45",
     "format": "image/webp",
     "naturalWidth": 168,
     "naturalHeight": 232
    },
-   "sourceBytes": 11588,
-   "outputBytes": 11420,
+   "sourceBytes": 14444,
+   "outputBytes": 14276,
    "width": 33.5,
    "height": 34.05,
    "naturalWidth": 34,
    "naturalHeight": 34,
-   "inkPixels": 738,
+   "inkPixels": 582,
    "mismatchedPixels": 0,
    "maxDistance": 0,
    "meanDistance": 0,
@@ -784,9 +784,9 @@
   "skipped": 0,
   "processed": 36,
   "mismatchedPixels": 0,
-  "sourceBytes": 889145,
-  "outputBytes": 864589,
-  "inkPixels": 882651,
+  "sourceBytes": 892001,
+  "outputBytes": 867445,
+  "inkPixels": 882495,
   "nonBlankRenders": 23
  }
 }
