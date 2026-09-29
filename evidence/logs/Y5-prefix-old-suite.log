@@ -1,0 +1,14 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test speaker
+
+
+Running 5 tests using 2 workers
+
+  ✓  2 [app] › tests/e2e/speaker/corner-alpha.spec.ts:75:5 › Y4 speaker-knob alpha (deviceScaleFactor 1) › the transparent knob corners render as background, not opaque black (3.0s)
+  ✓  1 [app] › tests/e2e/speaker/speaker.spec.ts:76:3 › X3 speaker toggle › click toggles the audio state + persistence; the icon follows the persisted volume at render (4.4s)
+  ✓  3 [app] › tests/e2e/speaker/corner-alpha.spec.ts:75:5 › Y4 speaker-knob alpha (deviceScaleFactor 2) › the transparent knob corners render as background, not opaque black (1.9s)
+  ✓  4 [app] › tests/e2e/speaker/speaker.spec.ts:132:3 › X3 speaker toggle › the icon reflects the persisted volume at (re)load; a click alone does not repaint (1.4s)
+  ✓  5 [app] › tests/e2e/speaker/speaker.spec.ts:163:3 › X3 speaker toggle › clamps a corrupt stored volume into 0–100 at boot (1.9s)
+
+  5 passed (9.9s)

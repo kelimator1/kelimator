@@ -15,8 +15,9 @@
 // - the speaker control (`btn_speaker` = `spk_btn`): a delegated listener plus
 //   the reference sprite-88 frames "on"/"off" state on E2's board element
 //   (DefineButton2_90 `on(release)` toggles `_root.vol` and persists it; the
-//   icon follows the persisted volume at boot/render — the reference sprite
-//   evaluates `vol` on frame entry only, so a plain click does not repaint);
+//   icon follows the persisted volume at boot/render and, as an owner-approved
+//   Y5 deviation from the reference's frame-entry timing, repaints immediately
+//   on the click itself);
 // - in-place timer updates (see `updateTimer`) so the countdown ticks without
 //   re-rendering the board.
 //
@@ -275,10 +276,12 @@ function ensureSpeakerOffFilter(svg: SVGSVGElement): string {
  * (waves + untransformed icon) while sound is on; frame "off" (waves removed,
  * pale icon) while muted (volume 0). E2 re-creates the element on every
  * `board.apply`, so this runs at mount and after every `update` (boot/render),
- * i.e. the icon follows the persisted volume — never the click itself:
- * sprite 88 evaluates `_root.vol` when its frames are entered and then stops
- * (frame_1/frame_2 end in `stop()`), and the C3 probe measured a plain click as
- * 0 px changed (evidence/C3-speaker-capture.md §1).
+ * and — owner-approved Y5 deviation from the sprite's frame-entry timing — it
+ * also runs in the click handler itself so the icon flips immediately
+ * (evidence/Y5-speaker-feedback.md §2/§6). The reference behaviour it deviates
+ * from: sprite 88 evaluates `_root.vol` when its frames are entered and then
+ * stops (frame_1/frame_2 end in `stop()`), and the C3 probe measured a plain
+ * click as 0 px changed (evidence/C3-speaker-capture.md §1).
  * evidence: DefineSprite_88/frame_1/DoAction.as L1-L5, frame_2 L1-L5;
  * tags.xml spriteId="88" frame labels "on"/"off" and CXFORM.
  */
@@ -350,11 +353,15 @@ export function mountHud(root: HTMLElement, options: HudOptions = {}): HudHandle
     const node = target.closest(`[data-element="${SPEAKER_ELEMENT_ID}"]`);
     if (node === null || options.board === undefined || !options.board.contains(node)) return;
     // Reference on(release): `vol` toggle (+ stopAllSounds on mute) and the
-    // persistence write. No icon repaint here — sprite 88 only evaluates
-    // `_root.vol` when its frames are entered (C3 probe: a plain click changes
-    // 0 px; evidence/C3-speaker-capture.md §1); the next boot/render applies
-    // the persisted volume via syncSpeakerVisual.
+    // persistence write. The reference icon follows `_root.vol` only when its
+    // frames are entered (C3 probe: a plain click changes 0 px;
+    // evidence/C3-speaker-capture.md §1); the rebuild deliberately repaints the
+    // icon inside this click instead (owner decision, task Y5: immediate
+    // feedback; the measured reference timing is superseded —
+    // evidence/Y5-speaker-feedback.md §6 — no debouncing).
+    // evidence: evidence/Y5-speaker-feedback.md §2 (owner-approval note).
     toggleMute();
+    syncSpeakerVisual(options.board);
   };
   options.board?.addEventListener('click', onSpeakerClick);
   syncSpeakerVisual(options.board);

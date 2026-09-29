@@ -1,0 +1,113 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test speaker
+
+
+Running 7 tests using 2 workers
+
+  ✓  2 [app] › tests/e2e/speaker/corner-alpha.spec.ts:75:5 › Y4 speaker-knob alpha (deviceScaleFactor 1) › the transparent knob corners render as background, not opaque black (2.1s)
+  ✘  1 [app] › tests/e2e/speaker/speaker.spec.ts:141:3 › X3 speaker toggle › click toggles the audio state + persistence and repaints the icon immediately (no render) (2.1s)
+  ✓  3 [app] › tests/e2e/speaker/corner-alpha.spec.ts:75:5 › Y4 speaker-knob alpha (deviceScaleFactor 2) › the transparent knob corners render as background, not opaque black (1.2s)
+  ✘  4 [app] › tests/e2e/speaker/speaker.spec.ts:209:3 › X3 speaker toggle › immediate flip per click; boot restore from persistence (1.0s)
+  ✘  5 [app] › tests/e2e/speaker/speaker.spec.ts:251:3 › X3 speaker toggle › clamps a corrupt stored volume into 0–100 at boot (1.5s)
+  ✘  6 [app] › tests/e2e/speaker/speaker.spec.ts:289:5 › Y5 immediate feedback (deviceScaleFactor 1) › the icon flips off and back on inside the click, with no board re-render (1.0s)
+  ✘  7 [app] › tests/e2e/speaker/speaker.spec.ts:289:5 › Y5 immediate feedback (deviceScaleFactor 2) › the icon flips off and back on inside the click, with no board re-render (1.6s)
+
+
+  1) [app] › tests/e2e/speaker/speaker.spec.ts:141:3 › X3 speaker toggle › click toggles the audio state + persistence and repaints the icon immediately (no render) 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "off"
+    Received: "on"
+
+      166 |     const muted = await readSpeaker(page);
+      167 |     expect(muted.storedVolume).toBe('0');
+    > 168 |     expect(muted.speakerState).toBe('off');
+          |                                ^
+      169 |     expect(muted.wavesDisplay).toBe('none');
+      170 |     const muteProbe = await readFeedbackProbe(page);
+      171 |     expect(muteProbe.boardMutations).toBe(0);
+        at /home/dev/kelimator-2012/tests/e2e/speaker/speaker.spec.ts:168:32
+
+    Error Context: test-results/tests-e2e-speaker-speaker--c2408-icon-immediately-no-render--app/error-context.md
+
+  2) [app] › tests/e2e/speaker/speaker.spec.ts:209:3 › X3 speaker toggle › immediate flip per click; boot restore from persistence 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "off"
+    Received: "on"
+
+      219 |     const muted = await readSpeaker(page);
+      220 |     expect(muted.storedVolume).toBe('0');
+    > 221 |     expect(muted.speakerState).toBe('off'); // inside the click, no render
+          |                                ^
+      222 |     const muteProbe = await readFeedbackProbe(page);
+      223 |     expect(muteProbe.boardMutations).toBe(0);
+      224 |     expect(muteProbe.sameSpeakerNode).toBe(true);
+        at /home/dev/kelimator-2012/tests/e2e/speaker/speaker.spec.ts:221:32
+
+    Error Context: test-results/tests-e2e-speaker-speaker--fdaed-ot-restore-from-persistence-app/error-context.md
+
+  3) [app] › tests/e2e/speaker/speaker.spec.ts:251:3 › X3 speaker toggle › clamps a corrupt stored volume into 0–100 at boot 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "on"
+    Received: "off"
+
+      271 |     await speaker.click();
+      272 |     expect((await readSpeaker(page)).storedVolume).toBe('100');
+    > 273 |     expect((await readSpeaker(page)).speakerState).toBe('on');
+          |                                                    ^
+      274 |     const probe = await readFeedbackProbe(page);
+      275 |     expect(probe.boardMutations).toBe(0);
+      276 |     expect(probe.sameSpeakerNode).toBe(true);
+        at /home/dev/kelimator-2012/tests/e2e/speaker/speaker.spec.ts:273:52
+
+    Error Context: test-results/tests-e2e-speaker-speaker--5c27e-d-volume-into-0–100-at-boot-app/error-context.md
+
+  4) [app] › tests/e2e/speaker/speaker.spec.ts:289:5 › Y5 immediate feedback (deviceScaleFactor 1) › the icon flips off and back on inside the click, with no board re-render 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "off"
+    Received: "on"
+
+      303 |       const muted = await readSpeaker(page);
+      304 |       expect(muted.storedVolume).toBe('0');
+    > 305 |       expect(muted.speakerState).toBe('off');
+          |                                  ^
+      306 |       expect(muted.wavesDisplay).toBe('none');
+      307 |       const muteProbe = await readFeedbackProbe(page);
+      308 |       expect(muteProbe.boardMutations).toBe(0);
+        at /home/dev/kelimator-2012/tests/e2e/speaker/speaker.spec.ts:305:34
+
+    Error Context: test-results/tests-e2e-speaker-speaker--c952e-ick-with-no-board-re-render-app/error-context.md
+
+  5) [app] › tests/e2e/speaker/speaker.spec.ts:289:5 › Y5 immediate feedback (deviceScaleFactor 2) › the icon flips off and back on inside the click, with no board re-render 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "off"
+    Received: "on"
+
+      303 |       const muted = await readSpeaker(page);
+      304 |       expect(muted.storedVolume).toBe('0');
+    > 305 |       expect(muted.speakerState).toBe('off');
+          |                                  ^
+      306 |       expect(muted.wavesDisplay).toBe('none');
+      307 |       const muteProbe = await readFeedbackProbe(page);
+      308 |       expect(muteProbe.boardMutations).toBe(0);
+        at /home/dev/kelimator-2012/tests/e2e/speaker/speaker.spec.ts:305:34
+
+    Error Context: test-results/tests-e2e-speaker-speaker--cdda7-ick-with-no-board-re-render-app/error-context.md
+
+  5 failed
+    [app] › tests/e2e/speaker/speaker.spec.ts:141:3 › X3 speaker toggle › click toggles the audio state + persistence and repaints the icon immediately (no render) 
+    [app] › tests/e2e/speaker/speaker.spec.ts:209:3 › X3 speaker toggle › immediate flip per click; boot restore from persistence 
+    [app] › tests/e2e/speaker/speaker.spec.ts:251:3 › X3 speaker toggle › clamps a corrupt stored volume into 0–100 at boot 
+    [app] › tests/e2e/speaker/speaker.spec.ts:289:5 › Y5 immediate feedback (deviceScaleFactor 1) › the icon flips off and back on inside the click, with no board re-render 
+    [app] › tests/e2e/speaker/speaker.spec.ts:289:5 › Y5 immediate feedback (deviceScaleFactor 2) › the icon flips off and back on inside the click, with no board re-render 
+  2 passed (10.4s)

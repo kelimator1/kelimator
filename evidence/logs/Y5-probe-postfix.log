@@ -1,0 +1,3 @@
+dsf1: clicks=43 volume=43/43 hit=43/43 iconImmediate=43/43 waves=43/43 noRender=43/43 offDiffers=true onRestored=true allPassed=true
+dsf2: clicks=43 volume=43/43 hit=43/43 iconImmediate=43/43 waves=43/43 noRender=43/43 offDiffers=true onRestored=true allPassed=true
+probe postfix: allPassed=true

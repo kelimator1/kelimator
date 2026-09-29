@@ -1,0 +1,217 @@
+{
+  "tool": "tests/e2e/speaker/y5-feedback-probe.mjs",
+  "label": "prefix",
+  "url": "http://127.0.0.1:5273/",
+  "expectedClicksPerDsf": 43,
+  "allPassed": false,
+  "dsf": {
+    "1": {
+      "dsf": 1,
+      "url": "http://127.0.0.1:5273/",
+      "box": {
+        "x": 513.984375,
+        "y": 364.734375,
+        "width": 33.53125,
+        "height": 34.078125
+      },
+      "clicks": 43,
+      "expectedClicks": 43,
+      "volumeToggled": "43/43",
+      "hitSpeaker": "43/43",
+      "iconImmediate": "21/43",
+      "wavesConsistent": "43/43",
+      "noBoardRender": "43/43",
+      "boardMutationsMax": 0,
+      "immediate": {
+        "offDiffersFromOn": false,
+        "onRestoredEqualsOn": true,
+        "offVsOnRegion": {
+          "schemaVersion": 3,
+          "tool": "verify/diff/diff.mjs",
+          "width": 35,
+          "height": 35,
+          "totalPixels": 1225,
+          "mismatchThreshold": 30,
+          "passRatio": 0.02,
+          "tolerantRadius": 2,
+          "mismatchedPixels": 0,
+          "mismatchRatio": 0,
+          "maxDistance": 0,
+          "meanDistance": 0,
+          "mismatchBBox": null,
+          "tolerantMismatchedPixels": 0,
+          "tolerantMismatchRatio": 0,
+          "tolerantMismatchBBox": null,
+          "ignoredRects": [],
+          "ignoredPixels": 0,
+          "pass": true
+        },
+        "onRestoredVsOnRegion": {
+          "schemaVersion": 3,
+          "tool": "verify/diff/diff.mjs",
+          "width": 35,
+          "height": 35,
+          "totalPixels": 1225,
+          "mismatchThreshold": 30,
+          "passRatio": 0.02,
+          "tolerantRadius": 2,
+          "mismatchedPixels": 0,
+          "mismatchRatio": 0,
+          "maxDistance": 0,
+          "meanDistance": 0,
+          "mismatchBBox": null,
+          "tolerantMismatchedPixels": 0,
+          "tolerantMismatchRatio": 0,
+          "tolerantMismatchBBox": null,
+          "ignoredRects": [],
+          "ignoredPixels": 0,
+          "pass": true
+        }
+      },
+      "final": {
+        "speakerState": "on",
+        "wavesDisplay": "inline",
+        "storedVolume": "0",
+        "boardMutations": 0,
+        "sameSpeakerNode": true,
+        "lastHit": {
+          "index": 42,
+          "phase": "rapid",
+          "hitSpeaker": true
+        }
+      },
+      "files": {
+        "on": {
+          "file": "on.png",
+          "sha256": "65370ec7c731f17c29d9650d46e009cf4a402b9591c3fd65ceaa06f871c4b0eb"
+        },
+        "off": {
+          "file": "off.png",
+          "sha256": "65370ec7c731f17c29d9650d46e009cf4a402b9591c3fd65ceaa06f871c4b0eb"
+        },
+        "onRestored": {
+          "file": "on-restored.png",
+          "sha256": "65370ec7c731f17c29d9650d46e009cf4a402b9591c3fd65ceaa06f871c4b0eb"
+        },
+        "after43": {
+          "file": "after-43.png",
+          "sha256": "65370ec7c731f17c29d9650d46e009cf4a402b9591c3fd65ceaa06f871c4b0eb"
+        },
+        "onZoom": {
+          "file": "on-zoom.png",
+          "factor": 8
+        },
+        "offZoom": {
+          "file": "off-zoom.png",
+          "factor": 8
+        }
+      },
+      "pageErrors": [],
+      "allPassed": false
+    },
+    "2": {
+      "dsf": 2,
+      "url": "http://127.0.0.1:5273/",
+      "box": {
+        "x": 513.984375,
+        "y": 364.734375,
+        "width": 33.53125,
+        "height": 34.078125
+      },
+      "clicks": 43,
+      "expectedClicks": 43,
+      "volumeToggled": "43/43",
+      "hitSpeaker": "43/43",
+      "iconImmediate": "21/43",
+      "wavesConsistent": "43/43",
+      "noBoardRender": "43/43",
+      "boardMutationsMax": 0,
+      "immediate": {
+        "offDiffersFromOn": false,
+        "onRestoredEqualsOn": true,
+        "offVsOnRegion": {
+          "schemaVersion": 3,
+          "tool": "verify/diff/diff.mjs",
+          "width": 70,
+          "height": 70,
+          "totalPixels": 4900,
+          "mismatchThreshold": 30,
+          "passRatio": 0.02,
+          "tolerantRadius": 2,
+          "mismatchedPixels": 0,
+          "mismatchRatio": 0,
+          "maxDistance": 0,
+          "meanDistance": 0,
+          "mismatchBBox": null,
+          "tolerantMismatchedPixels": 0,
+          "tolerantMismatchRatio": 0,
+          "tolerantMismatchBBox": null,
+          "ignoredRects": [],
+          "ignoredPixels": 0,
+          "pass": true
+        },
+        "onRestoredVsOnRegion": {
+          "schemaVersion": 3,
+          "tool": "verify/diff/diff.mjs",
+          "width": 70,
+          "height": 70,
+          "totalPixels": 4900,
+          "mismatchThreshold": 30,
+          "passRatio": 0.02,
+          "tolerantRadius": 2,
+          "mismatchedPixels": 0,
+          "mismatchRatio": 0,
+          "maxDistance": 0,
+          "meanDistance": 0,
+          "mismatchBBox": null,
+          "tolerantMismatchedPixels": 0,
+          "tolerantMismatchRatio": 0,
+          "tolerantMismatchBBox": null,
+          "ignoredRects": [],
+          "ignoredPixels": 0,
+          "pass": true
+        }
+      },
+      "final": {
+        "speakerState": "on",
+        "wavesDisplay": "inline",
+        "storedVolume": "0",
+        "boardMutations": 0,
+        "sameSpeakerNode": true,
+        "lastHit": {
+          "index": 42,
+          "phase": "rapid",
+          "hitSpeaker": true
+        }
+      },
+      "files": {
+        "on": {
+          "file": "on.png",
+          "sha256": "cc93d7ca1f87f5202446ac6082a81a0120882c92686acf9fdfb7e9c09b6dfd1e"
+        },
+        "off": {
+          "file": "off.png",
+          "sha256": "cc93d7ca1f87f5202446ac6082a81a0120882c92686acf9fdfb7e9c09b6dfd1e"
+        },
+        "onRestored": {
+          "file": "on-restored.png",
+          "sha256": "cc93d7ca1f87f5202446ac6082a81a0120882c92686acf9fdfb7e9c09b6dfd1e"
+        },
+        "after43": {
+          "file": "after-43.png",
+          "sha256": "cc93d7ca1f87f5202446ac6082a81a0120882c92686acf9fdfb7e9c09b6dfd1e"
+        },
+        "onZoom": {
+          "file": "on-zoom.png",
+          "factor": 4
+        },
+        "offZoom": {
+          "file": "off-zoom.png",
+          "factor": 4
+        }
+      },
+      "pageErrors": [],
+      "allPassed": false
+    }
+  }
+}
