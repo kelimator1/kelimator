@@ -339,6 +339,13 @@ RESOLVED 2026-09-29 — evidence/Y5-speaker-feedback.md — speaker immediate fe
   `evidence/A2-strings.md` §2). Implement the three states exactly (colours
   sampled from the frames; live-text kept if pixel-faithful); status test at
   dsf 1+2. Evidence: `evidence/Y9-status-lamp.md`.
+- 2026-09-29 — Wave follow-up **Y10** (owner Option A, queued behind Y8/Y9):
+  restore the win celebration + results screen (frames 132–241) minus the
+  network form: E-posta field removed, "Ad Soyad" → **"İsim"**, everything else
+  faithful (bravo sky/moon/stars/fireworks/marquee, TEBRİKLER/Puanınız/Kelime
+  Sayısı/Süre, form slide-in, Yeni Oyun return); submit is placebo-local
+  (zero network, nothing stored), continue behaviour mirrors the original local
+  `gotoAndPlay("main")`. Evidence: `evidence/Y10-celebration.md`.
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:
