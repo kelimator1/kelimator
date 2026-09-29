@@ -233,6 +233,12 @@ RESOLVED 2026-09-28 — evidence/B3-threshold.md — Round-bank threshold measur
   credit sprites (`credit_line`/`credit_site`) with absence assertions and the
   owner-approved omission region (0,367,105,36). Serialized (shared files);
   G4 + `tools/verify-all.sh` re-run after the wave.
+- 2026-09-29 — Wave follow-up **Y3** (owner defect, pre-investigated): the
+  `CONTROL_RECTS` lookups in `src/ui/hud.ts` swap `scramble`/`delete` — the
+  reference BUTTONCONDACTION files map kbuton→`karistir()` (x=156.25),
+  sbuton→`sil()` (x=308.6), ebuton→`ekle()` (x=232.85). Fix + static mapping
+  test + center-of-label e2e; superseding note for the same-wave D5 evidence
+  record; serialized after Y2 (HMR safety). Evidence: `evidence/Y3-buttons.md`.
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:
