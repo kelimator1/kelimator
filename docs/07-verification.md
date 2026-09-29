@@ -166,6 +166,15 @@ formulas and asserted in unit tests.
 > transparent pixels are not opaque black. Evidence:
 > `evidence/Y4-knob-alpha.md` §4/§5/§7.
 
+> Amendment 2026-09-29c (owner final wave Y5): the speaker icon is deliberately
+> repainted inside the click handler for immediate usable feedback; the measured
+> reference timing (a plain click changes 0 px — C3 probe; sprite 88 evaluates
+> `_root.vol` on frame entry only) is deviated from by owner decision, with no
+> input debouncing. Speaker e2e asserts the immediate flip at dsf 1+2 with a
+> board-render MutationObserver + node-identity guard and keeps the
+> reload/persistence checks. Evidence: `evidence/Y5-speaker-feedback.md`
+> §2/§4–§6; matching entry in `docs/08-open-items.md`.
+
 ## 5. State matrix (S1–S10)
 
 | State | Trigger sequence (app and reference use the same) |
