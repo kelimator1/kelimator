@@ -1,0 +1,6 @@
+# Task Y7 — unaffected-suite check: keyboard usage in the closing suites
+# (visual/animation/offline do not type letters; only BACKSPACE where shown)
+$ grep -n "keyboard\.\|typeWord(" tests/e2e/animations/animations.spec.ts tests/e2e/offline/offline.spec.ts tests/e2e/visual.spec.ts
+tests/e2e/animations/animations.spec.ts:342:    await page.keyboard.press('Backspace');
+tests/e2e/offline/offline.spec.ts:290:      await page.keyboard.press('Backspace');
+# grep exit: 0

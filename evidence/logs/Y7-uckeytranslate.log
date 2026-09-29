@@ -1,0 +1,50 @@
+# Task Y7 â€” UCKeyTranslate probe (evidence/Y7-probe-uckeytranslate.c)
+# run at (UTC):2026-09-29T14:04:44Z
+$ clang -framework Carbon -O0 -o <tmp>/y7-uckeytranslate evidence/Y7-probe-uckeytranslate.c
+compile exit: 0
+$ <tmp>/y7-uckeytranslate
+input source id: com.apple.keylayout.Turkish-QWERTY-PC
+localized name: Turkish Q
+type: TISTypeKeyboardLayout
+keyboard type (LMGetKbdType): 92
+--- physical key -> produced character (UCKeyTranslate, no modifiers)
+ANSI_A       (0x00): "a"  U+0061
+ANSI_B       (0x0B): "b"  U+0062
+ANSI_C       (0x08): "c"  U+0063
+ANSI_D       (0x02): "d"  U+0064
+ANSI_E       (0x0E): "e"  U+0065
+ANSI_F       (0x03): "f"  U+0066
+ANSI_G       (0x05): "g"  U+0067
+ANSI_H       (0x04): "h"  U+0068
+ANSI_I       (0x22): ""  U+0131
+ANSI_J       (0x26): "j"  U+006A
+ANSI_K       (0x28): "k"  U+006B
+ANSI_L       (0x25): "l"  U+006C
+ANSI_M       (0x2E): "m"  U+006D
+ANSI_N       (0x2D): "n"  U+006E
+ANSI_O       (0x1F): "o"  U+006F
+ANSI_P       (0x23): "p"  U+0070
+ANSI_Q       (0x0C): "q"  U+0071
+ANSI_R       (0x0F): "r"  U+0072
+ANSI_S       (0x01): "s"  U+0073
+ANSI_T       (0x11): "t"  U+0074
+ANSI_U       (0x20): "u"  U+0075
+ANSI_V       (0x09): "v"  U+0076
+ANSI_W       (0x0D): "w"  U+0077
+ANSI_X       (0x07): "x"  U+0078
+ANSI_Y       (0x10): "y"  U+0079
+ANSI_Z       (0x06): "z"  U+007A
+ANSI_Quote   (0x27): "i"  U+0069
+ANSI_Semicolon (0x29): ""  U+015F
+ANSI_Comma   (0x2B): "ö"  U+00F6
+ANSI_Period  (0x2F): "ç"  U+00E7
+ANSI_Slash   (0x2C): "."  U+002E
+ANSI_Backslash (0x2A): ","  U+002C
+ANSI_LBracket (0x21): ""  U+011F
+ANSI_RBracket (0x1E): "ü"  U+00FC
+ANSI_Grave   (0x32): "<"  U+003C
+ANSI_Minus   (0x1B): "*"  U+002A
+ANSI_Equal   (0x18): "-"  U+002D
+ANSI_1       (0x12): "1"  U+0031
+ANSI_Space   (0x31): " "  U+0020
+run exit: 0

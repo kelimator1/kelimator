@@ -1,0 +1,44 @@
+# Task Y7 — resolveKey AFTER probe (post-fix src/game/input.ts)
+# command: node --experimental-strip-types evidence/Y7-probe-input.ts
+# run at (UTC): 2026-09-29T14:06:18Z
+mac ANSI_Quote pressed (i) with dotless-I code 73	{"keyCode":73,"key":"i","code":"Quote"}	letter İ
+mac ANSI_I pressed (ı) with dotted-İ code 222	{"keyCode":222,"key":"ı","code":"KeyI"}	letter I
+regression shape {keyCode:73, key:i}	{"keyCode":73,"key":"i"}	letter İ
+regression shape {keyCode:222, key:ı}	{"keyCode":222,"key":"ı"}	letter I
+press KeyI (US event shape)	{"keyCode":73,"key":"i","code":"KeyI"}	letter İ
+press Quote (US event shape)	{"keyCode":222,"key":"'","code":"Quote"}	letter İ
+keyCode 73 only	{"keyCode":73}	letter I
+keyCode 222 only	{"keyCode":222}	letter İ
+keyCode 65 only	{"keyCode":65}	letter A
+keyCode 220 only	{"keyCode":220}	letter Ç
+keyCode 186 only	{"keyCode":186}	letter Ş
+keyCode 17 only (CTRL)	{"keyCode":17}	none
+keyCode 81 only (Q)	{"keyCode":81}	none
+key i	{"key":"i"}	letter İ
+key ı	{"key":"ı"}	letter I
+key İ	{"key":"İ"}	letter İ
+key I	{"key":"I"}	letter I
+key a	{"key":"a"}	letter A
+key q	{"key":"q"}	none
+key 1	{"key":"1"}	none
+key Dead	{"key":"Dead"}	none
+code KeyI	{"code":"KeyI"}	letter I
+code KeyA	{"code":"KeyA"}	letter A
+code KeyQ	{"code":"KeyQ"}	none
+code Quote	{"code":"Quote"}	none
+mixed {65,b,KeyB}	{"keyCode":65,"key":"b","code":"KeyB"}	letter B
+mixed {222,a}	{"keyCode":222,"key":"a"}	letter A
+mixed {0,b,KeyB}	{"keyCode":0,"key":"b","code":"KeyB"}	letter B
+mixed {0,KeyB}	{"keyCode":0,"code":"KeyB"}	letter B
+action keyCode 32	{"keyCode":32}	action SPACE
+action keyCode 13	{"keyCode":13}	action ENTER
+action keyCode 8	{"keyCode":8}	action BACKSPACE
+action key Space	{"key":" "}	action SPACE
+action key Enter	{"key":"Enter"}	action ENTER
+action key Backspace	{"key":"Backspace"}	action BACKSPACE
+action code Space	{"code":"Space"}	action SPACE
+action code Enter	{"code":"Enter"}	action ENTER
+action code Backspace	{"code":"Backspace"}	action BACKSPACE
+empty event	{}	none
+CTRL full event	{"keyCode":17,"key":"Control","code":"ControlLeft"}	none
+# exit: 0

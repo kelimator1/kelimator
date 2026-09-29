@@ -6,6 +6,9 @@
 // `input` exactly (asserted; the module itself never reads the data file).
 // V2: shuffle is a permutation (multiset equality) and deterministic for the
 // recorded seed 2012 (golden permutation recorded in evidence/D2-input.md §4).
+// Y7: the produced character (`event.key`) wins for letters over the numeric
+// keyCode table (measured dotted/dotless conflict; evidence/Y7-i-key.md §2);
+// action keys keep the keyCode → key → code priority per D2.
 //
 // Spec: docs/05-game-core.md §1/§3; docs/02-mechanics-spec.md §2;
 // data/constants.json input (O04); evidence/A2-input.md §2 (numeric key table,
@@ -190,6 +193,15 @@ describe('O04 — key mapping (evidence/A2-input.md §2)', () => {
     expect(resolveKey({ key: '' })).toEqual({ kind: 'none' });
   });
 
+  it('Y7 conflict: a produced i/ı beats the layout-derived keyCode (measured)', () => {
+    // evidence/Y7-i-key.md §2 — on the measured Mac (layout Turkish-QWERTY-PC)
+    // the browser reports keyCode 73 for a produced 'i' and keyCode 222 for
+    // 'ı'; the produced character must win on every layout. The keyCode-only
+    // rows above stay the fallback for synthetic/legacy events.
+    expect(resolveKey({ keyCode: 73, key: 'i' })).toEqual({ kind: 'letter', letter: 'İ' });
+    expect(resolveKey({ keyCode: 222, key: 'ı' })).toEqual({ kind: 'letter', letter: 'I' });
+  });
+
   it('code fallback maps physical Key[A-Z] positions (KeyI → I on Turkish-Q)', () => {
     expect(resolveKey({ code: 'KeyA' })).toEqual({ kind: 'letter', letter: 'A' });
     expect(resolveKey({ code: 'KeyI' })).toEqual({ kind: 'letter', letter: 'I' });
@@ -199,15 +211,21 @@ describe('O04 — key mapping (evidence/A2-input.md §2)', () => {
     expect(resolveKey({ code: 'Digit1' })).toEqual({ kind: 'none' });
   });
 
-  it('keyCode wins over key/code; an unmapped keyCode falls back', () => {
+  it('letters: key wins over keyCode/code; a keyCode letter is the fallback', () => {
     expect(resolveKey({ keyCode: 65, key: 'b', code: 'KeyB' })).toEqual({
+      kind: 'letter',
+      letter: 'B',
+    });
+    expect(resolveKey({ keyCode: 222, key: 'a', code: 'KeyA' })).toEqual({
       kind: 'letter',
       letter: 'A',
     });
+    expect(resolveKey({ keyCode: 73, code: 'KeyB' })).toEqual({ kind: 'letter', letter: 'I' });
     expect(resolveKey({ keyCode: 0, key: 'b', code: 'KeyB' })).toEqual({
       kind: 'letter',
       letter: 'B',
     });
+    expect(resolveKey({ keyCode: 0, code: 'KeyB' })).toEqual({ kind: 'letter', letter: 'B' });
     expect(resolveKey({})).toEqual({ kind: 'none' });
     expect(resolveKey({ key: 'Enter' })).toEqual({ kind: 'action', action: 'ENTER' });
     expect(resolveKey({ key: 'Backspace' })).toEqual({ kind: 'action', action: 'BACKSPACE' });

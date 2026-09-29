@@ -1,0 +1,15 @@
+
+> kelimator-2012@0.0.0 test
+> vitest run input
+
+
+ RUN  v5.0.2 /home/dev/kelimator-2012
+
+ ✓ tests/input.test.ts (30 tests) 9ms
+
+ Test Files  1 passed (1)
+      Tests  30 passed (30)
+   Start at  17:07:01
+   Duration  2.07s (transform 69%, import 30%)
+
+exit: 0

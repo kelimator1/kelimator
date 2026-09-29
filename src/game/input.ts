@@ -175,22 +175,22 @@ export type KeyResolution =
   | { readonly kind: 'none' };
 
 /**
- * Resolve one key event. Priority: `keyCode` (the evidenced O04 table) → `key`
- * (produced character, Turkish uppercase) → `code` (physical `Key[A-Z]`), all
- * against the same 29-letter alphabet and the three action keys. A keyCode
- * that maps to nothing does not block the fallbacks (covers `keyCode = 0` and
- * layout-specific values).
+ * Resolve one key event. Action keys (SPACE/ENTER/BACKSPACE) keep the D2
+ * priority: `keyCode` (the evidenced `Key.isDown` codes) → `key` → `code`.
+ * Letters use the Y7 priority: `key` (produced character, Turkish uppercase,
+ * accepted only within the 29-letter alphabet) → `keyCode` (the evidenced O04
+ * table) → `code` (physical `Key[A-Z]`). A field that maps to nothing does not
+ * block the fallbacks (covers `keyCode = 0` and layout-specific values).
+ * evidence: evidence/D2-input.md §2 (2026-09-29 amendment), evidence/Y7-i-key.md.
  */
 export function resolveKey(event: KeyEventLike): KeyResolution {
   const keyCode = event.keyCode;
-  if (typeof keyCode === 'number' && Number.isFinite(keyCode)) {
+  const hasKeyCode = typeof keyCode === 'number' && Number.isFinite(keyCode);
+
+  if (hasKeyCode) {
     const action = ACTION_KEY_CODES.get(keyCode);
     if (action !== undefined) {
       return { kind: 'action', action };
-    }
-    const letter = LETTER_BY_KEY_CODE.get(keyCode);
-    if (letter !== undefined) {
-      return { kind: 'letter', letter };
     }
   }
 
@@ -200,7 +200,22 @@ export function resolveKey(event: KeyEventLike): KeyResolution {
     if (action !== undefined) {
       return { kind: 'action', action };
     }
+    // evidence: evidence/Y7-i-key.md §2 (probe reproduced in
+    // evidence/logs/Y7-uckeytranslate.log) — measured on this Mac (layout
+    // Turkish-QWERTY-PC; UCKeyTranslate): physical ANSI_I produces 'ı' and
+    // ANSI_Quote produces 'i', while the browser reports layout-derived
+    // keyCodes for these keys, so keyCode 73 arrives with a produced 'i' and
+    // keyCode 222 with 'ı'. The produced character must win on every layout
+    // ('i' → İ, 'ı' → I); the keyCode table stays the fallback for
+    // synthetic/legacy events (evidence/D2-input.md §2, amendment 2026-09-29).
     const letter = letterFromKey(key);
+    if (letter !== undefined) {
+      return { kind: 'letter', letter };
+    }
+  }
+
+  if (hasKeyCode) {
+    const letter = LETTER_BY_KEY_CODE.get(keyCode);
     if (letter !== undefined) {
       return { kind: 'letter', letter };
     }

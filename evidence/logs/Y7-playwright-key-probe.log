@@ -1,0 +1,8 @@
+url: http://127.0.0.1:5433
+playwright: "153.0.8010.12"
+press #0: {"key":"'","code":"Quote","keyCode":222,"which":222,"location":0,"repeat":false,"ctrlKey":false}
+press #1: {"key":"i","code":"KeyI","keyCode":73,"which":73,"location":0,"repeat":false,"ctrlKey":false}
+press #2: {"key":" ","code":"Space","keyCode":32,"which":32,"location":0,"repeat":false,"ctrlKey":false}
+press #3: {"key":"Enter","code":"Enter","keyCode":13,"which":13,"location":0,"repeat":false,"ctrlKey":false}
+press #4: {"key":"Backspace","code":"Backspace","keyCode":8,"which":8,"location":0,"repeat":false,"ctrlKey":false}
+exit: 0

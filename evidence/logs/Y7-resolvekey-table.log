@@ -1,0 +1,53 @@
+# Task Y7 — combined resolveKey before/after table (generated from
+# evidence/logs/Y7-before-resolvekey.log and evidence/logs/Y7-after-resolvekey.log)
+# generated at (UTC): 2026-09-29T14:13:44Z
+
+| mac ANSI_Quote pressed (i) with dotless-I code 73 | `{"keyCode":73,"key":"i","code":"Quote"}` | letter I | letter İ |
+| mac ANSI_I pressed (ı) with dotted-İ code 222 | `{"keyCode":222,"key":"ı","code":"KeyI"}` | letter İ | letter I |
+| regression shape {keyCode:73, key:i} | `{"keyCode":73,"key":"i"}` | letter I | letter İ |
+| regression shape {keyCode:222, key:ı} | `{"keyCode":222,"key":"ı"}` | letter İ | letter I |
+| press KeyI (US event shape) | `{"keyCode":73,"key":"i","code":"KeyI"}` | letter I | letter İ |
+| press Quote (US event shape) | `{"keyCode":222,"key":"'","code":"Quote"}` | letter İ | letter İ |
+| keyCode 73 only | `{"keyCode":73}` | letter I | letter I |
+| keyCode 222 only | `{"keyCode":222}` | letter İ | letter İ |
+| keyCode 65 only | `{"keyCode":65}` | letter A | letter A |
+| keyCode 220 only | `{"keyCode":220}` | letter Ç | letter Ç |
+| keyCode 186 only | `{"keyCode":186}` | letter Ş | letter Ş |
+| keyCode 17 only (CTRL) | `{"keyCode":17}` | none | none |
+| keyCode 81 only (Q) | `{"keyCode":81}` | none | none |
+| key i | `{"key":"i"}` | letter İ | letter İ |
+| key ı | `{"key":"ı"}` | letter I | letter I |
+| key İ | `{"key":"İ"}` | letter İ | letter İ |
+| key I | `{"key":"I"}` | letter I | letter I |
+| key a | `{"key":"a"}` | letter A | letter A |
+| key q | `{"key":"q"}` | none | none |
+| key 1 | `{"key":"1"}` | none | none |
+| key Dead | `{"key":"Dead"}` | none | none |
+| code KeyI | `{"code":"KeyI"}` | letter I | letter I |
+| code KeyA | `{"code":"KeyA"}` | letter A | letter A |
+| code KeyQ | `{"code":"KeyQ"}` | none | none |
+| code Quote | `{"code":"Quote"}` | none | none |
+| mixed {65,b,KeyB} | `{"keyCode":65,"key":"b","code":"KeyB"}` | letter A | letter B |
+| mixed {222,a} | `{"keyCode":222,"key":"a"}` | letter İ | letter A |
+| mixed {0,b,KeyB} | `{"keyCode":0,"key":"b","code":"KeyB"}` | letter B | letter B |
+| mixed {0,KeyB} | `{"keyCode":0,"code":"KeyB"}` | letter B | letter B |
+| action keyCode 32 | `{"keyCode":32}` | action SPACE | action SPACE |
+| action keyCode 13 | `{"keyCode":13}` | action ENTER | action ENTER |
+| action keyCode 8 | `{"keyCode":8}` | action BACKSPACE | action BACKSPACE |
+| action key Space | `{"key":" "}` | action SPACE | action SPACE |
+| action key Enter | `{"key":"Enter"}` | action ENTER | action ENTER |
+| action key Backspace | `{"key":"Backspace"}` | action BACKSPACE | action BACKSPACE |
+| action code Space | `{"code":"Space"}` | action SPACE | action SPACE |
+| action code Enter | `{"code":"Enter"}` | action ENTER | action ENTER |
+| action code Backspace | `{"code":"Backspace"}` | action BACKSPACE | action BACKSPACE |
+| empty event | `{}` | none | none |
+| CTRL full event | `{"keyCode":17,"key":"Control","code":"ControlLeft"}` | none | none |
+
+# changed cases only (before != after):
+mac ANSI_Quote pressed (i) with dotless-I code 73: before=letter I after=letter İ
+mac ANSI_I pressed (ı) with dotted-İ code 222: before=letter İ after=letter I
+regression shape {keyCode:73, key:i}: before=letter I after=letter İ
+regression shape {keyCode:222, key:ı}: before=letter İ after=letter I
+press KeyI (US event shape): before=letter I after=letter İ
+mixed {65,b,KeyB}: before=letter A after=letter B
+mixed {222,a}: before=letter İ after=letter A

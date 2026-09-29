@@ -1,0 +1,28 @@
+# Task Y7 — artifact SHA-256 list (this log self-excluded)
+# generated at (UTC): 2026-09-29T14:18:10Z
+# --- source artifacts
+28276d1758c6fa55d8f0231ce31537c3f92f4d95eb00c84d7460ac3cf98470b9  src/game/input.ts
+885e5fc9a1c806b07f2acc475928db5b597742a09c88a0fe4604b61d7a89fc14  tests/input.test.ts
+5eb1a9dd754dbd427ee64c86218fb880526de3ade4d89fd64207f143a6aad668  evidence/D2-input.md
+# --- Y7 evidence + probes
+3081b06290a87ed3893a54bbc9123368c0fe13ecd07c02cdc56af3144ce5a476  evidence/Y7-i-key.md
+df52840bc523d42e04e722c3e861f7403d30686c58e4e5c5add043b080fdb5bc  evidence/Y7-probe-input.ts
+6bc6ef7f1d4ddd07ac8138011a03a0287f633ff64af378fcca9fda8ef9cdc0c8  evidence/Y7-probe-uckeytranslate.c
+e10f43e00acbc78d359322785b5290551e32ab48ccca788c55bbdae793cbd9d8  evidence/Y7-probe-quoteevent.mjs
+# --- Y7 logs
+594d74ec676437a6ee59070f9af9ab78926314ab3a458a5b8ad30d8ee75c11b3  evidence/logs/Y7-after-resolvekey.log
+8808f3b7c78b9487f84bc8a0f0206b409b759e7a7643d79e20215537c2f4595d  evidence/logs/Y7-before-resolvekey.log
+415419066ab029889eab9f72d5ba03eec45cf1533a6d4a06cad10b4e0259f8ca  evidence/logs/Y7-build.log
+c550b48367a3da8b4321332f5096dc272f73a8fa85f2abcbc79140b35aad25b1  evidence/logs/Y7-env.log
+f1aff745103779afb89e7ae189af162121b18d7b4347bce5bd87d4a298a9c9d8  evidence/logs/Y7-hash-diff.log
+29f5ad544b06056805e0ed61bfc56c6b235a719568b365c3da3b08e06f14015e  evidence/logs/Y7-interaction.log
+2b6182c3ab3edd355b9857ef95ce85b81d2f4adf16c052734db1d65ff0d7277c  evidence/logs/Y7-lint.log
+a21cf21ce0f4133de74d027c2abe2ee0ae311126cee54432cc4fe46c1fb22d0b  evidence/logs/Y7-playthrough.log
+8a70db6e3e536491c75786031ba39196a2052f8ab2bfb02fd078a81bbb0c6c48  evidence/logs/Y7-playwright-key-probe.log
+1dba95989af419cf3cd93bbd9c2f867841073b540eee3c288ded2cf54e7460eb  evidence/logs/Y7-post-hashes.log
+75a9dc6aa12cff74b28c3de68b5a707ca7fba5e0f697a7f1e97123a7448c0ca2  evidence/logs/Y7-pre-hashes.log
+2875d3670e49ab32043e9f8215195478bedde550312ba26135929d2ce7596da2  evidence/logs/Y7-resolvekey-table.log
+21898bdbcf9abb9eb097055733e101edadc83602522f3421c254b8078edaba06  evidence/logs/Y7-test-full.log
+2369b89fe7cd110c40e3df3ca1ebf1f54328f99e457e88478d0dcdeda0f97fbd  evidence/logs/Y7-test-input.log
+6cd0efcb6808eb129afe0ac23df8ceace480e697fe76033d8c01205ac34d2603  evidence/logs/Y7-uckeytranslate.log
+068e2b08884784e7ef237a96b9bd580f314b837690c3d4752ca26287d69b72d5  evidence/logs/Y7-unaffected-check.log

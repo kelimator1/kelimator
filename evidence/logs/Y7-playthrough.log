@@ -1,0 +1,64 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test playthrough
+
+[WebServer] (node:2120) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 2 workers
+
+(node:2131) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2132) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2132) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2131) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+F2 00-selected: raw=2.520% tolerant=0.602% ignoredPixels=68023 pass=true stable=true
+F2 01-invalid: raw=3.662% tolerant=0.859% ignoredPixels=68023 pass=true stable=true
+F2 02-invalid-cleared: raw=2.516% tolerant=0.603% ignoredPixels=68023 pass=true stable=true
+F2 03-valid-FAL: raw=2.595% tolerant=0.605% ignoredPixels=68023 pass=true stable=true
+F2 04-duplicate-FAL: raw=4.200% tolerant=1.217% ignoredPixels=68023 pass=true stable=true
+F2 05-duplicate-cleared: raw=2.601% tolerant=0.605% ignoredPixels=68023 pass=true stable=true
+F2 06-valid: raw=2.692% tolerant=0.610% ignoredPixels=68023 pass=true stable=true
+F2 07-valid: raw=2.775% tolerant=0.613% ignoredPixels=68023 pass=true stable=true
+F2 08-valid: raw=2.857% tolerant=0.617% ignoredPixels=68023 pass=true stable=true
+F2 09-valid: raw=2.944% tolerant=0.618% ignoredPixels=68023 pass=true stable=true
+F2 10-valid: raw=3.010% tolerant=0.620% ignoredPixels=68023 pass=true stable=true
+F2 11-valid: raw=3.070% tolerant=0.622% ignoredPixels=68023 pass=true stable=true
+F2 12-valid: raw=3.167% tolerant=0.625% ignoredPixels=68023 pass=true stable=true
+F2 13-valid: raw=3.225% tolerant=0.622% ignoredPixels=68023 pass=true stable=true
+F2 14-valid: raw=3.313% tolerant=0.624% ignoredPixels=68023 pass=true stable=true
+  ✓  1 [app] › tests/e2e/playthrough/playthrough:basic.spec.ts:207:3 › D5 basic playthrough › FİNALİZM: scripted submissions fill every listed slot and complete (44.1s)
+F2 15-valid: raw=3.420% tolerant=0.630% ignoredPixels=68023 pass=true stable=true
+F2 16-valid: raw=3.532% tolerant=0.634% ignoredPixels=68023 pass=true stable=true
+F2 17-valid: raw=3.644% tolerant=0.640% ignoredPixels=68023 pass=true stable=true
+F2 18-valid: raw=3.745% tolerant=0.645% ignoredPixels=68023 pass=true stable=true
+F2 19-bonus-word: raw=3.898% tolerant=0.648% ignoredPixels=68023 pass=true stable=true
+F2 20-valid: raw=3.976% tolerant=0.651% ignoredPixels=68023 pass=true stable=true
+F2 21-valid: raw=4.083% tolerant=0.655% ignoredPixels=68023 pass=true stable=true
+F2 22-valid: raw=4.187% tolerant=0.656% ignoredPixels=68023 pass=true stable=true
+F2 23-valid: raw=4.285% tolerant=0.660% ignoredPixels=68023 pass=true stable=true
+F2 24-valid: raw=4.386% tolerant=0.660% ignoredPixels=68023 pass=true stable=true
+F2 25-valid: raw=4.500% tolerant=0.663% ignoredPixels=68023 pass=true stable=true
+F2 26-valid: raw=4.650% tolerant=0.674% ignoredPixels=68023 pass=true stable=true
+F2 27-valid: raw=4.775% tolerant=0.672% ignoredPixels=68023 pass=true stable=true
+F2 28-valid: raw=4.897% tolerant=0.676% ignoredPixels=68023 pass=true stable=true
+F2 29-valid: raw=5.011% tolerant=0.676% ignoredPixels=68023 pass=true stable=true
+F2 30-valid: raw=5.157% tolerant=0.680% ignoredPixels=68023 pass=true stable=true
+F2 31-valid: raw=5.298% tolerant=0.678% ignoredPixels=68023 pass=true stable=true
+F2 32-valid: raw=5.432% tolerant=0.682% ignoredPixels=68023 pass=true stable=true
+F2 33-valid: raw=5.551% tolerant=0.683% ignoredPixels=68023 pass=true stable=true
+F2 34-valid: raw=5.672% tolerant=0.684% ignoredPixels=68023 pass=true stable=true
+F2 35-valid: raw=5.843% tolerant=0.690% ignoredPixels=68023 pass=true stable=true
+F2 36-valid: raw=5.982% tolerant=0.696% ignoredPixels=68023 pass=true stable=true
+F2 37-valid: raw=6.140% tolerant=0.698% ignoredPixels=68023 pass=true stable=true
+F2 38-valid: raw=6.299% tolerant=0.702% ignoredPixels=68023 pass=true stable=true
+F2 playthrough: 40 steps, worst tolerant ratio 1.217%
+  ✓  2 [app] › tests/e2e/playthrough/playthrough.spec.ts:616:3 › F2 scripted playthrough › FİNALİZM: every step matches the docs/07 oracle and the reference capture (1.6m)
+F2 timeout: raw=6.207% tolerant=0.511% ignoredPixels=68023 pass=true appWaitMs=200513 stable=true
+  ✓  3 [app] › tests/e2e/playthrough/playthrough.spec.ts:918:3 › F2 S9 timeout variant › FİNALİZM: the clock is waited out and the timeout state matches the reference (3.4m)
+
+  3 passed (5.0m)
+exit: 0

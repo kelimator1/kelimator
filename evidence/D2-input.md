@@ -174,6 +174,16 @@ Browser resolution order (recorded decision; `resolveKey`):
    live on remapped positions (`Quote`, `Semicolon`, `BracketLeft`, …); these
    are resolved through keyCode/`key` only — no positional guess is made.
 
+> Amendment 2026-09-29 (task Y7): modern browsers may report layout-derived
+> keyCodes — measured on this Mac (layout Turkish-QWERTY-PC; `UCKeyTranslate`)
+> physical ANSI_I produces `ı` and ANSI_Quote produces `i`, so a produced `i`
+> arrives with keyCode 73 (dotless-I code) and a produced `ı` with keyCode 222
+> (dotted-İ code). For letters, produced-character priority is the
+> compatibility rule (`key` → `keyCode` → `code`, `resolveKey` in
+> `src/game/input.ts`); the keyCode table above remains the fallback for
+> synthetic/legacy events. Action keys keep the keyCode → key → code order.
+> Evidence: `evidence/Y7-i-key.md` §2 / §3.
+
 Not mapped (no O04 evidence): `NumpadEnter` (real browsers report keyCode 13
 for it, which is handled by the primary table), legacy `'Spacebar'`, modifiers,
 digits, punctuation. The reference CTRL extra behavior
