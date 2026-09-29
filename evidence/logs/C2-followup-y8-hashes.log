@@ -1,0 +1,16 @@
+# C2 follow-up (Y8 boot sequence) artifact hashes (sha256), generated 2026-09-29T20:05:51Z
+# changed file
+b1c27d949404f353923d3650483feaa680da3f37da72fe4f6eff930d4d921616  tests/e2e/smoke.spec.ts
+# Y8 follow-up logs
+e302339181edaaea4c5cdf841530824717f6367b5af8f3b83c232918ef5686dd  evidence/logs/C2-followup-y8-smoke-before.log
+9bfb34f99100a0070de351a5d0e8e672849d10aaccee0b15cbfc4fe25fc47aee  evidence/logs/C2-followup-y8-e2e-smoke.log
+b88708129fc2d2b5205d9fc485969f86ce517080e0f092a70e803800bd464b00  evidence/logs/C2-followup-y8-e2e-visual.log
+8743f41a7a34cbd46370f0adcca6f82c836749068426e76ce040d9db651637e7  evidence/logs/C2-followup-y8-test.log
+1127abec44245b91cc3e51990e56293ddb992d67248afcfa1440f5ffa3f11ad1  evidence/logs/C2-followup-y8-lint.log
+4fc5fa795e5382dfab595d6d707f50d2e9d4482f759cf0c1c87bd9a7e48e89e9  evidence/logs/C2-followup-y8-build.log
+# frozen original C2 evidence screenshots (unchanged check)
+593ab88dc74871b6b91c32b61a188c97ad7453da8e5b1fde0af47aa9945c32dc  evidence/visual/C2-smoke/smoke-320x480.png
+90ed53be78a0ffe3d967dda14f2cdd3d30898b17f4db7ec5731529657faea8c4  evidence/visual/C2-smoke/smoke-550x400.png
+b460e456b48e82dc68d5353826888f4c5866f8379854cc1c406dc7007c2da278  evidence/visual/C2-smoke/smoke-1920x1080.png
+b432bf373a345d71b828354afb584eae79a9a65cde41849e752fb23de4a24e1e  evidence/visual/C2-smoke/smoke-3840x2160.png
+f047fb0968c9f9877c47af13c7c55831fc22181788538fc43af78e71c3741569  evidence/visual/C2-smoke/smoke-3440x1440.png

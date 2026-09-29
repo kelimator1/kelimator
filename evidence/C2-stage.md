@@ -248,3 +248,61 @@ ea0684028be5eeb892a11ba3699c5dcc93a73f062b1939646df6ec8591e90661  data/constants
 ```
 
 Result: PASS
+
+---
+
+## Follow-up (Y8 boot sequence) — settled `playing` state
+
+Task: C2 follow-up — smoke awaits the Y8 boot sequence
+(`preloader → intro(5–130) → playing`) before the wired `__game` assertions
+(Y8 evidence §2, §6 #10)
+Started: 2026-09-29T20:04:30Z (first follow-up artifact: before-run log)
+Ended: 2026-09-29T20:05:51Z (hash log)
+Host+OS: dev-host.home / macOS (same host as the original record)
+
+Commands executed (exact), exit codes, results:
+
+| # | Command | Exit | Result | Log |
+|---|---|---|---|---|
+| 1 | `npm run e2e -- smoke` (before fix) | 1 | 6/7 — first test failed at `expect(hooks.state).toBe('playing')`, received `"preloader"` (the pre-Y8 synchronous-boot expectation during the intro) | `evidence/logs/C2-followup-y8-smoke-before.log` |
+| 2 | `npm run e2e -- smoke` (after fix) | 0 | **7/7 pass** (first test 4.8 s: boot + contract checks) | `evidence/logs/C2-followup-y8-e2e-smoke.log` |
+| 3 | `npm run e2e -- visual` | 0 | **18/18 pass** (S1–S7/S10 × dsf1/dsf2, V7 layout, Y2 credit omission) | `evidence/logs/C2-followup-y8-e2e-visual.log` |
+| 4 | `npm test` | 0 | **15 files, 242/242 pass** | `evidence/logs/C2-followup-y8-test.log` |
+| 5 | `npm run lint` | 0 | no diagnostics | `evidence/logs/C2-followup-y8-lint.log` |
+| 6 | `npm run build` | 0 | static build; expected >500 kB chunk warning (D1 note) | `evidence/logs/C2-followup-y8-build.log` |
+
+### Change (only `tests/e2e/smoke.spec.ts`)
+
+- Added `SETTLED_PLAYING_TIMEOUT_MS = 10_000` with the Y8 citation: boot is
+  preloader 111.1 ms + intro 3500 ms (`evidence/Y8-intro.md` §2), so 10 s is
+  the intro duration plus ≈6.4 s margin.
+- After `page.goto('/')`, the first test now waits with
+  `expect.poll(() => page.evaluate(() => window.__game?.state ?? null), {
+  timeout: SETTLED_PLAYING_TIMEOUT_MS }).toBe('playing')` before reading the
+  hooks. The `__game` contract assertions (state/roundId/foundWords/score/
+  remainingMs/lastAudioEvent, §Follow-up (D5 wiring)) are unchanged and now run
+  on the settled state; stage/scale/letterbox/non-blank/fullscreen assertions
+  are untouched.
+- No intro-suite duplication: the spec never inspects `__bootLog` or intro
+  elements; the boot sequence itself stays covered by `tests/e2e/intro/**`.
+  Other smoke tests need no wait (they assert stage geometry/letterbox/screenshot
+  only, which hold during the intro).
+
+### Refreshed hashes (`evidence/logs/C2-followup-y8-hashes.log`)
+
+```
+b1c27d949404f353923d3650483feaa680da3f37da72fe4f6eff930d4d921616  tests/e2e/smoke.spec.ts
+e302339181edaaea4c5cdf841530824717f6367b5af8f3b83c232918ef5686dd  evidence/logs/C2-followup-y8-smoke-before.log
+9bfb34f99100a0070de351a5d0e8e672849d10aaccee0b15cbfc4fe25fc47aee  evidence/logs/C2-followup-y8-e2e-smoke.log
+b88708129fc2d2b5205d9fc485969f86ce517080e0f092a70e803800bd464b00  evidence/logs/C2-followup-y8-e2e-visual.log
+8743f41a7a34cbd46370f0adcca6f82c836749068426e76ce040d9db651637e7  evidence/logs/C2-followup-y8-test.log
+1127abec44245b91cc3e51990e56293ddb992d67248afcfa1440f5ffa3f11ad1  evidence/logs/C2-followup-y8-lint.log
+4fc5fa795e5382dfab595d6d707f50d2e9d4482f759cf0c1c87bd9a7e48e89e9  evidence/logs/C2-followup-y8-build.log
+593ab88dc74871b6b91c32b61a188c97ad7453da8e5b1fde0af47aa9945c32dc  evidence/visual/C2-smoke/smoke-320x480.png   (frozen, unchanged)
+90ed53be78a0ffe3d967dda14f2cdd3d30898b17f4db7ec5731529657faea8c4  evidence/visual/C2-smoke/smoke-550x400.png   (frozen, unchanged)
+b460e456b48e82dc68d5353826888f4c5866f8379854cc1c406dc7007c2da278  evidence/visual/C2-smoke/smoke-1920x1080.png (frozen, unchanged)
+b432bf373a345d71b828354afb584eae79a9a65cde41849e752fb23de4a24e1e  evidence/visual/C2-smoke/smoke-3840x2160.png (frozen, unchanged)
+f047fb0968c9f9877c47af13c7c55831fc22181788538fc43af78e71c3741569  evidence/visual/C2-smoke/smoke-3440x1440.png (frozen, unchanged)
+```
+
+Result: PASS

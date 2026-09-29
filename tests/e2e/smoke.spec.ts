@@ -3,9 +3,10 @@
 // Verifies: page loads; applied scale equals min(vw/550, vh/400) ± 0.01 px;
 // letterbox color equals the documented fallback; screenshots are non-blank
 // (recorded under evidence/visual/C2-smoke/ with C2_RECORD=1; live runs write
-// transient screenshots to test-results/c2-smoke-live/); `window.__game` matches
-// the D5-wired getter contract (evidence/D5-lifecycle.md §9.4); fullscreen keeps
-// the same scale formula for unchanged viewport dimensions.
+// transient screenshots to test-results/c2-smoke-live/); boot settles into
+// `playing` (Y8 intro, evidence/Y8-intro.md §2) before the `window.__game`
+// D5-wired getter contract checks (evidence/D5-lifecycle.md §9.4); fullscreen
+// keeps the same scale formula for unchanged viewport dimensions.
 import { expect, test, type Page } from '@playwright/test';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -22,6 +23,9 @@ const TOLERANCE_PX = 0.01;
 // the 0.01 px task tolerance plus that documented browser quantization.
 const RECT_QUANTIZATION_PX = 1 / 64;
 const OFFSET_TOLERANCE_PX = TOLERANCE_PX + RECT_QUANTIZATION_PX;
+// Y8 boot sequence (evidence/Y8-intro.md §2): preloader 111.1 ms + intro
+// 3500 ms before the first settled `playing` board; bounded wait with margin.
+const SETTLED_PLAYING_TIMEOUT_MS = 10_000;
 // Recorded evidence (C2) lives under evidence/visual/C2-smoke/ and stays frozen.
 // Live re-runs (verify-all / F3) write transient screenshots to test-results/;
 // set C2_RECORD=1 to record into the evidence directory again.
@@ -101,6 +105,22 @@ test.describe('C2 stage shell smoke', () => {
     page.on('pageerror', (error) => pageErrors.push(error));
 
     await page.goto('/');
+
+    // Y8 (evidence/Y8-intro.md §2): boot plays preloader(1–4) → intro(5–130,
+    // ≈3.5 s) → playing; wait for the settled state within a bounded margin
+    // instead of asserting the pre-Y8 synchronous boot. The intro suite owns
+    // the sequence itself (tests/e2e/intro/**).
+    await expect
+      .poll(
+        () =>
+          page.evaluate(
+            () =>
+              (window as unknown as { __game?: { state?: unknown } }).__game?.state ??
+              null,
+          ),
+        { timeout: SETTLED_PLAYING_TIMEOUT_MS, message: 'boot must settle into playing' },
+      )
+      .toBe('playing');
 
     await expect(page.locator('[data-testid="stage-shell"]')).toBeVisible();
     await expect(page.locator('[data-testid="stage-root"]')).toBeVisible();
