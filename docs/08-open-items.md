@@ -284,6 +284,13 @@ SUPERSEDED 2026-09-29 — evidence/Y1-remaster.md §7 — the speaker-knob spati
 - 2026-09-29 — Y4 closing: G4 quick checks green; `tools/verify-all.sh` exit 0
   (11/11; frozen evidence 0) after the alpha restore and rect shrink; tree
   clean. Evidence: `evidence/waveY-closing.md` (Addendum).
+- 2026-09-29 — Wave follow-up **Y5** (owner-reported "toggle feels unreliable",
+  investigated): clicks toggle the persisted volume reliably, but the icon did
+  not repaint at click time (faithful to the reference probe: 0 px), so users
+  re-clicked and even counts flipped back. Owner decision: immediate visual
+  feedback on click (deliberate deviation from the measured reference timing);
+  no debouncing. Fix `src/ui/hud.ts` + speaker-suite assertions; evidence
+  `evidence/Y5-speaker-feedback.md`.
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:
