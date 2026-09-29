@@ -198,6 +198,16 @@ formulas and asserted in unit tests.
 > tests). Evidence: `evidence/Y6-top10.md`, matching entry in
 > `docs/08-open-items.md`.
 
+> Amendment 2026-09-29 (owner wave Y8, closes O23): the boot intro timeline
+> (SWF frames 5–130) is a covered V5 surface. Its keyframe checks run in
+> `tests/e2e/intro/intro.spec.ts` against fresh pinned captures
+> (`tests/e2e/intro/capture-intro-reference.mjs`; `evidence/visual/Y8/reference-dsf{1,2}/`)
+> at deviceScaleFactor 1 and 2, tolerant basis unchanged (2 %); the intro
+> keyframes carry no owner allowance. The board-state element set stays mounted
+> underneath the raised boot layer (visibility only) so E2's V7 geometry check
+> and the speaker/kernel pixel guards keep their load-time contract. E3's
+> animations suite count is unchanged (coverage note added).
+
 ## 5. State matrix (S1–S10)
 
 | State | Trigger sequence (app and reference use the same) |

@@ -84,6 +84,11 @@ boot → preloader (SWF frames 1–4) → intro animation (`main`, frame 5)
 
 Label semantics: `preall` **[CONFIRMED → O13: frame 130, the frame immediately before `hepsiburda` ("all letters placed"); `main` = frame 5 (intro start), `hepsiburda` = frame 131 (gameplay/round controller), `bravo` = frame 132 (completion celebration); `evidence/A2-labels.md`]**. No state may be implemented with an invented structure; A2 records the actual observed flow.
 
+> 2026-09-29 (Y8): the rebuild's boot now plays the reference intro before the
+> first round (`boot → preloader(1–4) → main(5–130) → playing`); the word list is
+> local, so the first round starts when the intro ends (the reference starts
+> `baslat()` when `init()`'s xml64.php response arrives after frame 131).
+
 ## 6. Display behavior
 
 | Item | Status |
