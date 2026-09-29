@@ -325,6 +325,12 @@ RESOLVED 2026-09-29 — evidence/Y5-speaker-feedback.md — speaker immediate fe
 - 2026-09-29 — Y6/Y7 closing: visual 18, animation 8, playthrough 3, full 239;
   closing `tools/verify-all.sh` exit 0 (11/11, frozen evidence 0; tree clean).
   Evidence: `evidence/waveY-closing.md` (Addendum — Y6 & Y7).
+- 2026-09-29 — Wave follow-up **Y8** (owner directive, closes O23): implement
+  the boot intro/welcome sequence in HD vector (night→dawn→sunrise→falling
+  logo→settled board), sub-pixel transforms on the existing SVGs, 36 fps per
+  the catalogs; boot plays preloader→intro→board with input locked during the
+  intro; keyframe verification vs reference captures at dsf 1+2. Evidence:
+  `evidence/Y8-intro.md`; O23 to be RESOLVED on completion.
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:
