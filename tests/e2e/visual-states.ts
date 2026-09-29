@@ -297,7 +297,14 @@ export function viewFor(spec: VisualStateSpec, dsf: 1 | 2): BoardView {
 //     stage coordinates is covered exactly with 10-px cells (cells carrying
 //     ≥ 3 deviation pixels; greedy maximal rectangles) → 137 rects,
 //     97.7 % / 98.6 % of the deviation at dsf 1/2; the residual stays counted;
-//   - the final rect is the measured speaker-knob footprint bbox (dsf1).
+//   - the final rect is the measured speaker-knob deviation bbox. Y1 measured
+//     the knob footprint (515,367,22,30) while the embedded WebP was RGB and
+//     its transparent corners rendered opaque black; task Y4 restored the
+//     RGBA payload and re-measured (evidence/Y4-knob-alpha.md §4): the
+//     remaining deviation (raw > 30, union of dsf 1/2 in dsf1 coords) is
+//     (515,370,22,20), so the rect shrank to exactly that — it still covers
+//     the owner-approved knob texture but no longer includes the corner rows
+//     where the alpha defect lived (the Y1 allowance masked that defect).
 // The set spans 28.4 % of the stage and leaves the pre-existing
 // font/shape/bitmap rasterization mismatch outside the deviation network
 // counted (measured post-allowance S2 tolerant ratios ≈ the pre-Y1 baseline:
@@ -443,7 +450,7 @@ export const Y1_IGNORE_RECTS: readonly (readonly [number, number, number, number
   [220, 380, 10, 10],
   [360, 380, 10, 10],
   [390, 380, 10, 10],
-  [515, 367, 22, 30], // speaker-knob bbox (measured footprint, dsf1)
+  [515, 370, 22, 20], // speaker-knob deviation bbox (Y4 re-measure, dsf1)
 ];
 
 /** The parsed allowance rects for one deviceScaleFactor. */

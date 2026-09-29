@@ -216,12 +216,12 @@
    "symbol": 84
   },
   "svg/s90_btn_speaker.svg": {
-   "sha256": "9538d9b7323ecf743ab128854cc03d8485f3ac385e2f460d0b172702658a8591",
-   "source": "artifacts/hd-assets/ai86-8x.webp",
+   "sha256": "19141e3d9f05a133410082c749dee30e8da77dda4eaa092aad7cf6dbe5a9dc1b",
+   "source": "artifacts/hd-assets/ai86-8x-alpha.webp",
    "kind": "svg",
    "element": "btn_speaker",
    "symbol": 90,
-   "sourceSha256": "490794263c69e920a8f061088c33dff5d63cc5f47f8937727cb15163273dfa2f",
+   "sourceSha256": "a5a840abdca472e96d07325b7b6281ad1b0ee22e13700dc64a377bc13da29c45",
    "templateSource": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_90/1_up.svg",
    "remaster": {
     "format": "image/webp",

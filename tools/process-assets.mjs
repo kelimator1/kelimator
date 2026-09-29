@@ -186,6 +186,15 @@ const SVG_SOURCE_CORRECTIONS = new Map([
  *     it. `manifest` records the same artifact source/sha256 either way.
  * Owner decision + measurements: evidence/Y1-remaster.md (8x chosen over the
  * 4x fallback; knob has a single provided remaster).
+ *
+ * Task Y4 (owner defect from Y1): the bitmap-86 artifact originally pinned here
+ * (`ai86-8x.webp`) was encoded without an alpha channel, so the knob's
+ * transparent corners/edges rendered as an opaque black chevron behind the
+ * megaphone. The pin is now the RGBA encode `ai86-8x-alpha.webp` (extended
+ * WebP: VP8X canvas + ALPH + VP8; corners alpha 0). Everything else about the
+ * replacement is unchanged; the size reader below understands both the simple
+ * lossy `VP8 ` container and the `VP8X` extended container. Evidence:
+ * evidence/Y4-knob-alpha.md.
  */
 const HD_REMASTERS = new Map([
   [
@@ -201,21 +210,28 @@ const HD_REMASTERS = new Map([
   [
     's90_btn_speaker.svg',
     {
-      artifact: 'artifacts/hd-assets/ai86-8x.webp',
-      sha256: '490794263c69e920a8f061088c33dff5d63cc5f47f8937727cb15163273dfa2f',
+      // Y4: RGBA encode (VP8X/ALPH/VP8) — the Y1 `ai86-8x.webp` pin was RGB and
+      // rendered the transparent bitmap corners as opaque black (owner defect).
+      artifact: 'artifacts/hd-assets/ai86-8x-alpha.webp',
+      sha256: 'a5a840abdca472e96d07325b7b6281ad1b0ee22e13700dc64a377bc13da29c45',
       width: 168,
       height: 232,
-      label: 'bitmap 86 (21x29, 8x remaster)',
+      label: 'bitmap 86 (21x29, 8x remaster, RGBA)',
     },
   ],
 ]);
 
 /**
- * Minimal WebP (lossy VP8) size reader for the pinned remaster payloads: RIFF
- * container, `VP8 ` chunk, frame sync code 0x9d 0x01 0x2a, then the 14-bit
- * little-endian width/height. Throws on any other variant (the pins are VP8).
+ * Minimal WebP size reader for the pinned remaster payloads. Handles both
+ * container forms used by the pins:
+ *   - simple lossy VP8: RIFF container, `VP8 ` chunk, frame sync code
+ *     0x9d 0x01 0x2a, then the 14-bit little-endian width/height;
+ *   - extended (VP8X): RIFF container, `VP8X` chunk whose data holds the
+ *     canvas width/height as 24-bit little-endian stored-minus-one (the RGBA
+ *     bitmap-86 artifact, Y4).
+ * Throws on any other variant (the pins are VP8/VP8X carriers).
  */
-function webpVp8Size(bytes) {
+function webpSize(bytes) {
   if (
     bytes.length < 30 ||
     bytes.toString('latin1', 0, 4) !== 'RIFF' ||
@@ -224,8 +240,15 @@ function webpVp8Size(bytes) {
     throw new Error('not a RIFF/WEBP file');
   }
   const fourcc = bytes.toString('latin1', 12, 16);
+  if (fourcc === 'VP8X') {
+    // VP8X data: 1 byte flags, 3 bytes reserved, 3 bytes width-1, 3 bytes height-1.
+    return {
+      width: bytes.readUIntLE(24, 3) + 1,
+      height: bytes.readUIntLE(27, 3) + 1,
+    };
+  }
   if (fourcc !== 'VP8 ') {
-    throw new Error(`unsupported WebP chunk ${JSON.stringify(fourcc)} (expected lossy VP8)`);
+    throw new Error(`unsupported WebP chunk ${JSON.stringify(fourcc)} (expected VP8/VP8X)`);
   }
   if (bytes[23] !== 0x9d || bytes[24] !== 0x01 || bytes[25] !== 0x2a) {
     throw new Error('VP8 frame sync code missing');
@@ -253,7 +276,7 @@ function applyHdRemaster(name, content) {
     );
   }
   const bytes = readFileSync(abs(remaster.artifact));
-  const size = webpVp8Size(bytes);
+  const size = webpSize(bytes);
   if (size.width !== remaster.width || size.height !== remaster.height) {
     throw new Error(
       `${remaster.artifact}: ${size.width}x${size.height} != recorded ${remaster.width}x${remaster.height}`,

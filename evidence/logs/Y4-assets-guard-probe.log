@@ -1,0 +1,62 @@
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.2 [39m[90m/home/dev/kelimator-2012[39m
+
+ [31m❯[39m tests/assets.test.mjs [2m([22m[2m11 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[32m 67[2mms[22m[39m
+   [31m❯[39m asset manifest coverage (E1) [2m(8)[22m
+     [32m✓[39m lists every asset referenced by src/data/layout.json[32m 6[2mms[22m[39m
+     [32m✓[39m resolves every referenced asset to an existing file[32m 1[2mms[22m[39m
+     [32m✓[39m reads layout and animation from the runtime data directory[32m 0[2mms[22m[39m
+[31m     [31m×[31m lists every manifest asset with an existing file and its recorded sha256[39m[32m 40[2mms[22m[39m
+     [32m✓[39m covers the 36 svgs, 2 bitmaps, 26 texts and 9 sounds[32m 0[2mms[22m[39m
+     [32m✓[39m records the runtime data copies with matching hashes[32m 0[2mms[22m[39m
+     [32m✓[39m records the exact-pinned svgo version used for the SVGs[32m 0[2mms[22m[39m
+     [32m✓[39m uses only element ids that exist in layout.json across animation sequences[32m 0[2mms[22m[39m
+   [31m❯[39m HD remaster payloads (Y1) [2m(2)[22m
+     [32m✓[39m svg/s48_board_backdrop.svg embeds the pinned WebP remaster and the manifest records it[32m 9[2mms[22m[39m
+[31m     [31m×[31m svg/s90_btn_speaker.svg embeds the pinned WebP remaster and the manifest records it[39m[32m 2[2mms[22m[39m
+   [32m✓[39m letter_tile template carries no baked placeholder glyph (X2) [2m(1)[22m
+     [32m✓[39m keeps the tile structure and carries no glyph markers[32m 0[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 2 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m tests/assets.test.mjs[2m > [22masset manifest coverage (E1)[2m > [22mlists every manifest asset with an existing file and its recorded sha256
+[31m[1mAssertionError[22m: svg/s90_btn_speaker.svg sha256: expected '9538d9b7323ecf743ab128854cc03d8485f3a…' to be '19141e3d9f05a133410082c749dee30e8da77…' // Object.is equality[39m
+
+Expected: [32m"19141e3d9f05a133410082c749dee30e8da77dda4eaa092aad7cf6dbe5a9dc1b"[39m
+Received: [31m"9538d9b7323ecf743ab128854cc03d8485f3ac385e2f460d0b172702658a8591"[39m
+
+[36m [2m❯[22m tests/assets.test.mjs:[2m66:45[22m[39m
+    [90m 64|[39m       expect(existsSync(path.join(ROOT, rel)), `${name} exists`).toBe(…
+    [90m 65|[39m       expect(manifest.assets[name].source, `${name} source`).toBeTruth…
+    [90m 66|[39m       expect(sha256(rel), `${name} sha256`).toBe(manifest.assets[name]…
+    [90m   |[39m                                             [31m^[39m
+    [90m 67|[39m     }
+    [90m 68|[39m   });
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/assets.test.mjs[2m > [22mHD remaster payloads (Y1)[2m > [22msvg/s90_btn_speaker.svg embeds the pinned WebP remaster and the manifest records it
+[31m[1mAssertionError[22m: svg/s90_btn_speaker.svg alpha channel: expected false to be true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2m❯[22m tests/assets.test.mjs:[2m218:60[22m[39m
+    [90m216|[39m       // Y4: the s90 payload must carry alpha (RGB regressed to black …
+    [90m217|[39m       // s48 is opaque by design and must stay a plain VP8/RGB payload.
+    [90m218|[39m       expect(webpHasAlpha(bytes), `${name} alpha channel`).toBe(expect…
+    [90m   |[39m                                                            [31m^[39m
+    [90m219|[39m       // Manifest record: artifact as source + pinned sha256 + templat…
+    [90m220|[39m       const entry = manifest.assets[name];
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m9 passed[39m[22m[90m (11)[39m
+[2m   Start at [22m 14:24:27
+[2m   Duration [22m 618ms[2m (import 44%, tests 29%, transform 24%, worker 3%)[22m
+

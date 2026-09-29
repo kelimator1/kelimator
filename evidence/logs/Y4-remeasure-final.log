@@ -1,0 +1,3 @@
+dsf1: full tolerant=0.659% pass=true | noKnob tolerant=0.693% pass=true | neighborhood raw=324 tolerant=101 | knobRect raw=229 tolerant=75 rawBox={"x":515,"y":370,"w":22,"h":20} tolerantBox={"x":518,"y":370,"w":15,"h":20} | pre-fix knobRect raw=257 tolerant=99 rawBox={"x":515,"y":370,"w":22,"h":20}
+dsf2: full tolerant=0.178% pass=true | noKnob tolerant=0.219% pass=true | neighborhood raw=1074 tolerant=359 | knobRect raw=782 tolerant=356 rawBox={"x":1031,"y":740,"w":42,"h":40} tolerantBox={"x":1031,"y":740,"w":40,"h":40} | pre-fix knobRect raw=907 tolerant=452 rawBox={"x":1031,"y":740,"w":42,"h":40}
+union dsf1 knob-rect-restricted: raw={"x":515,"y":370,"w":22,"h":20} tolerant={"x":515,"y":370,"w":21,"h":20}

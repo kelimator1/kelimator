@@ -1,0 +1,241 @@
+{
+  "tool": "tests/e2e/speaker/knob-rect-remeasure.mjs",
+  "neighborhood": {
+    "x": 505,
+    "y": 356,
+    "w": 45,
+    "h": 44
+  },
+  "knobRect": {
+    "x": 515,
+    "y": 370,
+    "w": 22,
+    "h": 20
+  },
+  "deviceScaleFactors": {
+    "1": {
+      "fullAllowance": {
+        "mismatchedPixels": 5891,
+        "tolerantMismatchedPixels": 1449,
+        "tolerantMismatchRatio": 0.006586363636363637,
+        "ignoredPixels": 65930,
+        "pass": true
+      },
+      "noKnobAllowance": {
+        "mismatchedPixels": 6120,
+        "tolerantMismatchedPixels": 1524,
+        "tolerantMismatchRatio": 0.006927272727272727,
+        "ignoredPixels": 65610,
+        "pass": true
+      },
+      "neighborhoodAfterFixNoKnob": {
+        "raw": 324,
+        "tolerantUnmatched": 101,
+        "rawBBox": {
+          "x": 505,
+          "y": 366,
+          "w": 42,
+          "h": 32
+        },
+        "tolerantBBox": {
+          "x": 506,
+          "y": 370,
+          "w": 41,
+          "h": 27
+        },
+        "rawBBoxDsf1": {
+          "x": 505,
+          "y": 366,
+          "w": 42,
+          "h": 32
+        },
+        "tolerantBBoxDsf1": {
+          "x": 506,
+          "y": 370,
+          "w": 41,
+          "h": 27
+        }
+      },
+      "knobRectAfterFixNoKnob": {
+        "raw": 229,
+        "tolerantUnmatched": 75,
+        "rawBBox": {
+          "x": 515,
+          "y": 370,
+          "w": 22,
+          "h": 20
+        },
+        "tolerantBBox": {
+          "x": 518,
+          "y": 370,
+          "w": 15,
+          "h": 20
+        },
+        "rawBBoxDsf1": {
+          "x": 515,
+          "y": 370,
+          "w": 22,
+          "h": 20
+        },
+        "tolerantBBoxDsf1": {
+          "x": 518,
+          "y": 370,
+          "w": 15,
+          "h": 20
+        }
+      },
+      "knobRectPreFixNoKnob": {
+        "raw": 257,
+        "tolerantUnmatched": 99,
+        "rawBBox": {
+          "x": 515,
+          "y": 370,
+          "w": 22,
+          "h": 20
+        }
+      },
+      "neighborhoodPreFixNoKnob": {
+        "raw": 352,
+        "tolerantUnmatched": 124,
+        "rawBBox": {
+          "x": 505,
+          "y": 366,
+          "w": 42,
+          "h": 32
+        },
+        "tolerantBBox": {
+          "x": 506,
+          "y": 370,
+          "w": 41,
+          "h": 27
+        },
+        "prefixNoKnobWholeImageTolerant": 1547
+      }
+    },
+    "2": {
+      "fullAllowance": {
+        "mismatchedPixels": 23355,
+        "tolerantMismatchedPixels": 1568,
+        "tolerantMismatchRatio": 0.0017818181818181817,
+        "ignoredPixels": 263720,
+        "pass": true
+      },
+      "noKnobAllowance": {
+        "mismatchedPixels": 24137,
+        "tolerantMismatchedPixels": 1924,
+        "tolerantMismatchRatio": 0.0021863636363636365,
+        "ignoredPixels": 262440,
+        "pass": true
+      },
+      "neighborhoodAfterFixNoKnob": {
+        "raw": 1074,
+        "tolerantUnmatched": 359,
+        "rawBBox": {
+          "x": 1010,
+          "y": 732,
+          "w": 83,
+          "h": 64
+        },
+        "tolerantBBox": {
+          "x": 1013,
+          "y": 740,
+          "w": 78,
+          "h": 54
+        },
+        "rawBBoxDsf1": {
+          "x": 505,
+          "y": 366,
+          "w": 42,
+          "h": 32
+        },
+        "tolerantBBoxDsf1": {
+          "x": 506,
+          "y": 370,
+          "w": 40,
+          "h": 27
+        }
+      },
+      "knobRectAfterFixNoKnob": {
+        "raw": 782,
+        "tolerantUnmatched": 356,
+        "rawBBox": {
+          "x": 1031,
+          "y": 740,
+          "w": 42,
+          "h": 40
+        },
+        "tolerantBBox": {
+          "x": 1031,
+          "y": 740,
+          "w": 40,
+          "h": 40
+        },
+        "rawBBoxDsf1": {
+          "x": 515,
+          "y": 370,
+          "w": 22,
+          "h": 20
+        },
+        "tolerantBBoxDsf1": {
+          "x": 515,
+          "y": 370,
+          "w": 21,
+          "h": 20
+        }
+      },
+      "knobRectPreFixNoKnob": {
+        "raw": 907,
+        "tolerantUnmatched": 452,
+        "rawBBox": {
+          "x": 1031,
+          "y": 740,
+          "w": 42,
+          "h": 40
+        }
+      },
+      "neighborhoodPreFixNoKnob": {
+        "raw": 1199,
+        "tolerantUnmatched": 455,
+        "rawBBox": {
+          "x": 1010,
+          "y": 732,
+          "w": 83,
+          "h": 64
+        },
+        "tolerantBBox": {
+          "x": 1013,
+          "y": 740,
+          "w": 78,
+          "h": 54
+        },
+        "prefixNoKnobWholeImageTolerant": 2020
+      }
+    }
+  },
+  "unionDsf1": {
+    "neighborhoodRawBBox": {
+      "x": 505,
+      "y": 366,
+      "w": 42,
+      "h": 32
+    },
+    "neighborhoodTolerantBBox": {
+      "x": 506,
+      "y": 370,
+      "w": 41,
+      "h": 27
+    },
+    "knobRectRawBBox": {
+      "x": 515,
+      "y": 370,
+      "w": 22,
+      "h": 20
+    },
+    "knobRectTolerantBBox": {
+      "x": 515,
+      "y": 370,
+      "w": 21,
+      "h": 20
+    }
+  }
+}
