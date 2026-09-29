@@ -245,6 +245,18 @@ SUPERSEDED 2026-09-29 — evidence/Y1-remaster.md §7 — the speaker-knob spati
   hash-pinned, deterministic, skippable), smooth rendering, V5 `--ignore-rect`
   set (138 rects, 28.4 % of stage, 97.7 %/98.6 % deviation coverage), suites
   re-run green. Evidence: `evidence/Y1-remaster.md`.
+- 2026-09-29 — Owner final wave Y2 (`docs/07` §4 omission region): the two
+  site credit sprites (`credit_line`/`credit_site`) are omitted from the
+  board render (`src/ui/board.ts` `OMITTED_ELEMENTS`, skip before DOM
+  creation; dead `ELEMENT_DELTA` entries removed); absence asserted in
+  `tests/e2e/visual.spec.ts` (default + explicit view); all board
+  comparisons pass the owner-approved omission region `0,367,105,36` (wired
+  stage-clipped as `0,367,105,33`; 255 px overlap with Y1's
+  `[20,360,240,10]`, union-counted). `data/layout.json`,
+  `src/data/layout.json` and the s97/s103 assets untouched (provenance;
+  asset hashes = manifest pins; grep shows no runtime reference). Suites
+  re-run green (visual 18, animation 8, playthrough 3; worst tolerant
+  1.273 %). Evidence: `evidence/Y2-credits.md`.
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:

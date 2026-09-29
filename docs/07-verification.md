@@ -136,6 +136,24 @@ formulas and asserted in unit tests.
 > `evidence/Y1-remaster.md` §4/§5/§8, matching entry in
 > `docs/08-open-items.md` (Amendments).
 
+> Amendment 2026-09-29b (owner final wave Y2): the rebuild intentionally omits
+> the two site credit sprites (`credit_line` — DefineSprite_97 "Diğer oyunlar";
+> `credit_site` — DefineSprite_103 "kelimator.com") from the board render
+> (owner directive `tasks/Y2-credit-omission.md`). `src/ui/board.ts`
+> (`OMITTED_ELEMENTS`) skips them before any DOM node is created; the former
+> `ELEMENT_DELTA` entries for them are deleted. Every static/animation/
+> playthrough V5 comparison of a board state passes the owner-approved omission
+> region `0,367,105,36` (visible sprite bbox union) as `--ignore-rect`; the F1
+> tool requires rects inside the image and the stage clips the sprites at
+> y=400, so the wired rect is `0,367,105,33` (3 off-stage rows), scaled
+> ×deviceScaleFactor per the Y1 convention. The region overlaps Y1's
+> `[20,360,240,10]` by 255 px (dsf1); overlaps are counted once (union
+> `ignoredPixels` 65 930 / 263 720 at dsf1/dsf2). Catalog entries, animation
+> entries and the s97/s103 assets remain as provenance (untouched; hashes
+> recorded). Thresholds unchanged; absence is asserted by `tests/e2e/
+> visual.spec.ts` ("Y2 credit omission"). Evidence: `evidence/Y2-credits.md`,
+> matching entry in `docs/08-open-items.md` (Amendments).
+
 ## 5. State matrix (S1–S10)
 
 | State | Trigger sequence (app and reference use the same) |
