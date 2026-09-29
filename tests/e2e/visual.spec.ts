@@ -7,9 +7,10 @@
 // pass basis is the tool's anti-aliasing-tolerant metric
 // (tolerantMismatchRatio ≤ 0.02, tolerantRadius 2); the raw metric is kept in
 // the report for monitoring (V2 asserts the raw fields are present/numeric).
-// Task Y1 owner-approved allowance: board states pass the HD backdrop/knob
-// `--ignore-rect` set (tests/e2e/visual-states.ts Y1_IGNORE_RECTS); the suite
-// asserts the tool reports exactly that allowance (schema v3 fields).
+// Owner-approved allowances (tasks Y1/Y2): board states pass the HD
+// backdrop/knob `--ignore-rect` set plus the credit-omission region
+// (tests/e2e/visual-states.ts, `boardIgnoreRectArgs`/`boardIgnoreRects`); the
+// suite asserts the tool reports exactly that allowance (schema v3 fields).
 // Per-state report.json + heatmap.png are written under
 // evidence/visual/E2/<state>/dsf<dsf>/ (V2).
 //
@@ -29,8 +30,8 @@ import path from 'node:path';
 import {
   viewFor,
   VISUAL_STATES,
-  y1IgnoreRectArgs,
-  y1IgnoreRects,
+  boardIgnoreRectArgs,
+  boardIgnoreRects,
   type VisualStateSpec,
 } from './visual-states';
 import type { BoardView } from '../../src/ui/board';
@@ -205,10 +206,11 @@ for (const dsf of [1, 2] as const) {
         const view = viewFor(spec, dsf);
         await applyVisualState(page, view);
 
-        // Task Y1 owner-approved allowance: board states pass the HD
-        // backdrop/knob rects; states without the backdrop (S1 intro) do not
-        // (see tests/e2e/visual-states.ts Y1_IGNORE_RECTS).
-        const allowance = view.elements.includes('board_backdrop') ? y1IgnoreRectArgs(dsf) : [];
+        // Owner-approved allowance: board states pass the Y1 HD backdrop/knob
+        // rects plus the Y2 credit-omission region; states without the backdrop
+        // (S1 intro) get none (see tests/e2e/visual-states.ts
+        // boardIgnoreRectArgs).
+        const allowance = view.elements.includes('board_backdrop') ? boardIgnoreRectArgs(dsf) : [];
 
         const outDir = path.join(EVIDENCE_DIR, spec.id, `dsf${dsf}`);
         fs.mkdirSync(outDir, { recursive: true });
@@ -229,10 +231,10 @@ for (const dsf of [1, 2] as const) {
         // basis; it is computed by the F1 tool (tolerantRadius = 2) — never by
         // this suite.
         expect(report.tolerantRadius).toBe(2);
-        // V2/Y1: when the owner-approved allowance applies it must be active
-        // and reported exactly (schema v3 `ignoredRects`/`ignoredPixels`).
+        // V2/Y1+Y2: when the owner-approved allowance applies it must be
+        // active and reported exactly (schema v3 `ignoredRects`/`ignoredPixels`).
         if (allowance.length > 0) {
-          expect(report.ignoredRects).toEqual(y1IgnoreRects(dsf));
+          expect(report.ignoredRects).toEqual(boardIgnoreRects(dsf));
           expect(report.ignoredPixels).toBeGreaterThan(0);
         } else {
           expect(report.ignoredRects).toEqual([]);
@@ -264,7 +266,6 @@ const V7_SAMPLE: readonly string[] = [
   'intro_logo',
   'timer_bar',
   'btn_ybuton',
-  'credit_line',
   'status_ball',
   'letter_tile',
   'tile_socket',
@@ -357,5 +358,49 @@ test.describe('E2 V7 layout cross-consistency', () => {
         expect(rendered.textAlign, `${id} text align`).toBe(expectedAlign);
       }
     }
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Y2 — owner-approved omission of the two site credit sprites
+// ---------------------------------------------------------------------------
+
+test.describe('Y2 credit omission', () => {
+  test.use({ viewport: { width: 550, height: 400 }, deviceScaleFactor: 1 });
+
+  test('credit_line and credit_site are absent from the rendered board', async ({ page }) => {
+    await preparePage(page);
+    // The default board view (data/animation.json sequence "board") still lists
+    // both ids; the renderer skips them before any DOM node is created (task
+    // Y2, src/ui/board.ts OMITTED_ELEMENTS).
+    await expect(page.locator('[data-element="credit_line"]')).toHaveCount(0);
+    await expect(page.locator('[data-element="credit_site"]')).toHaveCount(0);
+
+    // A view that explicitly requests both ids renders the rest of the view but
+    // still creates no node for them (skip-before-creation invariant).
+    const counts = await page.evaluate(() => {
+      const hook = (window as unknown as { __visualTest?: { apply(view: unknown): void } })
+        .__visualTest;
+      if (hook === undefined) {
+        return null;
+      }
+      hook.apply({ elements: ['board_backdrop', 'credit_line', 'credit_site'] });
+      const board = document.querySelector('[data-testid="board"]');
+      if (!(board instanceof HTMLElement)) {
+        return null;
+      }
+      return {
+        backdrop: board.querySelectorAll('[data-element="board_backdrop"]').length,
+        creditLine: board.querySelectorAll('[data-element="credit_line"]').length,
+        creditSite: board.querySelectorAll('[data-element="credit_site"]').length,
+      };
+    });
+    expect(counts, '__visualTest hook available and view applied').not.toBeNull();
+    if (counts === null) {
+      return;
+    }
+    expect(counts.backdrop, 'the applied view rendered its backdrop').toBe(1);
+    expect(counts.creditLine, 'credit_line leaves no DOM node').toBe(0);
+    expect(counts.creditSite, 'credit_site leaves no DOM node').toBe(0);
   });
 });

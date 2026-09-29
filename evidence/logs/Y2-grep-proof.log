@@ -1,0 +1,46 @@
+# Y2 grep proof — credit-sprite omission (recorded 2026-09-29)
+
+## A. direct asset-path references in runtime/test/tool code — expected: none
+$ grep -rn -E 's97_credit_line|s103_credit_site' src tests verify tools index.html vite.config.ts --include='*.ts' --include='*.mts' --include='*.js' --include='*.mjs' --include='*.html' --include='*.css' --exclude-dir=ruffle
+(grep exit=1 — 1 = no match)
+
+## B. element-id references in app source — expected: only the board.ts omission list
+$ grep -rn -E 'credit_line|credit_site' src --include='*.ts'
+src/ui/board.ts:80: * two credit sprites (credit_line/credit_site, +0.25/−0.25 px; E2-layout.md
+src/ui/board.ts:539: * 2026-09-29): the two site credit sprites — `credit_line` (DefineSprite_97,
+src/ui/board.ts:540: * "Diğer oyunlar") and `credit_site` (DefineSprite_103, "kelimator.com") —
+src/ui/board.ts:552:const OMITTED_ELEMENTS: ReadonlySet<string> = new Set(['credit_line', 'credit_site']);
+
+## C. catalog provenance kept untouched (expected references, data only)
+$ grep -n -E 'credit_line|credit_site|s97_credit_line|s103_credit_site' src/data/layout.json data/layout.json src/data/animation.json data/animation.json
+src/data/layout.json:571:   "id": "credit_line",
+src/data/layout.json:573:   "asset": "src/assets/svg/s97_credit_line.svg",
+src/data/layout.json:588:   "id": "credit_site",
+src/data/layout.json:590:   "asset": "src/assets/svg/s103_credit_site.svg",
+data/layout.json:571:   "id": "credit_line",
+data/layout.json:588:   "id": "credit_site",
+src/data/animation.json:116:    "credit_line",
+src/data/animation.json:117:    "credit_site",
+data/animation.json:116:    "credit_line",
+data/animation.json:117:    "credit_site",
+
+## D. mtimes/sizes of the untouched provenance files and assets
+$ stat -f '%N | mtime %Sm | size %z' data/layout.json src/data/layout.json src/assets/svg/s97_credit_line.svg src/assets/svg/s103_credit_site.svg
+data/layout.json | mtime Sep 28 16:36:46 2026 | size 34736
+src/data/layout.json | mtime Sep 28 17:09:16 2026 | size 33862
+src/assets/svg/s97_credit_line.svg | mtime Sep 29 11:59:21 2026 | size 11933
+src/assets/svg/s103_credit_site.svg | mtime Sep 29 11:59:21 2026 | size 11679
+
+## E. built output (pre-existing eager asset glob — all src/assets files emitted generically)
+$ ls dist/assets | grep -E 's97_credit_line|s103_credit_site'
+s103_credit_site-CrFxQUUK.svg
+s97_credit_line-CotBCE-e.svg
+$ grep -c 'credit_line\|credit_site' dist/assets/index-*.js
+2
+(bundle carries the catalog ids + omission list as data/strings; no rendered element resolves the s97/s103 URLs)
+29ef27bfc18cad16e03a3ccebe79d046a78b2146f00be02530c88b3d8376c539  src/assets/svg/s97_credit_line.svg
+58712f673207cd4acc3bad05a06e2437e4cadfc71ed76efeac57142bc687d94f  src/assets/svg/s103_credit_site.svg
+f25d873d96a648760172b293ff2f6b36cfe19c3c46a18d516b4e41d90b38253f  src/data/layout.json
+eb8a098cab21df360cf24dea2f38c2b6b2e56cd16c248b4d6447ce51d3cb292d  data/layout.json
+c263ed44b8d352ed72757821f0fd3cbebd58e5c5883dd124ec2229343ce9794e  src/data/animation.json
+c263ed44b8d352ed72757821f0fd3cbebd58e5c5883dd124ec2229343ce9794e  data/animation.json

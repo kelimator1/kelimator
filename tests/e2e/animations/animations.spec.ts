@@ -19,9 +19,10 @@
 // (the harness's click step overhead exceeds the 194 ms slide) and is recorded
 // as not covered.
 //
-// Task Y1 owner-approved allowance: the covered keyframes pass the HD
-// backdrop/knob `--ignore-rect` set (tests/e2e/visual-states.ts
-// Y1_IGNORE_RECTS) and the suite asserts the tool reports exactly it.
+// Owner-approved allowance (tasks Y1/Y2): the covered keyframes pass the HD
+// backdrop/knob `--ignore-rect` set plus the credit-omission region, combined
+// in tests/e2e/visual-states.ts (`boardIgnoreRectArgs`/`boardIgnoreRects`), and
+// the suite asserts the tool reports exactly that allowance.
 //
 // V2: the code timings (ANIMATION_SEQUENCES / `window.__animations.catalog()`)
 // equal data/animation.json: frames, frames ÷ 36 durations, keyframe frames and
@@ -36,7 +37,7 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { GAME_STATES } from '../../../src/game/state';
-import { y1IgnoreRectArgs, y1IgnoreRects } from '../visual-states';
+import { boardIgnoreRectArgs, boardIgnoreRects } from '../visual-states';
 
 const REPO_ROOT = process.cwd();
 const REFERENCE_DIR = path.join(REPO_ROOT, 'tests/fixtures/reference/animations');
@@ -185,9 +186,9 @@ async function driveToReferenceBoard(page: Page): Promise<void> {
 }
 
 function runDiff(actual: string, reference: string, outDir: string): DiffReport {
-  // Task Y1 owner-approved allowance: the covered keyframes are board states
-  // (backdrop + speaker visible) at deviceScaleFactor 1 — pass the rects.
-  execFileSync(process.execPath, [DIFF_TOOL, actual, reference, outDir, ...y1IgnoreRectArgs(1)], {
+  // Owner-approved allowance: the covered keyframes are board states (Y1:
+  // backdrop + speaker; Y2: omitted credit sprites) at deviceScaleFactor 1.
+  execFileSync(process.execPath, [DIFF_TOOL, actual, reference, outDir, ...boardIgnoreRectArgs(1)], {
     stdio: 'pipe',
   });
   const reportPath = path.join(outDir, 'report.json');
@@ -401,8 +402,8 @@ test.describe('E3 V5 — animation keyframes', () => {
       expect(Number.isInteger(report.mismatchedPixels)).toBe(true);
       expect(typeof report.mismatchBBox === 'object').toBe(true);
       expect(report.tolerantRadius).toBe(2);
-      // Y1 allowance must be active and reported exactly (schema v3).
-      expect(report.ignoredRects).toEqual(y1IgnoreRects(1));
+      // Y1+Y2 allowance must be active and reported exactly (schema v3).
+      expect(report.ignoredRects).toEqual(boardIgnoreRects(1));
       expect(report.ignoredPixels).toBeGreaterThan(0);
       console.log(
         `E3 ${covered.sequence} @ ${covered.label}s: raw=${rawPercent.toFixed(3)}% ` +

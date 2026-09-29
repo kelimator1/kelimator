@@ -74,15 +74,15 @@ const GRID_Y = 330;
  * evidence/E2-layout.md). Measured by minimizing the >60 RGB-distance
  * mismatch against tests/fixtures/reference/S2-idle-board.png: the runtime
  * grid sits ~0.25 px higher and the letter glyph run ~0.25 px right of the
- * nominal positions; the bottom button row and the credit sprites sit
- * 0.5/0.25 px higher.
+ * nominal positions; the bottom button row sits 0.5 px higher.
+ *
+ * The former per-element table (`ELEMENT_DELTA`) carried entries only for the
+ * two credit sprites (credit_line/credit_site, +0.25/−0.25 px; E2-layout.md
+ * §7). Task Y2 omits those sprites from the render (OMITTED_ELEMENTS below),
+ * so the table and its two lookups were removed with the now-dead entries.
  */
 const GRID_DY = 0;
 const LETTER_DX = 0;
-const ELEMENT_DELTA: Readonly<Record<string, { dx: number; dy: number }>> = {
-  credit_line: { dx: 0.25, dy: -0.25 },
-  credit_site: { dx: 0.25, dy: -0.25 },
-};
 
 /** Wordball entry row: `_X = i*40 + (550 - t*40)/2 + 10`, `_Y = 263` (DoAction.as 379–396). */
 const ENTRY_PITCH = 40;
@@ -417,11 +417,6 @@ function renderSvgElement(element: LayoutElement, rect: { x: number; y: number; 
           (image as SVGImageElement).style.imageRendering = 'smooth';
         }
       }
-      const delta = ELEMENT_DELTA[element.id];
-      if (delta !== undefined) {
-        svg.style.left = `${delta.dx}px`;
-        svg.style.top = `${delta.dy}px`;
-      }
     }
     box.appendChild(holder);
     return box;
@@ -434,21 +429,13 @@ function renderSvgElement(element: LayoutElement, rect: { x: number; y: number; 
   img.draggable = false;
   box.appendChild(img);
 
-  // Reference-observed sub-pixel correction (ELEMENT_DELTA): applied to the
-  // asset's own layout position (crisp re-rasterization; a CSS transform would
-  // resample the SVG), not to the catalog placement box (which V7 checks).
-  const delta = ELEMENT_DELTA[element.id];
-  if (delta !== undefined) {
-    img.style.left = `${delta.dx}px`;
-    img.style.top = `${delta.dy}px`;
-  }
-
-  // FFDec SVG viewports carry the asset's natural aspect; the two credit
-  // sprites are up to 0.61 px taller than the computed catalog boxes
-  // (evidence/A3-layout.md §7.2), which would letterbox their content inside
-  // an <img> of the catalog box. Anchor the asset at the box top-left and
-  // scale it uniformly to the box width so the sprite renders at its own
-  // aspect, as the reference does. Applied on load and for cached assets.
+  // FFDec SVG viewports carry the asset's natural aspect; the credit sprites
+  // (omitted from the render by task Y2) were the catalog's worst case, up to
+  // 0.61 px taller than the computed boxes (evidence/A3-layout.md §7.2) which
+  // would letterbox their content inside an <img> of the catalog box. Anchor
+  // the asset at the box top-left and scale it uniformly to the box width so
+  // the sprite renders at its own aspect, as the reference does. Applied on
+  // load and for cached assets.
   const applyNaturalAspect = (): void => {
     const naturalWidth = img.naturalWidth;
     const naturalHeight = img.naturalHeight;
@@ -547,9 +534,30 @@ function createLayer(className: string): HTMLElement {
   return layer;
 }
 
+/**
+ * Owner-approved element omission (owner final presentation wave, task Y2,
+ * 2026-09-29): the two site credit sprites — `credit_line` (DefineSprite_97,
+ * "Diğer oyunlar") and `credit_site` (DefineSprite_103, "kelimator.com") —
+ * are not rendered by the rebuild. The element loop below skips these ids
+ * before any DOM node is created, so they leave no trace in the DOM. The
+ * catalog entries (src/data/layout.json) and the processed SVG assets
+ * (s97/s103) stay untouched as provenance.
+ * evidence: owner directive `tasks/Y2-credit-omission.md` (owner-approved
+ * omission region 0,367,105,36); docs/08-open-items.md "Owner final
+ * presentation wave Y1–Y2"; reference provenance: evidence/A3-layout.md §6
+ * (ink "Diğer oyunlar" 2–95/370–381, "kelimator.com" 3–100/386–397) and
+ * evidence/E1-assets.md §7 (sprites DefineSprite_97/103 → s97/s103); absence
+ * assertions: tests/e2e/visual.spec.ts "Y2 credit omission".
+ */
+const OMITTED_ELEMENTS: ReadonlySet<string> = new Set(['credit_line', 'credit_site']);
+
 function renderStaticLayer(view: BoardView): HTMLElement {
   const layer = createLayer('board-layer board-static');
   for (const id of view.elements) {
+    if (OMITTED_ELEMENTS.has(id)) {
+      // Task Y2: skipped before any DOM node is created (no trace in the DOM).
+      continue;
+    }
     const element = ELEMENTS_BY_ID.get(id);
     if (element === undefined) {
       continue;

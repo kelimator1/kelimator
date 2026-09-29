@@ -8,9 +8,10 @@
 // entry). Every step is screenshotted (550×400 stage) and compared with the
 // C3 reference capture of the same step through F1's diff tool
 // (verify/diff/diff.mjs); the pass basis is the anti-aliasing-tolerant ratio
-// ≤ 0.02 (docs/07 §4, Amendment 2026-09-28). Task Y1 owner-approved allowance:
-// every compared step passes the HD backdrop/knob `--ignore-rect` set
-// (tests/e2e/visual-states.ts Y1_IGNORE_RECTS) and the suite asserts the tool
+// ≤ 0.02 (docs/07 §4, Amendment 2026-09-28). Owner-approved allowance (tasks
+// Y1/Y2): every compared step passes the HD backdrop/knob `--ignore-rect` set
+// plus the credit-omission region, combined in tests/e2e/visual-states.ts
+// (`boardIgnoreRectArgs`/`boardIgnoreRects`), and the suite asserts the tool
 // reports exactly that allowance. The combined machine-readable
 // report is written to evidence/F2-report.json in record mode (F2_RECORD=1,
 // frozen evidence) and to test-results/F2-live/F2-report.json otherwise
@@ -59,7 +60,7 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { LETTER_KEY_CODES } from '../../../src/game/input';
-import { y1IgnoreRectArgs, y1IgnoreRects } from '../visual-states';
+import { boardIgnoreRectArgs, boardIgnoreRects } from '../visual-states';
 
 const REPO_ROOT = process.cwd();
 const SCRIPT_PATH = path.join(REPO_ROOT, 'tests/fixtures/playthrough.json');
@@ -504,9 +505,9 @@ interface DiffRead {
 
 function runDiff(actual: string, reference: string, outDir: string): DiffRead {
   fs.mkdirSync(outDir, { recursive: true });
-  // Task Y1 owner-approved allowance: every compared step is a board state
-  // (backdrop + speaker visible) at deviceScaleFactor 1 — pass the rects.
-  execFileSync(process.execPath, [DIFF_TOOL, actual, reference, outDir, ...y1IgnoreRectArgs(1)], {
+  // Owner-approved allowance: every compared step is a board state (Y1:
+  // backdrop + speaker; Y2: omitted credit sprites) at deviceScaleFactor 1.
+  execFileSync(process.execPath, [DIFF_TOOL, actual, reference, outDir, ...boardIgnoreRectArgs(1)], {
     stdio: 'pipe',
   });
   const reportPath = path.join(outDir, 'report.json');
@@ -517,8 +518,8 @@ function runDiff(actual: string, reference: string, outDir: string): DiffRead {
   expect(report.tolerantRadius).toBe(2);
   expect(typeof report.mismatchRatio).toBe('number');
   expect(typeof report.tolerantMismatchRatio).toBe('number');
-  // Y1 allowance must be active and reported exactly (schema v3).
-  expect(report.ignoredRects).toEqual(y1IgnoreRects(1));
+  // Y1+Y2 allowance must be active and reported exactly (schema v3).
+  expect(report.ignoredRects).toEqual(boardIgnoreRects(1));
   expect(report.ignoredPixels).toBeGreaterThan(0);
   return { report, dir: outDir };
 }

@@ -1,0 +1,16 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test visual -g S2 S2-idle-board --reporter=line
+
+
+Running 2 tests using 1 worker
+
+[1/2] [app] › tests/e2e/visual.spec.ts:197:7 › E2 visual states — deviceScaleFactor 1 › S2 S2-idle-board matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:197:7 › E2 visual states — deviceScaleFactor 1 › S2 S2-idle-board matches the C3 reference
+E2 S2 dsf1: raw=0.03295454545454545 (3.295%), tolerant=0.0071 (0.710%), mismatchedPixels=7250/220000, tolerantMismatchedPixels=1562, ignoredPixels=62720, pass=true
+
+[2/2] [app] › tests/e2e/visual.spec.ts:197:7 › E2 visual states — deviceScaleFactor 2 › S2 S2-idle-board matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:197:7 › E2 visual states — deviceScaleFactor 2 › S2 S2-idle-board matches the C3 reference
+E2 S2 dsf2: raw=0.03258522727272727 (3.259%), tolerant=0.0025420454545454544 (0.254%), mismatchedPixels=28675/880000, tolerantMismatchedPixels=2237, ignoredPixels=250880, pass=true
+
+  2 passed (4.2s)

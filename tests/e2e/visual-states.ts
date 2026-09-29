@@ -42,8 +42,6 @@ export const BOARD_ELEMENTS: readonly string[] = [
   'count_6',
   'count_7',
   'count_8',
-  'credit_line',
-  'credit_site',
   'intro_backdrop',
   'intro_glow',
   'intro_logo',
@@ -459,4 +457,56 @@ export function y1IgnoreRectArgs(dsf: number): string[] {
     '--ignore-rect',
     `${rect.x},${rect.y},${rect.w},${rect.h}`,
   ]);
+}
+
+// ---------------------------------------------------------------------------
+// Task Y2 — owner-approved credit-omission region (docs/07 §4, owner final wave)
+//
+// The rebuild intentionally omits the two site credit sprites (`credit_line` /
+// `credit_site`; owner directive `tasks/Y2-credit-omission.md`; renderer:
+// `src/ui/board.ts` OMITTED_ELEMENTS — skipped before any DOM node is created).
+// The reference captures show the credits, so every board comparison passes
+// the owner-approved omission region as `--ignore-rect`.
+//
+// Owner region: `0,367,105,36` (visible sprite bbox union, task input). The F1
+// tool requires every rect to lie fully inside the image, and the 550x400 stage
+// clips the sprites at y=400 (their un-clipped bbox reaches y=403), so the
+// wired rect is the stage-clipped `0,367,105,33`; the three off-stage rows can
+// never appear in either image. Like the Y1 set, coordinates are dsf1 stage
+// pixels and scale by the deviceScaleFactor.
+//
+// Overlap with Y1_IGNORE_RECTS (checked; overlaps are harmless — the tool
+// counts each pixel once and `ignoredPixels` is the union): the wired rect
+// intersects `[20,360,240,10]` in the 367–370 band (85x3 = 255 px); combined
+// union numbers are measured in evidence/Y2-credits.md §3.
+// ---------------------------------------------------------------------------
+export const Y2_CREDIT_OMISSION_RECT: readonly [number, number, number, number] = [0, 367, 105, 36];
+/** The wired (stage-clipped) form of `Y2_CREDIT_OMISSION_RECT` passed to the tool. */
+export const Y2_CREDIT_IGNORE_RECT: readonly [number, number, number, number] = [0, 367, 105, 33];
+
+/** The parsed credit-omission rect for one deviceScaleFactor. */
+export function y2CreditIgnoreRects(dsf: number): { x: number; y: number; w: number; h: number }[] {
+  const [x, y, w, h] = Y2_CREDIT_IGNORE_RECT;
+  return [{ x: x * dsf, y: y * dsf, w: w * dsf, h: h * dsf }];
+}
+
+/** Ready-to-use `--ignore-rect x,y,w,h` CLI arguments for the Y2 omission region. */
+export function y2CreditIgnoreRectArgs(dsf: number): string[] {
+  return y2CreditIgnoreRects(dsf).flatMap((rect) => [
+    '--ignore-rect',
+    `${rect.x},${rect.y},${rect.w},${rect.h}`,
+  ]);
+}
+
+/**
+ * Combined allowance of one board comparison: the Y1 HD backdrop/knob set plus
+ * the Y2 credit-omission region (the tool reports the rects in the given order).
+ */
+export function boardIgnoreRects(dsf: number): { x: number; y: number; w: number; h: number }[] {
+  return [...y1IgnoreRects(dsf), ...y2CreditIgnoreRects(dsf)];
+}
+
+/** Ready-to-use `--ignore-rect` arguments for the combined board allowance. */
+export function boardIgnoreRectArgs(dsf: number): string[] {
+  return [...y1IgnoreRectArgs(dsf), ...y2CreditIgnoreRectArgs(dsf)];
 }

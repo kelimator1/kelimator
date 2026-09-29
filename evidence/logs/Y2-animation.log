@@ -1,0 +1,31 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test animation --reporter=line
+
+
+Running 8 tests using 1 worker
+
+[1/8] [app] › tests/e2e/animations/animations.spec.ts:211:3 › E3 V2 — animation timings equal the catalog › code durations/keyframes equal data/animation.json
+[2/8] [app] › tests/e2e/animations/animations.spec.ts:272:3 › E3 V7 — animation triggers › trigger names come from D5 lifecycle events and D4 audio events
+[3/8] [app] › tests/e2e/animations/animations.spec.ts:327:3 › E3 V7 — animation triggers › entry change starts the wordball slide and delete slides it out
+[4/8] [app] › tests/e2e/animations/animations.spec.ts:359:5 › E3 V5 — animation keyframes › board @ 0.0 s matches the reference capture
+[app] › tests/e2e/animations/animations.spec.ts:359:5 › E3 V5 — animation keyframes › board @ 0.0 s matches the reference capture
+E3 board @ 0.0s: raw=3.240% (7127/220000 px), tolerant=0.685% (1507 px), ignoredPixels=65930, pass=true
+
+[5/8] [app] › tests/e2e/animations/animations.spec.ts:359:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.25 s matches the reference capture
+[app] › tests/e2e/animations/animations.spec.ts:359:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.25 s matches the reference capture
+E3 sprite_wordball_timeline @ 0.25s: raw=3.467% (7628/220000 px), tolerant=0.955% (2100 px), ignoredPixels=65930, pass=true
+
+[6/8] [app] › tests/e2e/animations/animations.spec.ts:359:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.5278 s matches the reference capture
+[app] › tests/e2e/animations/animations.spec.ts:359:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.5278 s matches the reference capture
+E3 sprite_wordball_timeline @ 0.5278s: raw=3.340% (7349/220000 px), tolerant=0.743% (1635 px), ignoredPixels=65930, pass=true
+
+[7/8] [app] › tests/e2e/animations/animations.spec.ts:359:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.8056 s matches the reference capture
+[app] › tests/e2e/animations/animations.spec.ts:359:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.8056 s matches the reference capture
+E3 sprite_wordball_timeline @ 0.8056s: raw=3.341% (7350/220000 px), tolerant=0.743% (1635 px), ignoredPixels=65930, pass=true
+
+[8/8] [app] › tests/e2e/animations/animations.spec.ts:359:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 1.0556 s matches the reference capture
+[app] › tests/e2e/animations/animations.spec.ts:359:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 1.0556 s matches the reference capture
+E3 sprite_wordball_timeline @ 1.0556s: raw=3.340% (7349/220000 px), tolerant=0.743% (1635 px), ignoredPixels=65930, pass=true
+
+  8 passed (19.4s)

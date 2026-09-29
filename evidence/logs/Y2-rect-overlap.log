@@ -1,0 +1,7 @@
+Y1 rects: 138; union 62720 px (area sum 63060 px)
+owner region: 0,367,105,36 = 3780 px (reaches y=403, stage height 400)
+wired credit rect: 0,367,105,33 = 3465 px
+overlap of wired credit rect with Y1 union: 255 px; per Y1 rect:
+  20,360,240,10 -> 255 px
+combined union: 65930 px = Y1 62720 + credit 3465 - overlap 255
+dsf2 wired rect: 0,734,210,66 inside 1100x800: true; expected combined ignoredPixels dsf2: 263720

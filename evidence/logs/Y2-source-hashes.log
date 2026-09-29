@@ -1,0 +1,5 @@
+58c1cac2ae2ef58215a7c310bc2375d0ca1248bef4bf1305cfc028005c7ee88f  src/ui/board.ts
+f4c2b3a104dacb5e3b4cd0d16ba10e71a28fb8a3bba54085962c72fd0c4eec0e  tests/e2e/visual-states.ts
+c54013e0ec68a4220af6c46000b91145b59417100a73b738c983ed4ffd75b3e0  tests/e2e/visual.spec.ts
+9bf3815e9a638303ae2409b674a41a07a9c42175becdf1740c564adde277b09c  tests/e2e/animations/animations.spec.ts
+913a0c3239588e8dcbc0d4245afe21f76a623d291fdb4c4689c4b55c84c9beb0  tests/e2e/playthrough/playthrough.spec.ts
