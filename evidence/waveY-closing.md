@@ -84,6 +84,32 @@ Result: **PASS**.
 
 ---
 
+## Addendum — Y6 (Top10 omission) & Y7 (i-key layout, 2026-09-29)
+
+- **Y6**: `btn_top10` omitted at renderer level (skip-before-DOM; absence
+  asserted for the default and an explicit view; the visual suite stays at 18
+  tests). Owner-approved region `419,372,91,23` wired into all three comparison
+  suites (measured omission deviation `420,373,87,20` at dsf 1 / `840,746,174,40`
+  at dsf 2; 0 px outside; combined `ignoredPixels` 68 023/272 092; no overlaps
+  with Y1/Y2). Catalogs, animation, manifest and the s108 asset untouched
+  (hashes = pins; no runtime reference). Suites: visual 18, animation 8,
+  playthrough 3 (worst tolerant 1.217 %, S9 0.511 %), full 238. Commits:
+  `7e70c56` (registered) · `db74de7` (task) · `12f7c93` (amendment).
+- **Y7**: `resolveKey` letter priority is now produced character → keyCode table
+  → code (`'i' → İ`, `'ı' → I` on every layout; no keyboard-type detection);
+  action keys untouched; the O04 keyCode table remains the fallback. Conflict
+  regressions `{73,'i'} → İ`, `{222,'ı'} → I`; existing table/key tests kept;
+  `evidence/D2-input.md` §2 amended; `docs/05` §3 amendment 2026-09-29e.
+  Suites: input 30/30, interaction 6/6, playthrough 3/3, full 239/239;
+  lint/build exit 0. Commits: `32eaceb` (registered) · `426b03c` (task) ·
+  `48170ad` (amendment).
+- Closing revalidation (post-commit): `tools/verify-all.sh` **exit 0 — 11/11
+  steps, frozen evidence 0**; no non-artifact changes.
+
+Result: **PASS**.
+
+---
+
 ## Addendum — Y5 (speaker immediate feedback, 2026-09-29)
 
 - Defect: clicks toggled the persisted volume reliably (43/43 instrumented,
