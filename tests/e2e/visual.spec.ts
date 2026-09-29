@@ -7,8 +7,9 @@
 // pass basis is the tool's anti-aliasing-tolerant metric
 // (tolerantMismatchRatio ≤ 0.02, tolerantRadius 2); the raw metric is kept in
 // the report for monitoring (V2 asserts the raw fields are present/numeric).
-// Owner-approved allowances (tasks Y1/Y2): board states pass the HD
-// backdrop/knob `--ignore-rect` set plus the credit-omission region
+// Owner-approved allowances (tasks Y1/Y2/Y6): board states pass the HD
+// backdrop/knob `--ignore-rect` set plus the credit-omission and
+// Top10-omission regions
 // (tests/e2e/visual-states.ts, `boardIgnoreRectArgs`/`boardIgnoreRects`); the
 // suite asserts the tool reports exactly that allowance (schema v3 fields).
 // Per-state report.json + heatmap.png are written under
@@ -207,9 +208,9 @@ for (const dsf of [1, 2] as const) {
         await applyVisualState(page, view);
 
         // Owner-approved allowance: board states pass the Y1 HD backdrop/knob
-        // rects plus the Y2 credit-omission region; states without the backdrop
-        // (S1 intro) get none (see tests/e2e/visual-states.ts
-        // boardIgnoreRectArgs).
+        // rects plus the Y2 credit-omission and Y6 Top10-omission regions;
+        // states without the backdrop (S1 intro) get none (see
+        // tests/e2e/visual-states.ts boardIgnoreRectArgs).
         const allowance = view.elements.includes('board_backdrop') ? boardIgnoreRectArgs(dsf) : [];
 
         const outDir = path.join(EVIDENCE_DIR, spec.id, `dsf${dsf}`);
@@ -231,7 +232,7 @@ for (const dsf of [1, 2] as const) {
         // basis; it is computed by the F1 tool (tolerantRadius = 2) — never by
         // this suite.
         expect(report.tolerantRadius).toBe(2);
-        // V2/Y1+Y2: when the owner-approved allowance applies it must be
+        // V2/Y1+Y2+Y6: when the owner-approved allowance applies it must be
         // active and reported exactly (schema v3 `ignoredRects`/`ignoredPixels`).
         if (allowance.length > 0) {
           expect(report.ignoredRects).toEqual(boardIgnoreRects(dsf));
@@ -362,7 +363,7 @@ test.describe('E2 V7 layout cross-consistency', () => {
 });
 
 // ---------------------------------------------------------------------------
-// Y2 — owner-approved omission of the two site credit sprites
+// Y2/Y6 — owner-approved omissions (two site credit sprites; Top10 button)
 // ---------------------------------------------------------------------------
 
 test.describe('Y2 credit omission', () => {
@@ -375,6 +376,10 @@ test.describe('Y2 credit omission', () => {
     // Y2, src/ui/board.ts OMITTED_ELEMENTS).
     await expect(page.locator('[data-element="credit_line"]')).toHaveCount(0);
     await expect(page.locator('[data-element="credit_site"]')).toHaveCount(0);
+    // Task Y6 (owner directive `tasks/Y6-top10-omission.md`, README §2.2): the
+    // default view still lists `btn_top10` (same sequence) and the renderer
+    // skips it before any DOM node is created.
+    await expect(page.locator('[data-element="btn_top10"]')).toHaveCount(0);
 
     // A view that explicitly requests both ids renders the rest of the view but
     // still creates no node for them (skip-before-creation invariant).
@@ -402,5 +407,32 @@ test.describe('Y2 credit omission', () => {
     expect(counts.backdrop, 'the applied view rendered its backdrop').toBe(1);
     expect(counts.creditLine, 'credit_line leaves no DOM node').toBe(0);
     expect(counts.creditSite, 'credit_site leaves no DOM node').toBe(0);
+
+    // Task Y6: the same skip-before-creation invariant for `btn_top10`, with
+    // the same default-render + explicit-view structure (owner directive
+    // `tasks/Y6-top10-omission.md`; the Y6 assertions share this owner-omission
+    // test so the visual suite stays at 18 tests, task Y6 VERIFY).
+    const top10 = await page.evaluate(() => {
+      const hook = (window as unknown as { __visualTest?: { apply(view: unknown): void } })
+        .__visualTest;
+      if (hook === undefined) {
+        return null;
+      }
+      hook.apply({ elements: ['board_backdrop', 'btn_top10'] });
+      const board = document.querySelector('[data-testid="board"]');
+      if (!(board instanceof HTMLElement)) {
+        return null;
+      }
+      return {
+        backdrop: board.querySelectorAll('[data-element="board_backdrop"]').length,
+        top10: board.querySelectorAll('[data-element="btn_top10"]').length,
+      };
+    });
+    expect(top10, '__visualTest hook available and view applied').not.toBeNull();
+    if (top10 === null) {
+      return;
+    }
+    expect(top10.backdrop, 'the applied view rendered its backdrop').toBe(1);
+    expect(top10.top10, 'btn_top10 leaves no DOM node').toBe(0);
   });
 });

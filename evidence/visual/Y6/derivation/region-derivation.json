@@ -1,0 +1,90 @@
+{
+  "task": "Y6",
+  "threshold": 30,
+  "declaredRect": [
+    419,
+    372,
+    91,
+    23
+  ],
+  "window": {
+    "x": 410,
+    "y": 365,
+    "w": 100,
+    "h": 35
+  },
+  "perDsf": {
+    "1": {
+      "changedBbox": {
+        "x": 420,
+        "y": 373,
+        "w": 87,
+        "h": 20
+      },
+      "changedCount": 1704,
+      "attributionBbox": {
+        "x": 421,
+        "y": 373,
+        "w": 86,
+        "h": 19
+      },
+      "attributionCount": 1394,
+      "attributedOutsideDeclaredRect": 0,
+      "postRefMismatchInDeclaredRect": 1735,
+      "postRefMismatchInWindow": 1769,
+      "preRefMismatchInWindow": 391
+    },
+    "2": {
+      "changedBbox": {
+        "x": 840,
+        "y": 746,
+        "w": 174,
+        "h": 40
+      },
+      "changedCount": 6889,
+      "attributionBbox": {
+        "x": 840,
+        "y": 746,
+        "w": 173,
+        "h": 39
+      },
+      "attributionCount": 5951,
+      "attributedOutsideDeclaredRect": 0,
+      "postRefMismatchInDeclaredRect": 7060,
+      "postRefMismatchInWindow": 7184,
+      "preRefMismatchInWindow": 1356
+    }
+  },
+  "unionDsf1Coordinates": {
+    "changedUnion": {
+      "count": 1740,
+      "bbox": {
+        "x": 420,
+        "y": 373,
+        "w": 87,
+        "h": 20
+      }
+    },
+    "attributionUnion": {
+      "count": 1714,
+      "bbox": {
+        "x": 420,
+        "y": 373,
+        "w": 87,
+        "h": 20
+      }
+    },
+    "changedUnionInsideDeclared": true,
+    "attributionUnionOutsideDeclared": 0
+  },
+  "overlap": {
+    "y1Rects": 138,
+    "y1Union": 62720,
+    "y2Union": 3465,
+    "y6Union": 2093,
+    "y6OverlapY1": 0,
+    "y6OverlapY2": 0,
+    "combinedUnionDsf1": 68023,
+    "combinedUnionDsf2": 272092
+  }
+}

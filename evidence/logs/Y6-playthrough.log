@@ -1,0 +1,55 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test playthrough
+
+
+Running 3 tests using 2 workers
+
+F2 00-selected: raw=2.520% tolerant=0.602% ignoredPixels=68023 pass=true stable=true
+F2 01-invalid: raw=3.664% tolerant=0.859% ignoredPixels=68023 pass=true stable=true
+F2 02-invalid-cleared: raw=2.518% tolerant=0.603% ignoredPixels=68023 pass=true stable=true
+F2 03-valid-FAL: raw=2.597% tolerant=0.605% ignoredPixels=68023 pass=true stable=true
+F2 04-duplicate-FAL: raw=4.207% tolerant=1.217% ignoredPixels=68023 pass=true stable=true
+F2 05-duplicate-cleared: raw=2.607% tolerant=0.605% ignoredPixels=68023 pass=true stable=true
+F2 06-valid: raw=2.700% tolerant=0.610% ignoredPixels=68023 pass=true stable=true
+F2 07-valid: raw=2.782% tolerant=0.614% ignoredPixels=68023 pass=true stable=true
+F2 08-valid: raw=2.865% tolerant=0.618% ignoredPixels=68023 pass=true stable=true
+F2 09-valid: raw=2.947% tolerant=0.618% ignoredPixels=68023 pass=true stable=true
+F2 10-valid: raw=3.019% tolerant=0.620% ignoredPixels=68023 pass=true stable=true
+F2 11-valid: raw=3.079% tolerant=0.623% ignoredPixels=68023 pass=true stable=true
+F2 12-valid: raw=3.176% tolerant=0.625% ignoredPixels=68023 pass=true stable=true
+F2 13-valid: raw=3.242% tolerant=0.629% ignoredPixels=68023 pass=true stable=true
+F2 14-valid: raw=3.324% tolerant=0.631% ignoredPixels=68023 pass=true stable=true
+F2 15-valid: raw=3.435% tolerant=0.630% ignoredPixels=68023 pass=true stable=true
+  ✓  1 [app] › tests/e2e/playthrough/playthrough:basic.spec.ts:207:3 › D5 basic playthrough › FİNALİZM: scripted submissions fill every listed slot and complete (51.4s)
+F2 16-valid: raw=3.547% tolerant=0.635% ignoredPixels=68023 pass=true stable=true
+F2 17-valid: raw=3.661% tolerant=0.640% ignoredPixels=68023 pass=true stable=true
+F2 18-valid: raw=3.760% tolerant=0.645% ignoredPixels=68023 pass=true stable=true
+F2 19-bonus-word: raw=3.909% tolerant=0.648% ignoredPixels=68023 pass=true stable=true
+F2 20-valid: raw=3.991% tolerant=0.651% ignoredPixels=68023 pass=true stable=true
+F2 21-valid: raw=4.105% tolerant=0.663% ignoredPixels=68023 pass=true stable=true
+F2 22-valid: raw=4.203% tolerant=0.656% ignoredPixels=68023 pass=true stable=true
+F2 23-valid: raw=4.271% tolerant=0.660% ignoredPixels=68023 pass=true stable=true
+F2 24-valid: raw=4.368% tolerant=0.660% ignoredPixels=68023 pass=true stable=true
+F2 25-valid: raw=4.485% tolerant=0.663% ignoredPixels=68023 pass=true stable=true
+F2 26-valid: raw=4.636% tolerant=0.674% ignoredPixels=68023 pass=true stable=true
+F2 27-valid: raw=4.754% tolerant=0.672% ignoredPixels=68023 pass=true stable=true
+F2 28-valid: raw=4.880% tolerant=0.676% ignoredPixels=68023 pass=true stable=true
+F2 29-valid: raw=5.000% tolerant=0.676% ignoredPixels=68023 pass=true stable=true
+F2 30-valid: raw=5.147% tolerant=0.680% ignoredPixels=68023 pass=true stable=true
+F2 31-valid: raw=5.295% tolerant=0.678% ignoredPixels=68023 pass=true stable=true
+F2 32-valid: raw=5.420% tolerant=0.680% ignoredPixels=68023 pass=true stable=true
+F2 33-valid: raw=5.539% tolerant=0.683% ignoredPixels=68023 pass=true stable=true
+F2 34-valid: raw=5.661% tolerant=0.684% ignoredPixels=68023 pass=true stable=true
+F2 35-valid: raw=5.841% tolerant=0.690% ignoredPixels=68023 pass=true stable=true
+F2 36-valid: raw=5.985% tolerant=0.697% ignoredPixels=68023 pass=true stable=true
+F2 37-valid: raw=6.142% tolerant=0.699% ignoredPixels=68023 pass=true stable=true
+F2 38-valid: raw=6.314% tolerant=0.701% ignoredPixels=68023 pass=true stable=true
+F2 playthrough: 40 steps, worst tolerant ratio 1.217%
+  ✓  2 [app] › tests/e2e/playthrough/playthrough.spec.ts:616:3 › F2 scripted playthrough › FİNALİZM: every step matches the docs/07 oracle and the reference capture (1.8m)
+F2 timeout: raw=6.207% tolerant=0.511% ignoredPixels=68023 pass=true appWaitMs=200441 stable=true
+  ✓  3 [app] › tests/e2e/playthrough/playthrough.spec.ts:918:3 › F2 S9 timeout variant › FİNALİZM: the clock is waited out and the timeout state matches the reference (3.4m)
+
+  Slow test file: [app] › tests/e2e/playthrough/playthrough.spec.ts (5.2m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  3 passed (5.2m)

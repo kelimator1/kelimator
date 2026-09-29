@@ -24,7 +24,6 @@ export const BOARD_ELEMENTS: readonly string[] = [
   'btn_kbuton',
   'btn_sbuton',
   'btn_speaker',
-  'btn_top10',
   'btn_ybuton',
   'clip_backspace',
   'clip_boing',
@@ -505,15 +504,61 @@ export function y2CreditIgnoreRectArgs(dsf: number): string[] {
   ]);
 }
 
+// ---------------------------------------------------------------------------
+// Task Y6 — owner-approved Top10-button omission region (docs/07 §4, owner
+// final wave)
+//
+// The rebuild intentionally omits the Top10 button (`btn_top10`; owner
+// directive `tasks/Y6-top10-omission.md`; renderer: `src/ui/board.ts`
+// OMITTED_ELEMENTS — skipped before any DOM node is created; reference action
+// `javascript:openWin('top10.php?…')`, README §2.2). The reference captures
+// show the button, so every board comparison passes the owner-approved
+// omission region as `--ignore-rect`.
+//
+// Owner region: `419,372,91,23` = the integer pixel coverage of the button's
+// stage bbox (419.8,372.95)–(509.25,394.65) (floor origin, ceil corner). The
+// F1 tool requires rects inside the image; here the region lies fully inside
+// the 550x400 stage (x+w=510 <= 550, y+h=395 <= 400), so the wired
+// stage-clipped form equals the declared rect — the clip is a no-op at dsf 1
+// and 2 (unlike the Y2 credit region, whose sprites the stage clips at y=400).
+//
+// Measured derivation (evidence/Y6-top10.md §3; F1 tool, post↔pre and
+// app-after vs the S2 reference): omission change bbox (raw > 30)
+// `420,373,87,20` at dsf1 and `840,746,174,40` at dsf2; union in dsf1 stage
+// coordinates `420,373,87,20`, fully inside the declared rect (attribution
+// mask `post>30 ∧ pre<=30` outside the rect: 0 px). The region intersects
+// neither the Y1 set nor the Y2 credit rect (0 px); the combined allowance is
+// 68023 px at dsf1 / 272092 px at dsf2 = 62720+3465−255+2093 scaled — exactly
+// the `ignoredPixels` the suites report.
+// ---------------------------------------------------------------------------
+export const Y6_TOP10_OMISSION_RECT: readonly [number, number, number, number] = [419, 372, 91, 23];
+/** The wired (stage-clipped) form of `Y6_TOP10_OMISSION_RECT` passed to the tool. */
+export const Y6_TOP10_IGNORE_RECT: readonly [number, number, number, number] = [419, 372, 91, 23];
+
+/** The parsed Top10-omission rect for one deviceScaleFactor. */
+export function y6Top10IgnoreRects(dsf: number): { x: number; y: number; w: number; h: number }[] {
+  const [x, y, w, h] = Y6_TOP10_IGNORE_RECT;
+  return [{ x: x * dsf, y: y * dsf, w: w * dsf, h: h * dsf }];
+}
+
+/** Ready-to-use `--ignore-rect x,y,w,h` CLI arguments for the Y6 omission region. */
+export function y6Top10IgnoreRectArgs(dsf: number): string[] {
+  return y6Top10IgnoreRects(dsf).flatMap((rect) => [
+    '--ignore-rect',
+    `${rect.x},${rect.y},${rect.w},${rect.h}`,
+  ]);
+}
+
 /**
- * Combined allowance of one board comparison: the Y1 HD backdrop/knob set plus
- * the Y2 credit-omission region (the tool reports the rects in the given order).
+ * Combined allowance of one board comparison: the Y1 HD backdrop/knob set, the
+ * Y2 credit-omission region and the Y6 Top10-omission region (the tool reports
+ * the rects in the given order).
  */
 export function boardIgnoreRects(dsf: number): { x: number; y: number; w: number; h: number }[] {
-  return [...y1IgnoreRects(dsf), ...y2CreditIgnoreRects(dsf)];
+  return [...y1IgnoreRects(dsf), ...y2CreditIgnoreRects(dsf), ...y6Top10IgnoreRects(dsf)];
 }
 
 /** Ready-to-use `--ignore-rect` arguments for the combined board allowance. */
 export function boardIgnoreRectArgs(dsf: number): string[] {
-  return [...y1IgnoreRectArgs(dsf), ...y2CreditIgnoreRectArgs(dsf)];
+  return [...y1IgnoreRectArgs(dsf), ...y2CreditIgnoreRectArgs(dsf), ...y6Top10IgnoreRectArgs(dsf)];
 }

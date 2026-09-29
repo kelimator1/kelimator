@@ -1,0 +1,63 @@
+Y6 grep proof — Top10 omission (2026-09-29)
+repo: kelimator-2012
+
+A. asset-path references in runtime/test/tool code — only the Y6 evidence comment; no code line
+$ grep -rn "s108_btn_top10" src/ui src/game src/audio src/stage.ts src/main.ts tests verify tools index.html vite.config.ts 2>/dev/null
+src/ui/board.ts:570: * `btn_top10` → `src/assets/svg/s108_btn_top10.svg`); absence assertions:
+exit=0 -> single match, a comment line in src/ui/board.ts
+$ ... excluding comment lines (grep -vE ":[0-9]+: \*")
+exit=1 (1 = no non-comment match)
+
+B. element-id references in app source — only the Y6 omission block (comment + set entry)
+$ grep -rn "btn_top10" src --include="*.ts" --include="*.html"
+src/ui/board.ts:554: * 2026-09-29): the Top10 button — `btn_top10` (DefineButton2_108) — is not
+src/ui/board.ts:567: * reference provenance: evidence/A3-layout.md §6 (button `btn_top10` ch=108
+src/ui/board.ts:570: * `btn_top10` → `src/assets/svg/s108_btn_top10.svg`); absence assertions:
+src/ui/board.ts:577:  'btn_top10',
+exit=0
+$ ... non-comment lines only (strip " *" documentation lines)
+src/ui/board.ts:577:  'btn_top10',
+exit=0 -> exactly the OMITTED_ELEMENTS set entry
+
+C. element-id references in tests — absence assertions + omission region helper (expected)
+$ grep -rn "btn_top10" tests
+tests/e2e/visual-states.ts:511:// The rebuild intentionally omits the Top10 button (`btn_top10`; owner
+tests/e2e/visual.spec.ts:380:    // default view still lists `btn_top10` (same sequence) and the renderer
+tests/e2e/visual.spec.ts:382:    await expect(page.locator('[data-element="btn_top10"]')).toHaveCount(0);
+tests/e2e/visual.spec.ts:411:    // Task Y6: the same skip-before-creation invariant for `btn_top10`, with
+tests/e2e/visual.spec.ts:421:      hook.apply({ elements: ['board_backdrop', 'btn_top10'] });
+tests/e2e/visual.spec.ts:428:        top10: board.querySelectorAll('[data-element="btn_top10"]').length,
+tests/e2e/visual.spec.ts:436:    expect(top10.top10, 'btn_top10 leaves no DOM node').toBe(0);
+exit=0
+
+D. catalog/provenance (data only; ids stay as provenance per the owner directive)
+$ grep -c "btn_top10" data/layout.json src/data/layout.json data/animation.json src/data/animation.json src/assets/manifest.json
+data/layout.json:1
+src/data/layout.json:2
+data/animation.json:1
+src/data/animation.json:1
+src/assets/manifest.json:4
+exit=0
+
+E. s108 asset hash vs the src/assets/manifest.json pin
+$ shasum -a 256 src/assets/svg/s108_btn_top10.svg
+968d79293f07d1970a9698886351eefa3d5189b448a02226c2996d8a7f9a4f7f  src/assets/svg/s108_btn_top10.svg
+manifest pin: 968d79293f07d1970a9698886351eefa3d5189b448a02226c2996d8a7f9a4f7f (equal)
+
+F. built bundle (dist/) — catalog id + eager-glob URL are data; no code path resolves them (Y2 §5 E pattern)
+$ grep -c "btn_top10" dist/assets/*.js
+1
+exit=0
+$ grep -c "s108_btn_top10" dist/assets/*.js
+1
+exit=0
+
+G. post-build bundle (npm run build after the Y6 edit): dist/assets/index-B3ukGsPw.js
+$ ls dist/assets | grep -i "s108"   -> no separate file: s108 is 3792 B, below the 4096 B inline limit, so Vite inlines it as a data URI
+exit=1
+$ grep -o "btn_top10" dist/assets/index-B3ukGsPw.js | wc -l
+6
+  -> the imported layout catalog string (data); OMITTED_ELEMENTS skips the id before any use
+$ grep -o "s108_btn_top10" dist/assets/index-B3ukGsPw.js | wc -l
+3
+  -> generic eager asset-map key/URL only (wholesale glob, unchanged by Y6; Y2 §5 E pattern); no board element resolves it

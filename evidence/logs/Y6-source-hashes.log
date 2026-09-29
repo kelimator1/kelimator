@@ -1,0 +1,30 @@
+Y6 source/artifact SHA-256 inventory (2026-09-29, after all edits and runs)
+
+Changed by Y6 (owned paths):
+98077fed098f3104b1f19a9e2c227934a2177d27b5622e98057fa4a65278e890  src/ui/board.ts
+e6b323671e8a63409bfb596f45b0787ca106da036343b3478a26d3cb03a31a84  tests/e2e/visual-states.ts
+042e57708ba53ec5f63de3caf1b8bbd52a0f3f33c87e0a079b3cd429b2a9afff  tests/e2e/visual.spec.ts
+
+Untouched (provenance; must equal the pre-task log evidence/logs/Y6-pre-hashes.log):
+968d79293f07d1970a9698886351eefa3d5189b448a02226c2996d8a7f9a4f7f  src/assets/svg/s108_btn_top10.svg
+776fb3fd9af23cd427f9b67ec9a53c68f8553d4d593aa8b73b3ab6f193bfdb64  src/assets/manifest.json
+f25d873d96a648760172b293ff2f6b36cfe19c3c46a18d516b4e41d90b38253f  src/data/layout.json
+eb8a098cab21df360cf24dea2f38c2b6b2e56cd16c248b4d6447ce51d3cb292d  data/layout.json
+c263ed44b8d352ed72757821f0fd3cbebd58e5c5883dd124ec2229343ce9794e  src/data/animation.json
+c263ed44b8d352ed72757821f0fd3cbebd58e5c5883dd124ec2229343ce9794e  data/animation.json
+9859f24691475227d360edbd378436feec0004339529108bba49b4b662b3cc33  tests/fixtures/reference/S2-idle-board.png
+a608218a6c6b235f7b36410566e9a7d5e33f6cf22eaa27b512b4f45eeaeca24d  tests/fixtures/reference/dsf2/S2-idle-board.png
+
+C4/C3 reference fixtures used for the derivation:
+0143c77aadb6123c9b179eccaed7e4860d3204f23bede49417fe49bbd81acd59  evidence/visual/Y6/pre/S2-dsf1-prefix.png
+aa19028ab364f3c8f96fce296c407c8451ad084d6d5e34d98f6d89a4b43d3f71  evidence/visual/Y6/pre/S2-dsf2-prefix.png
+95f84a581b5e43941f3d688f69e1c47202ecc7aa27689b530b2986c4d3bbef79  evidence/visual/Y6/post/S2-dsf1-postfix.png
+5b2a2a00801a45ffcc605a4976c9b634703c95906138e7ff533067ce5186d889  evidence/visual/Y6/post/S2-dsf2-postfix.png
+
+F1 tool/report artifacts:
+b44e697d779a6b95705f17e7230693e16666bcae50afa10b1d2f7b64f11fdf1d  evidence/visual/Y6/pre-post-diff/dsf1/report.json
+bb63865f864a9f20e64a8a6d828bbd0fcdfa7fbb4368f3e1f8b4be97fc27ee28  evidence/visual/Y6/pre-post-diff/dsf2/report.json
+96fee64ff15d8a84c13de357c70c827068da599258a443ff5b5d97268e107ac4  evidence/visual/Y6/derivation/region-derivation.json
+
+Diff vs pre-task untouched hashes:
+UNTOUCHED-HASHES: identical to the pre-task log

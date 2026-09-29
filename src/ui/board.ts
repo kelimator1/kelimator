@@ -549,7 +549,33 @@ function createLayer(className: string): HTMLElement {
  * evidence/E1-assets.md §7 (sprites DefineSprite_97/103 → s97/s103); absence
  * assertions: tests/e2e/visual.spec.ts "Y2 credit omission".
  */
-const OMITTED_ELEMENTS: ReadonlySet<string> = new Set(['credit_line', 'credit_site']);
+/**
+ * Owner-approved element omission (owner final presentation wave, task Y6,
+ * 2026-09-29): the Top10 button — `btn_top10` (DefineButton2_108) — is not
+ * rendered by the rebuild. The reference action opens the network high-score
+ * page (`getURL("javascript:openWin('top10.php?r=822741','top10',400,360)")`,
+ * artifacts/decompiled/scripts/DefineButton2_108/"BUTTONCONDACTION
+ * on(release).as") and README §2.2 (fixed decision 2: no network features —
+ * Top10 out of scope) excludes it, so the owner directive
+ * `tasks/Y6-top10-omission.md` removes the button from the build mirroring the
+ * Y2 credit omission: the element loop below skips the id before any DOM node
+ * is created, so it leaves no trace in the DOM. The catalog entry
+ * (src/data/layout.json) and the processed SVG asset (s108) stay untouched as
+ * provenance.
+ * evidence: owner directive `tasks/Y6-top10-omission.md` (owner-approved
+ * omission region 419,372,91,23); docs/08-open-items.md "Wave follow-up Y6";
+ * reference provenance: evidence/A3-layout.md §6 (button `btn_top10` ch=108
+ * depth=44, display bbox (419.8,372.95)–(509.25,394.65), reference ink
+ * (421,374)–(505,390) at dsf1) and evidence/E1-assets.md §7 (runtime mapping
+ * `btn_top10` → `src/assets/svg/s108_btn_top10.svg`); absence assertions:
+ * tests/e2e/visual.spec.ts (owner-omission test — the Y6 assertions share the
+ * Y2 test so the visual suite stays at 18 tests, task Y6 VERIFY).
+ */
+const OMITTED_ELEMENTS: ReadonlySet<string> = new Set([
+  'credit_line',
+  'credit_site',
+  'btn_top10',
+]);
 
 function renderStaticLayer(view: BoardView): HTMLElement {
   const layer = createLayer('board-layer board-static');

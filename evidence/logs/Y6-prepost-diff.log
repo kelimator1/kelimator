@@ -1,0 +1,2 @@
+diff: mismatchedPixels=1704 totalPixels=220000 mismatchRatio=0.007745454545454546 pass=true -> evidence/visual/Y6/pre-post-diff/dsf1/report.json
+diff: mismatchedPixels=6889 totalPixels=880000 mismatchRatio=0.00782840909090909 pass=true -> evidence/visual/Y6/pre-post-diff/dsf2/report.json

@@ -1,0 +1,57 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test offline
+
+
+Running 1 test using 1 worker
+
+[T14] dist: 16 files, index.html sha256=894a55d565cd2a1231d2c11989367fd4b458b1cd0b890f3bfe60d2ced88b4e6f
+[T14] requests: 9 observed, 0 non-local attempts
+[T14] boot: state=playing roundId=abacilik tiles=8
+[T14] interaction: tile 0 "C" → entry "C" → backspace → ""
+[T14] PASS — zero non-local requests; app functional offline
+[T14] report: {
+  "schemaVersion": 1,
+  "task": "F3/T14 runtime offline",
+  "generatedAt": "2026-09-29T13:55:54.477Z",
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "durationMs": 6702,
+    "distFiles": 16,
+    "indexHtmlSha256": "894a55d565cd2a1231d2c11989367fd4b458b1cd0b890f3bfe60d2ced88b4e6f"
+  },
+  "preview": {
+    "command": "node_modules/.bin/vite preview --host 127.0.0.1 --port 5288 --strictPort",
+    "url": "http://127.0.0.1:5288/",
+    "readyMs": 273
+  },
+  "requests": {
+    "observed": 9,
+    "local": 9,
+    "nonLocalAttempts": [],
+    "byResourceType": {
+      "document": 1,
+      "script": 1,
+      "image": 6,
+      "media": 1
+    }
+  },
+  "boot": {
+    "state": "playing",
+    "roundId": "abacilik",
+    "boardVisible": true,
+    "tileLetters": 8
+  },
+  "interaction": {
+    "tile": 0,
+    "letter": "C",
+    "entryAfterClick": "C",
+    "entryAfterDelete": ""
+  },
+  "pageErrors": [],
+  "result": "PASS"
+}
+  ✓  1 [app] › tests/e2e/offline/offline.spec.ts:124:3 › T14 runtime offline (served dist/) › boots, interacts, and attempts zero non-local requests (9.4s)
+
+  1 passed (12.6s)

@@ -1,0 +1,22 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test animation
+
+
+Running 8 tests using 1 worker
+
+  ✓  1 [app] › tests/e2e/animations/animations.spec.ts:211:3 › E3 V2 — animation timings equal the catalog › code durations/keyframes equal data/animation.json (1.9s)
+  ✓  2 [app] › tests/e2e/animations/animations.spec.ts:272:3 › E3 V7 — animation triggers › trigger names come from D5 lifecycle events and D4 audio events (1.2s)
+  ✓  3 [app] › tests/e2e/animations/animations.spec.ts:327:3 › E3 V7 — animation triggers › entry change starts the wordball slide and delete slides it out (3.1s)
+E3 board @ 0.0s: raw=3.077% (6770/220000 px), tolerant=0.629% (1384 px), ignoredPixels=68023, pass=true
+  ✓  4 [app] › tests/e2e/animations/animations.spec.ts:359:5 › E3 V5 — animation keyframes › board @ 0.0 s matches the reference capture (2.6s)
+E3 sprite_wordball_timeline @ 0.25s: raw=3.305% (7271/220000 px), tolerant=0.899% (1977 px), ignoredPixels=68023, pass=true
+  ✓  5 [app] › tests/e2e/animations/animations.spec.ts:359:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.25 s matches the reference capture (2.5s)
+E3 sprite_wordball_timeline @ 0.5278s: raw=3.178% (6992/220000 px), tolerant=0.687% (1512 px), ignoredPixels=68023, pass=true
+  ✓  6 [app] › tests/e2e/animations/animations.spec.ts:359:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.5278 s matches the reference capture (2.8s)
+E3 sprite_wordball_timeline @ 0.8056s: raw=3.178% (6992/220000 px), tolerant=0.687% (1512 px), ignoredPixels=68023, pass=true
+  ✓  7 [app] › tests/e2e/animations/animations.spec.ts:359:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.8056 s matches the reference capture (2.9s)
+E3 sprite_wordball_timeline @ 1.0556s: raw=3.178% (6992/220000 px), tolerant=0.687% (1512 px), ignoredPixels=68023, pass=true
+  ✓  8 [app] › tests/e2e/animations/animations.spec.ts:359:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 1.0556 s matches the reference capture (3.4s)
+
+  8 passed (23.3s)

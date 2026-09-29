@@ -1,0 +1,4 @@
+diff: mismatchedPixels=1769 totalPixels=3500 mismatchRatio=0.5054285714285714 pass=false -> ../derivation/window-dsf1-post-vs-ref/report.json
+diff: mismatchedPixels=391 totalPixels=3500 mismatchRatio=0.11171428571428571 pass=false -> ../derivation/window-dsf1-pre-vs-ref/report.json
+diff: mismatchedPixels=7184 totalPixels=14000 mismatchRatio=0.5131428571428571 pass=false -> ../derivation/window-dsf2-post-vs-ref/report.json
+diff: mismatchedPixels=1356 totalPixels=14000 mismatchRatio=0.09685714285714286 pass=true -> ../derivation/window-dsf2-pre-vs-ref/report.json
