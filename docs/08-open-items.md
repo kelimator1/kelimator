@@ -303,6 +303,13 @@ RESOLVED 2026-09-29 — evidence/Y5-speaker-feedback.md — speaker immediate fe
   derived from the F1 tool + absence assertions); data/layout/animation/manifest
   and the s108 asset stay untouched as provenance. Evidence:
   `evidence/Y6-top10.md`.
+- 2026-09-29 — Wave follow-up **Y7** (owner directive, layout-agnostic input):
+  the dotted/dotless İ conflict (browser reports layout-derived keyCodes for
+  `i`/`ı` on Turkish-QWERTY-PC) is fixed by `resolveKey` priority
+  `key` → `keyCode` table → `code`; produced character wins on every layout; no
+  layout detection/heuristics; action keys untouched. Conflict regressions in
+  `tests/input.test.ts`; note in `evidence/D2-input.md` §2. Evidence:
+  `evidence/Y7-i-key.md`.
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:
