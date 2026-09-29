@@ -1,0 +1,60 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test controls --reporter=line
+
+
+Running 4 tests using 1 worker
+
+[1/4] [app] › tests/e2e/controls/controls.spec.ts:297:3 › Y3 Karıştır/Sil hit-area clicks (scaled stage) › clicking the CENTER of the Karıştır label (btn_kbuton) scrambles: event + deck order
+  1) [app] › tests/e2e/controls/controls.spec.ts:297:3 › Y3 Karıştır/Sil hit-area clicks (scaled stage) › clicking the CENTER of the Karıştır label (btn_kbuton) scrambles: event + deck order 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "scramble"
+    Received: "delete"
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      315 |     await page.mouse.click(point.x, point.y);
+      316 |
+    > 317 |     await expect.poll(async () => (await readGame(page)).lastAudioEvent).toBe('scramble');
+          |                                                                          ^
+      318 |     await expect(entry(page)).toHaveText('');
+      319 |     expect(await controlUnder(page, point), 'overlay covering the Karıştır label').toBe(
+      320 |       LABEL_CONTROL.btn_kbuton,
+        at /home/dev/kelimator-2012/tests/e2e/controls/controls.spec.ts:317:74
+
+    Error Context: test-results/tests-e2e-controls-control-aeecf--scrambles-event-deck-order-app/error-context.md
+
+
+[2/4] [app] › tests/e2e/controls/controls.spec.ts:331:3 › Y3 Karıştır/Sil hit-area clicks (scaled stage) › clicking the CENTER of the Sil label (btn_sbuton) deletes the last entry letter
+  2) [app] › tests/e2e/controls/controls.spec.ts:331:3 › Y3 Karıştır/Sil hit-area clicks (scaled stage) › clicking the CENTER of the Sil label (btn_sbuton) deletes the last entry letter 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "delete"
+    Received: "scramble"
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      346 |     await page.mouse.click(point.x, point.y);
+      347 |
+    > 348 |     await expect.poll(async () => (await readGame(page)).lastAudioEvent).toBe('delete');
+          |                                                                          ^
+      349 |     await expect(entry(page)).toHaveText('');
+      350 |     expect(await controlUnder(page, point), 'overlay covering the Sil label').toBe(
+      351 |       LABEL_CONTROL.btn_sbuton,
+        at /home/dev/kelimator-2012/tests/e2e/controls/controls.spec.ts:348:74
+
+    Error Context: test-results/tests-e2e-controls-control-9badb-letes-the-last-entry-letter-app/error-context.md
+
+
+[3/4] [app] › tests/e2e/controls/controls.spec.ts:361:3 › Y3 Karıştır/Sil hit-area clicks (scaled stage) › clicking the CENTER of the Ekle label (btn_ebuton) submits a valid word
+[4/4] [app] › tests/e2e/controls/controls.spec.ts:390:3 › Y3 Karıştır/Sil hit-area clicks (scaled stage) › keyboard SPACE/ENTER/BACKSPACE are unaffected (spot check)
+  2 failed
+    [app] › tests/e2e/controls/controls.spec.ts:297:3 › Y3 Karıştır/Sil hit-area clicks (scaled stage) › clicking the CENTER of the Karıştır label (btn_kbuton) scrambles: event + deck order 
+    [app] › tests/e2e/controls/controls.spec.ts:331:3 › Y3 Karıştır/Sil hit-area clicks (scaled stage) › clicking the CENTER of the Sil label (btn_sbuton) deletes the last entry letter 
+  2 passed (20.8s)
+exit=1

@@ -85,12 +85,35 @@ function layoutElement(id: string): LayoutElementLike {
   return element;
 }
 
+/**
+ * Control → catalog element id of the reference button sprite (E2 renders it).
+ * The ids and their `on(release)` actions are decoded from the 2012 build:
+ * - `btn_kbuton` (sprite 63, display bbox x=156.25) → `karistir();` — the
+ *   "Karıştır" label, so `scramble`.
+ *   // evidence: artifacts/decompiled/scripts/DefineButton2_63/BUTTONCONDACTION on(release).as (`karistir();`); evidence/A3-diffs.md §2 row 63 (`63 | name 'kbuton' | (156.25, 367.95, 232.35, 389.65)`).
+ * - `btn_ebuton` (sprite 65, x=232.85) → `ekle();` — "Ekle", so `submit`.
+ *   // evidence: artifacts/decompiled/scripts/DefineButton2_65/BUTTONCONDACTION on(release).as (`ekle();`); evidence/A3-diffs.md §2 row 65 (`65 | name 'ebuton' | (232.85, 367.95, 302.15, 389.65)`).
+ * - `btn_sbuton` (sprite 105, x=308.6) → `sil();` — "Sil", so `delete`.
+ *   // evidence: artifacts/decompiled/scripts/DefineButton2_105/BUTTONCONDACTION on(release).as (`sil();`); evidence/A3-diffs.md "2012-only stage-placed symbols" row 105 (`105 | DefineButton2Tag | sbuton | (308.60, 367.95, 377.90, 389.65)`).
+ *
+ * Owner defect (wave Y): `scramble`/`delete` were swapped here, so the overlay
+ * at the Karıştır label dispatched `sil()` and the overlay at the Sil label
+ * dispatched `karistir()`. Mapping table + pre/post runs + the superseding note
+ * for evidence/D5-lifecycle.md §6: evidence/Y3-buttons.md.
+ */
+export const CONTROL_ELEMENT_IDS = {
+  submit: 'btn_ebuton',
+  scramble: 'btn_kbuton',
+  delete: 'btn_sbuton',
+  newRound: 'btn_ybuton',
+} as const;
+
 /** Catalog placements of the four button sprites (E2 board renders them). */
-const CONTROL_RECTS = {
-  submit: layoutElement('btn_ebuton'),
-  scramble: layoutElement('btn_sbuton'),
-  delete: layoutElement('btn_kbuton'),
-  newRound: layoutElement('btn_ybuton'),
+export const CONTROL_RECTS = {
+  submit: layoutElement(CONTROL_ELEMENT_IDS.submit),
+  scramble: layoutElement(CONTROL_ELEMENT_IDS.scramble),
+  delete: layoutElement(CONTROL_ELEMENT_IDS.delete),
+  newRound: layoutElement(CONTROL_ELEMENT_IDS.newRound),
 } as const;
 
 // ---------------------------------------------------------------------------

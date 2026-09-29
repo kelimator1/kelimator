@@ -1,0 +1,5 @@
+
+> kelimator-2012@0.0.0 lint
+> eslint .
+
+exit=0

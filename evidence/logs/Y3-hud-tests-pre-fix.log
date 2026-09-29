@@ -1,0 +1,97 @@
+
+> kelimator-2012@0.0.0 test
+> vitest run hud
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.2 [39m[90m/home/dev/kelimator-2012[39m
+
+ [31m❯[39m tests/hud-controls.test.ts [2m([22m[2m3 tests[22m[2m | [22m[31m3 failed[39m[2m)[22m[32m 7[2mms[22m[39m
+   [31m❯[39m Y3 control → element mapping (reference on(release) actions) [2m(3)[22m
+[31m     [31m×[31m maps scramble to btn_kbuton (Karıştır → karistir), delete to btn_sbuton (Sil → sil), submit to btn_ebuton (Ekle → ekle)[39m[32m 4[2mms[22m[39m
+[31m     [31m×[31m places each control rectangle on the catalog bbox of its mapped element[39m[32m 1[2mms[22m[39m
+[31m     [31m×[31m matches the recorded catalog cross-check coordinates of A3 rows 63/65/105[39m[32m 1[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 3 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m tests/hud-controls.test.ts[2m > [22mY3 control → element mapping (reference on(release) actions)[2m > [22mmaps scramble to btn_kbuton (Karıştır → karistir), delete to btn_sbuton (Sil → sil), submit to btn_ebuton (Ekle → ekle)
+[31m[1mAssertionError[22m: expected { submit: 'btn_ebuton', …(3) } to deeply equal { submit: 'btn_ebuton', …(3) }[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[2m  {[22m
+[32m-   "delete": "btn_sbuton",[39m
+[31m+   "delete": "btn_kbuton",[39m
+[2m    "newRound": "btn_ybuton",[22m
+[32m-   "scramble": "btn_kbuton",[39m
+[31m+   "scramble": "btn_sbuton",[39m
+[2m    "submit": "btn_ebuton",[22m
+[2m  }[22m
+
+[36m [2m❯[22m tests/hud-controls.test.ts:[2m118:33[22m[39m
+    [90m116|[39m   it('maps scramble to btn_kbuton (Karıştır → karistir), delete to btn…
+    [90m117|[39m     // The whole mapping, as one guard: the pre-fix swapped pair fails…
+    [90m118|[39m     expect(CONTROL_ELEMENT_IDS).toEqual(EXPECTED_ELEMENT);
+    [90m   |[39m                                 [31m^[39m
+    [90m119|[39m
+    [90m120|[39m     for (const control of CONTROLS) {
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/hud-controls.test.ts[2m > [22mY3 control → element mapping (reference on(release) actions)[2m > [22mplaces each control rectangle on the catalog bbox of its mapped element
+[31m[1mAssertionError[22m: scramble rect: expected { x: 308.6, y: 367.95, w: 69.3, …(1) } to deeply equal { x: 156.25, y: 367.95, w: 76.1, …(1) }[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[2m  {[22m
+[2m    "h": 21.7,[22m
+[32m-   "w": 76.1,[39m
+[32m-   "x": 156.25,[39m
+[31m+   "w": 69.3,[39m
+[31m+   "x": 308.6,[39m
+[2m    "y": 367.95,[22m
+[2m  }[22m
+
+[36m [2m❯[22m tests/hud-controls.test.ts:[2m156:60[22m[39m
+    [90m154|[39m     // The swapped pair would put the two overlays on each other's bbo…
+    [90m155|[39m     // catalog widths differ (76.1 vs 69.3), so equality is a real dis…
+    [90m156|[39m     expect(boxOf(CONTROL_RECTS.scramble), 'scramble rect').toEqual(CAT…
+    [90m   |[39m                                                            [31m^[39m
+    [90m157|[39m     expect(boxOf(CONTROL_RECTS.delete), 'delete rect').toEqual(CATALOG…
+    [90m158|[39m     expect(boxOf(CONTROL_RECTS.submit), 'submit rect').toEqual(CATALOG…
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/hud-controls.test.ts[2m > [22mY3 control → element mapping (reference on(release) actions)[2m > [22mmatches the recorded catalog cross-check coordinates of A3 rows 63/65/105
+[31m[1mAssertionError[22m: scramble rect: expected { x: 308.6, y: 367.95, w: 69.3, …(1) } to deeply equal { x: 156.25, y: 367.95, w: 76.1, …(1) }[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[2m  {[22m
+[2m    "h": 21.7,[22m
+[32m-   "w": 76.1,[39m
+[32m-   "x": 156.25,[39m
+[31m+   "w": 69.3,[39m
+[31m+   "x": 308.6,[39m
+[2m    "y": 367.95,[22m
+[2m  }[22m
+
+[36m [2m❯[22m tests/hud-controls.test.ts:[2m175:60[22m[39m
+    [90m173|[39m     // The exported hud rectangles equal those literal coordinates thr…
+    [90m174|[39m     // mapping — the regression source for the running app.
+    [90m175|[39m     expect(boxOf(CONTROL_RECTS.scramble), 'scramble rect').toEqual(CAT…
+    [90m   |[39m                                                            [31m^[39m
+    [90m176|[39m     expect(boxOf(CONTROL_RECTS.delete), 'delete rect').toEqual(CATALOG…
+    [90m177|[39m     expect(boxOf(CONTROL_RECTS.submit), 'submit rect').toEqual(CATALOG…
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m3 failed[39m[22m[90m (3)[39m
+[2m   Start at [22m 13:03:20
+[2m   Duration [22m 133ms[2m (transform 72%, import 14%, tests 10%, worker 3%)[22m
+
+exit=1

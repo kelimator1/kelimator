@@ -1,0 +1,10 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test playthrough:basic --reporter=line
+
+
+Running 1 test using 1 worker
+
+[1/1] [app] › tests/e2e/playthrough/playthrough:basic.spec.ts:207:3 › D5 basic playthrough › FİNALİZM: scripted submissions fill every listed slot and complete
+  1 passed (26.9s)
+exit=0
