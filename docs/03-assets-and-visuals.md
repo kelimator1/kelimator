@@ -64,6 +64,19 @@ Decision procedure (executed in E1; outcome recorded in evidence):
 > master). Evidence: `evidence/Y1-remaster.md` §1–§3/§6; matching entry in
 > `docs/08-open-items.md` (Amendments).
 
+> Amendment 2026-09-29 (owner final wave Y4, defect from Y1): the Y1 WebP encode
+> of bitmap 86 embedded in `s90_btn_speaker.svg` dropped the alpha channel, so
+> the knob's transparent corners rendered as an opaque black chevron in the app
+> (the Y1 reference-diff allowance masked the pixels, so the visual suite stayed
+> green; the owner caught it). The pin in `tools/process-assets.mjs`
+> `HD_REMASTERS` is now the RGBA encode `artifacts/hd-assets/ai86-8x-alpha.webp`
+> (extended WebP `VP8X`/`ALPH`/`VP8`, 168×232, sha256 `a5a840ab…da29c45`); the
+> size reader understands both containers; the manifest records the new
+> artifact/sha; `tests/assets.test.mjs` asserts s90 declares alpha (and s48
+> stays the opaque RGB payload — bitmap 47 has no alpha in its source, audited).
+> Deterministic/byte-identical pipeline re-runs proven. Evidence:
+> `evidence/Y4-knob-alpha.md` §1–§5.
+
 ## 3. Typography
 
 - Original uses the Verdana family (embedded variants carry Turkish glyph

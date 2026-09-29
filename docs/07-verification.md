@@ -154,6 +154,18 @@ formulas and asserted in unit tests.
 > visual.spec.ts` ("Y2 credit omission"). Evidence: `evidence/Y2-credits.md`,
 > matching entry in `docs/08-open-items.md` (Amendments).
 
+> Amendment 2026-09-29 (owner final wave Y4): after restoring bitmap 86's alpha,
+> the Y1 speaker-knob allowance rect was re-measured with the F1 tool on the S2
+> captures: the remaining remaster deviation bbox (raw > 30, union dsf 1/2 in
+> dsf1 stage coordinates) is `515,370,22,20`, so `Y1_IGNORE_RECTS` shrank from
+> `515,367,22,30` to `515,370,22,20` (mirror
+> `evidence/visual/Y1/derivation/final-rects.json` updated; effective ignored
+> pixels unchanged: 65 930/263 720; S2 tolerant 0.659 %/0.178 %; all board
+> comparisons remain ≤ 2 %). The new rendered-corner regression guard
+> (`tests/e2e/speaker/corner-alpha.spec.ts`, dsf 1+2) asserts the knob's
+> transparent pixels are not opaque black. Evidence:
+> `evidence/Y4-knob-alpha.md` §4/§5/§7.
+
 ## 5. State matrix (S1–S10)
 
 | State | Trigger sequence (app and reference use the same) |

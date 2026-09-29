@@ -274,6 +274,13 @@ SUPERSEDED 2026-09-29 — evidence/Y1-remaster.md §7 — the speaker-knob spati
   deterministically; corner assertion added (dsf1+dsf2); the knob allowance
   rect `515,367,22,30` re-measured (shrink/drop if possible; mirrors updated).
   Evidence: `evidence/Y4-knob-alpha.md`.
+- 2026-09-29 — Y4 knob alpha restore (fixed defect): Y1's RGB WebP (bitmap 86)
+  rendered transparent corners opaque black (masked by the Y1 allowance);
+  RGBA payload `ai86-8x-alpha.webp` (`a5a840ab…`) pinned/embedded, manifest +
+  assets guard (alpha assertion) updated, rendered-corner e2e guard added
+  (dsf 1/2; probe-verified), knob allowance rect shrunk `515,367,22,30` →
+  `515,370,22,20`; suites green (speaker 5, visual 18, full 238). Evidence:
+  `evidence/Y4-knob-alpha.md`.
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:
