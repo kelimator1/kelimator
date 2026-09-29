@@ -62,3 +62,22 @@ Key artifacts: `s48_board_backdrop.svg` `b06c67be…`, `s90_btn_speaker.svg`
 
 **PASS** — G4 re-check green; `tools/verify-all.sh` exit 0 (11/11); wave
 committed; F3/G5 stands valid.
+
+---
+
+## Addendum — Y4 (knob alpha restore, 2026-09-29)
+
+- Defect fixed: Y1's RGB WebP payload made the knob's transparent corners
+  opaque black (masked by the Y1 allowance); RGBA `ai86-8x-alpha.webp`
+  (`a5a840ab…`) pinned and embedded; `s90` `19141e3d…`; manifest `776fb3fd…`.
+- New regression guard: `tests/e2e/speaker/corner-alpha.spec.ts` (dsf 1+2,
+  probe-verified against the old payload); speaker suite 5/5, visual 18/18,
+  full 238/238, lint/build exit 0.
+- Allowance re-measured: knob rect shrunk `515,367,22,30` → `515,370,22,20`
+  (mirror + wired set consistent; ignored pixels unchanged 65 930/263 720).
+- Bitmap-47 audit: RGB source, no alpha — no change.
+- Closing revalidation (post-commit): `tools/verify-all.sh` **exit 0 — 11/11
+  steps, frozen evidence 0**, no non-artifact changes. Commits: `f8e4d66`
+  (task) · `2cdad33` (amendments) · `fa903ec` (SVGO summary refresh).
+
+Result: **PASS**.

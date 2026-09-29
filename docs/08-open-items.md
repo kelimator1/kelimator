@@ -281,6 +281,9 @@ SUPERSEDED 2026-09-29 — evidence/Y1-remaster.md §7 — the speaker-knob spati
   (dsf 1/2; probe-verified), knob allowance rect shrunk `515,367,22,30` →
   `515,370,22,20`; suites green (speaker 5, visual 18, full 238). Evidence:
   `evidence/Y4-knob-alpha.md`.
+- 2026-09-29 — Y4 closing: G4 quick checks green; `tools/verify-all.sh` exit 0
+  (11/11; frozen evidence 0) after the alpha restore and rect shrink; tree
+  clean. Evidence: `evidence/waveY-closing.md` (Addendum).
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:
