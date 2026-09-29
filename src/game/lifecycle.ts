@@ -163,6 +163,25 @@ export interface LifecycleConstants {
   readonly bonusLetterSeed: number;
 }
 
+/**
+ * Boot sequence timings (task Y8, closes O23). The reference plays SWF frames
+ * 1–4 (preloader: byte loader + `gotoAndStop("main")`) and frames 5–130 (the
+ * `main` intro animation) before the first round controller runs; the rebuild's
+ * word list is local, so the first round starts when the intro ends.
+ * evidence: data/animation.json sequences `preloader` (frames 1–4, 4/36 s) and
+ * `intro` (frames 5–130, 126/36 s); evidence/A3-timing.md §1 (36 fps);
+ * artifacts/decompiled/scripts/frame_4/DoAction.as L7–L11
+ * (`gotoAndStop("main"); play();`); frame_131/DoAction.as L1/L108–L114
+ * (`init()` → `xmlload.gotoAndPlay(2)` → `xml1.load(xmlurl)`). Unit tests omit
+ * `boot` and keep the pre-Y8 synchronous `start()` (D5 evidence).
+ */
+export interface BootTimings {
+  /** Preloader span `frames / 36` in ms (`data/animation.json` preloader). */
+  readonly preloaderMs: number;
+  /** Intro span `frames / 36` in ms (`data/animation.json` intro). */
+  readonly introMs: number;
+}
+
 /** Options for {@link createRoundLifecycle}; every side effect is injectable. */
 export interface RoundLifecycleOptions {
   /** Constants loaded once at bootstrap (docs/05 §1). */
@@ -187,6 +206,15 @@ export interface RoundLifecycleOptions {
   readonly shuffleSeedBase?: number;
   /** Bonus RNG override for tests; defaults to `bonusLetterSeed` mulberry32. */
   readonly bonusRandom?: RandomSource;
+  /**
+   * Boot sequence timings (task Y8). When present, `start()` plays
+   * preloader(1–4) → intro(5–130) → first round through the scheduler; when
+   * omitted, `start()` keeps the pre-Y8 synchronous `preloader → main` and the
+   * caller starts the first round (unit-test path).
+   */
+  readonly boot?: BootTimings;
+  /** `setTimeout` replacement for the boot sequence (tests inject a manual one). */
+  readonly schedule?: (ms: number, run: () => void) => () => void;
 }
 
 /** Round lifecycle contract: start, submit, complete, restart. */
@@ -245,6 +273,15 @@ export function createRoundLifecycle(options: RoundLifecycleOptions): RoundLifec
   const sequence: RoundSequence = createRoundSequence(rounds);
   const play: (event: AudioEventName) => void =
     options.playAudio ?? ((event) => playAudioEvent(event));
+  /** Boot-sequence scheduler (Y8); tests inject a manual queue. */
+  const schedule: (ms: number, run: () => void) => () => void =
+    options.schedule ??
+    ((ms, run) => {
+      const handle = setTimeout(run, ms);
+      return () => clearTimeout(handle);
+    });
+  /** Cancel handle of the pending boot step (preloader → main → round). */
+  let bootCancel: (() => void) | null = null;
 
   // -------------------------------------------------------------------------
   // Mutable session state
@@ -511,6 +548,15 @@ export function createRoundLifecycle(options: RoundLifecycleOptions): RoundLifec
     deck.shuffle(nextShuffleSeed());
     input = createInputController({ deck, onEvent: handleInput });
 
+    // Starting a round explicitly (test hook, Yeni Oyun, or the scheduled boot
+    // completion) ends any pending boot step: the preloader must pass through
+    // `main` first (GAME_TRANSITIONS) and the intro timer must not fire a
+    // second round after an early `selectRound`.
+    bootCancel?.();
+    bootCancel = null;
+    if (fsm.state === 'preloader') {
+      fsm.transition('main');
+    }
     if (fsm.state !== 'playing') {
       fsm.transition('playing');
     }
@@ -599,7 +645,24 @@ export function createRoundLifecycle(options: RoundLifecycleOptions): RoundLifec
       // evidence: evidence/A2-labels.md §2 — pages frames 1–4 (preloader) then
       // frame 4 `gotoAndStop("main")`; the bundle is already loaded here.
       fsm.transition('preloader');
-      fsm.transition('main');
+      const boot = options.boot;
+      if (boot === undefined) {
+        // Pre-Y8 unit-test path: `main` immediately; the caller starts the
+        // first round explicitly (D5 evidence §2).
+        fsm.transition('main');
+        return;
+      }
+      // Y8/O23 boot sequence (played on every boot/reload): preloader(1–4) →
+      // intro(5–130) → first settled board. Input stays locked while the FSM is
+      // in `preloader`/`main` (`isInputLocked`) and no input controller exists
+      // before `newRound()` (see the module header / evidence/A2-input.md).
+      bootCancel = schedule(boot.preloaderMs, () => {
+        fsm.transition('main');
+        bootCancel = schedule(boot.introMs, () => {
+          bootCancel = null;
+          newRound();
+        });
+      });
     },
     newRound,
     selectRound,

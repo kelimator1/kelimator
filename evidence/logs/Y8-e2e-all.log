@@ -1,0 +1,384 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test --reporter=line
+
+
+Running 69 tests using 4 workers
+
+(node:26358) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:26356) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:26355) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:26357) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:26358) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:26356) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:26355) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:26357) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/69] [app] › tests/e2e/animations/animations.spec.ts:222:3 › E3 V2 — animation timings equal the catalog › code durations/keyframes equal data/animation.json
+[2/69] [app] › tests/e2e/intro/intro.spec.ts:101:3 › Y8 boot sequence (O23) › boot plays preloader → intro → first board with catalog-derived spans
+[3/69] [app] › tests/e2e/interaction/interaction.spec.ts:218:5 › tile center clicks — deviceScaleFactor 1 › clicking the center of all 8 tiles enters their letters (dsf 1)
+[4/69] [app] › tests/e2e/controls/controls.spec.ts:297:3 › Y3 Karıştır/Sil hit-area clicks (scaled stage) › clicking the CENTER of the Karıştır label (btn_kbuton) scrambles: event + deck order
+[5/69] [app] › tests/e2e/animations/animations.spec.ts:283:3 › E3 V7 — animation triggers › trigger names come from D5 lifecycle events and D4 audio events
+[6/69] [app] › tests/e2e/controls/controls.spec.ts:331:3 › Y3 Karıştır/Sil hit-area clicks (scaled stage) › clicking the CENTER of the Sil label (btn_sbuton) deletes the last entry letter
+[7/69] [app] › tests/e2e/animations/animations.spec.ts:338:3 › E3 V7 — animation triggers › entry change starts the wordball slide and delete slides it out
+[8/69] [app] › tests/e2e/intro/intro.spec.ts:180:3 › Y8 boot sequence (O23) › input stays locked during the intro
+[9/69] [app] › tests/e2e/controls/controls.spec.ts:361:3 › Y3 Karıştır/Sil hit-area clicks (scaled stage) › clicking the CENTER of the Ekle label (btn_ebuton) submits a valid word
+[10/69] [app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › board @ 0.0 s matches the reference capture
+[11/69] [app] › tests/e2e/intro/intro.spec.ts:207:3 › Y8 boot sequence (O23) › the intro replays on reload (boot/presentation state only)
+[12/69] [app] › tests/e2e/interaction/interaction.spec.ts:218:5 › tile center clicks — deviceScaleFactor 2 › clicking the center of all 8 tiles enters their letters (dsf 2)
+[13/69] [app] › tests/e2e/controls/controls.spec.ts:390:3 › Y3 Karıştır/Sil hit-area clicks (scaled stage) › keyboard SPACE/ENTER/BACKSPACE are unaffected (spot check)
+[app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › board @ 0.0 s matches the reference capture
+E3 board @ 0.0s: raw=3.158% (6948/220000 px), tolerant=0.615% (1354 px), ignoredPixels=68023, pass=true
+
+[14/69] [app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.25 s matches the reference capture
+[15/69] [app] › tests/e2e/offline/offline.spec.ts:124:3 › T14 runtime offline (served dist/) › boots, interacts, and attempts zero non-local requests
+[app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.25 s matches the reference capture
+E3 sprite_wordball_timeline @ 0.25s: raw=3.560% (7833/220000 px), tolerant=0.904% (1989 px), ignoredPixels=68023, pass=true
+
+[16/69] [app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.5278 s matches the reference capture
+[17/69] [app] › tests/e2e/interaction/interaction.spec.ts:273:3 › O15 edge checks (evidence/A2-edges.md) › duplicate letters: one entry per tile, delete restores each (O15(a)/(c))
+[app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.5278 s matches the reference capture
+E3 sprite_wordball_timeline @ 0.5278s: raw=3.434% (7554/220000 px), tolerant=0.693% (1524 px), ignoredPixels=68023, pass=true
+
+[18/69] [app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.8056 s matches the reference capture
+[19/69] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 0.0 s (frame 5) matches the reference capture
+[20/69] [app] › tests/e2e/interaction/interaction.spec.ts:314:3 › O15 edge checks (evidence/A2-edges.md) › delete/backspace: removes the last letter and restores its tile; empty delete is sound-only (O15(c))
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 0.0 s (frame 5) matches the reference capture
+Y8 intro frame 5 dsf1: raw=0.344% (756/220000 px), tolerant=0.015% (33 px), pass=true
+
+[21/69] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 0.8611 s (frame 36) matches the reference capture
+[22/69] [app] › tests/e2e/interaction/interaction.spec.ts:341:3 › O15 edge checks (evidence/A2-edges.md) › scramble: clears a partial entry and restores the whole deck (O15(d))
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 0.8611 s (frame 36) matches the reference capture
+Y8 intro frame 36 dsf1: raw=0.877% (1929/220000 px), tolerant=0.000% (1 px), pass=true
+
+[23/69] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 1.75 s (frame 68) matches the reference capture
+[app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.8056 s matches the reference capture
+E3 sprite_wordball_timeline @ 0.8056s: raw=3.434% (7554/220000 px), tolerant=0.693% (1524 px), ignoredPixels=68023, pass=true
+
+[24/69] [app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 1.0556 s matches the reference capture
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 1.75 s (frame 68) matches the reference capture
+Y8 intro frame 68 dsf1: raw=2.771% (6097/220000 px), tolerant=0.193% (425 px), pass=true
+
+[25/69] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 2.6111 s (frame 99) matches the reference capture
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 2.6111 s (frame 99) matches the reference capture
+Y8 intro frame 99 dsf1: raw=3.511% (7724/220000 px), tolerant=1.142% (2512 px), pass=true
+
+[26/69] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 3.4722 s (frame 130) matches the reference capture
+[27/69] [app] › tests/e2e/interaction/interaction.spec.ts:365:3 › O15 edge checks (evidence/A2-edges.md) › re-submit: found word keeps the entry, scores nothing, boings; empty submit buzzes (O15(b)/(f))
+[app] › tests/e2e/offline/offline.spec.ts:124:3 › T14 runtime offline (served dist/) › boots, interacts, and attempts zero non-local requests
+[T14] dist: 16 files, index.html sha256=5dfc4f4018e38c4088fe8ae88eb3aff8a993f88e5544e8980334d508bf311812
+
+[T14] requests: 10 observed, 0 non-local attempts
+
+[T14] boot: state=playing roundId=abacilik tiles=8
+
+[T14] interaction: tile 0 "C" → entry "C" → backspace → ""
+
+[T14] PASS — zero non-local requests; app functional offline
+
+[T14] report: {
+  "schemaVersion": 1,
+  "task": "F3/T14 runtime offline",
+  "generatedAt": "2026-09-29T19:34:43.347Z",
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "durationMs": 4630,
+    "distFiles": 16,
+    "indexHtmlSha256": "5dfc4f4018e38c4088fe8ae88eb3aff8a993f88e5544e8980334d508bf311812"
+  },
+  "preview": {
+    "command": "node_modules/.bin/vite preview --host 127.0.0.1 --port 5288 --strictPort",
+    "url": "http://127.0.0.1:5288/",
+    "readyMs": 271
+  },
+  "requests": {
+    "observed": 10,
+    "local": 10,
+    "nonLocalAttempts": [],
+    "byResourceType": {
+      "document": 1,
+      "script": 1,
+      "image": 7,
+      "media": 1
+    }
+  },
+  "boot": {
+    "state": "playing",
+    "roundId": "abacilik",
+    "boardVisible": true,
+    "tileLetters": 8
+  },
+  "interaction": {
+    "tile": 0,
+    "letter": "C",
+    "entryAfterClick": "C",
+    "entryAfterDelete": ""
+  },
+  "pageErrors": [],
+  "result": "PASS"
+}
+
+[28/69] [app] › tests/e2e/playthrough/playthrough:basic.spec.ts:207:3 › D5 basic playthrough › FİNALİZM: scripted submissions fill every listed slot and complete
+[app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 1.0556 s matches the reference capture
+E3 sprite_wordball_timeline @ 1.0556s: raw=3.434% (7554/220000 px), tolerant=0.693% (1524 px), ignoredPixels=68023, pass=true
+
+[29/69] [app] › tests/e2e/playthrough/playthrough.spec.ts:616:3 › F2 scripted playthrough › FİNALİZM: every step matches the docs/07 oracle and the reference capture
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 3.4722 s (frame 130) matches the reference capture
+Y8 intro frame 130 dsf1: raw=1.886% (4150/220000 px), tolerant=0.021% (46 px), pass=true
+
+[30/69] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 0.0 s (frame 5) matches the reference capture
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 0.0 s (frame 5) matches the reference capture
+Y8 intro frame 5 dsf2: raw=0.232% (2045/880000 px), tolerant=0.004% (32 px), pass=true
+
+[31/69] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 0.8611 s (frame 36) matches the reference capture
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 0.8611 s (frame 36) matches the reference capture
+Y8 intro frame 36 dsf2: raw=0.629% (5531/880000 px), tolerant=0.093% (819 px), pass=true
+
+[32/69] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 1.75 s (frame 68) matches the reference capture
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 1.75 s (frame 68) matches the reference capture
+Y8 intro frame 68 dsf2: raw=2.247% (19773/880000 px), tolerant=0.422% (3710 px), pass=true
+
+[33/69] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 2.6111 s (frame 99) matches the reference capture
+[34/69] [app] › tests/e2e/smoke.spec.ts:99:3 › C2 stage shell smoke › page loads with the stage shell and read-only __game hooks
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 2.6111 s (frame 99) matches the reference capture
+Y8 intro frame 99 dsf2: raw=3.002% (26421/880000 px), tolerant=1.386% (12194 px), pass=true
+
+[35/69] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 3.4722 s (frame 130) matches the reference capture
+  1) [app] › tests/e2e/smoke.spec.ts:99:3 › C2 stage shell smoke › page loads with the stage shell and read-only __game hooks 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "playing"
+    Received: "preloader"
+
+      130 |     // round id string, string array, numeric score and remaining time,
+      131 |     // nullable last audio event.
+    > 132 |     expect(hooks.state).toBe('playing');
+          |                         ^
+      133 |     expect(typeof hooks.roundId).toBe('string');
+      134 |     expect(hooks.roundId).not.toBe('');
+      135 |     const foundWords = hooks.foundWords as unknown[];
+        at /home/dev/kelimator-2012/tests/e2e/smoke.spec.ts:132:25
+
+    Error Context: test-results/tests-e2e-smoke-C2-stage-s-c4b6a-ll-and-read-only-game-hooks-app/error-context.md
+
+
+(node:26724) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 3.4722 s (frame 130) matches the reference capture
+Y8 intro frame 130 dsf2: raw=1.399% (12308/880000 px), tolerant=0.156% (1375 px), pass=true
+
+[36/69] [app] › tests/e2e/intro/intro.spec.ts:309:3 › Y8 intro catalog cross-check › intro keyframes match data/animation.json
+[37/69] [app] › tests/e2e/speaker/corner-alpha.spec.ts:75:5 › Y4 speaker-knob alpha (deviceScaleFactor 1) › the transparent knob corners render as background, not opaque black
+(node:26724) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[38/69] [app] › tests/e2e/smoke.spec.ts:160:5 › C2 stage shell smoke › viewport 320x480: scale, letterbox, non-blank screenshot
+[39/69] [app] › tests/e2e/smoke.spec.ts:160:5 › C2 stage shell smoke › viewport 550x400: scale, letterbox, non-blank screenshot
+[40/69] [app] › tests/e2e/smoke.spec.ts:160:5 › C2 stage shell smoke › viewport 1920x1080: scale, letterbox, non-blank screenshot
+[41/69] [app] › tests/e2e/smoke.spec.ts:160:5 › C2 stage shell smoke › viewport 3840x2160: scale, letterbox, non-blank screenshot
+[42/69] [app] › tests/e2e/smoke.spec.ts:160:5 › C2 stage shell smoke › viewport 3440x1440: scale, letterbox, non-blank screenshot
+[43/69] [app] › tests/e2e/speaker/corner-alpha.spec.ts:75:5 › Y4 speaker-knob alpha (deviceScaleFactor 2) › the transparent knob corners render as background, not opaque black
+[44/69] [app] › tests/e2e/smoke.spec.ts:218:3 › C2 stage shell smoke › fullscreen toggle keeps the scale formula for unchanged viewport dimensions (V2)
+[45/69] [app] › tests/e2e/speaker/speaker.spec.ts:141:3 › X3 speaker toggle › click toggles the audio state + persistence and repaints the icon immediately (no render)
+[app] › tests/e2e/playthrough/playthrough.spec.ts:616:3 › F2 scripted playthrough › FİNALİZM: every step matches the docs/07 oracle and the reference capture
+F2 00-selected: raw=2.520% tolerant=0.602% ignoredPixels=68023 pass=true stable=true
+
+[46/69] [app] › tests/e2e/timeout/reveal-colour.spec.ts:198:3 › X4 timeout reveal colour › FİNALİZM: revealed slots render #ff6600 at timeout; found slots stay black
+F2 01-invalid: raw=3.665% tolerant=0.859% ignoredPixels=68023 pass=true stable=true
+
+F2 02-invalid-cleared: raw=2.516% tolerant=0.603% ignoredPixels=68023 pass=true stable=true
+
+[47/69] [app] › tests/e2e/speaker/speaker.spec.ts:209:3 › X3 speaker toggle › immediate flip per click; boot restore from persistence
+F2 03-valid-FAL: raw=2.597% tolerant=0.605% ignoredPixels=68023 pass=true stable=true
+
+[48/69] [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S1 S1-boot matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S1 S1-boot matches the C3 reference
+E2 S1 dsf1: raw=0.018477272727272728 (1.848%), tolerant=0.0006227272727272727 (0.062%), mismatchedPixels=4065/220000, tolerantMismatchedPixels=137, ignoredPixels=0, pass=true
+
+[49/69] [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S2 S2-idle-board matches the C3 reference
+[app] › tests/e2e/playthrough/playthrough.spec.ts:616:3 › F2 scripted playthrough › FİNALİZM: every step matches the docs/07 oracle and the reference capture
+F2 04-duplicate-FAL: raw=4.212% tolerant=1.217% ignoredPixels=68023 pass=true stable=true
+
+[app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S2 S2-idle-board matches the C3 reference
+E2 S2 dsf1: raw=0.025154545454545454 (2.515%), tolerant=0.0060227272727272725 (0.602%), mismatchedPixels=5534/220000, tolerantMismatchedPixels=1325, ignoredPixels=68023, pass=true
+
+[50/69] [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S3 S3-scrambled matches the C3 reference
+[app] › tests/e2e/playthrough/playthrough.spec.ts:616:3 › F2 scripted playthrough › FİNALİZM: every step matches the docs/07 oracle and the reference capture
+F2 05-duplicate-cleared: raw=2.615% tolerant=0.605% ignoredPixels=68023 pass=true stable=true
+
+[app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S3 S3-scrambled matches the C3 reference
+E2 S3 dsf1: raw=0.02516818181818182 (2.517%), tolerant=0.0060272727272727275 (0.603%), mismatchedPixels=5537/220000, tolerantMismatchedPixels=1326, ignoredPixels=68023, pass=true
+
+[51/69] [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S4 S4-partial-entry matches the C3 reference
+[app] › tests/e2e/playthrough/playthrough.spec.ts:616:3 › F2 scripted playthrough › FİNALİZM: every step matches the docs/07 oracle and the reference capture
+F2 06-valid: raw=2.723% tolerant=0.619% ignoredPixels=68023 pass=true stable=true
+
+[app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S4 S4-partial-entry matches the C3 reference
+E2 S4 dsf1: raw=0.0372 (3.720%), tolerant=0.00890909090909091 (0.891%), mismatchedPixels=8184/220000, tolerantMismatchedPixels=1960, ignoredPixels=68023, pass=true
+
+[52/69] [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S5 S5-valid-word matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S5 S5-valid-word matches the C3 reference
+E2 S5 dsf1: raw=0.025936363636363636 (2.594%), tolerant=0.00605 (0.605%), mismatchedPixels=5706/220000, tolerantMismatchedPixels=1331, ignoredPixels=68023, pass=true
+
+[53/69] [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S6 S6-invalid-word matches the C3 reference
+[app] › tests/e2e/playthrough/playthrough.spec.ts:616:3 › F2 scripted playthrough › FİNALİZM: every step matches the docs/07 oracle and the reference capture
+F2 07-valid: raw=2.816% tolerant=0.640% ignoredPixels=68023 pass=true stable=true
+
+[54/69] [app] › tests/e2e/speaker/speaker.spec.ts:251:3 › X3 speaker toggle › clamps a corrupt stored volume into 0–100 at boot
+[app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S6 S6-invalid-word matches the C3 reference
+E2 S6 dsf1: raw=0.03726818181818182 (3.727%), tolerant=0.008304545454545455 (0.830%), mismatchedPixels=8199/220000, tolerantMismatchedPixels=1827, ignoredPixels=68023, pass=true
+
+[55/69] [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S7 S7-bonus-word matches the C3 reference
+[app] › tests/e2e/playthrough/playthrough.spec.ts:616:3 › F2 scripted playthrough › FİNALİZM: every step matches the docs/07 oracle and the reference capture
+F2 08-valid: raw=2.899% tolerant=0.643% ignoredPixels=68023 pass=true stable=true
+
+[app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S7 S7-bonus-word matches the C3 reference
+E2 S7 dsf1: raw=0.0273 (2.730%), tolerant=0.006072727272727273 (0.607%), mismatchedPixels=6006/220000, tolerantMismatchedPixels=1336, ignoredPixels=68023, pass=true
+
+[56/69] [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S10 S10-next-round matches the C3 reference
+[app] › tests/e2e/playthrough/playthrough.spec.ts:616:3 › F2 scripted playthrough › FİNALİZM: every step matches the docs/07 oracle and the reference capture
+F2 09-valid: raw=2.973% tolerant=0.643% ignoredPixels=68023 pass=true stable=true
+
+[app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S10 S10-next-round matches the C3 reference
+E2 S10 dsf1: raw=0.028463636363636365 (2.846%), tolerant=0.005613636363636364 (0.561%), mismatchedPixels=6262/220000, tolerantMismatchedPixels=1235, ignoredPixels=68023, pass=true
+
+[57/69] [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S1 S1-boot matches the C3 reference
+[app] › tests/e2e/playthrough/playthrough.spec.ts:616:3 › F2 scripted playthrough › FİNALİZM: every step matches the docs/07 oracle and the reference capture
+F2 10-valid: raw=3.055% tolerant=0.659% ignoredPixels=68023 pass=true stable=true
+
+[app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S1 S1-boot matches the C3 reference
+E2 S1 dsf2: raw=0.014513636363636364 (1.451%), tolerant=0.0001534090909090909 (0.015%), mismatchedPixels=12772/880000, tolerantMismatchedPixels=135, ignoredPixels=0, pass=true
+
+[58/69] [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S2 S2-idle-board matches the C3 reference
+[app] › tests/e2e/playthrough/playthrough.spec.ts:616:3 › F2 scripted playthrough › FİNALİZM: every step matches the docs/07 oracle and the reference capture
+F2 11-valid: raw=3.117% tolerant=0.660% ignoredPixels=68023 pass=true stable=true
+
+[app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S2 S2-idle-board matches the C3 reference
+E2 S2 dsf2: raw=0.025139772727272726 (2.514%), tolerant=0.001703409090909091 (0.170%), mismatchedPixels=22123/880000, tolerantMismatchedPixels=1499, ignoredPixels=272092, pass=true
+
+[59/69] [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S3 S3-scrambled matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S3 S3-scrambled matches the C3 reference
+E2 S3 dsf2: raw=0.025192045454545453 (2.519%), tolerant=0.001696590909090909 (0.170%), mismatchedPixels=22169/880000, tolerantMismatchedPixels=1493, ignoredPixels=272092, pass=true
+
+[60/69] [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S4 S4-partial-entry matches the C3 reference
+[app] › tests/e2e/playthrough/playthrough.spec.ts:616:3 › F2 scripted playthrough › FİNALİZM: every step matches the docs/07 oracle and the reference capture
+F2 12-valid: raw=3.212% tolerant=0.662% ignoredPixels=68023 pass=true stable=true
+
+[61/69] [app] › tests/e2e/speaker/speaker.spec.ts:289:5 › Y5 immediate feedback (deviceScaleFactor 1) › the icon flips off and back on inside the click, with no board re-render
+[app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S4 S4-partial-entry matches the C3 reference
+E2 S4 dsf2: raw=0.03451704545454545 (3.452%), tolerant=0.006345454545454546 (0.635%), mismatchedPixels=30375/880000, tolerantMismatchedPixels=5584, ignoredPixels=272092, pass=true
+
+[62/69] [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S5 S5-valid-word matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S5 S5-valid-word matches the C3 reference
+E2 S5 dsf2: raw=0.026013636363636364 (2.601%), tolerant=0.001815909090909091 (0.182%), mismatchedPixels=22892/880000, tolerantMismatchedPixels=1598, ignoredPixels=272092, pass=true
+
+[app] › tests/e2e/playthrough/playthrough.spec.ts:616:3 › F2 scripted playthrough › FİNALİZM: every step matches the docs/07 oracle and the reference capture
+F2 13-valid: raw=3.275% tolerant=0.663% ignoredPixels=68023 pass=true stable=true
+
+[63/69] [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S6 S6-invalid-word matches the C3 reference
+[app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S6 S6-invalid-word matches the C3 reference
+E2 S6 dsf2: raw=0.035326136363636365 (3.533%), tolerant=0.006619318181818182 (0.662%), mismatchedPixels=31087/880000, tolerantMismatchedPixels=5825, ignoredPixels=272092, pass=true
+
+[64/69] [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S7 S7-bonus-word matches the C3 reference
+[app] › tests/e2e/playthrough/playthrough.spec.ts:616:3 › F2 scripted playthrough › FİNALİZM: every step matches the docs/07 oracle and the reference capture
+F2 14-valid: raw=3.357% tolerant=0.665% ignoredPixels=68023 pass=true stable=true
+
+[app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S7 S7-bonus-word matches the C3 reference
+E2 S7 dsf2: raw=0.027104545454545454 (2.710%), tolerant=0.0018715909090909091 (0.187%), mismatchedPixels=23852/880000, tolerantMismatchedPixels=1647, ignoredPixels=272092, pass=true
+
+[65/69] [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S10 S10-next-round matches the C3 reference
+[66/69] [app] › tests/e2e/speaker/speaker.spec.ts:289:5 › Y5 immediate feedback (deviceScaleFactor 2) › the icon flips off and back on inside the click, with no board re-render
+[app] › tests/e2e/playthrough/playthrough.spec.ts:616:3 › F2 scripted playthrough › FİNALİZM: every step matches the docs/07 oracle and the reference capture
+F2 15-valid: raw=3.475% tolerant=0.671% ignoredPixels=68023 pass=true stable=true
+
+[app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S10 S10-next-round matches the C3 reference
+E2 S10 dsf2: raw=0.028567045454545456 (2.857%), tolerant=0.002702272727272727 (0.270%), mismatchedPixels=25139/880000, tolerantMismatchedPixels=2378, ignoredPixels=272092, pass=true
+
+[67/69] [app] › tests/e2e/visual.spec.ts:299:3 › E2 V7 layout cross-consistency › rendered boxes and text styles equal src/data/layout.json
+[68/69] [app] › tests/e2e/visual.spec.ts:372:3 › Y2 credit omission › credit_line and credit_site are absent from the rendered board
+[app] › tests/e2e/playthrough/playthrough.spec.ts:616:3 › F2 scripted playthrough › FİNALİZM: every step matches the docs/07 oracle and the reference capture
+F2 16-valid: raw=3.596% tolerant=0.683% ignoredPixels=68023 pass=true stable=true
+
+F2 17-valid: raw=3.710% tolerant=0.690% ignoredPixels=68023 pass=true stable=true
+
+F2 18-valid: raw=3.811% tolerant=0.696% ignoredPixels=68023 pass=true stable=true
+
+F2 19-bonus-word: raw=3.963% tolerant=0.700% ignoredPixels=68023 pass=true stable=true
+
+F2 20-valid: raw=4.042% tolerant=0.706% ignoredPixels=68023 pass=true stable=true
+
+F2 21-valid: raw=4.149% tolerant=0.711% ignoredPixels=68023 pass=true stable=true
+
+F2 22-valid: raw=4.245% tolerant=0.690% ignoredPixels=68023 pass=true stable=true
+
+F2 23-valid: raw=4.320% tolerant=0.685% ignoredPixels=68023 pass=true stable=true
+
+F2 24-valid: raw=4.420% tolerant=0.678% ignoredPixels=68023 pass=true stable=true
+
+F2 25-valid: raw=4.535% tolerant=0.680% ignoredPixels=68023 pass=true stable=true
+
+F2 26-valid: raw=4.685% tolerant=0.690% ignoredPixels=68023 pass=true stable=true
+
+F2 27-valid: raw=4.794% tolerant=0.687% ignoredPixels=68023 pass=true stable=true
+
+F2 28-valid: raw=4.919% tolerant=0.690% ignoredPixels=68023 pass=true stable=true
+
+F2 29-valid: raw=5.046% tolerant=0.696% ignoredPixels=68023 pass=true stable=true
+
+F2 30-valid: raw=5.194% tolerant=0.700% ignoredPixels=68023 pass=true stable=true
+
+F2 31-valid: raw=5.330% tolerant=0.692% ignoredPixels=68023 pass=true stable=true
+
+F2 32-valid: raw=5.456% tolerant=0.695% ignoredPixels=68023 pass=true stable=true
+
+F2 33-valid: raw=5.575% tolerant=0.697% ignoredPixels=68023 pass=true stable=true
+
+F2 34-valid: raw=5.705% tolerant=0.706% ignoredPixels=68023 pass=true stable=true
+
+F2 35-valid: raw=5.886% tolerant=0.717% ignoredPixels=68023 pass=true stable=true
+
+F2 36-valid: raw=6.025% tolerant=0.724% ignoredPixels=68023 pass=true stable=true
+
+F2 37-valid: raw=6.177% tolerant=0.720% ignoredPixels=68023 pass=true stable=true
+
+F2 38-valid: raw=6.334% tolerant=0.730% ignoredPixels=68023 pass=true stable=true
+
+F2 playthrough: 40 steps, worst tolerant ratio 1.217%
+
+[69/69] [app] › tests/e2e/playthrough/playthrough.spec.ts:918:3 › F2 S9 timeout variant › FİNALİZM: the clock is waited out and the timeout state matches the reference
+[app] › tests/e2e/playthrough/playthrough.spec.ts:918:3 › F2 S9 timeout variant › FİNALİZM: the clock is waited out and the timeout state matches the reference
+F2 timeout: raw=6.207% tolerant=0.511% ignoredPixels=68023 pass=true appWaitMs=200159 stable=true
+
+  Slow test file: [app] › tests/e2e/playthrough/playthrough.spec.ts (5.4m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  1 failed
+    [app] › tests/e2e/smoke.spec.ts:99:3 › C2 stage shell smoke › page loads with the stage shell and read-only __game hooks 
+  68 passed (5.8m)

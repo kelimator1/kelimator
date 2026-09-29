@@ -27,6 +27,7 @@
 // classes and transient ghost nodes on E2's board element.
 
 import animationCatalogJson from '../data/animation.json';
+import type { BoardView } from './board';
 import type { GameState } from '../game/state';
 import type { CompletionReason } from '../game/lifecycle';
 
@@ -199,6 +200,115 @@ export const UNTRIGGERED_SEQUENCE_IDS: readonly string[] = ANIMATION_SEQUENCES.f
 /** The wordball sequence id (visual slide animation). */
 export const WORDBALL_SEQUENCE_ID = 'sprite_wordball_timeline';
 
+// ---------------------------------------------------------------------------
+// Boot intro timeline (task Y8, closes O23)
+//
+// The reference `main` span (SWF frames 5–130) is painted by five step-held
+// CSS animations over the existing vector layers; every value comes from the
+// main-timeline tracks of artifacts/decompiled/tags.xml (extracted into
+// evidence/logs/Y8-intro-series.json, derivation in evidence/Y8-intro.md):
+// - `intro_sky` (ch5) / `intro_layer3` (ch8): alpha crossfade of the day sky
+//   over the static night backdrop (ch1, stars) + moon (ch3) and of the golden
+//   ground surface over the black ground (ch6) — this IS the night→day
+//   mechanism (no CXFORM colour shift of the night elements; they are covered
+//   by the sky as its alpha ramps 36/256 (frame 5) → 256/256 (frame 41));
+// - `intro_glow` (ch20): the sun rises from behind the ground (translateY
+//   0 → −362.9 px over frames 5–129, −2.9 px/frame) while its SWF colour
+//   transform — a linear blend r' = m·r + a with m = redMultTerm/256 and
+//   a = (1−m)·(255,152,51) — is reproduced by an orange overlay layer whose
+//   opacity ramps 1−m from 0.8203 (frame 5) to 0 (frame 129) on top of the
+//   existing GLOW_GRADIENT (src/ui/board.ts);
+// - `intro_logo` (ch29): the falling "kelimatör" wordmark (frames 41–130: fall
+//   from above the stage, settle at the centre, then shrink to the top-left
+//   board position), as translate+scale with transform-origin 0 0.
+//
+// Cadence: 126 frames at 36 fps (data/animation.json `intro`, A3-timing §1);
+// the CSS duration is `calc(126s / 36)` and the keyframes are step-held
+// (`steps(1, end)`) so the app shows exactly the SWF frame's value during its
+// 1/36 s slot, like the reference's per-frame Move tags.
+// ---------------------------------------------------------------------------
+
+/** Root class added to each animated intro element for the boot timeline. */
+export const INTRO_RUN_CLASS = 'e3-intro-run';
+/** The sun's colour-transform overlay (child of the `intro_glow` element). */
+export const INTRO_GLOW_TINT_CLASS = 'e3-intro-glow-tint';
+
+/** Boot-sequence timings in ms (derived from the A3 catalog, Y8/O23). */
+export function bootTimingsMs(): { preloaderMs: number; introMs: number } {
+  const preloader = ANIMATION_SEQUENCES.find((sequence) => sequence.id === 'preloader');
+  const intro = ANIMATION_SEQUENCES.find((sequence) => sequence.id === 'intro');
+  if (preloader === undefined || intro === undefined) {
+    throw new Error('data/animation.json is missing the preloader/intro sequences');
+  }
+  return {
+    preloaderMs: preloader.durationMs,
+    introMs: intro.durationMs,
+  };
+}
+
+function sequenceElementsById(id: string): readonly string[] {
+  return ANIMATION_SEQUENCES.find((sequence) => sequence.id === id)?.elements ?? [];
+}
+
+/**
+ * Boot presentation layer (task Y8). During `preloader`/`main` the board
+ * layout stays mounted underneath (so the board DOM/geometry is available from
+ * the first paint — the E2 V7 layout check samples it) and the boot layer is
+ * raised above it with {@link BOOT_LAYER_CLASS}; the intro's night backdrop and
+ * ground are opaque and cover the board completely.
+ *
+ * Board view of the `main` boot state (intro animation start, frames 5–130):
+ * the board elements first, then the intro elements (their `data-element` ids
+ * repeat for `intro_backdrop`/`intro_glow`/`intro_logo`/`logo_ornament`; the
+ * controller animates the *last* node per id, i.e. the boot layer, while the
+ * first node keeps the A3 catalog rect for the layout check).
+ */
+export function introBoardView(): BoardView {
+  return { elements: [...sequenceElementsById('board'), ...sequenceElementsById('intro')] };
+}
+
+/** Board view of the `preloader` boot state (frames 1–4: night sky + loader). */
+export function preloaderBoardView(): BoardView {
+  return { elements: [...sequenceElementsById('board'), ...sequenceElementsById('preloader')] };
+}
+
+/**
+ * Static alpha values of the preloader frames (frames 2–4), applied while the
+ * FSM is in `preloader` so the boot starts on the same night-sky state the
+ * intro's frame 5 continues from (the intro animation then animates `opacity`).
+ * evidence: tags.xml PlaceObject2 placements — intro_sky depth 5 alpha 36/256,
+ * intro_layer3 depth 9 alpha 51/256, logo_ornament depth 3 alpha 125/256.
+ */
+const PRELOADER_ALPHAS: Readonly<Record<string, number>> = Object.freeze({
+  intro_sky: 36 / 256,
+  intro_layer3: 51 / 256,
+  logo_ornament: 125 / 256,
+});
+
+/** Marker class on each boot layer node (stacking via the wrapper below). */
+export const BOOT_LAYER_CLASS = 'e3-boot-layer';
+/** Class of the wrapper that raises the boot layer above the board layout. */
+export const BOOT_LAYER_ROOT_CLASS = 'e3-boot-layer-root';
+
+/**
+ * Natural SVG box of the falling-wordmark overlay (intro_logo, ch29):
+ * the element is laid out at its natural size and animated with a
+ * translate+scale transform (frames 41–130) so the vector art stays crisp
+ * (a transform-only track; no rasterization).
+ * evidence: tags.xml DefineSpriteTag 29 geometry 375.4×104.6;
+ * evidence/Y8-intro-series.json `logo` track (frame 41: tx 5356, ty −900,
+ * scale 0.78867 → box translate 119.77, −86.25).
+ */
+const INTRO_LOGO_OVERLAY = { w: 375.4, h: 104.6 };
+
+/** Elements carrying an intro timeline animation (see the section header). */
+const INTRO_ANIMATED_ELEMENTS: readonly string[] = [
+  'intro_sky',
+  'intro_layer3',
+  'intro_glow',
+  'intro_logo',
+];
+
 const WORDBALL_GETIR_CLASS = 'e3-wordball-getir';
 const WORDBALL_GOTUR_CLASS = 'e3-wordball-gotur';
 /** Remove-time fallback when `animationend` never fires (hidden page). */
@@ -259,8 +369,12 @@ export interface AnimationController {
   readonly lastSequence: string | null;
   /** Snapshot the pre-repaint wordball DOM (call before `board.apply`). */
   beforeRender(): void;
-  /** Diff the entry against the previous render and start the slides. */
-  afterRender(snapshot: { readonly entry: string }): void;
+  /**
+   * Diff the entry against the previous render, start the wordball slides and
+   * (task Y8) arm the boot-frame visuals: static preloader alphas while the FSM
+   * is in `preloader`, the step-held intro timeline when it enters `main`.
+   */
+  afterRender(snapshot: { readonly entry: string; readonly state: GameState }): void;
   /** D5 `onStateChanged`. */
   stateChanged(change: { readonly previous: GameState; readonly state: GameState }): void;
   /** D5 `onRoundStarted`. */
@@ -320,6 +434,131 @@ export function createAnimationController(
     board.appendChild(ghost);
   }
 
+  // --- Y8 boot intro visuals (see the section header) ----------------------
+
+  /**
+   * The boot-layer node of an element id. During boot the board view renders
+   * the id first (catalog rect) and the boot view appends its own node; the
+   * controller always drives the last node, leaving the first untouched for
+   * the layout cross-check.
+   */
+  function introElement(id: string): HTMLElement | null {
+    const nodes = board.querySelectorAll(`[data-element="${id}"]`);
+    const node = nodes[nodes.length - 1];
+    return node instanceof HTMLElement ? node : null;
+  }
+
+  /**
+   * Board controls are placed at SWF frame 131 only (the intro frames have no
+   * board elements), so their state markers are cleared while the boot layer is
+   * up: the mounted board layout is not painted and the speaker sprite has not
+   * been placed yet.
+   */
+  function clearBoardStateMarkers(): void {
+    const speaker = board.querySelector<HTMLElement>('[data-element="btn_speaker"]');
+    if (speaker !== null) speaker.removeAttribute('data-speaker');
+  }
+
+  /** Every boot-layer node id of the `preloader` and `intro` sequences. */
+  function bootLayerIds(state: GameState): readonly string[] {
+    if (state === 'preloader') return sequenceElementsById('preloader');
+    return sequenceElementsById('intro');
+  }
+
+  /**
+   * Raise the boot layer above the mounted board layout: move the boot nodes
+   * into a full-stage wrapper that is a single stacking context above the
+   * board (their inline z-index values keep the reference depth order inside).
+   * The board's own copies of shared ids stay where the renderer put them, so
+   * the E2 V7 layout check still samples the catalog geometry first.
+   */
+  function markBootLayer(state: GameState): void {
+    let wrapper = board.querySelector<HTMLElement>(`.${BOOT_LAYER_ROOT_CLASS}`);
+    if (wrapper === null) {
+      wrapper = document.createElement('div');
+      wrapper.className = BOOT_LAYER_ROOT_CLASS;
+      board.appendChild(wrapper);
+    }
+    for (const id of bootLayerIds(state)) {
+      const node = introElement(id);
+      if (node !== null) {
+        node.classList.add(BOOT_LAYER_CLASS);
+        if (node.parentElement !== wrapper) wrapper.appendChild(node);
+      }
+    }
+  }
+
+  /**
+   * Preloader frames (2–4): the night-sky layers carry their SWF placement
+   * alphas before the `main` animation takes over (`opacity` is animated from
+   * these same values at frame 5, so the transition is seamless).
+   */
+  function applyPreloaderAlphas(): void {
+    for (const [id, alpha] of Object.entries(PRELOADER_ALPHAS)) {
+      const node = introElement(id);
+      if (node !== null) node.style.opacity = String(alpha);
+    }
+  }
+
+  /**
+   * Arm the step-held CSS tracks on the rendered intro layers and attach the
+   * sun's colour-transform overlay (idempotent: a board re-render creates new
+   * nodes and the next `afterRender` re-arms them).
+   */
+  function startIntroVisuals(): void {
+    // Static alphas first: the moon (logo_ornament) keeps its frame-2
+    // placement alpha for the whole intro; the sky/layer3 inline values are
+    // overridden by their animations (whose first keyframes carry the same
+    // frame-5 values, so nothing flickers).
+    applyPreloaderAlphas();
+    for (const id of INTRO_ANIMATED_ELEMENTS) {
+      const node = introElement(id);
+      if (node !== null) {
+        if (id === 'intro_logo') {
+          // The overlay wordmark is laid out at its natural SVG size (the
+          // transform track scales it); the board's catalog node above stays
+          // untouched for the E2 V7 layout check.
+          node.style.transformOrigin = '0 0';
+          node.style.left = '0px';
+          node.style.top = '0px';
+          node.style.width = `${INTRO_LOGO_OVERLAY.w}px`;
+          node.style.height = `${INTRO_LOGO_OVERLAY.h}px`;
+          const image = node.querySelector('img');
+          if (image instanceof HTMLImageElement) {
+            image.style.width = `${INTRO_LOGO_OVERLAY.w}px`;
+            image.style.height = `${INTRO_LOGO_OVERLAY.h}px`;
+          }
+        }
+        node.classList.add(INTRO_RUN_CLASS);
+      }
+    }
+    const glow = introElement('intro_glow');
+    if (glow !== null && glow.querySelector(`.${INTRO_GLOW_TINT_CLASS}`) === null) {
+      const tint = document.createElement('div');
+      tint.className = INTRO_GLOW_TINT_CLASS;
+      tint.dataset.element = 'intro_glow-tint';
+      glow.appendChild(tint);
+    }
+  }
+
+  /** The boot state transitioned into the boot visuals (`preloader`/`main`). */
+  function applyBootVisuals(state: GameState): void {
+    if (state === 'preloader') {
+      markBootLayer(state);
+      applyPreloaderAlphas();
+      clearBoardStateMarkers();
+      return;
+    }
+    if (state === 'main') {
+      markBootLayer(state);
+      startIntroVisuals();
+      clearBoardStateMarkers();
+      return;
+    }
+    // Left the boot states (first round live): the next board repaint already
+    // dropped the intro nodes.
+  }
+
   return {
     get plays(): Readonly<Record<string, number>> {
       return { ...plays };
@@ -342,7 +581,9 @@ export function createAnimationController(
       }
     },
 
-    afterRender(snapshot: { readonly entry: string }): void {
+    afterRender(snapshot: { readonly entry: string; readonly state: GameState }): void {
+      // Y8 boot-frame visuals first: the entry diff below may return early.
+      applyBootVisuals(snapshot.state);
       const nextEntry = snapshot.entry;
       const previous = previousEntry;
       previousEntry = nextEntry;

@@ -1,0 +1,3884 @@
+{
+  "schemaVersion": 1,
+  "task": "Y8",
+  "kind": "reference-intro-capture",
+  "label": "ref2-dsf2",
+  "deviceScaleFactor": 2,
+  "targets": [
+    5,
+    36,
+    68,
+    99,
+    130
+  ],
+  "startedAt": "2026-09-29T18:46:57.522Z",
+  "launchArgs": [
+    "--mute-audio"
+  ],
+  "harness": {
+    "server": "verify/reference/server.py",
+    "ruffle": "verify/reference/ruffle/web (0.6.0 self-hosted)",
+    "fixture": "verify/reference/fixtures/xml64.base64.php",
+    "swf": "../kelimator-nostalji/calistir/kelimator_tr_2012_mochiads.swf"
+  },
+  "calibration": {
+    "top": 7,
+    "bottom": -8.5
+  },
+  "sessions": [
+    {
+      "startedAt": "2026-09-29T18:46:57.656Z",
+      "shots": 60,
+      "hits": [
+        {
+          "frame": 13,
+          "stage": "sky",
+          "residual": 0.21
+        },
+        {
+          "frame": 17,
+          "stage": "sky",
+          "residual": 0.248
+        },
+        {
+          "frame": 23,
+          "stage": "sky",
+          "residual": 0.752
+        },
+        {
+          "frame": 28,
+          "stage": "sky",
+          "residual": 0.732
+        },
+        {
+          "frame": 34,
+          "stage": "sky",
+          "residual": 0.605
+        },
+        {
+          "frame": 38,
+          "stage": "sky",
+          "residual": 0.064
+        },
+        {
+          "frame": 41,
+          "stage": "sky",
+          "residual": 0
+        },
+        {
+          "frame": 46,
+          "stage": "sun",
+          "residual": 2.25
+        },
+        {
+          "frame": 51,
+          "stage": "sun",
+          "residual": 1.75
+        },
+        {
+          "frame": 63,
+          "stage": "sun",
+          "residual": 1
+        },
+        {
+          "frame": 69,
+          "stage": "sun",
+          "residual": 0.75
+        },
+        {
+          "frame": 75,
+          "stage": "sun",
+          "residual": 0.5
+        },
+        {
+          "frame": 80,
+          "stage": "sun",
+          "residual": 0.2
+        },
+        {
+          "frame": 85,
+          "stage": "sun",
+          "residual": 0.25
+        },
+        {
+          "frame": 90,
+          "stage": "sun",
+          "residual": 0.25
+        },
+        {
+          "frame": 94,
+          "stage": "sun",
+          "residual": 0.7
+        },
+        {
+          "frame": 99,
+          "stage": "sun",
+          "residual": 0.7
+        },
+        {
+          "frame": 103,
+          "stage": "sun",
+          "residual": 1.1
+        },
+        {
+          "frame": 124,
+          "stage": "logo",
+          "residual": 15.922
+        },
+        {
+          "frame": 129,
+          "stage": "logo",
+          "residual": 14.073
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "startedAt": "2026-09-29T18:49:32.749Z",
+      "shots": 31,
+      "hits": [
+        {
+          "frame": 5,
+          "stage": "sky",
+          "residual": 0.127
+        },
+        {
+          "frame": 9,
+          "stage": "sky",
+          "residual": 0.331
+        },
+        {
+          "frame": 14,
+          "stage": "sky",
+          "residual": 0.312
+        },
+        {
+          "frame": 18,
+          "stage": "sky",
+          "residual": 0.771
+        },
+        {
+          "frame": 23,
+          "stage": "sky",
+          "residual": 0.752
+        },
+        {
+          "frame": 27,
+          "stage": "sky",
+          "residual": 0.42
+        },
+        {
+          "frame": 32,
+          "stage": "sky",
+          "residual": 0.439
+        },
+        {
+          "frame": 36,
+          "stage": "sky",
+          "residual": 0.019
+        },
+        {
+          "frame": 40,
+          "stage": "sky",
+          "residual": 0.522
+        },
+        {
+          "frame": 49,
+          "stage": "sun",
+          "residual": 2.25
+        },
+        {
+          "frame": 53,
+          "stage": "sun",
+          "residual": 1.6
+        },
+        {
+          "frame": 62,
+          "stage": "sun",
+          "residual": 1.25
+        },
+        {
+          "frame": 67,
+          "stage": "sun",
+          "residual": 0.75
+        },
+        {
+          "frame": 73,
+          "stage": "sun",
+          "residual": 0.5
+        },
+        {
+          "frame": 77,
+          "stage": "sun",
+          "residual": 0.25
+        },
+        {
+          "frame": 82,
+          "stage": "sun",
+          "residual": 0.25
+        },
+        {
+          "frame": 86,
+          "stage": "sun",
+          "residual": 0.35
+        },
+        {
+          "frame": 91,
+          "stage": "sun",
+          "residual": 0.25
+        },
+        {
+          "frame": 95,
+          "stage": "sun",
+          "residual": 0.8
+        },
+        {
+          "frame": 100,
+          "stage": "sun",
+          "residual": 0.8
+        },
+        {
+          "frame": 104,
+          "stage": "sun",
+          "residual": 1.25
+        },
+        {
+          "frame": 125,
+          "stage": "logo",
+          "residual": 15.177
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "startedAt": "2026-09-29T18:50:27.389Z",
+      "shots": 65,
+      "hits": [
+        {
+          "frame": 11,
+          "stage": "sky",
+          "residual": 0.376
+        },
+        {
+          "frame": 15,
+          "stage": "sky",
+          "residual": 0.796
+        },
+        {
+          "frame": 20,
+          "stage": "sky",
+          "residual": 0.815
+        },
+        {
+          "frame": 24,
+          "stage": "sky",
+          "residual": 0.357
+        },
+        {
+          "frame": 29,
+          "stage": "sky",
+          "residual": 0.376
+        },
+        {
+          "frame": 33,
+          "stage": "sky",
+          "residual": 0.083
+        },
+        {
+          "frame": 38,
+          "stage": "sky",
+          "residual": 0.064
+        },
+        {
+          "frame": 52,
+          "stage": "sun",
+          "residual": 1.5
+        },
+        {
+          "frame": 53,
+          "stage": "sun",
+          "residual": 1.4
+        },
+        {
+          "frame": 61,
+          "stage": "sun",
+          "residual": 1.25
+        },
+        {
+          "frame": 71,
+          "stage": "sun",
+          "residual": 0.5
+        },
+        {
+          "frame": 80,
+          "stage": "sun",
+          "residual": 0.2
+        },
+        {
+          "frame": 95,
+          "stage": "sun",
+          "residual": 0.8
+        },
+        {
+          "frame": 108,
+          "stage": "sun",
+          "residual": 1.15
+        },
+        {
+          "frame": 123,
+          "stage": "logo",
+          "residual": 16.834
+        },
+        {
+          "frame": 127,
+          "stage": "logo",
+          "residual": 13.923
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "startedAt": "2026-09-29T18:50:37.544Z",
+      "shots": 66,
+      "hits": [
+        {
+          "frame": 8,
+          "stage": "sky",
+          "residual": 0.191
+        },
+        {
+          "frame": 12,
+          "stage": "sky",
+          "residual": 0.732
+        },
+        {
+          "frame": 21,
+          "stage": "sky",
+          "residual": 0.293
+        },
+        {
+          "frame": 26,
+          "stage": "sky",
+          "residual": 0.688
+        },
+        {
+          "frame": 30,
+          "stage": "sky",
+          "residual": 0.146
+        },
+        {
+          "frame": 35,
+          "stage": "sky",
+          "residual": 0.503
+        },
+        {
+          "frame": 39,
+          "stage": "sky",
+          "residual": 0.586
+        },
+        {
+          "frame": 65,
+          "stage": "sun",
+          "residual": 1
+        },
+        {
+          "frame": 70,
+          "stage": "sun",
+          "residual": 0.5
+        },
+        {
+          "frame": 74,
+          "stage": "sun",
+          "residual": 0.5
+        },
+        {
+          "frame": 79,
+          "stage": "sun",
+          "residual": 0.35
+        },
+        {
+          "frame": 83,
+          "stage": "sun",
+          "residual": 0.05
+        },
+        {
+          "frame": 88,
+          "stage": "sun",
+          "residual": 0.3
+        },
+        {
+          "frame": 92,
+          "stage": "sun",
+          "residual": 0.25
+        },
+        {
+          "frame": 97,
+          "stage": "sun",
+          "residual": 1
+        },
+        {
+          "frame": 107,
+          "stage": "sun",
+          "residual": 1.05
+        },
+        {
+          "frame": 122,
+          "stage": "logo",
+          "residual": 16.975
+        },
+        {
+          "frame": 128,
+          "stage": "logo",
+          "residual": 13.414
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "startedAt": "2026-09-29T18:50:47.621Z",
+      "shots": 62,
+      "hits": [
+        {
+          "frame": 11,
+          "stage": "sky",
+          "residual": 0.376
+        },
+        {
+          "frame": 24,
+          "stage": "sky",
+          "residual": 0.357
+        },
+        {
+          "frame": 29,
+          "stage": "sky",
+          "residual": 0.376
+        },
+        {
+          "frame": 33,
+          "stage": "sky",
+          "residual": 0.083
+        },
+        {
+          "frame": 50,
+          "stage": "sun",
+          "residual": 2
+        },
+        {
+          "frame": 76,
+          "stage": "sun",
+          "residual": 0.5
+        },
+        {
+          "frame": 80,
+          "stage": "sun",
+          "residual": 0.2
+        },
+        {
+          "frame": 89,
+          "stage": "sun",
+          "residual": 0.4
+        },
+        {
+          "frame": 100,
+          "stage": "sun",
+          "residual": 0.8
+        },
+        {
+          "frame": 109,
+          "stage": "sun",
+          "residual": 1.25
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "startedAt": "2026-09-29T18:50:57.726Z",
+      "shots": 64,
+      "hits": [
+        {
+          "frame": 10,
+          "stage": "sky",
+          "residual": 0.146
+        },
+        {
+          "frame": 19,
+          "stage": "sky",
+          "residual": 0.293
+        },
+        {
+          "frame": 24,
+          "stage": "sky",
+          "residual": 0.357
+        },
+        {
+          "frame": 59,
+          "stage": "sun",
+          "residual": 1.5
+        },
+        {
+          "frame": 68,
+          "stage": "sun",
+          "residual": 0.75
+        },
+        {
+          "frame": 72,
+          "stage": "sun",
+          "residual": 0.75
+        },
+        {
+          "frame": 81,
+          "stage": "sun",
+          "residual": 0.25
+        },
+        {
+          "frame": 86,
+          "stage": "sun",
+          "residual": 0.35
+        },
+        {
+          "frame": 95,
+          "stage": "sun",
+          "residual": 0.8
+        },
+        {
+          "frame": 108,
+          "stage": "sun",
+          "residual": 1.15
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "startedAt": "2026-09-29T18:51:07.296Z",
+      "shots": 67,
+      "hits": [
+        {
+          "frame": 11,
+          "stage": "sky",
+          "residual": 0.376
+        },
+        {
+          "frame": 24,
+          "stage": "sky",
+          "residual": 0.357
+        },
+        {
+          "frame": 29,
+          "stage": "sky",
+          "residual": 0.376
+        },
+        {
+          "frame": 33,
+          "stage": "sky",
+          "residual": 0.083
+        },
+        {
+          "frame": 38,
+          "stage": "sky",
+          "residual": 0.064
+        },
+        {
+          "frame": 79,
+          "stage": "sun",
+          "residual": 0.35
+        },
+        {
+          "frame": 83,
+          "stage": "sun",
+          "residual": 0.05
+        },
+        {
+          "frame": 88,
+          "stage": "sun",
+          "residual": 0.3
+        },
+        {
+          "frame": 101,
+          "stage": "sun",
+          "residual": 0.9
+        },
+        {
+          "frame": 106,
+          "stage": "sun",
+          "residual": 0.95
+        },
+        {
+          "frame": 110,
+          "stage": "sun",
+          "residual": 1.35
+        },
+        {
+          "frame": 125,
+          "stage": "logo",
+          "residual": 15.177
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "startedAt": "2026-09-29T18:51:16.949Z",
+      "shots": 60,
+      "hits": [
+        {
+          "frame": 21,
+          "stage": "sky",
+          "residual": 0.293
+        },
+        {
+          "frame": 26,
+          "stage": "sky",
+          "residual": 0.688
+        },
+        {
+          "frame": 31,
+          "stage": "sky",
+          "residual": 0.669
+        },
+        {
+          "frame": 86,
+          "stage": "sun",
+          "residual": 0.35
+        },
+        {
+          "frame": 91,
+          "stage": "sun",
+          "residual": 0.25
+        },
+        {
+          "frame": 95,
+          "stage": "sun",
+          "residual": 0.8
+        },
+        {
+          "frame": 100,
+          "stage": "sun",
+          "residual": 0.8
+        },
+        {
+          "frame": 125,
+          "stage": "logo",
+          "residual": 15.177
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "startedAt": "2026-09-29T18:51:26.820Z",
+      "shots": 64,
+      "hits": [
+        {
+          "frame": 11,
+          "stage": "sky",
+          "residual": 0.376
+        },
+        {
+          "frame": 24,
+          "stage": "sky",
+          "residual": 0.357
+        },
+        {
+          "frame": 29,
+          "stage": "sky",
+          "residual": 0.376
+        },
+        {
+          "frame": 33,
+          "stage": "sky",
+          "residual": 0.083
+        },
+        {
+          "frame": 38,
+          "stage": "sky",
+          "residual": 0.064
+        },
+        {
+          "frame": 47,
+          "stage": "sun",
+          "residual": 2.25
+        },
+        {
+          "frame": 66,
+          "stage": "sun",
+          "residual": 0.75
+        },
+        {
+          "frame": 79,
+          "stage": "sun",
+          "residual": 0.35
+        },
+        {
+          "frame": 83,
+          "stage": "sun",
+          "residual": 0.05
+        },
+        {
+          "frame": 88,
+          "stage": "sun",
+          "residual": 0.3
+        },
+        {
+          "frame": 107,
+          "stage": "sun",
+          "residual": 1.05
+        },
+        {
+          "frame": 126,
+          "stage": "logo",
+          "residual": 15.172
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "startedAt": "2026-09-29T18:51:36.897Z",
+      "shots": 64,
+      "hits": [
+        {
+          "frame": 6,
+          "stage": "sky",
+          "residual": 0.395
+        },
+        {
+          "frame": 16,
+          "stage": "sky",
+          "residual": 0.274
+        },
+        {
+          "frame": 21,
+          "stage": "sky",
+          "residual": 0.293
+        },
+        {
+          "frame": 25,
+          "stage": "sky",
+          "residual": 0.166
+        },
+        {
+          "frame": 39,
+          "stage": "sky",
+          "residual": 0.586
+        },
+        {
+          "frame": 80,
+          "stage": "sun",
+          "residual": 0.2
+        },
+        {
+          "frame": 84,
+          "stage": "sun",
+          "residual": 0.15
+        },
+        {
+          "frame": 93,
+          "stage": "sun",
+          "residual": 0.6
+        },
+        {
+          "frame": 98,
+          "stage": "sun",
+          "residual": 0.6
+        },
+        {
+          "frame": 102,
+          "stage": "sun",
+          "residual": 1
+        },
+        {
+          "frame": 107,
+          "stage": "sun",
+          "residual": 1.05
+        },
+        {
+          "frame": 111,
+          "stage": "sun",
+          "residual": 1.45
+        },
+        {
+          "frame": 126,
+          "stage": "logo",
+          "residual": 15.172
+        },
+        {
+          "frame": 130,
+          "stage": "logo",
+          "residual": 13.461
+        }
+      ],
+      "consoleErrors": []
+    }
+  ],
+  "best": {
+    "5": {
+      "frame": 5,
+      "stage": "sky",
+      "residual": 0.127,
+      "sha256": "3235d57fadbb44d548b0119ede87ddaf59d877f7df449cb22f61a8ebde056026",
+      "features": {
+        "contentFraction": 0.9996386363636364,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": null,
+        "sunArea": 0,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 11,
+          "g": 22,
+          "b": 30
+        },
+        "skyAlpha": 0.14012738853503184
+      }
+    },
+    "6": {
+      "frame": 6,
+      "stage": "sky",
+      "residual": 0.395,
+      "sha256": "4d67fd8ab6a695eeff173324b25adcbfe30934d620a8d4992c4bccf78949bb81",
+      "features": {
+        "contentFraction": 0.9996386363636364,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": null,
+        "sunArea": 0,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 13,
+          "g": 26,
+          "b": 35
+        },
+        "skyAlpha": 0.16560509554140126
+      }
+    },
+    "8": {
+      "frame": 8,
+      "stage": "sky",
+      "residual": 0.191,
+      "sha256": "2248dabcb6ece7ada37bc1033f4aeda966a38387684af32672a7917e5522af39",
+      "features": {
+        "contentFraction": 0.9998420454545455,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": null,
+        "sunArea": 0,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 16,
+          "g": 33,
+          "b": 45
+        },
+        "skyAlpha": 0.21019108280254778
+      }
+    },
+    "9": {
+      "frame": 9,
+      "stage": "sky",
+      "residual": 0.331,
+      "sha256": "ba2ee7a36ba828a6d235053f15b44b7d7742e53cff0782c11a8086571e17ea09",
+      "features": {
+        "contentFraction": 0.999975,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": null,
+        "sunArea": 0,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 18,
+          "g": 37,
+          "b": 50
+        },
+        "skyAlpha": 0.2356687898089172
+      }
+    },
+    "10": {
+      "frame": 10,
+      "stage": "sky",
+      "residual": 0.146,
+      "sha256": "f86ba49e750399280c03982f9f5d387d2c7d4d6ea73818db5842d4f0b3952d92",
+      "features": {
+        "contentFraction": 0.9999863636363636,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": null,
+        "sunArea": 0,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 20,
+          "g": 41,
+          "b": 56
+        },
+        "skyAlpha": 0.2611464968152866
+      }
+    },
+    "11": {
+      "frame": 11,
+      "stage": "sky",
+      "residual": 0.376,
+      "sha256": "9423eef1ad6e695c25466e2c0a44fc813e00bf7d3e85ede9069191877bb7fbbe",
+      "features": {
+        "contentFraction": 0.9999965909090909,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": null,
+        "sunArea": 0,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 22,
+          "g": 45,
+          "b": 61
+        },
+        "skyAlpha": 0.28662420382165604
+      }
+    },
+    "12": {
+      "frame": 12,
+      "stage": "sky",
+      "residual": 0.732,
+      "sha256": "d7de9b78d9bb8c52deaaca8b577a05b67bd8e7ef96df520047fe909842555e00",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": null,
+        "sunArea": 0,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 24,
+          "g": 48,
+          "b": 66
+        },
+        "skyAlpha": 0.3057324840764331
+      }
+    },
+    "13": {
+      "frame": 13,
+      "stage": "sky",
+      "residual": 0.21,
+      "sha256": "4a36b003fe9d45a69031db1e003f86a89ac6f6f913b94d61c470d4fc5a98f10a",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": null,
+        "sunArea": 0,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 26,
+          "g": 52,
+          "b": 71
+        },
+        "skyAlpha": 0.33121019108280253
+      }
+    },
+    "14": {
+      "frame": 14,
+      "stage": "sky",
+      "residual": 0.312,
+      "sha256": "b8e8ded677b9e74969b0bdf8c1adbd85e3254bb51b9d5814198c010ee002470b",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 251.5,
+          "y": 234,
+          "w": 24.5,
+          "h": 2
+        },
+        "sunArea": 36,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 27,
+          "g": 56,
+          "b": 76
+        },
+        "skyAlpha": 0.35668789808917195
+      }
+    },
+    "15": {
+      "frame": 15,
+      "stage": "sky",
+      "residual": 0.796,
+      "sha256": "e9369d3a9870ff9090d1f1fe658ecf6d68b398e01a73555b1b7a8942265f4337",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 244.5,
+          "y": 231,
+          "w": 39,
+          "h": 5
+        },
+        "sunArea": 137,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 29,
+          "g": 59,
+          "b": 80
+        },
+        "skyAlpha": 0.37579617834394907
+      }
+    },
+    "16": {
+      "frame": 16,
+      "stage": "sky",
+      "residual": 0.274,
+      "sha256": "1e6187b778dcea3d9ba473b592fc88e89e875d006952c4233ed3afcb860d8310",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 239.5,
+          "y": 228,
+          "w": 48.5,
+          "h": 8
+        },
+        "sunArea": 271.5,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 31,
+          "g": 63,
+          "b": 85
+        },
+        "skyAlpha": 0.4012738853503185
+      }
+    },
+    "17": {
+      "frame": 17,
+      "stage": "sky",
+      "residual": 0.248,
+      "sha256": "1a843c838d5af9f99f50f73667d982553ec681585c3a3ca553030df624e26e20",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 235.5,
+          "y": 225,
+          "w": 56.5,
+          "h": 11
+        },
+        "sunArea": 432.75,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 33,
+          "g": 67,
+          "b": 90
+        },
+        "skyAlpha": 0.4267515923566879
+      }
+    },
+    "18": {
+      "frame": 18,
+      "stage": "sky",
+      "residual": 0.771,
+      "sha256": "c2ee34203b85678bc16b15c91268b28419835bd68b05c5aa67b60462f877bbd4",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 232.5,
+          "y": 222,
+          "w": 62.5,
+          "h": 14
+        },
+        "sunArea": 614.25,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 35,
+          "g": 71,
+          "b": 95
+        },
+        "skyAlpha": 0.45222929936305734
+      }
+    },
+    "19": {
+      "frame": 19,
+      "stage": "sky",
+      "residual": 0.293,
+      "sha256": "89a5df2f9b414c713f22dda9bfcd364e1c6cdd96223d749c3ed3e35e2ab3ba1c",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 230,
+          "y": 219,
+          "w": 68,
+          "h": 17
+        },
+        "sunArea": 816.5,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 37,
+          "g": 75,
+          "b": 101
+        },
+        "skyAlpha": 0.47770700636942676
+      }
+    },
+    "20": {
+      "frame": 20,
+      "stage": "sky",
+      "residual": 0.815,
+      "sha256": "315f2c0e3ad21018d7bc2dc1c5bc55a4ed7539efd2810afcd01ae7894b0bbaa6",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 227.5,
+          "y": 216,
+          "w": 72.5,
+          "h": 20
+        },
+        "sunArea": 1030.25,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 38,
+          "g": 78,
+          "b": 106
+        },
+        "skyAlpha": 0.4968152866242038
+      }
+    },
+    "21": {
+      "frame": 21,
+      "stage": "sky",
+      "residual": 0.293,
+      "sha256": "34d96cd220d785b027b3200cdd4c25d7fae14ca82f8f43906e2ff9cb50f3bd34",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225.5,
+          "y": 213,
+          "w": 76.5,
+          "h": 23
+        },
+        "sunArea": 1253.25,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 40,
+          "g": 82,
+          "b": 111
+        },
+        "skyAlpha": 0.5222929936305732
+      }
+    },
+    "23": {
+      "frame": 23,
+      "stage": "sky",
+      "residual": 0.752,
+      "sha256": "ec71ac0d89bd1bb09d7d700f5c5325c4b67b975e4889f8eff1ab79a640f01ead",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 222.5,
+          "y": 207,
+          "w": 82.5,
+          "h": 29
+        },
+        "sunArea": 1733.75,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 44,
+          "g": 90,
+          "b": 121
+        },
+        "skyAlpha": 0.5732484076433121
+      }
+    },
+    "24": {
+      "frame": 24,
+      "stage": "sky",
+      "residual": 0.357,
+      "sha256": "f18464a1d1aed15011870641bcea50c93f9d07d3817a5df3d3784e0498a407af",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 221.5,
+          "y": 204,
+          "w": 84.5,
+          "h": 32
+        },
+        "sunArea": 1986,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 46,
+          "g": 93,
+          "b": 126
+        },
+        "skyAlpha": 0.5923566878980892
+      }
+    },
+    "25": {
+      "frame": 25,
+      "stage": "sky",
+      "residual": 0.166,
+      "sha256": "4abb45a7fd81956ae66dfa3f8c8f3203c35617a2ebaf4411b6193f6e2fbe48d6",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 220.5,
+          "y": 201,
+          "w": 86.5,
+          "h": 35
+        },
+        "sunArea": 2245,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 48,
+          "g": 97,
+          "b": 131
+        },
+        "skyAlpha": 0.6178343949044586
+      }
+    },
+    "26": {
+      "frame": 26,
+      "stage": "sky",
+      "residual": 0.688,
+      "sha256": "09e8ec72c2a8543667597a9dd3633517faffd71b9fa9893cabbeae03c2a45fd7",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 220.5,
+          "y": 198,
+          "w": 87,
+          "h": 38
+        },
+        "sunArea": 2502.25,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 49,
+          "g": 101,
+          "b": 136
+        },
+        "skyAlpha": 0.643312101910828
+      }
+    },
+    "27": {
+      "frame": 27,
+      "stage": "sky",
+      "residual": 0.42,
+      "sha256": "9f9c2e1b94c7fbe62b0452184bac074c73db7ce353720fd6519bfd808227d4d1",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 220,
+          "y": 195.5,
+          "w": 87.5,
+          "h": 40.5
+        },
+        "sunArea": 2749.25,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 51,
+          "g": 104,
+          "b": 141
+        },
+        "skyAlpha": 0.6624203821656051
+      }
+    },
+    "28": {
+      "frame": 28,
+      "stage": "sky",
+      "residual": 0.732,
+      "sha256": "4e4ec6bdc549ba60530c72e1a26ec16377d255cc857f85c7ee0df7309d778516",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 220,
+          "y": 192.5,
+          "w": 87.5,
+          "h": 43.5
+        },
+        "sunArea": 2997.25,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 53,
+          "g": 109,
+          "b": 147
+        },
+        "skyAlpha": 0.6942675159235668
+      }
+    },
+    "29": {
+      "frame": 29,
+      "stage": "sky",
+      "residual": 0.376,
+      "sha256": "8d82cae25310d9988fe6070ca6ae97a1475b56941d860da09229a4d8f2a97275",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 220.5,
+          "y": 189.5,
+          "w": 87,
+          "h": 46.5
+        },
+        "sunArea": 3236.5,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 55,
+          "g": 112,
+          "b": 152
+        },
+        "skyAlpha": 0.7133757961783439
+      }
+    },
+    "30": {
+      "frame": 30,
+      "stage": "sky",
+      "residual": 0.146,
+      "sha256": "b24d5c762fdc7a1cfe54d3610daa610635e5b5c37d9720133583db3051fe684a",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 220.5,
+          "y": 186.5,
+          "w": 86.5,
+          "h": 49.5
+        },
+        "sunArea": 3463.5,
+        "logo": null,
+        "logoArea": 0,
+        "sky": {
+          "r": 57,
+          "g": 116,
+          "b": 157
+        },
+        "skyAlpha": 0.7388535031847133
+      }
+    },
+    "31": {
+      "frame": 31,
+      "stage": "sky",
+      "residual": 0.669,
+      "sha256": "ab5f44c2cea9b7ac3b249b3d753992dd6f33bc585150265b92f9d62fd06d119a",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 220.5,
+          "y": 184,
+          "w": 86.5,
+          "h": 52
+        },
+        "sunArea": 3684.75,
+        "logo": {
+          "x": 244,
+          "y": 184.5,
+          "w": 36,
+          "h": 5.5
+        },
+        "logoArea": 144.75,
+        "sky": {
+          "r": 59,
+          "g": 120,
+          "b": 162
+        },
+        "skyAlpha": 0.7643312101910829
+      }
+    },
+    "32": {
+      "frame": 32,
+      "stage": "sky",
+      "residual": 0.439,
+      "sha256": "62a9165dff3f6ab05c35f8f1caa5ecd52fe5916f5feef898f0712104b6d41972",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 221,
+          "y": 181,
+          "w": 86,
+          "h": 55
+        },
+        "sunArea": 3904.25,
+        "logo": {
+          "x": 239.5,
+          "y": 182,
+          "w": 40.5,
+          "h": 8
+        },
+        "logoArea": 251.75,
+        "sky": {
+          "r": 60,
+          "g": 123,
+          "b": 167
+        },
+        "skyAlpha": 0.7834394904458599
+      }
+    },
+    "33": {
+      "frame": 33,
+      "stage": "sky",
+      "residual": 0.083,
+      "sha256": "e60cf2c15d0a9ce5a6653002fafa6d4ea82dc21f3555b2422c4f3e22a60dc01b",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 221,
+          "y": 178.5,
+          "w": 85.5,
+          "h": 57.5
+        },
+        "sunArea": 4117.75,
+        "logo": {
+          "x": 236,
+          "y": 179,
+          "w": 44,
+          "h": 11
+        },
+        "logoArea": 371.75,
+        "sky": {
+          "r": 62,
+          "g": 127,
+          "b": 172
+        },
+        "skyAlpha": 0.8089171974522293
+      }
+    },
+    "34": {
+      "frame": 34,
+      "stage": "sky",
+      "residual": 0.605,
+      "sha256": "8a11b080d1c172a4cbe46138d22c63cefc6abe162a7298b28295dd33ff8a43ad",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 221,
+          "y": 175.5,
+          "w": 85.5,
+          "h": 60.5
+        },
+        "sunArea": 4325.75,
+        "logo": {
+          "x": 233.5,
+          "y": 176,
+          "w": 46.5,
+          "h": 14
+        },
+        "logoArea": 500.75,
+        "sky": {
+          "r": 64,
+          "g": 131,
+          "b": 177
+        },
+        "skyAlpha": 0.8343949044585988
+      }
+    },
+    "35": {
+      "frame": 35,
+      "stage": "sky",
+      "residual": 0.503,
+      "sha256": "bdba5df4f39141e49162e8af4fb794be69f029a9094d33bf9da4b1afab2b5222",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 221.5,
+          "y": 172.5,
+          "w": 85,
+          "h": 63.5
+        },
+        "sunArea": 4517.75,
+        "logo": {
+          "x": 231,
+          "y": 173.5,
+          "w": 49,
+          "h": 16.5
+        },
+        "logoArea": 633.25,
+        "sky": {
+          "r": 66,
+          "g": 134,
+          "b": 182
+        },
+        "skyAlpha": 0.8535031847133758
+      }
+    },
+    "36": {
+      "frame": 36,
+      "stage": "sky",
+      "residual": 0.019,
+      "sha256": "d4b86e075bc2b961c647ed30611c72fa4330caee4d31b580f026b5de112fe4e6",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 221.5,
+          "y": 170,
+          "w": 84.5,
+          "h": 66
+        },
+        "sunArea": 4707,
+        "logo": {
+          "x": 229,
+          "y": 170.5,
+          "w": 51,
+          "h": 19.5
+        },
+        "logoArea": 773.75,
+        "sky": {
+          "r": 68,
+          "g": 138,
+          "b": 187
+        },
+        "skyAlpha": 0.8789808917197452
+      }
+    },
+    "38": {
+      "frame": 38,
+      "stage": "sky",
+      "residual": 0.064,
+      "sha256": "dbc0fdc9320984154bffce1457acf7de16f8db6f3d9afa6da1288687ad8ed796",
+      "features": {
+        "contentFraction": 1,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 222,
+          "y": 164.5,
+          "w": 84,
+          "h": 71.5
+        },
+        "sunArea": 5036,
+        "logo": {
+          "x": 226.5,
+          "y": 165,
+          "w": 53.5,
+          "h": 25
+        },
+        "logoArea": 1066.75,
+        "sky": {
+          "r": 72,
+          "g": 146,
+          "b": 197
+        },
+        "skyAlpha": 0.9299363057324841
+      }
+    },
+    "39": {
+      "frame": 39,
+      "stage": "sky",
+      "residual": 0.586,
+      "sha256": "84df14f35567ea503afd9ee9aa20215b90dd74edf2333ed1ef54a143452245f6",
+      "features": {
+        "contentFraction": 0.9955113636363636,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 222,
+          "y": 161.5,
+          "w": 83.5,
+          "h": 74.5
+        },
+        "sunArea": 5186,
+        "logo": {
+          "x": 225.5,
+          "y": 162,
+          "w": 54.5,
+          "h": 28
+        },
+        "logoArea": 1222.25,
+        "sky": {
+          "r": 73,
+          "g": 150,
+          "b": 202
+        },
+        "skyAlpha": 0.9554140127388535
+      }
+    },
+    "40": {
+      "frame": 40,
+      "stage": "sky",
+      "residual": 0.522,
+      "sha256": "1efc91f4a8b6d7c6536927c3eb6aacc6dc76c2d7e99f6a76c5fb33187b50cdae",
+      "features": {
+        "contentFraction": 0.9875295454545454,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 222,
+          "y": 158.5,
+          "w": 83.5,
+          "h": 77.5
+        },
+        "sunArea": 5300,
+        "logo": {
+          "x": 224.5,
+          "y": 159.5,
+          "w": 55.5,
+          "h": 30.5
+        },
+        "logoArea": 1372,
+        "sky": {
+          "r": 75,
+          "g": 153,
+          "b": 207
+        },
+        "skyAlpha": 0.9745222929936306
+      }
+    },
+    "41": {
+      "frame": 41,
+      "stage": "sky",
+      "residual": 0,
+      "sha256": "bf2cd14621f20a31a7e5278f601d4bf5f598564c6d4c15bd8f5cdb769cbeb5fd",
+      "features": {
+        "contentFraction": 0.9792988636363636,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 222.5,
+          "y": 150,
+          "w": 82.5,
+          "h": 84
+        },
+        "sunArea": 5420.5,
+        "logo": {
+          "x": 223.5,
+          "y": 151,
+          "w": 56.5,
+          "h": 39
+        },
+        "logoArea": 1844.5,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "46": {
+      "frame": 46,
+      "stage": "sun",
+      "residual": 2.25,
+      "sha256": "5b24942518fb4d5e49f2946ccd208488ffee87fc262b1e6b14428c6dbba9a7c7",
+      "features": {
+        "contentFraction": 0.97875,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 223,
+          "y": 139,
+          "w": 81.5,
+          "h": 82.5
+        },
+        "sunArea": 5304.5,
+        "logo": {
+          "x": 129,
+          "y": 0,
+          "w": 151,
+          "h": 190
+        },
+        "logoArea": 3983.25,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "47": {
+      "frame": 47,
+      "stage": "sun",
+      "residual": 2.25,
+      "sha256": "8629cc931a9e4f7e35ba58a67b2fe7b63ab74f119baa5d9c4fa502e7042c6fce",
+      "features": {
+        "contentFraction": 0.97875,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 223,
+          "y": 136,
+          "w": 81.5,
+          "h": 82.5
+        },
+        "sunArea": 5290,
+        "logo": {
+          "x": 128,
+          "y": 0,
+          "w": 152,
+          "h": 190
+        },
+        "logoArea": 5272.25,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "49": {
+      "frame": 49,
+      "stage": "sun",
+      "residual": 2.25,
+      "sha256": "4664dd9d1090492a639eb503a09330962308d675bb94382f19d54c51ab60a67b",
+      "features": {
+        "contentFraction": 0.97875,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 223,
+          "y": 130,
+          "w": 81.5,
+          "h": 82.5
+        },
+        "sunArea": 5233.5,
+        "logo": {
+          "x": 123.5,
+          "y": 0,
+          "w": 156.5,
+          "h": 190
+        },
+        "logoArea": 7875.75,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "50": {
+      "frame": 50,
+      "stage": "sun",
+      "residual": 2,
+      "sha256": "77bbe6a6b9d270c3f619fe9c0ed9721f16aeb87d9bf565fe279672aff50143dd",
+      "features": {
+        "contentFraction": 0.97875,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 223.5,
+          "y": 127.5,
+          "w": 81,
+          "h": 82
+        },
+        "sunArea": 5214.25,
+        "logo": {
+          "x": 120,
+          "y": 2.5,
+          "w": 160,
+          "h": 187.5
+        },
+        "logoArea": 8555.5,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "51": {
+      "frame": 51,
+      "stage": "sun",
+      "residual": 1.75,
+      "sha256": "fde969bf693fa90500b15019f642df930853ad94141894e565aba31cb5f2e3df",
+      "features": {
+        "contentFraction": 0.97875,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 223.5,
+          "y": 124.5,
+          "w": 81,
+          "h": 81.5
+        },
+        "sunArea": 5195,
+        "logo": {
+          "x": 118,
+          "y": 19,
+          "w": 162,
+          "h": 171
+        },
+        "logoArea": 8832,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "52": {
+      "frame": 52,
+      "stage": "sun",
+      "residual": 1.5,
+      "sha256": "5f26cf6746b27942c6bc75cfaa23c1879576318d106f366f78cd0d1ae0167027",
+      "features": {
+        "contentFraction": 0.97875,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 223.5,
+          "y": 122,
+          "w": 81,
+          "h": 81
+        },
+        "sunArea": 5170.75,
+        "logo": {
+          "x": 116,
+          "y": 37,
+          "w": 164,
+          "h": 153
+        },
+        "logoArea": 9116.75,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "53": {
+      "frame": 53,
+      "stage": "sun",
+      "residual": 1.4,
+      "sha256": "776ae75a9b9f2006ca2aa2e0572cd959d65157e9458cf90f6cfa328076dc62f1",
+      "features": {
+        "contentFraction": 0.97875,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 190,
+          "y": 146.5,
+          "w": 41.5,
+          "h": 50.5
+        },
+        "sunArea": 1415.75,
+        "logo": {
+          "x": 105.5,
+          "y": 111,
+          "w": 174.5,
+          "h": 79
+        },
+        "logoArea": 6328,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "59": {
+      "frame": 59,
+      "stage": "sun",
+      "residual": 1.5,
+      "sha256": "97ce0224406c8b429154436f74dde7422cdee3c5e6d7cf7ba3c63f0545d27eb2",
+      "features": {
+        "contentFraction": 0.9919977272727273,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 223.5,
+          "y": 101.5,
+          "w": 80.5,
+          "h": 80.5
+        },
+        "sunArea": 5065.25,
+        "logo": {
+          "x": 224.5,
+          "y": 102.5,
+          "w": 55.5,
+          "h": 79
+        },
+        "logoArea": 3692,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "61": {
+      "frame": 61,
+      "stage": "sun",
+      "residual": 1.25,
+      "sha256": "464791d8cc8f9c636a50877c36653a99d3378bc1652ddf0c72cc84960a7a91e6",
+      "features": {
+        "contentFraction": 0.9814363636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 224,
+          "y": 96,
+          "w": 80,
+          "h": 80.5
+        },
+        "sunArea": 5038,
+        "logo": {
+          "x": 224.5,
+          "y": 96.5,
+          "w": 55.5,
+          "h": 79
+        },
+        "logoArea": 3677.75,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "62": {
+      "frame": 62,
+      "stage": "sun",
+      "residual": 1.25,
+      "sha256": "dd09ee28516ed254d0fddc3f636c443add758f64f6fd5872b366cfec2c97b8e4",
+      "features": {
+        "contentFraction": 0.9827806818181818,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 224,
+          "y": 93,
+          "w": 80,
+          "h": 80.5
+        },
+        "sunArea": 5027.5,
+        "logo": {
+          "x": 224.5,
+          "y": 94,
+          "w": 55.5,
+          "h": 78.5
+        },
+        "logoArea": 3670.25,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "63": {
+      "frame": 63,
+      "stage": "sun",
+      "residual": 1,
+      "sha256": "0f4cd4d5c87b493c06040221c4ee780945585328084439cf955c180150984dd2",
+      "features": {
+        "contentFraction": 0.9841909090909091,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 224,
+          "y": 90.5,
+          "w": 80,
+          "h": 80
+        },
+        "sunArea": 5021.25,
+        "logo": {
+          "x": 224.5,
+          "y": 91,
+          "w": 55.5,
+          "h": 78.5
+        },
+        "logoArea": 3664,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "65": {
+      "frame": 65,
+      "stage": "sun",
+      "residual": 1,
+      "sha256": "21d8281d6ab1182332f2075f83d830c0b42bf00ee329ccd3ffc5734a2336a678",
+      "features": {
+        "contentFraction": 0.9814420454545455,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 224,
+          "y": 84.5,
+          "w": 79.5,
+          "h": 80
+        },
+        "sunArea": 4993.5,
+        "logo": {
+          "x": 224.5,
+          "y": 85.5,
+          "w": 55.5,
+          "h": 78
+        },
+        "logoArea": 3648.25,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "66": {
+      "frame": 66,
+      "stage": "sun",
+      "residual": 0.75,
+      "sha256": "c49da15f58eef81e4e1bce1753507aee8dcaee20bb36536f20b42bb4c66d1524",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 224,
+          "y": 82,
+          "w": 79.5,
+          "h": 79.5
+        },
+        "sunArea": 4982.75,
+        "logo": {
+          "x": 224.5,
+          "y": 82.5,
+          "w": 55.5,
+          "h": 78.5
+        },
+        "logoArea": 3644.25,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "67": {
+      "frame": 67,
+      "stage": "sun",
+      "residual": 0.75,
+      "sha256": "0dc6d585851a8eeeef2b60670eddb28ad07f571ac3763af465f2d7df8da53ff2",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 224,
+          "y": 79,
+          "w": 79.5,
+          "h": 79.5
+        },
+        "sunArea": 4969,
+        "logo": {
+          "x": 224.5,
+          "y": 79.5,
+          "w": 55.5,
+          "h": 78.5
+        },
+        "logoArea": 3635.5,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "68": {
+      "frame": 68,
+      "stage": "sun",
+      "residual": 0.75,
+      "sha256": "b765f90e0d6bad1b9e6603a14fdc84cfb91c61ad9453981608535b14f34bdb11",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 224,
+          "y": 76,
+          "w": 79.5,
+          "h": 79.5
+        },
+        "sunArea": 4961,
+        "logo": {
+          "x": 225,
+          "y": 76.5,
+          "w": 55,
+          "h": 78.5
+        },
+        "logoArea": 3627.75,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "69": {
+      "frame": 69,
+      "stage": "sun",
+      "residual": 0.75,
+      "sha256": "329ce9a4164350bff7e39d8ac1cb6ea0cd740cc3956835182cfe36c18662fbd1",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 224,
+          "y": 73,
+          "w": 79.5,
+          "h": 79.5
+        },
+        "sunArea": 4944.25,
+        "logo": {
+          "x": 225,
+          "y": 74,
+          "w": 55,
+          "h": 78
+        },
+        "logoArea": 3617.75,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "70": {
+      "frame": 70,
+      "stage": "sun",
+      "residual": 0.5,
+      "sha256": "4949f94c8c04fe64885577d1058a304e119948b99cd54ba30e55e336e07af24e",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 224,
+          "y": 70.5,
+          "w": 79.5,
+          "h": 79
+        },
+        "sunArea": 4933.25,
+        "logo": {
+          "x": 225,
+          "y": 71,
+          "w": 55,
+          "h": 78
+        },
+        "logoArea": 3614.25,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "71": {
+      "frame": 71,
+      "stage": "sun",
+      "residual": 0.5,
+      "sha256": "d2db45f1d843c64776dc35c2a2fd89c41549b857f233c0220dad021c6d0a9b99",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 224.5,
+          "y": 67.5,
+          "w": 79,
+          "h": 79
+        },
+        "sunArea": 4923,
+        "logo": {
+          "x": 225,
+          "y": 68,
+          "w": 55,
+          "h": 78
+        },
+        "logoArea": 3609.25,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "72": {
+      "frame": 72,
+      "stage": "sun",
+      "residual": 0.75,
+      "sha256": "b3e44c8fa528d08bb6b6be7ef47402ca9c2c6479647589c52a78c0c6ca51cfb0",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 224.5,
+          "y": 64.5,
+          "w": 79,
+          "h": 79.5
+        },
+        "sunArea": 4907.5,
+        "logo": {
+          "x": 225,
+          "y": 65.5,
+          "w": 55,
+          "h": 77.5
+        },
+        "logoArea": 3594.75,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "73": {
+      "frame": 73,
+      "stage": "sun",
+      "residual": 0.5,
+      "sha256": "ca44b9d3c2c3c41012a7790ef0eeeaf8b03fea5c6ecd9e321b32adec15c64029",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 224.5,
+          "y": 62,
+          "w": 79,
+          "h": 79
+        },
+        "sunArea": 4902,
+        "logo": {
+          "x": 225,
+          "y": 62.5,
+          "w": 55,
+          "h": 77.5
+        },
+        "logoArea": 3592,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "74": {
+      "frame": 74,
+      "stage": "sun",
+      "residual": 0.5,
+      "sha256": "a992c784df672560399d03bbbb2f885d23892b04a1476dc005bd818df9d88330",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 224.5,
+          "y": 59,
+          "w": 79,
+          "h": 79
+        },
+        "sunArea": 4895.25,
+        "logo": {
+          "x": 225,
+          "y": 59.5,
+          "w": 55,
+          "h": 78
+        },
+        "logoArea": 3588,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "75": {
+      "frame": 75,
+      "stage": "sun",
+      "residual": 0.5,
+      "sha256": "36aa1bd18fe6be358165cfd9ca59a1c5d1c7ef6797734af2438b04b515f3bb00",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 224.5,
+          "y": 56,
+          "w": 79,
+          "h": 79
+        },
+        "sunArea": 4878.25,
+        "logo": {
+          "x": 225,
+          "y": 56.5,
+          "w": 55,
+          "h": 77.5
+        },
+        "logoArea": 3576,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "76": {
+      "frame": 76,
+      "stage": "sun",
+      "residual": 0.5,
+      "sha256": "0c8ec1c90a1196124a558da74526dcfef9aab4c895cfb5f58692136754f93268",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 224.5,
+          "y": 53,
+          "w": 78.5,
+          "h": 79
+        },
+        "sunArea": 4867.25,
+        "logo": {
+          "x": 225,
+          "y": 54,
+          "w": 55,
+          "h": 77.5
+        },
+        "logoArea": 3575.25,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "77": {
+      "frame": 77,
+      "stage": "sun",
+      "residual": 0.25,
+      "sha256": "286bba3fae8afc1b74ff3b47e27a7796e63e08dde12c174b67cb1708df76d171",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 224.5,
+          "y": 50.5,
+          "w": 78.5,
+          "h": 78.5
+        },
+        "sunArea": 4861.25,
+        "logo": {
+          "x": 225,
+          "y": 51,
+          "w": 55,
+          "h": 77.5
+        },
+        "logoArea": 3571.25,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "79": {
+      "frame": 79,
+      "stage": "sun",
+      "residual": 0.35,
+      "sha256": "278e45f5e18acef820f1163ed207f4b942dea8ad7d984f141f5699fb90a19d5d",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 224.5,
+          "y": 44.5,
+          "w": 78.5,
+          "h": 78.5
+        },
+        "sunArea": 4837.25,
+        "logo": {
+          "x": 225,
+          "y": 45,
+          "w": 55,
+          "h": 77.5
+        },
+        "logoArea": 3554,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "80": {
+      "frame": 80,
+      "stage": "sun",
+      "residual": 0.2,
+      "sha256": "3c6a1f01845acbbe246dd9caf758ce9e34581a7abf47a3aafc3bde335615d374",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 224.5,
+          "y": 42,
+          "w": 78.5,
+          "h": 78
+        },
+        "sunArea": 4827.25,
+        "logo": {
+          "x": 225.5,
+          "y": 42.5,
+          "w": 54.5,
+          "h": 77
+        },
+        "logoArea": 3548.75,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "81": {
+      "frame": 81,
+      "stage": "sun",
+      "residual": 0.25,
+      "sha256": "26b96f7e35a9c6e7de6ddf713fadf87206fd2b171c506d6ee143f27d5ac3137c",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 224.5,
+          "y": 39,
+          "w": 78.5,
+          "h": 78.5
+        },
+        "sunArea": 4812.75,
+        "logo": {
+          "x": 225.5,
+          "y": 39.5,
+          "w": 54.5,
+          "h": 77
+        },
+        "logoArea": 3541.5,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "82": {
+      "frame": 82,
+      "stage": "sun",
+      "residual": 0.25,
+      "sha256": "a9edf97368359cc2e1011c022c0839a74b7e6ea507050a10c661ee08ef55d026",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225,
+          "y": 36,
+          "w": 78,
+          "h": 78.5
+        },
+        "sunArea": 4805.25,
+        "logo": {
+          "x": 225.5,
+          "y": 36.5,
+          "w": 54.5,
+          "h": 77
+        },
+        "logoArea": 3535.25,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "83": {
+      "frame": 83,
+      "stage": "sun",
+      "residual": 0.05,
+      "sha256": "a9dd0fd822fb021ca7e58489750cb9557d65d7aea602d15e5a3757ac0874f868",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225,
+          "y": 33.5,
+          "w": 78,
+          "h": 78
+        },
+        "sunArea": 4797,
+        "logo": {
+          "x": 225.5,
+          "y": 34,
+          "w": 54.5,
+          "h": 77
+        },
+        "logoArea": 3532.25,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "84": {
+      "frame": 84,
+      "stage": "sun",
+      "residual": 0.15,
+      "sha256": "7be189978ed5c9c626895533703971643a63c50d3deb0c920411e51872286cf4",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225,
+          "y": 30.5,
+          "w": 78,
+          "h": 78
+        },
+        "sunArea": 4781.25,
+        "logo": {
+          "x": 225.5,
+          "y": 31,
+          "w": 54.5,
+          "h": 77
+        },
+        "logoArea": 3525,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "85": {
+      "frame": 85,
+      "stage": "sun",
+      "residual": 0.25,
+      "sha256": "b4541fdc43ccb2f136ebc8546c7ed80638b1eff54c7e58816f95b96e995c6f60",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225,
+          "y": 27.5,
+          "w": 78,
+          "h": 78
+        },
+        "sunArea": 4769.25,
+        "logo": {
+          "x": 225.5,
+          "y": 28,
+          "w": 54.5,
+          "h": 77
+        },
+        "logoArea": 3517.5,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "86": {
+      "frame": 86,
+      "stage": "sun",
+      "residual": 0.35,
+      "sha256": "e408d8ac57f5fba851c4aca88f7734527af5e935b867f49b0fee26cb46e40670",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225,
+          "y": 24.5,
+          "w": 78,
+          "h": 78
+        },
+        "sunArea": 4766.5,
+        "logo": {
+          "x": 225.5,
+          "y": 25,
+          "w": 54.5,
+          "h": 77
+        },
+        "logoArea": 3515.75,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "88": {
+      "frame": 88,
+      "stage": "sun",
+      "residual": 0.3,
+      "sha256": "0912bfcd016e41d2a99e40e7a1746792ae2215df98aeae2a524ce1010ac3fed1",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225,
+          "y": 19,
+          "w": 77.5,
+          "h": 77.5
+        },
+        "sunArea": 4736,
+        "logo": {
+          "x": 225.5,
+          "y": 19.5,
+          "w": 54.5,
+          "h": 76.5
+        },
+        "logoArea": 3501,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "89": {
+      "frame": 89,
+      "stage": "sun",
+      "residual": 0.4,
+      "sha256": "719a10d1ce07dc9858ce6e981e306a9d5ea6f0cc73c552f3f7d5666f16b255f5",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225,
+          "y": 16,
+          "w": 77.5,
+          "h": 77.5
+        },
+        "sunArea": 4735.75,
+        "logo": {
+          "x": 225.5,
+          "y": 16.5,
+          "w": 54.5,
+          "h": 76.5
+        },
+        "logoArea": 3500.5,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "90": {
+      "frame": 90,
+      "stage": "sun",
+      "residual": 0.25,
+      "sha256": "fe50ffebfc9c8b0d9e0c4634c16178e09cf1595767f06bee9870f5c862ac0497",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225,
+          "y": 13,
+          "w": 77.5,
+          "h": 78
+        },
+        "sunArea": 4722.5,
+        "logo": {
+          "x": 225.5,
+          "y": 14,
+          "w": 54.5,
+          "h": 76
+        },
+        "logoArea": 3492,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "91": {
+      "frame": 91,
+      "stage": "sun",
+      "residual": 0.25,
+      "sha256": "b3e6356a81ddee2f05bcb2506e03ba5d088668440885616adb3dffd68703ce43",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225,
+          "y": 10.5,
+          "w": 77.5,
+          "h": 77.5
+        },
+        "sunArea": 4709.25,
+        "logo": {
+          "x": 225.5,
+          "y": 11,
+          "w": 54.5,
+          "h": 76.5
+        },
+        "logoArea": 3483,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "92": {
+      "frame": 92,
+      "stage": "sun",
+      "residual": 0.25,
+      "sha256": "dccb2a522de19500cdf805cd33a77a25a8abac0f359b7962bc48ad9ffcec3404",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225,
+          "y": 7.5,
+          "w": 77.5,
+          "h": 77.5
+        },
+        "sunArea": 4710.25,
+        "logo": {
+          "x": 225.5,
+          "y": 8,
+          "w": 54.5,
+          "h": 76.5
+        },
+        "logoArea": 3485.75,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "93": {
+      "frame": 93,
+      "stage": "sun",
+      "residual": 0.6,
+      "sha256": "e3a3799ff7eb005d50d0b341d39d51399799af897b7457c5ee3e1f8288dd98af",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225,
+          "y": 4.5,
+          "w": 77.5,
+          "h": 77.5
+        },
+        "sunArea": 4694.5,
+        "logo": {
+          "x": 225.5,
+          "y": 5,
+          "w": 54.5,
+          "h": 76.5
+        },
+        "logoArea": 3475.25,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "94": {
+      "frame": 94,
+      "stage": "sun",
+      "residual": 0.7,
+      "sha256": "44238b48611d0cbdbdd7da90758708c64623f5e4e7292feea421f0550dd3cf33",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225.5,
+          "y": 2,
+          "w": 77,
+          "h": 77
+        },
+        "sunArea": 4677.75,
+        "logo": {
+          "x": 226,
+          "y": 2.5,
+          "w": 54,
+          "h": 76
+        },
+        "logoArea": 3466.75,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "95": {
+      "frame": 95,
+      "stage": "sun",
+      "residual": 0.8,
+      "sha256": "9108deb741e157b9a349b19c4f020b8d8b28fd60639df9ffb8bdffbafa5939eb",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225.5,
+          "y": 0,
+          "w": 77,
+          "h": 76
+        },
+        "sunArea": 4668.5,
+        "logo": {
+          "x": 226,
+          "y": 0,
+          "w": 54,
+          "h": 75.5
+        },
+        "logoArea": 3462.75,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "97": {
+      "frame": 97,
+      "stage": "sun",
+      "residual": 1,
+      "sha256": "0767b7a3cfdacd2b41fe376e38952f4380f200a8eaf1822568aa39d1d296bfb2",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225.5,
+          "y": 0,
+          "w": 77,
+          "h": 70
+        },
+        "sunArea": 4453.75,
+        "logo": {
+          "x": 226,
+          "y": 0,
+          "w": 54,
+          "h": 69.5
+        },
+        "logoArea": 3280.25,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "98": {
+      "frame": 98,
+      "stage": "sun",
+      "residual": 0.6,
+      "sha256": "c837ab01323a54c32add97ed1d262e3a9811087e27ed3f952df618be7a7dc32b",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225.5,
+          "y": 0,
+          "w": 77,
+          "h": 67.5
+        },
+        "sunArea": 4317.25,
+        "logo": {
+          "x": 226,
+          "y": 0,
+          "w": 54,
+          "h": 67
+        },
+        "logoArea": 3169,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "99": {
+      "frame": 99,
+      "stage": "sun",
+      "residual": 0.7,
+      "sha256": "d5e2dc1270f0783fcd25504f050e4ae91afe495eb79319d0720f92e57979ea5f",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225.5,
+          "y": 0,
+          "w": 77,
+          "h": 64.5
+        },
+        "sunArea": 4151.25,
+        "logo": {
+          "x": 226,
+          "y": 0,
+          "w": 54,
+          "h": 64
+        },
+        "logoArea": 3039.5,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "100": {
+      "frame": 100,
+      "stage": "sun",
+      "residual": 0.8,
+      "sha256": "60ce06b10eb49337c2472d550ed5d7821cc2a5bb62d612c5e2b65cbb64acdd51",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225.5,
+          "y": 0,
+          "w": 77,
+          "h": 61.5
+        },
+        "sunArea": 3975,
+        "logo": {
+          "x": 226,
+          "y": 0,
+          "w": 54,
+          "h": 61
+        },
+        "logoArea": 2907.25,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "101": {
+      "frame": 101,
+      "stage": "sun",
+      "residual": 0.9,
+      "sha256": "9fb5b5f8f9912f50cbe13bc688775bfe3866746c49e5e6492f8fee3969059555",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225.5,
+          "y": 0,
+          "w": 76.5,
+          "h": 58.5
+        },
+        "sunArea": 3785.5,
+        "logo": {
+          "x": 226,
+          "y": 0,
+          "w": 54,
+          "h": 58
+        },
+        "logoArea": 2767.25,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "102": {
+      "frame": 102,
+      "stage": "sun",
+      "residual": 1,
+      "sha256": "7b66205bb3d4c45823ecb084e4fa6978d89181a85858068ea06d36ff46fe7017",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225.5,
+          "y": 0,
+          "w": 76.5,
+          "h": 55.5
+        },
+        "sunArea": 3584,
+        "logo": {
+          "x": 226,
+          "y": 0,
+          "w": 54,
+          "h": 55
+        },
+        "logoArea": 2620.5,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "103": {
+      "frame": 103,
+      "stage": "sun",
+      "residual": 1.1,
+      "sha256": "2f44bf0d39818b7dd13830357f1fe614a3c728b88020fbeb55426c9aae531ca2",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225.5,
+          "y": 0,
+          "w": 76.5,
+          "h": 52.5
+        },
+        "sunArea": 3381,
+        "logo": {
+          "x": 226,
+          "y": 0,
+          "w": 54,
+          "h": 52
+        },
+        "logoArea": 2473.75,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "104": {
+      "frame": 104,
+      "stage": "sun",
+      "residual": 1.25,
+      "sha256": "62f629a13e92d0d7903c4e2977d4aa229df2e3d29153de319f6ea2727f9cdfdd",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225.5,
+          "y": 0,
+          "w": 76.5,
+          "h": 49.5
+        },
+        "sunArea": 3164,
+        "logo": {
+          "x": 226,
+          "y": 0,
+          "w": 54,
+          "h": 49
+        },
+        "logoArea": 2318.5,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "106": {
+      "frame": 106,
+      "stage": "sun",
+      "residual": 0.95,
+      "sha256": "f9aa9b2fd84cfa898e04160feaed5d5591e057444f7df0a9a237b7015163f61d",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225.5,
+          "y": 0,
+          "w": 76.5,
+          "h": 44
+        },
+        "sunArea": 2729,
+        "logo": {
+          "x": 226,
+          "y": 0,
+          "w": 54,
+          "h": 43.5
+        },
+        "logoArea": 2006.75,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "107": {
+      "frame": 107,
+      "stage": "sun",
+      "residual": 1.05,
+      "sha256": "5335915451cc7c7fef2680b55e31c038b86dc81dba138bf666ceebce39cf4969",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225.5,
+          "y": 0,
+          "w": 76.5,
+          "h": 41
+        },
+        "sunArea": 2501.5,
+        "logo": {
+          "x": 226,
+          "y": 0,
+          "w": 54,
+          "h": 40.5
+        },
+        "logoArea": 1847.25,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "108": {
+      "frame": 108,
+      "stage": "sun",
+      "residual": 1.15,
+      "sha256": "7e757f3b7e253b94ef668a097d98b5414dc1331e2dfdee9458b794ed0bccde33",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225.5,
+          "y": 0,
+          "w": 77,
+          "h": 38
+        },
+        "sunArea": 2275.75,
+        "logo": {
+          "x": 226.5,
+          "y": 0,
+          "w": 53.5,
+          "h": 37.5
+        },
+        "logoArea": 1685,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "109": {
+      "frame": 109,
+      "stage": "sun",
+      "residual": 1.25,
+      "sha256": "6e29f20ea42e514ae7ad8e54da9bbdbee38c9304af3ed12535de9dd3f5d7f4b9",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 225.5,
+          "y": 0,
+          "w": 76.5,
+          "h": 35
+        },
+        "sunArea": 2052.25,
+        "logo": {
+          "x": 226.5,
+          "y": 0,
+          "w": 53.5,
+          "h": 34.5
+        },
+        "logoArea": 1530,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "110": {
+      "frame": 110,
+      "stage": "sun",
+      "residual": 1.35,
+      "sha256": "509385cb7fba863f5642110d4cb4f104f0ce07d987dd123047de00fd6e3c5fa8",
+      "features": {
+        "contentFraction": 0.9804238636363637,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 226,
+          "y": 0,
+          "w": 75.5,
+          "h": 32
+        },
+        "sunArea": 1826.25,
+        "logo": {
+          "x": 227,
+          "y": 0,
+          "w": 53,
+          "h": 31.5
+        },
+        "logoArea": 1366.5,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "111": {
+      "frame": 111,
+      "stage": "sun",
+      "residual": 1.45,
+      "sha256": "78718e474f9a90822f828717561b56a87c04fcf1219b0c33272b512f5a79ea0d",
+      "features": {
+        "contentFraction": 0.9891193181818182,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 226.5,
+          "y": 0,
+          "w": 74.5,
+          "h": 29
+        },
+        "sunArea": 1605.5,
+        "logo": {
+          "x": 227.5,
+          "y": 0,
+          "w": 52.5,
+          "h": 28.5
+        },
+        "logoArea": 1209.25,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "122": {
+      "frame": 122,
+      "stage": "logo",
+      "residual": 16.975,
+      "sha256": "a2ad09ed2e64f4e39c0fcde095a47b898282093535c98bf23e464cdb3816aa7b",
+      "features": {
+        "contentFraction": 0.97875,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 190,
+          "y": 59.5,
+          "w": 3,
+          "h": 21
+        },
+        "sunArea": 54,
+        "logo": {
+          "x": 25,
+          "y": 47.5,
+          "w": 211.5,
+          "h": 60
+        },
+        "logoArea": 4108.5,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "123": {
+      "frame": 123,
+      "stage": "logo",
+      "residual": 16.834,
+      "sha256": "0f3edeceabbfad7bdf8317fd5d41a1887f57f1bcb2bcfb73380d031e99f8b795",
+      "features": {
+        "contentFraction": 0.97875,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 199.5,
+          "y": 46,
+          "w": 14,
+          "h": 20
+        },
+        "sunArea": 197.75,
+        "logo": {
+          "x": 21.5,
+          "y": 38,
+          "w": 203.5,
+          "h": 57.5
+        },
+        "logoArea": 3809.5,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "124": {
+      "frame": 124,
+      "stage": "logo",
+      "residual": 15.922,
+      "sha256": "5bad7b7105e532e910299dc06511b45dc4f0515d5719e775d2227ab8cfe080bf",
+      "features": {
+        "contentFraction": 0.97875,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 190,
+          "y": 37.5,
+          "w": 14,
+          "h": 19
+        },
+        "sunArea": 185.5,
+        "logo": {
+          "x": 18,
+          "y": 29.5,
+          "w": 196.5,
+          "h": 55.5
+        },
+        "logoArea": 3556.5,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "125": {
+      "frame": 125,
+      "stage": "logo",
+      "residual": 15.177,
+      "sha256": "cb933ace1f8bfa0245415854082a18046392397ee6144322549aced108f152d4",
+      "features": {
+        "contentFraction": 0.97875,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 190,
+          "y": 29.5,
+          "w": 5,
+          "h": 18
+        },
+        "sunArea": 73.75,
+        "logo": {
+          "x": 15.5,
+          "y": 22,
+          "w": 190.5,
+          "h": 54
+        },
+        "logoArea": 3331,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "126": {
+      "frame": 126,
+      "stage": "logo",
+      "residual": 15.172,
+      "sha256": "720decd7cb43cfb7108c38449a65023eaba7399e787f018a8c8ec21961468240",
+      "features": {
+        "contentFraction": 0.97875,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 190,
+          "y": 22,
+          "w": 8.5,
+          "h": 17.5
+        },
+        "sunArea": 78.5,
+        "logo": {
+          "x": 13,
+          "y": 16,
+          "w": 185.5,
+          "h": 52
+        },
+        "logoArea": 3141.5,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "127": {
+      "frame": 127,
+      "stage": "logo",
+      "residual": 13.923,
+      "sha256": "5121c7bb6eb49ca3aadf09bc23d7620e7b09fdad585c1c571577a74b5075b3bf",
+      "features": {
+        "contentFraction": 0.97875,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": {
+          "x": 190,
+          "y": 17,
+          "w": 2,
+          "h": 4
+        },
+        "sunArea": 8,
+        "logo": {
+          "x": 11,
+          "y": 10.5,
+          "w": 181,
+          "h": 51.5
+        },
+        "logoArea": 3010.25,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "128": {
+      "frame": 128,
+      "stage": "logo",
+      "residual": 13.414,
+      "sha256": "453d9355870a49b305641843d54c56fa45644256f1bfffb7778f72f130198338",
+      "features": {
+        "contentFraction": 0.97875,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": null,
+        "sunArea": 0,
+        "logo": {
+          "x": 9.5,
+          "y": 6.5,
+          "w": 178,
+          "h": 50.5
+        },
+        "logoArea": 2905.75,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "129": {
+      "frame": 129,
+      "stage": "logo",
+      "residual": 14.073,
+      "sha256": "26713663882fc281b45f6b9aa2c8791b15c61cc90b9c5ef6a3acb51cddf4f971",
+      "features": {
+        "contentFraction": 0.97875,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": null,
+        "sunArea": 0,
+        "logo": {
+          "x": 8.5,
+          "y": 4,
+          "w": 175.5,
+          "h": 49.5
+        },
+        "logoArea": 2824,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    },
+    "130": {
+      "frame": 130,
+      "stage": "logo",
+      "residual": 13.461,
+      "sha256": "dd116c1980e564e4b66c8aecb971fb9998aff168199ac1c9e421f8cc3c90c741",
+      "features": {
+        "contentFraction": 0.97875,
+        "boardVisible": false,
+        "barVisible": false,
+        "barProgress": 0,
+        "sun": null,
+        "sunArea": 0,
+        "logo": {
+          "x": 8,
+          "y": 2,
+          "w": 174,
+          "h": 49.5
+        },
+        "logoArea": 2782.5,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1
+      }
+    }
+  },
+  "captures": [
+    {
+      "target": 5,
+      "name": "frame-005",
+      "file": "artifacts/y8-captures/ref2-dsf2/frame-005.png",
+      "measuredFrame": 5,
+      "stage": "sky",
+      "residual": 0.127,
+      "sha256": "3235d57fadbb44d548b0119ede87ddaf59d877f7df449cb22f61a8ebde056026",
+      "width": 1100,
+      "height": 800,
+      "features": {
+        "sun": null,
+        "sky": {
+          "r": 11,
+          "g": 22,
+          "b": 30
+        },
+        "skyAlpha": 0.1401,
+        "logo": null
+      }
+    },
+    {
+      "target": 36,
+      "name": "frame-036",
+      "file": "artifacts/y8-captures/ref2-dsf2/frame-036.png",
+      "measuredFrame": 36,
+      "stage": "sky",
+      "residual": 0.019,
+      "sha256": "d4b86e075bc2b961c647ed30611c72fa4330caee4d31b580f026b5de112fe4e6",
+      "width": 1100,
+      "height": 800,
+      "features": {
+        "sun": {
+          "x": 221.5,
+          "y": 170,
+          "w": 84.5,
+          "h": 66
+        },
+        "sky": {
+          "r": 68,
+          "g": 138,
+          "b": 187
+        },
+        "skyAlpha": 0.879,
+        "logo": {
+          "x": 229,
+          "y": 170.5,
+          "w": 51,
+          "h": 19.5
+        }
+      }
+    },
+    {
+      "target": 68,
+      "name": "frame-068",
+      "file": "artifacts/y8-captures/ref2-dsf2/frame-068.png",
+      "measuredFrame": 68,
+      "stage": "sun",
+      "residual": 0.75,
+      "sha256": "b765f90e0d6bad1b9e6603a14fdc84cfb91c61ad9453981608535b14f34bdb11",
+      "width": 1100,
+      "height": 800,
+      "features": {
+        "sun": {
+          "x": 224,
+          "y": 76,
+          "w": 79.5,
+          "h": 79.5
+        },
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1,
+        "logo": {
+          "x": 225,
+          "y": 76.5,
+          "w": 55,
+          "h": 78.5
+        }
+      }
+    },
+    {
+      "target": 99,
+      "name": "frame-099",
+      "file": "artifacts/y8-captures/ref2-dsf2/frame-099.png",
+      "measuredFrame": 99,
+      "stage": "sun",
+      "residual": 0.7,
+      "sha256": "d5e2dc1270f0783fcd25504f050e4ae91afe495eb79319d0720f92e57979ea5f",
+      "width": 1100,
+      "height": 800,
+      "features": {
+        "sun": {
+          "x": 225.5,
+          "y": 0,
+          "w": 77,
+          "h": 64.5
+        },
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1,
+        "logo": {
+          "x": 226,
+          "y": 0,
+          "w": 54,
+          "h": 64
+        }
+      }
+    },
+    {
+      "target": 130,
+      "name": "frame-130",
+      "file": "artifacts/y8-captures/ref2-dsf2/frame-130.png",
+      "measuredFrame": 130,
+      "stage": "logo",
+      "residual": 13.461,
+      "sha256": "dd116c1980e564e4b66c8aecb971fb9998aff168199ac1c9e421f8cc3c90c741",
+      "width": 1100,
+      "height": 800,
+      "features": {
+        "sun": null,
+        "sky": {
+          "r": 77,
+          "g": 157,
+          "b": 212
+        },
+        "skyAlpha": 1,
+        "logo": {
+          "x": 8,
+          "y": 2,
+          "w": 174,
+          "h": 49.5
+        }
+      }
+    }
+  ],
+  "endedAt": "2026-09-29T18:51:47.085Z"
+}

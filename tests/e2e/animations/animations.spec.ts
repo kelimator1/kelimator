@@ -19,6 +19,17 @@
 // (the harness's click step overhead exceeds the 194 ms slide) and is recorded
 // as not covered.
 //
+// Coverage update (task Y8, closes O23): the `intro` main-timeline span
+// (frames 5–130) and its element motions (`intro_glow_motion`,
+// `intro_logo_motion`) are now painted by the E3 intro timeline
+// (src/ui/animations.ts + src/styles/animations.css). Their keyframe
+// comparisons (catalog offsets 0 / 0.8611 / 1.75 / 2.6111 / 3.4722 s at
+// deviceScaleFactor 1 + 2, folded with the boot preloader→intro→board e2e and
+// the input-lock check) live in tests/e2e/intro/intro.spec.ts, which keeps this
+// suite's covered set (and its count) unchanged. Reference captures:
+// evidence/visual/Y8/reference-dsf{1,2}/frame-<F>.png
+// (tests/e2e/intro/capture-intro-reference.mjs).
+//
 // Owner-approved allowance (tasks Y1/Y2): the covered keyframes pass the HD
 // backdrop/knob `--ignore-rect` set plus the credit-omission region, combined
 // in tests/e2e/visual-states.ts (`boardIgnoreRectArgs`/`boardIgnoreRects`), and

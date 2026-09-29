@@ -1,0 +1,39 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test animation --reporter=line
+
+
+Running 8 tests using 1 worker
+
+(node:42621) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:42621) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/8] [app] › tests/e2e/animations/animations.spec.ts:222:3 › E3 V2 — animation timings equal the catalog › code durations/keyframes equal data/animation.json
+[2/8] [app] › tests/e2e/animations/animations.spec.ts:283:3 › E3 V7 — animation triggers › trigger names come from D5 lifecycle events and D4 audio events
+[3/8] [app] › tests/e2e/animations/animations.spec.ts:338:3 › E3 V7 — animation triggers › entry change starts the wordball slide and delete slides it out
+[4/8] [app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › board @ 0.0 s matches the reference capture
+[app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › board @ 0.0 s matches the reference capture
+E3 board @ 0.0s: raw=3.158% (6948/220000 px), tolerant=0.615% (1354 px), ignoredPixels=68023, pass=true
+
+[5/8] [app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.25 s matches the reference capture
+[app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.25 s matches the reference capture
+E3 sprite_wordball_timeline @ 0.25s: raw=3.610% (7943/220000 px), tolerant=0.929% (2043 px), ignoredPixels=68023, pass=true
+
+[6/8] [app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.5278 s matches the reference capture
+[app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.5278 s matches the reference capture
+E3 sprite_wordball_timeline @ 0.5278s: raw=3.434% (7554/220000 px), tolerant=0.693% (1524 px), ignoredPixels=68023, pass=true
+
+[7/8] [app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.8056 s matches the reference capture
+[app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 0.8056 s matches the reference capture
+E3 sprite_wordball_timeline @ 0.8056s: raw=3.434% (7554/220000 px), tolerant=0.693% (1524 px), ignoredPixels=68023, pass=true
+
+[8/8] [app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 1.0556 s matches the reference capture
+[app] › tests/e2e/animations/animations.spec.ts:370:5 › E3 V5 — animation keyframes › sprite_wordball_timeline @ 1.0556 s matches the reference capture
+E3 sprite_wordball_timeline @ 1.0556s: raw=3.434% (7554/220000 px), tolerant=0.693% (1524 px), ignoredPixels=68023, pass=true
+
+  8 passed (16.9s)

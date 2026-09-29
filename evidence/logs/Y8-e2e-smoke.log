@@ -1,0 +1,48 @@
+
+Running 7 tests using 1 worker
+
+(node:25168) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:25168) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/7] [app] › tests/e2e/smoke.spec.ts:99:3 › C2 stage shell smoke › page loads with the stage shell and read-only __game hooks
+  1) [app] › tests/e2e/smoke.spec.ts:99:3 › C2 stage shell smoke › page loads with the stage shell and read-only __game hooks 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "playing"
+    Received: "preloader"
+
+      130 |     // round id string, string array, numeric score and remaining time,
+      131 |     // nullable last audio event.
+    > 132 |     expect(hooks.state).toBe('playing');
+          |                         ^
+      133 |     expect(typeof hooks.roundId).toBe('string');
+      134 |     expect(hooks.roundId).not.toBe('');
+      135 |     const foundWords = hooks.foundWords as unknown[];
+        at /home/dev/kelimator-2012/tests/e2e/smoke.spec.ts:132:25
+
+    Error Context: test-results/tests-e2e-smoke-C2-stage-s-c4b6a-ll-and-read-only-game-hooks-app/error-context.md
+
+
+(node:25187) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:25187) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[2/7] [app] › tests/e2e/smoke.spec.ts:160:5 › C2 stage shell smoke › viewport 320x480: scale, letterbox, non-blank screenshot
+[3/7] [app] › tests/e2e/smoke.spec.ts:160:5 › C2 stage shell smoke › viewport 550x400: scale, letterbox, non-blank screenshot
+[4/7] [app] › tests/e2e/smoke.spec.ts:160:5 › C2 stage shell smoke › viewport 1920x1080: scale, letterbox, non-blank screenshot
+[5/7] [app] › tests/e2e/smoke.spec.ts:160:5 › C2 stage shell smoke › viewport 3840x2160: scale, letterbox, non-blank screenshot
+[6/7] [app] › tests/e2e/smoke.spec.ts:160:5 › C2 stage shell smoke › viewport 3440x1440: scale, letterbox, non-blank screenshot
+[7/7] [app] › tests/e2e/smoke.spec.ts:218:3 › C2 stage shell smoke › fullscreen toggle keeps the scale formula for unchanged viewport dimensions (V2)
+  1 failed
+    [app] › tests/e2e/smoke.spec.ts:99:3 › C2 stage shell smoke › page loads with the stage shell and read-only __game hooks 
+  6 passed (6.0s)

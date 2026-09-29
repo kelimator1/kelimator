@@ -1,0 +1,13 @@
+==== dsf1-run1 2026-09-29T16:25:01.117Z out=artifacts/y8-captures/reference-dsf1 frame5@5:9f43f9d83c07 frame36@36:7a9cd79aee1d frame68@68:13c4a4712813 frame99@99:8fe892ef6cf0 frame130@130:b52a4ed0b9fb
+==== debug 2026-09-29T17:27:01.572Z out=artifacts/y8-captures/reference-dsf1 frame5@5:9f43f9d83c07
+==== dsf1-run1 2026-09-29T17:49:00.915Z out=artifacts/y8-captures/reference-dsf1 frame5@5:9f43f9d83c07 frame36@36:7a9cd79aee1d frame68@68:13c4a4712813 frame99@99:8fe892ef6cf0 frame130@130:0d3f5e2c84bc
+==== dsf1-run2 2026-09-29T17:50:09.515Z out=artifacts/y8-captures/reference-dsf1-run2 frame5@5:9f43f9d83c07 frame36@36:7a9cd79aee1d frame68@68:13c4a4712813 frame99@99:8fe892ef6cf0 frame130@130:0d3f5e2c84bc
+==== dsf1-run3 2026-09-29T17:59:46.910Z out=artifacts/y8-captures/reference-dsf1-run3 frame5@5:9f43f9d83c07 frame36@36:7a9cd79aee1d frame68@68:13c4a4712813 frame99@99:8fe892ef6cf0 frame130@130:0d3f5e2c84bc
+==== dsf2-frame5 2026-09-29T18:10:49.290Z out=artifacts/y8-captures/dsf2-probe frame5@5:3235d57fadbb
+==== dsf2-run1 2026-09-29T18:16:43.221Z out=artifacts/y8-captures/reference-dsf2 frame5@5:3235d57fadbb frame36@36:84df14f35567 frame68@68:4949f94c8c04 frame99@99:9fb5b5f8f991 frame130@130:dd116c1980e5
+==== dsf2-run2 2026-09-29T18:25:06.741Z out=artifacts/y8-captures/reference-dsf2-run2 frame5@5:3235d57fadbb frame36@36:84df14f35567 frame68@68:4949f94c8c04 frame99@99:9fb5b5f8f991 frame130@130:dd116c1980e5
+==== ref2-dsf1 2026-09-29T18:39:05.503Z out=artifacts/y8-captures/ref2-dsf1 frame5@5:9f43f9d83c07 frame36@36:30392a591c35 frame68@68:5bf35a810842 frame99@99:f1be30838d93 frame130@130:0d3f5e2c84bc
+==== ref2-dsf1-run2 2026-09-29T18:46:42.996Z out=artifacts/y8-captures/ref2-dsf1-run2 frame5@5:9f43f9d83c07 frame36@36:30392a591c35 frame68@68:5bf35a810842 frame99@99:f1be30838d93 frame130@130:0d3f5e2c84bc
+==== ref2-dsf2 2026-09-29T18:51:47.084Z out=artifacts/y8-captures/ref2-dsf2 frame5@5:3235d57fadbb frame36@36:d4b86e075bc2 frame68@68:b765f90e0d6b frame99@99:d5e2dc1270f0 frame130@130:dd116c1980e5
+==== ref2-dsf2-run2 2026-09-29T18:59:57.417Z out=artifacts/y8-captures/ref2-dsf2-run2 frame5@5:3235d57fadbb frame36@36:d4b86e075bc2 frame99@99:d5e2dc1270f0 frame130@130:dd116c1980e5
+==== ref2-dsf2-run3 2026-09-29T19:01:07.106Z out=artifacts/y8-captures/ref2-dsf2-run3 frame68@68:3d80d6489f9a

@@ -3,8 +3,16 @@
  *
  * Visual subset of the catalogued sequences that the rebuild actually paints
  * (see src/ui/animations.ts for the full 24-sequence timing/trigger registry):
- * the wordball entry slide ("getir" / "gotur"), whose per-frame offsets are
- * read from the SWF sprite itself.
+ * - the wordball entry slide ("getir" / "gotur"), whose per-frame offsets are
+ *   read from the SWF sprite itself;
+ * - the boot intro timeline (task Y8, closes O23; `main` frames 5–130) on the
+ *   existing vector layers — night→day sky/ground crossfade, the sun's rise
+ *   path + colour-transform overlay, and the falling "kelimatör" logo. Every
+ *   keyframe comes from the SWF main-timeline PlaceObject2 tracks
+ *   (artifacts/decompiled/tags.xml → evidence/logs/Y8-intro-series.json;
+ *   derivation and excerpt refs in evidence/Y8-intro.md). The generated blocks
+ *   below must not be hand-edited; they are step-held at the reference's
+ *   36 fps frame cadence (`steps(1, end)`, duration calc(126s / 36)).
  *
  * Source of every number below (no invented values):
  *   artifacts/a3-captures/sprite_dump.txt — DefineSprite_46 (wordball) per-frame
@@ -59,4 +67,455 @@
 .board-ball.e3-wordball-gotur {
   animation: e3-wordball-gotur calc(8s / 36) linear both;
   pointer-events: none;
+}
+
+/* @generated from evidence/logs/Y8-intro-series.json (tags.xml main-timeline tracks; see evidence/Y8-intro.md) */
+@keyframes e3-intro-sky {
+  0% { opacity: 0.1406; }
+  0.0% { opacity: 0.1406; }
+  0.793651% { opacity: 0.1641; }
+  1.587302% { opacity: 0.1875; }
+  2.380952% { opacity: 0.2109; }
+  3.174603% { opacity: 0.2344; }
+  3.968254% { opacity: 0.2617; }
+  4.761905% { opacity: 0.2852; }
+  5.555556% { opacity: 0.3086; }
+  6.349206% { opacity: 0.332; }
+  7.142857% { opacity: 0.3555; }
+  7.936508% { opacity: 0.3789; }
+  8.730159% { opacity: 0.4023; }
+  9.52381% { opacity: 0.4258; }
+  10.31746% { opacity: 0.4492; }
+  11.111111% { opacity: 0.4766; }
+  11.904762% { opacity: 0.5; }
+  12.698413% { opacity: 0.5234; }
+  13.492063% { opacity: 0.5469; }
+  14.285714% { opacity: 0.5703; }
+  15.079365% { opacity: 0.5938; }
+  15.873016% { opacity: 0.6172; }
+  16.666667% { opacity: 0.6406; }
+  17.460317% { opacity: 0.6641; }
+  18.253968% { opacity: 0.6914; }
+  19.047619% { opacity: 0.7148; }
+  19.84127% { opacity: 0.7383; }
+  20.634921% { opacity: 0.7617; }
+  21.428571% { opacity: 0.7852; }
+  22.222222% { opacity: 0.8086; }
+  23.015873% { opacity: 0.832; }
+  23.809524% { opacity: 0.8555; }
+  24.603175% { opacity: 0.8789; }
+  25.396825% { opacity: 0.9062; }
+  26.190476% { opacity: 0.9297; }
+  26.984127% { opacity: 0.9531; }
+  27.777778% { opacity: 0.9766; }
+  28.571429% { opacity: 1; }
+  100% { opacity: 1; }
+}
+@keyframes e3-intro-layer3 {
+  0% { opacity: 0.1992; }
+  0.0% { opacity: 0.1992; }
+  0.793651% { opacity: 0.2227; }
+  1.587302% { opacity: 0.2422; }
+  2.380952% { opacity: 0.2656; }
+  3.174603% { opacity: 0.2891; }
+  3.968254% { opacity: 0.3086; }
+  4.761905% { opacity: 0.332; }
+  5.555556% { opacity: 0.3555; }
+  6.349206% { opacity: 0.3789; }
+  7.142857% { opacity: 0.3984; }
+  7.936508% { opacity: 0.4219; }
+  8.730159% { opacity: 0.4453; }
+  9.52381% { opacity: 0.4648; }
+  10.31746% { opacity: 0.4883; }
+  11.111111% { opacity: 0.5117; }
+  11.904762% { opacity: 0.5312; }
+  12.698413% { opacity: 0.5547; }
+  13.492063% { opacity: 0.5781; }
+  14.285714% { opacity: 0.6016; }
+  15.079365% { opacity: 0.6211; }
+  15.873016% { opacity: 0.6445; }
+  16.666667% { opacity: 0.668; }
+  17.460317% { opacity: 0.6875; }
+  18.253968% { opacity: 0.7109; }
+  19.047619% { opacity: 0.7344; }
+  19.84127% { opacity: 0.7539; }
+  20.634921% { opacity: 0.7773; }
+  21.428571% { opacity: 0.8008; }
+  22.222222% { opacity: 0.8203; }
+  23.015873% { opacity: 0.8438; }
+  23.809524% { opacity: 0.8672; }
+  24.603175% { opacity: 0.8906; }
+  25.396825% { opacity: 0.9102; }
+  26.190476% { opacity: 0.9336; }
+  26.984127% { opacity: 0.957; }
+  27.777778% { opacity: 0.9766; }
+  28.571429% { opacity: 1; }
+  100% { opacity: 1; }
+}
+@keyframes e3-intro-glow-path {
+  0% { transform: translateY(359px); }
+  0.793651% { transform: translateY(356.1px); }
+  1.587302% { transform: translateY(353.2px); }
+  2.380952% { transform: translateY(350.3px); }
+  3.174603% { transform: translateY(347.4px); }
+  3.968254% { transform: translateY(344.5px); }
+  4.761905% { transform: translateY(341.65px); }
+  5.555556% { transform: translateY(338.75px); }
+  6.349206% { transform: translateY(335.85px); }
+  7.142857% { transform: translateY(332.95px); }
+  7.936508% { transform: translateY(330.05px); }
+  8.730159% { transform: translateY(327.15px); }
+  9.52381% { transform: translateY(324.25px); }
+  10.31746% { transform: translateY(321.35px); }
+  11.111111% { transform: translateY(318.45px); }
+  11.904762% { transform: translateY(315.55px); }
+  12.698413% { transform: translateY(312.7px); }
+  13.492063% { transform: translateY(309.8px); }
+  14.285714% { transform: translateY(306.9px); }
+  15.079365% { transform: translateY(304px); }
+  15.873016% { transform: translateY(301.1px); }
+  16.666667% { transform: translateY(298.2px); }
+  17.460317% { transform: translateY(295.3px); }
+  18.253968% { transform: translateY(292.4px); }
+  19.047619% { transform: translateY(289.5px); }
+  19.84127% { transform: translateY(286.6px); }
+  20.634921% { transform: translateY(283.75px); }
+  21.428571% { transform: translateY(280.85px); }
+  22.222222% { transform: translateY(277.95px); }
+  23.015873% { transform: translateY(275.05px); }
+  23.809524% { transform: translateY(272.15px); }
+  24.603175% { transform: translateY(269.25px); }
+  25.396825% { transform: translateY(266.35px); }
+  26.190476% { transform: translateY(263.45px); }
+  26.984127% { transform: translateY(260.55px); }
+  27.777778% { transform: translateY(257.65px); }
+  28.571429% { transform: translateY(254.75px); }
+  29.365079% { transform: translateY(251.9px); }
+  30.15873% { transform: translateY(249px); }
+  30.952381% { transform: translateY(246.1px); }
+  31.746032% { transform: translateY(243.2px); }
+  32.539683% { transform: translateY(240.3px); }
+  33.333333% { transform: translateY(237.4px); }
+  34.126984% { transform: translateY(234.5px); }
+  34.920635% { transform: translateY(231.6px); }
+  35.714286% { transform: translateY(228.7px); }
+  36.507937% { transform: translateY(225.8px); }
+  37.301587% { transform: translateY(222.95px); }
+  38.095238% { transform: translateY(220.05px); }
+  38.888889% { transform: translateY(217.15px); }
+  39.68254% { transform: translateY(214.25px); }
+  40.47619% { transform: translateY(211.35px); }
+  41.269841% { transform: translateY(208.45px); }
+  42.063492% { transform: translateY(205.55px); }
+  42.857143% { transform: translateY(202.65px); }
+  43.650794% { transform: translateY(199.75px); }
+  44.444444% { transform: translateY(196.85px); }
+  45.238095% { transform: translateY(194px); }
+  46.031746% { transform: translateY(191.1px); }
+  46.825397% { transform: translateY(188.2px); }
+  47.619048% { transform: translateY(185.3px); }
+  48.412698% { transform: translateY(182.4px); }
+  49.206349% { transform: translateY(179.5px); }
+  50.0% { transform: translateY(176.6px); }
+  50.793651% { transform: translateY(173.7px); }
+  51.587302% { transform: translateY(170.8px); }
+  52.380952% { transform: translateY(167.9px); }
+  53.174603% { transform: translateY(165px); }
+  53.968254% { transform: translateY(162.15px); }
+  54.761905% { transform: translateY(159.25px); }
+  55.555556% { transform: translateY(156.35px); }
+  56.349206% { transform: translateY(153.45px); }
+  57.142857% { transform: translateY(150.55px); }
+  57.936508% { transform: translateY(147.65px); }
+  58.730159% { transform: translateY(144.75px); }
+  59.52381% { transform: translateY(141.85px); }
+  60.31746% { transform: translateY(138.95px); }
+  61.111111% { transform: translateY(136.05px); }
+  61.904762% { transform: translateY(133.2px); }
+  62.698413% { transform: translateY(130.3px); }
+  63.492063% { transform: translateY(127.4px); }
+  64.285714% { transform: translateY(124.5px); }
+  65.079365% { transform: translateY(121.6px); }
+  65.873016% { transform: translateY(118.7px); }
+  66.666667% { transform: translateY(115.8px); }
+  67.460317% { transform: translateY(112.9px); }
+  68.253968% { transform: translateY(110px); }
+  69.047619% { transform: translateY(107.1px); }
+  69.84127% { transform: translateY(104.25px); }
+  70.634921% { transform: translateY(101.35px); }
+  71.428571% { transform: translateY(98.45px); }
+  72.222222% { transform: translateY(95.55px); }
+  73.015873% { transform: translateY(92.65px); }
+  73.809524% { transform: translateY(89.75px); }
+  74.603175% { transform: translateY(86.85px); }
+  75.396825% { transform: translateY(83.95px); }
+  76.190476% { transform: translateY(81.05px); }
+  76.984127% { transform: translateY(78.15px); }
+  77.777778% { transform: translateY(75.25px); }
+  78.571429% { transform: translateY(72.4px); }
+  79.365079% { transform: translateY(69.5px); }
+  80.15873% { transform: translateY(66.6px); }
+  80.952381% { transform: translateY(63.7px); }
+  81.746032% { transform: translateY(60.8px); }
+  82.539683% { transform: translateY(57.9px); }
+  83.333333% { transform: translateY(55px); }
+  84.126984% { transform: translateY(52.1px); }
+  84.920635% { transform: translateY(49.2px); }
+  85.714286% { transform: translateY(46.3px); }
+  86.507937% { transform: translateY(43.45px); }
+  87.301587% { transform: translateY(40.55px); }
+  88.095238% { transform: translateY(37.65px); }
+  88.888889% { transform: translateY(34.75px); }
+  89.68254% { transform: translateY(31.85px); }
+  90.47619% { transform: translateY(28.95px); }
+  91.269841% { transform: translateY(26.05px); }
+  92.063492% { transform: translateY(23.15px); }
+  92.857143% { transform: translateY(20.25px); }
+  93.650794% { transform: translateY(17.35px); }
+  94.444444% { transform: translateY(14.5px); }
+  95.238095% { transform: translateY(11.6px); }
+  96.031746% { transform: translateY(8.7px); }
+  96.825397% { transform: translateY(5.8px); }
+  97.619048% { transform: translateY(2.9px); }
+  98.412698% { transform: translateY(0px); }
+  100% { transform: translateY(0px); }
+}
+@keyframes e3-intro-glow-tint {
+  0% { opacity: 0.8203; }
+  0.0% { opacity: 0.8203; }
+  0.793651% { opacity: 0.8125; }
+  1.587302% { opacity: 0.8086; }
+  2.380952% { opacity: 0.8008; }
+  3.174603% { opacity: 0.793; }
+  3.968254% { opacity: 0.7891; }
+  4.761905% { opacity: 0.7812; }
+  5.555556% { opacity: 0.7734; }
+  6.349206% { opacity: 0.7656; }
+  7.142857% { opacity: 0.7617; }
+  7.936508% { opacity: 0.7539; }
+  8.730159% { opacity: 0.7461; }
+  9.52381% { opacity: 0.7422; }
+  10.31746% { opacity: 0.7344; }
+  11.111111% { opacity: 0.7266; }
+  11.904762% { opacity: 0.7227; }
+  12.698413% { opacity: 0.7148; }
+  13.492063% { opacity: 0.707; }
+  14.285714% { opacity: 0.7031; }
+  15.079365% { opacity: 0.6953; }
+  15.873016% { opacity: 0.6875; }
+  16.666667% { opacity: 0.6797; }
+  17.460317% { opacity: 0.6758; }
+  18.253968% { opacity: 0.668; }
+  19.047619% { opacity: 0.6602; }
+  19.84127% { opacity: 0.6562; }
+  20.634921% { opacity: 0.6484; }
+  21.428571% { opacity: 0.6406; }
+  22.222222% { opacity: 0.6367; }
+  23.015873% { opacity: 0.6289; }
+  23.809524% { opacity: 0.6211; }
+  24.603175% { opacity: 0.6133; }
+  25.396825% { opacity: 0.6094; }
+  26.190476% { opacity: 0.6016; }
+  26.984127% { opacity: 0.5938; }
+  27.777778% { opacity: 0.5898; }
+  28.571429% { opacity: 0.582; }
+  29.365079% { opacity: 0.5742; }
+  30.15873% { opacity: 0.5703; }
+  30.952381% { opacity: 0.5625; }
+  31.746032% { opacity: 0.5547; }
+  32.539683% { opacity: 0.5508; }
+  33.333333% { opacity: 0.543; }
+  34.126984% { opacity: 0.5352; }
+  34.920635% { opacity: 0.5273; }
+  35.714286% { opacity: 0.5234; }
+  36.507937% { opacity: 0.5156; }
+  37.301587% { opacity: 0.5078; }
+  38.095238% { opacity: 0.5039; }
+  38.888889% { opacity: 0.4961; }
+  39.68254% { opacity: 0.4883; }
+  40.47619% { opacity: 0.4844; }
+  41.269841% { opacity: 0.4766; }
+  42.063492% { opacity: 0.4688; }
+  42.857143% { opacity: 0.4648; }
+  43.650794% { opacity: 0.457; }
+  44.444444% { opacity: 0.4492; }
+  45.238095% { opacity: 0.4414; }
+  46.031746% { opacity: 0.4375; }
+  46.825397% { opacity: 0.4297; }
+  47.619048% { opacity: 0.4219; }
+  48.412698% { opacity: 0.418; }
+  49.206349% { opacity: 0.4102; }
+  50.0% { opacity: 0.4023; }
+  50.793651% { opacity: 0.3984; }
+  51.587302% { opacity: 0.3906; }
+  52.380952% { opacity: 0.3828; }
+  53.174603% { opacity: 0.3789; }
+  53.968254% { opacity: 0.3711; }
+  54.761905% { opacity: 0.3633; }
+  55.555556% { opacity: 0.3555; }
+  56.349206% { opacity: 0.3516; }
+  57.142857% { opacity: 0.3438; }
+  57.936508% { opacity: 0.3359; }
+  58.730159% { opacity: 0.332; }
+  59.52381% { opacity: 0.3242; }
+  60.31746% { opacity: 0.3164; }
+  61.111111% { opacity: 0.3125; }
+  61.904762% { opacity: 0.3047; }
+  62.698413% { opacity: 0.2969; }
+  63.492063% { opacity: 0.293; }
+  64.285714% { opacity: 0.2852; }
+  65.079365% { opacity: 0.2773; }
+  65.873016% { opacity: 0.2695; }
+  66.666667% { opacity: 0.2656; }
+  67.460317% { opacity: 0.2578; }
+  68.253968% { opacity: 0.25; }
+  69.047619% { opacity: 0.2461; }
+  69.84127% { opacity: 0.2383; }
+  70.634921% { opacity: 0.2305; }
+  71.428571% { opacity: 0.2266; }
+  72.222222% { opacity: 0.2188; }
+  73.015873% { opacity: 0.2109; }
+  73.809524% { opacity: 0.2031; }
+  74.603175% { opacity: 0.1992; }
+  75.396825% { opacity: 0.1914; }
+  76.190476% { opacity: 0.1836; }
+  76.984127% { opacity: 0.1797; }
+  77.777778% { opacity: 0.1719; }
+  78.571429% { opacity: 0.1641; }
+  79.365079% { opacity: 0.1602; }
+  80.15873% { opacity: 0.1523; }
+  80.952381% { opacity: 0.1445; }
+  81.746032% { opacity: 0.1406; }
+  82.539683% { opacity: 0.1328; }
+  83.333333% { opacity: 0.125; }
+  84.126984% { opacity: 0.1172; }
+  84.920635% { opacity: 0.1133; }
+  85.714286% { opacity: 0.1055; }
+  86.507937% { opacity: 0.0977; }
+  87.301587% { opacity: 0.0938; }
+  88.095238% { opacity: 0.0859; }
+  88.888889% { opacity: 0.0781; }
+  89.68254% { opacity: 0.0742; }
+  90.47619% { opacity: 0.0664; }
+  91.269841% { opacity: 0.0586; }
+  92.063492% { opacity: 0.0547; }
+  92.857143% { opacity: 0.0469; }
+  93.650794% { opacity: 0.0391; }
+  94.444444% { opacity: 0.0312; }
+  95.238095% { opacity: 0.0273; }
+  96.031746% { opacity: 0.0195; }
+  96.825397% { opacity: 0.0117; }
+  97.619048% { opacity: 0.0078; }
+  98.412698% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes e3-intro-logo-v {
+  0% { transform: translate(119.7674px, -86.2472px) scale(0.7887); }
+  28.571429% { transform: translate(119.7674px, -86.2472px) scale(0.7887); }
+  29.365079% { transform: translate(119.7172px, -85.5251px) scale(0.7892); }
+  30.15873% { transform: translate(119.3722px, -83.1073px) scale(0.7908); }
+  30.952381% { transform: translate(118.8738px, -79.1962px) scale(0.7934); }
+  31.746032% { transform: translate(118.1807px, -73.6893px) scale(0.7971); }
+  32.539683% { transform: translate(117.2871px, -66.6383px) scale(0.8019); }
+  33.333333% { transform: translate(116.1988px, -57.9916px) scale(0.8077); }
+  34.126984% { transform: translate(114.91px, -47.8507px) scale(0.8145); }
+  34.920635% { transform: translate(113.4706px, -36.0657px) scale(0.8225); }
+  35.714286% { transform: translate(111.7866px, -22.6849px) scale(0.8315); }
+  36.507937% { transform: translate(109.8491px, -7.7608px) scale(0.8415); }
+  37.301587% { transform: translate(107.767px, 8.709px) scale(0.8526); }
+  38.095238% { transform: translate(105.5372px, 26.7738px) scale(0.8647); }
+  38.888889% { transform: translate(103.0097px, 46.3835px) scale(0.8779); }
+  39.68254% { transform: translate(100.3318px, 67.5873px) scale(0.8922); }
+  40.47619% { transform: translate(97.4563px, 90.3361px) scale(0.9075); }
+  41.269841% { transform: translate(94.4303px, 114.679px) scale(0.9239); }
+  42.063492% { transform: translate(91.1066px, 140.5668px) scale(0.9414); }
+  42.857143% { transform: translate(87.6382px, 168.0504px) scale(0.9598); }
+  43.650794% { transform: translate(83.9665px, 197.0273px) scale(0.9794); }
+  44.444444% { transform: translate(80.1px, 227.7px) scale(1); }
+  45.238095% { transform: translate(80.1372px, 225.3604px) scale(0.9998); }
+  46.031746% { transform: translate(80.1417px, 223.0255px) scale(0.9995); }
+  46.825397% { transform: translate(80.1961px, 220.6907px) scale(0.9992); }
+  47.619048% { transform: translate(80.0945px, 222.9763px) scale(0.9995); }
+  48.412698% { transform: translate(80.0901px, 225.3612px) scale(0.9998); }
+  49.206349% { transform: translate(80.1px, 227.7px) scale(1); }
+  84.920635% { transform: translate(72.4845px, 205.6067px) scale(0.9492); }
+  85.714286% { transform: translate(65.2293px, 184.6269px) scale(0.901); }
+  86.507937% { transform: translate(58.3842px, 164.7606px) scale(0.8554); }
+  87.301587% { transform: translate(51.9495px, 146.0578px) scale(0.8125); }
+  88.095238% { transform: translate(45.8778px, 128.4694px) scale(0.7721); }
+  88.888889% { transform: translate(40.2193px, 112.0454px) scale(0.7343); }
+  89.68254% { transform: translate(34.9181px, 96.7341px) scale(0.6992); }
+  90.47619% { transform: translate(30.03px, 82.5871px) scale(0.6666); }
+  91.269841% { transform: translate(25.5493px, 69.5528px) scale(0.6367); }
+  92.063492% { transform: translate(21.4346px, 57.6337px) scale(0.6093); }
+  92.857143% { transform: translate(17.7302px, 46.8781px) scale(0.5845); }
+  93.650794% { transform: translate(14.3859px, 37.236px) scale(0.5624); }
+  94.444444% { transform: translate(11.4519px, 28.7075px) scale(0.5429); }
+  95.238095% { transform: translate(8.9311px, 21.3433px) scale(0.5259); }
+  96.031746% { transform: translate(6.7676px, 15.1419px) scale(0.5116); }
+  96.825397% { transform: translate(5.02px, 10.0056px) scale(0.4999); }
+  97.619048% { transform: translate(3.6299px, 6.032px) scale(0.4908); }
+  98.412698% { transform: translate(2.6529px, 3.2228px) scale(0.4843); }
+  99.206349% { transform: translate(2.0861px, 1.5271px) scale(0.4804); }
+  100% { transform: translate(2.0861px, 1.5271px) scale(0.4804); }
+}
+
+/* --- Y8/O23 boot intro rules -------------------------------------------------
+   `e3-intro-run` is added by src/ui/animations.ts (afterRender, state `main`)
+   to the animated intro elements; the sun's tint layer is the child div the
+   same controller appends to the `intro_glow` element. */
+/* Boot presentation layers are raised above the board layout that stays
+   mounted underneath during preloader/intro (so the board DOM/geometry is
+   available from the first paint, as the E2 V7 layout check expects). The
+   wrapper is a single stacking context above the board; the boot nodes keep
+   their reference depth order (backdrop 2 < moon 3 < sky 5 < glow 7 <
+   ground 8 < layer3 9 < logo 47) through their inline z-index values. */
+.e3-boot-layer-root {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 30000;
+  pointer-events: none;
+}
+/* While the boot layer is mounted (preloader/intro), the board layout stays in
+   the DOM for geometry but is not painted: the reference has no board elements
+   on stage before frame 131. `:has` keeps the visibility tied to the wrapper,
+   so any non-boot render (e.g. the test-only `__visualTest` view) shows the
+   board again without extra bookkeeping. */
+[data-testid="board"]:has(> .e3-boot-layer-root) > .board-layer {
+  visibility: hidden;
+}
+[data-element="intro_sky"].e3-intro-run {
+  animation: e3-intro-sky calc(126s / 36) steps(1, end) both;
+}
+[data-element="intro_layer3"].e3-intro-run {
+  animation: e3-intro-layer3 calc(126s / 36) steps(1, end) both;
+}
+[data-element="intro_glow"].e3-intro-run {
+  animation: e3-intro-glow-path calc(126s / 36) steps(1, end) both;
+}
+[data-element="intro_logo"].e3-intro-run {
+  animation: e3-intro-logo-v calc(126s / 36) steps(1, end) both;
+}
+/* The overlay wordmark renders its SVG at the natural sprite size 375.4×104.6
+   (tags.xml DefineSpriteTag 29); the renderer's natural-aspect handler sizes
+   the inner <img> to the catalog box on load, so pin it here. */
+[data-element="intro_logo"].e3-intro-run > img {
+  width: 375.4px !important;
+  height: 104.6px !important;
+  max-width: none;
+  max-height: none;
+}
+/* Sun colour-transform overlay: the SWF transform is a linear blend
+   colour' = (1-t)*colour + t*(255,152,51) with t = 1 - redMultTerm/256
+   (redAddTerm = 209 = 0.8203*255 etc.); the gradient repeats the
+   GLOW_GRADIENT alpha profile of src/ui/board.ts with the blend colour. */
+.e3-intro-glow-tint {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(255, 152, 51, 1) 0%, rgba(255, 152, 51, 1) 67%, rgba(255, 152, 51, 0.97) 72%, rgba(255, 152, 51, 0.8) 82%, rgba(255, 152, 51, 0.45) 89%, rgba(255, 152, 51, 0) 100%);
+  animation: e3-intro-glow-tint calc(126s / 36) steps(1, end) both;
 }

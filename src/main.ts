@@ -20,7 +20,10 @@ import { mountHud, type HudControlsVisibility } from './ui/hud';
 import { mountMessage } from './ui/message';
 import {
   animationCatalog,
+  bootTimingsMs,
   createAnimationController,
+  introBoardView,
+  preloaderBoardView,
   type AnimationCatalogEntry,
 } from './ui/animations';
 
@@ -39,17 +42,34 @@ const animations = createAnimationController({ board: board.element });
 /** Frozen round-schema lengths (structural; values live in data/rounds.json). */
 const WORD_LENGTHS = [3, 4, 5, 6, 7, 8] as const;
 
+/** One boot-sequence state change with its `performance.now()` timestamp. */
+export interface BootLogEntry {
+  readonly state: GameState;
+  readonly atMs: number;
+}
+
 /**
- * E2's dev-only visual-state hook. While a test-applied view is active, the
- * live game stops repainting the board so the applied state stays stable for
- * screenshots (the timer keeps running model-side).
+ * E2's dev-only visual-state hook lives on `window.__visualTest`. While a
+ * test-applied view is active, the live game stops repainting the board so the
+ * applied state stays stable for screenshots (the timer keeps running
+ * model-side).
  */
 declare global {
   interface Window {
     __visualTest?: { apply(view: BoardView): void };
     __animations?: AnimationTestHooks;
+    /** Dev-server boot sequence log (Y8): boot → preloader → main → playing. */
+    __bootLog?: readonly BootLogEntry[];
   }
 }
+
+/**
+ * Boot-sequence log (task Y8): the FSM transitions the reference plays on
+ * every boot/reload (preloader frames 1–4 → intro frames 5–130 → first round).
+ * `performance.now()`-stamped so the e2e suite can assert the catalog-derived
+ * spans; the dev-server `window.__bootLog` is the read-only view.
+ */
+const bootLog: BootLogEntry[] = [{ state: 'boot', atMs: performance.now() }];
 
 /**
  * E3 dev-only animation test hooks (`window.__animations`): triggered-sequence
@@ -78,6 +98,8 @@ if (devServer) {
     lastSequence: (): string | null => animations.lastSequence,
     catalog: (): readonly AnimationCatalogEntry[] => animationCatalog(),
   };
+  // Y8 boot-sequence view (live array; every FSM state change is appended).
+  window.__bootLog = bootLog;
 }
 
 const hud = mountHud(stage.root, {
@@ -115,6 +137,11 @@ function tilesFor(snapshot: LifecycleSnapshot): TileView[] | undefined {
  * Yeni Oyun stays available (evidence/D5-lifecycle.md deviation note).
  */
 function boardViewFor(snapshot: LifecycleSnapshot): BoardView {
+  // Y8/O23 boot states: the reference paints the intro layers (frames 5–130)
+  // before the first board; the preloader (frames 1–4) shows the same night
+  // layers with their static placement alphas (`src/ui/animations.ts`).
+  if (snapshot.state === 'preloader') return preloaderBoardView();
+  if (snapshot.state === 'main') return introBoardView();
   const base = defaultBoardView();
   const elements = snapshot.completionSequence
     ? base.elements.filter(
@@ -190,6 +217,9 @@ const lifecycle = createRoundLifecycle({
     scoring: constants.scoring,
     bonusLetterSeed: constants.bonusLetter.seed,
   },
+  // Y8/O23 boot sequencing: preloader(1–4) → intro(5–130) → first round; the
+  // spans come from the A3 catalog (`ui/animations.ts` `bootTimingsMs`).
+  boot: bootTimingsMs(),
   playAudio: (event): void => {
     playAudioEvent(event);
     // E3: the D4 event names are the trigger source for the sound clips.
@@ -202,9 +232,16 @@ const lifecycle = createRoundLifecycle({
   },
   onStateChanged: (change): void => {
     animations.stateChanged(change);
+    bootLog.push({ state: change.state, atMs: performance.now() });
     if (change.state === 'preloader') {
       // O05 loading banner (evidence/A2-strings.md §2, text ids 78/82/83).
       message.showLoading();
+    }
+    // Boot frames must be painted on entry: the FSM does not emit `onChanged`
+    // for boot → preloader → main (only round/reset paths notify), and the
+    // preloader/intro views replace the initially mounted board view.
+    if (change.state === 'preloader' || change.state === 'main') {
+      render(lifecycle.snapshot());
     }
   },
   onRoundStarted: (): void => {
@@ -288,8 +325,10 @@ const gameTestHooks: GameTestHooks = {
 window.__game = gameTestHooks;
 
 // ---------------------------------------------------------------------------
-// Boot: preloader → main → first round (O13 flow; evidence/A2-labels.md §2)
+// Boot: preloader(1–4) → intro(5–130) → first settled board (O13 flow;
+// evidence/A2-labels.md §2; Y8/O23 boot sequencing). `start()` schedules the
+// intro and then the first round through the lifecycle's boot timings; input
+// stays locked in `preloader`/`main` (src/game/state.ts `isInputLocked`).
 // ---------------------------------------------------------------------------
 
 lifecycle.start();
-lifecycle.newRound();
