@@ -70,6 +70,9 @@ RESOLVED 2026-09-28 — evidence/B3-threshold.md — Round-bank threshold measur
 SUPERSEDED 2026-09-29 — evidence/Y1-remaster.md §7 — the speaker-knob spatial residual (old 2012 bitmap drawn through the inline pattern at a 0.5-px phase) is superseded by the owner-approved HD remaster of bitmap 86: the knob is now an intentionally different texture (ON C3 box raw 34.2 % / tolerant 10.8 %; knob bbox 83.0 %/45.0 %; OFF 26.5 %/5.8 %) and is covered by the approved allowance rect (515,367,22,30). Semantics (ON/OFF frames, persistence) unchanged and suite-verified.
 SUPERSEDING 2026-09-29 — evidence/Y5-speaker-feedback.md §6 — the X3/O24 timing record "click toggles vol + persistence only; the icon applies at boot/render from the persisted volume" is superseded for the rebuild by owner decision (task Y5): the click now also repaints the sprite-88 on/off frame immediately — a deliberate deviation from the measured reference behavior (C3 plain-click probe: 0 px), chosen for usable feedback; no debouncing. Toggle/persistence semantics and the boot/render sync are unchanged.
 RESOLVED 2026-09-29 — evidence/Y5-speaker-feedback.md — speaker immediate feedback: the icon flips inside the click (`onSpeakerClick` → `toggleMute()` + `syncSpeakerVisual`, no debouncing; deliberate deviation from the reference's frame-entry timing). Speaker e2e asserts the immediate flip at dsf 1+2 with a board-render MutationObserver + node-identity guard, keeping reload/persistence coverage; probe re-verified 43/43 clicks per dsf (volume toggles + hit attribution + icon flips; 36-point grid + 5 rapid; 0 board renders; off vs ON 35.5 %/29.1 % raw). Suites: speaker 7, visual 18, full 238; lint/build exit 0.
+- 2026-09-29 — Y5 closing: immediate-toggle feedback committed; speaker suite 7,
+  visual 18, full 238; closing `tools/verify-all.sh` exit 0 (11/11, frozen
+  evidence 0). Evidence: `evidence/waveY-closing.md` (Addendum — Y5).
 
 ## Amendments
 

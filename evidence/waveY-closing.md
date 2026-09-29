@@ -81,3 +81,28 @@ committed; F3/G5 stands valid.
   (task) · `2cdad33` (amendments) · `fa903ec` (SVGO summary refresh).
 
 Result: **PASS**.
+
+---
+
+## Addendum — Y5 (speaker immediate feedback, 2026-09-29)
+
+- Defect: clicks toggled the persisted volume reliably (43/43 instrumented,
+  36/36 grid, rapid parity verified) but the icon did not repaint at click time
+  (faithful to the reference probe: 0 px) — users re-clicked and even counts
+  flipped straight back ("sometimes does nothing"). Owner decision: immediate
+  feedback, **no debouncing** (deliberate deviation from the reference's
+  frame-entry timing).
+- Fix: `src/ui/hud.ts` `onSpeakerClick` → `toggleMute()` + `syncSpeakerVisual`.
+  Post-fix probe: 43/43 clicks flip the icon (36-point grid + 5 rapid) with
+  0 intervening board renders at dsf 1+2; off vs ON differs 435/1225 px (dsf1),
+  1427/4900 px (dsf2); restored ON 0 px.
+- Guards: speaker suite **7** (3 X3 semantics + 2 Y5 immediate-flip tests with a
+  board-render MutationObserver + node-identity guard, dsf1/2) + 2 Y4 corner
+  tests; reload/persistence coverage kept. Visual 18/18; full 238/238;
+  lint/build exit 0.
+- Closing revalidation (post-commit): `tools/verify-all.sh` **exit 0 — 11/11
+  steps, frozen evidence 0**, no non-artifact changes. Commits: `d5d055c`
+  (registered) · `2f24fa9` (task) · `79e615a` (amendments + stale-header drift
+  fix in `tests/speaker.test.ts`).
+
+Result: **PASS**.
