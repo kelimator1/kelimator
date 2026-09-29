@@ -71,6 +71,19 @@ type Round = {
 > actions (Y3, `evidence/Y3-buttons.md` §3). Matching entry in
 > `docs/08-open-items.md` (Amendments).
 
+> Amendment 2026-09-29e (task Y7): letter keys resolve by produced character
+> first (`event.key`, Turkish-locale uppercase, accepted only within the
+> 29-letter alphabet), then the O04 numeric `keyCode` table, then
+> `event.code`; action keys keep `keyCode` → `key` → `code`. Reason: measured
+> on the owner Mac (layout Turkish-QWERTY-PC; `UCKeyTranslate`) physical
+> ANSI_I produces `ı` and ANSI_Quote produces `i`, while modern browsers may
+> report layout-derived keyCodes for these keys (produced `i` arrives with
+> keyCode 73, produced `ı` with 222), so the produced character wins on every
+> layout (`'i'` → `İ`, `'ı'` → `I`); the keyCode table remains the fallback
+> for synthetic/legacy events. No keyboard-type detection or heuristics.
+> Evidence: `evidence/Y7-i-key.md` §2/§3, `evidence/D2-input.md` §2 amendment
+> 2026-09-29. Matching entry in `docs/08-open-items.md` (Amendments).
+
 ## 4. Scoring implementation
 
 - Valid word: `n² × perLetterSquaredFactor`.

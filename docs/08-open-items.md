@@ -317,6 +317,11 @@ RESOLVED 2026-09-29 — evidence/Y5-speaker-feedback.md — speaker immediate fe
   layout detection/heuristics; action keys untouched. Conflict regressions in
   `tests/input.test.ts`; note in `evidence/D2-input.md` §2. Evidence:
   `evidence/Y7-i-key.md`.
+- 2026-09-29 — Y7 closure: produced-character-first resolution committed
+  (`docs/05` §3 amendment 2026-09-29e); conflict regressions pass (input 30/30;
+  `{73,'i'}→İ`, `{222,'ı'}→I`), keyCode-only table kept as fallback; interaction
+  6/6, playthrough 3/3, full 239; lint/build exit 0. Evidence:
+  `evidence/Y7-i-key.md`.
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:
