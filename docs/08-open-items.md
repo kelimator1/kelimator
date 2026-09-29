@@ -225,6 +225,14 @@ RESOLVED 2026-09-28 — evidence/B3-threshold.md — Round-bank threshold measur
   with zero non-local requests; README §2 fixed decisions re-checked PASS;
   O23 and O25 remain OPEN with resolution pointers in
   `evidence/F3-final-report.md` §7 (neither is a G5 blocker).
+- 2026-09-29 — **Owner final presentation wave Y1–Y2** (EXECUTION.md §9.4;
+  tasks `Y1`–`Y2`): (Y1) HD asset remaster of bitmap 47/86 into
+  `s48_board_backdrop.svg`/`s90_btn_speaker.svg` with smooth rendering and a
+  region-scoped V5 allowance (owner-approved deviation from the reference
+  texture; diff `--ignore-rect` mechanism); (Y2) clean omission of the two site
+  credit sprites (`credit_line`/`credit_site`) with absence assertions and the
+  owner-approved omission region (0,367,105,36). Serialized (shared files);
+  G4 + `tools/verify-all.sh` re-run after the wave.
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:
