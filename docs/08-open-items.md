@@ -331,6 +331,14 @@ RESOLVED 2026-09-29 — evidence/Y5-speaker-feedback.md — speaker immediate fe
   the catalogs; boot plays preloader→intro→board with input locked during the
   intro; keyframe verification vs reference captures at dsf 1+2. Evidence:
   `evidence/Y8-intro.md`; O23 to be RESOLVED on completion.
+- 2026-09-29 — Wave follow-up **Y9** (owner-reported, queued behind Y8): the
+  right-panel status capsule never renders in colour — frame 1 dark ball only,
+  live text fixed `#000`; the reference has frame 2 = GREEN ball + green
+  "Geçerli" and frame 3 = RED ball + red "Girildi"
+  (`artifacts/decompiled/sprites/DefineSprite_123/{1,2,3}.svg`;
+  `evidence/A2-strings.md` §2). Implement the three states exactly (colours
+  sampled from the frames; live-text kept if pixel-faithful); status test at
+  dsf 1+2. Evidence: `evidence/Y9-status-lamp.md`.
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:
