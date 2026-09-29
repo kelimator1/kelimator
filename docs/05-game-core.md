@@ -64,6 +64,13 @@ type Round = {
 > `buttonN` (`src/main.ts`); defect fix X1, `evidence/X1-tile-click.md` §2.
 > Matching entry in `docs/08-open-items.md` (Amendments).
 
+> Amendment 2026-09-29 (owner final wave Y3): clicking the Karıştır/Sil/Ekle
+> sprites (or their transparent overlays) runs the same action as
+> SPACE/BACKSPACE/ENTER respectively; the overlay rectangles are keyed to
+> `btn_kbuton`/`btn_sbuton`/`btn_ebuton` per the decompiled `on(release)`
+> actions (Y3, `evidence/Y3-buttons.md` §3). Matching entry in
+> `docs/08-open-items.md` (Amendments).
+
 ## 4. Scoring implementation
 
 - Valid word: `n² × perLetterSquaredFactor`.

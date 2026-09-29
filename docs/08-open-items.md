@@ -257,6 +257,12 @@ SUPERSEDED 2026-09-29 — evidence/Y1-remaster.md §7 — the speaker-knob spati
   asset hashes = manifest pins; grep shows no runtime reference). Suites
   re-run green (visual 18, animation 8, playthrough 3; worst tolerant
   1.273 %). Evidence: `evidence/Y2-credits.md`.
+- 2026-09-29 — Owner final wave Y3 (owner defect, pre-investigated): the
+  `CONTROL_RECTS` scramble/delete swap fixed (`src/ui/hud.ts` derives from
+  `CONTROL_ELEMENT_IDS`: kbuton→scramble, sbuton→delete, ebuton→submit);
+  static mapping test + center-of-label e2e; pre-fix failures recorded;
+  `evidence/D5-lifecycle.md` superseded by `evidence/Y3-buttons.md` §6.
+  Suites: visual 18, interaction 6, playthrough:basic 1, full 238.
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:
