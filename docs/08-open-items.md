@@ -268,6 +268,12 @@ SUPERSEDED 2026-09-29 — evidence/Y1-remaster.md §7 — the speaker-knob spati
   run's only failure was an untracked `evidence/Y2/` capture set, committed as
   `f52344b`; re-run green). O23 remains OPEN; O25 SUPERSEDED. Evidence:
   `evidence/waveY-closing.md`.
+- 2026-09-29 — Wave follow-up **Y4** (owner defect from Y1, byte-verified): the
+  speaker knob payload embedded by Y1 lost its alpha (RGB WebP) → opaque black
+  corners; fix asset `ai86-8x-alpha.webp` (`a5a840ab…`) replaces it
+  deterministically; corner assertion added (dsf1+dsf2); the knob allowance
+  rect `515,367,22,30` re-measured (shrink/drop if possible; mirrors updated).
+  Evidence: `evidence/Y4-knob-alpha.md`.
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:
