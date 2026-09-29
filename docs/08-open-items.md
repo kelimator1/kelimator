@@ -322,6 +322,9 @@ RESOLVED 2026-09-29 — evidence/Y5-speaker-feedback.md — speaker immediate fe
   `{73,'i'}→İ`, `{222,'ı'}→I`), keyCode-only table kept as fallback; interaction
   6/6, playthrough 3/3, full 239; lint/build exit 0. Evidence:
   `evidence/Y7-i-key.md`.
+- 2026-09-29 — Y6/Y7 closing: visual 18, animation 8, playthrough 3, full 239;
+  closing `tools/verify-all.sh` exit 0 (11/11, frozen evidence 0; tree clean).
+  Evidence: `evidence/waveY-closing.md` (Addendum — Y6 & Y7).
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:
