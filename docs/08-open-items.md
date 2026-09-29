@@ -37,7 +37,7 @@ When closed, append: `RESOLVED <date> — <evidence file> — <one-line finding>
 | O22 | `viroloji` round fixture (docs/06 §5) absent from both trees; the cited 2007-05-14 Wayback URL was not in the package; B3 was network-frozen | B3 availability search; orchestrator fetched the cited capture when the Internet Archive returned; fixture committed unchanged; the gated structural test activates on it | `evidence/B3-viroloji-blocker.md`; `tests/fixtures/rounds/viroloji.xml` | B3 (test), F2 (fixture list) | RESOLVED — evidence/B3-viroloji-blocker.md |
 | O23 | Intro/preloader timed motion: the reference plays frames 5–130 (~3.5 s: falling logo, glow, sun) before its first stable frame; the rebuild starts at the settled state (D5 skips the intro), so those keyframes cannot be compared | Recorded divergence; resolution = implement the timed intro/preloader (D5 sequencing + E3 animations) with reference keyframe captures (C3 scenario mode), or an explicit owner decision to exclude | `evidence/E3-animations.md` §3 rows 1–2/5–6; `data/animation.json` | E3 (animations), D5 (sequencing) | OPEN |
 | O24 | X3 off-frame pixel fidelity: sprite-88 frame "off" CXFORM (tags.xml: multTerm 108, addTerm 148) mapped to an SVG feComponentTransfer (slope 108/256, intercept 148/255) in `src/ui/hud.ts` | Verify against a reference capture (C3 `--scenario`: click `btn_speaker` at stage (530.8, 381.8), capture before/after, muted); if they differ, adjust the filter only (no semantics change) | `evidence/X3-speaker.md` §7; `tests/fixtures/reference/speaker/` | X3 (filter), C3 (capture) | RESOLVED — evidence/X3-speaker.md §7 |
-| O25 | Speaker icon spatial residual: the app draws the icon at a 0.5-px phase with bilinear resampling; E2's frozen S2 baseline equals the app ON capture (0 px in the box), both 466 px from the C3 reference (filter mapping is exact — O24) | E2-side: adjust the icon element's position/rendering (sub-pixel offset or crisp scaling) to match the reference, or record the E2 decision; verify by region diff against `tests/fixtures/reference/speaker/` | `evidence/X3-speaker.md` §7; `evidence/X3-o24/` | E2 (layout), X3 (verify) | OPEN |
+| O25 | Speaker icon spatial residual: the app draws the icon at a 0.5-px phase with bilinear resampling; E2's frozen S2 baseline equals the app ON capture (0 px in the box), both 466 px from the C3 reference (filter mapping is exact — O24) | E2-side: adjust the icon element's position/rendering (sub-pixel offset or crisp scaling) to match the reference, or record the E2 decision; verify by region diff against `tests/fixtures/reference/speaker/` | `evidence/X3-speaker.md` §7; `evidence/X3-o24/` | E2 (layout), X3 (verify) | SUPERSEDED — evidence/Y1-remaster.md §7 |
 
 ---
 
@@ -67,6 +67,7 @@ RESOLVED 2026-09-28 — evidence/B3-viroloji-blocker.md + tests/fixtures/rounds/
 RESOLVED 2026-09-28 — evidence/X3-speaker.md — speaker `spk_btn` (DefineButton2_90) implemented: `on(release)` toggles `_root.vol` (0 = mute + stopAllSounds, 1 = full), persisted as `kelimator.volume` (D4 manager, default 100, clamp 0–100); E2's `btn_speaker` element gets the delegated listener plus the sprite-88 frames "on"/"off" (waves removed + frame-off CXFORM icon); 9 unit + 3 e2e tests, visual/playthrough suites unchanged.
 RESOLVED 2026-09-29 — evidence/X3-speaker.md §7 — O24 closed: frame-off feComponentTransfer (108/256, 148/255) equals the reference CXFORM (app 18/18 within 2/255; ref 240/241, outlier a removed wave pixel) — no mapping change; residual spatial (app icon 0.5-px phase; E2 S2 baseline == app ON 0 px, both 466 px from C3), proposed as separate E2-side OPEN item O25; timing reconciled (click toggles vol + persistence only; icon applies at boot/render).
 RESOLVED 2026-09-28 — evidence/B3-threshold.md — Round-bank threshold measured per docs/06 §3: bank sizes T=10→8,935, T=15→8,638, T=20→8,269, T=25→7,834, T=30→7,393 rounds (9,107 candidates); selected T=30 (largest T with bank ≥ 500); written to tools/build-config.json; emitted bank src/data/rounds.json = 7,393 rounds, sha256 7e4e149b3862b3f5ab77f755e8a8ae4215c2c8568a8ad30ee2311384b14b9a96.
+SUPERSEDED 2026-09-29 — evidence/Y1-remaster.md §7 — the speaker-knob spatial residual (old 2012 bitmap drawn through the inline pattern at a 0.5-px phase) is superseded by the owner-approved HD remaster of bitmap 86: the knob is now an intentionally different texture (ON C3 box raw 34.2 % / tolerant 10.8 %; knob bbox 83.0 %/45.0 %; OFF 26.5 %/5.8 %) and is covered by the approved allowance rect (515,367,22,30). Semantics (ON/OFF frames, persistence) unchanged and suite-verified.
 
 ## Amendments
 
@@ -239,6 +240,11 @@ RESOLVED 2026-09-28 — evidence/B3-threshold.md — Round-bank threshold measur
   sbuton→`sil()` (x=308.6), ebuton→`ekle()` (x=232.85). Fix + static mapping
   test + center-of-label e2e; superseding note for the same-wave D5 evidence
   record; serialized after Y2 (HMR safety). Evidence: `evidence/Y3-buttons.md`.
+- 2026-09-29 — Owner final wave Y1 (`docs/07` §4 allowance + `docs/03` §2
+  deviation): HD remaster of bitmaps 47/86 embedded into s48/s90 (8x WebP,
+  hash-pinned, deterministic, skippable), smooth rendering, V5 `--ignore-rect`
+  set (138 rects, 28.4 % of stage, 97.7 %/98.6 % deviation coverage), suites
+  re-run green. Evidence: `evidence/Y1-remaster.md`.
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:

@@ -117,6 +117,25 @@ formulas and asserted in unit tests.
 > `evidence/X2-tile-glyph.md`; matching entry in `docs/08-open-items.md`
 > (Amendments).
 
+> Amendment 2026-09-29 (owner final wave Y1): the static/animation/playthrough V5
+> comparisons pass a region-scoped `--ignore-rect` allowance for the
+> owner-approved HD remaster of bitmap 47 (board backdrop) and bitmap 86
+> (speaker knob). The set (`Y1_IGNORE_RECTS`, 138 rects in dsf1 stage pixels,
+> scaled by deviceScaleFactor; mirrored in
+> `evidence/visual/Y1/derivation/final-rects.json`) covers 97.7 %/98.6 % of the
+> Y1-attributable mismatch pixels at dsf 1/2 (derivation: render changed by the
+> remaster ∧ backdrop visible ∧ newly mismatched > 30, S2, union of both
+> deviceScaleFactors, 10-px cells with ≥ 3 deviation pixels, plus the measured
+> knob bbox 515,367,22,30; `evidence/Y1-remaster.md` §5). It spans 28.4 % of the
+> stage; there is no stage-wide ignore and states without the backdrop (S1)
+> get no allowance. Pre-existing font/shape/bitmap rasterization mismatch
+> outside the deviation network stays counted (post-allowance S2 tolerant
+> 0.710 %/0.254 % vs pre-Y1 0.980 %/0.281 %; all board comparisons remain
+> ≤ 1.0 %). Mechanism: `verify/diff` schema v3 `ignoredRects`/`ignoredPixels`
+> (`--ignore-rect`), self-tested; thresholds unchanged. Evidence:
+> `evidence/Y1-remaster.md` §4/§5/§8, matching entry in
+> `docs/08-open-items.md` (Amendments).
+
 ## 5. State matrix (S1–S10)
 
 | State | Trigger sequence (app and reference use the same) |

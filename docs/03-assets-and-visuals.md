@@ -45,6 +45,25 @@ Decision procedure (executed in E1; outcome recorded in evidence):
    it with an SVG/CSS equivalent is allowed **only** if pixel-diff thresholds
    (§4) pass — otherwise keep the upscaled bitmap.
 
+> Amendment 2026-09-29 (owner final wave Y1): bitmaps 47 (550×400 board
+> backdrop) and 86 (21×29 speaker knob) are replaced *inside their SVG assets*
+> (`s48_board_backdrop.svg`, `s90_btn_speaker.svg`) by the owner-provided HD
+> remasters (8x lossy WebP: 4400×3200 / 168×232; artifacts
+> `ai47-x4plus-8x.webp` / `ai86-8x.webp`, sha256-pinned in
+> `tools/process-assets.mjs` `HD_REMASTERS`) instead of the byte-identical 2012
+> exports — an explicit, owner-approved deviation from the reference texture
+> ("better than original"). The swap is deterministic (hash-pinned payload
+> replacement before SVGO; absent artifacts keep the committed payload and log
+> a skip; re-runs byte-identical), the manifest records the artifact as
+> `source` + `sourceSha256` (+ `templateSource` provenance), and the assets test
+> guards the payload and the manifest record. Rendering switches the inline
+> bitmaps from `image-rendering: pixelated` to `smooth` (`src/ui/board.ts`);
+> V5 applies the region-scoped allowance in `docs/07` §4. The 4x fallback was
+> not used — measured encode fidelity was better for the 8x payload
+> (mean 1.02/255 vs 1.16/255 per channel; 62 vs 178 pixels > 30 RGB vs the PNG
+> master). Evidence: `evidence/Y1-remaster.md` §1–§3/§6; matching entry in
+> `docs/08-open-items.md` (Amendments).
+
 ## 3. Typography
 
 - Original uses the Verdana family (embedded variants carry Turkish glyph
