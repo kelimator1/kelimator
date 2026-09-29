@@ -263,6 +263,11 @@ SUPERSEDED 2026-09-29 — evidence/Y1-remaster.md §7 — the speaker-knob spati
   static mapping test + center-of-label e2e; pre-fix failures recorded;
   `evidence/D5-lifecycle.md` superseded by `evidence/Y3-buttons.md` §6.
   Suites: visual 18, interaction 6, playthrough:basic 1, full 238.
+- 2026-09-29 — Wave Y closing: G4 re-check green (visual 18 / animation 8 /
+  audio 17) and `tools/verify-all.sh` revalidated **exit 0, 11/11** (first
+  run's only failure was an untracked `evidence/Y2/` capture set, committed as
+  `f52344b`; re-run green). O23 remains OPEN; O25 SUPERSEDED. Evidence:
+  `evidence/waveY-closing.md`.
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:
