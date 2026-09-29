@@ -14,6 +14,11 @@
  *            source text before SVGO; "before" in the preservation pair is the
  *            corrected text SVGO receives (the correction itself is verified
  *            separately — currently only `s58_letter_tile.svg`, task X2).
+ *            HD remaster payload swaps (owner wave Y1) replace the embedded
+ *            bitmap of `s48_board_backdrop.svg`/`s90_btn_speaker.svg` with the
+ *            hash-pinned WebP artifacts; when an artifact is absent the
+ *            committed payload is kept unchanged and the entry is logged as
+ *            skipped (fresh clones have no `artifacts/`).
  *   img      docs/03 §2 decision procedure for the two bitmaps; as-is copies
  *            to `src/assets/img/` named `img_<id>_<w>x<h>.png`.
  *   sfx      Verify the 9 sounds against the A1 hashes (file hash, SHA256SUMS
@@ -161,6 +166,110 @@ export const SVGO_OPTIONS = {
 const SVG_SOURCE_CORRECTIONS = new Map([
   ['s58_letter_tile.svg', stripLetterTilePlaceholderGlyph],
 ]);
+
+/**
+ * Task Y1 (owner final presentation wave) — HD remaster payloads.
+ *
+ * The two raster-bearing SVGs (`s48_board_backdrop.svg` = bitmap 47 550x400,
+ * `s90_btn_speaker.svg` = bitmap 86 21x29) carry their FFDec-exported PNG
+ * payloads as base64 `data:` URIs. Y1 replaces exactly that payload with the
+ * owner-provided HD remaster WebP, byte-for-byte, before SVGO (SVGO does not
+ * touch image payloads — X2/E1). The replacement is:
+ *   - hash-pinned: the artifact is used only when its sha256 equals the
+ *     recorded pin (a mismatch fails loudly), and its VP8 dimensions must
+ *     equal the recorded natural size;
+ *   - deterministic: the output is a pure function of the pinned bytes, so
+ *     re-runs (and the V8 idempotency check) are byte-identical;
+ *   - skippable: when the artifact is absent (fresh clone — `artifacts/` is
+ *     not committed), the committed SVG payload is kept unchanged and the
+ *     skip is logged; the pipeline never regenerates the old PNG payload over
+ *     it. `manifest` records the same artifact source/sha256 either way.
+ * Owner decision + measurements: evidence/Y1-remaster.md (8x chosen over the
+ * 4x fallback; knob has a single provided remaster).
+ */
+const HD_REMASTERS = new Map([
+  [
+    's48_board_backdrop.svg',
+    {
+      artifact: 'artifacts/hd-assets/ai47-x4plus-8x.webp',
+      sha256: '58ac94a053dc3133bde957c15f4b23d03e6b1a0cdc4de0d8ba89e65c63cb958e',
+      width: 4400,
+      height: 3200,
+      label: 'bitmap 47 (550x400, 8x remaster)',
+    },
+  ],
+  [
+    's90_btn_speaker.svg',
+    {
+      artifact: 'artifacts/hd-assets/ai86-8x.webp',
+      sha256: '490794263c69e920a8f061088c33dff5d63cc5f47f8937727cb15163273dfa2f',
+      width: 168,
+      height: 232,
+      label: 'bitmap 86 (21x29, 8x remaster)',
+    },
+  ],
+]);
+
+/**
+ * Minimal WebP (lossy VP8) size reader for the pinned remaster payloads: RIFF
+ * container, `VP8 ` chunk, frame sync code 0x9d 0x01 0x2a, then the 14-bit
+ * little-endian width/height. Throws on any other variant (the pins are VP8).
+ */
+function webpVp8Size(bytes) {
+  if (
+    bytes.length < 30 ||
+    bytes.toString('latin1', 0, 4) !== 'RIFF' ||
+    bytes.toString('latin1', 8, 12) !== 'WEBP'
+  ) {
+    throw new Error('not a RIFF/WEBP file');
+  }
+  const fourcc = bytes.toString('latin1', 12, 16);
+  if (fourcc !== 'VP8 ') {
+    throw new Error(`unsupported WebP chunk ${JSON.stringify(fourcc)} (expected lossy VP8)`);
+  }
+  if (bytes[23] !== 0x9d || bytes[24] !== 0x01 || bytes[25] !== 0x2a) {
+    throw new Error('VP8 frame sync code missing');
+  }
+  return {
+    width: (bytes[26] | (bytes[27] << 8)) & 0x3fff,
+    height: (bytes[28] | (bytes[29] << 8)) & 0x3fff,
+  };
+}
+
+/**
+ * Replace the embedded PNG data URI of `content` with the pinned WebP payload.
+ * Returns the new SVG text, or `null` when the artifact is absent (caller
+ * keeps the committed file). Throws on a pinned-hash mismatch, a decoded-size
+ * mismatch, or a payload structure the export does not have.
+ */
+function applyHdRemaster(name, content) {
+  const remaster = HD_REMASTERS.get(name);
+  if (remaster === undefined) return content;
+  if (!existsSync(abs(remaster.artifact))) return null;
+  const artifactSha = sha256File(remaster.artifact);
+  if (artifactSha !== remaster.sha256) {
+    throw new Error(
+      `${remaster.artifact}: sha256 ${artifactSha} != pinned ${remaster.sha256} (${remaster.label})`,
+    );
+  }
+  const bytes = readFileSync(abs(remaster.artifact));
+  const size = webpVp8Size(bytes);
+  if (size.width !== remaster.width || size.height !== remaster.height) {
+    throw new Error(
+      `${remaster.artifact}: ${size.width}x${size.height} != recorded ${remaster.width}x${remaster.height}`,
+    );
+  }
+  const marker = 'xlink:href="data:image/PNG;base64,';
+  const start = content.indexOf(marker);
+  if (start === -1) throw new Error(`${name}: no embedded PNG data URI found`);
+  if (content.indexOf(marker, start + 1) !== -1) {
+    throw new Error(`${name}: multiple embedded PNG data URIs`);
+  }
+  const close = content.indexOf('"', start + marker.length);
+  if (close === -1) throw new Error(`${name}: unterminated embedded PNG data URI`);
+  const replacement = `xlink:href="data:image/webp;base64,${bytes.toString('base64')}"`;
+  return content.slice(0, start) + replacement + content.slice(close + 1);
+}
 
 /** Removes one `<g id="…">…</g>` subtree (balanced scan — no nested regex). */
 function removeSvgGroupById(svg, id) {
@@ -321,8 +430,29 @@ async function cmdSvg() {
       const source = readFileSync(abs(entry.source), 'utf8');
       const correction = SVG_SOURCE_CORRECTIONS.get(entry.name);
       // `prepared` is the SVGO input *and* the "before" render: source
-      // corrections (X2) must not read as SVGO-induced pixel changes.
-      const prepared = correction === undefined ? source : correction(source);
+      // corrections (X2) and the Y1 HD payload swap must not read as
+      // SVGO-induced pixel changes.
+      const corrected = correction === undefined ? source : correction(source);
+      const remastered = applyHdRemaster(entry.name, corrected);
+      if (remastered === null) {
+        // Committed HD payload is kept untouched (fresh clone, no artifacts/):
+        // never regenerate the old PNG payload over it.
+        const remaster = HD_REMASTERS.get(entry.name);
+        OK(
+          `svg ${entry.name}: HD remaster input ${remaster.artifact} absent — ` +
+            `committed payload kept, skipped`,
+        );
+        results.push({
+          name: entry.name,
+          element: entry.element,
+          source: entry.source,
+          symbol: entry.symbol,
+          skipped: true,
+          remaster: { artifact: remaster.artifact, sha256: remaster.sha256 },
+        });
+        continue;
+      }
+      const prepared = remastered;
       const { data: optimized } = optimize(prepared, { path: entry.source, ...SVGO_OPTIONS });
       const outPath = path.join(outDir, entry.name);
       writeFileSync(outPath, optimized);
@@ -372,11 +502,23 @@ async function cmdSvg() {
       copyFileSync(after, path.join(evDir, 'after.png'));
       copyFileSync(path.join(diffDir, 'report.json'), path.join(evDir, 'report.json'));
 
+      const remaster = HD_REMASTERS.get(entry.name);
       results.push({
         name: entry.name,
         element: entry.element,
         source: entry.source,
         symbol: entry.symbol,
+        ...(remaster === undefined
+          ? {}
+          : {
+              remaster: {
+                artifact: remaster.artifact,
+                sha256: remaster.sha256,
+                format: 'image/webp',
+                naturalWidth: remaster.width,
+                naturalHeight: remaster.height,
+              },
+            }),
         sourceBytes: Buffer.byteLength(prepared),
         outputBytes: Buffer.byteLength(optimized),
         width: intrinsic.width,
@@ -404,11 +546,13 @@ async function cmdSvg() {
     assets: results,
     totals: {
       assets: results.length,
-      mismatchedPixels: results.reduce((n, r) => n + r.mismatchedPixels, 0),
-      sourceBytes: results.reduce((n, r) => n + r.sourceBytes, 0),
-      outputBytes: results.reduce((n, r) => n + r.outputBytes, 0),
-      inkPixels: results.reduce((n, r) => n + r.inkPixels, 0),
-      nonBlankRenders: results.filter((r) => r.inkPixels > 0).length,
+      skipped: results.filter((r) => r.skipped === true).length,
+      processed: results.filter((r) => r.skipped !== true).length,
+      mismatchedPixels: results.reduce((n, r) => n + (r.mismatchedPixels ?? 0), 0),
+      sourceBytes: results.reduce((n, r) => n + (r.sourceBytes ?? 0), 0),
+      outputBytes: results.reduce((n, r) => n + (r.outputBytes ?? 0), 0),
+      inkPixels: results.reduce((n, r) => n + (r.inkPixels ?? 0), 0),
+      nonBlankRenders: results.filter((r) => (r.inkPixels ?? 0) > 0).length,
     },
   };
   if (summary.totals.assets !== 36 || summary.totals.mismatchedPixels !== 0) {
@@ -591,11 +735,30 @@ function manifestAssets(mapping) {
 
   const svgEntriesList = svgEntries();
   for (const entry of svgEntriesList) {
-    add(`svg/${entry.name}`, entry.source, {
-      kind: 'svg',
-      element: entry.element,
-      symbol: entry.symbol.id,
-    });
+    const remaster = HD_REMASTERS.get(entry.name);
+    if (remaster === undefined) {
+      add(`svg/${entry.name}`, entry.source, {
+        kind: 'svg',
+        element: entry.element,
+        symbol: entry.symbol.id,
+      });
+    } else {
+      // Y1: the embedded bitmap payload's source is the HD remaster artifact
+      // (+ its pinned sha256); the SVG template provenance is kept as
+      // `templateSource` (see the HD_REMASTERS doc comment).
+      add(`svg/${entry.name}`, remaster.artifact, {
+        kind: 'svg',
+        element: entry.element,
+        symbol: entry.symbol.id,
+        sourceSha256: remaster.sha256,
+        templateSource: entry.source,
+        remaster: {
+          format: 'image/webp',
+          naturalWidth: remaster.width,
+          naturalHeight: remaster.height,
+        },
+      });
+    }
   }
   for (const bmp of BITMAPS) {
     add(`img/${bmp.name}`, bmp.source, { kind: 'bitmap', bitmapId: bmp.id });

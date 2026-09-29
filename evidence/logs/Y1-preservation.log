@@ -1,0 +1,36 @@
+s48_board_backdrop: reconstructed pre-Y1 processed sha=ab35a24f2c6fae2d64a20ab35c806e12a320632a9d50fbc414550e22c8b7a9c3 pinned=ab35a24f2c6fae2d64a20ab35c806e12a320632a9d50fbc414550e22c8b7a9c3 match=true
+s48_board_backdrop: structural (payload-normalized) old==new: true
+s90_btn_speaker: reconstructed pre-Y1 processed sha=bebd49f7bb99427b3d56612b9a8590f01c0be67dc14ad605cdd21859bdb025e1 pinned=bebd49f7bb99427b3d56612b9a8590f01c0be67dc14ad605cdd21859bdb025e1 match=true
+s90_btn_speaker: structural (payload-normalized) old==new: true
+{
+  "s90OldVsNew": {
+    "count": 381,
+    "bbox": {
+      "x": 1,
+      "y": 2,
+      "w": 22,
+      "h": 30
+    }
+  },
+  "s48OldVsNew": {
+    "count": 2937,
+    "bbox": {
+      "x": 0,
+      "y": 0,
+      "w": 550,
+      "h": 400
+    }
+  },
+  "s48NewVsMinimalWebp": {
+    "count": 0,
+    "bbox": null
+  },
+  "s48NewVsMinimalWebpGt0": {
+    "count": 0,
+    "bbox": null
+  },
+  "s90NewVsItself": {
+    "count": 0,
+    "bbox": null
+  }
+}

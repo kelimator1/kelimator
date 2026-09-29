@@ -1,0 +1,98 @@
+
+> kelimator-2012@0.0.0 test
+> vitest run
+
+
+ RUN  v5.0.2 /home/dev/kelimator-2012
+
+ ✓ tests/assets.test.mjs (11 tests) 15ms
+ ✓ tests/normalize-wordlist.test.mjs (19 tests) 94ms
+stdout | tests/rounds-fixtures.test.mjs
+[B3] viroloji source: tests/fixtures/rounds/viroloji.xml sha256=594e6a5377fbe8edef05f93850ac9eea4fc50c25fd5e6e9facf33186d4cd8621
+
+stdout | tests/rounds-fixtures.test.mjs > fixture: finalizm (archived xml.php, ISO-8859-9) > is available and decodes byte-wise to FİNALİZM (plain text, not Base64)
+[B3] finalizm source: ../kelimator-nostalji/calistir/xml.php sha256=854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed
+
+stdout | tests/rounds-fixtures.test.mjs > fixture: finalizm (archived xml.php, ISO-8859-9) > passes all structural checks (3–8 letters, multiset ⊂ main, main present, no duplicates)
+[B3] finalizm structural: main=FİNALİZM counts(3..7)=28/41/17/4/0 total=91 sorted=false checksum=19c4701ab499f750987eebe0bff07f9c
+
+stdout | tests/rounds-fixtures.test.mjs > fixture: finalizm (archived xml.php, ISO-8859-9) > xml.php and xml64.php are byte-identical (the two archived FİNALİZM copies)
+[B3] xml.php = xml64.php sha256=854b7287c2e6878938671b7490f908605b9986ba28f4abe6f0eb2a62af3c2bed
+
+ ✓ tests/timer.test.ts (17 tests) 11ms
+ ✓ tests/audio.test.ts (17 tests) 8ms
+stdout | tests/rounds-fixtures.test.mjs > fixture: finalizm (archived xml.php, ISO-8859-9) > enumeration check: every archived subword present in the archived dictionary is producible from FİNALİZM
+[B3] archived dictionary: /home/dev/kelimator-nostalji/kayitlar/sozluk_29749_kelime.xml sha256=558269a0fa7de05e90e96d62f583dcbb1c4a95510a0e7fe360629ffa40f47f00 raw=29749 uniqueRaw=27856 normalized=27814 droppedByPipeline=11 blocklisted=32
+[B3] finalizm enumeration: fixtureWords=90 inDictionary=83 producible=83 exceptions=0
+[B3] finalizm dictionary gaps (archived words absent from the archived dictionary): 7 -> ALİ, FAN, LAN, LİM, AMİN, İZAN, ZİFİN
+
+stdout | tests/rounds-fixtures.test.mjs > fixture: finalizm (archived xml.php, ISO-8859-9) > the bank round for FİNALİZM contains every archived subword present in tools/wordlist.txt
+[B3] finalizm bank round: generated=90 archivedWordsInCurrentWordlist=89 missing=0 addedSince2007=1 -> ZİLİ
+
+stdout | tests/rounds-fixtures.test.mjs > fixture: leavings (archived xml_eng.php; English, no dictionary cross-check) > is available and decodes to LEAVINGS
+[B3] leavings source: ../kelimator-nostalji/calistir/xml_eng.php sha256=ba36b137fde8a4363e4435c0c48fc257fcbb1ac684e244b2062abc6140be7da8
+
+stdout | tests/rounds-fixtures.test.mjs > fixture: leavings (archived xml_eng.php; English, no dictionary cross-check) > passes all structural checks (3–8 letters, multiset ⊂ main, main present, no duplicates)
+[B3] leavings structural: main=LEAVINGS counts(3..7)=19/41/24/8/0 total=93 sorted=true
+
+stdout | tests/rounds-fixtures.test.mjs > fixture: viroloji (Wayback xml.php capture 2007-05-14) > passes all structural checks (3–8 letters, multiset ⊂ main, main present, no duplicates)
+[B3] viroloji structural: main=VİROLOJİ counts(3..7)=4/1/0/0/0
+
+stdout | tests/rounds-fixtures.test.mjs > emitted bank (src/data/rounds.json; V2 invariants) > every round: total words ≥ configured T, and id = roundId(main)
+[B3] bank: rounds=7393 T=30 perLength(3..8)=149345/178376/122758/37801/14571/7393
+
+stdout | tests/rounds-fixtures.test.mjs > emitted bank (src/data/rounds.json; V2 invariants) > records (does not resolve) id collisions of the docs/06 §4 rule
+[B3] id collisions within the bank under the docs/06 §4 rule (spec defines no disambiguation; recorded in evidence/B3-bank.md): 33
+[B3]   asabilme <- ASABİLME, AŞABİLME
+[B3]   asilanma <- ASILANMA, AŞILANMA
+[B3]   asiverme <- ASIVERME, AŞIVERME
+[B3]   astirmak <- ASTIRMAK, AŞTIRMAK
+[B3]   bahsedis <- BAHSEDİŞ, BAHŞEDİŞ
+[B3]   bahsetme <- BAHSETME, BAHŞETME
+[B3]   beslemek <- BESLEMEK, BEŞLEMEK
+[B3]   estirmek <- ESTİRMEK, EŞTİRMEK
+[B3]   fislamak <- FISLAMAK, FIŞLAMAK
+[B3]   hafizali <- HAFIZALI, HAFIZALİ
+[B3]   kasinmak <- KASINMAK, KAŞINMAK
+[B3]   munakasa <- MÜNAKASA, MÜNAKAŞA
+[B3]   mutevazi <- MÜTEVAZI, MÜTEVAZİ
+[B3]   nakislik <- NAKISLIK, NAKIŞLIK
+[B3]   sadiklik <- SADIKLIK, SADİKLİK
+[B3]   suratsiz <- SURATSIZ, SÜRATSİZ
+[B3]   taharrus <- TAHARRÜS, TAHARRÜŞ
+[B3]   taslamak <- TASLAMAK, TAŞLAMAK
+[B3]   taslatma <- TASLATMA, TAŞLATMA
+[B3]   yaslanis <- YASLANIŞ, YAŞLANIŞ
+[B3]   yaslanma <- YASLANMA, YAŞLANMA
+[B3]   yaslilik <- YASLILIK, YAŞLILIK
+[B3]   islenmek <- İSLENMEK, İŞLENMEK
+[B3]   saklamak <- SAKLAMAK, ŞAKLAMAK
+[B3]   saklatma <- SAKLATMA, ŞAKLATMA
+[B3]   saklayis <- SAKLAYIŞ, ŞAKLAYIŞ
+[B3]   samanlik <- SAMANLIK, ŞAMANLIK
+[B3]   saplamak <- SAPLAMAK, ŞAPLAMAK
+[B3]   saplatma <- SAPLATMA, ŞAPLATMA
+[B3]   siklasma <- SIKLAŞMA, ŞIKLAŞMA
+[B3]   sirlamak <- SIRLAMAK, ŞIRLAMAK
+[B3]   sislemek <- SİSLEMEK, ŞİŞLEMEK
+[B3]   sislenme <- SİSLENME, ŞİŞLENME
+
+ ✓ tests/rounds-fixtures.test.mjs (20 tests) 214ms
+ ✓ verify/diff/diff.test.mjs (25 tests) 1198ms
+ ✓ tests/speaker.test.ts (9 tests) 5ms
+ ✓ tests/constants.test.mjs (3 tests) 3ms
+ ✓ tests/stage.test.ts (11 tests) 4ms
+ ✓ tests/scoring.test.ts (17 tests) 13ms
+ ✓ tests/input.test.ts (29 tests) 8ms
+ ✓ tests/round.test.ts (34 tests) 59ms
+ ✓ tests/lifecycle.test.ts (23 tests) 47ms
+
+ Test Files  13 passed (13)
+      Tests  235 passed (235)
+   Start at  11:58:14
+   Duration  2.85s (import 46%, transform 39%, tests 14%)
+
+  Transform  transforming modules took 4.62s · 39% of tracked time, re-done on every run
+             persist transforms across runs with fsModuleCache: true
+             learn more: https://vitest.dev/guide/improving-performance#caching-between-reruns
+

@@ -1,0 +1,4 @@
+dilate r=0: rects=401 cover=8372/10915 (76.70%) area=8372px (3.8% of stage)
+dilate r=1: rects=401 cover=10204/10915 (93.49%) area=24646px (11.2% of stage)
+dilate r=2: rects=401 cover=10612/10915 (97.22%) area=40657px (18.5% of stage)
+dilate r=3: rects=401 cover=10780/10915 (98.76%) area=58127px (26.4% of stage)

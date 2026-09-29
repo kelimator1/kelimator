@@ -19,6 +19,10 @@
 // (the harness's click step overhead exceeds the 194 ms slide) and is recorded
 // as not covered.
 //
+// Task Y1 owner-approved allowance: the covered keyframes pass the HD
+// backdrop/knob `--ignore-rect` set (tests/e2e/visual-states.ts
+// Y1_IGNORE_RECTS) and the suite asserts the tool reports exactly it.
+//
 // V2: the code timings (ANIMATION_SEQUENCES / `window.__animations.catalog()`)
 // equal data/animation.json: frames, frames ÷ 36 durations, keyframe frames and
 // offsets.
@@ -32,6 +36,7 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { GAME_STATES } from '../../../src/game/state';
+import { y1IgnoreRectArgs, y1IgnoreRects } from '../visual-states';
 
 const REPO_ROOT = process.cwd();
 const REFERENCE_DIR = path.join(REPO_ROOT, 'tests/fixtures/reference/animations');
@@ -75,6 +80,9 @@ interface DiffReport {
   tolerantMismatchRatio: number;
   tolerantMismatchBBox: { x: number; y: number; width: number; height: number } | null;
   passRatio: number;
+  // Schema v3 (task Y1): opt-in region exclusions.
+  ignoredRects: { x: number; y: number; w: number; h: number }[];
+  ignoredPixels: number;
   pass: boolean;
 }
 
@@ -177,7 +185,11 @@ async function driveToReferenceBoard(page: Page): Promise<void> {
 }
 
 function runDiff(actual: string, reference: string, outDir: string): DiffReport {
-  execFileSync(process.execPath, [DIFF_TOOL, actual, reference, outDir], { stdio: 'pipe' });
+  // Task Y1 owner-approved allowance: the covered keyframes are board states
+  // (backdrop + speaker visible) at deviceScaleFactor 1 — pass the rects.
+  execFileSync(process.execPath, [DIFF_TOOL, actual, reference, outDir, ...y1IgnoreRectArgs(1)], {
+    stdio: 'pipe',
+  });
   const reportPath = path.join(outDir, 'report.json');
   expect(fs.existsSync(reportPath), `diff report written: ${reportPath}`).toBe(true);
   expect(fs.existsSync(path.join(outDir, 'heatmap.png')), 'heatmap artifact').toBe(true);
@@ -389,11 +401,15 @@ test.describe('E3 V5 — animation keyframes', () => {
       expect(Number.isInteger(report.mismatchedPixels)).toBe(true);
       expect(typeof report.mismatchBBox === 'object').toBe(true);
       expect(report.tolerantRadius).toBe(2);
+      // Y1 allowance must be active and reported exactly (schema v3).
+      expect(report.ignoredRects).toEqual(y1IgnoreRects(1));
+      expect(report.ignoredPixels).toBeGreaterThan(0);
       console.log(
         `E3 ${covered.sequence} @ ${covered.label}s: raw=${rawPercent.toFixed(3)}% ` +
           `(${report.mismatchedPixels}/${report.totalPixels} px), ` +
           `tolerant=${tolerantPercent.toFixed(3)}% ` +
-          `(${report.tolerantMismatchedPixels} px), pass=${report.pass}`,
+          `(${report.tolerantMismatchedPixels} px), ignoredPixels=${report.ignoredPixels}, ` +
+          `pass=${report.pass}`,
       );
       expect(
         report.tolerantMismatchRatio,

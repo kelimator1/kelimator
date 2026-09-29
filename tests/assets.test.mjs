@@ -8,7 +8,9 @@
 //   3. the src/data copies recorded in the manifest match the files on disk;
 //   4. the manifest records the exact-pinned svgo version from package.json;
 //   5. every element id used by src/data/animation.json exists in layout.json;
-//   6. the letter_tile template carries no baked placeholder glyph (X2 guard).
+//   6. the letter_tile template carries no baked placeholder glyph (X2 guard);
+//   7. the two raster-bearing SVGs embed the pinned HD WebP remaster payloads
+//      and the manifest records the artifacts (Y1 guard).
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
@@ -95,6 +97,101 @@ describe('asset manifest coverage (E1)', () => {
       .filter((id) => !ids.has(id));
     expect(unknown).toEqual([]);
   });
+});
+
+// ---------------------------------------------------------------------------
+// Y1 regression guard (owner final presentation wave)
+//
+// `s48_board_backdrop.svg` (bitmap 47) and `s90_btn_speaker.svg` (bitmap 86)
+// carry the owner-approved HD remaster payloads instead of the 2012 PNG
+// payloads: the process pipeline (`tools/process-assets.mjs` `HD_REMASTERS`)
+// swaps the embedded data URI for the hash-pinned 8x WebP artifact, and the
+// manifest entry records the artifact as `source` + its sha256. This check
+// fails if the payload regresses to the 2012 PNG or the manifest record drifts.
+// Derivation/measurements: evidence/Y1-remaster.md.
+// ---------------------------------------------------------------------------
+const Y1_REMASTERS = {
+  'svg/s48_board_backdrop.svg': {
+    artifact: 'artifacts/hd-assets/ai47-x4plus-8x.webp',
+    sha256: '58ac94a053dc3133bde957c15f4b23d03e6b1a0cdc4de0d8ba89e65c63cb958e',
+    width: 4400,
+    height: 3200,
+    templateSource: 'artifacts/decompiled/shapes/48.svg',
+    // Positive anchors: the backdrop structure must stay intact (no vacuous pass).
+    anchors: [
+      '<image ',
+      'PatternID_48_1',
+      'ffdec:fill-bitmapId="47"',
+      'width="550" height="400"',
+    ],
+  },
+  'svg/s90_btn_speaker.svg': {
+    artifact: 'artifacts/hd-assets/ai86-8x.webp',
+    sha256: '490794263c69e920a8f061088c33dff5d63cc5f47f8937727cb15163273dfa2f',
+    width: 168,
+    height: 232,
+    templateSource: 'artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_90/1_up.svg',
+    anchors: [
+      '<image ',
+      'id="shape0"',
+      'id="shape1"',
+      'ffdec:fill-bitmapId="86"',
+      'xlink:href="#sprite0"',
+    ],
+  },
+};
+
+/** Minimal VP8 (lossy) size reader (same subset as tools/process-assets.mjs). */
+function webpVp8Size(bytes) {
+  if (bytes.subarray(0, 4).toString('latin1') !== 'RIFF') return null;
+  if (bytes.subarray(8, 12).toString('latin1') !== 'WEBP') return null;
+  if (bytes.subarray(12, 16).toString('latin1') !== 'VP8 ') return null;
+  if (bytes[23] !== 0x9d || bytes[24] !== 0x01 || bytes[25] !== 0x2a) return null;
+  return {
+    width: (bytes[26] | (bytes[27] << 8)) & 0x3fff,
+    height: (bytes[28] | (bytes[29] << 8)) & 0x3fff,
+  };
+}
+
+describe('HD remaster payloads (Y1)', () => {
+  for (const [name, expected] of Object.entries(Y1_REMASTERS)) {
+    it(`${name} embeds the pinned WebP remaster and the manifest records it`, () => {
+      const rel = `src/assets/${name}`;
+      const svg = readFileSync(path.join(ROOT, rel), 'utf8');
+      // Positive anchors: the SVG structure behind the payload must be intact.
+      for (const anchor of expected.anchors) {
+        expect(svg, `${name} anchor ${anchor}`).toContain(anchor);
+      }
+      // Exactly one payload, WebP, no leftover 2012 PNG data URI.
+      const payloads = svg.match(/xlink:href="data:image\/webp;base64,[A-Za-z0-9+/=]+"/g) ?? [];
+      expect(payloads, `${name} embedded WebP payloads`).toHaveLength(1);
+      expect(svg, `${name} carries no embedded PNG payload`).not.toMatch(
+        /xlink:href="data:image\/PNG;base64,/,
+      );
+      const bytes = Buffer.from(
+        payloads[0].replace('xlink:href="data:image/webp;base64,', '').replace(/"$/, ''),
+        'base64',
+      );
+      const size = webpVp8Size(bytes);
+      expect(size, `${name} payload decodes as lossy VP8 WebP`).not.toBeNull();
+      expect(size, `${name} natural size`).toEqual({
+        width: expected.width,
+        height: expected.height,
+      });
+      // Manifest record: artifact as source + pinned sha256 + template provenance.
+      const entry = manifest.assets[name];
+      expect(entry, `${name} in the manifest`).toBeDefined();
+      expect(entry.source).toBe(expected.artifact);
+      expect(entry.sourceSha256).toBe(expected.sha256);
+      expect(entry.templateSource).toBe(expected.templateSource);
+      expect(entry.remaster).toEqual({
+        format: 'image/webp',
+        naturalWidth: expected.width,
+        naturalHeight: expected.height,
+      });
+      expect(sha256(rel), `${name} sha256`).toBe(entry.sha256);
+    });
+  }
 });
 
 // ---------------------------------------------------------------------------

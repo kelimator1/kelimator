@@ -153,11 +153,18 @@
    "symbol": 46
   },
   "svg/s48_board_backdrop.svg": {
-   "sha256": "ab35a24f2c6fae2d64a20ab35c806e12a320632a9d50fbc414550e22c8b7a9c3",
-   "source": "artifacts/decompiled/shapes/48.svg",
+   "sha256": "b06c67bea1a6559c2be2fac9f2e15234f6a9d07df06a40bbea4f8802f6a6cb93",
+   "source": "artifacts/hd-assets/ai47-x4plus-8x.webp",
    "kind": "svg",
    "element": "board_backdrop",
-   "symbol": 48
+   "symbol": 48,
+   "sourceSha256": "58ac94a053dc3133bde957c15f4b23d03e6b1a0cdc4de0d8ba89e65c63cb958e",
+   "templateSource": "artifacts/decompiled/shapes/48.svg",
+   "remaster": {
+    "format": "image/webp",
+    "naturalWidth": 4400,
+    "naturalHeight": 3200
+   }
   },
   "svg/s58_letter_tile.svg": {
    "sha256": "4a2510f29f029f7cd4f5acbfacb48f2bb71c7f6dffdb16756b9ad971f01062d0",
@@ -209,11 +216,18 @@
    "symbol": 84
   },
   "svg/s90_btn_speaker.svg": {
-   "sha256": "bebd49f7bb99427b3d56612b9a8590f01c0be67dc14ad605cdd21859bdb025e1",
-   "source": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_90/1_up.svg",
+   "sha256": "9538d9b7323ecf743ab128854cc03d8485f3ac385e2f460d0b172702658a8591",
+   "source": "artifacts/hd-assets/ai86-8x.webp",
    "kind": "svg",
    "element": "btn_speaker",
-   "symbol": 90
+   "symbol": 90,
+   "sourceSha256": "490794263c69e920a8f061088c33dff5d63cc5f47f8937727cb15163273dfa2f",
+   "templateSource": "artifacts/a3-captures/ffdec-2012-buttons/DefineButton2_90/1_up.svg",
+   "remaster": {
+    "format": "image/webp",
+    "naturalWidth": 168,
+    "naturalHeight": 232
+   }
   },
   "svg/s97_credit_line.svg": {
    "sha256": "29ef27bfc18cad16e03a3ccebe79d046a78b2146f00be02530c88b3d8376c539",

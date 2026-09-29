@@ -1,0 +1,8 @@
+cell=16 min=3: rects=73 cover=19835/19887 (99.74%) area=132896px (60.4%) extra=113061
+cell=16 min=8: rects=71 cover=19655/19887 (98.83%) area=123392px (56.1%) extra=103737
+cell=20 min=5: rects=46 cover=19809/19887 (99.61%) area=140000px (63.6%) extra=120191
+cell=20 min=10: rects=47 cover=19727/19887 (99.20%) area=135200px (61.5%) extra=115473
+cell=24 min=8: rects=39 cover=19816/19887 (99.64%) area=150640px (68.5%) extra=130824
+cell=25 min=10: rects=32 cover=19785/19887 (99.49%) area=144375px (65.6%) extra=124590
+cell=30 min=10: rects=22 cover=19794/19887 (99.53%) area=156600px (71.2%) extra=136806
+cell=30 min=20: rects=22 cover=19718/19887 (99.15%) area=152100px (69.1%) extra=132382

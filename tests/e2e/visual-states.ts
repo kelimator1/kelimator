@@ -283,3 +283,180 @@ export const VISUAL_STATES: readonly VisualStateSpec[] = [S1, S2, S3, S4, S5, S6
 export function viewFor(spec: VisualStateSpec, dsf: 1 | 2): BoardView {
   return spec.views[dsf];
 }
+
+// ---------------------------------------------------------------------------
+// Task Y1 — owner-approved V5 allowance (docs/07 §4, owner final wave)
+//
+// The HD-remastered board backdrop (bitmap 47) and speaker knob (bitmap 86)
+// intentionally deviate from the 2012 reference texture (owner-approved);
+// every visual comparison of a board state passes these stage-pixel rects to
+// the F1 diff tool's `--ignore-rect`, so the deviation does not consume the
+// verification budget. Derivation (evidence/Y1-remaster.md §5):
+//   - deviation mask = pixels where the remaster changed the render
+//     (`|after − before| > 0`), the backdrop is visible (hiding the backdrop
+//     changes them) and the comparison now mismatches (> 30) while it did not
+//     before, at S2 dsf 1/2; the union of both deviceScaleFactors in dsf1
+//     stage coordinates is covered exactly with 10-px cells (cells carrying
+//     ≥ 3 deviation pixels; greedy maximal rectangles) → 137 rects,
+//     97.7 % / 98.6 % of the deviation at dsf 1/2; the residual stays counted;
+//   - the final rect is the measured speaker-knob footprint bbox (dsf1).
+// The set spans 28.4 % of the stage and leaves the pre-existing
+// font/shape/bitmap rasterization mismatch outside the deviation network
+// counted (measured post-allowance S2 tolerant ratios ≈ the pre-Y1 baseline:
+// 0.710 % vs 0.980 % at dsf1, 0.254 % vs 0.281 % at dsf2). Rect coordinates
+// are dsf1 stage pixels; scale by the deviceScaleFactor. States without the
+// backdrop element (S1 intro) get no allowance.
+// ---------------------------------------------------------------------------
+export const Y1_IGNORE_RECTS: readonly (readonly [number, number, number, number])[] = [
+  [90, 230, 420, 10],
+  [20, 40, 350, 10],
+  [10, 60, 20, 150],
+  [280, 70, 20, 150],
+  [20, 220, 270, 10],
+  [540, 10, 10, 270],
+  [270, 360, 270, 10],
+  [140, 390, 250, 10],
+  [20, 360, 240, 10],
+  [430, 10, 10, 220],
+  [90, 280, 220, 10],
+  [0, 240, 110, 10],
+  [440, 10, 100, 10],
+  [300, 220, 100, 10],
+  [440, 220, 100, 10],
+  [130, 260, 50, 20],
+  [420, 240, 20, 50],
+  [450, 270, 90, 10],
+  [300, 70, 80, 10],
+  [20, 290, 40, 20],
+  [200, 290, 20, 40],
+  [210, 190, 70, 10],
+  [460, 300, 70, 10],
+  [90, 250, 20, 30],
+  [90, 300, 60, 10],
+  [430, 290, 50, 10],
+  [20, 310, 10, 50],
+  [510, 310, 10, 50],
+  [360, 50, 20, 20],
+  [500, 190, 40, 10],
+  [220, 200, 20, 20],
+  [240, 240, 20, 20],
+  [480, 240, 20, 20],
+  [320, 280, 40, 10],
+  [160, 300, 40, 10],
+  [140, 370, 20, 20],
+  [370, 370, 20, 20],
+  [510, 80, 30, 10],
+  [440, 80, 10, 30],
+  [450, 110, 30, 10],
+  [190, 240, 30, 10],
+  [440, 240, 10, 30],
+  [390, 280, 30, 10],
+  [490, 290, 30, 10],
+  [260, 300, 30, 10],
+  [370, 300, 30, 10],
+  [510, 390, 30, 10],
+  [460, 0, 20, 10],
+  [500, 0, 20, 10],
+  [140, 20, 20, 10],
+  [450, 130, 20, 10],
+  [530, 120, 10, 20],
+  [260, 150, 10, 20],
+  [470, 160, 20, 10],
+  [450, 170, 20, 10],
+  [440, 180, 20, 10],
+  [530, 170, 10, 20],
+  [520, 230, 20, 10],
+  [330, 240, 20, 10],
+  [140, 250, 20, 10],
+  [390, 240, 10, 20],
+  [230, 250, 10, 20],
+  [210, 260, 10, 20],
+  [70, 290, 20, 10],
+  [60, 300, 20, 10],
+  [330, 300, 20, 10],
+  [50, 350, 20, 10],
+  [380, 350, 20, 10],
+  [300, 370, 10, 20],
+  [170, 0, 10, 10],
+  [20, 10, 10, 10],
+  [440, 20, 10, 10],
+  [520, 20, 10, 10],
+  [460, 30, 10, 10],
+  [490, 30, 10, 10],
+  [450, 40, 10, 10],
+  [20, 50, 10, 10],
+  [440, 60, 10, 10],
+  [520, 60, 10, 10],
+  [450, 80, 10, 10],
+  [0, 90, 10, 10],
+  [460, 90, 10, 10],
+  [450, 100, 10, 10],
+  [470, 100, 10, 10],
+  [530, 100, 10, 10],
+  [170, 120, 10, 10],
+  [440, 120, 10, 10],
+  [230, 130, 10, 10],
+  [30, 140, 10, 10],
+  [500, 140, 10, 10],
+  [170, 150, 10, 10],
+  [530, 150, 10, 10],
+  [0, 160, 10, 10],
+  [270, 160, 10, 10],
+  [440, 160, 10, 10],
+  [230, 180, 10, 10],
+  [480, 180, 10, 10],
+  [90, 190, 10, 10],
+  [190, 200, 10, 10],
+  [240, 200, 10, 10],
+  [260, 200, 10, 10],
+  [440, 200, 10, 10],
+  [20, 210, 10, 10],
+  [70, 210, 10, 10],
+  [170, 210, 10, 10],
+  [260, 250, 10, 10],
+  [340, 250, 10, 10],
+  [380, 250, 10, 10],
+  [250, 260, 10, 10],
+  [350, 260, 10, 10],
+  [450, 260, 10, 10],
+  [480, 260, 10, 10],
+  [120, 270, 10, 10],
+  [180, 270, 10, 10],
+  [440, 280, 10, 10],
+  [460, 280, 10, 10],
+  [160, 290, 10, 10],
+  [180, 290, 10, 10],
+  [240, 300, 10, 10],
+  [420, 300, 10, 10],
+  [260, 310, 10, 10],
+  [390, 310, 10, 10],
+  [520, 310, 10, 10],
+  [500, 330, 10, 10],
+  [30, 350, 10, 10],
+  [80, 350, 10, 10],
+  [200, 350, 10, 10],
+  [250, 350, 10, 10],
+  [300, 350, 10, 10],
+  [330, 350, 10, 10],
+  [500, 350, 10, 10],
+  [520, 350, 10, 10],
+  [510, 370, 10, 10],
+  [530, 370, 10, 10],
+  [220, 380, 10, 10],
+  [360, 380, 10, 10],
+  [390, 380, 10, 10],
+  [515, 367, 22, 30], // speaker-knob bbox (measured footprint, dsf1)
+];
+
+/** The parsed allowance rects for one deviceScaleFactor. */
+export function y1IgnoreRects(dsf: number): { x: number; y: number; w: number; h: number }[] {
+  return Y1_IGNORE_RECTS.map(([x, y, w, h]) => ({ x: x * dsf, y: y * dsf, w: w * dsf, h: h * dsf }));
+}
+
+/** Ready-to-use `--ignore-rect x,y,w,h` CLI arguments for the F1 diff tool. */
+export function y1IgnoreRectArgs(dsf: number): string[] {
+  return y1IgnoreRects(dsf).flatMap((rect) => [
+    '--ignore-rect',
+    `${rect.x},${rect.y},${rect.w},${rect.h}`,
+  ]);
+}

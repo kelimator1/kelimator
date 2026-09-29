@@ -385,10 +385,14 @@ function renderSvgElement(element: LayoutElement, rect: { x: number; y: number; 
   if (raw !== undefined && raw.includes('<image')) {
     // Assets that embed a raster (s48 board backdrop with bitmap 47; s90
     // speaker with bitmap 86). Rendered inline so the raster's sampling can be
-    // pinned: the C3 reference captures show the bitmap upscaled with
-    // nearest-neighbor at deviceScaleFactor 2 (mean RGB distance 4.7 vs 13.9
-    // for a smooth upscale in the tray region), so `pixelated` reproduces the
-    // reference at integer device pixel ratios ≥ 2. Measured in E2-layout.md.
+    // pinned. Owner final presentation wave (task Y1): both assets carry the
+    // owner-approved HD remaster payloads (8x WebP), so the E2-era `pixelated`
+    // pin — which reproduced the reference's nearest-neighbor bitmap upscale
+    // at integer device pixel ratios ≥ 2 (E2-layout.md §6.4) — is switched to
+    // `smooth`: the HD payloads downscale with the browser's high-quality
+    // filter. This is an owner-approved deviation from the reference texture;
+    // derivation and measurements: evidence/Y1-remaster.md §3/§6.
+    // evidence: evidence/Y1-remaster.md (owner-approved HD remaster allowance)
     const holder = document.createElement('div');
     holder.className = 'board-svg-inline';
     holder.innerHTML = raw;
@@ -408,9 +412,9 @@ function renderSvgElement(element: LayoutElement, rect: { x: number; y: number; 
       svg.style.top = '0';
       const dpr = window.devicePixelRatio;
       if (Number.isInteger(dpr) && dpr >= 2) {
-        svg.style.imageRendering = 'pixelated';
+        svg.style.imageRendering = 'smooth';
         for (const image of Array.from(svg.querySelectorAll('image'))) {
-          (image as SVGImageElement).style.imageRendering = 'pixelated';
+          (image as SVGImageElement).style.imageRendering = 'smooth';
         }
       }
       const delta = ELEMENT_DELTA[element.id];

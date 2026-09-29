@@ -1,0 +1,3 @@
+ai47-x4plus-8x {"width":4400,"height":3200,"pixels":14080000,"maxChannelDiff":40,"meanAbsPerChannel":1.0239482954545454,"msePerChannel":2.1547261363636365,"pixelsOver2":2597074,"pixelsOver8":32175,"pixelsOver16":1187,"pixelsOver30rgb":62}
+ai47-x4plus-4x {"width":2200,"height":1600,"pixels":3520000,"maxChannelDiff":46,"meanAbsPerChannel":1.155252840909091,"msePerChannel":2.8092435606060606,"pixelsOver2":793618,"pixelsOver8":20500,"pixelsOver16":1455,"pixelsOver30rgb":178}
+ai86-8x {"width":168,"height":232,"pixels":38976,"maxChannelDiff":102,"meanAbsPerChannel":2.173021004378763,"msePerChannel":21.172046045429667,"pixelsOver2":17019,"pixelsOver8":5041,"pixelsOver16":1029,"pixelsOver30rgb":270}

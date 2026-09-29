@@ -1,0 +1,14 @@
+
+> kelimator-2012@0.0.0 test
+> vitest run assets
+
+
+ RUN  v5.0.2 /home/dev/kelimator-2012
+
+ ✓ tests/assets.test.mjs (11 tests) 11ms
+
+ Test Files  1 passed (1)
+      Tests  11 passed (11)
+   Start at  12:29:08
+   Duration  92ms (transform 36%, tests 35%, import 23%, worker 5%)
+

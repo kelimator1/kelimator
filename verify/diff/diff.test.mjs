@@ -13,6 +13,10 @@
  *   - undecodable input / usage / --help exit-code contract
  *   - threshold boundary and alpha semantics (docs/07-verification.md §4)
  *   - determinism: two runs -> byte-identical report.json (and heatmap.png)
+ *   - schema v3 `--ignore-rect` (task Y1): identical + rect -> 0; a mutation
+ *     inside the rect is invisible; a mutation outside is detected; overlapping
+ *     rects count unique pixels; invalid rects -> clean exit 1; determinism
+ *     with rects retained
  *
  * Test images are generated deterministically in a temp directory at test
  * time (no binary fixtures committed); see verify/diff/fixtures.mjs, whose
@@ -150,7 +154,7 @@ describe('identical images', () => {
       expect(res.status).toBe(0);
       expect(res.stderr).toBe('');
       const report = readReport(out);
-      expect(report.schemaVersion).toBe(2);
+      expect(report.schemaVersion).toBe(3);
       expect(report.tolerantRadius).toBe(2);
       expect(report.mismatchedPixels).toBe(0);
       expect(report.mismatchRatio).toBe(0);
@@ -160,6 +164,8 @@ describe('identical images', () => {
       expect(report.tolerantMismatchedPixels).toBe(0);
       expect(report.tolerantMismatchRatio).toBe(0);
       expect(report.tolerantMismatchBBox).toBeNull();
+      expect(report.ignoredRects).toEqual([]);
+      expect(report.ignoredPixels).toBe(0);
       expect(report.pass).toBe(true);
       expect(existsSync(join(out, 'heatmap.png'))).toBe(true);
     },
@@ -180,7 +186,7 @@ describe('known mutation (10x10 block, +100 per channel)', () => {
       expect(res.status).toBe(0);
 
       const report = readReport(out);
-      expect(report.schemaVersion).toBe(2);
+      expect(report.schemaVersion).toBe(3);
       expect(report.width).toBe(STAGE.width);
       expect(report.height).toBe(STAGE.height);
       expect(report.totalPixels).toBe(STAGE.width * STAGE.height);
@@ -241,6 +247,151 @@ describe('known mutation (10x10 block, +100 per channel)', () => {
       });
     },
   );
+});
+
+describe('--ignore-rect (schema v3, task Y1)', () => {
+  it(
+    'identical images with a rect -> raw 0, tolerant 0, ignoredPixels = rect area',
+    { timeout: TIMEOUT },
+    () => {
+      const base = makeStageImage();
+      const a = writePng('ignore-identical-a.png', base);
+      const b = writePng('ignore-identical-b.png', base);
+      const out = join(scratch, 'ignore-identical-out');
+      const rect = { x: 100, y: 80, w: 40, h: 30 };
+      const res = runCli([a, b, out, '--ignore-rect', `${rect.x},${rect.y},${rect.w},${rect.h}`]);
+      expect(res.status).toBe(0);
+      expect(res.stderr).toBe('');
+      const report = readReport(out);
+      expect(report.schemaVersion).toBe(3);
+      expect(report.ignoredRects).toEqual([rect]);
+      expect(report.ignoredPixels).toBe(rect.w * rect.h);
+      expect(report.mismatchedPixels).toBe(0);
+      expect(report.mismatchRatio).toBe(0);
+      expect(report.tolerantMismatchedPixels).toBe(0);
+      expect(report.tolerantMismatchBBox).toBeNull();
+      expect(report.mismatchBBox).toBeNull();
+      expect(report.pass).toBe(true);
+    },
+  );
+
+  it(
+    'a mutation inside the rect is invisible (raw 0, tolerant 0, pass)',
+    { timeout: TIMEOUT },
+    () => {
+      const base = makeStageImage();
+      const mutated = mutateBlock(base);
+      const a = writePng('ignore-inside-a.png', base);
+      const b = writePng('ignore-inside-b.png', mutated);
+      const out = join(scratch, 'ignore-inside-out');
+      // Covers the 10x10 mutated block at MUTATED_BLOCK with a 1-px margin.
+      const rect = {
+        x: MUTATED_BLOCK.x - 1,
+        y: MUTATED_BLOCK.y - 1,
+        width: MUTATED_BLOCK.width + 2,
+        height: MUTATED_BLOCK.height + 2,
+      };
+      const res = runCli([a, b, out, '--ignore-rect', `${rect.x},${rect.y},${rect.width},${rect.height}`]);
+      expect(res.status).toBe(0);
+      const report = readReport(out);
+      expect(report.mismatchedPixels).toBe(0);
+      expect(report.mismatchBBox).toBeNull();
+      expect(report.tolerantMismatchedPixels).toBe(0);
+      expect(report.tolerantMismatchBBox).toBeNull();
+      expect(report.ignoredPixels).toBe(rect.width * rect.height);
+      // Full-image distance statistics keep their v2 definitions.
+      expect(report.maxDistance).toBe(Math.sqrt(3 * 100 * 100));
+      expect(report.pass).toBe(true);
+    },
+  );
+
+  it(
+    'a mutation outside the rect is still detected (raw + tolerant unchanged)',
+    { timeout: TIMEOUT },
+    () => {
+      const base = makeStageImage();
+      const mutated = mutateBlock(base);
+      const a = writePng('ignore-outside-a.png', base);
+      const b = writePng('ignore-outside-b.png', mutated);
+      const out = join(scratch, 'ignore-outside-out');
+      const rect = { x: 400, y: 300, width: 50, height: 40 };
+      const res = runCli([a, b, out, '--ignore-rect', `${rect.x},${rect.y},${rect.width},${rect.height}`]);
+      expect(res.status).toBe(0);
+      const report = readReport(out);
+      expect(report.mismatchedPixels).toBe(100);
+      expect(report.mismatchBBox).toEqual(MUTATED_BLOCK);
+      expect(report.tolerantMismatchedPixels).toBe(36);
+      expect(report.tolerantMismatchBBox).toEqual({
+        x: MUTATED_BLOCK.x + 2,
+        y: MUTATED_BLOCK.y + 2,
+        width: 6,
+        height: 6,
+      });
+      expect(report.ignoredPixels).toBe(rect.width * rect.height);
+      expect(report.pass).toBe(true);
+    },
+  );
+
+  it('overlapping rects count every pixel once (union)', () => {
+    const base = makeStageImage(64, 48, 3);
+    const mutated = mutateBlock(base, { x: 10, y: 10, width: 8, height: 8 });
+    const report = compareImages(base, mutated, {
+      ignoreRects: [
+        { x: 8, y: 8, w: 12, h: 12 }, // covers the mutation
+        { x: 16, y: 16, w: 4, h: 4 }, // overlaps the first rect's interior
+        { x: 40, y: 30, w: 6, h: 6 }, // disjoint
+      ],
+    });
+    // Union: 12x12 = 144 + 6x6 = 36 (the 4x4 overlap is inside the first rect).
+    expect(report.ignoredPixels).toBe(144 + 36);
+    expect(report.ignoredRects).toEqual([
+      { x: 8, y: 8, w: 12, h: 12 },
+      { x: 16, y: 16, w: 4, h: 4 },
+      { x: 40, y: 30, w: 6, h: 6 },
+    ]);
+    expect(report.mismatchedPixels).toBe(0);
+    expect(report.tolerantMismatchedPixels).toBe(0);
+    expect(report.pass).toBe(true);
+  });
+
+  it(
+    'determinism with rects: two runs -> byte-identical report.json and heatmap.png',
+    { timeout: TIMEOUT },
+    () => {
+      const base = makeStageImage();
+      const mutated = mutateBlock(base);
+      const a = writePng('ignore-v8-a.png', base);
+      const b = writePng('ignore-v8-b.png', mutated);
+      const out1 = join(scratch, 'ignore-v8-run-1');
+      const out2 = join(scratch, 'ignore-v8-run-2');
+      const args = ['--ignore-rect', '120,42,16,16', '--ignore-rect', '300,200,10,10'];
+      expect(runCli([a, b, out1, ...args]).status).toBe(0);
+      expect(runCli([a, b, out2, ...args]).status).toBe(0);
+      expect(readFileSync(join(out2, 'report.json')).equals(readFileSync(join(out1, 'report.json')))).toBe(true);
+      expect(readFileSync(join(out2, 'heatmap.png')).equals(readFileSync(join(out1, 'heatmap.png')))).toBe(true);
+    },
+  );
+
+  it('invalid rects: exit 1 with one clean line per failure mode', { timeout: TIMEOUT }, () => {
+    const base = makeStageImage(64, 48, 4);
+    const a = writePng('ignore-invalid-a.png', base);
+    const b = writePng('ignore-invalid-b.png', base);
+    const cases = [
+      ['1,2,3', /invalid --ignore-rect/], // wrong field count
+      ['a,b,c,d', /invalid --ignore-rect/], // not integers
+      ['-1,0,4,4', /invalid --ignore-rect/], // negative
+      ['0,0,0,4', /invalid --ignore-rect/], // w < 1
+      ['60,40,10,10', /outside 64x48/], // out of bounds
+    ];
+    for (const [value, pattern] of cases) {
+      const out = join(scratch, `ignore-invalid-${value.replace(/[^a-z0-9]/gi, '_')}`);
+      const res = runCli([a, b, out, '--ignore-rect', value]);
+      expect(res.status, `rect ${value}`).toBe(1);
+      expect(res.stderr.trim().split('\n'), `rect ${value}`).toHaveLength(1);
+      expect(res.stderr, `rect ${value}`).toMatch(pattern);
+      expect(existsSync(join(out, 'report.json'))).toBe(false);
+    }
+  });
 });
 
 describe('structural changes still detected by the tolerant metric', () => {

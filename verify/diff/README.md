@@ -7,20 +7,24 @@ pass basis come from `docs/07-verification.md` §4 (Amendment 2026-09-28).
 ## CLI
 
 ```
-node verify/diff/diff.mjs <a.png> <b.png> <outdir>
+node verify/diff/diff.mjs <a.png> <b.png> <outdir> [--ignore-rect x,y,w,h]...
 ```
 
 - `<a.png>`, `<b.png>` — PNGs of identical pixel dimensions. Any size works; the
   logical stage is 550×400 (`deviceScaleFactor: 1`) and 1100×800
   (`deviceScaleFactor: 2`).
 - `<outdir>` — created if missing; receives `report.json` and `heatmap.png`.
+- `--ignore-rect x,y,w,h` — optional, repeatable (task Y1). Excludes the
+  device-pixel rect from the mismatch counting (see "Ignore rects" below).
+  Values must be non-negative integers with `w,h >= 1`, and the rect must lie
+  fully inside the image; anything else exits 1 with one clean line.
 
 Exit-code contract (stable):
 
 | code | meaning |
 |---|---|
 | 0 | comparison ran to completion — regardless of the mismatch ratio; the verdict is the `pass` boolean inside `report.json` |
-| 1 | usage error, missing/unreadable file, undecodable PNG, or size mismatch — exactly one clean line on stderr, no stack trace, no files written |
+| 1 | usage error, missing/unreadable file, undecodable PNG, size mismatch, or invalid `--ignore-rect` — exactly one clean line on stderr, no stack trace, no files written |
 
 `node verify/diff/diff.mjs --help` prints usage on stdout and exits 0.
 A wrong argument count prints one usage line on stderr and exits 1.
@@ -28,11 +32,13 @@ A wrong argument count prints one usage line on stderr and exits 1.
 ## report.json schema (stable — consumers: C3, E2, E3, F2)
 
 Version 2 (Amendment 2026-09-28) adds the anti-aliasing-tolerant metric; all raw
-fields keep their v1 names and values.
+fields keep their v1 names and values. Version 3 (task Y1) adds the opt-in
+`ignoredRects`/`ignoredPixels` contract; without `--ignore-rect` a v3 report
+equals the v2 report plus `ignoredRects: []` / `ignoredPixels: 0`.
 
 | field | type | meaning |
 |---|---|---|
-| `schemaVersion` | number | report schema version, currently `2` (`1` = raw metric only) |
+| `schemaVersion` | number | report schema version, currently `3` (`1` = raw metric only, `2` = tolerant metric) |
 | `tool` | string | constant `"verify/diff/diff.mjs"` |
 | `width`, `height` | number | pixel dimensions (identical for both inputs) |
 | `totalPixels` | number | `width * height` |
@@ -47,11 +53,31 @@ fields keep their v1 names and values.
 | `tolerantMismatchedPixels` | number | raw mismatches with no counterpart within the tolerant neighbourhood (see below) |
 | `tolerantMismatchRatio` | number | `tolerantMismatchedPixels / totalPixels` (unrounded) |
 | `tolerantMismatchBBox` | object \| null | tight bounding box of tolerant mismatches; `null` when there are none |
+| `ignoredRects` | array | the validated `--ignore-rect` boxes as `{x, y, w, h}` (in the order given; `[]` when none) |
+| `ignoredPixels` | number | number of pixels inside the union of `ignoredRects` (overlaps counted once) |
 | `pass` | boolean | `tolerantMismatchRatio <= passRatio` |
 
 Numbers are full IEEE-754 doubles as serialized by `JSON.stringify`; key order
 is fixed. Distance is computed over R, G and B only — alpha is ignored
 (`docs/07-verification.md` §4 defines RGB Euclidean distance).
+
+### Ignore rects (schema v3, task Y1)
+
+`--ignore-rect x,y,w,h` (repeatable) declares owner-approved presentation
+deviations (task Y1: the HD remastered board backdrop and speaker knob). Pixels
+inside the validated rects:
+
+- are excluded from the **mismatch counting**: raw mismatches, tolerant
+  mismatches, both ratios and both bboxes, and therefore `pass`;
+- still contribute to `maxDistance`/`meanDistance`, which keep their full-image
+  definitions (unchanged from v2, so reports stay comparable);
+- are still checked by the tolerant neighbourhood lookup of pixels outside the
+  rects (the neighbourhood reads the full image);
+- are still rendered in `heatmap.png` (raw full-image visualization, unchanged).
+
+Overlapping rects count their shared pixels once (`ignoredPixels` is the union).
+Determinism: identical command → byte-identical `report.json`/`heatmap.png`
+(no timestamps, no paths, fixed key order; rects appear in the given order).
 
 ### Tolerant metric (V5 pass basis)
 
@@ -121,7 +147,7 @@ mismatches are a subset reported numerically in `report.json`.
 npm test -- diff
 ```
 
-Covered (`verify/diff/diff.test.mjs`, 19 tests): codec round-trip, PNG error
+Covered (`verify/diff/diff.test.mjs`, 25 tests): codec round-trip, PNG error
 cases, threshold boundary (30 matches, 31 mismatches; tolerant direction),
 alpha semantics, identical stage → raw and tolerant ratio 0 / `pass: true`,
 known 10×10 +100 block → exact raw bbox/ratio **and** exact tolerant 6×6 core
@@ -129,9 +155,14 @@ known 10×10 +100 block → exact raw bbox/ratio **and** exact tolerant 6×6 cor
 (30×30 recolour → exact 26×26 core; 40×40 square shifted 6 px → survivors
 confined to the 2-px remnant band), the radius boundary (a 4 px shift is fully
 absorbed), size mismatch / undecodable / missing file / usage error contract
-(`exit 1`, one stderr line), `--help`, and byte-identical reruns. Test images
-are generated deterministically in a temp directory at test time (no binary
-fixtures committed) by `verify/diff/fixtures.mjs`.
+(`exit 1`, one stderr line), `--help`, and byte-identical reruns. The v3
+`--ignore-rect` contract: identical + rect → raw/tolerant 0, `ignoredPixels` =
+rect area; a mutation inside the rect is invisible; a mutation outside is
+detected unchanged; overlapping rects count unique pixels; invalid rects
+(bad syntax, negative, zero size, out of bounds) → exit 1, one stderr line,
+no report; determinism with rects retained (byte-identical report + heatmap).
+Test images are generated deterministically in a temp directory at test time
+(no binary fixtures committed) by `verify/diff/fixtures.mjs`.
 
 Manual fixture materialization:
 

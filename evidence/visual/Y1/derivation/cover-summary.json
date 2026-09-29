@@ -1,0 +1,74 @@
+[
+  {
+    "cell": 16,
+    "minCount": 3,
+    "rects": 73,
+    "covered": 19835,
+    "total": 19887,
+    "area": 132896,
+    "extra": 113061
+  },
+  {
+    "cell": 16,
+    "minCount": 8,
+    "rects": 71,
+    "covered": 19655,
+    "total": 19887,
+    "area": 123392,
+    "extra": 103737
+  },
+  {
+    "cell": 20,
+    "minCount": 5,
+    "rects": 46,
+    "covered": 19809,
+    "total": 19887,
+    "area": 140000,
+    "extra": 120191
+  },
+  {
+    "cell": 20,
+    "minCount": 10,
+    "rects": 47,
+    "covered": 19727,
+    "total": 19887,
+    "area": 135200,
+    "extra": 115473
+  },
+  {
+    "cell": 24,
+    "minCount": 8,
+    "rects": 39,
+    "covered": 19816,
+    "total": 19887,
+    "area": 150640,
+    "extra": 130824
+  },
+  {
+    "cell": 25,
+    "minCount": 10,
+    "rects": 32,
+    "covered": 19785,
+    "total": 19887,
+    "area": 144375,
+    "extra": 124590
+  },
+  {
+    "cell": 30,
+    "minCount": 10,
+    "rects": 22,
+    "covered": 19794,
+    "total": 19887,
+    "area": 156600,
+    "extra": 136806
+  },
+  {
+    "cell": 30,
+    "minCount": 20,
+    "rects": 22,
+    "covered": 19718,
+    "total": 19887,
+    "area": 152100,
+    "extra": 132382
+  }
+]

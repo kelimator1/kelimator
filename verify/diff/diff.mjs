@@ -3,7 +3,7 @@
  * verify/diff/diff.mjs — deterministic PNG pixel-diff tool (task F1).
  *
  * CLI:
- *   node verify/diff/diff.mjs <a.png> <b.png> <outdir>
+ *   node verify/diff/diff.mjs <a.png> <b.png> <outdir> [--ignore-rect x,y,w,h]...
  *
  * Reads two PNGs of identical pixel dimensions, compares every pixel by RGB
  * Euclidean distance, and writes into <outdir>:
@@ -12,6 +12,12 @@
  *
  * Schema v2 reports the raw metric plus the anti-aliasing-tolerant metric that
  * is the V5 pass basis (docs/07-verification.md §4, Amendment 2026-09-28).
+ * Schema v3 adds opt-in region exclusions (`--ignore-rect`): pixels inside the
+ * given rects are excluded from the raw/tolerant mismatch counting and reported
+ * as `ignoredRects`/`ignoredPixels`; every other field keeps its definition
+ * (maxDistance/meanDistance stay full-image statistics). The task Y1 allowance
+ * (owner-approved HD asset remaster) uses this mechanism; without
+ * `--ignore-rect` the report is v3 with `ignoredRects: []`, `ignoredPixels: 0`.
  *
  * Exit codes:
  *   0 — comparison ran to completion; pass/fail is the "pass" field of report.json
@@ -42,8 +48,11 @@ export const TOLERANT_RADIUS = 2;
 export const MAX_RGB_DISTANCE = Math.sqrt(3 * 255 * 255);
 // v1 = raw metric only; v2 adds tolerantRadius/tolerantMismatchedPixels/
 // tolerantMismatchRatio/tolerantMismatchBBox and moves `pass` to the tolerant
-// ratio; all raw fields are unchanged in name and value.
-export const SCHEMA_VERSION = 2;
+// ratio; all raw fields are unchanged in name and value. v3 adds
+// ignoredRects/ignoredPixels (opt-in `--ignore-rect`, task Y1): the excluded
+// pixels no longer contribute to the raw/tolerant mismatch counts, ratios,
+// bboxes or `pass`; all other field definitions are unchanged.
+export const SCHEMA_VERSION = 3;
 
 const PNG_SIGNATURE = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
 
@@ -255,16 +264,56 @@ function pixelDistance(dataA, i, dataB, j) {
 }
 
 /**
+ * Validate the opt-in ignore rects against the image dimensions.
+ * Rects are `{x, y, w, h}` integer device-pixel boxes; they must lie fully
+ * inside the image (`x >= 0`, `y >= 0`, `w >= 1`, `h >= 1`, `x + w <= width`,
+ * `y + h <= height`). Throws a clean Error otherwise (CLI exit 1).
+ */
+export function normalizeIgnoreRects(rects, width, height) {
+  return rects.map((rect) => {
+    const { x, y, w, h } = rect;
+    if (![x, y, w, h].every((value) => Number.isInteger(value))) {
+      throw new Error(`ignore-rect values must be integers: ${x},${y},${w},${h}`);
+    }
+    if (x < 0 || y < 0 || w < 1 || h < 1 || x + w > width || y + h > height) {
+      throw new Error(
+        `ignore-rect ${x},${y},${w},${h} outside ${width}x${height} (w,h >= 1)`,
+      );
+    }
+    return { x, y, w, h };
+  });
+}
+
+/**
  * Compare two RGBA8 images of identical dimensions.
  * Returns the report object (see verify/diff/README.md for the schema).
  * Alpha is not part of the distance (RGB only, docs/07-verification.md §4).
+ *
+ * `options.ignoreRects` (task Y1, schema v3): pixels inside the validated
+ * rects are excluded from the mismatch counting — raw mismatches, tolerant
+ * mismatches, ratios, bboxes and `pass` all ignore them. `maxDistance` and
+ * `meanDistance` stay full-image statistics (unchanged definitions); the
+ * tolerant neighbourhood check still sees all image pixels.
  */
-export function compareImages(a, b) {
+export function compareImages(a, b, options = {}) {
   if (a.width !== b.width || a.height !== b.height) {
     throw new Error(`size mismatch: ${a.width}x${a.height} vs ${b.width}x${b.height}`);
   }
   const { width, height } = a;
   const totalPixels = width * height;
+  const ignoredRects = normalizeIgnoreRects(options.ignoreRects ?? [], width, height);
+  let ignoredPixels = 0;
+  let ignored = null;
+  if (ignoredRects.length > 0) {
+    ignored = new Uint8Array(totalPixels);
+    for (const rect of ignoredRects) {
+      for (let y = rect.y; y < rect.y + rect.h; y++) {
+        const row = y * width;
+        ignored.fill(1, row + rect.x, row + rect.x + rect.w);
+      }
+    }
+    for (let n = 0; n < totalPixels; n++) ignoredPixels += ignored[n];
+  }
   let mismatchedPixels = 0;
   let maxDistance = 0;
   let sumDistance = 0;
@@ -273,7 +322,9 @@ export function compareImages(a, b) {
   let maxX = -1;
   let maxY = 0;
   // Raw pass: full statistics + row-major addresses of the raw mismatches, so
-  // the tolerant pass only ever re-checks pixels already mismatched.
+  // the tolerant pass only ever re-checks pixels already mismatched. Ignored
+  // pixels contribute to maxDistance/meanDistance but never to the mismatch
+  // counts.
   const rawMismatchPixelIndices = [];
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
@@ -282,6 +333,7 @@ export function compareImages(a, b) {
       const distance = pixelDistance(a.data, i, b.data, i);
       sumDistance += distance;
       if (distance > maxDistance) maxDistance = distance;
+      if (ignored !== null && ignored[n] === 1) continue;
       if (distance > MISMATCH_THRESHOLD) {
         rawMismatchPixelIndices.push(n);
         if (maxX < minX) {
@@ -370,6 +422,8 @@ export function compareImages(a, b) {
             width: tolerantMaxX - tolerantMinX + 1,
             height: tolerantMaxY - tolerantMinY + 1,
           },
+    ignoredRects,
+    ignoredPixels,
     pass: tolerantMismatchRatio <= PASS_RATIO,
   };
 }
@@ -434,8 +488,11 @@ function decodePngFile(path) {
  * Full run: decode both files, compare, write `<outDir>/report.json` and
  * `<outDir>/heatmap.png`, return the report object. Nothing that varies
  * between runs (timestamps, output paths) enters the report.
+ *
+ * `options.ignoreRects` — validated against the decoded dimensions and passed
+ * to compareImages (see there). The heatmap stays the raw full-image view.
  */
-export function runComparison(aPath, bPath, outDir) {
+export function runComparison(aPath, bPath, outDir, options = {}) {
   const a = decodePngFile(aPath);
   const b = decodePngFile(bPath);
   if (a.width !== b.width || a.height !== b.height) {
@@ -443,14 +500,46 @@ export function runComparison(aPath, bPath, outDir) {
       `size mismatch: ${basename(aPath)} is ${a.width}x${a.height}, ${basename(bPath)} is ${b.width}x${b.height}`,
     );
   }
-  const report = compareImages(a, b);
+  const report = compareImages(a, b, options);
   mkdirSync(outDir, { recursive: true });
   writeFileSync(join(outDir, 'report.json'), `${JSON.stringify(report, null, 2)}\n`);
   writeFileSync(join(outDir, 'heatmap.png'), encodePng(buildHeatmap(a, b)));
   return report;
 }
 
-const USAGE_LINE = 'usage: node verify/diff/diff.mjs <a.png> <b.png> <outdir>';
+/**
+ * Parse CLI arguments: exactly three positional paths plus the repeatable
+ * `--ignore-rect x,y,w,h` option (task Y1). Values are syntax-checked here
+ * (non-negative integers, w/h >= 1); the image-bounds check runs once the
+ * dimensions are known (compareImages). Throws a clean Error on any problem.
+ */
+export function parseCliArgs(args) {
+  const positional = [];
+  const ignoreRects = [];
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i];
+    if (arg === '--ignore-rect') {
+      const value = args[++i];
+      const parts = typeof value === 'string' ? value.split(',') : [];
+      if (parts.length !== 4 || !parts.every((part) => /^\d+$/.test(part))) {
+        throw new Error(`invalid --ignore-rect ${value ?? ''} (expected x,y,w,h)`);
+      }
+      const [x, y, w, h] = parts.map(Number);
+      if (w < 1 || h < 1) {
+        throw new Error(`invalid --ignore-rect ${value} (w and h must be >= 1)`);
+      }
+      ignoreRects.push({ x, y, w, h });
+    } else if (arg.startsWith('-')) {
+      throw new Error(`unknown option ${arg}`);
+    } else {
+      positional.push(arg);
+    }
+  }
+  return { positional, ignoreRects };
+}
+
+const USAGE_LINE =
+  'usage: node verify/diff/diff.mjs <a.png> <b.png> <outdir> [--ignore-rect x,y,w,h]...';
 const HELP_TEXT = `verify/diff/diff.mjs — deterministic PNG pixel-diff (Kelimatör 2012, task F1)
 
 ${USAGE_LINE}
@@ -461,9 +550,14 @@ the report passes when the mismatch ratio is <= ${PASS_RATIO} (2.0 % of pixels)
 per docs/07-verification.md §4. Writes <outdir>/report.json and
 <outdir>/heatmap.png.
 
+--ignore-rect x,y,w,h (repeatable, task Y1): pixels inside the given
+device-pixel rects are excluded from the mismatch counting and reported as
+"ignoredRects"/"ignoredPixels". The rect must lie inside the image.
+
 Exit codes:
   0  comparison completed; pass/fail is the "pass" field of report.json
-  1  usage error, size mismatch, missing file, or undecodable PNG
+  1  usage error, size mismatch, missing file, undecodable PNG, or invalid
+     --ignore-rect
 `;
 
 /**
@@ -475,15 +569,18 @@ export function main(argv = process.argv) {
     process.stdout.write(HELP_TEXT);
     return 0;
   }
-  if (args.length !== 3) {
-    process.stderr.write(`diff: ${USAGE_LINE} (try --help)\n`);
-    return 1;
-  }
   try {
-    const report = runComparison(args[0], args[1], args[2]);
+    const { positional, ignoreRects } = parseCliArgs(args);
+    if (positional.length !== 3) {
+      process.stderr.write(`diff: ${USAGE_LINE} (try --help)\n`);
+      return 1;
+    }
+    const report = runComparison(positional[0], positional[1], positional[2], { ignoreRects });
+    const ignored =
+      ignoreRects.length === 0 ? '' : ` ignoredPixels=${report.ignoredPixels}`;
     process.stdout.write(
       `diff: mismatchedPixels=${report.mismatchedPixels} totalPixels=${report.totalPixels} ` +
-        `mismatchRatio=${report.mismatchRatio} pass=${report.pass} -> ${join(args[2], 'report.json')}\n`,
+        `mismatchRatio=${report.mismatchRatio}${ignored} pass=${report.pass} -> ${join(positional[2], 'report.json')}\n`,
     );
     return 0;
   } catch (err) {

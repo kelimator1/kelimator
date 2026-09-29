@@ -1,0 +1,12 @@
+union pixels (dsf1 coords): 10915
+cell=8 min=2: rects=200 cover=10734/10915 (98.3%) area=62976px (28.6%) extra=52242
+cell=8 min=3: rects=164 cover=10468/10915 (95.9%) area=54480px (24.8%) extra=44012
+cell=10 min=3: rects=137 cover=10594/10915 (97.1%) area=62400px (28.4%) extra=51806
+cell=10 min=5: rects=103 cover=10241/10915 (93.8%) area=52200px (23.7%) extra=41959
+cell=12 min=3: rects=115 cover=10713/10915 (98.1%) area=78360px (35.6%) extra=67647
+cell=12 min=5: rects=87 cover=10443/10915 (95.7%) area=67464px (30.7%) extra=57021
+cell=15 min=5: rects=78 cover=10539/10915 (96.6%) area=77850px (35.4%) extra=67311
+cell=20 min=5: rects=55 cover=10711/10915 (98.1%) area=105200px (47.8%) extra=94489
+saved finalv2-c10m5 103 rects
+saved finalv2-c8m3 164 rects
+saved finalv2-c10m3 137 rects

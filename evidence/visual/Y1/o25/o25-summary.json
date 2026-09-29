@@ -1,0 +1,92 @@
+[
+  {
+    "pair": "app-on-vs-ref-before",
+    "region": "c3-box",
+    "box": {
+      "x": 505,
+      "y": 356,
+      "width": 45,
+      "height": 44
+    },
+    "raw": 0.3424242424242424,
+    "tolerant": 0.10757575757575757,
+    "mismatchedPixels": 678,
+    "tolerantMismatchedPixels": 213,
+    "totalPixels": 1980
+  },
+  {
+    "pair": "app-on-vs-ref-before",
+    "region": "knob-box",
+    "box": {
+      "x": 515,
+      "y": 367,
+      "width": 22,
+      "height": 30
+    },
+    "raw": 0.8303030303030303,
+    "tolerant": 0.45,
+    "mismatchedPixels": 548,
+    "tolerantMismatchedPixels": 297,
+    "totalPixels": 660
+  },
+  {
+    "pair": "app-on-vs-ref-on",
+    "region": "c3-box",
+    "box": {
+      "x": 505,
+      "y": 356,
+      "width": 45,
+      "height": 44
+    },
+    "raw": 0.3424242424242424,
+    "tolerant": 0.10757575757575757,
+    "mismatchedPixels": 678,
+    "tolerantMismatchedPixels": 213,
+    "totalPixels": 1980
+  },
+  {
+    "pair": "app-on-vs-ref-on",
+    "region": "knob-box",
+    "box": {
+      "x": 515,
+      "y": 367,
+      "width": 22,
+      "height": 30
+    },
+    "raw": 0.8303030303030303,
+    "tolerant": 0.45,
+    "mismatchedPixels": 548,
+    "tolerantMismatchedPixels": 297,
+    "totalPixels": 660
+  },
+  {
+    "pair": "app-off-vs-ref-off",
+    "region": "c3-box",
+    "box": {
+      "x": 505,
+      "y": 356,
+      "width": 45,
+      "height": 44
+    },
+    "raw": 0.26515151515151514,
+    "tolerant": 0.05757575757575758,
+    "mismatchedPixels": 525,
+    "tolerantMismatchedPixels": 114,
+    "totalPixels": 1980
+  },
+  {
+    "pair": "app-off-vs-ref-off",
+    "region": "knob-box",
+    "box": {
+      "x": 515,
+      "y": 367,
+      "width": 22,
+      "height": 30
+    },
+    "raw": 0.7075757575757575,
+    "tolerant": 0.29848484848484846,
+    "mismatchedPixels": 467,
+    "tolerantMismatchedPixels": 197,
+    "totalPixels": 660
+  }
+]

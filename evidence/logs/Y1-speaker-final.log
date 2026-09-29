@@ -1,0 +1,22 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test speaker --reporter=line
+
+[WebServer] (node:22935) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 3 tests using 1 worker
+
+(node:22937) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:22937) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/3] [app] › tests/e2e/speaker/speaker.spec.ts:76:3 › X3 speaker toggle › click toggles the audio state + persistence; the icon follows the persisted volume at render
+[2/3] [app] › tests/e2e/speaker/speaker.spec.ts:132:3 › X3 speaker toggle › the icon reflects the persisted volume at (re)load; a click alone does not repaint
+[3/3] [app] › tests/e2e/speaker/speaker.spec.ts:163:3 › X3 speaker toggle › clamps a corrupt stored volume into 0–100 at boot
+  3 passed (5.9s)

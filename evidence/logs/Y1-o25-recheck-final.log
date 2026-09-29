@@ -1,0 +1,7 @@
+app-on-vs-ref-before c3-box (45x44): raw=34.242% (678px) tolerant=10.758% (213px)
+app-on-vs-ref-before knob-box (22x30): raw=83.030% (548px) tolerant=45.000% (297px)
+app-on-vs-ref-on c3-box (45x44): raw=34.242% (678px) tolerant=10.758% (213px)
+app-on-vs-ref-on knob-box (22x30): raw=83.030% (548px) tolerant=45.000% (297px)
+app-off-vs-ref-off c3-box (45x44): raw=26.515% (525px) tolerant=5.758% (114px)
+app-off-vs-ref-off knob-box (22x30): raw=70.758% (467px) tolerant=29.848% (197px)
+X3 O24 baseline (old pixelated knob, C3 box ON): raw 23.535% / tolerant 8.182%

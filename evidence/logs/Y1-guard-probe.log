@@ -1,0 +1,47 @@
+
+> kelimator-2012@0.0.0 test
+> vitest run assets
+
+
+ RUN  v5.0.2 /home/dev/kelimator-2012
+
+ ❯ tests/assets.test.mjs (11 tests | 1 failed) 24ms
+   ✓ asset manifest coverage (E1) (8)
+     ✓ lists every asset referenced by src/data/layout.json 2ms
+     ✓ resolves every referenced asset to an existing file 1ms
+     ✓ reads layout and animation from the runtime data directory 0ms
+     ✓ lists every manifest asset with an existing file and its recorded sha256 11ms
+     ✓ covers the 36 svgs, 2 bitmaps, 26 texts and 9 sounds 0ms
+     ✓ records the runtime data copies with matching hashes 0ms
+     ✓ records the exact-pinned svgo version used for the SVGs 0ms
+     ✓ uses only element ids that exist in layout.json across animation sequences 0ms
+   ❯ HD remaster payloads (Y1) (2)
+     × svg/s48_board_backdrop.svg embeds the pinned WebP remaster and the manifest records it 7ms
+     ✓ svg/s90_btn_speaker.svg embeds the pinned WebP remaster and the manifest records it 0ms
+   ✓ letter_tile template carries no baked placeholder glyph (X2) (1)
+     ✓ keeps the tile structure and carries no glyph markers 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/assets.test.mjs > HD remaster payloads (Y1) > svg/s48_board_backdrop.svg embeds the pinned WebP remaster and the manifest records it
+AssertionError: expected 'deadbeefdeadbeefdeadbeefdeadbeefdeadb…' to be '58ac94a053dc3133bde957c15f4b23d03e6b1…' // Object.is equality
+
+Expected: "58ac94a053dc3133bde957c15f4b23d03e6b1a0cdc4de0d8ba89e65c63cb958e"
+Received: "deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+
+ ❯ tests/assets.test.mjs:185:34
+    183|       expect(entry, `${name} in the manifest`).toBeDefined();
+    184|       expect(entry.source).toBe(expected.artifact);
+    185|       expect(entry.sourceSha256).toBe(expected.sha256);
+       |                                  ^
+    186|       expect(entry.templateSource).toBe(expected.templateSource);
+    187|       expect(entry.remaster).toEqual({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 10 passed (11)
+   Start at  12:29:07
+   Duration  109ms (tests 51%, transform 26%, import 18%, worker 4%, environment 1%)
+

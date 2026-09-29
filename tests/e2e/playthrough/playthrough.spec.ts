@@ -8,7 +8,10 @@
 // entry). Every step is screenshotted (550×400 stage) and compared with the
 // C3 reference capture of the same step through F1's diff tool
 // (verify/diff/diff.mjs); the pass basis is the anti-aliasing-tolerant ratio
-// ≤ 0.02 (docs/07 §4, Amendment 2026-09-28). The combined machine-readable
+// ≤ 0.02 (docs/07 §4, Amendment 2026-09-28). Task Y1 owner-approved allowance:
+// every compared step passes the HD backdrop/knob `--ignore-rect` set
+// (tests/e2e/visual-states.ts Y1_IGNORE_RECTS) and the suite asserts the tool
+// reports exactly that allowance. The combined machine-readable
 // report is written to evidence/F2-report.json in record mode (F2_RECORD=1,
 // frozen evidence) and to test-results/F2-live/F2-report.json otherwise
 // (live runs; evidence-freeze amendment 2026-09-28).
@@ -56,6 +59,7 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { LETTER_KEY_CODES } from '../../../src/game/input';
+import { y1IgnoreRectArgs, y1IgnoreRects } from '../visual-states';
 
 const REPO_ROOT = process.cwd();
 const SCRIPT_PATH = path.join(REPO_ROOT, 'tests/fixtures/playthrough.json');
@@ -490,6 +494,9 @@ interface DiffRead {
     readonly mismatchRatio: number;
     readonly tolerantMismatchRatio: number;
     readonly passRatio: number;
+    // Schema v3 (task Y1): opt-in region exclusions.
+    readonly ignoredRects: { x: number; y: number; w: number; h: number }[];
+    readonly ignoredPixels: number;
     readonly pass: boolean;
   };
   readonly dir: string;
@@ -497,7 +504,11 @@ interface DiffRead {
 
 function runDiff(actual: string, reference: string, outDir: string): DiffRead {
   fs.mkdirSync(outDir, { recursive: true });
-  execFileSync(process.execPath, [DIFF_TOOL, actual, reference, outDir], { stdio: 'pipe' });
+  // Task Y1 owner-approved allowance: every compared step is a board state
+  // (backdrop + speaker visible) at deviceScaleFactor 1 — pass the rects.
+  execFileSync(process.execPath, [DIFF_TOOL, actual, reference, outDir, ...y1IgnoreRectArgs(1)], {
+    stdio: 'pipe',
+  });
   const reportPath = path.join(outDir, 'report.json');
   expect(fs.existsSync(reportPath), `diff report written: ${reportPath}`).toBe(true);
   const report = JSON.parse(fs.readFileSync(reportPath, 'utf8')) as DiffRead['report'];
@@ -506,6 +517,9 @@ function runDiff(actual: string, reference: string, outDir: string): DiffRead {
   expect(report.tolerantRadius).toBe(2);
   expect(typeof report.mismatchRatio).toBe('number');
   expect(typeof report.tolerantMismatchRatio).toBe('number');
+  // Y1 allowance must be active and reported exactly (schema v3).
+  expect(report.ignoredRects).toEqual(y1IgnoreRects(1));
+  expect(report.ignoredPixels).toBeGreaterThan(0);
   return { report, dir: outDir };
 }
 
@@ -827,7 +841,8 @@ test.describe('F2 scripted playthrough', () => {
         const tolerantPercent = diff.report.tolerantMismatchRatio * 100;
         console.log(
           `F2 ${step.id}: raw=${(diff.report.mismatchRatio * 100).toFixed(3)}% ` +
-            `tolerant=${tolerantPercent.toFixed(3)}% pass=${diff.report.pass} stable=${stability.stable}`,
+            `tolerant=${tolerantPercent.toFixed(3)}% ignoredPixels=${diff.report.ignoredPixels} ` +
+            `pass=${diff.report.pass} stable=${stability.stable}`,
         );
         expect(
           diff.report.tolerantMismatchRatio,
@@ -993,7 +1008,8 @@ test.describe('F2 S9 timeout variant', () => {
     const tolerantPercent = diff.report.tolerantMismatchRatio * 100;
     console.log(
       `F2 timeout: raw=${(diff.report.mismatchRatio * 100).toFixed(3)}% ` +
-        `tolerant=${tolerantPercent.toFixed(3)}% pass=${diff.report.pass} appWaitMs=${durationMs} stable=${stability.stable}`,
+        `tolerant=${tolerantPercent.toFixed(3)}% ignoredPixels=${diff.report.ignoredPixels} ` +
+        `pass=${diff.report.pass} appWaitMs=${durationMs} stable=${stability.stable}`,
     );
 
     const record: StepRecord = {

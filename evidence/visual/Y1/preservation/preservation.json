@@ -1,0 +1,32 @@
+{
+  "s90OldVsNew": {
+    "count": 381,
+    "bbox": {
+      "x": 1,
+      "y": 2,
+      "w": 22,
+      "h": 30
+    }
+  },
+  "s48OldVsNew": {
+    "count": 2937,
+    "bbox": {
+      "x": 0,
+      "y": 0,
+      "w": 550,
+      "h": 400
+    }
+  },
+  "s48NewVsMinimalWebp": {
+    "count": 0,
+    "bbox": null
+  },
+  "s48NewVsMinimalWebpGt0": {
+    "count": 0,
+    "bbox": null
+  },
+  "s90NewVsItself": {
+    "count": 0,
+    "bbox": null
+  }
+}

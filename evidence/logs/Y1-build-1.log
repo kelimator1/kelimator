@@ -1,0 +1,32 @@
+
+> kelimator-2012@0.0.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.1 building client environment for production...
+transforming...
+✓ 106 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                  0.29 kB │ gzip:     0.22 kB
+dist/assets/s71_btn_ybuton-tZKLhfAv.svg          4.33 kB │ gzip:     1.30 kB
+dist/assets/s63_btn_kbuton-COQbvjPr.svg          4.50 kB │ gzip:     1.39 kB
+dist/assets/s123_status_ball-DYIn3NKt.svg        5.41 kB │ gzip:     1.72 kB
+dist/assets/s67_tile_socket-DZTesbhi.svg        10.18 kB │ gzip:     2.73 kB
+dist/assets/s90_btn_speaker-DU_m6VQg.svg        11.42 kB │ gzip:     8.09 kB
+dist/assets/s103_credit_site-CrFxQUUK.svg       11.67 kB │ gzip:     2.31 kB
+dist/assets/s97_credit_line-CotBCE-e.svg        11.93 kB │ gzip:     2.51 kB
+dist/assets/s84_loading_banner-CWYm_dRe.svg     12.65 kB │ gzip:     2.77 kB
+dist/assets/s29_intro_logo-qT64wKKw.svg         16.13 kB │ gzip:     3.62 kB
+dist/assets/sfx_32_fanfare-CGGq7PKH.mp3         21.84 kB
+dist/assets/s166_hiscore_form-CrWAScQw.svg      26.12 kB │ gzip:     5.20 kB
+dist/assets/s58_letter_tile-MF_7VP-n.svg        34.89 kB │ gzip:     5.94 kB
+dist/assets/img_47_550x400-B8mzCasb.png         62.49 kB
+dist/assets/s48_board_backdrop-YjNg_uE-.svg    693.11 kB │ gzip:   521.39 kB
+dist/assets/index-eDCvAq6u.js                5,414.15 kB │ gzip: 1,737.37 kB
+
+✓ built in 474ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.

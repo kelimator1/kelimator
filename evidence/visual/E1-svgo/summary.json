@@ -422,13 +422,20 @@
     "kind": "shape",
     "id": 48
    },
-   "sourceBytes": 84112,
-   "outputBytes": 84027,
+   "remaster": {
+    "artifact": "artifacts/hd-assets/ai47-x4plus-8x.webp",
+    "sha256": "58ac94a053dc3133bde957c15f4b23d03e6b1a0cdc4de0d8ba89e65c63cb958e",
+    "format": "image/webp",
+    "naturalWidth": 4400,
+    "naturalHeight": 3200
+   },
+   "sourceBytes": 693201,
+   "outputBytes": 693116,
    "width": 550,
    "height": 400,
    "naturalWidth": 550,
    "naturalHeight": 400,
-   "inkPixels": 220000,
+   "inkPixels": 219999,
    "mismatchedPixels": 0,
    "maxDistance": 0,
    "meanDistance": 0,
@@ -586,13 +593,20 @@
     "kind": "button",
     "id": 90
    },
-   "sourceBytes": 2743,
-   "outputBytes": 2575,
+   "remaster": {
+    "artifact": "artifacts/hd-assets/ai86-8x.webp",
+    "sha256": "490794263c69e920a8f061088c33dff5d63cc5f47f8937727cb15163273dfa2f",
+    "format": "image/webp",
+    "naturalWidth": 168,
+    "naturalHeight": 232
+   },
+   "sourceBytes": 11588,
+   "outputBytes": 11420,
    "width": 33.5,
    "height": 34.05,
    "naturalWidth": 34,
    "naturalHeight": 34,
-   "inkPixels": 504,
+   "inkPixels": 738,
    "mismatchedPixels": 0,
    "maxDistance": 0,
    "meanDistance": 0,
@@ -767,10 +781,12 @@
  ],
  "totals": {
   "assets": 36,
+  "skipped": 0,
+  "processed": 36,
   "mismatchedPixels": 0,
-  "sourceBytes": 271211,
-  "outputBytes": 246655,
-  "inkPixels": 882418,
+  "sourceBytes": 889145,
+  "outputBytes": 864589,
+  "inkPixels": 882651,
   "nonBlankRenders": 23
  }
 }

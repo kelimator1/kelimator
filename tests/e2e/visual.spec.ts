@@ -7,6 +7,9 @@
 // pass basis is the tool's anti-aliasing-tolerant metric
 // (tolerantMismatchRatio ≤ 0.02, tolerantRadius 2); the raw metric is kept in
 // the report for monitoring (V2 asserts the raw fields are present/numeric).
+// Task Y1 owner-approved allowance: board states pass the HD backdrop/knob
+// `--ignore-rect` set (tests/e2e/visual-states.ts Y1_IGNORE_RECTS); the suite
+// asserts the tool reports exactly that allowance (schema v3 fields).
 // Per-state report.json + heatmap.png are written under
 // evidence/visual/E2/<state>/dsf<dsf>/ (V2).
 //
@@ -23,7 +26,13 @@ import { expect, test, type Page } from '@playwright/test';
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
-import { viewFor, VISUAL_STATES, type VisualStateSpec } from './visual-states';
+import {
+  viewFor,
+  VISUAL_STATES,
+  y1IgnoreRectArgs,
+  y1IgnoreRects,
+  type VisualStateSpec,
+} from './visual-states';
 import type { BoardView } from '../../src/ui/board';
 
 const REPO_ROOT = process.cwd();
@@ -72,6 +81,9 @@ interface DiffReport {
   tolerantMismatchRatio: number;
   tolerantMismatchBBox: { x: number; y: number; width: number; height: number } | null;
   passRatio: number;
+  // Schema v3 (task Y1): opt-in region exclusions.
+  ignoredRects: { x: number; y: number; w: number; h: number }[];
+  ignoredPixels: number;
   pass: boolean;
 }
 
@@ -162,8 +174,15 @@ async function preparePage(page: Page): Promise<void> {
   });
 }
 
-function runDiff(actual: string, reference: string, outDir: string): DiffReport {
-  execFileSync(process.execPath, [DIFF_TOOL, actual, reference, outDir], { stdio: 'pipe' });
+function runDiff(
+  actual: string,
+  reference: string,
+  outDir: string,
+  ignoreRectArgs: readonly string[] = [],
+): DiffReport {
+  execFileSync(process.execPath, [DIFF_TOOL, actual, reference, outDir, ...ignoreRectArgs], {
+    stdio: 'pipe',
+  });
   const reportPath = path.join(outDir, 'report.json');
   expect(fs.existsSync(reportPath), `diff report written: ${reportPath}`).toBe(true);
   expect(fs.existsSync(path.join(outDir, 'heatmap.png')), 'heatmap artifact').toBe(true);
@@ -183,14 +202,20 @@ for (const dsf of [1, 2] as const) {
         }
 
         await preparePage(page);
-        await applyVisualState(page, viewFor(spec, dsf));
+        const view = viewFor(spec, dsf);
+        await applyVisualState(page, view);
+
+        // Task Y1 owner-approved allowance: board states pass the HD
+        // backdrop/knob rects; states without the backdrop (S1 intro) do not
+        // (see tests/e2e/visual-states.ts Y1_IGNORE_RECTS).
+        const allowance = view.elements.includes('board_backdrop') ? y1IgnoreRectArgs(dsf) : [];
 
         const outDir = path.join(EVIDENCE_DIR, spec.id, `dsf${dsf}`);
         fs.mkdirSync(outDir, { recursive: true });
         const actual = path.join(outDir, 'actual.png');
         await page.locator('[data-testid="stage-root"]').screenshot({ path: actual });
 
-        const report = runDiff(actual, reference, outDir);
+        const report = runDiff(actual, reference, outDir, allowance);
         const rawPercent = report.mismatchRatio * 100;
         const tolerantPercent = report.tolerantMismatchRatio * 100;
         // V2: the raw metric stays present and numeric (monitoring only).
@@ -204,11 +229,21 @@ for (const dsf of [1, 2] as const) {
         // basis; it is computed by the F1 tool (tolerantRadius = 2) — never by
         // this suite.
         expect(report.tolerantRadius).toBe(2);
+        // V2/Y1: when the owner-approved allowance applies it must be active
+        // and reported exactly (schema v3 `ignoredRects`/`ignoredPixels`).
+        if (allowance.length > 0) {
+          expect(report.ignoredRects).toEqual(y1IgnoreRects(dsf));
+          expect(report.ignoredPixels).toBeGreaterThan(0);
+        } else {
+          expect(report.ignoredRects).toEqual([]);
+          expect(report.ignoredPixels).toBe(0);
+        }
         console.log(
           `E2 ${spec.id} dsf${dsf}: raw=${report.mismatchRatio} (${rawPercent.toFixed(3)}%), ` +
             `tolerant=${report.tolerantMismatchRatio} (${tolerantPercent.toFixed(3)}%), ` +
             `mismatchedPixels=${report.mismatchedPixels}/${report.totalPixels}, ` +
-            `tolerantMismatchedPixels=${report.tolerantMismatchedPixels}, pass=${report.pass}`,
+            `tolerantMismatchedPixels=${report.tolerantMismatchedPixels}, ` +
+            `ignoredPixels=${report.ignoredPixels}, pass=${report.pass}`,
         );
         expect(
           report.tolerantMismatchRatio,
