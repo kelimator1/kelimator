@@ -296,6 +296,13 @@ RESOLVED 2026-09-29 — evidence/Y5-speaker-feedback.md — speaker immediate fe
   feedback on click (deliberate deviation from the measured reference timing);
   no debouncing. Fix `src/ui/hud.ts` + speaker-suite assertions; evidence
   `evidence/Y5-speaker-feedback.md`.
+- 2026-09-29 — Wave follow-up **Y6** (owner directive): the Top10 button
+  (`btn_top10`, ch 108; reference action `javascript:openWin(top10.php)`,
+  README §2.2 excludes Top10) is omitted at renderer level, mirroring the Y2
+  credit-omission pattern (skip-before-DOM + owner-approved ignore region
+  derived from the F1 tool + absence assertions); data/layout/animation/manifest
+  and the s108 asset stay untouched as provenance. Evidence:
+  `evidence/Y6-top10.md`.
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:
