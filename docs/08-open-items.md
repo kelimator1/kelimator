@@ -303,6 +303,13 @@ RESOLVED 2026-09-29 — evidence/Y5-speaker-feedback.md — speaker immediate fe
   derived from the F1 tool + absence assertions); data/layout/animation/manifest
   and the s108 asset stay untouched as provenance. Evidence:
   `evidence/Y6-top10.md`.
+- 2026-09-29 — Y6 closure: Top10 omitted before DOM creation (default + explicit
+  view asserted; suite stays 18); region `419,372,91,23` wired (measured
+  deviation `420,373,87,20` dsf1 / `840,746,174,40` dsf2; 0 px outside; union
+  `ignoredPixels` 68 023/272 092 with Y1+Y2, no overlaps); catalogs/assets
+  untouched (hashes = pins). Suites: visual 18, animation 8, playthrough 3
+  (worst tolerant 1.217 %, S9 0.511 %), full 238; lint/build exit 0. Evidence:
+  `evidence/Y6-top10.md`.
 - 2026-09-29 — Wave follow-up **Y7** (owner directive, layout-agnostic input):
   the dotted/dotless İ conflict (browser reports layout-derived keyCodes for
   `i`/`ı` on Turkish-QWERTY-PC) is fixed by `resolveKey` priority

@@ -175,6 +175,29 @@ formulas and asserted in unit tests.
 > reload/persistence checks. Evidence: `evidence/Y5-speaker-feedback.md`
 > §2/§4–§6; matching entry in `docs/08-open-items.md`.
 
+> Amendment 2026-09-29d (owner final wave Y6): the rebuild omits the Top10
+> button (`btn_top10` — DefineButton2_108; its reference action opens
+> `top10.php` via `javascript:openWin` — `artifacts/decompiled/scripts/
+> DefineButton2_108/"BUTTONCONDACTION on(release).as"` — and README §2.2 puts
+> Top10 out of scope with the other network features) from the board render
+> (owner directive `tasks/Y6-top10-omission.md`). `src/ui/board.ts`
+> (`OMITTED_ELEMENTS`) skips it before any DOM node is created. Every
+> static/animation/playthrough V5 comparison of a board state passes the
+> owner-approved omission region `419,372,91,23` (integer pixel coverage of the
+> button stage bbox (419.8,372.95)–(509.25,394.65)) as `--ignore-rect`; the
+> region lies fully inside the stage, so the wired rect equals the declared
+> rect at both deviceScaleFactors (dsf2 `838,744,182,46`). Measured omission
+> deviation (raw > 30): bbox `420,373,87,20` at dsf 1 / `840,746,174,40` at
+> dsf 2; union in dsf1 coordinates `420,373,87,20`, inside the region
+> (attribution pixels outside: 0). The region does not overlap the Y1 set or
+> the Y2 credit rect; combined `ignoredPixels` 68 023/272 092 at dsf 1/2.
+> Catalog/animation/manifest entries and the s108 asset remain as provenance
+> (untouched; hashes recorded; no runtime reference — renderer-level omission
+> only). Thresholds unchanged; absence is asserted by `tests/e2e/
+> visual.spec.ts` (owner-omission test, shared with Y2 so the suite stays at 18
+> tests). Evidence: `evidence/Y6-top10.md`, matching entry in
+> `docs/08-open-items.md`.
+
 ## 5. State matrix (S1–S10)
 
 | State | Trigger sequence (app and reference use the same) |
