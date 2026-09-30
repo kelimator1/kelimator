@@ -367,6 +367,10 @@ RESOLVED 2026-09-30 — task Y10 (owner decision Option A, modified): the win se
   regions raw-exact 0 px); the board hides its frame-1 ball while a coloured
   state is active (`data-status-lamp` on the stage root). Evidence:
   `evidence/Y9-status-lamp.md`.
+- 2026-09-30 — Y8/Y9/Y10 closing: intro (O23 RESOLVED), status lamp, and
+  celebration/results all committed; closing `tools/verify-all.sh` exit 0
+  (11/11, frozen evidence 0; tree clean). Evidence:
+  `evidence/waveY-closing.md` (Addendum — Y8/Y9/Y10).
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:

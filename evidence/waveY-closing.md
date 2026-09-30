@@ -132,3 +132,28 @@ Result: **PASS**.
   fix in `tests/speaker.test.ts`).
 
 Result: **PASS**.
+
+---
+
+## Addendum — Y8 (intro, O23), Y9 (status lamp), Y10 (celebration), 2026-09-29/30
+
+- **Y8** (`156f99c`, `c8c616d`; C2 smoke follow-up `8038587`): boot plays
+  preloader(1–4) → intro(5–130) → settled board on every reload; night→day is a
+  measured alpha crossfade (tags.xml excerpts), sun = `intro_glow` path with
+  `GLOW_GRADIENT`, wordmark fall/settle/shrink; HD vector only; keyframes at
+  both dsf worst tolerant 1.386 %; O23 **RESOLVED** (open queue empty).
+- **Y9** (`c9576d9`, `137a372`): three status-lamp states with live text kept
+  (worst tolerant 0.144 %; colours sampled `#336600` / `#ff0000`); frames 2/3
+  processed deterministically (`_f<frame>` naming, manifest `frames[]`); all
+  suites green after the ENOSPC recovery and lint fix.
+- **Y10** (`5fbc6a0`, `e8179a5`): win celebration + results restored (owner
+  Option A) — fireworks identified (marquee = 300× `havai` sparks, seeded
+  65-frame cycle), win tracks from tags.xml, card edited (E-posta removed,
+  "İsim"), placebo-local submit (zero requests/storage), `Yeni Oyun` return;
+  keyframes dsf 1+2 worst tolerant 1.518 % with only the recorded allowances.
+- Closing revalidation: `tools/verify-all.sh` **exit 0 — 11/11 steps, frozen
+  evidence 0**; no non-artifact changes; celebration 15, intro 14, status 3,
+  visual 18, animation 8, interaction 6, playthrough 3, speaker 7, controls 4,
+  timeout 1, offline 1, smoke 7, unit 242+, lint/build 0.
+
+Result: **PASS**.
