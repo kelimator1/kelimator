@@ -1,0 +1,53 @@
+# Kelimatör 2012 — GitHub Pages deploy (runbook: DEPLOY.md).
+#
+# Phase 1 ("unlisted"): deploys the static build from a PRIVATE repository.
+# Pages from private repos requires GitHub Pro; the site itself is publicly
+# reachable (Pages has no access control) — see DEPLOY.md for the rules of the
+# unlisted phase and the Phase 2 flip to public.
+#
+# Runs lint + unit tests + build (~2 min). The Playwright e2e suites are NOT
+# run in CI: they download browsers and include a 200 s timeout scenario;
+# they stay local (see DEPLOY.md § Notes).
+name: pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

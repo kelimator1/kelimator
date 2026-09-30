@@ -1,0 +1,4 @@
+# Phase 1 (unlisted) — crawler opt-out only, NOT access control.
+# Remove this file after the owner's permission (DEPLOY.md § Phase 2).
+User-agent: *
+Disallow: /
