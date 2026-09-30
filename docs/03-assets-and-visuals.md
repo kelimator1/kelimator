@@ -36,6 +36,12 @@ Slugs are assigned in A3's layout catalog, not guessed ad hoc.
 > counts stay stable. Applied for `s123_status_ball_f2.svg` /
 > `s123_status_ball_f3.svg`; evidence `evidence/Y9-status-lamp.md`.
 
+> 2026-09-30 (Y10): nested runtime sprites of a catalogued element are recorded as a
+> `spark` (or `frames`) sub-record of the element's manifest entry; the firework spark is
+> `s168_havai_spark.svg` under `svg/s170_bottom_marquee.svg` (correction
+> `spark-current-color`: the baked frame-1 stroke becomes `currentColor` so the per-frame
+> colour track can animate it).
+
 ## 2. Bitmap handling (decision procedure, evidence-based)
 
 Two bitmap definitions exist (**[CONFIRMED-OBSERVED]** on 2007/EN builds:

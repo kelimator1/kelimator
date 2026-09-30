@@ -103,6 +103,11 @@ Score submission (`hiscore.php`), Top10 (`top10.php`), e-mail entry, online
 counters, translator, MochiAds startup ad. The rebuilt game performs **zero
 network requests** at runtime.
 
+> 2026-09-30 (Y10): the restored results-card form is placebo/local — the `İsim` field and
+> the `Gönder` button perform no request and store nothing (the reference posted to the
+> excluded hiscore.php and kept a SharedObject); the button's local continue maps to the
+> evidenced `celebration -> playing` path. Evidence: evidence/Y10-celebration.md §5.
+
 ## 8. constants.json (canonical shape; created by C1)
 
 ```json

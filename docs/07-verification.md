@@ -208,6 +208,17 @@ formulas and asserted in unit tests.
 > and the speaker/kernel pixel guards keep their load-time contract. E3's
 > animations suite count is unchanged (coverage note added).
 
+> Amendment 2026-09-30 (owner wave Y10): the win sequence (SWF frames 132-241) is a
+> covered V5 surface. tests/e2e/celebration/celebration.spec.ts drives the app to the
+> catalog offsets (0/0.75/1.5/2.2778/3.0278 s) with the win CSS tracks paused/seeked and
+> compares against fresh pinned captures
+> (tests/e2e/celebration/capture-celebration-reference.mjs;
+> evidence/visual/Y10/reference-dsf{1,2}/) at deviceScaleFactor 1 and 2; tolerant basis
+> unchanged (2 %). Recorded allowances: `Y10_RETURN_BUTTON_RECT` (the owner-kept Yeni Oyun
+> button; the reference hides it at frame 132) on every win keyframe and
+> `Y10_CARD_OWNER_EDIT_RECTS` + `Y10_SESSION_VALUE_RECTS` at frame 241 (owner card edits +
+> session-dependent value columns); no other allowance exists.
+
 ## 5. State matrix (S1–S10)
 
 | State | Trigger sequence (app and reference use the same) |
