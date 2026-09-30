@@ -175,7 +175,165 @@ export const SVGO_OPTIONS = {
  */
 const SVG_SOURCE_CORRECTIONS = new Map([
   ['s58_letter_tile.svg', stripLetterTilePlaceholderGlyph],
+  ['s166_hiscore_form.svg', applyHiscoreFormOwnerEdits],
 ]);
+
+/**
+ * Task Y10 (owner decision, Option A) — results-card owner edits.
+ *
+ * `DefineSprite_166` (A3 element `hiscore_form`) is the end-of-round results
+ * card. The owner decision restores the card with two modifications:
+ *   - the `E-posta` field is removed entirely (the static label, text id 159,
+ *     and its input box, `DOMInputText` id 155 — the input itself is a DOM
+ *     overlay in the rebuild, so only the baked label/box geometry leaves the
+ *     asset);
+ *   - the `Ad Soyad` label (text id 158) is renamed to `İsim`.
+ * Everything else stays: the card shape, `TEBRİKLER` (165), `Puanınız` (160),
+ * `Kelime Sayısı` (161), `Süre` (164), the name field box (154), the dynamic
+ * value fields (156/157/163, empty in the export) and the `Gönder` button
+ * (153). The edit is deterministic and textual; every count is asserted, so
+ * structural drift of the export fails loudly:
+ *
+ *   1. `<use … characterId="159" … #text8>` + `<g id="text8">…</g>` — the
+ *      `E-posta` label (its glyph outlines come from the shared font defs);
+ *   2. `<use … characterId="155" … #text4>` + `<g id="text4">…</g>` — the
+ *      e-mail input box;
+ *   3. the `Ad Soyad` glyph run inside `<g id="text7">` is replaced by the
+ *      `İsim` run. Advances are read from the same asset at the same 0.2344
+ *      glyph scale: İ (font_Verdana__4, from `TEBRİKLER`) advances 6.55,
+ *      s (font_Verdana_s0, from `Kelime Sayısı`) advances 7.1, i
+ *      (font_Verdana_i0) advances 4.1; the run is left-aligned at the field's
+ *      authoring leftMargin 4.0 like the original (all evidenced in
+ *      evidence/Y10-celebration.md §card);
+ *   4. glyph defs that only the removed/old text used are dropped
+ *      (`font_Verdana_A0`, `font_Verdana_-0`, `font_Verdana_p0`,
+ *      `font_Verdana_t0`); shared glyphs (`E0`, `o0`, `s0`, `a0`) stay.
+ *
+ * The card's position is unchanged: no re-flow of the remaining rows (the
+ * owner asked to remove the field, not to move anything else).
+ */
+function applyHiscoreFormOwnerEdits(source) {
+  let out = source;
+  for (const anchor of [
+    'id="shape0"',
+    'id="button0"',
+    'id="text3"',
+    'id="text7"',
+    'id="font_Verdana__4"',
+    'id="font_Verdana_s0"',
+    'id="font_Verdana_i0"',
+    'id="font_Verdana_m0"',
+  ]) {
+    if (!out.includes(anchor)) {
+      throw new Error(`applyHiscoreFormOwnerEdits: anchor missing: ${anchor}`);
+    }
+  }
+  // 1 + 2: remove the E-posta label and the e-mail input box (instances + defs).
+  out = removeSvgUsesByHref(out, '#text8', 1);
+  out = removeSvgUsesByHref(out, '#text4', 1);
+  out = removeSvgGroupById(out, 'text8');
+  out = removeSvgGroupById(out, 'text4');
+  // 3: Ad Soyad -> İsim (glyph run of text7; positions from the sibling runs).
+  const open = '<g id="text7">';
+  const start = out.indexOf(open);
+  if (start === -1 || out.indexOf(open, start + 1) !== -1) {
+    throw new Error('applyHiscoreFormOwnerEdits: text7 group not unique');
+  }
+  const tagRe = /<(\/?)g\b[^>]*>/g;
+  tagRe.lastIndex = start + open.length;
+  let end = -1;
+  for (let depth = 1, m = tagRe.exec(out); m !== null; m = tagRe.exec(out)) {
+    depth += m[1] === '/' ? -1 : 1;
+    if (depth === 0) {
+      end = tagRe.lastIndex;
+      break;
+    }
+  }
+  if (end === -1) throw new Error('applyHiscoreFormOwnerEdits: unbalanced text7 group');
+  const glyphUse = (id, height, width, x) =>
+    `<use fill="#000000" height="${height}" transform="matrix(0.2344, 0.0, 0.0, 0.2344, ${x}, 12.0)" width="${width}" xlink:href="#${id}"/>`;
+  const run = [
+    glyphUse('font_Verdana__4', '11.3', '86.25', '4.0'), // İ
+    glyphUse('font_Verdana_s0', '11.5', '99.2', '10.55'), // s (4.0 + 6.55)
+    glyphUse('font_Verdana_i0', '11.5', '99.2', '17.65'), // i (10.55 + 7.1)
+    glyphUse('font_Verdana_m0', '11.5', '99.2', '21.75'), // m (17.65 + 4.1)
+  ].join('\n        ');
+  out = `${out.slice(0, start)}${open}\n        ${run}\n      </g>${out.slice(end)}`;
+  // 4: drop glyph defs that became unreferenced (asserted reference count 0).
+  for (const id of [
+    'font_Verdana_A0',
+    'font_Verdana_-0',
+    'font_Verdana_p0',
+    'font_Verdana_t0',
+  ]) {
+    const references = (out.match(new RegExp(`href="#${id}"`, 'g')) ?? []).length;
+    if (references !== 0) {
+      throw new Error(`applyHiscoreFormOwnerEdits: ${id} still referenced`);
+    }
+    out = removeSvgGroupById(out, id);
+  }
+  for (const marker of [
+    'characterId="159"',
+    '#text8',
+    'id="text8"',
+    'characterId="155"',
+    '#text4',
+    'id="text4"',
+    'font_Verdana_A0',
+    'font_Verdana_-0',
+    'font_Verdana_p0',
+    'font_Verdana_t0',
+  ]) {
+    if (out.includes(marker)) {
+      throw new Error(`applyHiscoreFormOwnerEdits: marker remains: ${marker}`);
+    }
+  }
+  for (const anchor of ['id="text3"', 'id="button0"', 'id="text10"', 'id="text14"']) {
+    if (!out.includes(anchor)) {
+      throw new Error(`applyHiscoreFormOwnerEdits: anchor lost: ${anchor}`);
+    }
+  }
+  return out;
+}
+
+/**
+ * Task Y10 — firework spark asset (`havai`, DefineSprite_169's nested spark).
+ *
+ * The win timeline's fireworks element (`bottom_marquee` = DefineSprite_170)
+ * duplicates the `havai` clip (DefineSprite_169) 300 times at one random burst
+ * position (its frame-1 DoAction); each spark's shape is the FFDec export of
+ * `DefineSprite_168` frame 1 (a 4-armed cross, 11.3x10 px, stroke 1). The
+ * rebuild renders the spark per sprite frame with an animated `color`
+ * (evidence/logs/Y10-win-series.json), so the baked frame-1 stroke colour is
+ * replaced textually by `currentColor`:
+ *   - asserted: exactly two `stroke="#ff2b00"` attributes (the two paths of
+ *     `shape0`), replaced by `stroke="currentColor"`; everything else
+ *     byte-identical (no geometry edit — the paths are the pipeline's output);
+ *   - the asset is recorded as the `spark` sub-record of the
+ *     `svg/s170_bottom_marquee.svg` manifest entry (no new top-level asset;
+ *     the frozen 36-svg count stays).
+ */
+const WIN_ASSETS = [
+  {
+    name: 's168_havai_spark.svg',
+    element: 'bottom_marquee',
+    source: 'artifacts/decompiled/sprites/DefineSprite_168/1.svg',
+    sourceSha256: 'd5e19cce12d21e6ba05b0df081711cf9803b20a7c7df1e7feef00d6d0dd66019',
+    symbol: { kind: 'sprite', id: 168, frame: 1 },
+    correctionName: 'spark-current-color',
+    correction: (svg) => {
+      const matches = svg.match(/stroke="#ff2b00"/g) ?? [];
+      if (matches.length !== 2) {
+        throw new Error(`spark-current-color: expected 2 stroke="#ff2b00", found ${matches.length}`);
+      }
+      const out = svg.replaceAll('stroke="#ff2b00"', 'stroke="currentColor"');
+      if ((out.match(/stroke="currentColor"/g) ?? []).length !== 2 || out.includes('#ff2b00')) {
+        throw new Error('spark-current-color: replacement did not take');
+      }
+      return out;
+    },
+  },
+];
 
 /**
  * Task Y9 — extra sprite frames for the right-panel status capsule.
@@ -540,6 +698,16 @@ async function cmdSvg() {
       // Y9: ball-only frame (baked static text stripped deterministically).
       correction: (svg) => stripStatusFrameText(svg, frame.textId),
     })),
+    // Y10: the firework spark asset (frame 1 of DefineSprite_168).
+    ...WIN_ASSETS.map((asset) => ({
+      element: asset.element,
+      source: asset.source,
+      name: asset.name,
+      symbol: asset.symbol,
+      winAsset: true,
+      sourceSha256: asset.sourceSha256,
+      correction: asset.correction,
+    })),
   ];
   const outDir = abs('src/assets/svg');
   const evRoot = abs('evidence/visual/E1-svgo');
@@ -547,6 +715,9 @@ async function cmdSvg() {
   // the Y9-owned evidence tree so the frozen E1/SVGO record of the 36 layout
   // assets is not rewritten by this task.
   const frameEvRoot = abs('evidence/visual/Y9/pipeline');
+  // Task Y10: the firework spark asset's pipeline evidence is written under
+  // the Y10-owned evidence tree (same reason).
+  const winEvRoot = abs('evidence/visual/Y10/pipeline');
   const work = path.join(tmpdir(), 'kelimator-e1-svgo');
   mkdirSync(outDir, { recursive: true });
   mkdirSync(evRoot, { recursive: true });
@@ -556,11 +727,13 @@ async function cmdSvg() {
   const browser = await chromium.launch({ args: ['--mute-audio'] });
   const results = [];
   const frameResults = [];
+  const winResults = [];
   try {
     const context = await browser.newContext({ deviceScaleFactor: 1 });
     const page = await context.newPage();
     for (const entry of entries) {
-      const record = entry.extraFrame === undefined ? results : frameResults;
+      const record =
+        entry.extraFrame !== undefined ? frameResults : entry.winAsset === true ? winResults : results;
       const source = readFileSync(abs(entry.source), 'utf8');
       if (entry.sourceSha256 !== undefined && sha256File(entry.source) !== entry.sourceSha256) {
         throw new Error(
@@ -637,7 +810,11 @@ async function cmdSvg() {
       }
 
       const evDir = path.join(
-        entry.extraFrame === undefined ? evRoot : frameEvRoot,
+        entry.extraFrame !== undefined
+          ? frameEvRoot
+          : entry.winAsset === true
+            ? winEvRoot
+            : evRoot,
         entry.name.replace(/\.svg$/, ''),
       );
       mkdirSync(evDir, { recursive: true });
@@ -686,6 +863,39 @@ async function cmdSvg() {
         };
       }
 
+      // Task Y10: for the firework spark, prove the source correction changed
+      // colour only: the raw and prepared renders must carry the same ink
+      // coverage (geometry unchanged) while the stroke pixels differ.
+      let correctionProof = null;
+      if (entry.winAsset === true) {
+        const raw = path.join(work, `${entry.name}.raw.png`);
+        const rawDiffDir = path.join(work, `${entry.name}.rawdiff`);
+        await renderSvgSnapshot(page, source, size, raw);
+        execFileSync(process.execPath, ['verify/diff/diff.mjs', raw, before, rawDiffDir], {
+          cwd: ROOT,
+          stdio: 'pipe',
+        });
+        const rawReport = JSON.parse(readFileSync(path.join(rawDiffDir, 'report.json'), 'utf8'));
+        const inkRaw = pngInk(raw);
+        const inkPrepared = pngInk(before);
+        if (inkRaw !== inkPrepared || rawReport.mismatchedPixels <= 0) {
+          throw new Error(
+            `${entry.name}: spark colour correction not colour-only ` +
+              `(ink ${inkRaw} -> ${inkPrepared}, mismatched ${rawReport.mismatchedPixels})`,
+          );
+        }
+        copyFileSync(raw, path.join(evDir, 'raw.png'));
+        copyFileSync(path.join(rawDiffDir, 'report.json'), path.join(evDir, 'raw-diff.json'));
+        correctionProof = {
+          name: entry.correctionName,
+          replacedSpans: 2,
+          rawInkPixels: inkRaw,
+          preparedInkPixels: inkPrepared,
+          colourOnlyDiffPixels: rawReport.mismatchedPixels,
+          geometryPreserved: true,
+        };
+      }
+
       const remaster = HD_REMASTERS.get(entry.name);
       record.push({
         name: entry.name,
@@ -693,6 +903,8 @@ async function cmdSvg() {
         source: entry.source,
         symbol: entry.symbol,
         ...(entry.extraFrame === undefined ? {} : { extraFrame: entry.extraFrame }),
+        ...(entry.winAsset === true ? { correction: entry.correctionName } : {}),
+        ...(correctionProof === null ? {} : { correctionProof }),
         ...(strip === null ? {} : { strip }),
         ...(remaster === undefined
           ? {}
@@ -758,24 +970,45 @@ async function cmdSvg() {
       inkPixels: frameResults.reduce((n, r) => n + (r.inkPixels ?? 0), 0),
     },
   };
+  // Task Y10: the firework spark asset's pipeline record lives under
+  // evidence/visual/Y10/pipeline/ (E1/Y9 records stay intact).
+  const winSummary = {
+    schemaVersion: 1,
+    task: 'Y10',
+    svgo: summary.svgo,
+    assets: winResults,
+    totals: {
+      assets: winResults.length,
+      mismatchedPixels: winResults.reduce((n, r) => n + (r.mismatchedPixels ?? 0), 0),
+      sourceBytes: winResults.reduce((n, r) => n + (r.sourceBytes ?? 0), 0),
+      outputBytes: winResults.reduce((n, r) => n + (r.outputBytes ?? 0), 0),
+      inkPixels: winResults.reduce((n, r) => n + (r.inkPixels ?? 0), 0),
+    },
+  };
   if (
     summary.totals.assets !== 36 ||
     summary.totals.mismatchedPixels !== 0 ||
     frameSummary.totals.frames !== STATUS_BALL_FRAMES.length ||
-    frameSummary.totals.mismatchedPixels !== 0
+    frameSummary.totals.mismatchedPixels !== 0 ||
+    winSummary.totals.assets !== WIN_ASSETS.length ||
+    winSummary.totals.mismatchedPixels !== 0
   ) {
     throw new Error(
-      `expected 36 layout SVGs + ${STATUS_BALL_FRAMES.length} status-ball frames and 0 ` +
-        `mismatched pixels, got ${summary.totals.assets} + ${frameSummary.totals.frames} / ` +
-        `${summary.totals.mismatchedPixels} + ${frameSummary.totals.mismatchedPixels}`,
+      `expected 36 layout SVGs + ${STATUS_BALL_FRAMES.length} status-ball frames + ` +
+        `${WIN_ASSETS.length} win assets and 0 mismatched pixels, got ` +
+        `${summary.totals.assets} + ${frameSummary.totals.frames} + ${winSummary.totals.assets} / ` +
+        `${summary.totals.mismatchedPixels} + ${frameSummary.totals.mismatchedPixels} + ` +
+        `${winSummary.totals.mismatchedPixels}`,
     );
   }
   writeFileSync(path.join(evRoot, 'summary.json'), JSON.stringify(summary, null, 1) + '\n');
   mkdirSync(frameEvRoot, { recursive: true });
   writeFileSync(path.join(frameEvRoot, 'summary.json'), JSON.stringify(frameSummary, null, 1) + '\n');
+  mkdirSync(winEvRoot, { recursive: true });
+  writeFileSync(path.join(winEvRoot, 'summary.json'), JSON.stringify(winSummary, null, 1) + '\n');
   OK(
-    `svg done: ${results.length} layout + ${frameResults.length} status-ball frames, ` +
-      `0 mismatched pixels, ` +
+    `svg done: ${results.length} layout + ${frameResults.length} status-ball frames + ` +
+      `${winResults.length} win assets, 0 mismatched pixels, ` +
       `${summary.totals.sourceBytes} -> ${summary.totals.outputBytes} bytes, ` +
       `${summary.totals.nonBlankRenders} non-blank renders`,
   );
@@ -994,6 +1227,32 @@ function manifestAssets(mapping) {
       source: frame.source,
       sourceSha256: frame.sourceSha256,
       correction: 'strip-status-text',
+    };
+  });
+  // Task Y10: the results-card owner edits (E-posta removed, Ad Soyad ->
+  // İsim; tools/process-assets.mjs `applyHiscoreFormOwnerEdits`) are a
+  // process-time source correction like X2's; the manifest records the
+  // correction name.
+  const cardEntry = assets['svg/s166_hiscore_form.svg'];
+  if (cardEntry === undefined) throw new Error('manifest: svg/s166_hiscore_form.svg missing');
+  cardEntry.correction = 'owner-card-edits';
+  // Task Y10: the firework spark (`havai` shape of DefineSprite_169's nested
+  // DefineSprite_168) is recorded as the `spark` sub-record of the fireworks
+  // element's own manifest entry (no new top-level asset; the frozen 36-svg
+  // count is unchanged — same pattern as the Y9 `frames` records).
+  const marqueeEntry = assets['svg/s170_bottom_marquee.svg'];
+  if (marqueeEntry === undefined) throw new Error('manifest: svg/s170_bottom_marquee.svg missing');
+  marqueeEntry.spark = WIN_ASSETS.map((asset) => {
+    const rel = `src/assets/svg/${asset.name}`;
+    if (!existsSync(abs(rel))) throw new Error(`${asset.name}: missing for the manifest`);
+    return {
+      name: `svg/${asset.name}`,
+      sha256: sha256File(rel),
+      source: asset.source,
+      sourceSha256: asset.sourceSha256,
+      correction: asset.correctionName,
+      symbol: asset.symbol.id,
+      frame: asset.symbol.frame,
     };
   });
   const soundMap = readJson('data/sound-map.json');

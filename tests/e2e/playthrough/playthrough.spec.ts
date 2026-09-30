@@ -42,14 +42,16 @@
 // not painted by the rebuild (src/ui/animations.ts header: only the normal
 // wordball slide is painted), so it is not a compared capture.
 //
-// Completion step (39-complete): the reference's all-found results screen is
-// excluded from the rebuild (docs/02 §7; evidence/D5-lifecycle.md §9.3) — the
-// app stays on the board in `celebration` while the reference shows the
-// night-sky `bravo` screen (E2's scoped state list S1–S7/S10 follows the same
-// exclusion). The step's app state/score/time-bonus assertions run and the
-// reference end screen is captured (C3 waitForState hiscore-form), but a
-// full-stage pixel comparison at this step is not applicable and is recorded
-// as `comparison: excluded` with the documented reason — never as a pass.
+// Completion step (39-complete): task Y10 restored the all-found results
+// screen; the app paints the win sequence (SWF frames 132-241) instead of
+// staying on the board. The step's app state/score/time-bonus assertions run
+// and the reference end screen is captured (C3 waitForState hiscore-form).
+// The win-screen pixel comparison lives in tests/e2e/celebration (fresh
+// reference keyframes 132/159/186/214/241 + the recorded card allowance at
+// 241); a full-stage diff against this step's reference shot is not defined
+// (its unseeded, looping firework burst and the owner-edited card) and is
+// recorded as `comparison: excluded` with the documented reason — never as a
+// pass.
 //
 // Silent witness runs (EXECUTION.md §8): Chromium is launched with
 // `--mute-audio` (playwright.config.ts); no audio is played or verified by
@@ -740,11 +742,16 @@ test.describe('F2 scripted playthrough', () => {
     // --- step loop ------------------------------------------------------------
     const completionStepId = '39-complete';
     const completionExclusionReason =
-      'Reference all-found results screen (bravo/hiscore form) is excluded from the rebuild ' +
-      '(docs/02 §7; evidence/D5-lifecycle.md §9.3); the app stays on the board in `celebration` ' +
-      'while the reference shows the night-sky results screen. E2 scoped its state list to S1–S7/S10 ' +
-      'for the same exclusion. App state/score/time-bonus are asserted; the reference end screen is ' +
-      'captured via waitForState hiscore-form.';
+      'Task Y10 restored the all-found results screen, so the app now paints the win sequence ' +
+      '(SWF frames 132-241) instead of staying on the board. This step keeps its state-level ' +
+      'checks (score with time bonus, found list, state, input lock) and the reference capture; ' +
+      'the pixel comparison of the win screen lives in tests/e2e/celebration with fresh ' +
+      'reference keyframe captures (frames 132/159/186/214/241 plus the recorded card ' +
+      'allowance at 241). A full-stage diff at this capture is not defined: the reference shot ' +
+      '(39-complete) was taken at the hiscore-form detection moment with an unseeded firework ' +
+      'burst (the looping `bottom_marquee` burst cannot be reproduced pixel-by-pixel) and the ' +
+      'card carries the owner edits. Recorded as `comparison: excluded` with this reason — ' +
+      'never as a pass.';
 
     let worst = 0;
     for (const [index, step] of script.steps.entries()) {

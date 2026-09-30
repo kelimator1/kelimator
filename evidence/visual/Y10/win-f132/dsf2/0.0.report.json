@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 3,
+  "tool": "verify/diff/diff.mjs",
+  "width": 1100,
+  "height": 800,
+  "totalPixels": 880000,
+  "mismatchThreshold": 30,
+  "passRatio": 0.02,
+  "tolerantRadius": 2,
+  "mismatchedPixels": 21207,
+  "mismatchRatio": 0.024098863636363637,
+  "maxDistance": 396.17799030233874,
+  "meanDistance": 7.169868012353169,
+  "mismatchBBox": {
+    "x": 0,
+    "y": 0,
+    "width": 1100,
+    "height": 800
+  },
+  "tolerantMismatchedPixels": 10428,
+  "tolerantMismatchRatio": 0.01185,
+  "tolerantMismatchBBox": {
+    "x": 7,
+    "y": 4,
+    "width": 368,
+    "height": 110
+  },
+  "ignoredRects": [
+    {
+      "x": 890,
+      "y": 392,
+      "w": 200,
+      "h": 46
+    }
+  ],
+  "ignoredPixels": 9200,
+  "pass": true
+}

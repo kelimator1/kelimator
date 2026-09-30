@@ -139,6 +139,14 @@ export interface LifecycleSnapshot {
   readonly remainingSeconds: number;
   /** `remainingSeconds × 1000` (docs/04 §6 hook; the timer is integer-second). */
   readonly remainingMs: number;
+  /**
+   * The round's total seconds (`data/constants.json` timer.initialSeconds).
+   * Task Y10: the results card's `Süre` field is `_root.sure - _root.timer`
+   * (elapsed seconds); `sure` is the round's 200 s
+   * (artifacts/decompiled/scripts/frame_131/DoAction.as L31:
+   * `sure = 200; timex = sure; timer = sure;`).
+   */
+  readonly totalSeconds: number;
   readonly entry: string;
   readonly entryStatus: EntryStatus;
   readonly foundWords: readonly string[];
@@ -392,6 +400,8 @@ export function createRoundLifecycle(options: RoundLifecycleOptions): RoundLifec
       // evidence: evidence/D3-scoring-timer.md §6 (remainingMs = integer
       // second × the evidenced tick, one displayed second).
       remainingMs: timer.remainingSeconds * options.constants.timer.tickMs,
+      // Task Y10: results-card `Süre` basis (`_root.sure`, frame_131 L31).
+      totalSeconds: options.constants.timer.initialSeconds,
       entry: input?.entry ?? '',
       entryStatus: entryStatusOf(input?.entry ?? ''),
       foundWords: [...foundWords],

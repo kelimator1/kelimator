@@ -31,6 +31,7 @@ import { isMuted, toggleMute } from '../audio/audio';
 import layoutJson from '../data/layout.json';
 import type { LifecycleSnapshot, ListedWordView } from '../game/lifecycle';
 import type { WordLength } from '../game/round';
+import { HISCORE_FORM_FIELDS } from './board';
 
 /** Which control hit areas are live. */
 export interface HudControlsVisibility {
@@ -150,6 +151,33 @@ const SPEAKER_CLASS = 'game-speaker';
 
 const WORD_LENGTHS: readonly WordLength[] = [3, 4, 5, 6, 7, 8];
 
+// ---------------------------------------------------------------------------
+// Y10 results form (owner decision Option A; tasks/Y10)
+//
+// The reference results card (DefineSprite_166) carries a `name` input (text
+// id 154), the `Gönder` submit button (button 153) and the `hata` error line
+// (162). The owner decision removes the `E-posta` field and renames the label
+// to `İsim`; the submit flow is **placebo/local only — zero network, nothing
+// stored** (the reference posts to the excluded `hiscore.php` and stores the
+// name/e-mail in a SharedObject; docs/02 §7). The original button's tail action
+// is a local navigation (`_root.gotoAndPlay("main")`,
+// artifacts/decompiled/scripts/DefineButton2_153/BUTTONCONDACTION on(release).as
+// L32; evidence/A2-labels.md §3) which reloads the word list and starts the
+// next round: the rebuild's celebration → playing `newRound()` path (D5
+// transition table; the intro replay difference is recorded in
+// evidence/Y10-celebration.md). The empty-name gate keeps the reference's
+// error string verbatim (`hata = "Lütfen adınızı yazınız"`).
+// ---------------------------------------------------------------------------
+
+/** Card box (src/data/layout.json `hiscore_form` = frame-222 placement). */
+const HISCORE_CARD = layoutElement('hiscore_form');
+
+/** The original empty-name error (DefineButton2_153 L3-L6, verbatim). */
+export const RESULTS_NAME_ERROR = 'Lütfen adınızı yazınız';
+
+/** The reference `name` input field max (`maxCharacters="50"`, text id 154). */
+const RESULTS_NAME_MAX_LENGTH = 50;
+
 const STYLE_ID = 'game-hud-styles';
 
 function installStyleSheet(doc: Document): void {
@@ -180,6 +208,45 @@ function installStyleSheet(doc: Document): void {
 }
 .game-control[hidden] { display: none; }
 .game-speaker { cursor: pointer; }
+/* Task Y10: results-form overlays (positioned at the card's frame-222 box +
+   the SWF field offsets; the card's slide-in animation is applied to these
+   nodes by src/ui/animations.ts, class e3-win-form-follow). */
+.game-results-input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  appearance: none;
+  outline: 0;
+  font-family: Verdana, "DejaVu Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #000;
+  z-index: 20100;
+}
+.game-results-submit {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+  outline: 0;
+  z-index: 20100;
+}
+.game-results-error {
+  position: absolute;
+  font-family: Verdana, "DejaVu Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ff0000;
+  text-align: center;
+  line-height: 18.55px;
+  z-index: 20100;
+}
+.game-results-hidden { display: none; }
 `;
   let style = doc.getElementById(STYLE_ID) as HTMLStyleElement | null;
   if (style === null) {
@@ -344,6 +411,65 @@ export function mountHud(root: HTMLElement, options: HudOptions = {}): HudHandle
   controls.append(submit, scramble, deleteControl, newRound);
   root.appendChild(controls);
 
+  // --- Y10 results form (see the section header) ---------------------------
+  const cardFieldRect = (
+    field: keyof typeof HISCORE_FORM_FIELDS,
+  ): { left: number; top: number; width: number; height: number } => {
+    const rect = HISCORE_FORM_FIELDS[field];
+    return {
+      left: HISCORE_CARD.x + rect.x,
+      top: HISCORE_CARD.y + rect.y,
+      width: rect.w,
+      height: rect.h,
+    };
+  };
+  const placeFormNode = (node: HTMLElement, field: keyof typeof HISCORE_FORM_FIELDS): void => {
+    const rect = cardFieldRect(field);
+    node.style.left = `${rect.left}px`;
+    node.style.top = `${rect.top}px`;
+    node.style.width = `${rect.width}px`;
+    node.style.height = `${rect.height}px`;
+  };
+  const resultsInput = document.createElement('input');
+  resultsInput.type = 'text';
+  resultsInput.className = 'game-results-input game-results-hidden';
+  resultsInput.dataset.testid = 'results-name';
+  resultsInput.dataset.element = 'hiscore_form-input';
+  resultsInput.maxLength = RESULTS_NAME_MAX_LENGTH;
+  resultsInput.setAttribute('aria-label', 'İsim');
+  resultsInput.autocomplete = 'off';
+  placeFormNode(resultsInput, 'name');
+  const resultsError = document.createElement('span');
+  resultsError.className = 'game-results-error game-results-hidden';
+  resultsError.dataset.testid = 'results-error';
+  resultsError.dataset.element = 'hiscore_form-error';
+  placeFormNode(resultsError, 'error');
+  const resultsSubmit = document.createElement('button');
+  resultsSubmit.type = 'button';
+  resultsSubmit.className = 'game-results-submit game-results-hidden';
+  resultsSubmit.dataset.testid = 'results-submit';
+  resultsSubmit.dataset.element = 'hiscore_form-submit';
+  resultsSubmit.setAttribute('aria-label', 'Gönder');
+  placeFormNode(resultsSubmit, 'submit');
+  root.append(resultsInput, resultsError, resultsSubmit);
+  let resultsFormVisible = false;
+  /**
+   * Reference `DefineButton2_153` on(release): empty name -> the error line;
+   * otherwise the local navigation (the rebuild's celebration -> next-round
+   * path; no request, nothing stored — owner decision).
+   */
+  resultsSubmit.addEventListener('click', (event) => {
+    event.preventDefault();
+    if (resultsInput.value === '') {
+      resultsError.textContent = RESULTS_NAME_ERROR;
+      resultsError.classList.remove('game-results-hidden');
+      return;
+    }
+    resultsError.textContent = '';
+    resultsError.classList.add('game-results-hidden');
+    options.onNewRound?.();
+  });
+
   // Speaker control (`spk_btn`): the rendered element belongs to E2's board,
   // so the listener is delegated from the board root — `board.apply` clears
   // the board's children on every render, and the handler must survive that.
@@ -379,6 +505,20 @@ export function mountHud(root: HTMLElement, options: HudOptions = {}): HudHandle
       foundList.textContent = '';
       for (const word of snapshot.listedFound) {
         foundList.appendChild(listedWordListItem(word));
+      }
+      // Task Y10: the results form is live only on the win screen
+      // (`celebration`); entering the state starts from an empty `İsim` field
+      // (the rebuild stores nothing — owner decision; the reference restored a
+      // SharedObject value).
+      const showForm = snapshot.state === 'celebration';
+      if (showForm && !resultsFormVisible) {
+        resultsInput.value = '';
+        resultsError.textContent = '';
+        resultsError.classList.add('game-results-hidden');
+      }
+      resultsFormVisible = showForm;
+      for (const node of [resultsInput, resultsError, resultsSubmit]) {
+        node.classList.toggle('game-results-hidden', !showForm);
       }
       // E2 re-created the board form; re-apply the speaker state.
       syncSpeakerVisual(options.board);
@@ -428,6 +568,9 @@ export function mountHud(root: HTMLElement, options: HudOptions = {}): HudHandle
     destroy(): void {
       element.remove();
       controls.remove();
+      resultsInput.remove();
+      resultsError.remove();
+      resultsSubmit.remove();
       options.board?.removeEventListener('click', onSpeakerClick);
     },
   };

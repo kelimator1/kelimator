@@ -1,0 +1,58 @@
+{
+ "schemaVersion": 1,
+ "task": "Y10",
+ "svgo": {
+  "version": "4.1.0",
+  "preset": "preset-default",
+  "disabledOverrides": [
+   "cleanupIds",
+   "cleanupNumericValues",
+   "convertShapeToPath",
+   "convertEllipseToCircle",
+   "moveElemsAttrsToGroup",
+   "moveGroupAttrsToElems",
+   "collapseGroups",
+   "convertPathData",
+   "convertTransform",
+   "mergePaths",
+   "removeUselessStrokeAndFill"
+  ]
+ },
+ "assets": [
+  {
+   "name": "s168_havai_spark.svg",
+   "element": "bottom_marquee",
+   "source": "artifacts/decompiled/sprites/DefineSprite_168/1.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 168,
+    "frame": 1
+   },
+   "correctionProof": {
+    "replacedSpans": 2,
+    "rawInkPixels": 38,
+    "preparedInkPixels": 38,
+    "colourOnlyDiffPixels": 38,
+    "geometryPreserved": true
+   },
+   "sourceBytes": 809,
+   "outputBytes": 711,
+   "width": 11.3,
+   "height": 10,
+   "naturalWidth": 11,
+   "naturalHeight": 10,
+   "inkPixels": 38,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  }
+ ],
+ "totals": {
+  "assets": 1,
+  "mismatchedPixels": 0,
+  "sourceBytes": 809,
+  "outputBytes": 711,
+  "inkPixels": 38
+ }
+}

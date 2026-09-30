@@ -27,7 +27,13 @@
 // classes and transient ghost nodes on E2's board element.
 
 import animationCatalogJson from '../data/animation.json';
-import type { BoardView } from './board';
+import { createSeededRandom } from '../game/round';
+import {
+  createSparkSvg,
+  renderWinLayer,
+  type BoardView,
+  type WinResultsView,
+} from './board';
 import type { GameState } from '../game/state';
 import type { CompletionReason } from '../game/lifecycle';
 
@@ -272,6 +278,85 @@ export function preloaderBoardView(): BoardView {
   return { elements: [...sequenceElementsById('board'), ...sequenceElementsById('preloader')] };
 }
 
+// ---------------------------------------------------------------------------
+// Y10 win celebration runtime (tasks/Y10, owner decision Option A)
+//
+// The reference win timeline (SWF frames 132-241) is painted by the step-held
+// CSS tracks generated into src/styles/animations.css from
+// evidence/logs/Y10-win-series.json (tags.xml main-timeline tracks; see
+// evidence/Y10-celebration.md). This controller builds the win presentation
+// layer (src/ui/board.ts `renderWinLayer`) when the FSM enters `celebration`,
+// arms the per-element tracks and runs the fireworks burst of the
+// `bottom_marquee` element (DefineSprite_170):
+//
+//   - the reference places DefineSprite_170 at main-timeline frame 241
+//     (depth 49, tx=2.4 ty=3.35); its frame-1 DoAction draws ONE burst
+//     position (x = int(random(500))+50, y = int(random(200))+50) and
+//     duplicates the `havai` spark (DefineSprite_169) 300 times with
+//     scale = int(random(30))+5 (percent), rot = int(random(360))+1 and
+//     gotoAndPlay(int(random(10))+1); sprite frame 65 removes every duplicate;
+//   - the rebuild draws the burst from `createSeededRandom(WIN_FIREWORK_SEED)`
+//     with the same call order and ranges (the reference's `random()` is
+//     unseeded, so its burst pattern differs run to run — recorded deviation);
+//     the per-spark track (matrix + colour) and the burst visibility window
+//     are pure CSS (`e3-win-spark`, `e3-win-spark-life`), so nothing here
+//     needs timers and every animation can be paused/seeked by tests.
+// ---------------------------------------------------------------------------
+
+/** Deterministic burst seed (recorded value; reference `random()` is unseeded). */
+export const WIN_FIREWORK_SEED = 2012;
+/** Duplicate count of sprite 170 frame 1 (`sayi = 300`). */
+export const WIN_SPARK_COUNT = 300;
+/** Sprite 170 frame of the burst start (main-timeline frame 241 = win +109/36 s). */
+export const WIN_SPARK_PLACEMENT_FRAME = 241;
+/** The catalogued sequence id painted by the win layer. */
+export const WIN_SEQUENCE_ID = 'win';
+
+/** Spark node (`.e3-win-havai`) for one randomness record of sprite 170. */
+interface FireworkSpark {
+  readonly x: number;
+  readonly y: number;
+  readonly scalePercent: number;
+  readonly rotation: number;
+  readonly startFrame: number;
+}
+
+/**
+ * The sprite-170 frame-1 random draws in the reference call order
+ * (`x`, `y`, then per spark `scale`, `rot`, `startFrame`).
+ */
+export function winSparkParameters(seed: number = WIN_FIREWORK_SEED): {
+  readonly x: number;
+  readonly y: number;
+  readonly sparks: readonly FireworkSpark[];
+} {
+  const random = createSeededRandom(seed);
+  const x = random.randomInt(500) + 50;
+  const y = random.randomInt(200) + 50;
+  const sparks: FireworkSpark[] = [];
+  for (let index = 0; index < WIN_SPARK_COUNT; index += 1) {
+    sparks.push({
+      x,
+      y,
+      scalePercent: random.randomInt(30) + 5,
+      rotation: random.randomInt(360) + 1,
+      startFrame: random.randomInt(10) + 1,
+    });
+  }
+  return { x, y, sparks };
+}
+
+/**
+ * CSS `animation-delay` of a spark that starts at sprite frame `startFrame`
+ * (1..10): the reference issues `gotoAndPlay(startFrame)` per duplicate, so
+ * the spark's phase inside every 65-frame burst cycle is `startFrame - 1`
+ * frames ahead. A negative delay shifts the infinite track by exactly that
+ * phase (no timers; every animation stays pausable/seekable by tests).
+ */
+function sparkDelayMs(startFrame: number): number {
+  return (-((startFrame - 1) * 1000) / ANIMATION_FPS);
+}
+
 /**
  * Static alpha values of the preloader frames (frames 2–4), applied while the
  * FSM is in `preloader` so the boot starts on the same night-sky state the
@@ -374,7 +459,14 @@ export interface AnimationController {
    * (task Y8) arm the boot-frame visuals: static preloader alphas while the FSM
    * is in `preloader`, the step-held intro timeline when it enters `main`.
    */
-  afterRender(snapshot: { readonly entry: string; readonly state: GameState }): void;
+  afterRender(snapshot: {
+    readonly entry: string;
+    readonly state: GameState;
+    readonly score?: number;
+    readonly foundWords?: readonly string[];
+    readonly remainingSeconds?: number;
+    readonly totalSeconds?: number;
+  }): void;
   /** D5 `onStateChanged`. */
   stateChanged(change: { readonly previous: GameState; readonly state: GameState }): void;
   /** D5 `onRoundStarted`. */
@@ -432,6 +524,150 @@ export function createAnimationController(
     ghost.addEventListener('animationend', remove, { once: true });
     window.setTimeout(remove, GOTUR_FALLBACK_MS);
     board.appendChild(ghost);
+  }
+
+  // --- Y10 win celebration visuals (see the section header) ----------------
+
+  /** The mounted win layer of the current celebration render, if any. */
+  let winLayer: HTMLElement | null = null;
+
+  /** Results-card values from the lifecycle snapshot (reference frame_166). */
+  function winResults(snapshot: {
+    readonly score?: number;
+    readonly foundWords?: readonly string[];
+    readonly remainingSeconds?: number;
+    readonly totalSeconds?: number;
+  }): WinResultsView {
+    // evidence: DefineSprite_166/frame_1/DoAction.as — `toplampuan = _root.puan`
+    // (includes the all-found time bonus), `toplamkelime = _root.toplamkelime`
+    // (valid submissions this round), `toplamsure = _root.sure - _root.timer`
+    // (elapsed whole seconds; `sure` = the round's 200 s).
+    const elapsed = Math.max(
+      0,
+      (snapshot.totalSeconds ?? 0) - (snapshot.remainingSeconds ?? 0),
+    );
+    return {
+      score: String(snapshot.score ?? 0),
+      wordCount: String(snapshot.foundWords?.length ?? 0),
+      elapsedSeconds: String(elapsed),
+    };
+  }
+
+  /** Static alphas of the win frame-132 state: the crescent moon keeps its
+   * placement alpha (tags.xml PlaceObject2 depth 3, alphaMultTerm 125). */
+  function applyWinAlphas(layer: HTMLElement): void {
+    const moon = layer.querySelector<HTMLElement>('[data-element="logo_ornament"]');
+    if (moon !== null) moon.style.opacity = String(PRELOADER_ALPHAS['logo_ornament']);
+  }
+
+  /**
+   * Pin the wordmark overlay to its natural sprite size at (0,0) so the win
+   * transform track (translate + scale about 0 0, computed against the natural
+   * box centre) maps exactly like the SWF placement (same pattern as the Y8
+   * intro overlay; the inline styles from the catalog placement must be
+   * overridden because a stylesheet cannot).
+   */
+  function pinWinLogo(layer: HTMLElement): void {
+    const node = layer.querySelector<HTMLElement>('[data-element="intro_logo"]');
+    if (node === null) return;
+    node.style.left = '0px';
+    node.style.top = '0px';
+    node.style.width = `${INTRO_LOGO_OVERLAY.w}px`;
+    node.style.height = `${INTRO_LOGO_OVERLAY.h}px`;
+    node.style.transformOrigin = '0 0';
+    const image = node.querySelector('img');
+    if (image instanceof HTMLImageElement) {
+      image.style.width = `${INTRO_LOGO_OVERLAY.w}px`;
+      image.style.height = `${INTRO_LOGO_OVERLAY.h}px`;
+    }
+  }
+
+  /** The sun's win colour overlay (child of the `intro_glow` element). */
+  function attachWinGlowTint(layer: HTMLElement): void {
+    const glow = layer.querySelector<HTMLElement>('[data-element="intro_glow"]');
+    if (glow === null) return;
+    if (glow.querySelector('.e3-win-glow-tint') === null) {
+      const tint = document.createElement('div');
+      tint.className = 'e3-win-glow-tint';
+      tint.dataset.element = 'intro_glow-win-tint';
+      glow.appendChild(tint);
+    }
+  }
+
+  /**
+   * The fireworks burst of element `bottom_marquee` (DefineSprite_170).
+   * One burst position; 300 `havai` sparks (see the section header). The
+   * spark SVG's stroke is scaled by 1/scale so the rendered dot matches the
+   * reference's ~1 px sparks (the SWF's sub-pixel stroke; evidence
+   * evidence/Y10-celebration.md §fireworks).
+   */
+  function fillFireworks(layer: HTMLElement): void {
+    const container = layer.querySelector<HTMLElement>('[data-element="bottom_marquee"]');
+    if (container === null) return;
+    const { sparks } = winSparkParameters();
+    for (const spark of sparks) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'e3-win-havai';
+      wrapper.dataset.element = 'havai';
+      wrapper.style.left = `${spark.x}px`;
+      wrapper.style.top = `${spark.y}px`;
+      wrapper.style.transform = `rotate(${spark.rotation}deg) scale(${spark.scalePercent / 100})`;
+      const node = document.createElement('div');
+      node.className = 'e3-win-spark';
+      node.dataset.element = 'havai-spark';
+      node.style.animationDelay = `${sparkDelayMs(spark.startFrame)}ms`;
+      node.appendChild(createSparkSvg(1 / (spark.scalePercent / 100)));
+      wrapper.appendChild(node);
+      container.appendChild(wrapper);
+    }
+  }
+
+  /**
+   * Arm the win presentation when the FSM enters `celebration`; a later
+   * non-celebration render drops the reference (the board repaint clears the
+   * layer itself). Idempotent per rendered layer: a board re-render replaces
+   * the layer and re-arms it.
+   */
+  function applyWinVisuals(snapshot: {
+    readonly state: GameState;
+    readonly score?: number;
+    readonly foundWords?: readonly string[];
+    readonly remainingSeconds?: number;
+    readonly totalSeconds?: number;
+  }): void {
+    if (snapshot.state !== 'celebration') {
+      winLayer = null;
+      return;
+    }
+    if (winLayer !== null && winLayer.isConnected) return;
+    const layer = renderWinLayer(winResults(snapshot));
+    applyWinAlphas(layer);
+    pinWinLogo(layer);
+    attachWinGlowTint(layer);
+    fillFireworks(layer);
+    board.appendChild(layer);
+    for (const node of Array.from(layer.querySelectorAll<HTMLElement>('[data-element]'))) {
+      node.classList.add('e3-win-run');
+    }
+    // HUD-owned results form nodes (input / submit / error line) follow the
+    // card's slide-in (src/ui/hud.ts; same catalog card box).
+    for (const selector of [
+      '[data-element="hiscore_form-input"]',
+      '[data-element="hiscore_form-submit"]',
+      '[data-element="hiscore_form-error"]',
+    ]) {
+      for (const node of Array.from(document.querySelectorAll<HTMLElement>(selector))) {
+        node.classList.add('e3-win-form-follow');
+      }
+    }
+    winLayer = layer;
+  }
+
+  /** Drop the HUD form-follow class when the celebration ends. */
+  function clearWinFormFollow(): void {
+    for (const node of Array.from(document.querySelectorAll<HTMLElement>('.e3-win-form-follow'))) {
+      node.classList.remove('e3-win-form-follow');
+    }
   }
 
   // --- Y8 boot intro visuals (see the section header) ----------------------
@@ -581,9 +817,19 @@ export function createAnimationController(
       }
     },
 
-    afterRender(snapshot: { readonly entry: string; readonly state: GameState }): void {
+    afterRender(snapshot: {
+      readonly entry: string;
+      readonly state: GameState;
+      readonly score?: number;
+      readonly foundWords?: readonly string[];
+      readonly remainingSeconds?: number;
+      readonly totalSeconds?: number;
+    }): void {
       // Y8 boot-frame visuals first: the entry diff below may return early.
       applyBootVisuals(snapshot.state);
+      // Y10 win presentation (also before the entry diff).
+      applyWinVisuals(snapshot);
+      if (snapshot.state !== 'celebration') clearWinFormFollow();
       const nextEntry = snapshot.entry;
       const previous = previousEntry;
       previousEntry = nextEntry;

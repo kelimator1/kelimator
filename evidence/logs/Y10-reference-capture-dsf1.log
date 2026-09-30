@@ -1,0 +1,8 @@
+[Y10 ref] dsf1 session 1: 132 shots, frame132= {"boardVisible":false,"sky":{"r":77,"g":157,"b":213},"logo":{"x":8,"y":2,"w":174,"h":49},"sunVisible":false,"panelTop":null}
+[Y10 ref] dsf1 session 2: 132 shots, frame132= {"boardVisible":false,"sky":{"r":77,"g":157,"b":213},"logo":{"x":8,"y":2,"w":174,"h":49},"sunVisible":false,"panelTop":null}
+[Y10 ref] dsf1 frame 132: measured 132 (paused-enter, residual 0) 9ae27d38f205
+[Y10 ref] dsf1 frame 159: measured 159 (glow-bottom, residual 1.45) 590ff9d90be5
+[Y10 ref] dsf1 frame 186: measured 186 (glow-bottom, residual 0.95) ee725a517375
+[Y10 ref] dsf1 frame 214: measured 214 (sky, residual 0.519) 3e7aca2c932f
+[Y10 ref] dsf1 frame 241: measured 241 (panel, residual 0.85) 8c04393e2c66
+[Y10 ref] dsf1: 6 captures written to evidence/visual/Y10/reference-dsf1

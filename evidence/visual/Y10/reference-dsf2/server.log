@@ -1,0 +1,11 @@
+C3 reference server on http://127.0.0.1:8804/
+  harness root : /home/dev/kelimator-2012/verify/reference
+  ruffle web   : /home/dev/kelimator-2012/verify/reference/ruffle/web
+  /xml64.php   : /home/dev/kelimator-2012/verify/reference/fixtures/xml64.base64.php (derived; archived input read-only at /home/dev/kelimator-nostalji/calistir)
+2026-09-30T02:46:15Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-30T02:46:15Z 127.0.0.1 "GET / HTTP/1.1" -> 200 -
+2026-09-30T02:46:15Z 127.0.0.1 "GET /ruffle/web/ruffle.js HTTP/1.1" -> 200 -
+2026-09-30T02:46:15Z 127.0.0.1 "GET /ruffle/web/core.ruffle.c80159b526e567babaf5.js HTTP/1.1" -> 200 -
+2026-09-30T02:46:15Z 127.0.0.1 "GET /ruffle/web/826bb0938097485a2c9d.wasm HTTP/1.1" -> 200 -
+2026-09-30T02:46:16Z 127.0.0.1 "GET /kelimator_tr_2012_mochiads.swf HTTP/1.1" -> 200 -
+2026-09-30T02:46:23Z 127.0.0.1 "GET /xml64.php?210201 HTTP/1.1" -> 200 -

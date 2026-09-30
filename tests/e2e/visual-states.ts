@@ -562,3 +562,95 @@ export function boardIgnoreRects(dsf: number): { x: number; y: number; w: number
 export function boardIgnoreRectArgs(dsf: number): string[] {
   return [...y1IgnoreRectArgs(dsf), ...y2CreditIgnoreRectArgs(dsf), ...y6Top10IgnoreRectArgs(dsf)];
 }
+
+// ---------------------------------------------------------------------------
+// Task Y10 — win celebration (owner decision Option A)
+//
+// The restored end screen compares against fresh reference captures of the
+// win timeline (evidence/visual/Y10/reference-dsf{1,2}/frame-*.png,
+// tests/e2e/celebration/capture-celebration-reference.mjs). Four of the five
+// catalogued keyframes (SWF frames 132/159/186/214) are compared with **no
+// allowance**: the day/night layers, the sun path and the wordmark motion are
+// deterministic.
+//
+// Frame 241 (the results card, fully risen) needs the recorded allowances
+// below — nothing else is excluded:
+//
+//   1. `Y10_CARD_OWNER_EDIT_RECTS` — the owner's card edits (tasks/Y10):
+//      the `E-posta` field is removed entirely (label + input box; the
+//      reference capture still shows the row) and the `Ad Soyad` label is
+//      renamed to `İsim` (different glyph run at the same label box). The
+//      rects cover exactly the modified rows' areas: the label run
+//      (144,257,78,17) and the removed e-mail row (146,278,268,22); the name
+//      field box, the labels and the values below are NOT covered.
+//   2. `Y10_SESSION_VALUE_RECTS` — the `Puanınız` and `Süre` value columns.
+//      Their contents are session-dependent in both implementations (the
+//      reference capture shows the values of its own scripted run: score
+//      including the time bonus, elapsed whole seconds — e.g. 69400/60);
+//      the rebuild's values are asserted at the state level (score oracle of
+//      the F2 script + elapsed = totalSeconds - remainingSeconds) and their
+//      live text is exercised by tests/e2e/celebration. `Kelime Sayısı` (35)
+//      is deterministic and stays compared, as do the labels and the card
+//      shape/button.
+//
+// Coordinates are dsf1 stage pixels (the card's settled frame-241 box
+// (114.9, 214.85, 311.9, 169) plus the SWF field offsets; derivation in
+// evidence/Y10-celebration.md §card); scale by the deviceScaleFactor like the
+// Y1/Y2/Y6 sets.
+// ---------------------------------------------------------------------------
+export const Y10_CARD_OWNER_EDIT_RECTS: readonly (readonly [number, number, number, number])[] = [
+  [144, 257, 74, 17], // `İsim` label glyph area (was `Ad Soyad`; stops at the name field box)
+  [146, 278, 268, 22], // removed `E-posta` row (label + input box)
+];
+export const Y10_SESSION_VALUE_RECTS: readonly (readonly [number, number, number, number])[] = [
+  [219, 301, 195, 18], // `Puanınız` value field
+  [219, 344, 195, 18], // `Süre` value field
+];
+
+/** The parsed frame-241 allowance for one deviceScaleFactor. */
+export function y10ResultsAllowanceRects(
+  dsf: number,
+): { x: number; y: number; w: number; h: number }[] {
+  return [...Y10_CARD_OWNER_EDIT_RECTS, ...Y10_SESSION_VALUE_RECTS].map(([x, y, w, h]) => ({
+    x: x * dsf,
+    y: y * dsf,
+    w: w * dsf,
+    h: h * dsf,
+  }));
+}
+
+/** Ready-to-use `--ignore-rect` arguments for the frame-241 allowance. */
+export function y10ResultsAllowanceArgs(dsf: number): string[] {
+  return y10ResultsAllowanceRects(dsf).flatMap((rect) => [
+    '--ignore-rect',
+    `${rect.x},${rect.y},${rect.w},${rect.h}`,
+  ]);
+}
+
+// ---------------------------------------------------------------------------
+// Task Y10 — owner-kept Yeni Oyun affordance on the win screen
+//
+// The reference hides every board button at SWF frame 132 (`frame_132`
+// `ybuton._visible = false`), leaving the excluded score form's submit as the
+// only return path. The owner decision keeps `Yeni Oyun` (btn_ybuton) visible
+// on the rebuild's win screen as the return path (D5 evidence §9.3), so every
+// win keyframe comparison passes this recorded deviation rect: the button's
+// catalog display bbox `(445.8, 196.45, 98.3, 21.7)` (data/layout.json).
+// ---------------------------------------------------------------------------
+export const Y10_RETURN_BUTTON_RECT: readonly [number, number, number, number] = [
+  445, 196, 100, 23,
+];
+
+/** The parsed Yeni Oyun deviation rect for one deviceScaleFactor. */
+export function y10ReturnButtonRects(dsf: number): { x: number; y: number; w: number; h: number }[] {
+  const [x, y, w, h] = Y10_RETURN_BUTTON_RECT;
+  return [{ x: x * dsf, y: y * dsf, w: w * dsf, h: h * dsf }];
+}
+
+/** Ready-to-use `--ignore-rect` arguments for the Yeni Oyun deviation. */
+export function y10ReturnButtonArgs(dsf: number): string[] {
+  return y10ReturnButtonRects(dsf).flatMap((rect) => [
+    '--ignore-rect',
+    `${rect.x},${rect.y},${rect.w},${rect.h}`,
+  ]);
+}

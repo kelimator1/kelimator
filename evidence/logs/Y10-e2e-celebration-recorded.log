@@ -1,0 +1,54 @@
+
+Running 15 tests using 1 worker
+
+[1/15] [app] › tests/e2e/celebration/celebration.spec.ts:188:3 › Y10 win celebration › completion plays the bravo sequence into the results card
+[2/15] [app] › tests/e2e/celebration/celebration.spec.ts:277:3 › Y10 win celebration › the results form is local-only: zero requests, nothing stored
+[3/15] [app] › tests/e2e/celebration/celebration.spec.ts:310:3 › Y10 win celebration › fireworks: 300 sparks in the evidenced ranges, cycling every 65 frames
+[app] › tests/e2e/celebration/celebration.spec.ts:310:3 › Y10 win celebration › fireworks: 300 sparks in the evidenced ranges, cycling every 65 frames
+Y10 fireworks ink series (max 865): 0,671,803,415,512,170,371,335,0,362,865,541,446,428,37,0,113,60,672,803,415
+
+[4/15] [app] › tests/e2e/celebration/celebration.spec.ts:416:3 › Y10 win celebration › card asset: owner edits applied, no E-posta markers, manifest records it
+[5/15] [app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 0.0 s (frame 132) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 0.0 s (frame 132) matches the reference capture
+Y10 win frame 132 dsf1: raw=1.439% tolerant=0.029% ignoredPixels=2300 pass=true
+
+[6/15] [app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 0.75 s (frame 159) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 0.75 s (frame 159) matches the reference capture
+Y10 win frame 159 dsf1: raw=3.793% tolerant=1.199% ignoredPixels=2300 pass=true
+
+[7/15] [app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 1.5 s (frame 186) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 1.5 s (frame 186) matches the reference capture
+Y10 win frame 186 dsf1: raw=3.092% tolerant=0.314% ignoredPixels=2300 pass=true
+
+[8/15] [app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 2.2778 s (frame 214) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 2.2778 s (frame 214) matches the reference capture
+Y10 win frame 214 dsf1: raw=0.695% tolerant=0.226% ignoredPixels=2300 pass=true
+
+[9/15] [app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 3.0278 s (frame 241) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 3.0278 s (frame 241) matches the reference capture
+Y10 win frame 241 dsf1: raw=3.241% tolerant=0.129% ignoredPixels=16474 pass=true
+
+[10/15] [app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 0.0 s (frame 132) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 0.0 s (frame 132) matches the reference capture
+Y10 win frame 132 dsf2: raw=2.410% tolerant=1.185% ignoredPixels=9200 pass=true
+
+[11/15] [app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 0.75 s (frame 159) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 0.75 s (frame 159) matches the reference capture
+Y10 win frame 159 dsf2: raw=3.282% tolerant=1.518% ignoredPixels=9200 pass=true
+
+[12/15] [app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 1.5 s (frame 186) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 1.5 s (frame 186) matches the reference capture
+Y10 win frame 186 dsf2: raw=2.563% tolerant=0.596% ignoredPixels=9200 pass=true
+
+[13/15] [app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 2.2778 s (frame 214) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 2.2778 s (frame 214) matches the reference capture
+Y10 win frame 214 dsf2: raw=0.629% tolerant=0.249% ignoredPixels=9200 pass=true
+
+[14/15] [app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 3.0278 s (frame 241) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:478:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 3.0278 s (frame 241) matches the reference capture
+Y10 win frame 241 dsf2: raw=1.549% tolerant=0.140% ignoredPixels=65896 pass=true
+
+[15/15] [app] › tests/e2e/celebration/celebration.spec.ts:563:3 › Y10 win catalog cross-check › win keyframes match data/animation.json
+  Slow test file: [app] › tests/e2e/celebration/celebration.spec.ts (7.0m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  15 passed (7.0m)

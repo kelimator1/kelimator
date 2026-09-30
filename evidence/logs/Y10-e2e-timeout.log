@@ -1,0 +1,5 @@
+
+Running 1 test using 1 worker
+
+[1/1] [app] › tests/e2e/timeout/reveal-colour.spec.ts:198:3 › X4 timeout reveal colour › FİNALİZM: revealed slots render #ff6600 at timeout; found slots stay black
+  1 passed (5.6s)

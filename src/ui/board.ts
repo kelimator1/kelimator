@@ -588,31 +588,37 @@ const OMITTED_ELEMENTS: ReadonlySet<string> = new Set([
 function renderStaticLayer(view: BoardView): HTMLElement {
   const layer = createLayer('board-layer board-static');
   for (const id of view.elements) {
-    if (OMITTED_ELEMENTS.has(id)) {
-      // Task Y2: skipped before any DOM node is created (no trace in the DOM).
-      continue;
-    }
-    const element = ELEMENTS_BY_ID.get(id);
-    if (element === undefined) {
-      continue;
-    }
-    const rect = resolvedRect(element, view.overrides?.[id]);
-    if (element.id === 'intro_glow') {
-      // See GLOW_GRADIENT: the asset's exported gradient does not match the
-      // reference; the glow is drawn from the sampled reference profile.
-      const glow = document.createElement('div');
-      glow.className = 'board-glow';
-      applyRect(glow, rect);
-      glow.style.zIndex = String(parseDepth(element.evidence));
-      glow.dataset.element = element.id;
-      layer.appendChild(glow);
-    } else if (element.kind === 'text') {
-      layer.appendChild(renderTextElement(element, rect, textValue(element, view)));
-    } else {
-      layer.appendChild(renderSvgElement(element, rect));
-    }
+    const node = renderElement(id, view);
+    if (node !== null) layer.appendChild(node);
   }
   return layer;
+}
+
+/** One rendered element node (or null for unknown/omitted ids). */
+function renderElement(id: string, view?: BoardView): HTMLElement | null {
+  if (OMITTED_ELEMENTS.has(id)) {
+    // Task Y2: skipped before any DOM node is created (no trace in the DOM).
+    return null;
+  }
+  const element = ELEMENTS_BY_ID.get(id);
+  if (element === undefined) {
+    return null;
+  }
+  const rect = resolvedRect(element, view?.overrides?.[id]);
+  if (element.id === 'intro_glow') {
+    // See GLOW_GRADIENT: the asset's exported gradient does not match the
+    // reference; the glow is drawn from the sampled reference profile.
+    const glow = document.createElement('div');
+    glow.className = 'board-glow';
+    applyRect(glow, rect);
+    glow.style.zIndex = String(parseDepth(element.evidence));
+    glow.dataset.element = element.id;
+    return glow;
+  }
+  if (element.kind === 'text') {
+    return renderTextElement(element, rect, textValue(element, view ?? { elements: [] }));
+  }
+  return renderSvgElement(element, rect);
 }
 
 function renderSlots(view: BoardView): HTMLElement {
@@ -823,6 +829,148 @@ export function defaultBoardView(): BoardView {
 /** Intro element set for the boot state (sequence "intro"). */
 export function introSequenceElements(): readonly string[] {
   return sequenceElements('intro');
+}
+
+// ---------------------------------------------------------------------------
+// Y10 win celebration layer (owner decision Option A; tasks/Y10)
+//
+// The reference win sequence (SWF frames 132-241, label `bravo`) is painted on
+// a presentation layer above the board (the same pattern as the Y8 boot
+// layer): the board layout stays mounted for the E2 V7 geometry check but is
+// hidden while the layer is up (reference frame_132 removes every board
+// element). Elements come from data/animation.json sequence `win`; the
+// `bottom_marquee` element is the fireworks generator (DefineSprite_170: its
+// frame-1 DoAction duplicates the `havai` spark 300 times - see
+// evidence/Y10-celebration.md §fireworks), rendered as a 0x0 burst container
+// at the sprite's frame-241 placement (tx=2.4 ty=3.35) that
+// src/ui/animations.ts fills with spark nodes. The results card
+// (`hiscore_form`, DefineSprite_166) renders the owner-edited asset
+// (E-posta removed, `Ad Soyad` -> `İsim`; tools/process-assets.mjs
+// `applyHiscoreFormOwnerEdits`) plus the three live value fields; the
+// interactive name field / submit button / error line are HUD-owned overlays
+// (src/ui/hud.ts) positioned at the same card box.
+//
+// The `btn_ybuton` sprite stays on stage during the celebration as the
+// rebuild's return path (owner decision; the reference hides it in frame_132 -
+// recorded deviation, D5 evidence §9.3).
+// ---------------------------------------------------------------------------
+
+/** One win-timeline render request (values of the results card). */
+export interface WinResultsView {
+  readonly score: string;
+  readonly wordCount: string;
+  readonly elapsedSeconds: string;
+}
+
+/**
+ * Results-card field boxes in the card's *catalog box* coordinates
+ * (src/data/layout.json `hiscore_form` = the frame-222 placement box; the SWF
+ * sprite origin is at box + (155.45, 114.5)). Read from the FLA/FFDec export of
+ * DefineSprite_166 frame 1:
+ *   - name field (DOMInputText 154)  (-49.00, -69.15) 189.95x14.55;
+ *   - e-mail box (removed by the owner edit; was (-49.00, -47.80));
+ *   - toplampuan (157) (-49.00, -26.40), toplamkelime (156) (-49.00, -5.05),
+ *     toplamsure (163) (-49.00, 15.95), all 189.95x14.55;
+ *   - hata error line (162) (-153.00, -90.05) 309.95x18.55;
+ *   - Gönder button (153) shapes x -32.15..31.85, y 33.80..51.90.
+ */
+export const HISCORE_FORM_FIELDS = {
+  name: { x: 106.45, y: 45.35, w: 189.95, h: 14.55 },
+  score: { x: 106.45, y: 88.1, w: 189.95, h: 14.55 },
+  wordCount: { x: 106.45, y: 109.45, w: 189.95, h: 14.55 },
+  elapsed: { x: 106.45, y: 130.45, w: 189.95, h: 14.55 },
+  error: { x: 2.45, y: 24.45, w: 309.95, h: 18.55 },
+  submit: { x: 123.3, y: 148.3, w: 64.0, h: 18.1 },
+} as const;
+
+/** Win sequence elements + the owner-kept Yeni Oyun return affordance. */
+export function winSequenceElements(): readonly string[] {
+  return [...sequenceElements('win'), 'btn_ybuton'];
+}
+
+/** Results-card value spans (live text at the SWF field boxes). */
+function renderHiscoreForm(results: WinResultsView): HTMLElement {
+  const element = ELEMENTS_BY_ID.get('hiscore_form');
+  if (element === undefined) {
+    throw new Error('layout catalog is missing the hiscore_form element');
+  }
+  const node = renderSvgElement(element, resolvedRect(element));
+  const values: readonly (readonly [keyof typeof HISCORE_FORM_FIELDS, string])[] = [
+    ['score', results.score],
+    ['wordCount', results.wordCount],
+    ['elapsed', results.elapsedSeconds],
+  ];
+  for (const [field, text] of values) {
+    const rect = HISCORE_FORM_FIELDS[field];
+    const span = document.createElement('span');
+    span.className = 'e3-win-card-value';
+    span.dataset.element = `hiscore_form-${field}`;
+    span.textContent = text;
+    span.style.left = `${rect.x}px`;
+    span.style.top = `${rect.y}px`;
+    span.style.width = `${rect.w}px`;
+    span.style.height = `${rect.h}px`;
+    node.appendChild(span);
+  }
+  return node;
+}
+
+/** Fireworks burst container (element `bottom_marquee`, DefineSprite_170). */
+function renderFireworksContainer(): HTMLElement {
+  const container = document.createElement('div');
+  container.className = 'e3-win-fireworks';
+  container.dataset.element = 'bottom_marquee';
+  const element = ELEMENTS_BY_ID.get('bottom_marquee');
+  const { tx, ty } = element === undefined ? { tx: 2.4, ty: 3.35 } : parseRegistration(element.evidence);
+  container.style.left = `${tx}px`;
+  container.style.top = `${ty}px`;
+  container.style.zIndex = String(element === undefined ? 49 : parseDepth(element.evidence));
+  return container;
+}
+
+/** Build the win presentation layer for the results-card values. */
+export function renderWinLayer(results: WinResultsView): HTMLElement {
+  const layer = document.createElement('div');
+  layer.className = 'e3-win-layer-root';
+  layer.dataset.testid = 'win-layer';
+  for (const id of winSequenceElements()) {
+    if (id === 'hiscore_form') {
+      layer.appendChild(renderHiscoreForm(results));
+      continue;
+    }
+    if (id === 'bottom_marquee') {
+      layer.appendChild(renderFireworksContainer());
+      continue;
+    }
+    const node = renderElement(id);
+    if (node !== null) layer.appendChild(node);
+  }
+  return layer;
+}
+
+/**
+ * Fresh firework-spark SVG (task Y10): the processed `s168_havai_spark.svg`
+ * shape (DefineSprite_168 frame 1, 4-armed cross, stroke switched to
+ * `currentColor` by the pipeline correction) laid out so its centre is the
+ * element origin; `strokeWidth` compensates the container scale so the
+ * rendered stroke matches the reference's ~1 px dots (evidence
+ * evidence/Y10-celebration.md §fireworks).
+ */
+export function createSparkSvg(strokeWidth: number): SVGSVGElement {
+  const raw = assetRawSvg('src/assets/svg/s168_havai_spark.svg') ?? '';
+  const shape = /<g id="shape0">([\s\S]*?)<\/g>/.exec(raw);
+  if (shape === null) {
+    throw new Error('s168_havai_spark.svg: shape0 group missing');
+  }
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '-5.65 -5 11.3 10');
+  svg.setAttribute('width', '11.3px');
+  svg.setAttribute('height', '10px');
+  svg.innerHTML = shape[1]!;
+  for (const path of Array.from(svg.querySelectorAll('path'))) {
+    path.setAttribute('stroke-width', String(strokeWidth));
+  }
+  return svg;
 }
 
 export function mountBoard(root: HTMLElement, initial?: BoardView): BoardHandle {

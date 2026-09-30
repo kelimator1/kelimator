@@ -1,0 +1,48 @@
+
+Running 14 tests using 1 worker
+
+[1/14] [app] › tests/e2e/intro/intro.spec.ts:101:3 › Y8 boot sequence (O23) › boot plays preloader → intro → first board with catalog-derived spans
+[2/14] [app] › tests/e2e/intro/intro.spec.ts:180:3 › Y8 boot sequence (O23) › input stays locked during the intro
+[3/14] [app] › tests/e2e/intro/intro.spec.ts:207:3 › Y8 boot sequence (O23) › the intro replays on reload (boot/presentation state only)
+[4/14] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 0.0 s (frame 5) matches the reference capture
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 0.0 s (frame 5) matches the reference capture
+Y8 intro frame 5 dsf1: raw=0.344% (756/220000 px), tolerant=0.015% (33 px), pass=true
+
+[5/14] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 0.8611 s (frame 36) matches the reference capture
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 0.8611 s (frame 36) matches the reference capture
+Y8 intro frame 36 dsf1: raw=0.877% (1929/220000 px), tolerant=0.000% (1 px), pass=true
+
+[6/14] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 1.75 s (frame 68) matches the reference capture
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 1.75 s (frame 68) matches the reference capture
+Y8 intro frame 68 dsf1: raw=2.771% (6097/220000 px), tolerant=0.193% (425 px), pass=true
+
+[7/14] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 2.6111 s (frame 99) matches the reference capture
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 2.6111 s (frame 99) matches the reference capture
+Y8 intro frame 99 dsf1: raw=3.511% (7724/220000 px), tolerant=1.142% (2512 px), pass=true
+
+[8/14] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 3.4722 s (frame 130) matches the reference capture
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 1 › intro @ 3.4722 s (frame 130) matches the reference capture
+Y8 intro frame 130 dsf1: raw=1.886% (4150/220000 px), tolerant=0.021% (46 px), pass=true
+
+[9/14] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 0.0 s (frame 5) matches the reference capture
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 0.0 s (frame 5) matches the reference capture
+Y8 intro frame 5 dsf2: raw=0.232% (2045/880000 px), tolerant=0.004% (32 px), pass=true
+
+[10/14] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 0.8611 s (frame 36) matches the reference capture
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 0.8611 s (frame 36) matches the reference capture
+Y8 intro frame 36 dsf2: raw=0.629% (5531/880000 px), tolerant=0.093% (819 px), pass=true
+
+[11/14] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 1.75 s (frame 68) matches the reference capture
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 1.75 s (frame 68) matches the reference capture
+Y8 intro frame 68 dsf2: raw=2.247% (19773/880000 px), tolerant=0.422% (3710 px), pass=true
+
+[12/14] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 2.6111 s (frame 99) matches the reference capture
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 2.6111 s (frame 99) matches the reference capture
+Y8 intro frame 99 dsf2: raw=3.002% (26421/880000 px), tolerant=1.386% (12194 px), pass=true
+
+[13/14] [app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 3.4722 s (frame 130) matches the reference capture
+[app] › tests/e2e/intro/intro.spec.ts:235:7 › Y8 intro keyframes — deviceScaleFactor 2 › intro @ 3.4722 s (frame 130) matches the reference capture
+Y8 intro frame 130 dsf2: raw=1.399% (12308/880000 px), tolerant=0.156% (1375 px), pass=true
+
+[14/14] [app] › tests/e2e/intro/intro.spec.ts:309:3 › Y8 intro catalog cross-check › intro keyframes match data/animation.json
+  14 passed (22.1s)

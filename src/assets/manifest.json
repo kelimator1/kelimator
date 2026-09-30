@@ -290,18 +290,30 @@
    ]
   },
   "svg/s166_hiscore_form.svg": {
-   "sha256": "fe2da4c2b8f642aee176146cced0a80cc276cf87e3d3b89963dbdeb34ef2466e",
+   "sha256": "ee4bdfdfb89d9ad8da310260a584e3f09e05bd8e3155e670c49d3e1d69d31f46",
    "source": "artifacts/decompiled/sprites/DefineSprite_166/1.svg",
    "kind": "svg",
    "element": "hiscore_form",
-   "symbol": 166
+   "symbol": 166,
+   "correction": "owner-card-edits"
   },
   "svg/s170_bottom_marquee.svg": {
    "sha256": "ae41ccbd423340a6ef733c93448d6d42506536324543d9ca6b4ace7c0f31cfd6",
    "source": "artifacts/decompiled/sprites/DefineSprite_170/1.svg",
    "kind": "svg",
    "element": "bottom_marquee",
-   "symbol": 170
+   "symbol": 170,
+   "spark": [
+    {
+     "name": "svg/s168_havai_spark.svg",
+     "sha256": "0e850059646c07d9f7671e846c4c581b4dc3b7c0969774958cf941bab445e4e2",
+     "source": "artifacts/decompiled/sprites/DefineSprite_168/1.svg",
+     "sourceSha256": "d5e19cce12d21e6ba05b0df081711cf9803b20a7c7df1e7feef00d6d0dd66019",
+     "correction": "spark-current-color",
+     "symbol": 168,
+     "frame": 1
+    }
+   ]
   },
   "img/img_47_550x400.png": {
    "sha256": "366abdbfc11be54290e48f70d5c0104f0b5fcb47084fe76884c0183a0a84ee1a",

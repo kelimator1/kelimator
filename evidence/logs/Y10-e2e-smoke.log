@@ -1,0 +1,11 @@
+
+Running 7 tests using 1 worker
+
+[1/7] [app] › tests/e2e/smoke.spec.ts:103:3 › C2 stage shell smoke › page loads with the stage shell and read-only __game hooks
+[2/7] [app] › tests/e2e/smoke.spec.ts:180:5 › C2 stage shell smoke › viewport 320x480: scale, letterbox, non-blank screenshot
+[3/7] [app] › tests/e2e/smoke.spec.ts:180:5 › C2 stage shell smoke › viewport 550x400: scale, letterbox, non-blank screenshot
+[4/7] [app] › tests/e2e/smoke.spec.ts:180:5 › C2 stage shell smoke › viewport 1920x1080: scale, letterbox, non-blank screenshot
+[5/7] [app] › tests/e2e/smoke.spec.ts:180:5 › C2 stage shell smoke › viewport 3840x2160: scale, letterbox, non-blank screenshot
+[6/7] [app] › tests/e2e/smoke.spec.ts:180:5 › C2 stage shell smoke › viewport 3440x1440: scale, letterbox, non-blank screenshot
+[7/7] [app] › tests/e2e/smoke.spec.ts:238:3 › C2 stage shell smoke › fullscreen toggle keeps the scale formula for unchanged viewport dimensions (V2)
+  7 passed (9.0s)

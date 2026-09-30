@@ -1,0 +1,11 @@
+
+Running 7 tests using 2 workers
+
+[1/7] [app] › tests/e2e/speaker/corner-alpha.spec.ts:75:5 › Y4 speaker-knob alpha (deviceScaleFactor 1) › the transparent knob corners render as background, not opaque black
+[2/7] [app] › tests/e2e/speaker/speaker.spec.ts:141:3 › X3 speaker toggle › click toggles the audio state + persistence and repaints the icon immediately (no render)
+[3/7] [app] › tests/e2e/speaker/corner-alpha.spec.ts:75:5 › Y4 speaker-knob alpha (deviceScaleFactor 2) › the transparent knob corners render as background, not opaque black
+[4/7] [app] › tests/e2e/speaker/speaker.spec.ts:209:3 › X3 speaker toggle › immediate flip per click; boot restore from persistence
+[5/7] [app] › tests/e2e/speaker/speaker.spec.ts:251:3 › X3 speaker toggle › clamps a corrupt stored volume into 0–100 at boot
+[6/7] [app] › tests/e2e/speaker/speaker.spec.ts:289:5 › Y5 immediate feedback (deviceScaleFactor 1) › the icon flips off and back on inside the click, with no board re-render
+[7/7] [app] › tests/e2e/speaker/speaker.spec.ts:289:5 › Y5 immediate feedback (deviceScaleFactor 2) › the icon flips off and back on inside the click, with no board re-render
+  7 passed (40.9s)

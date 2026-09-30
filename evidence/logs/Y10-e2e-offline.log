@@ -1,0 +1,59 @@
+
+Running 1 test using 1 worker
+
+[1/1] [app] › tests/e2e/offline/offline.spec.ts:124:3 › T14 runtime offline (served dist/) › boots, interacts, and attempts zero non-local requests
+[app] › tests/e2e/offline/offline.spec.ts:124:3 › T14 runtime offline (served dist/) › boots, interacts, and attempts zero non-local requests
+[T14] dist: 18 files, index.html sha256=fe369ccadf6f7275350675164cff4e9d884d7a7a83238ee3a8c689318afefb56
+
+[T14] requests: 10 observed, 0 non-local attempts
+
+[T14] boot: state=playing roundId=abacilik tiles=8
+
+[T14] interaction: tile 0 "C" → entry "C" → backspace → ""
+
+[T14] PASS — zero non-local requests; app functional offline
+
+[T14] report: {
+  "schemaVersion": 1,
+  "task": "F3/T14 runtime offline",
+  "generatedAt": "2026-09-30T03:17:51.541Z",
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "durationMs": 2668,
+    "distFiles": 18,
+    "indexHtmlSha256": "fe369ccadf6f7275350675164cff4e9d884d7a7a83238ee3a8c689318afefb56"
+  },
+  "preview": {
+    "command": "node_modules/.bin/vite preview --host 127.0.0.1 --port 5288 --strictPort",
+    "url": "http://127.0.0.1:5288/",
+    "readyMs": 271
+  },
+  "requests": {
+    "observed": 10,
+    "local": 10,
+    "nonLocalAttempts": [],
+    "byResourceType": {
+      "document": 1,
+      "script": 1,
+      "image": 7,
+      "media": 1
+    }
+  },
+  "boot": {
+    "state": "playing",
+    "roundId": "abacilik",
+    "boardVisible": true,
+    "tileLetters": 8
+  },
+  "interaction": {
+    "tile": 0,
+    "letter": "C",
+    "entryAfterClick": "C",
+    "entryAfterDelete": ""
+  },
+  "pageErrors": [],
+  "result": "PASS"
+}
+
+  1 passed (8.8s)

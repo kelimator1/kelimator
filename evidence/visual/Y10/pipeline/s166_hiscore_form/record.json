@@ -1,0 +1,43 @@
+{
+ "schemaVersion": 1,
+ "task": "Y10",
+ "note": "fresh pipeline record of the owner-edited results card (the frozen evidence/visual/E1-svgo/s166_* v1 record is superseded; this task does not edit the frozen E1 tree)",
+ "asset": {
+  "name": "s166_hiscore_form.svg",
+  "element": "hiscore_form",
+  "source": "artifacts/decompiled/sprites/DefineSprite_166/1.svg",
+  "symbol": {
+   "kind": "sprite",
+   "id": 166,
+   "frame": 1
+  },
+  "sourceBytes": 27668,
+  "outputBytes": 22911,
+  "width": 311.9,
+  "height": 169,
+  "naturalWidth": 312,
+  "naturalHeight": 169,
+  "inkPixels": 49397,
+  "mismatchedPixels": 0,
+  "maxDistance": 0,
+  "meanDistance": 0,
+  "pass": true
+ },
+ "svgo": {
+  "version": "4.1.0",
+  "preset": "preset-default",
+  "disabledOverrides": [
+   "cleanupIds",
+   "cleanupNumericValues",
+   "convertShapeToPath",
+   "convertEllipseToCircle",
+   "moveElemsAttrsToGroup",
+   "moveGroupAttrsToElems",
+   "collapseGroups",
+   "convertPathData",
+   "convertTransform",
+   "mergePaths",
+   "removeUselessStrokeAndFill"
+  ]
+ }
+}

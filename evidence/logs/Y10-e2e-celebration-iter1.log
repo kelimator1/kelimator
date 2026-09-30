@@ -1,0 +1,97 @@
+
+Running 15 tests using 1 worker
+
+[1/15] [app] › tests/e2e/celebration/celebration.spec.ts:183:3 › Y10 win celebration › completion plays the bravo sequence into the results card
+[2/15] [app] › tests/e2e/celebration/celebration.spec.ts:272:3 › Y10 win celebration › the results form is local-only: zero requests, nothing stored
+[3/15] [app] › tests/e2e/celebration/celebration.spec.ts:305:3 › Y10 win celebration › fireworks: 300 sparks in the evidenced ranges, cycling every 65 frames
+[app] › tests/e2e/celebration/celebration.spec.ts:305:3 › Y10 win celebration › fireworks: 300 sparks in the evidenced ranges, cycling every 65 frames
+Y10 fireworks ink series (max 868): 0,672,835,449,490,224,174,0,17,140,747,734,415,520,134,459,257,0,467,868,495
+
+[4/15] [app] › tests/e2e/celebration/celebration.spec.ts:411:3 › Y10 win celebration › card asset: owner edits applied, no E-posta markers, manifest records it
+[5/15] [app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 0.0 s (frame 132) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 0.0 s (frame 132) matches the reference capture
+Y10 win frame 132 dsf1: raw=2.278% tolerant=0.678% ignoredPixels=0 pass=true
+
+[6/15] [app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 0.75 s (frame 159) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 0.75 s (frame 159) matches the reference capture
+Y10 win frame 159 dsf1: raw=4.938% tolerant=2.328% ignoredPixels=0 pass=false
+
+  1) [app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 0.75 s (frame 159) matches the reference capture 
+
+    Error: win frame 159 dsf1 tolerant mismatch 2.328% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.02328181818181818
+
+      542 |           `win frame ${keyframe.frame} dsf${dsf} tolerant mismatch ` +
+      543 |             `${tolerantPercent.toFixed(3)}% (limit 2.000%)`,
+    > 544 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      545 |         expect(report.pass).toBe(true);
+      546 |       });
+      547 |     }
+        at /home/dev/kelimator-2012/tests/e2e/celebration/celebration.spec.ts:544:11
+
+    Error Context: test-results/tests-e2e-celebration-cele-d4f37-tches-the-reference-capture-app/error-context.md
+
+
+[7/15] [app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 1.5 s (frame 186) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 1.5 s (frame 186) matches the reference capture
+Y10 win frame 186 dsf1: raw=3.931% tolerant=0.962% ignoredPixels=0 pass=true
+
+[8/15] [app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 2.2778 s (frame 214) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 2.2778 s (frame 214) matches the reference capture
+Y10 win frame 214 dsf1: raw=1.525% tolerant=0.868% ignoredPixels=0 pass=true
+
+[9/15] [app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 3.0278 s (frame 241) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 3.0278 s (frame 241) matches the reference capture
+Y10 win frame 241 dsf1: raw=4.071% tolerant=0.770% ignoredPixels=14174 pass=true
+
+[10/15] [app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 0.0 s (frame 132) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 0.0 s (frame 132) matches the reference capture
+Y10 win frame 132 dsf2: raw=3.245% tolerant=1.923% ignoredPixels=0 pass=true
+
+[11/15] [app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 0.75 s (frame 159) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 0.75 s (frame 159) matches the reference capture
+Y10 win frame 159 dsf2: raw=4.410% tolerant=2.680% ignoredPixels=0 pass=false
+
+  2) [app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 0.75 s (frame 159) matches the reference capture 
+
+    Error: win frame 159 dsf2 tolerant mismatch 2.680% (limit 2.000%)
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 0.02
+    Received:    0.02679772727272727
+
+      542 |           `win frame ${keyframe.frame} dsf${dsf} tolerant mismatch ` +
+      543 |             `${tolerantPercent.toFixed(3)}% (limit 2.000%)`,
+    > 544 |         ).toBeLessThanOrEqual(report.passRatio);
+          |           ^
+      545 |         expect(report.pass).toBe(true);
+      546 |       });
+      547 |     }
+        at /home/dev/kelimator-2012/tests/e2e/celebration/celebration.spec.ts:544:11
+
+    Error Context: test-results/tests-e2e-celebration-cele-0cc4c-tches-the-reference-capture-app/error-context.md
+
+
+[12/15] [app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 1.5 s (frame 186) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 1.5 s (frame 186) matches the reference capture
+Y10 win frame 186 dsf2: raw=3.398% tolerant=1.335% ignoredPixels=0 pass=true
+
+[13/15] [app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 2.2778 s (frame 214) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 2.2778 s (frame 214) matches the reference capture
+Y10 win frame 214 dsf2: raw=1.464% tolerant=0.987% ignoredPixels=0 pass=true
+
+[14/15] [app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 3.0278 s (frame 241) matches the reference capture
+[app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 3.0278 s (frame 241) matches the reference capture
+Y10 win frame 241 dsf2: raw=2.379% tolerant=0.874% ignoredPixels=56696 pass=true
+
+[15/15] [app] › tests/e2e/celebration/celebration.spec.ts:553:3 › Y10 win catalog cross-check › win keyframes match data/animation.json
+  2 failed
+    [app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 1 › win @ 0.75 s (frame 159) matches the reference capture 
+    [app] › tests/e2e/celebration/celebration.spec.ts:473:7 › Y10 win keyframes — deviceScaleFactor 2 › win @ 0.75 s (frame 159) matches the reference capture 
+  13 passed (7.1m)

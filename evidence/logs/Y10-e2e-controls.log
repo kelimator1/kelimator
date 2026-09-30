@@ -1,0 +1,8 @@
+
+Running 4 tests using 1 worker
+
+[1/4] [app] › tests/e2e/controls/controls.spec.ts:297:3 › Y3 Karıştır/Sil hit-area clicks (scaled stage) › clicking the CENTER of the Karıştır label (btn_kbuton) scrambles: event + deck order
+[2/4] [app] › tests/e2e/controls/controls.spec.ts:331:3 › Y3 Karıştır/Sil hit-area clicks (scaled stage) › clicking the CENTER of the Sil label (btn_sbuton) deletes the last entry letter
+[3/4] [app] › tests/e2e/controls/controls.spec.ts:361:3 › Y3 Karıştır/Sil hit-area clicks (scaled stage) › clicking the CENTER of the Ekle label (btn_ebuton) submits a valid word
+[4/4] [app] › tests/e2e/controls/controls.spec.ts:390:3 › Y3 Karıştır/Sil hit-area clicks (scaled stage) › keyboard SPACE/ENTER/BACKSPACE are unaffected (spot check)
+  4 passed (7.9s)
