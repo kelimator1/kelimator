@@ -7,14 +7,39 @@
 //   word of `dizi`;
 // - frame 3 `Girildi` (text id 122) while the entry is in `bulunanlar` (the
 //   found pass runs last, so it wins for an already-found word);
-// - frame 1 (blank) otherwise; `ekle()` resets the status after a valid word.
+// - frame 1 (blank/dark ball) otherwise; `ekle()` resets the status after a
+//   valid word.
 // The round-loading banner text `Kelimeler Yükleniyor\rLütfen Bekleyiniz...`
 // (text ids 78/82/83) is shown while the round list loads.
 //
-// Strings are used verbatim; the component never invents text (O05). Sprite-
-// internal typography/layout is not part of the A3 catalog (O08): the message
-// is centered in the `status_ball` catalog box, whose placement comes from
-// src/data/layout.json (E1/A3) — see evidence/D5-lifecycle.md.
+// Strings are used verbatim; the component never invents text (O05).
+//
+// Task Y9 (owner-reported defect, evidence/Y9-status-lamp.md): the three
+// sprite frames are reproduced exactly as the reference draws them —
+//   frame 1 (idle): the dark ball, no text (rendered by the board from the
+//     catalog asset `s123_status_ball.svg`, unchanged);
+//   frame 2 (valid): green ball (`s123_status_ball_f2.svg`, the frame with its
+//     baked static text stripped deterministically by tools/process-assets.mjs)
+//     + the live `Geçerli` text in the frame's colour #336600;
+//   frame 3 (already-found): red ball (`s123_status_ball_f3.svg`) + live
+//     `Girildi` in the frame's colour #ff0000.
+// The live-text mechanism is kept: measured against the rendered reference
+// frames through the F1 tool on the project's anti-aliasing-tolerant V5 basis
+// (docs/07 §4 amendment) it stays pixel-faithful (worst capsule tolerant
+// mismatch 0.144 % — found/dsf1; valid/dsf1 is 0.000 %; limit 2.000 %; the ball
+// regions are raw-exact, 0 mismatched pixels). Residual differences are glyph
+// rasterisation/hinting only. The text slot and colour are read from the
+// frames: text records 119/122 carry height 14 px / yOffset 14 px, the sprite
+// places the text run at (40, 7), and the fills are #336600 / #ff0000
+// (DefineText records + exported SVG). The message element keeps the verbatim
+// string as its text content (O05), so the e2e status assertions read the real
+// user-visible text.
+//
+// While a coloured state is active the board's frame-1 ball is hidden: the
+// component marks the shared stage root with `data-status-lamp` and the board
+// stylesheet (src/ui/board.ts, status-ball rule) reacts. The reference frame 2/3
+// ball fully replaces frame 1, so overlaying it would double-blend the ball's
+// antialiased edge.
 
 import layoutJson from '../data/layout.json';
 import type { EntryStatus } from '../game/lifecycle';
@@ -24,6 +49,10 @@ export const STATUS_VALID_TEXT = 'Geçerli';
 export const STATUS_ALREADY_FOUND_TEXT = 'Girildi';
 /** Loading banner (text ids 78/82/83; CR 0x0D between the two lines). */
 export const LOADING_TEXT = 'Kelimeler Yükleniyor\rLütfen Bekleyiniz...';
+
+/** Frame fills, sampled from the exported reference frames (Y9 §2). */
+export const STATUS_VALID_COLOR = '#336600';
+export const STATUS_ALREADY_FOUND_COLOR = '#ff0000';
 
 interface LayoutElementLike {
   readonly id: string;
@@ -41,6 +70,21 @@ const STATUS_BOX: LayoutElementLike = (() => {
   }
   return element;
 })();
+
+/**
+ * Ball assets for the coloured states (task Y9): the processed frames 2/3 of
+ * DefineSprite 123 with the baked static text stripped (see
+ * tools/process-assets.mjs `STATUS_BALL_FRAMES`). Frame 1 (idle) stays the
+ * catalog asset rendered by the board.
+ */
+const BALL_URLS = import.meta.glob('../assets/svg/s123_status_ball_f*.svg', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+}) as Record<string, string>;
+
+const VALID_BALL_KEY = '../assets/svg/s123_status_ball_f2.svg';
+const FOUND_BALL_KEY = '../assets/svg/s123_status_ball_f3.svg';
 
 /** Map an entry status to its evidenced string (null = blank state). */
 export function statusText(status: EntryStatus): string | null {
@@ -64,6 +108,12 @@ export interface MessageHandle {
 const STYLE_ID = 'game-message-styles';
 
 function installStyleSheet(doc: Document): void {
+  // Status text metrics from the reference frames (Y9 §2/§3): the sprite's
+  // text instance sits at (40, 7) with the glyph baseline at y=21 (text record
+  // yOffset 14); `line-height: 0` + `top: 15px` reproduce the baseline at the
+  // measured best fit of the frame's Verdana Bold outline run (size sweep in
+  // evidence/Y9-status-lamp.md §3; size 14.2 px / top 15 px minimises the
+  // tolerant mismatch across both strings and both deviceScaleFactors).
   const css = `
 .game-message {
   position: absolute;
@@ -85,6 +135,26 @@ function installStyleSheet(doc: Document): void {
   z-index: 24000;
 }
 .game-message[data-visible="true"] { display: flex; }
+.game-message .game-message-ball {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: ${STATUS_BOX.w}px;
+  height: ${(STATUS_BOX.w * 34.8) / 107}px;
+}
+.game-message[data-lamp] .game-message-ball { display: block; }
+.game-message[data-lamp] .game-message-text {
+  position: absolute;
+  left: 40px;
+  top: 15px;
+  line-height: 0;
+  white-space: pre;
+  font-size: 14.2px;
+  font-weight: 700;
+}
+.game-message[data-lamp="valid"] .game-message-text { color: ${STATUS_VALID_COLOR}; }
+.game-message[data-lamp="already-found"] .game-message-text { color: ${STATUS_ALREADY_FOUND_COLOR}; }
 `;
   let style = doc.getElementById(STYLE_ID) as HTMLStyleElement | null;
   if (style === null) {
@@ -103,28 +173,61 @@ export function mountMessage(root: HTMLElement): MessageHandle {
   element.className = 'game-message';
   element.dataset.testid = 'message';
   element.setAttribute('role', 'status');
+
+  const ball = document.createElement('img');
+  ball.className = 'game-message-ball';
+  ball.alt = '';
+  ball.draggable = false;
+  element.appendChild(ball);
+
+  const text = document.createElement('span');
+  text.className = 'game-message-text';
+  element.appendChild(text);
+
   root.appendChild(element);
 
-  const show = (text: string | null): void => {
-    if (text === null) {
-      element.textContent = '';
+  const clearLamp = (): void => {
+    delete element.dataset.lamp;
+    delete root.dataset.statusLamp;
+  };
+
+  const show = (content: string | null): void => {
+    clearLamp();
+    if (content === null) {
+      text.textContent = '';
       element.dataset.visible = 'false';
       return;
     }
-    element.textContent = text;
+    text.textContent = content;
     element.dataset.visible = 'true';
+  };
+
+  const showStatus = (status: EntryStatus): void => {
+    const content = status === null ? null : statusText(status);
+    if (content === null || status === null) {
+      show(null);
+      return;
+    }
+    const url = BALL_URLS[status === 'valid' ? VALID_BALL_KEY : FOUND_BALL_KEY];
+    if (url === undefined) {
+      throw new Error('status ball frame asset is missing from src/assets/svg/');
+    }
+    ball.src = url;
+    text.textContent = content;
+    element.dataset.lamp = status;
+    element.dataset.visible = 'true';
+    root.dataset.statusLamp = status;
   };
 
   return {
     element,
     show,
-    showStatus(status: EntryStatus): void {
-      show(statusText(status));
-    },
+    showStatus,
     showLoading(): void {
       show(LOADING_TEXT);
     },
     destroy(): void {
+      clearLamp();
       element.remove();
     },
   };

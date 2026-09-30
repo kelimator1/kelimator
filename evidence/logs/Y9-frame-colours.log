@@ -1,0 +1,9 @@
+[Y9] reference frame colour samples (frames rendered at dsf4, exact RGB):
+  frame 1: ball centre 133,133,133 | ball highlight 68,68,68
+  frame 1: exact pixels per declared fill #ffffff x700111 | #000000 x82
+  frame 2: ball centre 67,218,67 | ball highlight 34,190,34 | first-glyph stem 51,102,0
+  frame 2: exact pixels per declared fill #336600 x65210 | #7fff7f x893 | #008000 x0 | #00cc00 x0
+  frame 3: ball centre 227,67,67 | ball highlight 200,34,34 | first-glyph stem 255,0,0
+  frame 3: exact pixels per declared fill #ff0000 x58832 | #ff7f7f x1096 | #800000 x0 | #ea0000 x0
+[Y9] dsf1: crops + evidence/visual/Y9/comparison-sheet-dsf1.png written
+[Y9] dsf2: crops + evidence/visual/Y9/comparison-sheet-dsf2.png written

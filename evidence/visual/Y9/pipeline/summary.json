@@ -1,0 +1,99 @@
+{
+ "schemaVersion": 1,
+ "task": "Y9",
+ "svgo": {
+  "version": "4.1.0",
+  "preset": "preset-default",
+  "disabledOverrides": [
+   "cleanupIds",
+   "cleanupNumericValues",
+   "convertShapeToPath",
+   "convertEllipseToCircle",
+   "moveElemsAttrsToGroup",
+   "moveGroupAttrsToElems",
+   "collapseGroups",
+   "convertPathData",
+   "convertTransform",
+   "mergePaths",
+   "removeUselessStrokeAndFill"
+  ]
+ },
+ "frames": [
+  {
+   "name": "s123_status_ball_f2.svg",
+   "element": "status_ball",
+   "source": "artifacts/decompiled/sprites/DefineSprite_123/2.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 123,
+    "frame": 2
+   },
+   "extraFrame": 2,
+   "strip": {
+    "sourceSha256": "c9c348c0deb10e6cb55b59a430121ec9448cb374e598783aaa0077cfd98dc922",
+    "strippedPixels": 374,
+    "stripBBox": {
+     "x": 40,
+     "y": 10,
+     "width": 54,
+     "height": 14
+    },
+    "rawInkPixels": 1434,
+    "ballInkPixels": 1036
+   },
+   "sourceBytes": 6002,
+   "outputBytes": 5546,
+   "width": 107,
+   "height": 34.8,
+   "naturalWidth": 107,
+   "naturalHeight": 35,
+   "inkPixels": 1036,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  },
+  {
+   "name": "s123_status_ball_f3.svg",
+   "element": "status_ball",
+   "source": "artifacts/decompiled/sprites/DefineSprite_123/3.svg",
+   "symbol": {
+    "kind": "sprite",
+    "id": 123,
+    "frame": 3
+   },
+   "extraFrame": 3,
+   "strip": {
+    "sourceSha256": "a80a27e1f4b1ac625e39403f46ae351be408daa9fc1438ff84ed9afd2e45f48d",
+    "strippedPixels": 353,
+    "stripBBox": {
+     "x": 40,
+     "y": 10,
+     "width": 47,
+     "height": 12
+    },
+    "rawInkPixels": 1414,
+    "ballInkPixels": 1036
+   },
+   "sourceBytes": 5995,
+   "outputBytes": 5554,
+   "width": 107,
+   "height": 34.8,
+   "naturalWidth": 107,
+   "naturalHeight": 35,
+   "inkPixels": 1036,
+   "mismatchedPixels": 0,
+   "maxDistance": 0,
+   "meanDistance": 0,
+   "pass": true
+  }
+ ],
+ "totals": {
+  "frames": 2,
+  "mismatchedPixels": 0,
+  "strippedPixels": 727,
+  "sourceBytes": 11997,
+  "outputBytes": 11100,
+  "inkPixels": 2072
+ }
+}

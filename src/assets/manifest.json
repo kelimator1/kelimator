@@ -269,7 +269,25 @@
    "source": "artifacts/decompiled/sprites/DefineSprite_123/1.svg",
    "kind": "svg",
    "element": "status_ball",
-   "symbol": 123
+   "symbol": 123,
+   "frames": [
+    {
+     "frame": 2,
+     "name": "svg/s123_status_ball_f2.svg",
+     "sha256": "3665021f4b1058fec4baba815cc0f238df2a299d50b679bb1d49a71392a2dc25",
+     "source": "artifacts/decompiled/sprites/DefineSprite_123/2.svg",
+     "sourceSha256": "c9c348c0deb10e6cb55b59a430121ec9448cb374e598783aaa0077cfd98dc922",
+     "correction": "strip-status-text"
+    },
+    {
+     "frame": 3,
+     "name": "svg/s123_status_ball_f3.svg",
+     "sha256": "a59f1fea46d864291c075e0bc5a2634549334cb24ef0e2195f674a27a28aeb62",
+     "source": "artifacts/decompiled/sprites/DefineSprite_123/3.svg",
+     "sourceSha256": "a80a27e1f4b1ac625e39403f46ae351be408daa9fc1438ff84ed9afd2e45f48d",
+     "correction": "strip-status-text"
+    }
+   ]
   },
   "svg/s166_hiscore_form.svg": {
    "sha256": "fe2da4c2b8f642aee176146cced0a80cc276cf87e3d3b89963dbdeb34ef2466e",

@@ -1,0 +1,43 @@
+
+> kelimator-2012@0.0.0 e2e
+> playwright test visual
+
+
+Running 18 tests using 1 worker
+
+E2 S1 dsf1: raw=0.018477272727272728 (1.848%), tolerant=0.0006227272727272727 (0.062%), mismatchedPixels=4065/220000, tolerantMismatchedPixels=137, ignoredPixels=0, pass=true
+  ✓   1 [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S1 S1-boot matches the C3 reference (2.1s)
+E2 S2 dsf1: raw=0.025154545454545454 (2.515%), tolerant=0.0060227272727272725 (0.602%), mismatchedPixels=5534/220000, tolerantMismatchedPixels=1325, ignoredPixels=68023, pass=true
+  ✓   2 [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S2 S2-idle-board matches the C3 reference (2.3s)
+E2 S3 dsf1: raw=0.02516818181818182 (2.517%), tolerant=0.0060272727272727275 (0.603%), mismatchedPixels=5537/220000, tolerantMismatchedPixels=1326, ignoredPixels=68023, pass=true
+  ✓   3 [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S3 S3-scrambled matches the C3 reference (4.5s)
+E2 S4 dsf1: raw=0.0372 (3.720%), tolerant=0.00890909090909091 (0.891%), mismatchedPixels=8184/220000, tolerantMismatchedPixels=1960, ignoredPixels=68023, pass=true
+  ✓   4 [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S4 S4-partial-entry matches the C3 reference (3.7s)
+E2 S5 dsf1: raw=0.025936363636363636 (2.594%), tolerant=0.00605 (0.605%), mismatchedPixels=5706/220000, tolerantMismatchedPixels=1331, ignoredPixels=68023, pass=true
+  ✓   5 [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S5 S5-valid-word matches the C3 reference (1.7s)
+E2 S6 dsf1: raw=0.03726818181818182 (3.727%), tolerant=0.008304545454545455 (0.830%), mismatchedPixels=8199/220000, tolerantMismatchedPixels=1827, ignoredPixels=68023, pass=true
+  ✓   6 [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S6 S6-invalid-word matches the C3 reference (1.9s)
+E2 S7 dsf1: raw=0.0273 (2.730%), tolerant=0.006072727272727273 (0.607%), mismatchedPixels=6006/220000, tolerantMismatchedPixels=1336, ignoredPixels=68023, pass=true
+  ✓   7 [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S7 S7-bonus-word matches the C3 reference (1.7s)
+E2 S10 dsf1: raw=0.028463636363636365 (2.846%), tolerant=0.005613636363636364 (0.561%), mismatchedPixels=6262/220000, tolerantMismatchedPixels=1235, ignoredPixels=68023, pass=true
+  ✓   8 [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 1 › S10 S10-next-round matches the C3 reference (1.6s)
+E2 S1 dsf2: raw=0.014513636363636364 (1.451%), tolerant=0.0001534090909090909 (0.015%), mismatchedPixels=12772/880000, tolerantMismatchedPixels=135, ignoredPixels=0, pass=true
+  ✓   9 [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S1 S1-boot matches the C3 reference (1.6s)
+E2 S2 dsf2: raw=0.025139772727272726 (2.514%), tolerant=0.001703409090909091 (0.170%), mismatchedPixels=22123/880000, tolerantMismatchedPixels=1499, ignoredPixels=272092, pass=true
+  ✓  10 [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S2 S2-idle-board matches the C3 reference (2.3s)
+E2 S3 dsf2: raw=0.025192045454545453 (2.519%), tolerant=0.001696590909090909 (0.170%), mismatchedPixels=22169/880000, tolerantMismatchedPixels=1493, ignoredPixels=272092, pass=true
+  ✓  11 [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S3 S3-scrambled matches the C3 reference (2.4s)
+E2 S4 dsf2: raw=0.03451704545454545 (3.452%), tolerant=0.006345454545454546 (0.635%), mismatchedPixels=30375/880000, tolerantMismatchedPixels=5584, ignoredPixels=272092, pass=true
+  ✓  12 [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S4 S4-partial-entry matches the C3 reference (2.2s)
+E2 S5 dsf2: raw=0.026013636363636364 (2.601%), tolerant=0.001815909090909091 (0.182%), mismatchedPixels=22892/880000, tolerantMismatchedPixels=1598, ignoredPixels=272092, pass=true
+  ✓  13 [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S5 S5-valid-word matches the C3 reference (1.9s)
+E2 S6 dsf2: raw=0.035326136363636365 (3.533%), tolerant=0.006619318181818182 (0.662%), mismatchedPixels=31087/880000, tolerantMismatchedPixels=5825, ignoredPixels=272092, pass=true
+  ✓  14 [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S6 S6-invalid-word matches the C3 reference (1.9s)
+E2 S7 dsf2: raw=0.027104545454545454 (2.710%), tolerant=0.0018715909090909091 (0.187%), mismatchedPixels=23852/880000, tolerantMismatchedPixels=1647, ignoredPixels=272092, pass=true
+  ✓  15 [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S7 S7-bonus-word matches the C3 reference (2.6s)
+E2 S10 dsf2: raw=0.028567045454545456 (2.857%), tolerant=0.002702272727272727 (0.270%), mismatchedPixels=25139/880000, tolerantMismatchedPixels=2378, ignoredPixels=272092, pass=true
+  ✓  16 [app] › tests/e2e/visual.spec.ts:199:7 › E2 visual states — deviceScaleFactor 2 › S10 S10-next-round matches the C3 reference (1.8s)
+  ✓  17 [app] › tests/e2e/visual.spec.ts:299:3 › E2 V7 layout cross-consistency › rendered boxes and text styles equal src/data/layout.json (1.2s)
+  ✓  18 [app] › tests/e2e/visual.spec.ts:372:3 › Y2 credit omission › credit_line and credit_site are absent from the rendered board (1.1s)
+
+  18 passed (40.5s)

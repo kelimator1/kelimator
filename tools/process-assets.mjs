@@ -14,6 +14,16 @@
  *            source text before SVGO; "before" in the preservation pair is the
  *            corrected text SVGO receives (the correction itself is verified
  *            separately — currently only `s58_letter_tile.svg`, task X2).
+ *            Task Y9 additionally processes the two extra frames of the
+ *            `status_ball` sprite (`DefineSprite_123` frames 2/3) into
+ *            `s123_status_ball_f2.svg` / `s123_status_ball_f3.svg`: the frames'
+ *            baked static-text subtree (text ids 119/122) is stripped
+ *            deterministically before SVGO so the runtime keeps drawing the
+ *            live status text (`src/ui/message.ts`); the source frames are
+ *            sha256-pinned and the outputs are recorded under the
+ *            `svg/s123_status_ball.svg` manifest entry (`frames`). Their
+ *            pipeline evidence is written under `evidence/visual/Y9/pipeline/`
+ *            (keeps the frozen E1/SVGO record of the 36 layout assets intact).
  *            HD remaster payload swaps (owner wave Y1) replace the embedded
  *            bitmap of `s48_board_backdrop.svg`/`s90_btn_speaker.svg` with the
  *            hash-pinned WebP artifacts; when an artifact is absent the
@@ -166,6 +176,89 @@ export const SVGO_OPTIONS = {
 const SVG_SOURCE_CORRECTIONS = new Map([
   ['s58_letter_tile.svg', stripLetterTilePlaceholderGlyph],
 ]);
+
+/**
+ * Task Y9 — extra sprite frames for the right-panel status capsule.
+ *
+ * `DefineSprite_123` (A3 element `status_ball`) has three frames: frame 1 =
+ * dark/blank ball, frame 2 = green ball + static `Geçerli` (text id 119),
+ * frame 3 = red ball + static `Girildi` (text id 122). The A3 layout catalog
+ * references frame 1 only; the runtime status states (src/ui/message.ts) swap
+ * the ball asset per state and keep the evidenced live text, so frames 2/3
+ * are processed as ball-only assets:
+ *   - deterministic: the baked static-text subtree (the `use` of the frame's
+ *     text id, the `<g id="text0">` text instance and its `font_Verdana_*0`
+ *     glyph outlines) is removed textually before SVGO; every count is
+ *     asserted so structural drift fails loudly;
+ *   - hash-pinned: the raw FFDec frame source must match `sourceSha256`
+ *     before it is processed;
+ *   - verified: the same 0-mismatched-pixel SVGO render check as the layout
+ *     assets runs on every frame; additionally the corrected frame must
+ *     differ from the raw frame only inside the text area (asserted below).
+ * Naming follows docs/03 §1 `s<symbolId>_<slug>.svg` with the documented
+ * extra-frame suffix `_f<frame>` (docs/08 amendment proposed by Y9).
+ * evidence: evidence/Y9-status-lamp.md.
+ */
+const STATUS_BALL_FRAMES = [
+  {
+    name: 's123_status_ball_f2.svg',
+    element: 'status_ball',
+    frame: 2,
+    symbol: { kind: 'sprite', id: 123, frame: 2 },
+    source: 'artifacts/decompiled/sprites/DefineSprite_123/2.svg',
+    sourceSha256: 'c9c348c0deb10e6cb55b59a430121ec9448cb374e598783aaa0077cfd98dc922',
+    textId: '119',
+  },
+  {
+    name: 's123_status_ball_f3.svg',
+    element: 'status_ball',
+    frame: 3,
+    symbol: { kind: 'sprite', id: 123, frame: 3 },
+    source: 'artifacts/decompiled/sprites/DefineSprite_123/3.svg',
+    sourceSha256: 'a80a27e1f4b1ac625e39403f46ae351be408daa9fc1438ff84ed9afd2e45f48d',
+    textId: '122',
+  },
+];
+
+/**
+ * Task Y9 source correction: strip the frame's baked static text.
+ *
+ * Removes exactly (asserted — any structural drift fails loudly):
+ *   1. the frame's single text instance `<use ffdec:characterId="119|122">`;
+ *   2. the `<g id="text0">…</g>` static-text definition;
+ *   3. every `<g id="font_Verdana_…">…</g>` glyph outline group of the frame.
+ * The ball shapes (`shape0`/`sprite0`/`shape1`/`shape2` + gradients) stay
+ * untouched, so the corrected frame differs from the raw frame only inside the
+ * text area (Y9 measures this: evidence/Y9-status-lamp.md §4).
+ */
+function stripStatusFrameText(source, textId) {
+  let out = source;
+  const useRe = new RegExp(`<use\\b[^>]*ffdec:characterId="${textId}"[^>]*/>`, 'g');
+  const uses = out.match(useRe) ?? [];
+  if (uses.length !== 1) {
+    throw new Error(`stripStatusFrameText: expected 1 use of text ${textId}, found ${uses.length}`);
+  }
+  out = out.replace(useRe, '');
+  out = removeSvgGroupById(out, 'text0');
+  const glyphIds = [...out.matchAll(/<g id="(font_Verdana_[^"]+)">/g)].map((m) => m[1]);
+  if (glyphIds.length === 0) {
+    throw new Error(`stripStatusFrameText: no font_Verdana glyph groups found`);
+  }
+  for (const id of glyphIds) {
+    out = removeSvgGroupById(out, id);
+  }
+  for (const marker of ['#text0', 'text0"', 'font_Verdana', `characterId="${textId}"`]) {
+    if (out.includes(marker)) {
+      throw new Error(`stripStatusFrameText: marker remains: ${marker}`);
+    }
+  }
+  for (const anchor of ['id="shape0"', 'id="sprite0"', 'id="shape2"']) {
+    if (!out.includes(anchor)) {
+      throw new Error(`stripStatusFrameText: ball anchor missing: ${anchor}`);
+    }
+  }
+  return out;
+}
 
 /**
  * Task Y1 (owner final presentation wave) — HD remaster payloads.
@@ -435,9 +528,25 @@ function pngInk(p) {
 }
 
 async function cmdSvg() {
-  const entries = svgEntries();
+  const entries = [
+    ...svgEntries(),
+    ...STATUS_BALL_FRAMES.map((frame) => ({
+      element: frame.element,
+      source: frame.source,
+      name: frame.name,
+      symbol: frame.symbol,
+      extraFrame: frame.frame,
+      sourceSha256: frame.sourceSha256,
+      // Y9: ball-only frame (baked static text stripped deterministically).
+      correction: (svg) => stripStatusFrameText(svg, frame.textId),
+    })),
+  ];
   const outDir = abs('src/assets/svg');
   const evRoot = abs('evidence/visual/E1-svgo');
+  // Task Y9: the extra status-ball frames' pipeline evidence is written under
+  // the Y9-owned evidence tree so the frozen E1/SVGO record of the 36 layout
+  // assets is not rewritten by this task.
+  const frameEvRoot = abs('evidence/visual/Y9/pipeline');
   const work = path.join(tmpdir(), 'kelimator-e1-svgo');
   mkdirSync(outDir, { recursive: true });
   mkdirSync(evRoot, { recursive: true });
@@ -446,12 +555,20 @@ async function cmdSvg() {
 
   const browser = await chromium.launch({ args: ['--mute-audio'] });
   const results = [];
+  const frameResults = [];
   try {
     const context = await browser.newContext({ deviceScaleFactor: 1 });
     const page = await context.newPage();
     for (const entry of entries) {
+      const record = entry.extraFrame === undefined ? results : frameResults;
       const source = readFileSync(abs(entry.source), 'utf8');
-      const correction = SVG_SOURCE_CORRECTIONS.get(entry.name);
+      if (entry.sourceSha256 !== undefined && sha256File(entry.source) !== entry.sourceSha256) {
+        throw new Error(
+          `${entry.source}: sha256 ${sha256File(entry.source)} != pinned ${entry.sourceSha256} ` +
+            `(${entry.name})`,
+        );
+      }
+      const correction = entry.correction ?? SVG_SOURCE_CORRECTIONS.get(entry.name);
       // `prepared` is the SVGO input *and* the "before" render: source
       // corrections (X2) and the Y1 HD payload swap must not read as
       // SVGO-induced pixel changes.
@@ -519,18 +636,64 @@ async function cmdSvg() {
         );
       }
 
-      const evDir = path.join(evRoot, entry.name.replace(/\.svg$/, ''));
+      const evDir = path.join(
+        entry.extraFrame === undefined ? evRoot : frameEvRoot,
+        entry.name.replace(/\.svg$/, ''),
+      );
       mkdirSync(evDir, { recursive: true });
       copyFileSync(before, path.join(evDir, 'before.png'));
       copyFileSync(after, path.join(evDir, 'after.png'));
       copyFileSync(path.join(diffDir, 'report.json'), path.join(evDir, 'report.json'));
 
+      // Task Y9: for the extra status-ball frames, prove the source correction
+      // (strip of the baked static text) changed pixels only inside the text
+      // area of the frame — the ball region must be byte-identical to the raw
+      // FFDec frame render.
+      let strip = null;
+      if (entry.extraFrame !== undefined) {
+        const raw = path.join(work, `${entry.name}.raw.png`);
+        const rawDiffDir = path.join(work, `${entry.name}.rawdiff`);
+        await renderSvgSnapshot(page, source, size, raw);
+        execFileSync(process.execPath, ['verify/diff/diff.mjs', raw, before, rawDiffDir], {
+          cwd: ROOT,
+          stdio: 'pipe',
+        });
+        const rawReport = JSON.parse(readFileSync(path.join(rawDiffDir, 'report.json'), 'utf8'));
+        const bbox = rawReport.mismatchBBox;
+        const textLeft = 36; // CSS px: the frame's text run starts at x≈40.7
+        if (
+          rawReport.mismatchedPixels <= 0 ||
+          bbox === null ||
+          bbox.x < textLeft ||
+          bbox.x + bbox.width > size.viewportWidth
+        ) {
+          throw new Error(
+            `${entry.name}: text strip not confined to the text area ` +
+              `(mismatched=${rawReport.mismatchedPixels}, bbox=${JSON.stringify(bbox)})`,
+          );
+        }
+        if (pngInk(before) >= pngInk(raw)) {
+          throw new Error(`${entry.name}: text strip removed no ink`);
+        }
+        copyFileSync(raw, path.join(evDir, 'raw.png'));
+        copyFileSync(path.join(rawDiffDir, 'report.json'), path.join(evDir, 'raw-diff.json'));
+        strip = {
+          sourceSha256: entry.sourceSha256,
+          strippedPixels: rawReport.mismatchedPixels,
+          stripBBox: bbox,
+          rawInkPixels: pngInk(raw),
+          ballInkPixels: pngInk(before),
+        };
+      }
+
       const remaster = HD_REMASTERS.get(entry.name);
-      results.push({
+      record.push({
         name: entry.name,
         element: entry.element,
         source: entry.source,
         symbol: entry.symbol,
+        ...(entry.extraFrame === undefined ? {} : { extraFrame: entry.extraFrame }),
+        ...(strip === null ? {} : { strip }),
         ...(remaster === undefined
           ? {}
           : {
@@ -578,15 +741,41 @@ async function cmdSvg() {
       nonBlankRenders: results.filter((r) => (r.inkPixels ?? 0) > 0).length,
     },
   };
-  if (summary.totals.assets !== 36 || summary.totals.mismatchedPixels !== 0) {
+  // Task Y9: the extra status-ball frames are recorded separately (their
+  // pipeline evidence lives under evidence/visual/Y9/pipeline/), so the E1
+  // summary keeps its original 36-layout-asset record.
+  const frameSummary = {
+    schemaVersion: 1,
+    task: 'Y9',
+    svgo: summary.svgo,
+    frames: frameResults,
+    totals: {
+      frames: frameResults.length,
+      mismatchedPixels: frameResults.reduce((n, r) => n + (r.mismatchedPixels ?? 0), 0),
+      strippedPixels: frameResults.reduce((n, r) => n + (r.strip?.strippedPixels ?? 0), 0),
+      sourceBytes: frameResults.reduce((n, r) => n + (r.sourceBytes ?? 0), 0),
+      outputBytes: frameResults.reduce((n, r) => n + (r.outputBytes ?? 0), 0),
+      inkPixels: frameResults.reduce((n, r) => n + (r.inkPixels ?? 0), 0),
+    },
+  };
+  if (
+    summary.totals.assets !== 36 ||
+    summary.totals.mismatchedPixels !== 0 ||
+    frameSummary.totals.frames !== STATUS_BALL_FRAMES.length ||
+    frameSummary.totals.mismatchedPixels !== 0
+  ) {
     throw new Error(
-      `expected 36 SVGs and 0 mismatched pixels, got ${summary.totals.assets} / ` +
-        `${summary.totals.mismatchedPixels}`,
+      `expected 36 layout SVGs + ${STATUS_BALL_FRAMES.length} status-ball frames and 0 ` +
+        `mismatched pixels, got ${summary.totals.assets} + ${frameSummary.totals.frames} / ` +
+        `${summary.totals.mismatchedPixels} + ${frameSummary.totals.mismatchedPixels}`,
     );
   }
   writeFileSync(path.join(evRoot, 'summary.json'), JSON.stringify(summary, null, 1) + '\n');
+  mkdirSync(frameEvRoot, { recursive: true });
+  writeFileSync(path.join(frameEvRoot, 'summary.json'), JSON.stringify(frameSummary, null, 1) + '\n');
   OK(
-    `svg done: ${results.length} assets, 0 mismatched pixels, ` +
+    `svg done: ${results.length} layout + ${frameResults.length} status-ball frames, ` +
+      `0 mismatched pixels, ` +
       `${summary.totals.sourceBytes} -> ${summary.totals.outputBytes} bytes, ` +
       `${summary.totals.nonBlankRenders} non-blank renders`,
   );
@@ -786,6 +975,27 @@ function manifestAssets(mapping) {
   for (const bmp of BITMAPS) {
     add(`img/${bmp.name}`, bmp.source, { kind: 'bitmap', bitmapId: bmp.id });
   }
+  // Task Y9: the extra frames of the `status_ball` sprite are recorded inside
+  // the sprite's own manifest entry (the frozen `tests/assets.test.mjs` counts
+  // top-level entries per kind: exactly 36 svg / 2 bitmap / 26 text / 9 sound —
+  // the frames belong to the same A3 element, so they are an entry-level
+  // `frames` record, not new top-level assets). Every frame file must exist and
+  // match its recorded sha256; the raw FFDec source is pinned via its sha256
+  // (same pins as STATUS_BALL_FRAMES in this file).
+  const spriteEntry = assets['svg/s123_status_ball.svg'];
+  if (spriteEntry === undefined) throw new Error('manifest: svg/s123_status_ball.svg missing');
+  spriteEntry.frames = STATUS_BALL_FRAMES.map((frame) => {
+    const rel = `src/assets/svg/${frame.name}`;
+    if (!existsSync(abs(rel))) throw new Error(`${frame.name}: missing for the manifest`);
+    return {
+      frame: frame.frame,
+      name: `svg/${frame.name}`,
+      sha256: sha256File(rel),
+      source: frame.source,
+      sourceSha256: frame.sourceSha256,
+      correction: 'strip-status-text',
+    };
+  });
   const soundMap = readJson('data/sound-map.json');
   for (const [id, entry] of Object.entries(soundMap.sounds)) {
     add(`sfx/${entry.file}`, `artifacts/decompiled/sounds/${id}.mp3`, {

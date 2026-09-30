@@ -347,6 +347,14 @@ function installStyleSheet(doc: Document): void {
 .board-ball-shadow { position: absolute; border-radius: 50%; z-index: 20500; background: radial-gradient(circle, rgba(60,40,40,0.55) 0%, rgba(60,40,40,0.25) 60%, rgba(60,40,40,0) 100%); }
 .board-timer-white { position: absolute; z-index: 50; background: #fff; }
 .board-timer-red { position: absolute; z-index: 50; background: #f00; }
+/* Task Y9: while the status message component shows a coloured state
+   (frames 2/3), the frame-1 ball of this layer is replaced — hide it so the
+   message's ball composites directly over the backdrop (the reference frame 2/3
+   ball replaces frame 1; overlaying would double-blend the antialiased edge).
+   The message owns the state and marks the shared stage root; this stylesheet
+   owns hiding its own element. evidence: evidence/Y9-status-lamp.md §5. */
+[data-testid="stage-root"][data-status-lamp="valid"] [data-element="status_ball"],
+[data-testid="stage-root"][data-status-lamp="already-found"] [data-element="status_ball"] { visibility: hidden; }
 `;
   let style = doc.getElementById(STYLE_ID) as HTMLStyleElement | null;
   if (style === null) {
