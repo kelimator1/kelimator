@@ -352,6 +352,20 @@ RESOLVED 2026-09-29 — evidence/Y8-intro.md — boot intro reproduced from the 
   1.386 %); docs/07 §4 intro-coverage amendment + docs/02 §5 boot-flow note
   applied. The stale smoke immediate-state expectation (pre-O23) is updated by
   a C2 follow-up. Evidence: `evidence/Y8-intro.md`.
+- 2026-09-30 — Task **Y9** closure (owner-reported status lamp):
+  `DefineSprite_123` (`status_ball`) renders its three evidenced frames — idle
+  frame 1 (dark ball, board catalog asset, no text), frame 2 (green ball + live
+  `Geçerli` `#336600`), frame 3 (red ball + live `Girildi` `#ff0000`). Frames
+  2/3 are processed to ball-only assets `s123_status_ball_f2.svg` /
+  `s123_status_ball_f3.svg` (deterministic static-text strip, source
+  sha256-pinned, docs/03 §1 naming with the extra-frame suffix `_f<frame>`)
+  and recorded as the `frames[]` sub-records of the sprite's existing
+  `svg/s123_status_ball.svg` manifest entry (top-level per-kind entry counts
+  unchanged: 36 svg / 2 bitmap / 26 text / 9 sound). The live-text mechanism is
+  kept (worst-tolerant 0.144 % vs the rendered frames, limit 2.000 %; ball
+  regions raw-exact 0 px); the board hides its frame-1 ball while a coloured
+  state is active (`data-status-lamp` on the stage root). Evidence:
+  `evidence/Y9-status-lamp.md`.
 - 2026-09-28 — X1 tile center clicks (`docs/05` §3): the tile letter field is
   pointer-events-transparent; the single click delegation matches `buttonN`
   only; center-click e2e at dsf 1/2 plus O15 edges. Evidence:

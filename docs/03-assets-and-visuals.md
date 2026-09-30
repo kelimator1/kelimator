@@ -30,6 +30,12 @@ Slugs are assigned in A3's layout catalog, not guessed ad hoc.
 > `evidence/E1-assets.md` §11.1/§13; matching entry in
 > `docs/08-open-items.md` (Amendments).
 
+> 2026-09-30 (Y9): extra sprite frames use the suffix `_f<frame>`
+> (`s<symbolId>_<slug>_f<frame>.svg`); the frames of a sprite are recorded
+> inside the sprite's manifest entry (`frames[]`) so the layout-asset entry
+> counts stay stable. Applied for `s123_status_ball_f2.svg` /
+> `s123_status_ball_f3.svg`; evidence `evidence/Y9-status-lamp.md`.
+
 ## 2. Bitmap handling (decision procedure, evidence-based)
 
 Two bitmap definitions exist (**[CONFIRMED-OBSERVED]** on 2007/EN builds:
