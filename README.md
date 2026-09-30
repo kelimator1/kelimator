@@ -1,4 +1,4 @@
-# Kelimatör 2012 — Personal 1:1 Recreation
+# Kelimatör — Personal 1:1 Recreation
 
 Personal, non-published project. Goal: recreate the **2012–2013 Turkish build** of
 Kelimatör (`games.lg.web.tr/kelimator`) as a modern static web app whose gameplay,

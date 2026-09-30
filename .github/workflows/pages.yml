@@ -1,4 +1,4 @@
-# Kelimatör 2012 — GitHub Pages deploy (runbook: DEPLOY.md).
+# Kelimatör — GitHub Pages deploy (runbook: DEPLOY.md).
 #
 # Phase 1 ("unlisted"): deploys the static build from a PRIVATE repository.
 # Pages from private repos requires GitHub Pro; the site itself is publicly
