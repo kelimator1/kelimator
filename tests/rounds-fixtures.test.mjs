@@ -183,7 +183,15 @@ function fixtureWords(parsed) {
   return [3, 4, 5, 6, 7].flatMap((length) => parsed.lists[length]);
 }
 
-describe('fixture: finalizm (archived xml.php, ISO-8859-9)', () => {
+if (finalizm === null) {
+  console.warn(
+    '[B3] finalizm fixture unavailable: neither tests/fixtures/rounds/finalizm.xml nor the local ' +
+      'archive (../kelimator-nostalji/calistir/xml.php) exists — suite skipped (e.g. in CI, where the ' +
+      'read-only archive is intentionally not part of this repository).',
+  );
+}
+
+describe.skipIf(finalizm === null)('fixture: finalizm (archived xml.php, ISO-8859-9)', () => {
   it('is available and decodes byte-wise to FİNALİZM (plain text, not Base64)', () => {
     const fixture = requireFixture(finalizm, 'finalizm');
     console.log(`[B3] finalizm source: ${fixture.rel} sha256=${fixture.sha256}`);
@@ -259,7 +267,15 @@ describe('fixture: finalizm (archived xml.php, ISO-8859-9)', () => {
   });
 });
 
-describe('fixture: leavings (archived xml_eng.php; English, no dictionary cross-check)', () => {
+if (leavings === null) {
+  console.warn(
+    '[B3] leavings fixture unavailable: neither tests/fixtures/rounds/leavings.xml nor the local ' +
+      'archive (../kelimator-nostalji/calistir/xml_eng.php) exists — suite skipped (e.g. in CI, where ' +
+      'the read-only archive is intentionally not part of this repository).',
+  );
+}
+
+describe.skipIf(leavings === null)('fixture: leavings (archived xml_eng.php; English, no dictionary cross-check)', () => {
   it('is available and decodes to LEAVINGS', () => {
     const fixture = requireFixture(leavings, 'leavings');
     console.log(`[B3] leavings source: ${fixture.rel} sha256=${fixture.sha256}`);
